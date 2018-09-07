@@ -1,0 +1,1679 @@
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE    1
+
+    1373              ; Temporary Registers Used: None
+       1              ;*******************************************************************************
+       2              ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
+       3              ;* Date/Time created: Fri Sep 07 01:41:45 2018                                 *
+       4              ;*******************************************************************************
+       5                      .compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --si
+       6                      .mmregs
+       7                      .cpl_on
+       8                      .arms_on
+       9                      .c54cm_off
+      10                      .asg AR6, FP
+      11                      .asg XAR6, XFP
+      12                      .asg DPH, MDP
+      13                      .model call=c55_std
+      14                      .model mem=large
+      15                      .noremark 5002  ; code respects overwrite rules
+      16              ;*******************************************************************************
+      17              ;* GLOBAL FILE PARAMETERS                                                      *
+      18              ;*                                                                             *
+      19              ;*   Architecture       : TMS320C55x                                           *
+      20              ;*   Optimizing for     : Speed                                                *
+      21              ;*   Memory             : Large Model (23-Bit Data Pointers)                   *
+      22              ;*   Calls              : Normal Library ASM calls                             *
+      23              ;*   Debug Info         : Standard TI Debug Information                        *
+      24              ;*******************************************************************************
+      25              
+      26              $C$DW$CU        .dwtag  DW_TAG_compile_unit
+      27                      .dwattr $C$DW$CU, DW_AT_name("../FreeRTOS/Demo/Common/Minimal/crhook.c")
+      28                      .dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas In
+      29                      .dwattr $C$DW$CU, DW_AT_TI_version(0x01)
+      30                      .dwattr $C$DW$CU, DW_AT_comp_dir("F:\site\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug")
+      31              ;******************************************************************************
+      32              ;* CINIT RECORDS                                                              *
+      33              ;******************************************************************************
+      34 000000               .sect   ".cinit"
+      35                      .align  1
+      36 000000 0001          .field          1,16
+      37 000001 0000-         .field          _xCoRoutineErrorDetected+0,24
+         000002 1000 
+      38 000002 1000          .field          0,8
+      39 000003 0000          .field  0,16                    ; _xCoRoutineErrorDetected @ 0
+      40              
+      41 000004               .sect   ".cinit"
+      42                      .align  1
+      43 000004 0001          .field          1,16
+      44 000005 0000-         .field          _uxCallCounter+0,24
+         000006 1100 
+      45 000006 1100          .field          0,8
+      46 000007 0000          .field  0,16                    ; _uxCallCounter @ 0
+      47              
+      48 000008               .sect   ".cinit"
+      49                      .align  1
+      50 000008 0001          .field          1,16
+      51 000009 0000-         .field          _uxNumberToPost+0,24
+         00000a 1200 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE    2
+
+      52 00000a 1200          .field          0,8
+      53 00000b 0000          .field  0,16                    ; _uxNumberToPost @ 0
+      54              
+      55              
+      56              $C$DW$1 .dwtag  DW_TAG_subprogram, DW_AT_name("xCoRoutineCreate")
+      57                      .dwattr $C$DW$1, DW_AT_TI_symbol_name("_xCoRoutineCreate")
+      58                      .dwattr $C$DW$1, DW_AT_type(*$C$DW$T$10)
+      59                      .dwattr $C$DW$1, DW_AT_declaration
+      60                      .dwattr $C$DW$1, DW_AT_external
+      61              $C$DW$2 .dwtag  DW_TAG_formal_parameter
+      62                      .dwattr $C$DW$2, DW_AT_type(*$C$DW$T$22)
+      63              $C$DW$3 .dwtag  DW_TAG_formal_parameter
+      64                      .dwattr $C$DW$3, DW_AT_type(*$C$DW$T$11)
+      65              $C$DW$4 .dwtag  DW_TAG_formal_parameter
+      66                      .dwattr $C$DW$4, DW_AT_type(*$C$DW$T$11)
+      67                      .dwendtag $C$DW$1
+      68              
+      69              
+      70              $C$DW$5 .dwtag  DW_TAG_subprogram, DW_AT_name("xQueueCreate")
+      71                      .dwattr $C$DW$5, DW_AT_TI_symbol_name("_xQueueCreate")
+      72                      .dwattr $C$DW$5, DW_AT_type(*$C$DW$T$29)
+      73                      .dwattr $C$DW$5, DW_AT_declaration
+      74                      .dwattr $C$DW$5, DW_AT_external
+      75              $C$DW$6 .dwtag  DW_TAG_formal_parameter
+      76                      .dwattr $C$DW$6, DW_AT_type(*$C$DW$T$11)
+      77              $C$DW$7 .dwtag  DW_TAG_formal_parameter
+      78                      .dwattr $C$DW$7, DW_AT_type(*$C$DW$T$11)
+      79                      .dwendtag $C$DW$5
+      80              
+      81              
+      82              $C$DW$8 .dwtag  DW_TAG_subprogram, DW_AT_name("xQueueGenericSend")
+      83                      .dwattr $C$DW$8, DW_AT_TI_symbol_name("_xQueueGenericSend")
+      84                      .dwattr $C$DW$8, DW_AT_type(*$C$DW$T$10)
+      85                      .dwattr $C$DW$8, DW_AT_declaration
+      86                      .dwattr $C$DW$8, DW_AT_external
+      87              $C$DW$9 .dwtag  DW_TAG_formal_parameter
+      88                      .dwattr $C$DW$9, DW_AT_type(*$C$DW$T$29)
+      89              $C$DW$10        .dwtag  DW_TAG_formal_parameter
+      90                      .dwattr $C$DW$10, DW_AT_type(*$C$DW$T$36)
+      91              $C$DW$11        .dwtag  DW_TAG_formal_parameter
+      92                      .dwattr $C$DW$11, DW_AT_type(*$C$DW$T$25)
+      93              $C$DW$12        .dwtag  DW_TAG_formal_parameter
+      94                      .dwattr $C$DW$12, DW_AT_type(*$C$DW$T$10)
+      95                      .dwendtag $C$DW$8
+      96              
+      97              
+      98              $C$DW$13        .dwtag  DW_TAG_subprogram, DW_AT_name("xQueueCRSendFromISR")
+      99                      .dwattr $C$DW$13, DW_AT_TI_symbol_name("_xQueueCRSendFromISR")
+     100                      .dwattr $C$DW$13, DW_AT_type(*$C$DW$T$10)
+     101                      .dwattr $C$DW$13, DW_AT_declaration
+     102                      .dwattr $C$DW$13, DW_AT_external
+     103              $C$DW$14        .dwtag  DW_TAG_formal_parameter
+     104                      .dwattr $C$DW$14, DW_AT_type(*$C$DW$T$29)
+     105              $C$DW$15        .dwtag  DW_TAG_formal_parameter
+     106                      .dwattr $C$DW$15, DW_AT_type(*$C$DW$T$35)
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE    3
+
+     107              $C$DW$16        .dwtag  DW_TAG_formal_parameter
+     108                      .dwattr $C$DW$16, DW_AT_type(*$C$DW$T$10)
+     109                      .dwendtag $C$DW$13
+     110              
+     111              
+     112              $C$DW$17        .dwtag  DW_TAG_subprogram, DW_AT_name("xQueueCRReceiveFromISR")
+     113                      .dwattr $C$DW$17, DW_AT_TI_symbol_name("_xQueueCRReceiveFromISR")
+     114                      .dwattr $C$DW$17, DW_AT_type(*$C$DW$T$10)
+     115                      .dwattr $C$DW$17, DW_AT_declaration
+     116                      .dwattr $C$DW$17, DW_AT_external
+     117              $C$DW$18        .dwtag  DW_TAG_formal_parameter
+     118                      .dwattr $C$DW$18, DW_AT_type(*$C$DW$T$29)
+     119              $C$DW$19        .dwtag  DW_TAG_formal_parameter
+     120                      .dwattr $C$DW$19, DW_AT_type(*$C$DW$T$3)
+     121              $C$DW$20        .dwtag  DW_TAG_formal_parameter
+     122                      .dwattr $C$DW$20, DW_AT_type(*$C$DW$T$44)
+     123                      .dwendtag $C$DW$17
+     124              
+     125              
+     126              $C$DW$21        .dwtag  DW_TAG_subprogram, DW_AT_name("xQueueCRSend")
+     127                      .dwattr $C$DW$21, DW_AT_TI_symbol_name("_xQueueCRSend")
+     128                      .dwattr $C$DW$21, DW_AT_type(*$C$DW$T$10)
+     129                      .dwattr $C$DW$21, DW_AT_declaration
+     130                      .dwattr $C$DW$21, DW_AT_external
+     131              $C$DW$22        .dwtag  DW_TAG_formal_parameter
+     132                      .dwattr $C$DW$22, DW_AT_type(*$C$DW$T$29)
+     133              $C$DW$23        .dwtag  DW_TAG_formal_parameter
+     134                      .dwattr $C$DW$23, DW_AT_type(*$C$DW$T$35)
+     135              $C$DW$24        .dwtag  DW_TAG_formal_parameter
+     136                      .dwattr $C$DW$24, DW_AT_type(*$C$DW$T$25)
+     137                      .dwendtag $C$DW$21
+     138              
+     139              
+     140              $C$DW$25        .dwtag  DW_TAG_subprogram, DW_AT_name("xQueueCRReceive")
+     141                      .dwattr $C$DW$25, DW_AT_TI_symbol_name("_xQueueCRReceive")
+     142                      .dwattr $C$DW$25, DW_AT_type(*$C$DW$T$10)
+     143                      .dwattr $C$DW$25, DW_AT_declaration
+     144                      .dwattr $C$DW$25, DW_AT_external
+     145              $C$DW$26        .dwtag  DW_TAG_formal_parameter
+     146                      .dwattr $C$DW$26, DW_AT_type(*$C$DW$T$29)
+     147              $C$DW$27        .dwtag  DW_TAG_formal_parameter
+     148                      .dwattr $C$DW$27, DW_AT_type(*$C$DW$T$3)
+     149              $C$DW$28        .dwtag  DW_TAG_formal_parameter
+     150                      .dwattr $C$DW$28, DW_AT_type(*$C$DW$T$25)
+     151                      .dwendtag $C$DW$25
+     152              
+     153 000000               .bss    _xHookRxQueues,8,0,2
+     154              $C$DW$29        .dwtag  DW_TAG_variable, DW_AT_name("xHookRxQueues")
+     155                      .dwattr $C$DW$29, DW_AT_TI_symbol_name("_xHookRxQueues")
+     156                      .dwattr $C$DW$29, DW_AT_type(*$C$DW$T$32)
+     157                      .dwattr $C$DW$29, DW_AT_location[DW_OP_addr _xHookRxQueues]
+     158 000008               .bss    _xHookTxQueues,8,0,2
+     159              $C$DW$30        .dwtag  DW_TAG_variable, DW_AT_name("xHookTxQueues")
+     160                      .dwattr $C$DW$30, DW_AT_TI_symbol_name("_xHookTxQueues")
+     161                      .dwattr $C$DW$30, DW_AT_type(*$C$DW$T$32)
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE    4
+
+     162                      .dwattr $C$DW$30, DW_AT_location[DW_OP_addr _xHookTxQueues]
+     163 000010               .bss    _xCoRoutineErrorDetected,1,0,0
+     164              $C$DW$31        .dwtag  DW_TAG_variable, DW_AT_name("xCoRoutineErrorDetected")
+     165                      .dwattr $C$DW$31, DW_AT_TI_symbol_name("_xCoRoutineErrorDetected")
+     166                      .dwattr $C$DW$31, DW_AT_type(*$C$DW$T$10)
+     167                      .dwattr $C$DW$31, DW_AT_location[DW_OP_addr _xCoRoutineErrorDetected]
+     168 000011               .bss    _uxCallCounter,1,0,0
+     169              $C$DW$32        .dwtag  DW_TAG_variable, DW_AT_name("uxCallCounter")
+     170                      .dwattr $C$DW$32, DW_AT_TI_symbol_name("_uxCallCounter")
+     171                      .dwattr $C$DW$32, DW_AT_type(*$C$DW$T$11)
+     172                      .dwattr $C$DW$32, DW_AT_location[DW_OP_addr _uxCallCounter]
+     173 000012               .bss    _uxNumberToPost,1,0,0
+     174              $C$DW$33        .dwtag  DW_TAG_variable, DW_AT_name("uxNumberToPost")
+     175                      .dwattr $C$DW$33, DW_AT_TI_symbol_name("_uxNumberToPost")
+     176                      .dwattr $C$DW$33, DW_AT_type(*$C$DW$T$11)
+     177                      .dwattr $C$DW$33, DW_AT_location[DW_OP_addr _uxNumberToPost]
+     178 000013               .bss    _uxReceivedValue$1,4,0,0
+     179              ;       F:\TI_CCS_7P4\ccsv7\tools\compiler\c5500_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1217612 
+     180 000000               .sect   ".text"
+     181                      .align 4
+     182                      .global _vStartHookCoRoutines
+     183              
+     184              $C$DW$34        .dwtag  DW_TAG_subprogram, DW_AT_name("vStartHookCoRoutines")
+     185                      .dwattr $C$DW$34, DW_AT_low_pc(_vStartHookCoRoutines)
+     186                      .dwattr $C$DW$34, DW_AT_high_pc(0x00)
+     187                      .dwattr $C$DW$34, DW_AT_TI_symbol_name("_vStartHookCoRoutines")
+     188                      .dwattr $C$DW$34, DW_AT_external
+     189                      .dwattr $C$DW$34, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/crhook.c")
+     190                      .dwattr $C$DW$34, DW_AT_TI_begin_line(0x85)
+     191                      .dwattr $C$DW$34, DW_AT_TI_begin_column(0x06)
+     192                      .dwattr $C$DW$34, DW_AT_TI_max_frame_size(0x04)
+     193                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 134,column 1,is_stmt,address _vStartHook
+     194              
+     195                      .dwfde $C$DW$CIE, _vStartHookCoRoutines
+     196              ;*******************************************************************************
+     197              ;* FUNCTION NAME: vStartHookCoRoutines                                         *
+     198              ;*                                                                             *
+     199              ;*   Function Uses Regs : AC0,AC0,T0,T1,AR0,XAR0,AR1,XAR1,AR2,AR3,XAR3,SP,     *
+     200              ;*                        CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL                *
+     201              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     202              ;*   Total Frame Size   : 4 words                                              *
+     203              ;*                        (2 return address/alignment)                         *
+     204              ;*                        (2 local values)                                     *
+     205              ;*   Min System Stack   : 1 word                                               *
+     206              ;*******************************************************************************
+     207 000000       _vStartHookCoRoutines:
+     208                      .dwcfi  cfa_offset, 1
+     209                      .dwcfi  save_reg_to_mem, 91, -1
+     210 000000 4EFD          AADD #-3, SP
+     211                      .dwcfi  cfa_offset, 4
+     212              $C$DW$35        .dwtag  DW_TAG_variable, DW_AT_name("uxIndex")
+     213                      .dwattr $C$DW$35, DW_AT_TI_symbol_name("_uxIndex")
+     214                      .dwattr $C$DW$35, DW_AT_type(*$C$DW$T$11)
+     215                      .dwattr $C$DW$35, DW_AT_location[DW_OP_bregx 0x24 0]
+     216              $C$DW$36        .dwtag  DW_TAG_variable, DW_AT_name("uxValueToPost")
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE    5
+
+     217                      .dwattr $C$DW$36, DW_AT_TI_symbol_name("_uxValueToPost")
+     218                      .dwattr $C$DW$36, DW_AT_type(*$C$DW$T$11)
+     219                      .dwattr $C$DW$36, DW_AT_location[DW_OP_bregx 0x24 1]
+     220                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 135,column 33,is_stmt
+     221 000002 E602          MOV #0, *SP(#1) ; |135| 
+         000004 00   
+     222                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 137,column 7,is_stmt
+     223 000005 E600          MOV #0, *SP(#0) ; |137| 
+         000007 00   
+     224                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 137,column 20,is_stmt
+     225              
+     226 000008 A900          MOV *SP(#0), AR1 ; |137| 
+     227 00000a 3D4A  ||      MOV #4, AR2
+     228              
+     229 00000c 1298          CMPU AR1 >= AR2, TC1 ; |137| 
+         00000e A4   
+     230 00000f 0464          BCC $C$L2,TC1 ; |137| 
+         000011 60   
+     231                                                      ; branchcc occurs ; |137| 
+     232 000012       $C$L1:    
+     233 000012       $C$DW$L$_vStartHookCoRoutines$2$B:
+     234                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 141,column 3,is_stmt
+     235 000012 3C14          MOV #1, T0
+     236              $C$DW$37        .dwtag  DW_TAG_TI_branch
+     237                      .dwattr $C$DW$37, DW_AT_low_pc(0x00)
+     238                      .dwattr $C$DW$37, DW_AT_name("_xQueueCreate")
+     239                      .dwattr $C$DW$37, DW_AT_TI_call
+     240              
+     241 000014 6C00          CALL #_xQueueCreate ; |141| 
+         000016 0000!
+     242 000018 3D15  ||      MOV #1, T1
+     243              
+     244                                                      ; call occurs [#_xQueueCreate] ; |141| 
+     245 00001a A400          MOV *SP(#0), T0 ; |141| 
+     246 00001c 5040          SFTL T0, #1 ; |141| 
+     247 00001e EC31          AMOV #_xHookRxQueues, XAR3 ; |141| 
+         000020 BE00 
+         000022 0000-
+     248 000024 EB6B          MOV XAR0, dbl(*AR3(T0))
+         000026 85   
+     249                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 142,column 3,is_stmt
+     250 000027 3C14          MOV #1, T0
+     251              $C$DW$38        .dwtag  DW_TAG_TI_branch
+     252                      .dwattr $C$DW$38, DW_AT_low_pc(0x00)
+     253                      .dwattr $C$DW$38, DW_AT_name("_xQueueCreate")
+     254                      .dwattr $C$DW$38, DW_AT_TI_call
+     255              
+     256 000029 6C00          CALL #_xQueueCreate ; |142| 
+         00002b 0000!
+     257 00002d 3D15  ||      MOV #1, T1
+     258              
+     259                                                      ; call occurs [#_xQueueCreate] ; |142| 
+     260 00002f A400          MOV *SP(#0), T0 ; |142| 
+     261 000031 5040          SFTL T0, #1 ; |142| 
+     262 000033 EC31          AMOV #_xHookTxQueues, XAR3 ; |142| 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE    6
+
+         000035 BE00 
+         000037 0008-
+     263 000039 EB6B          MOV XAR0, dbl(*AR3(T0))
+         00003b 85   
+     264                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 146,column 3,is_stmt
+     265 00003c A400          MOV *SP(#0), T0 ; |146| 
+     266 00003e 5040          SFTL T0, #1 ; |146| 
+     267 000040 EC31          AMOV #_xHookRxQueues, XAR3 ; |146| 
+         000042 BE00 
+         000044 0000-
+     268              
+     269 000046 EC02          AMAR *SP(#1), XAR1
+         000048 9E   
+     270 000049 3D05  ||      MOV #0, T1
+     271              
+     272 00004b ED6B          MOV dbl(*AR3(T0)), XAR0
+         00004d 8F   
+     273              $C$DW$39        .dwtag  DW_TAG_TI_branch
+     274                      .dwattr $C$DW$39, DW_AT_low_pc(0x00)
+     275                      .dwattr $C$DW$39, DW_AT_name("_xQueueGenericSend")
+     276                      .dwattr $C$DW$39, DW_AT_TI_call
+     277              
+     278 00004e 6C00          CALL #_xQueueGenericSend ; |146| 
+         000050 0000!
+     279 000052 3D04  ||      MOV #0, T0
+     280              
+     281                                                      ; call occurs [#_xQueueGenericSend] ; |146| 
+     282                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 149,column 3,is_stmt
+     283 000054 A500          MOV *SP(#0), T1 ; |149| 
+     284 000056 7A00          MOV #(_prvHookCoRoutine >> 16) << #16, AC0 ; |149| 
+         000058 000A%
+     285 00005a 7E00          OR #(_prvHookCoRoutine & 0xffff), AC0, AC0 ; |149| 
+         00005c 0000%
+     286              $C$DW$40        .dwtag  DW_TAG_TI_branch
+     287                      .dwattr $C$DW$40, DW_AT_low_pc(0x00)
+     288                      .dwattr $C$DW$40, DW_AT_name("_xCoRoutineCreate")
+     289                      .dwattr $C$DW$40, DW_AT_TI_call
+     290              
+     291 00005e 6C00          CALL #_xCoRoutineCreate ; |149| 
+         000060 0000!
+     292 000062 3D14  ||      MOV #1, T0
+     293              
+     294                                                      ; call occurs [#_xCoRoutineCreate] ; |149| 
+     295                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 137,column 56,is_stmt
+     296 000064 F700          ADD #1, *SP(#0) ; |137| 
+         000066 0001 
+     297                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 137,column 20,is_stmt
+     298              
+     299 000068 A900          MOV *SP(#0), AR1 ; |137| 
+     300 00006a 3D4A  ||      MOV #4, AR2
+     301              
+     302 00006c 1294          CMPU AR1 < AR2, TC1 ; |137| 
+         00006e A4   
+     303 00006f 0464          BCC $C$L1,TC1 ; |137| 
+         000071 A0   
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE    7
+
+     304                                                      ; branchcc occurs ; |137| 
+     305 000072       $C$DW$L$_vStartHookCoRoutines$2$E:
+     306                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 151,column 1,is_stmt
+     307 000072       $C$L2:    
+     308 000072 4E03          AADD #3, SP
+     309                      .dwcfi  cfa_offset, 1
+     310              $C$DW$41        .dwtag  DW_TAG_TI_branch
+     311                      .dwattr $C$DW$41, DW_AT_low_pc(0x00)
+     312                      .dwattr $C$DW$41, DW_AT_TI_return
+     313 000074 4804          RET
+     314                                                      ; return occurs
+     315              
+     316              $C$DW$42        .dwtag  DW_TAG_TI_loop
+     317                      .dwattr $C$DW$42, DW_AT_name("F:\site\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\crhook.asm:$C$L1:1:153
+     318                      .dwattr $C$DW$42, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/crhook.c")
+     319                      .dwattr $C$DW$42, DW_AT_TI_begin_line(0x89)
+     320                      .dwattr $C$DW$42, DW_AT_TI_end_line(0x96)
+     321              $C$DW$43        .dwtag  DW_TAG_TI_loop_range
+     322                      .dwattr $C$DW$43, DW_AT_low_pc($C$DW$L$_vStartHookCoRoutines$2$B)
+     323                      .dwattr $C$DW$43, DW_AT_high_pc($C$DW$L$_vStartHookCoRoutines$2$E)
+     324                      .dwendtag $C$DW$42
+     325              
+     326                      .dwattr $C$DW$34, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/crhook.c")
+     327                      .dwattr $C$DW$34, DW_AT_TI_end_line(0x97)
+     328                      .dwattr $C$DW$34, DW_AT_TI_end_column(0x01)
+     329                      .dwendentry
+     330                      .dwendtag $C$DW$34
+     331              
+     332 000076               .sect   ".text"
+     333                      .align 4
+     334                      .global _vApplicationTickHook
+     335              
+     336              $C$DW$44        .dwtag  DW_TAG_subprogram, DW_AT_name("vApplicationTickHook")
+     337                      .dwattr $C$DW$44, DW_AT_low_pc(_vApplicationTickHook)
+     338                      .dwattr $C$DW$44, DW_AT_high_pc(0x00)
+     339                      .dwattr $C$DW$44, DW_AT_TI_symbol_name("_vApplicationTickHook")
+     340                      .dwattr $C$DW$44, DW_AT_external
+     341                      .dwattr $C$DW$44, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/crhook.c")
+     342                      .dwattr $C$DW$44, DW_AT_TI_begin_line(0x9b)
+     343                      .dwattr $C$DW$44, DW_AT_TI_begin_column(0x06)
+     344                      .dwattr $C$DW$44, DW_AT_TI_max_frame_size(0x04)
+     345                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 156,column 1,is_stmt,address _vApplicati
+     346              
+     347                      .dwfde $C$DW$CIE, _vApplicationTickHook
+     348              ;*******************************************************************************
+     349              ;* FUNCTION NAME: vApplicationTickHook                                         *
+     350              ;*                                                                             *
+     351              ;*   Function Uses Regs : T0,AR0,XAR0,AR1,XAR1,AR2,XAR2,AR3,XAR3,SP,CARRY,TC1, *
+     352              ;*                        M40,SATA,SATD,RDM,FRCT,SMUL                          *
+     353              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     354              ;*   Total Frame Size   : 4 words                                              *
+     355              ;*                        (1 return address/alignment)                         *
+     356              ;*                        (3 local values)                                     *
+     357              ;*   Min System Stack   : 1 word                                               *
+     358              ;*******************************************************************************
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE    8
+
+     359 000078       _vApplicationTickHook:
+     360                      .dwcfi  cfa_offset, 1
+     361                      .dwcfi  save_reg_to_mem, 91, -1
+     362 000078 4EFD          AADD #-3, SP
+     363                      .dwcfi  cfa_offset, 4
+     364              $C$DW$45        .dwtag  DW_TAG_variable, DW_AT_name("uxReceivedNumber")
+     365                      .dwattr $C$DW$45, DW_AT_TI_symbol_name("_uxReceivedNumber")
+     366                      .dwattr $C$DW$45, DW_AT_type(*$C$DW$T$11)
+     367                      .dwattr $C$DW$45, DW_AT_location[DW_OP_bregx 0x24 0]
+     368              $C$DW$46        .dwtag  DW_TAG_variable, DW_AT_name("xIndex")
+     369                      .dwattr $C$DW$46, DW_AT_TI_symbol_name("_xIndex")
+     370                      .dwattr $C$DW$46, DW_AT_type(*$C$DW$T$10)
+     371                      .dwattr $C$DW$46, DW_AT_location[DW_OP_bregx 0x24 1]
+     372              $C$DW$47        .dwtag  DW_TAG_variable, DW_AT_name("xCoRoutineWoken")
+     373                      .dwattr $C$DW$47, DW_AT_TI_symbol_name("_xCoRoutineWoken")
+     374                      .dwattr $C$DW$47, DW_AT_type(*$C$DW$T$10)
+     375                      .dwattr $C$DW$47, DW_AT_location[DW_OP_bregx 0x24 2]
+     376                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 161,column 2,is_stmt
+     377 00007a F731          ADD #1, *(#_uxCallCounter) ; |161| 
+         00007c 0001 
+         00007e 0000 
+         000080 11-  
+     378                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 162,column 2,is_stmt
+     379 000081 7601          MOV #500, AR2 ; |162| 
+         000083 F4A8 
+     380 000085 A931          MOV *(#_uxCallCounter), AR1 ; |162| 
+         000087 0000 
+         000089 11-  
+     381 00008a 1294          CMPU AR1 < AR2, TC1 ; |162| 
+         00008c A4   
+     382 00008d 6D64          BCC $C$L10,TC1 ; |162| 
+         00008f 00AC 
+     383                                                      ; branchcc occurs ; |162| 
+     384                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 164,column 3,is_stmt
+     385 000091 E631          MOV #0, *(#_uxCallCounter) ; |164| 
+         000093 0000 
+         000095 0011-
+     386                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 166,column 8,is_stmt
+     387 000097 E602          MOV #0, *SP(#1) ; |166| 
+         000099 00   
+     388                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 166,column 20,is_stmt
+     389              
+     390 00009a A902          MOV *SP(#1), AR1 ; |166| 
+     391 00009c 3D4A  ||      MOV #4, AR2
+     392              
+     393 00009e 1298          CMP AR1 >= AR2, TC1 ; |166| 
+         0000a0 A0   
+     394 0000a1 0464          BCC $C$L7,TC1 ; |166| 
+         0000a3 53   
+     395                                                      ; branchcc occurs ; |166| 
+     396 0000a4       $C$L3:    
+     397 0000a4       $C$DW$L$_vApplicationTickHook$3$B:
+     398                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 168,column 4,is_stmt
+     399 0000a4 E604          MOV #0, *SP(#2) ; |168| 
+         0000a6 00   
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE    9
+
+     400                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 169,column 4,is_stmt
+     401 0000a7 A402          MOV *SP(#1), T0 ; |169| 
+     402 0000a9 5040          SFTL T0, #1 ; |169| 
+     403 0000ab EC31          AMOV #_xHookRxQueues, XAR3 ; |169| 
+         0000ad BE00 
+         0000af 0000-
+     404 0000b1 EC00          AMAR *SP(#0), XAR1
+         0000b3 9E   
+     405 0000b4 EC04          AMAR *SP(#2), XAR2
+         0000b6 AE   
+     406 0000b7 ED6B          MOV dbl(*AR3(T0)), XAR0
+         0000b9 8F   
+     407              $C$DW$48        .dwtag  DW_TAG_TI_branch
+     408                      .dwattr $C$DW$48, DW_AT_low_pc(0x00)
+     409                      .dwattr $C$DW$48, DW_AT_name("_xQueueCRReceiveFromISR")
+     410                      .dwattr $C$DW$48, DW_AT_TI_call
+     411 0000ba 6C00          CALL #_xQueueCRReceiveFromISR ; |169| 
+         0000bc 0000!
+     412                                                      ; call occurs [#_xQueueCRReceiveFromISR] ; |169| 
+     413 0000be 3C19          MOV #1, AR1
+     414 0000c0 1240          CMP T0 == AR1, TC1 ; |169| 
+         0000c2 90   
+     415 0000c3 6464          BCC $C$L4,TC1 ; |169| 
+     416                                                      ; branchcc occurs ; |169| 
+     417 0000c5       $C$DW$L$_vApplicationTickHook$3$E:
+     418 0000c5       $C$DW$L$_vApplicationTickHook$4$B:
+     419                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 173,column 5,is_stmt
+     420 0000c5 E631          MOV #1, *(#_xCoRoutineErrorDetected) ; |173| 
+         0000c7 0100 
+         0000c9 0010-
+     421                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 174,column 4,is_stmt
+     422 0000cb 4A1C          B $C$L6   ; |174| 
+     423                                                      ; branch occurs ; |174| 
+     424 0000cd       $C$DW$L$_vApplicationTickHook$4$E:
+     425 0000cd       $C$L4:    
+     426 0000cd       $C$DW$L$_vApplicationTickHook$5$B:
+     427                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 179,column 5,is_stmt
+     428 0000cd A931          MOV *(#_uxNumberToPost), AR1 ; |179| 
+         0000cf 0000 
+         0000d1 12-  
+     429 0000d2 AA00          MOV *SP(#0), AR2 ; |179| 
+     430 0000d4 12A0          CMPU AR2 == AR1, TC1 ; |179| 
+         0000d6 94   
+     431 0000d7 6364          BCC $C$L5,TC1 ; |179| 
+     432                                                      ; branchcc occurs ; |179| 
+     433 0000d9       $C$DW$L$_vApplicationTickHook$5$E:
+     434 0000d9       $C$DW$L$_vApplicationTickHook$6$B:
+     435                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 181,column 6,is_stmt
+     436 0000d9 E631          MOV #1, *(#_xCoRoutineErrorDetected) ; |181| 
+         0000db 0100 
+         0000dd 0010-
+     437 0000df       $C$DW$L$_vApplicationTickHook$6$E:
+     438 0000df       $C$L5:    
+     439 0000df       $C$DW$L$_vApplicationTickHook$7$B:
+     440                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 185,column 5,is_stmt
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   10
+
+     441 0000df A904          MOV *SP(#2), AR1 ; |185| 
+     442 0000e1 6309          BCC $C$L6,AR1 == #0 ; |185| 
+     443                                                      ; branchcc occurs ; |185| 
+     444 0000e3       $C$DW$L$_vApplicationTickHook$7$E:
+     445 0000e3       $C$DW$L$_vApplicationTickHook$8$B:
+     446                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 187,column 6,is_stmt
+     447 0000e3 E631          MOV #1, *(#_xCoRoutineErrorDetected) ; |187| 
+         0000e5 0100 
+         0000e7 0010-
+     448 0000e9       $C$DW$L$_vApplicationTickHook$8$E:
+     449 0000e9       $C$L6:    
+     450 0000e9       $C$DW$L$_vApplicationTickHook$9$B:
+     451                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 166,column 55,is_stmt
+     452 0000e9 F702          ADD #1, *SP(#1) ; |166| 
+         0000eb 0001 
+     453                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 166,column 20,is_stmt
+     454              
+     455 0000ed A902          MOV *SP(#1), AR1 ; |166| 
+     456 0000ef 3D4A  ||      MOV #4, AR2
+     457              
+     458 0000f1 1294          CMP AR1 < AR2, TC1 ; |166| 
+         0000f3 A0   
+     459 0000f4 0464          BCC $C$L3,TC1 ; |166| 
+         0000f6 AD   
+     460                                                      ; branchcc occurs ; |166| 
+     461 0000f7       $C$DW$L$_vApplicationTickHook$9$E:
+     462 0000f7       $C$L7:    
+     463                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 193,column 3,is_stmt
+     464 0000f7 F731          ADD #1, *(#_uxNumberToPost) ; |193| 
+         0000f9 0001 
+         0000fb 0000 
+         0000fd 12-  
+     465                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 195,column 8,is_stmt
+     466 0000fe E602          MOV #0, *SP(#1) ; |195| 
+         000100 00   
+     467                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 195,column 20,is_stmt
+     468 000101 A902          MOV *SP(#1), AR1 ; |195| 
+     469 000103 1298          CMP AR1 >= AR2, TC1 ; |195| 
+         000105 A0   
+     470 000106 0464          BCC $C$L10,TC1 ; |195| 
+         000108 34   
+     471                                                      ; branchcc occurs ; |195| 
+     472 000109       $C$L8:    
+     473 000109       $C$DW$L$_vApplicationTickHook$11$B:
+     474                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 197,column 4,is_stmt
+     475 000109 2294          MOV AR1, T0 ; |197| 
+     476 00010b 5040          SFTL T0, #1 ; |197| 
+     477 00010d EC31          AMOV #_xHookTxQueues, XAR3 ; |197| 
+         00010f BE00 
+         000111 0008-
+     478 000113 EC31          AMOV #_uxNumberToPost, XAR1 ; |197| 
+         000115 9E00 
+         000117 0012-
+     479 000119 ED6B          MOV dbl(*AR3(T0)), XAR0
+         00011b 8F   
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   11
+
+     480              $C$DW$49        .dwtag  DW_TAG_TI_branch
+     481                      .dwattr $C$DW$49, DW_AT_low_pc(0x00)
+     482                      .dwattr $C$DW$49, DW_AT_name("_xQueueCRSendFromISR")
+     483                      .dwattr $C$DW$49, DW_AT_TI_call
+     484              
+     485 00011c 6C00          CALL #_xQueueCRSendFromISR ; |197| 
+         00011e 0000!
+     486 000120 3D04  ||      MOV #0, T0
+     487              
+     488                                                      ; call occurs [#_xQueueCRSendFromISR] ; |197| 
+     489 000122 3C19          MOV #1, AR1
+     490 000124 1240          CMP T0 == AR1, TC1 ; |197| 
+         000126 90   
+     491 000127 6364          BCC $C$L9,TC1 ; |197| 
+     492                                                      ; branchcc occurs ; |197| 
+     493 000129       $C$DW$L$_vApplicationTickHook$11$E:
+     494 000129       $C$DW$L$_vApplicationTickHook$12$B:
+     495                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 201,column 5,is_stmt
+     496 000129 E631          MOV #1, *(#_xCoRoutineErrorDetected) ; |201| 
+         00012b 0100 
+         00012d 0010-
+     497 00012f       $C$DW$L$_vApplicationTickHook$12$E:
+     498 00012f       $C$L9:    
+     499 00012f       $C$DW$L$_vApplicationTickHook$13$B:
+     500                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 195,column 55,is_stmt
+     501 00012f F702          ADD #1, *SP(#1) ; |195| 
+         000131 0001 
+     502                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 195,column 20,is_stmt
+     503              
+     504 000133 A902          MOV *SP(#1), AR1 ; |195| 
+     505 000135 3D4A  ||      MOV #4, AR2
+     506              
+     507 000137 1294          CMP AR1 < AR2, TC1 ; |195| 
+         000139 A0   
+     508 00013a 0464          BCC $C$L8,TC1 ; |195| 
+         00013c CC   
+     509                                                      ; branchcc occurs ; |195| 
+     510 00013d       $C$DW$L$_vApplicationTickHook$13$E:
+     511                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 205,column 1,is_stmt
+     512 00013d       $C$L10:    
+     513 00013d 4E03          AADD #3, SP
+     514                      .dwcfi  cfa_offset, 1
+     515              $C$DW$50        .dwtag  DW_TAG_TI_branch
+     516                      .dwattr $C$DW$50, DW_AT_low_pc(0x00)
+     517                      .dwattr $C$DW$50, DW_AT_TI_return
+     518 00013f 4804          RET
+     519                                                      ; return occurs
+     520              
+     521              $C$DW$51        .dwtag  DW_TAG_TI_loop
+     522                      .dwattr $C$DW$51, DW_AT_name("F:\site\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\crhook.asm:$C$L8:1:153
+     523                      .dwattr $C$DW$51, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/crhook.c")
+     524                      .dwattr $C$DW$51, DW_AT_TI_begin_line(0xc3)
+     525                      .dwattr $C$DW$51, DW_AT_TI_end_line(0xcb)
+     526              $C$DW$52        .dwtag  DW_TAG_TI_loop_range
+     527                      .dwattr $C$DW$52, DW_AT_low_pc($C$DW$L$_vApplicationTickHook$11$B)
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   12
+
+     528                      .dwattr $C$DW$52, DW_AT_high_pc($C$DW$L$_vApplicationTickHook$11$E)
+     529              $C$DW$53        .dwtag  DW_TAG_TI_loop_range
+     530                      .dwattr $C$DW$53, DW_AT_low_pc($C$DW$L$_vApplicationTickHook$12$B)
+     531                      .dwattr $C$DW$53, DW_AT_high_pc($C$DW$L$_vApplicationTickHook$12$E)
+     532              $C$DW$54        .dwtag  DW_TAG_TI_loop_range
+     533                      .dwattr $C$DW$54, DW_AT_low_pc($C$DW$L$_vApplicationTickHook$13$B)
+     534                      .dwattr $C$DW$54, DW_AT_high_pc($C$DW$L$_vApplicationTickHook$13$E)
+     535                      .dwendtag $C$DW$51
+     536              
+     537              
+     538              $C$DW$55        .dwtag  DW_TAG_TI_loop
+     539                      .dwattr $C$DW$55, DW_AT_name("F:\site\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\crhook.asm:$C$L3:1:153
+     540                      .dwattr $C$DW$55, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/crhook.c")
+     541                      .dwattr $C$DW$55, DW_AT_TI_begin_line(0xa6)
+     542                      .dwattr $C$DW$55, DW_AT_TI_end_line(0xbe)
+     543              $C$DW$56        .dwtag  DW_TAG_TI_loop_range
+     544                      .dwattr $C$DW$56, DW_AT_low_pc($C$DW$L$_vApplicationTickHook$3$B)
+     545                      .dwattr $C$DW$56, DW_AT_high_pc($C$DW$L$_vApplicationTickHook$3$E)
+     546              $C$DW$57        .dwtag  DW_TAG_TI_loop_range
+     547                      .dwattr $C$DW$57, DW_AT_low_pc($C$DW$L$_vApplicationTickHook$5$B)
+     548                      .dwattr $C$DW$57, DW_AT_high_pc($C$DW$L$_vApplicationTickHook$5$E)
+     549              $C$DW$58        .dwtag  DW_TAG_TI_loop_range
+     550                      .dwattr $C$DW$58, DW_AT_low_pc($C$DW$L$_vApplicationTickHook$6$B)
+     551                      .dwattr $C$DW$58, DW_AT_high_pc($C$DW$L$_vApplicationTickHook$6$E)
+     552              $C$DW$59        .dwtag  DW_TAG_TI_loop_range
+     553                      .dwattr $C$DW$59, DW_AT_low_pc($C$DW$L$_vApplicationTickHook$4$B)
+     554                      .dwattr $C$DW$59, DW_AT_high_pc($C$DW$L$_vApplicationTickHook$4$E)
+     555              $C$DW$60        .dwtag  DW_TAG_TI_loop_range
+     556                      .dwattr $C$DW$60, DW_AT_low_pc($C$DW$L$_vApplicationTickHook$7$B)
+     557                      .dwattr $C$DW$60, DW_AT_high_pc($C$DW$L$_vApplicationTickHook$7$E)
+     558              $C$DW$61        .dwtag  DW_TAG_TI_loop_range
+     559                      .dwattr $C$DW$61, DW_AT_low_pc($C$DW$L$_vApplicationTickHook$8$B)
+     560                      .dwattr $C$DW$61, DW_AT_high_pc($C$DW$L$_vApplicationTickHook$8$E)
+     561              $C$DW$62        .dwtag  DW_TAG_TI_loop_range
+     562                      .dwattr $C$DW$62, DW_AT_low_pc($C$DW$L$_vApplicationTickHook$9$B)
+     563                      .dwattr $C$DW$62, DW_AT_high_pc($C$DW$L$_vApplicationTickHook$9$E)
+     564                      .dwendtag $C$DW$55
+     565              
+     566                      .dwattr $C$DW$44, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/crhook.c")
+     567                      .dwattr $C$DW$44, DW_AT_TI_end_line(0xcd)
+     568                      .dwattr $C$DW$44, DW_AT_TI_end_column(0x01)
+     569                      .dwendentry
+     570                      .dwendtag $C$DW$44
+     571              
+     572 000141               .sect   ".text"
+     573                      .align 4
+     574              
+     575              $C$DW$63        .dwtag  DW_TAG_subprogram, DW_AT_name("prvHookCoRoutine")
+     576                      .dwattr $C$DW$63, DW_AT_low_pc(_prvHookCoRoutine)
+     577                      .dwattr $C$DW$63, DW_AT_high_pc(0x00)
+     578                      .dwattr $C$DW$63, DW_AT_TI_symbol_name("_prvHookCoRoutine")
+     579                      .dwattr $C$DW$63, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/crhook.c")
+     580                      .dwattr $C$DW$63, DW_AT_TI_begin_line(0xd0)
+     581                      .dwattr $C$DW$63, DW_AT_TI_begin_column(0x0d)
+     582                      .dwattr $C$DW$63, DW_AT_TI_max_frame_size(0x06)
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   13
+
+     583                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 209,column 1,is_stmt,address _prvHookCoR
+     584              
+     585                      .dwfde $C$DW$CIE, _prvHookCoRoutine
+     586              $C$DW$64        .dwtag  DW_TAG_variable, DW_AT_name("uxReceivedValue")
+     587                      .dwattr $C$DW$64, DW_AT_TI_symbol_name("_uxReceivedValue$1")
+     588                      .dwattr $C$DW$64, DW_AT_type(*$C$DW$T$53)
+     589                      .dwattr $C$DW$64, DW_AT_location[DW_OP_addr _uxReceivedValue$1]
+     590              $C$DW$65        .dwtag  DW_TAG_formal_parameter, DW_AT_name("xHandle")
+     591                      .dwattr $C$DW$65, DW_AT_TI_symbol_name("_xHandle")
+     592                      .dwattr $C$DW$65, DW_AT_type(*$C$DW$T$19)
+     593                      .dwattr $C$DW$65, DW_AT_location[DW_OP_reg17]
+     594              $C$DW$66        .dwtag  DW_TAG_formal_parameter, DW_AT_name("uxIndex")
+     595                      .dwattr $C$DW$66, DW_AT_TI_symbol_name("_uxIndex")
+     596                      .dwattr $C$DW$66, DW_AT_type(*$C$DW$T$11)
+     597                      .dwattr $C$DW$66, DW_AT_location[DW_OP_reg12]
+     598              ;*******************************************************************************
+     599              ;* FUNCTION NAME: prvHookCoRoutine                                             *
+     600              ;*                                                                             *
+     601              ;*   Function Uses Regs : T0,AR0,XAR0,AR1,XAR1,AR2,AR3,XAR3,SP,CARRY,TC1,M40,  *
+     602              ;*                        SATA,SATD,RDM,FRCT,SMUL                              *
+     603              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     604              ;*   Total Frame Size   : 6 words                                              *
+     605              ;*                        (2 return address/alignment)                         *
+     606              ;*                        (4 local values)                                     *
+     607              ;*   Min System Stack   : 1 word                                               *
+     608              ;*******************************************************************************
+     609 000144       _prvHookCoRoutine:
+     610                      .dwcfi  cfa_offset, 1
+     611                      .dwcfi  save_reg_to_mem, 91, -1
+     612 000144 4EFB          AADD #-5, SP
+     613                      .dwcfi  cfa_offset, 6
+     614              $C$DW$67        .dwtag  DW_TAG_variable, DW_AT_name("xHandle")
+     615                      .dwattr $C$DW$67, DW_AT_TI_symbol_name("_xHandle")
+     616                      .dwattr $C$DW$67, DW_AT_type(*$C$DW$T$19)
+     617                      .dwattr $C$DW$67, DW_AT_location[DW_OP_bregx 0x24 0]
+     618              $C$DW$68        .dwtag  DW_TAG_variable, DW_AT_name("uxIndex")
+     619                      .dwattr $C$DW$68, DW_AT_TI_symbol_name("_uxIndex")
+     620                      .dwattr $C$DW$68, DW_AT_type(*$C$DW$T$11)
+     621                      .dwattr $C$DW$68, DW_AT_location[DW_OP_bregx 0x24 2]
+     622              $C$DW$69        .dwtag  DW_TAG_variable, DW_AT_name("xResult")
+     623                      .dwattr $C$DW$69, DW_AT_TI_symbol_name("_xResult")
+     624                      .dwattr $C$DW$69, DW_AT_type(*$C$DW$T$10)
+     625                      .dwattr $C$DW$69, DW_AT_location[DW_OP_bregx 0x24 3]
+     626 000146 C404          MOV T0, *SP(#2) ; |209| 
+     627 000148 EB00          MOV XAR0, dbl(*SP(#0))
+         00014a 85   
+     628                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 214,column 2,is_stmt
+     629 00014b 0600          B $C$L21  ; |214| 
+         00014d F5   
+     630                                                      ; branch occurs ; |214| 
+     631 00014e       $C$L11:    
+     632                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 219,column 3,is_stmt
+     633 00014e E606          MOV #0, *SP(#3) ; |219| 
+         000150 00   
+     634                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 220,column 3,is_stmt
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   14
+
+     635 000151 AA04          MOV *SP(#2), AR2 ; |220| 
+     636 000153 A404          MOV *SP(#2), T0 ; |220| 
+     637 000155 5040          SFTL T0, #1 ; |220| 
+     638 000157 EC31          AMOV #_uxReceivedValue$1, XAR1 ; |220| 
+         000159 9E00 
+         00015b 0013-
+     639 00015d EC31          AMOV #_xHookTxQueues, XAR3 ; |220| 
+         00015f BE00 
+         000161 0008-
+     640 000163 14A0          AADD AR2, AR1 ; |220| 
+         000165 90   
+     641 000166 ED6B          MOV dbl(*AR3(T0)), XAR0
+         000168 8F   
+     642 000169 76FF          MOV #65535, T0 ; |220| 
+         00016b FF48 
+     643              $C$DW$70        .dwtag  DW_TAG_TI_branch
+     644                      .dwattr $C$DW$70, DW_AT_low_pc(0x00)
+     645                      .dwattr $C$DW$70, DW_AT_name("_xQueueCRReceive")
+     646                      .dwattr $C$DW$70, DW_AT_TI_call
+     647 00016d 6C00          CALL #_xQueueCRReceive ; |220| 
+         00016f 0000!
+     648                                                      ; call occurs [#_xQueueCRReceive] ; |220| 
+     649 000171 C406          MOV T0, *SP(#3) ; |220| 
+     650 000173 F006          CMP *SP(#3) == #-4, TC1 ; |220| 
+         000175 FFFC 
+     651 000177 0474          BCC $C$L13,!TC1 ; |220| 
+         000179 2C   
+     652                                                      ; branchcc occurs ; |220| 
+     653 00017a ED00          MOV dbl(*SP(#0)), XAR3
+         00017c BF   
+     654 00017d FB6D          MOV #440, *AR3(#24) ; |220| 
+         00017f 01B8 
+         000181 0018 
+     655 000183 0600          B $C$L23  ; |220| 
+         000185 FC   
+     656                                                      ; branch occurs ; |220| 
+     657 000186       $C$L12:    
+     658 000186 AA04          MOV *SP(#2), AR2 ; |220| 
+     659 000188 A404          MOV *SP(#2), T0 ; |220| 
+     660 00018a 5040          SFTL T0, #1 ; |220| 
+     661 00018c EC31          AMOV #_uxReceivedValue$1, XAR1 ; |220| 
+         00018e 9E00 
+         000190 0013-
+     662 000192 EC31          AMOV #_xHookTxQueues, XAR3 ; |220| 
+         000194 BE00 
+         000196 0008-
+     663 000198 14A0          AADD AR2, AR1 ; |220| 
+         00019a 90   
+     664 00019b ED6B          MOV dbl(*AR3(T0)), XAR0
+         00019d 8F   
+     665              $C$DW$71        .dwtag  DW_TAG_TI_branch
+     666                      .dwattr $C$DW$71, DW_AT_low_pc(0x00)
+     667                      .dwattr $C$DW$71, DW_AT_name("_xQueueCRReceive")
+     668                      .dwattr $C$DW$71, DW_AT_TI_call
+     669              
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   15
+
+     670 00019e 6C00          CALL #_xQueueCRReceive ; |220| 
+         0001a0 0000!
+     671 0001a2 3D04  ||      MOV #0, T0
+     672              
+     673                                                      ; call occurs [#_xQueueCRReceive] ; |220| 
+     674 0001a4 C406          MOV T0, *SP(#3) ; |220| 
+     675 0001a6       $C$L13:    
+     676 0001a6 F006          CMP *SP(#3) == #-5, TC1 ; |220| 
+         0001a8 FFFB 
+     677 0001aa 67F4          BCC $C$L15,!TC1 ; |220| 
+     678                                                      ; branchcc occurs ; |220| 
+     679 0001ac ED00          MOV dbl(*SP(#0)), XAR3
+         0001ae BF   
+     680 0001af FB6D          MOV #441, *AR3(#24) ; |220| 
+         0001b1 01B9 
+         0001b3 0018 
+     681 0001b5 0600          B $C$L23  ; |220| 
+         0001b7 CA   
+     682                                                      ; branch occurs ; |220| 
+     683 0001b8       $C$L14:    
+     684 0001b8 E606          MOV #1, *SP(#3) ; |220| 
+         0001ba 01   
+     685 0001bb       $C$L15:    
+     686                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 224,column 3,is_stmt
+     687 0001bb F006          CMP *SP(#3) == #1, TC1 ; |224| 
+         0001bd 0001 
+     688 0001bf 6364          BCC $C$L16,TC1 ; |224| 
+     689                                                      ; branchcc occurs ; |224| 
+     690                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 226,column 4,is_stmt
+     691 0001c1 E631          MOV #1, *(#_xCoRoutineErrorDetected) ; |226| 
+         0001c3 0100 
+         0001c5 0010-
+     692 0001c7       $C$L16:    
+     693                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 230,column 3,is_stmt
+     694 0001c7 E606          MOV #0, *SP(#3) ; |230| 
+         0001c9 00   
+     695                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 231,column 3,is_stmt
+     696 0001ca AA04          MOV *SP(#2), AR2 ; |231| 
+     697 0001cc A404          MOV *SP(#2), T0 ; |231| 
+     698 0001ce 5040          SFTL T0, #1 ; |231| 
+     699 0001d0 EC31          AMOV #_uxReceivedValue$1, XAR1 ; |231| 
+         0001d2 9E00 
+         0001d4 0013-
+     700 0001d6 EC31          AMOV #_xHookRxQueues, XAR3 ; |231| 
+         0001d8 BE00 
+         0001da 0000-
+     701 0001dc 14A0          AADD AR2, AR1 ; |231| 
+         0001de 90   
+     702 0001df ED6B          MOV dbl(*AR3(T0)), XAR0
+         0001e1 8F   
+     703              $C$DW$72        .dwtag  DW_TAG_TI_branch
+     704                      .dwattr $C$DW$72, DW_AT_low_pc(0x00)
+     705                      .dwattr $C$DW$72, DW_AT_name("_xQueueCRSend")
+     706                      .dwattr $C$DW$72, DW_AT_TI_call
+     707              
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   16
+
+     708 0001e2 6C00          CALL #_xQueueCRSend ; |231| 
+         0001e4 0000!
+     709 0001e6 3D04  ||      MOV #0, T0
+     710              
+     711                                                      ; call occurs [#_xQueueCRSend] ; |231| 
+     712 0001e8 C406          MOV T0, *SP(#3) ; |231| 
+     713 0001ea F006          CMP *SP(#3) == #-4, TC1 ; |231| 
+         0001ec FFFC 
+     714 0001ee 0474          BCC $C$L18,!TC1 ; |231| 
+         0001f0 2C   
+     715                                                      ; branchcc occurs ; |231| 
+     716 0001f1 ED00          MOV dbl(*SP(#0)), XAR3
+         0001f3 BF   
+     717 0001f4 FB6D          MOV #462, *AR3(#24) ; |231| 
+         0001f6 01CE 
+         0001f8 0018 
+     718 0001fa 0600          B $C$L23  ; |231| 
+         0001fc 85   
+     719                                                      ; branch occurs ; |231| 
+     720 0001fd       $C$L17:    
+     721 0001fd AA04          MOV *SP(#2), AR2 ; |231| 
+     722 0001ff A404          MOV *SP(#2), T0 ; |231| 
+     723 000201 5040          SFTL T0, #1 ; |231| 
+     724 000203 EC31          AMOV #_uxReceivedValue$1, XAR1 ; |231| 
+         000205 9E00 
+         000207 0013-
+     725 000209 EC31          AMOV #_xHookRxQueues, XAR3 ; |231| 
+         00020b BE00 
+         00020d 0000-
+     726 00020f 14A0          AADD AR2, AR1 ; |231| 
+         000211 90   
+     727 000212 ED6B          MOV dbl(*AR3(T0)), XAR0
+         000214 8F   
+     728              $C$DW$73        .dwtag  DW_TAG_TI_branch
+     729                      .dwattr $C$DW$73, DW_AT_low_pc(0x00)
+     730                      .dwattr $C$DW$73, DW_AT_name("_xQueueCRSend")
+     731                      .dwattr $C$DW$73, DW_AT_TI_call
+     732              
+     733 000215 6C00          CALL #_xQueueCRSend ; |231| 
+         000217 0000!
+     734 000219 3D04  ||      MOV #0, T0
+     735              
+     736                                                      ; call occurs [#_xQueueCRSend] ; |231| 
+     737 00021b C406          MOV T0, *SP(#3) ; |231| 
+     738 00021d       $C$L18:    
+     739 00021d F006          CMP *SP(#3) == #-5, TC1 ; |231| 
+         00021f FFFB 
+     740 000221 67F4          BCC $C$L20,!TC1 ; |231| 
+     741                                                      ; branchcc occurs ; |231| 
+     742 000223 ED00          MOV dbl(*SP(#0)), XAR3
+         000225 BF   
+     743 000226 FB6D          MOV #463, *AR3(#24) ; |231| 
+         000228 01CF 
+         00022a 0018 
+     744 00022c 0600          B $C$L23  ; |231| 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   17
+
+         00022e 53   
+     745                                                      ; branch occurs ; |231| 
+     746 00022f       $C$L19:    
+     747 00022f E606          MOV #1, *SP(#3) ; |231| 
+         000231 01   
+     748 000232       $C$L20:    
+     749                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 232,column 3,is_stmt
+     750 000232 F006          CMP *SP(#3) == #1, TC1 ; |232| 
+         000234 0001 
+     751 000236 6D64          BCC $C$L11,TC1 ; |232| 
+         000238 FF14 
+     752                                                      ; branchcc occurs ; |232| 
+     753                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 236,column 4,is_stmt
+     754 00023a E631          MOV #1, *(#_xCoRoutineErrorDetected) ; |236| 
+         00023c 0100 
+         00023e 0010-
+     755                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 238,column 2,is_stmt
+     756 000240 06FF          B $C$L11  ; |238| 
+         000242 0B   
+     757                                                      ; branch occurs ; |238| 
+     758 000243       $C$L21:    
+     759                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 214,column 2,is_stmt
+     760 000243 ED00          MOV dbl(*SP(#0)), XAR3
+         000245 BF   
+     761 000246 7601          MOV #441, AR2 ; |214| 
+         000248 B9A8 
+     762 00024a A96D          MOV *AR3(#24), AR1 ; |214| 
+         00024c 0018 
+     763 00024e 12A4          CMP AR1 > AR2, TC1 ; |214| 
+         000250 90   
+     764 000251 0464          BCC $C$L22,TC1 ; |214| 
+         000253 18   
+     765                                                      ; branchcc occurs ; |214| 
+     766 000254 1290          CMP AR1 == AR2, TC1 ; |214| 
+         000256 A0   
+     767 000257 6D64          BCC $C$L14,TC1 ; |214| 
+         000259 FF5D 
+     768                                                      ; branchcc occurs ; |214| 
+     769 00025b 6D09          BCC $C$L11,AR1 == #0 ; |214| 
+         00025d FEEF 
+     770                                                      ; branchcc occurs ; |214| 
+     771 00025f 7601          MOV #440, AR2 ; |214| 
+         000261 B8A8 
+     772 000263 1290          CMPU AR1 == AR2, TC1 ; |214| 
+         000265 A4   
+     773 000266 6D64          BCC $C$L12,TC1 ; |214| 
+         000268 FF1C 
+     774                                                      ; branchcc occurs ; |214| 
+     775 00026a 4A16          B $C$L23  ; |214| 
+     776                                                      ; branch occurs ; |214| 
+     777 00026c       $C$L22:    
+     778 00026c 7601          MOV #462, AR2 ; |214| 
+         00026e CEA8 
+     779 000270 1290          CMPU AR1 == AR2, TC1 ; |214| 
+         000272 A4   
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   18
+
+     780 000273 0464          BCC $C$L17,TC1 ; |214| 
+         000275 87   
+     781                                                      ; branchcc occurs ; |214| 
+     782 000276 7601          MOV #463, AR2 ; |214| 
+         000278 CFA8 
+     783 00027a 1290          CMPU AR1 == AR2, TC1 ; |214| 
+         00027c A4   
+     784 00027d 0464          BCC $C$L19,TC1 ; |214| 
+         00027f AF   
+     785                                                      ; branchcc occurs ; |214| 
+     786 000280 4A00          B $C$L23  ; |214| 
+     787                                                      ; branch occurs ; |214| 
+     788 000282       $C$L23:    
+     789 000282 4E05          AADD #5, SP
+     790                      .dwcfi  cfa_offset, 1
+     791              $C$DW$74        .dwtag  DW_TAG_TI_branch
+     792                      .dwattr $C$DW$74, DW_AT_low_pc(0x00)
+     793                      .dwattr $C$DW$74, DW_AT_TI_return
+     794 000284 4804          RET
+     795                                                      ; return occurs
+     796                      .dwattr $C$DW$63, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/crhook.c")
+     797                      .dwattr $C$DW$63, DW_AT_TI_end_line(0xf2)
+     798                      .dwattr $C$DW$63, DW_AT_TI_end_column(0x01)
+     799                      .dwendentry
+     800                      .dwendtag $C$DW$63
+     801              
+     802 000286               .sect   ".text"
+     803                      .align 4
+     804                      .global _xAreHookCoRoutinesStillRunning
+     805              
+     806              $C$DW$75        .dwtag  DW_TAG_subprogram, DW_AT_name("xAreHookCoRoutinesStillRunning")
+     807                      .dwattr $C$DW$75, DW_AT_low_pc(_xAreHookCoRoutinesStillRunning)
+     808                      .dwattr $C$DW$75, DW_AT_high_pc(0x00)
+     809                      .dwattr $C$DW$75, DW_AT_TI_symbol_name("_xAreHookCoRoutinesStillRunning")
+     810                      .dwattr $C$DW$75, DW_AT_external
+     811                      .dwattr $C$DW$75, DW_AT_type(*$C$DW$T$10)
+     812                      .dwattr $C$DW$75, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/crhook.c")
+     813                      .dwattr $C$DW$75, DW_AT_TI_begin_line(0xf5)
+     814                      .dwattr $C$DW$75, DW_AT_TI_begin_column(0x0f)
+     815                      .dwattr $C$DW$75, DW_AT_TI_max_frame_size(0x01)
+     816                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 246,column 1,is_stmt,address _xAreHookCo
+     817              
+     818                      .dwfde $C$DW$CIE, _xAreHookCoRoutinesStillRunning
+     819              ;*******************************************************************************
+     820              ;* FUNCTION NAME: xAreHookCoRoutinesStillRunning                               *
+     821              ;*                                                                             *
+     822              ;*   Function Uses Regs : T0,AR1,SP,M40,SATA,SATD,RDM,FRCT,SMUL                *
+     823              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     824              ;*   Total Frame Size   : 1 word                                               *
+     825              ;*                        (1 return address/alignment)                         *
+     826              ;*   Min System Stack   : 1 word                                               *
+     827              ;*******************************************************************************
+     828 000288       _xAreHookCoRoutinesStillRunning:
+     829                      .dwcfi  cfa_offset, 1
+     830                      .dwcfi  save_reg_to_mem, 91, -1
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   19
+
+     831                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 247,column 2,is_stmt
+     832 000288 A931          MOV *(#_xCoRoutineErrorDetected), AR1 ; |247| 
+         00028a 0000 
+         00028c 10-  
+     833 00028d 6209          BCC $C$L24,AR1 == #0 ; |247| 
+     834                                                      ; branchcc occurs ; |247| 
+     835                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 249,column 3,is_stmt
+     836 00028f 3C04          MOV #0, T0
+     837 000291 4A02          B $C$L25  ; |249| 
+     838                                                      ; branch occurs ; |249| 
+     839 000293       $C$L24:    
+     840                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 253,column 3,is_stmt
+     841 000293 3C14          MOV #1, T0
+     842 000295       $C$L25:    
+     843                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/crhook.c",line 255,column 1,is_stmt
+     844              $C$DW$76        .dwtag  DW_TAG_TI_branch
+     845                      .dwattr $C$DW$76, DW_AT_low_pc(0x00)
+     846                      .dwattr $C$DW$76, DW_AT_TI_return
+     847 000295 4804          RET
+     848                                                      ; return occurs
+     849                      .dwattr $C$DW$75, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/crhook.c")
+     850                      .dwattr $C$DW$75, DW_AT_TI_end_line(0xff)
+     851                      .dwattr $C$DW$75, DW_AT_TI_end_column(0x01)
+     852                      .dwendentry
+     853                      .dwendtag $C$DW$75
+     854              
+     855              ;******************************************************************************
+     856              ;* UNDEFINED EXTERNAL REFERENCES                                              *
+     857              ;******************************************************************************
+     858                      .global _xCoRoutineCreate
+     859                      .global _xQueueCreate
+     860                      .global _xQueueGenericSend
+     861                      .global _xQueueCRSendFromISR
+     862                      .global _xQueueCRReceiveFromISR
+     863                      .global _xQueueCRSend
+     864                      .global _xQueueCRReceive
+     865              
+     866              ;*******************************************************************************
+     867              ;* TYPE INFORMATION                                                            *
+     868              ;*******************************************************************************
+     869              $C$DW$T$3       .dwtag  DW_TAG_pointer_type
+     870                      .dwattr $C$DW$T$3, DW_AT_address_class(0x17)
+     871              $C$DW$T$19      .dwtag  DW_TAG_typedef, DW_AT_name("xCoRoutineHandle")
+     872                      .dwattr $C$DW$T$19, DW_AT_type(*$C$DW$T$3)
+     873                      .dwattr $C$DW$T$19, DW_AT_language(DW_LANG_C)
+     874              $C$DW$T$29      .dwtag  DW_TAG_typedef, DW_AT_name("xQueueHandle")
+     875                      .dwattr $C$DW$T$29, DW_AT_type(*$C$DW$T$3)
+     876                      .dwattr $C$DW$T$29, DW_AT_language(DW_LANG_C)
+     877              
+     878              $C$DW$T$32      .dwtag  DW_TAG_array_type
+     879                      .dwattr $C$DW$T$32, DW_AT_type(*$C$DW$T$29)
+     880                      .dwattr $C$DW$T$32, DW_AT_language(DW_LANG_C)
+     881                      .dwattr $C$DW$T$32, DW_AT_byte_size(0x08)
+     882              $C$DW$77        .dwtag  DW_TAG_subrange_type
+     883                      .dwattr $C$DW$77, DW_AT_upper_bound(0x03)
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   20
+
+     884                      .dwendtag $C$DW$T$32
+     885              
+     886              
+     887              $C$DW$T$20      .dwtag  DW_TAG_subroutine_type
+     888                      .dwattr $C$DW$T$20, DW_AT_language(DW_LANG_C)
+     889              $C$DW$78        .dwtag  DW_TAG_formal_parameter
+     890                      .dwattr $C$DW$78, DW_AT_type(*$C$DW$T$19)
+     891              $C$DW$79        .dwtag  DW_TAG_formal_parameter
+     892                      .dwattr $C$DW$79, DW_AT_type(*$C$DW$T$11)
+     893                      .dwendtag $C$DW$T$20
+     894              
+     895              $C$DW$T$21      .dwtag  DW_TAG_pointer_type
+     896                      .dwattr $C$DW$T$21, DW_AT_type(*$C$DW$T$20)
+     897                      .dwattr $C$DW$T$21, DW_AT_address_class(0x20)
+     898              $C$DW$T$22      .dwtag  DW_TAG_typedef, DW_AT_name("crCOROUTINE_CODE")
+     899                      .dwattr $C$DW$T$22, DW_AT_type(*$C$DW$T$21)
+     900                      .dwattr $C$DW$T$22, DW_AT_language(DW_LANG_C)
+     901              $C$DW$80        .dwtag  DW_TAG_TI_far_type
+     902              $C$DW$T$34      .dwtag  DW_TAG_const_type
+     903                      .dwattr $C$DW$T$34, DW_AT_type(*$C$DW$80)
+     904              $C$DW$T$35      .dwtag  DW_TAG_pointer_type
+     905                      .dwattr $C$DW$T$35, DW_AT_type(*$C$DW$T$34)
+     906                      .dwattr $C$DW$T$35, DW_AT_address_class(0x17)
+     907              $C$DW$81        .dwtag  DW_TAG_TI_far_type
+     908                      .dwattr $C$DW$81, DW_AT_type(*$C$DW$T$35)
+     909              $C$DW$T$36      .dwtag  DW_TAG_const_type
+     910                      .dwattr $C$DW$T$36, DW_AT_type(*$C$DW$81)
+     911              $C$DW$T$4       .dwtag  DW_TAG_base_type
+     912                      .dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
+     913                      .dwattr $C$DW$T$4, DW_AT_name("bool")
+     914                      .dwattr $C$DW$T$4, DW_AT_byte_size(0x01)
+     915              $C$DW$T$5       .dwtag  DW_TAG_base_type
+     916                      .dwattr $C$DW$T$5, DW_AT_encoding(DW_ATE_signed_char)
+     917                      .dwattr $C$DW$T$5, DW_AT_name("signed char")
+     918                      .dwattr $C$DW$T$5, DW_AT_byte_size(0x01)
+     919              $C$DW$T$6       .dwtag  DW_TAG_base_type
+     920                      .dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
+     921                      .dwattr $C$DW$T$6, DW_AT_name("unsigned char")
+     922                      .dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
+     923              $C$DW$T$7       .dwtag  DW_TAG_base_type
+     924                      .dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
+     925                      .dwattr $C$DW$T$7, DW_AT_name("wchar_t")
+     926                      .dwattr $C$DW$T$7, DW_AT_byte_size(0x01)
+     927              $C$DW$T$8       .dwtag  DW_TAG_base_type
+     928                      .dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
+     929                      .dwattr $C$DW$T$8, DW_AT_name("short")
+     930                      .dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
+     931              $C$DW$T$9       .dwtag  DW_TAG_base_type
+     932                      .dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
+     933                      .dwattr $C$DW$T$9, DW_AT_name("unsigned short")
+     934                      .dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
+     935              $C$DW$T$10      .dwtag  DW_TAG_base_type
+     936                      .dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
+     937                      .dwattr $C$DW$T$10, DW_AT_name("int")
+     938                      .dwattr $C$DW$T$10, DW_AT_byte_size(0x01)
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   21
+
+     939              $C$DW$T$44      .dwtag  DW_TAG_pointer_type
+     940                      .dwattr $C$DW$T$44, DW_AT_type(*$C$DW$T$10)
+     941                      .dwattr $C$DW$T$44, DW_AT_address_class(0x17)
+     942              $C$DW$T$11      .dwtag  DW_TAG_base_type
+     943                      .dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
+     944                      .dwattr $C$DW$T$11, DW_AT_name("unsigned int")
+     945                      .dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
+     946              
+     947              $C$DW$T$53      .dwtag  DW_TAG_array_type
+     948                      .dwattr $C$DW$T$53, DW_AT_type(*$C$DW$T$11)
+     949                      .dwattr $C$DW$T$53, DW_AT_language(DW_LANG_C)
+     950                      .dwattr $C$DW$T$53, DW_AT_byte_size(0x04)
+     951              $C$DW$82        .dwtag  DW_TAG_subrange_type
+     952                      .dwattr $C$DW$82, DW_AT_upper_bound(0x03)
+     953                      .dwendtag $C$DW$T$53
+     954              
+     955              $C$DW$T$25      .dwtag  DW_TAG_typedef, DW_AT_name("portTickType")
+     956                      .dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$11)
+     957                      .dwattr $C$DW$T$25, DW_AT_language(DW_LANG_C)
+     958              $C$DW$T$12      .dwtag  DW_TAG_base_type
+     959                      .dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
+     960                      .dwattr $C$DW$T$12, DW_AT_name("long")
+     961                      .dwattr $C$DW$T$12, DW_AT_byte_size(0x02)
+     962              $C$DW$T$13      .dwtag  DW_TAG_base_type
+     963                      .dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
+     964                      .dwattr $C$DW$T$13, DW_AT_name("unsigned long")
+     965                      .dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+     966              $C$DW$T$14      .dwtag  DW_TAG_base_type
+     967                      .dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
+     968                      .dwattr $C$DW$T$14, DW_AT_name("long long")
+     969                      .dwattr $C$DW$T$14, DW_AT_byte_size(0x04)
+     970                      .dwattr $C$DW$T$14, DW_AT_bit_size(0x28)
+     971                      .dwattr $C$DW$T$14, DW_AT_bit_offset(0x18)
+     972              $C$DW$T$15      .dwtag  DW_TAG_base_type
+     973                      .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
+     974                      .dwattr $C$DW$T$15, DW_AT_name("unsigned long long")
+     975                      .dwattr $C$DW$T$15, DW_AT_byte_size(0x04)
+     976                      .dwattr $C$DW$T$15, DW_AT_bit_size(0x28)
+     977                      .dwattr $C$DW$T$15, DW_AT_bit_offset(0x18)
+     978              $C$DW$T$16      .dwtag  DW_TAG_base_type
+     979                      .dwattr $C$DW$T$16, DW_AT_encoding(DW_ATE_float)
+     980                      .dwattr $C$DW$T$16, DW_AT_name("float")
+     981                      .dwattr $C$DW$T$16, DW_AT_byte_size(0x02)
+     982              $C$DW$T$17      .dwtag  DW_TAG_base_type
+     983                      .dwattr $C$DW$T$17, DW_AT_encoding(DW_ATE_float)
+     984                      .dwattr $C$DW$T$17, DW_AT_name("double")
+     985                      .dwattr $C$DW$T$17, DW_AT_byte_size(0x02)
+     986              $C$DW$T$18      .dwtag  DW_TAG_base_type
+     987                      .dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
+     988                      .dwattr $C$DW$T$18, DW_AT_name("long double")
+     989                      .dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
+     990              
+     991              $C$DW$T$24      .dwtag  DW_TAG_structure_type
+     992                      .dwattr $C$DW$T$24, DW_AT_name("corCoRoutineControlBlock")
+     993                      .dwattr $C$DW$T$24, DW_AT_byte_size(0x1a)
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   22
+
+     994              $C$DW$83        .dwtag  DW_TAG_member
+     995                      .dwattr $C$DW$83, DW_AT_type(*$C$DW$T$22)
+     996                      .dwattr $C$DW$83, DW_AT_name("pxCoRoutineFunction")
+     997                      .dwattr $C$DW$83, DW_AT_TI_symbol_name("_pxCoRoutineFunction")
+     998                      .dwattr $C$DW$83, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+     999                      .dwattr $C$DW$83, DW_AT_accessibility(DW_ACCESS_public)
+    1000              $C$DW$84        .dwtag  DW_TAG_member
+    1001                      .dwattr $C$DW$84, DW_AT_type(*$C$DW$T$23)
+    1002                      .dwattr $C$DW$84, DW_AT_name("xGenericListItem")
+    1003                      .dwattr $C$DW$84, DW_AT_TI_symbol_name("_xGenericListItem")
+    1004                      .dwattr $C$DW$84, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+    1005                      .dwattr $C$DW$84, DW_AT_accessibility(DW_ACCESS_public)
+    1006              $C$DW$85        .dwtag  DW_TAG_member
+    1007                      .dwattr $C$DW$85, DW_AT_type(*$C$DW$T$23)
+    1008                      .dwattr $C$DW$85, DW_AT_name("xEventListItem")
+    1009                      .dwattr $C$DW$85, DW_AT_TI_symbol_name("_xEventListItem")
+    1010                      .dwattr $C$DW$85, DW_AT_data_member_location[DW_OP_plus_uconst 0xc]
+    1011                      .dwattr $C$DW$85, DW_AT_accessibility(DW_ACCESS_public)
+    1012              $C$DW$86        .dwtag  DW_TAG_member
+    1013                      .dwattr $C$DW$86, DW_AT_type(*$C$DW$T$11)
+    1014                      .dwattr $C$DW$86, DW_AT_name("uxPriority")
+    1015                      .dwattr $C$DW$86, DW_AT_TI_symbol_name("_uxPriority")
+    1016                      .dwattr $C$DW$86, DW_AT_data_member_location[DW_OP_plus_uconst 0x16]
+    1017                      .dwattr $C$DW$86, DW_AT_accessibility(DW_ACCESS_public)
+    1018              $C$DW$87        .dwtag  DW_TAG_member
+    1019                      .dwattr $C$DW$87, DW_AT_type(*$C$DW$T$11)
+    1020                      .dwattr $C$DW$87, DW_AT_name("uxIndex")
+    1021                      .dwattr $C$DW$87, DW_AT_TI_symbol_name("_uxIndex")
+    1022                      .dwattr $C$DW$87, DW_AT_data_member_location[DW_OP_plus_uconst 0x17]
+    1023                      .dwattr $C$DW$87, DW_AT_accessibility(DW_ACCESS_public)
+    1024              $C$DW$88        .dwtag  DW_TAG_member
+    1025                      .dwattr $C$DW$88, DW_AT_type(*$C$DW$T$9)
+    1026                      .dwattr $C$DW$88, DW_AT_name("uxState")
+    1027                      .dwattr $C$DW$88, DW_AT_TI_symbol_name("_uxState")
+    1028                      .dwattr $C$DW$88, DW_AT_data_member_location[DW_OP_plus_uconst 0x18]
+    1029                      .dwattr $C$DW$88, DW_AT_accessibility(DW_ACCESS_public)
+    1030                      .dwendtag $C$DW$T$24
+    1031              
+    1032              $C$DW$T$54      .dwtag  DW_TAG_typedef, DW_AT_name("corCRCB")
+    1033                      .dwattr $C$DW$T$54, DW_AT_type(*$C$DW$T$24)
+    1034                      .dwattr $C$DW$T$54, DW_AT_language(DW_LANG_C)
+    1035              
+    1036              $C$DW$T$28      .dwtag  DW_TAG_structure_type
+    1037                      .dwattr $C$DW$T$28, DW_AT_name("xLIST_ITEM")
+    1038                      .dwattr $C$DW$T$28, DW_AT_byte_size(0x0a)
+    1039              $C$DW$89        .dwtag  DW_TAG_member
+    1040                      .dwattr $C$DW$89, DW_AT_type(*$C$DW$T$25)
+    1041                      .dwattr $C$DW$89, DW_AT_name("xItemValue")
+    1042                      .dwattr $C$DW$89, DW_AT_TI_symbol_name("_xItemValue")
+    1043                      .dwattr $C$DW$89, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+    1044                      .dwattr $C$DW$89, DW_AT_accessibility(DW_ACCESS_public)
+    1045              $C$DW$90        .dwtag  DW_TAG_member
+    1046                      .dwattr $C$DW$90, DW_AT_type(*$C$DW$T$27)
+    1047                      .dwattr $C$DW$90, DW_AT_name("pxNext")
+    1048                      .dwattr $C$DW$90, DW_AT_TI_symbol_name("_pxNext")
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   23
+
+    1049                      .dwattr $C$DW$90, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+    1050                      .dwattr $C$DW$90, DW_AT_accessibility(DW_ACCESS_public)
+    1051              $C$DW$91        .dwtag  DW_TAG_member
+    1052                      .dwattr $C$DW$91, DW_AT_type(*$C$DW$T$27)
+    1053                      .dwattr $C$DW$91, DW_AT_name("pxPrevious")
+    1054                      .dwattr $C$DW$91, DW_AT_TI_symbol_name("_pxPrevious")
+    1055                      .dwattr $C$DW$91, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+    1056                      .dwattr $C$DW$91, DW_AT_accessibility(DW_ACCESS_public)
+    1057              $C$DW$92        .dwtag  DW_TAG_member
+    1058                      .dwattr $C$DW$92, DW_AT_type(*$C$DW$T$3)
+    1059                      .dwattr $C$DW$92, DW_AT_name("pvOwner")
+    1060                      .dwattr $C$DW$92, DW_AT_TI_symbol_name("_pvOwner")
+    1061                      .dwattr $C$DW$92, DW_AT_data_member_location[DW_OP_plus_uconst 0x6]
+    1062                      .dwattr $C$DW$92, DW_AT_accessibility(DW_ACCESS_public)
+    1063              $C$DW$93        .dwtag  DW_TAG_member
+    1064                      .dwattr $C$DW$93, DW_AT_type(*$C$DW$T$3)
+    1065                      .dwattr $C$DW$93, DW_AT_name("pvContainer")
+    1066                      .dwattr $C$DW$93, DW_AT_TI_symbol_name("_pvContainer")
+    1067                      .dwattr $C$DW$93, DW_AT_data_member_location[DW_OP_plus_uconst 0x8]
+    1068                      .dwattr $C$DW$93, DW_AT_accessibility(DW_ACCESS_public)
+    1069                      .dwendtag $C$DW$T$28
+    1070              
+    1071              $C$DW$94        .dwtag  DW_TAG_TI_far_type
+    1072                      .dwattr $C$DW$94, DW_AT_type(*$C$DW$T$28)
+    1073              $C$DW$T$26      .dwtag  DW_TAG_volatile_type
+    1074                      .dwattr $C$DW$T$26, DW_AT_type(*$C$DW$94)
+    1075              $C$DW$T$27      .dwtag  DW_TAG_pointer_type
+    1076                      .dwattr $C$DW$T$27, DW_AT_type(*$C$DW$T$26)
+    1077                      .dwattr $C$DW$T$27, DW_AT_address_class(0x17)
+    1078              $C$DW$T$23      .dwtag  DW_TAG_typedef, DW_AT_name("xListItem")
+    1079                      .dwattr $C$DW$T$23, DW_AT_type(*$C$DW$T$28)
+    1080                      .dwattr $C$DW$T$23, DW_AT_language(DW_LANG_C)
+    1081                      .dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
+    1082              
+    1083              ;***************************************************************
+    1084              ;* DWARF CIE ENTRIES                                           *
+    1085              ;***************************************************************
+    1086              
+    1087              $C$DW$CIE       .dwcie 91
+    1088                      .dwcfi  cfa_register, 36
+    1089                      .dwcfi  cfa_offset, 0
+    1090                      .dwcfi  undefined, 0
+    1091                      .dwcfi  undefined, 1
+    1092                      .dwcfi  undefined, 2
+    1093                      .dwcfi  undefined, 3
+    1094                      .dwcfi  undefined, 4
+    1095                      .dwcfi  undefined, 5
+    1096                      .dwcfi  undefined, 6
+    1097                      .dwcfi  undefined, 7
+    1098                      .dwcfi  undefined, 8
+    1099                      .dwcfi  undefined, 9
+    1100                      .dwcfi  undefined, 10
+    1101                      .dwcfi  undefined, 11
+    1102                      .dwcfi  undefined, 12
+    1103                      .dwcfi  undefined, 13
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   24
+
+    1104                      .dwcfi  same_value, 14
+    1105                      .dwcfi  same_value, 15
+    1106                      .dwcfi  undefined, 16
+    1107                      .dwcfi  undefined, 17
+    1108                      .dwcfi  undefined, 18
+    1109                      .dwcfi  undefined, 19
+    1110                      .dwcfi  undefined, 20
+    1111                      .dwcfi  undefined, 21
+    1112                      .dwcfi  undefined, 22
+    1113                      .dwcfi  undefined, 23
+    1114                      .dwcfi  undefined, 24
+    1115                      .dwcfi  undefined, 25
+    1116                      .dwcfi  same_value, 26
+    1117                      .dwcfi  same_value, 27
+    1118                      .dwcfi  same_value, 28
+    1119                      .dwcfi  same_value, 29
+    1120                      .dwcfi  same_value, 30
+    1121                      .dwcfi  same_value, 31
+    1122                      .dwcfi  undefined, 32
+    1123                      .dwcfi  undefined, 33
+    1124                      .dwcfi  undefined, 34
+    1125                      .dwcfi  undefined, 35
+    1126                      .dwcfi  undefined, 36
+    1127                      .dwcfi  undefined, 37
+    1128                      .dwcfi  undefined, 38
+    1129                      .dwcfi  undefined, 39
+    1130                      .dwcfi  undefined, 40
+    1131                      .dwcfi  undefined, 41
+    1132                      .dwcfi  undefined, 42
+    1133                      .dwcfi  undefined, 43
+    1134                      .dwcfi  undefined, 44
+    1135                      .dwcfi  undefined, 45
+    1136                      .dwcfi  undefined, 46
+    1137                      .dwcfi  undefined, 47
+    1138                      .dwcfi  undefined, 48
+    1139                      .dwcfi  undefined, 49
+    1140                      .dwcfi  undefined, 50
+    1141                      .dwcfi  undefined, 51
+    1142                      .dwcfi  undefined, 52
+    1143                      .dwcfi  undefined, 53
+    1144                      .dwcfi  undefined, 54
+    1145                      .dwcfi  undefined, 55
+    1146                      .dwcfi  undefined, 56
+    1147                      .dwcfi  undefined, 57
+    1148                      .dwcfi  undefined, 58
+    1149                      .dwcfi  undefined, 59
+    1150                      .dwcfi  undefined, 60
+    1151                      .dwcfi  undefined, 61
+    1152                      .dwcfi  undefined, 62
+    1153                      .dwcfi  undefined, 63
+    1154                      .dwcfi  undefined, 64
+    1155                      .dwcfi  undefined, 65
+    1156                      .dwcfi  undefined, 66
+    1157                      .dwcfi  undefined, 67
+    1158                      .dwcfi  undefined, 68
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   25
+
+    1159                      .dwcfi  undefined, 69
+    1160                      .dwcfi  undefined, 70
+    1161                      .dwcfi  undefined, 71
+    1162                      .dwcfi  undefined, 72
+    1163                      .dwcfi  undefined, 73
+    1164                      .dwcfi  undefined, 74
+    1165                      .dwcfi  undefined, 75
+    1166                      .dwcfi  undefined, 76
+    1167                      .dwcfi  undefined, 77
+    1168                      .dwcfi  undefined, 78
+    1169                      .dwcfi  undefined, 79
+    1170                      .dwcfi  undefined, 80
+    1171                      .dwcfi  undefined, 81
+    1172                      .dwcfi  undefined, 82
+    1173                      .dwcfi  undefined, 83
+    1174                      .dwcfi  undefined, 84
+    1175                      .dwcfi  undefined, 85
+    1176                      .dwcfi  undefined, 86
+    1177                      .dwcfi  undefined, 87
+    1178                      .dwcfi  undefined, 88
+    1179                      .dwcfi  undefined, 89
+    1180                      .dwcfi  undefined, 90
+    1181                      .dwcfi  undefined, 91
+    1182                      .dwendentry
+    1183              
+    1184              ;***************************************************************
+    1185              ;* DWARF REGISTER MAP                                          *
+    1186              ;***************************************************************
+    1187              
+    1188              $C$DW$95        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    1189                      .dwattr $C$DW$95, DW_AT_location[DW_OP_reg0]
+    1190              $C$DW$96        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    1191                      .dwattr $C$DW$96, DW_AT_location[DW_OP_reg1]
+    1192              $C$DW$97        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0_G")
+    1193                      .dwattr $C$DW$97, DW_AT_location[DW_OP_reg2]
+    1194              $C$DW$98        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    1195                      .dwattr $C$DW$98, DW_AT_location[DW_OP_reg3]
+    1196              $C$DW$99        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    1197                      .dwattr $C$DW$99, DW_AT_location[DW_OP_reg4]
+    1198              $C$DW$100       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1_G")
+    1199                      .dwattr $C$DW$100, DW_AT_location[DW_OP_reg5]
+    1200              $C$DW$101       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    1201                      .dwattr $C$DW$101, DW_AT_location[DW_OP_reg6]
+    1202              $C$DW$102       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    1203                      .dwattr $C$DW$102, DW_AT_location[DW_OP_reg7]
+    1204              $C$DW$103       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2_G")
+    1205                      .dwattr $C$DW$103, DW_AT_location[DW_OP_reg8]
+    1206              $C$DW$104       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    1207                      .dwattr $C$DW$104, DW_AT_location[DW_OP_reg9]
+    1208              $C$DW$105       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    1209                      .dwattr $C$DW$105, DW_AT_location[DW_OP_reg10]
+    1210              $C$DW$106       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3_G")
+    1211                      .dwattr $C$DW$106, DW_AT_location[DW_OP_reg11]
+    1212              $C$DW$107       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T0")
+    1213                      .dwattr $C$DW$107, DW_AT_location[DW_OP_reg12]
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   26
+
+    1214              $C$DW$108       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T1")
+    1215                      .dwattr $C$DW$108, DW_AT_location[DW_OP_reg13]
+    1216              $C$DW$109       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T2")
+    1217                      .dwattr $C$DW$109, DW_AT_location[DW_OP_reg14]
+    1218              $C$DW$110       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T3")
+    1219                      .dwattr $C$DW$110, DW_AT_location[DW_OP_reg15]
+    1220              $C$DW$111       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0")
+    1221                      .dwattr $C$DW$111, DW_AT_location[DW_OP_reg16]
+    1222              $C$DW$112       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR0")
+    1223                      .dwattr $C$DW$112, DW_AT_location[DW_OP_reg17]
+    1224              $C$DW$113       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1")
+    1225                      .dwattr $C$DW$113, DW_AT_location[DW_OP_reg18]
+    1226              $C$DW$114       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR1")
+    1227                      .dwattr $C$DW$114, DW_AT_location[DW_OP_reg19]
+    1228              $C$DW$115       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
+    1229                      .dwattr $C$DW$115, DW_AT_location[DW_OP_reg20]
+    1230              $C$DW$116       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR2")
+    1231                      .dwattr $C$DW$116, DW_AT_location[DW_OP_reg21]
+    1232              $C$DW$117       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3")
+    1233                      .dwattr $C$DW$117, DW_AT_location[DW_OP_reg22]
+    1234              $C$DW$118       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR3")
+    1235                      .dwattr $C$DW$118, DW_AT_location[DW_OP_reg23]
+    1236              $C$DW$119       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4")
+    1237                      .dwattr $C$DW$119, DW_AT_location[DW_OP_reg24]
+    1238              $C$DW$120       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR4")
+    1239                      .dwattr $C$DW$120, DW_AT_location[DW_OP_reg25]
+    1240              $C$DW$121       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5")
+    1241                      .dwattr $C$DW$121, DW_AT_location[DW_OP_reg26]
+    1242              $C$DW$122       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR5")
+    1243                      .dwattr $C$DW$122, DW_AT_location[DW_OP_reg27]
+    1244              $C$DW$123       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6")
+    1245                      .dwattr $C$DW$123, DW_AT_location[DW_OP_reg28]
+    1246              $C$DW$124       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR6")
+    1247                      .dwattr $C$DW$124, DW_AT_location[DW_OP_reg29]
+    1248              $C$DW$125       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7")
+    1249                      .dwattr $C$DW$125, DW_AT_location[DW_OP_reg30]
+    1250              $C$DW$126       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR7")
+    1251                      .dwattr $C$DW$126, DW_AT_location[DW_OP_reg31]
+    1252              $C$DW$127       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FP")
+    1253                      .dwattr $C$DW$127, DW_AT_location[DW_OP_regx 0x20]
+    1254              $C$DW$128       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XFP")
+    1255                      .dwattr $C$DW$128, DW_AT_location[DW_OP_regx 0x21]
+    1256              $C$DW$129       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
+    1257                      .dwattr $C$DW$129, DW_AT_location[DW_OP_regx 0x22]
+    1258              $C$DW$130       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
+    1259                      .dwattr $C$DW$130, DW_AT_location[DW_OP_regx 0x23]
+    1260              $C$DW$131       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XSP")
+    1261                      .dwattr $C$DW$131, DW_AT_location[DW_OP_regx 0x24]
+    1262              $C$DW$132       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BKC")
+    1263                      .dwattr $C$DW$132, DW_AT_location[DW_OP_regx 0x25]
+    1264              $C$DW$133       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK03")
+    1265                      .dwattr $C$DW$133, DW_AT_location[DW_OP_regx 0x26]
+    1266              $C$DW$134       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK47")
+    1267                      .dwattr $C$DW$134, DW_AT_location[DW_OP_regx 0x27]
+    1268              $C$DW$135       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST0")
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   27
+
+    1269                      .dwattr $C$DW$135, DW_AT_location[DW_OP_regx 0x28]
+    1270              $C$DW$136       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST1")
+    1271                      .dwattr $C$DW$136, DW_AT_location[DW_OP_regx 0x29]
+    1272              $C$DW$137       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST2")
+    1273                      .dwattr $C$DW$137, DW_AT_location[DW_OP_regx 0x2a]
+    1274              $C$DW$138       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST3")
+    1275                      .dwattr $C$DW$138, DW_AT_location[DW_OP_regx 0x2b]
+    1276              $C$DW$139       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP")
+    1277                      .dwattr $C$DW$139, DW_AT_location[DW_OP_regx 0x2c]
+    1278              $C$DW$140       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP05")
+    1279                      .dwattr $C$DW$140, DW_AT_location[DW_OP_regx 0x2d]
+    1280              $C$DW$141       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP67")
+    1281                      .dwattr $C$DW$141, DW_AT_location[DW_OP_regx 0x2e]
+    1282              $C$DW$142       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
+    1283                      .dwattr $C$DW$142, DW_AT_location[DW_OP_regx 0x2f]
+    1284              $C$DW$143       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
+    1285                      .dwattr $C$DW$143, DW_AT_location[DW_OP_regx 0x30]
+    1286              $C$DW$144       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0_H")
+    1287                      .dwattr $C$DW$144, DW_AT_location[DW_OP_regx 0x31]
+    1288              $C$DW$145       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0")
+    1289                      .dwattr $C$DW$145, DW_AT_location[DW_OP_regx 0x32]
+    1290              $C$DW$146       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0_H")
+    1291                      .dwattr $C$DW$146, DW_AT_location[DW_OP_regx 0x33]
+    1292              $C$DW$147       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRS1")
+    1293                      .dwattr $C$DW$147, DW_AT_location[DW_OP_regx 0x34]
+    1294              $C$DW$148       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC1")
+    1295                      .dwattr $C$DW$148, DW_AT_location[DW_OP_regx 0x35]
+    1296              $C$DW$149       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1")
+    1297                      .dwattr $C$DW$149, DW_AT_location[DW_OP_regx 0x36]
+    1298              $C$DW$150       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1_H")
+    1299                      .dwattr $C$DW$150, DW_AT_location[DW_OP_regx 0x37]
+    1300              $C$DW$151       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1")
+    1301                      .dwattr $C$DW$151, DW_AT_location[DW_OP_regx 0x38]
+    1302              $C$DW$152       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1_H")
+    1303                      .dwattr $C$DW$152, DW_AT_location[DW_OP_regx 0x39]
+    1304              $C$DW$153       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CSR")
+    1305                      .dwattr $C$DW$153, DW_AT_location[DW_OP_regx 0x3a]
+    1306              $C$DW$154       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RPTC")
+    1307                      .dwattr $C$DW$154, DW_AT_location[DW_OP_regx 0x3b]
+    1308              $C$DW$155       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDP")
+    1309                      .dwattr $C$DW$155, DW_AT_location[DW_OP_regx 0x3c]
+    1310              $C$DW$156       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XCDP")
+    1311                      .dwattr $C$DW$156, DW_AT_location[DW_OP_regx 0x3d]
+    1312              $C$DW$157       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN0")
+    1313                      .dwattr $C$DW$157, DW_AT_location[DW_OP_regx 0x3e]
+    1314              $C$DW$158       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN1")
+    1315                      .dwattr $C$DW$158, DW_AT_location[DW_OP_regx 0x3f]
+    1316              $C$DW$159       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA01")
+    1317                      .dwattr $C$DW$159, DW_AT_location[DW_OP_regx 0x40]
+    1318              $C$DW$160       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA23")
+    1319                      .dwattr $C$DW$160, DW_AT_location[DW_OP_regx 0x41]
+    1320              $C$DW$161       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA45")
+    1321                      .dwattr $C$DW$161, DW_AT_location[DW_OP_regx 0x42]
+    1322              $C$DW$162       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA67")
+    1323                      .dwattr $C$DW$162, DW_AT_location[DW_OP_regx 0x43]
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 01:41:45 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+crhook.asm                                                           PAGE   28
+
+    1324              $C$DW$163       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSAC")
+    1325                      .dwattr $C$DW$163, DW_AT_location[DW_OP_regx 0x44]
+    1326              $C$DW$164       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CARRY")
+    1327                      .dwattr $C$DW$164, DW_AT_location[DW_OP_regx 0x45]
+    1328              $C$DW$165       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC1")
+    1329                      .dwattr $C$DW$165, DW_AT_location[DW_OP_regx 0x46]
+    1330              $C$DW$166       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC2")
+    1331                      .dwattr $C$DW$166, DW_AT_location[DW_OP_regx 0x47]
+    1332              $C$DW$167       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("M40")
+    1333                      .dwattr $C$DW$167, DW_AT_location[DW_OP_regx 0x48]
+    1334              $C$DW$168       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SXMD")
+    1335                      .dwattr $C$DW$168, DW_AT_location[DW_OP_regx 0x49]
+    1336              $C$DW$169       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ARMS")
+    1337                      .dwattr $C$DW$169, DW_AT_location[DW_OP_regx 0x4a]
+    1338              $C$DW$170       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
+    1339                      .dwattr $C$DW$170, DW_AT_location[DW_OP_regx 0x4b]
+    1340              $C$DW$171       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATA")
+    1341                      .dwattr $C$DW$171, DW_AT_location[DW_OP_regx 0x4c]
+    1342              $C$DW$172       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATD")
+    1343                      .dwattr $C$DW$172, DW_AT_location[DW_OP_regx 0x4d]
+    1344              $C$DW$173       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RDM")
+    1345                      .dwattr $C$DW$173, DW_AT_location[DW_OP_regx 0x4e]
+    1346              $C$DW$174       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FRCT")
+    1347                      .dwattr $C$DW$174, DW_AT_location[DW_OP_regx 0x4f]
+    1348              $C$DW$175       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SMUL")
+    1349                      .dwattr $C$DW$175, DW_AT_location[DW_OP_regx 0x50]
+    1350              $C$DW$176       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("INTM")
+    1351                      .dwattr $C$DW$176, DW_AT_location[DW_OP_regx 0x51]
+    1352              $C$DW$177       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0LC")
+    1353                      .dwattr $C$DW$177, DW_AT_location[DW_OP_regx 0x52]
+    1354              $C$DW$178       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1LC")
+    1355                      .dwattr $C$DW$178, DW_AT_location[DW_OP_regx 0x53]
+    1356              $C$DW$179       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2LC")
+    1357                      .dwattr $C$DW$179, DW_AT_location[DW_OP_regx 0x54]
+    1358              $C$DW$180       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3LC")
+    1359                      .dwattr $C$DW$180, DW_AT_location[DW_OP_regx 0x55]
+    1360              $C$DW$181       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4LC")
+    1361                      .dwattr $C$DW$181, DW_AT_location[DW_OP_regx 0x56]
+    1362              $C$DW$182       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5LC")
+    1363                      .dwattr $C$DW$182, DW_AT_location[DW_OP_regx 0x57]
+    1364              $C$DW$183       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6LC")
+    1365                      .dwattr $C$DW$183, DW_AT_location[DW_OP_regx 0x58]
+    1366              $C$DW$184       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7LC")
+    1367                      .dwattr $C$DW$184, DW_AT_location[DW_OP_regx 0x59]
+    1368              $C$DW$185       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDPLC")
+    1369                      .dwattr $C$DW$185, DW_AT_location[DW_OP_regx 0x5a]
+    1370              $C$DW$186       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
+    1371                      .dwattr $C$DW$186, DW_AT_location[DW_OP_regx 0x5b]
+    1372                      .dwendtag $C$DW$CU
+    1373              
+    1373              
+    1373              
+
+No Assembly Errors, No Assembly Warnings

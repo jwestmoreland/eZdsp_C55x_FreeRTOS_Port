@@ -1,0 +1,1234 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type="text/css" href="option.css"?>
+<TOOLSET>
+<OPTIONXML version='2' config='target=ld3' />
+<TOOL tag='COMPILER'>
+    <TOOLNAME>C/C++ COMPILER</TOOLNAME>
+    <CATEGORY>
+        <CNAME>_OTHER</CNAME>
+        <CDESC>General Options:</CDESC>
+        <MUTEX>
+            <MNAME>Mutually Exclusive Group: Quiet Level</MNAME>
+            <SEVERITY value='RESET'></SEVERITY>
+            <NONE>Option: NONE_OK</NONE>
+            <OPTION>
+                <ONAME value='--verbose'>Option: --verbose</ONAME>
+                <OTAG tag='VERBOSE'>Tag: VERBOSE</OTAG>
+                <TOOLTIP>Display banner and function progress information</TOOLTIP>
+                <ODESC>Display progress information and toolset version when executing.</ODESC>
+                <RESETS value='--quiet'>Resets: --quiet</RESETS>
+                <RESETS value='--super_quiet'>Resets: --super_quiet</RESETS>
+            </OPTION>
+            
+            <OPTION>
+                <ONAME value='--quiet'>Option: --quiet</ONAME>
+                <OTAG tag='QUIET'>Tag: QUIET</OTAG>
+                <ALIAS value='-q'>Alias: -q</ALIAS>
+                <TOOLTIP>Quiet Mode</TOOLTIP>
+                <ODESC>Suppress common compiler non-diagnostic output.  Remarks, errors and warnings will still be generated, as well as feature specific status.</ODESC>
+                <RESETS value='--super_quiet'>Resets: --super_quiet</RESETS>
+                <RESETS value='--verbose'>Resets: --verbose</RESETS>
+            </OPTION>
+            
+            <OPTION>
+                <ONAME value='--super_quiet'>Option: --super_quiet</ONAME>
+                <OTAG tag='SUPER_QUIET'>Tag: SUPER_QUIET</OTAG>
+                <ALIAS value='-qq'>Alias: -qq</ALIAS>
+                <TOOLTIP>Super Quiet Mode</TOOLTIP>
+                <ODESC>Suppress all compiler non-diagnostic output.  Remarks, errors and warnings will still be generated.</ODESC>
+                <RESETS value='--quiet'>Resets: --quiet</RESETS>
+                <RESETS value='--verbose'>Resets: --verbose</RESETS>
+            </OPTION>
+            
+        </MUTEX>
+        <MUTEX>
+            <MNAME>Mutually Exclusive Group: Source interlist</MNAME>
+            <SEVERITY value='OVERRIDE'></SEVERITY>
+            <NONE>Option: NONE_OK</NONE>
+            <OPTION>
+                <ONAME value='--src_interlist'>Option: --src_interlist</ONAME>
+                <OTAG tag='SRC_INTERLIST'>Tag: SRC_INTERLIST</OTAG>
+                <ALIAS value='-s'>Alias: -s</ALIAS>
+                <TOOLTIP>Generate interlisted assembly file</TOOLTIP>
+                <OVERRIDES value='--c_src_interlist'>Overrides: --c_src_interlist</OVERRIDES>
+            </OPTION>
+            
+            <OPTION>
+                <ONAME value='--c_src_interlist'>Option: --c_src_interlist</ONAME>
+                <OTAG tag='C_SRC_INTERLIST'>Tag: C_SRC_INTERLIST</OTAG>
+                <ALIAS value='-ss'>Alias: -ss</ALIAS>
+                <TOOLTIP>Generate C source interlisted assembly file</TOOLTIP>
+                <OVERRIDES value='--src_interlist'>Overrides: --src_interlist</OVERRIDES>
+            </OPTION>
+            
+        </MUTEX>
+        <OPTION>
+            <ONAME value='--cmd_file'>Option: --cmd_file=STRING(filename)</ONAME>
+            <OTAG tag='CMD_FILE'>Tag: CMD_FILE</OTAG>
+            <ALIAS value='-@'>Alias: -@</ALIAS>
+            <ARG type='STRING' name='filename' status='required' >filename</ARG>
+            <TOOLTIP>Read options from specified file </TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--compile_only'>Option: --compile_only</ONAME>
+            <OTAG tag='COMPILE_ONLY'>Tag: COMPILE_ONLY</OTAG>
+            <ALIAS value='-c'>Alias: -c</ALIAS>
+            <TOOLTIP>Disable linking (overrides -z)</TOOLTIP>
+            <CMDLINE_OPTION/>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--compiler_revision'>Option: --compiler_revision</ONAME>
+            <OTAG tag='COMPILER_REVISION'>Tag: COMPILER_REVISION</OTAG>
+            <TOOLTIP>Print compiler revision and exit</TOOLTIP>
+            <ODESC>Print out the compiler release revision and exit.</ODESC>
+            <CMDLINE_OPTION/>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--define'>Option: --define=STRINGLIST(NAME[=value])</ONAME>
+            <OTAG tag='DEFINE'>Tag: DEFINE</OTAG>
+            <ALIAS value='-D'>Alias: -D</ALIAS>
+            <ARG type='STRINGLIST' name='NAME[=value]' status='required' >NAME[=value]</ARG>
+            <TOOLTIP>Pre-define NAME</TOOLTIP>
+            <ODESC>Pre-define the symbol NAME, optionally setting it&apos;s contents to &apos;value&apos;.</ODESC>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--gen_aux_user_info'>Option: --gen_aux_user_info</ONAME>
+            <OTAG tag='GEN_AUX_USER_INFO'>Tag: GEN_AUX_USER_INFO</OTAG>
+            <ALIAS value='-b'>Alias: -b</ALIAS>
+            <TOOLTIP>Generate user information file</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--help'>Option: --help</ONAME>
+            <OTAG tag='HELP'>Tag: HELP</OTAG>
+            <ALIAS value='-h'>Alias: -h</ALIAS>
+            <TOOLTIP>Show help screen</TOOLTIP>
+            <ODESC>Show usage information.  When followed by another option or a phrase display that option&apos;s detailed information, or search for options related to that phrase.</ODESC>
+            <CMDLINE_OPTION/>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--include_path'>Option: --include_path=STRINGLIST(dir)</ONAME>
+            <OTAG tag='INCLUDE_PATH'>Tag: INCLUDE_PATH</OTAG>
+            <ALIAS value='-I'>Alias: -I</ALIAS>
+            <ARG type='STRINGLIST' name='dir' status='required' >dir</ARG>
+            <TOOLTIP>Add dir to #include search path</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--keep_asm'>Option: --keep_asm</ONAME>
+            <OTAG tag='KEEP_ASM'>Tag: KEEP_ASM</OTAG>
+            <ALIAS value='-k'>Alias: -k</ALIAS>
+            <TOOLTIP>Keep the generated assembly language (.asm) file</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--no_const_clink'>Option: --no_const_clink</ONAME>
+            <OTAG tag='NO_CONST_CLINK'>Tag: NO_CONST_CLINK</OTAG>
+            <TOOLTIP>Do not generate .clink for .const sections</TOOLTIP>
+            <ODESC>Do not generate .clink directives for const global arrays.  By default these arrays are placed in a .const subsection and conditionally linked.</ODESC>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--profile:power'>Option: --profile:power</ONAME>
+            <OTAG tag='PROFILE__POWER'>Tag: PROFILE__POWER</OTAG>
+            <TOOLTIP>Compile for power profiling</TOOLTIP>
+            <ODESC>Enable power profiling support by inserting NOPs into the frame code.  These NOPs can then be instrumented by the power profiling tooling to track power usage of functions.  If the power profiling tool is not used, this option will increase the cycle count of each function because of the NOPs.  This switch also disables optimizations that cannot be handled by the power-profiler.</ODESC>
+            <OVERRIDES value='--symdebug:none'>Overrides: --symdebug:none</OVERRIDES>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--run_linker'>Option: --run_linker=STRING(arguments)</ONAME>
+            <OTAG tag='RUN_LINKER'>Tag: RUN_LINKER</OTAG>
+            <ALIAS value='-z'>Alias: -z</ALIAS>
+            <ARG type='STRING' name='arguments' status='optional' >arguments</ARG>
+            <TOOLTIP>Perform link using options following</TOOLTIP>
+            <ODESC>After compiling all the source files, perform a link and pass all the options following this option to the linker.</ODESC>
+            <CMDLINE_OPTION/>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--skip_assembler'>Option: --skip_assembler</ONAME>
+            <OTAG tag='SKIP_ASSEMBLER'>Tag: SKIP_ASSEMBLER</OTAG>
+            <ALIAS value='-n'>Alias: -n</ALIAS>
+            <TOOLTIP>Compile only; do not assemble</TOOLTIP>
+            <CHAIN value='--keep_asm'>Implies: --keep_asm</CHAIN>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--tool_version'>Option: --tool_version</ONAME>
+            <OTAG tag='TOOL_VERSION'>Tag: TOOL_VERSION</OTAG>
+            <ALIAS value='-version'>Alias: -version</ALIAS>
+            <TOOLTIP>Print version numbers for each tool</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--undefine'>Option: --undefine=STRINGLIST(NAME)</ONAME>
+            <OTAG tag='UNDEFINE'>Tag: UNDEFINE</OTAG>
+            <ALIAS value='-U'>Alias: -U</ALIAS>
+            <ARG type='STRINGLIST' name='NAME' status='required' >NAME</ARG>
+            <TOOLTIP>Undefine NAME</TOOLTIP>
+        </OPTION>
+        
+    </CATEGORY>
+    
+    <CATEGORY>
+        <CNAME>SYMDEBUG</CNAME>
+        <CDESC>Symbolic Debug Options:</CDESC>
+        <MUTEX>
+            <MNAME>Mutually Exclusive Group: Debugging model</MNAME>
+            <SEVERITY value='OVERRIDE'></SEVERITY>
+            <NONE>Option: NONE_OK</NONE>
+            <OPTION>
+                <ONAME value='--symdebug:dwarf'>Option: --symdebug:dwarf</ONAME>
+                <OTAG tag='SYMDEBUG__DWARF'>Tag: SYMDEBUG__DWARF</OTAG>
+                <ALIAS value='-g'>Alias: -g</ALIAS>
+                <TOOLTIP>Full symbolic debug</TOOLTIP>
+                <OVERRIDES value='--symdebug:skeletal'>Overrides: --symdebug:skeletal</OVERRIDES>
+                <OVERRIDES value='--symdebug:profile_coff'>Overrides: --symdebug:profile_coff</OVERRIDES>
+                <OVERRIDES value='--symdebug:coff'>Overrides: --symdebug:coff</OVERRIDES>
+                <OVERRIDES value='--symdebug:none'>Overrides: --symdebug:none</OVERRIDES>
+                <OVERRIDES value='--symdebug:dwarf3'>Overrides: --symdebug:dwarf3</OVERRIDES>
+            </OPTION>
+            
+            <OPTION>
+                <ONAME value='--symdebug:coff'>Option: --symdebug:coff</ONAME>
+                <OTAG tag='SYMDEBUG__COFF'>Tag: SYMDEBUG__COFF</OTAG>
+                <TOOLTIP>Full symbolic debug (COFF, deprecated)</TOOLTIP>
+                <OVERRIDES value='--symdebug:skeletal'>Overrides: --symdebug:skeletal</OVERRIDES>
+                <OVERRIDES value='--symdebug:profile_coff'>Overrides: --symdebug:profile_coff</OVERRIDES>
+                <OVERRIDES value='--symdebug:dwarf'>Overrides: --symdebug:dwarf</OVERRIDES>
+                <OVERRIDES value='--symdebug:none'>Overrides: --symdebug:none</OVERRIDES>
+                <OVERRIDES value='--symdebug:dwarf3'>Overrides: --symdebug:dwarf3</OVERRIDES>
+            </OPTION>
+            
+            <OPTION>
+                <ONAME value='--symdebug:profile_coff'>Option: --symdebug:profile_coff</ONAME>
+                <OTAG tag='SYMDEBUG__PROFILE_COFF'>Tag: SYMDEBUG__PROFILE_COFF</OTAG>
+                <TOOLTIP>Function profile debug (COFF, deprecated)</TOOLTIP>
+                <ODESC>Adds the necessary debug directives to the object file which are needed by the profiler to allow function level profiling with minimal impact on optimization (if optimization is enabled). Using -g may hinder some optimizations to ensure that debuggability is maintained, while this option will not hinder optimization.
+
+You will still be able to set breakpoints and profile on function-level boundaries, but you will not be able to single-step through code as with full debug ability.</ODESC>
+                <OVERRIDES value='--symdebug:skeletal'>Overrides: --symdebug:skeletal</OVERRIDES>
+                <OVERRIDES value='--symdebug:coff'>Overrides: --symdebug:coff</OVERRIDES>
+                <OVERRIDES value='--symdebug:dwarf'>Overrides: --symdebug:dwarf</OVERRIDES>
+                <OVERRIDES value='--symdebug:none'>Overrides: --symdebug:none</OVERRIDES>
+                <OVERRIDES value='--symdebug:dwarf3'>Overrides: --symdebug:dwarf3</OVERRIDES>
+            </OPTION>
+            
+            <OPTION>
+                <ONAME value='--symdebug:none'>Option: --symdebug:none</ONAME>
+                <OTAG tag='SYMDEBUG__NONE'>Tag: SYMDEBUG__NONE</OTAG>
+                <TOOLTIP>Suppress all symbolic debug generation</TOOLTIP>
+                <CONFLICT value='--ocs_active'>Conflicts with: --ocs_active</CONFLICT>
+                <OVERRIDES value='--symdebug:skeletal'>Overrides: --symdebug:skeletal</OVERRIDES>
+                <OVERRIDES value='--symdebug:profile_coff'>Overrides: --symdebug:profile_coff</OVERRIDES>
+                <OVERRIDES value='--symdebug:coff'>Overrides: --symdebug:coff</OVERRIDES>
+                <OVERRIDES value='--profile:power'>Overrides: --profile:power</OVERRIDES>
+                <OVERRIDES value='--symdebug:dwarf'>Overrides: --symdebug:dwarf</OVERRIDES>
+                <OVERRIDES value='--profile:breakpt'>Overrides: --profile:breakpt</OVERRIDES>
+                <OVERRIDES value='--symdebug:dwarf3'>Overrides: --symdebug:dwarf3</OVERRIDES>
+            </OPTION>
+            
+            <OPTION>
+                <ONAME value='--symdebug:skeletal'>Option: --symdebug:skeletal</ONAME>
+                <OTAG tag='SYMDEBUG__SKELETAL'>Tag: SYMDEBUG__SKELETAL</OTAG>
+                <TOOLTIP>Symbolic debug for program analysis (default)</TOOLTIP>
+                <OVERRIDES value='--symdebug:profile_coff'>Overrides: --symdebug:profile_coff</OVERRIDES>
+                <OVERRIDES value='--symdebug:coff'>Overrides: --symdebug:coff</OVERRIDES>
+                <OVERRIDES value='--symdebug:dwarf'>Overrides: --symdebug:dwarf</OVERRIDES>
+                <OVERRIDES value='--symdebug:none'>Overrides: --symdebug:none</OVERRIDES>
+                <OVERRIDES value='--symdebug:dwarf3'>Overrides: --symdebug:dwarf3</OVERRIDES>
+            </OPTION>
+            
+        </MUTEX>
+    </CATEGORY>
+    
+    <CATEGORY>
+        <CNAME>PARSER</CNAME>
+        <CDESC>Parser Options:</CDESC>
+        <MUTEX>
+            <MNAME>Mutually Exclusive Group: C/C++ Dialect</MNAME>
+            <SEVERITY value='RESET'></SEVERITY>
+            <NONE>Option: NONE_OK</NONE>
+            <OPTION>
+                <ONAME value='--embedded_cpp'>Option: --embedded_cpp</ONAME>
+                <OTAG tag='EMBEDDED_CPP'>Tag: EMBEDDED_CPP</OTAG>
+                <ALIAS value='-pe'>Alias: -pe</ALIAS>
+                <TOOLTIP>Embedded C++</TOOLTIP>
+                <RESETS value='--kr_compatible'>Resets: --kr_compatible</RESETS>
+            </OPTION>
+            
+            <OPTION>
+                <ONAME value='--kr_compatible'>Option: --kr_compatible</ONAME>
+                <OTAG tag='KR_COMPATIBLE'>Tag: KR_COMPATIBLE</OTAG>
+                <ALIAS value='-pk'>Alias: -pk</ALIAS>
+                <TOOLTIP>K &amp; R compatibility</TOOLTIP>
+                <RESETS value='--embedded_cpp'>Resets: --embedded_cpp</RESETS>
+            </OPTION>
+            
+        </MUTEX>
+        <MUTEX>
+            <MNAME>Mutually Exclusive Group: Language mode</MNAME>
+            <SEVERITY value='RESET'></SEVERITY>
+            <NONE>Option: NONE_OK</NONE>
+            <OPTION>
+                <ONAME value='--relaxed_ansi'>Option: --relaxed_ansi</ONAME>
+                <OTAG tag='RELAXED_ANSI'>Tag: RELAXED_ANSI</OTAG>
+                <ALIAS value='-pr'>Alias: -pr</ALIAS>
+                <TOOLTIP>Relaxed parsing (non-strict ANSI)</TOOLTIP>
+                <RESETS value='--strict_ansi'>Resets: --strict_ansi</RESETS>
+            </OPTION>
+            
+            <OPTION>
+                <ONAME value='--strict_ansi'>Option: --strict_ansi</ONAME>
+                <OTAG tag='STRICT_ANSI'>Tag: STRICT_ANSI</OTAG>
+                <ALIAS value='-ps'>Alias: -ps</ALIAS>
+                <TOOLTIP>Strict ANSI mode (errors)</TOOLTIP>
+                <RESETS value='--relaxed_ansi'>Resets: --relaxed_ansi</RESETS>
+            </OPTION>
+            
+        </MUTEX>
+        <OPTION>
+            <ONAME value='--exceptions'>Option: --exceptions</ONAME>
+            <OTAG tag='EXCEPTIONS'>Tag: EXCEPTIONS</OTAG>
+            <TOOLTIP>Enable C++ exception handling</TOOLTIP>
+            <CHAIN value='-rtti'>Implies: -rtti</CHAIN>
+            <CHAIN value='--disable_custom_call_conv'>Implies: --disable_custom_call_conv</CHAIN>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--gen_acp_raw'>Option: --gen_acp_raw</ONAME>
+            <OTAG tag='GEN_ACP_RAW'>Tag: GEN_ACP_RAW</OTAG>
+            <ALIAS value='-pl'>Alias: -pl</ALIAS>
+            <TOOLTIP>Output raw listing to .rl file</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--gen_acp_xref'>Option: --gen_acp_xref</ONAME>
+            <OTAG tag='GEN_ACP_XREF'>Tag: GEN_ACP_XREF</OTAG>
+            <ALIAS value='-px'>Alias: -px</ALIAS>
+            <TOOLTIP>Output xref listing to .crl file</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--multibyte_chars'>Option: --multibyte_chars</ONAME>
+            <OTAG tag='MULTIBYTE_CHARS'>Tag: MULTIBYTE_CHARS</OTAG>
+            <ALIAS value='-pc'>Alias: -pc</ALIAS>
+            <TOOLTIP>Multibyte character support</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--no_inlining'>Option: --no_inlining</ONAME>
+            <OTAG tag='NO_INLINING'>Tag: NO_INLINING</OTAG>
+            <ALIAS value='-pi'>Alias: -pi</ALIAS>
+            <TOOLTIP>Ignore inline keyword</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--no_intrinsics'>Option: --no_intrinsics</ONAME>
+            <OTAG tag='NO_INTRINSICS'>Tag: NO_INTRINSICS</OTAG>
+            <ALIAS value='-pn'>Alias: -pn</ALIAS>
+            <TOOLTIP>Disable intrinsic functions</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--program_level_compile'>Option: --program_level_compile</ONAME>
+            <OTAG tag='PROGRAM_LEVEL_COMPILE'>Tag: PROGRAM_LEVEL_COMPILE</OTAG>
+            <ALIAS value='-pm'>Alias: -pm</ALIAS>
+            <TOOLTIP>Program mode compilation</TOOLTIP>
+            <CHAIN value='--keep_unneeded_types'>Implies: --keep_unneeded_types</CHAIN>
+            <CMDLINE_OPTION/>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--rtti'>Option: --rtti</ONAME>
+            <OTAG tag='RTTI'>Tag: RTTI</OTAG>
+            <ALIAS value='-rtti'>Alias: -rtti</ALIAS>
+            <TOOLTIP>Support C++ run-time type information</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--static_template_instantiation'>Option: --static_template_instantiation</ONAME>
+            <OTAG tag='STATIC_TEMPLATE_INSTANTIATION'>Tag: STATIC_TEMPLATE_INSTANTIATION</OTAG>
+            <TOOLTIP>Do static early template instantiation</TOOLTIP>
+            <ODESC>All template entities are instantiated as needed in the file.  The instantiations are given internal (static) linkage.</ODESC>
+        </OPTION>
+        
+    </CATEGORY>
+    
+    <CATEGORY>
+        <CNAME>PREPROC</CNAME>
+        <CDESC>Parser Preprocessing Options:</CDESC>
+        <OPTION>
+            <ONAME value='--preproc_dependency'>Option: --preproc_dependency=STRING(filename)</ONAME>
+            <OTAG tag='PREPROC_DEPENDENCY'>Tag: PREPROC_DEPENDENCY</OTAG>
+            <ALIAS value='-ppd'>Alias: -ppd</ALIAS>
+            <ARG type='STRING' name='filename' status='optional' >filename</ARG>
+            <TOOLTIP>Generate include file dependency information</TOOLTIP>
+            <ODESC>Generate a dependency list for the source file into the file &lt;filename&gt;.pp   Optionally, name the output file.  The output will include all files included in the source file as well as any of the files included.  Also see the -ppa option to continue compilation after generating the dependency list (ala gcc).</ODESC>
+            <CMDLINE_OPTION/>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--preproc_includes'>Option: --preproc_includes=STRING(filename)</ONAME>
+            <OTAG tag='PREPROC_INCLUDES'>Tag: PREPROC_INCLUDES</OTAG>
+            <ALIAS value='-ppi'>Alias: -ppi</ALIAS>
+            <ARG type='STRING' name='filename' status='optional' >filename</ARG>
+            <TOOLTIP>Generate first-level include file list</TOOLTIP>
+            <ODESC>Generate an include list for the source file into the file &lt;filename&gt;.pp   Optionally, name the output file.  The output will include only those files directly included by the source file.   Also see the -ppa option to continue compilation after generating the include list (ala gcc).</ODESC>
+            <CMDLINE_OPTION/>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--preproc_only'>Option: --preproc_only</ONAME>
+            <OTAG tag='PREPROC_ONLY'>Tag: PREPROC_ONLY</OTAG>
+            <ALIAS value='-ppo'>Alias: -ppo</ALIAS>
+            <TOOLTIP>Preprocess only</TOOLTIP>
+            <CMDLINE_OPTION/>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--preproc_with_comment'>Option: --preproc_with_comment</ONAME>
+            <OTAG tag='PREPROC_WITH_COMMENT'>Tag: PREPROC_WITH_COMMENT</OTAG>
+            <ALIAS value='-ppc'>Alias: -ppc</ALIAS>
+            <TOOLTIP>Preprocess only; maintain comments</TOOLTIP>
+            <CMDLINE_OPTION/>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--preproc_with_compile'>Option: --preproc_with_compile</ONAME>
+            <OTAG tag='PREPROC_WITH_COMPILE'>Tag: PREPROC_WITH_COMPILE</OTAG>
+            <ALIAS value='-ppa'>Alias: -ppa</ALIAS>
+            <TOOLTIP>Generate a preprocessed file and continue compilation</TOOLTIP>
+            <CMDLINE_OPTION/>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--preproc_with_line'>Option: --preproc_with_line</ONAME>
+            <OTAG tag='PREPROC_WITH_LINE'>Tag: PREPROC_WITH_LINE</OTAG>
+            <ALIAS value='-ppl'>Alias: -ppl</ALIAS>
+            <TOOLTIP>Preprocess only; maintain line directives</TOOLTIP>
+            <CMDLINE_OPTION/>
+        </OPTION>
+        
+    </CATEGORY>
+    
+    <CATEGORY>
+        <CNAME>PDIAG</CNAME>
+        <CDESC>Parser Diagnostics Options:</CDESC>
+        <OPTION>
+            <ONAME value='--diag_error'>Option: --diag_error=STRING(id)</ONAME>
+            <OTAG tag='DIAG_ERROR'>Tag: DIAG_ERROR</OTAG>
+            <ALIAS value='-pdse'>Alias: -pdse</ALIAS>
+            <ARG type='STRING' name='id' status='required' >id</ARG>
+            <TOOLTIP>Treat diagnostic &lt;id&gt; as error</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--diag_remark'>Option: --diag_remark=STRING(id)</ONAME>
+            <OTAG tag='DIAG_REMARK'>Tag: DIAG_REMARK</OTAG>
+            <ALIAS value='-pdsr'>Alias: -pdsr</ALIAS>
+            <ARG type='STRING' name='id' status='required' >id</ARG>
+            <TOOLTIP>Treat diagnostic &lt;id&gt; as remark</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--diag_suppress'>Option: --diag_suppress=STRING(id)</ONAME>
+            <OTAG tag='DIAG_SUPPRESS'>Tag: DIAG_SUPPRESS</OTAG>
+            <ALIAS value='-pds'>Alias: -pds</ALIAS>
+            <ARG type='STRING' name='id' status='required' >id</ARG>
+            <TOOLTIP>Suppress diagnostic &lt;id&gt;</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--diag_warning'>Option: --diag_warning=STRING(id)</ONAME>
+            <OTAG tag='DIAG_WARNING'>Tag: DIAG_WARNING</OTAG>
+            <ALIAS value='-pdsw'>Alias: -pdsw</ALIAS>
+            <ARG type='STRING' name='id' status='required' >id</ARG>
+            <TOOLTIP>Treat diagnostic &lt;id&gt; as warning</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--display_error_number'>Option: --display_error_number</ONAME>
+            <OTAG tag='DISPLAY_ERROR_NUMBER'>Tag: DISPLAY_ERROR_NUMBER</OTAG>
+            <ALIAS value='-pden'>Alias: -pden</ALIAS>
+            <TOOLTIP>Emit diagnostic identifier numbers</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--issue_remarks'>Option: --issue_remarks</ONAME>
+            <OTAG tag='ISSUE_REMARKS'>Tag: ISSUE_REMARKS</OTAG>
+            <ALIAS value='-pdr'>Alias: -pdr</ALIAS>
+            <TOOLTIP>Issue remarks</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--no_warnings'>Option: --no_warnings</ONAME>
+            <OTAG tag='NO_WARNINGS'>Tag: NO_WARNINGS</OTAG>
+            <ALIAS value='-pdw'>Alias: -pdw</ALIAS>
+            <TOOLTIP>Suppress warnings</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--set_error_limit'>Option: --set_error_limit=NUMBER(count)</ONAME>
+            <OTAG tag='SET_ERROR_LIMIT'>Tag: SET_ERROR_LIMIT</OTAG>
+            <ALIAS value='-pdel'>Alias: -pdel</ALIAS>
+            <ARG type='NUMBER' name='count' status='required' >count</ARG>
+            <TOOLTIP>Set error limit to &lt;count&gt;</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--verbose_diagnostics'>Option: --verbose_diagnostics</ONAME>
+            <OTAG tag='VERBOSE_DIAGNOSTICS'>Tag: VERBOSE_DIAGNOSTICS</OTAG>
+            <ALIAS value='-pdv'>Alias: -pdv</ALIAS>
+            <TOOLTIP>Verbose diagnostics</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--write_diagnostics_file'>Option: --write_diagnostics_file</ONAME>
+            <OTAG tag='WRITE_DIAGNOSTICS_FILE'>Tag: WRITE_DIAGNOSTICS_FILE</OTAG>
+            <ALIAS value='-pdf'>Alias: -pdf</ALIAS>
+            <TOOLTIP>Output diagnostic to .err file</TOOLTIP>
+        </OPTION>
+        
+    </CATEGORY>
+    
+    <CATEGORY>
+        <CNAME>MODEL</CNAME>
+        <CDESC>Runtime Model Options:</CDESC>
+        <OPTION>
+            <ONAME value='--algebraic'>Option: --algebraic</ONAME>
+            <OTAG tag='ALGEBRAIC'>Tag: ALGEBRAIC</OTAG>
+            <ALIAS value='-mg'>Alias: -mg</ALIAS>
+            <TOOLTIP>Codegen outputs algebraic assembly</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--align_functions'>Option: --align_functions</ONAME>
+            <OTAG tag='ALIGN_FUNCTIONS'>Tag: ALIGN_FUNCTIONS</OTAG>
+            <TOOLTIP>Align code for each function on 4-byte boundary</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--assert_arms_set'>Option: --assert_arms_set</ONAME>
+            <OTAG tag='ASSERT_ARMS_SET'>Tag: ASSERT_ARMS_SET</OTAG>
+            <ALIAS value='-ata'>Alias: -ata</ALIAS>
+            <TOOLTIP>Assert ARMS status bit initially set</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--assert_c54cm_set'>Option: --assert_c54cm_set</ONAME>
+            <OTAG tag='ASSERT_C54CM_SET'>Tag: ASSERT_C54CM_SET</OTAG>
+            <ALIAS value='-atl'>Alias: -atl</ALIAS>
+            <TOOLTIP>Assert C54CM status bit is set</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--assert_cpl_set'>Option: --assert_cpl_set</ONAME>
+            <OTAG tag='ASSERT_CPL_SET'>Tag: ASSERT_CPL_SET</OTAG>
+            <ALIAS value='-atc'>Alias: -atc</ALIAS>
+            <TOOLTIP>Assert CPL status bit initially set</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--assert_sst_zero'>Option: --assert_sst_zero</ONAME>
+            <OTAG tag='ASSERT_SST_ZERO'>Tag: ASSERT_SST_ZERO</OTAG>
+            <ALIAS value='-att'>Alias: -att</ALIAS>
+            <TOOLTIP>Assert SST status bit is zero</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--assume_bss_onchip'>Option: --assume_bss_onchip</ONAME>
+            <OTAG tag='ASSUME_BSS_ONCHIP'>Tag: ASSUME_BSS_ONCHIP</OTAG>
+            <ALIAS value='-mb'>Alias: -mb</ALIAS>
+            <TOOLTIP>Assume all BSS is on-chip</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--bus_conflict'>Option: --bus_conflict</ONAME>
+            <OTAG tag='BUS_CONFLICT'>Tag: BUS_CONFLICT</OTAG>
+            <ALIAS value='-atb'>Alias: -atb</ALIAS>
+            <TOOLTIP>Changes bus conflict errors to warnings</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--const_in_cinit'>Option: --const_in_cinit</ONAME>
+            <OTAG tag='CONST_IN_CINIT'>Tag: CONST_IN_CINIT</OTAG>
+            <ALIAS value='-mc'>Alias: -mc</ALIAS>
+            <TOOLTIP>ROM allocatable constants</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--gen_func_subsections'>Option: --gen_func_subsections</ONAME>
+            <OTAG tag='GEN_FUNC_SUBSECTIONS'>Tag: GEN_FUNC_SUBSECTIONS</OTAG>
+            <ALIAS value='-mo'>Alias: -mo</ALIAS>
+            <TOOLTIP>Place each function in a separate subsection</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--large_memory_model'>Option: --large_memory_model</ONAME>
+            <OTAG tag='LARGE_MEMORY_MODEL'>Tag: LARGE_MEMORY_MODEL</OTAG>
+            <ALIAS value='-ml'>Alias: -ml</ALIAS>
+            <TOOLTIP>Use large memory model</TOOLTIP>
+            <CHAIN value='--mem_model:data=large'>Implies: --mem_model:data=large</CHAIN>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--memory_model'>Option: --memory_model=ONEOF(huge,large,small)</ONAME>
+            <OTAG tag='MEMORY_MODEL'>Tag: MEMORY_MODEL</OTAG>
+            <ARG type='ONEOF' name='huge,large,small' status='required' >huge,large,small</ARG>
+            <TOOLTIP>Specify memory model (small/large/huge)</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--no_block_repeat'>Option: --no_block_repeat</ONAME>
+            <OTAG tag='NO_BLOCK_REPEAT'>Tag: NO_BLOCK_REPEAT</OTAG>
+            <ALIAS value='-mr'>Alias: -mr</ALIAS>
+            <TOOLTIP>No block/local repeats</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--no_byte_operands'>Option: --no_byte_operands</ONAME>
+            <OTAG tag='NO_BYTE_OPERANDS'>Tag: NO_BYTE_OPERANDS</OTAG>
+            <TOOLTIP>Do not generate low_byte/high_byte operands</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--no_mac_expand'>Option: --no_mac_expand</ONAME>
+            <OTAG tag='NO_MAC_EXPAND'>Tag: NO_MAC_EXPAND</OTAG>
+            <ALIAS value='--nomacx'>Alias: --nomacx</ALIAS>
+            <TOOLTIP>Don&apos;t expand assembly macros when outputting source</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--no_nops_in_delay'>Option: --no_nops_in_delay</ONAME>
+            <OTAG tag='NO_NOPS_IN_DELAY'>Tag: NO_NOPS_IN_DELAY</OTAG>
+            <ALIAS value='-atn'>Alias: -atn</ALIAS>
+            <TOOLTIP>Remove NOP in delay slots</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--opt_for_space'>Option: --opt_for_space</ONAME>
+            <OTAG tag='OPT_FOR_SPACE'>Tag: OPT_FOR_SPACE</OTAG>
+            <ALIAS value='-ms'>Alias: -ms</ALIAS>
+            <TOOLTIP>Optimize for code size</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--optimize_with_debug'>Option: --optimize_with_debug</ONAME>
+            <OTAG tag='OPTIMIZE_WITH_DEBUG'>Tag: OPTIMIZE_WITH_DEBUG</OTAG>
+            <ALIAS value='-mn'>Alias: -mn</ALIAS>
+            <TOOLTIP>Optimize fully in the presence of debug directives</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--port_for_speed'>Option: --port_for_speed</ONAME>
+            <OTAG tag='PORT_FOR_SPEED'>Tag: PORT_FOR_SPEED</OTAG>
+            <ALIAS value='-ath'>Alias: -ath</ALIAS>
+            <TOOLTIP>Port for speed over size</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--predication_level'>Option: --predication_level=NUMBER(limit)</ONAME>
+            <OTAG tag='PREDICATION_LEVEL'>Tag: PREDICATION_LEVEL</OTAG>
+            <ARG type='NUMBER' name='limit' status='required' >limit</ARG>
+            <TOOLTIP>Max length of instruction sequence to predicate</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--ptrdiff_size'>Option: --ptrdiff_size=ONEOF(16,32)</ONAME>
+            <OTAG tag='PTRDIFF_SIZE'>Tag: PTRDIFF_SIZE</OTAG>
+            <ARG type='ONEOF' name='16,32' status='required' default='32'>16,32</ARG>
+            <TOOLTIP>Specify type size to hold results of pointer math</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--silicon_version'>Option: --silicon_version=STRING(dev[:rev])</ONAME>
+            <OTAG tag='SILICON_VERSION'>Tag: SILICON_VERSION</OTAG>
+            <ALIAS value='-v'>Alias: -v</ALIAS>
+            <ARG type='STRING' name='dev[:rev]' status='required' >dev[:rev]</ARG>
+            <TOOLTIP>device+optional revision of target silicon</TOOLTIP>
+            <ODESC>Specify the device (and optionally the revision) of the target silicon device to generate code optimized for the revision and to work around issues raised by Silicon Advisories for the revision.  Can be specified multiple times to support multiple silicon versions.  An argument of &apos;list&apos; will display the list of recognized arguments</ODESC>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--use_long_branch'>Option: --use_long_branch</ONAME>
+            <OTAG tag='USE_LONG_BRANCH'>Tag: USE_LONG_BRANCH</OTAG>
+            <ALIAS value='-atv'>Alias: -atv</ALIAS>
+            <TOOLTIP>All gotos/calls are encoded as 24-bit offset</TOOLTIP>
+        </OPTION>
+        
+    </CATEGORY>
+    
+    <CATEGORY>
+        <CNAME>OPTIM</CNAME>
+        <CDESC>Optimizations:</CDESC>
+        <OPTION>
+            <ONAME value='--aliased_variables'>Option: --aliased_variables</ONAME>
+            <OTAG tag='ALIASED_VARIABLES'>Tag: ALIASED_VARIABLES</OTAG>
+            <ALIAS value='-ma'>Alias: -ma</ALIAS>
+            <TOOLTIP>Assume called funcs create hidden aliases (rare)</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--auto_inline'>Option: --auto_inline=NUMBER(size)</ONAME>
+            <OTAG tag='AUTO_INLINE'>Tag: AUTO_INLINE</OTAG>
+            <ALIAS value='-oi'>Alias: -oi</ALIAS>
+            <ARG type='NUMBER' name='size' status='optional' >size</ARG>
+            <TOOLTIP>Specify threshold for automatic inlining</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--call_assumptions'>Option: --call_assumptions=range(0 &lt;= 0-3 &lt;= 3)</ONAME>
+            <OTAG tag='CALL_ASSUMPTIONS'>Tag: CALL_ASSUMPTIONS</OTAG>
+            <ALIAS value='-op'>Alias: -op</ALIAS>
+            <ARG type='RANGE' low='0' high='3' name='0-3' status='required' >0-3</ARG>
+            <TOOLTIP>Specify call assumptions when optimizing</TOOLTIP>
+            <ODESC>Specify assumptions to make about function calls when optimizing.
+
+Level 0 (-op0) indicates that the module has functions that are called from other modules.
+
+Level 1 (-op1) indicates that the module does not have functions that are called by other modules but has global variables that are modified in other modules.
+
+Level 2 (-op2) indicates that the module does not have functions that are called or globals that are modified by other modules.
+
+Level 3 (-op3) indicates that the module has functions that are called by other modules but does not have globals that are modified by other modules.</ODESC>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--gen_opt_info'>Option: --gen_opt_info=range(0 &lt;= 0-2 &lt;= 2)</ONAME>
+            <OTAG tag='GEN_OPT_INFO'>Tag: GEN_OPT_INFO</OTAG>
+            <ALIAS value='-on'>Alias: -on</ALIAS>
+            <ARG type='RANGE' low='0' high='2' name='0-2' status='required' >0-2</ARG>
+            <TOOLTIP>Generate optimizer information file at level [0-2]</TOOLTIP>
+            <ODESC>Set the optimizer information file level, or disable with 0. Level 1 includes basic information.  Level 2 includes detailed information.  The file will be created in the assembly directory if a custom asm directory is specified on the command line otherwise it will be created in the object file directory.</ODESC>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--opt_level'>Option: --opt_level=range(0 &lt;= 0-3 &lt;= 3)</ONAME>
+            <OTAG tag='OPT_LEVEL'>Tag: OPT_LEVEL</OTAG>
+            <ALIAS value='-O'>Alias: -O</ALIAS>
+            <ARG type='RANGE' low='0' high='3' name='0-3' status='optional' default='2'>0-3</ARG>
+            <TOOLTIP>Optimization level</TOOLTIP>
+            <ODESC>Set compiler optimization level.
+
+Level 0 includes register optimizations.  Level 1 adds local optimizations. Level 2 further adds global optimizations. Level 3 further adds interprocedure optimizations.
+
+Using -O without arguments defaults to -O2.</ODESC>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--optimizer_interlist'>Option: --optimizer_interlist</ONAME>
+            <OTAG tag='OPTIMIZER_INTERLIST'>Tag: OPTIMIZER_INTERLIST</OTAG>
+            <ALIAS value='-os'>Alias: -os</ALIAS>
+            <TOOLTIP>Generate optimized source interlisted assembly file</TOOLTIP>
+        </OPTION>
+        
+    </CATEGORY>
+    
+    <CATEGORY>
+        <CNAME>LIB</CNAME>
+        <CDESC>Library Function Assumptions:</CDESC>
+        <OPTION>
+            <ONAME value='--std_lib_func_defined'>Option: --std_lib_func_defined</ONAME>
+            <OTAG tag='STD_LIB_FUNC_DEFINED'>Tag: STD_LIB_FUNC_DEFINED</OTAG>
+            <ALIAS value='-ol1'>Alias: -ol1</ALIAS>
+            <TOOLTIP>File contains an RTS library function.</TOOLTIP>
+            <SINGLEFILE_OPTION/>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--std_lib_func_not_defined'>Option: --std_lib_func_not_defined</ONAME>
+            <OTAG tag='STD_LIB_FUNC_NOT_DEFINED'>Tag: STD_LIB_FUNC_NOT_DEFINED</OTAG>
+            <ALIAS value='-ol2'>Alias: -ol2</ALIAS>
+            <TOOLTIP>File does not define any RTS library func (def.)</TOOLTIP>
+            <SINGLEFILE_OPTION/>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--std_lib_func_redefined'>Option: --std_lib_func_redefined</ONAME>
+            <OTAG tag='STD_LIB_FUNC_REDEFINED'>Tag: STD_LIB_FUNC_REDEFINED</OTAG>
+            <ALIAS value='-ol0'>Alias: -ol0</ALIAS>
+            <TOOLTIP>File redefines an RTS library function.</TOOLTIP>
+            <SINGLEFILE_OPTION/>
+        </OPTION>
+        
+    </CATEGORY>
+    
+    <CATEGORY>
+        <CNAME>ASM</CNAME>
+        <CDESC>Assembler Options:</CDESC>
+        <OPTION>
+            <ONAME value='--absolute_listing'>Option: --absolute_listing</ONAME>
+            <OTAG tag='ABSOLUTE_LISTING'>Tag: ABSOLUTE_LISTING</OTAG>
+            <ALIAS value='-aa'>Alias: -aa</ALIAS>
+            <TOOLTIP>Generate absolute listing file</TOOLTIP>
+            <CMDLINE_OPTION/>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--asm_define'>Option: --asm_define=STRINGLIST(NAME[=value])</ONAME>
+            <OTAG tag='ASM_DEFINE'>Tag: ASM_DEFINE</OTAG>
+            <ALIAS value='-ad'>Alias: -ad</ALIAS>
+            <ARG type='STRINGLIST' name='NAME[=value]' status='required' >NAME[=value]</ARG>
+            <TOOLTIP>Pre-define assembly symbol NAME</TOOLTIP>
+            <ODESC>Pre-define the assembly symbol NAME, optionally setting its contents to &apos;value&apos;.</ODESC>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--asm_dependency'>Option: --asm_dependency</ONAME>
+            <OTAG tag='ASM_DEPENDENCY'>Tag: ASM_DEPENDENCY</OTAG>
+            <ALIAS value='-apd'>Alias: -apd</ALIAS>
+            <TOOLTIP>Generate assembly dependency information</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--asm_includes'>Option: --asm_includes</ONAME>
+            <OTAG tag='ASM_INCLUDES'>Tag: ASM_INCLUDES</OTAG>
+            <ALIAS value='-api'>Alias: -api</ALIAS>
+            <TOOLTIP>Generate first-level assembly include file list</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--asm_listing'>Option: --asm_listing</ONAME>
+            <OTAG tag='ASM_LISTING'>Tag: ASM_LISTING</OTAG>
+            <ALIAS value='-al'>Alias: -al</ALIAS>
+            <TOOLTIP>Generate listing file</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--asm_undefine'>Option: --asm_undefine=STRINGLIST(NAME)</ONAME>
+            <OTAG tag='ASM_UNDEFINE'>Tag: ASM_UNDEFINE</OTAG>
+            <ALIAS value='-au'>Alias: -au</ALIAS>
+            <ARG type='STRINGLIST' name='NAME' status='required' >NAME</ARG>
+            <TOOLTIP>Undefine assembly symbol NAME</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--copy_file'>Option: --copy_file=STRINGLIST(filename)</ONAME>
+            <OTAG tag='COPY_FILE'>Tag: COPY_FILE</OTAG>
+            <ALIAS value='-ahc'>Alias: -ahc</ALIAS>
+            <ARG type='STRINGLIST' name='filename' status='required' >filename</ARG>
+            <TOOLTIP>Simulate source &apos;.copy filename&apos;</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--cross_reference'>Option: --cross_reference</ONAME>
+            <OTAG tag='CROSS_REFERENCE'>Tag: CROSS_REFERENCE</OTAG>
+            <ALIAS value='-ax'>Alias: -ax</ALIAS>
+            <TOOLTIP>Generate cross reference file</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--hash_optional_shift_count'>Option: --hash_optional_shift_count</ONAME>
+            <OTAG tag='HASH_OPTIONAL_SHIFT_COUNT'>Tag: HASH_OPTIONAL_SHIFT_COUNT</OTAG>
+            <ALIAS value='-ats'>Alias: -ats</ALIAS>
+            <TOOLTIP>Do not require &apos;#&apos; on shift counts (mnem only)</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--include_file'>Option: --include_file=STRINGLIST(filename)</ONAME>
+            <OTAG tag='INCLUDE_FILE'>Tag: INCLUDE_FILE</OTAG>
+            <ALIAS value='-ahi'>Alias: -ahi</ALIAS>
+            <ARG type='STRINGLIST' name='filename' status='required' >filename</ARG>
+            <TOOLTIP>Simulate source &apos;.include filename&apos;</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--output_all_syms'>Option: --output_all_syms</ONAME>
+            <OTAG tag='OUTPUT_ALL_SYMS'>Tag: OUTPUT_ALL_SYMS</OTAG>
+            <ALIAS value='-as'>Alias: -as</ALIAS>
+            <TOOLTIP>Keep local symbols in output file</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--suppress_asm_warnings'>Option: --suppress_asm_warnings</ONAME>
+            <OTAG tag='SUPPRESS_ASM_WARNINGS'>Tag: SUPPRESS_ASM_WARNINGS</OTAG>
+            <ALIAS value='-atw'>Alias: -atw</ALIAS>
+            <TOOLTIP>Suppress all assembler warnings</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--suppress_remark'>Option: --suppress_remark=STRINGLIST(id)</ONAME>
+            <OTAG tag='SUPPRESS_REMARK'>Tag: SUPPRESS_REMARK</OTAG>
+            <ALIAS value='-ar'>Alias: -ar</ALIAS>
+            <ARG type='STRINGLIST' name='id' status='optional' >id</ARG>
+            <TOOLTIP>Suppress identified assembler remark</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--syms_ignore_case'>Option: --syms_ignore_case</ONAME>
+            <OTAG tag='SYMS_IGNORE_CASE'>Tag: SYMS_IGNORE_CASE</OTAG>
+            <ALIAS value='-ac'>Alias: -ac</ALIAS>
+            <TOOLTIP>Symbol names are not case-significant</TOOLTIP>
+        </OPTION>
+        
+    </CATEGORY>
+    
+    <CATEGORY>
+        <CNAME>FILE</CNAME>
+        <CDESC>File Type Specifier:</CDESC>
+        <OPTION>
+            <ONAME value='--asm_file'>Option: --asm_file=STRINGLIST(filename)</ONAME>
+            <OTAG tag='ASM_FILE'>Tag: ASM_FILE</OTAG>
+            <ALIAS value='-fa'>Alias: -fa</ALIAS>
+            <ARG type='STRINGLIST' name='filename' status='required' >filename</ARG>
+            <TOOLTIP>File is an assembly file (default for .asm)</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--c_file'>Option: --c_file=STRINGLIST(filename)</ONAME>
+            <OTAG tag='C_FILE'>Tag: C_FILE</OTAG>
+            <ALIAS value='-fc'>Alias: -fc</ALIAS>
+            <ARG type='STRINGLIST' name='filename' status='required' >filename</ARG>
+            <TOOLTIP>File is a C file (default for .c/no ext)</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--cpp_file'>Option: --cpp_file=STRINGLIST(filename)</ONAME>
+            <OTAG tag='CPP_FILE'>Tag: CPP_FILE</OTAG>
+            <ALIAS value='-fp'>Alias: -fp</ALIAS>
+            <ARG type='STRINGLIST' name='filename' status='required' >filename</ARG>
+            <TOOLTIP>File is a C++ file (default for .C .cpp .cc)</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--obj_file'>Option: --obj_file=STRINGLIST(filename)</ONAME>
+            <OTAG tag='OBJ_FILE'>Tag: OBJ_FILE</OTAG>
+            <ALIAS value='-fo'>Alias: -fo</ALIAS>
+            <ARG type='STRINGLIST' name='filename' status='required' >filename</ARG>
+            <TOOLTIP>File is an object file (default for .obj)</TOOLTIP>
+        </OPTION>
+        
+    </CATEGORY>
+    
+    <CATEGORY>
+        <CNAME>DIRECTORY</CNAME>
+        <CDESC>Directory Specifier:</CDESC>
+        <OPTION>
+            <ONAME value='--abs_directory'>Option: --abs_directory=STRING(dir)</ONAME>
+            <OTAG tag='ABS_DIRECTORY'>Tag: ABS_DIRECTORY</OTAG>
+            <ALIAS value='-fb'>Alias: -fb</ALIAS>
+            <ARG type='STRING' name='dir' status='required' >dir</ARG>
+            <TOOLTIP>Absolute listing directory (default is .obj dir)</TOOLTIP>
+            <CMDLINE_OPTION/>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--asm_directory'>Option: --asm_directory=STRING(dir)</ONAME>
+            <OTAG tag='ASM_DIRECTORY'>Tag: ASM_DIRECTORY</OTAG>
+            <ALIAS value='-fs'>Alias: -fs</ALIAS>
+            <ARG type='STRING' name='dir' status='required' >dir</ARG>
+            <TOOLTIP>Assembly file directory (default is .)</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--list_directory'>Option: --list_directory=STRING(dir)</ONAME>
+            <OTAG tag='LIST_DIRECTORY'>Tag: LIST_DIRECTORY</OTAG>
+            <ALIAS value='-ff'>Alias: -ff</ALIAS>
+            <ARG type='STRING' name='dir' status='required' >dir</ARG>
+            <TOOLTIP>Listing/xref file directory (default is .obj dir)</TOOLTIP>
+            <CHAIN value='--asm_listing'>Implies: --asm_listing</CHAIN>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--obj_directory'>Option: --obj_directory=STRING(dir)</ONAME>
+            <OTAG tag='OBJ_DIRECTORY'>Tag: OBJ_DIRECTORY</OTAG>
+            <ALIAS value='-fr'>Alias: -fr</ALIAS>
+            <ARG type='STRING' name='dir' status='required' >dir</ARG>
+            <TOOLTIP>Object file directory (default is .)</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--temp_directory'>Option: --temp_directory=STRING(dir)</ONAME>
+            <OTAG tag='TEMP_DIRECTORY'>Tag: TEMP_DIRECTORY</OTAG>
+            <ALIAS value='-ft'>Alias: -ft</ALIAS>
+            <ARG type='STRING' name='dir' status='required' >dir</ARG>
+            <TOOLTIP>Temporary file directory (default is .)</TOOLTIP>
+        </OPTION>
+        
+    </CATEGORY>
+    
+    <CATEGORY>
+        <CNAME>FILEEXT</CNAME>
+        <CDESC>Default File Extensions:</CDESC>
+        <OPTION>
+            <ONAME value='--asm_extension'>Option: --asm_extension=STRING(.ext)</ONAME>
+            <OTAG tag='ASM_EXTENSION'>Tag: ASM_EXTENSION</OTAG>
+            <ALIAS value='-ea'>Alias: -ea</ALIAS>
+            <ARG type='STRING' name='.ext' status='required' >.ext</ARG>
+            <TOOLTIP>Extension for assembly files (default is .asm)</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--c_extension'>Option: --c_extension=STRING(.ext)</ONAME>
+            <OTAG tag='C_EXTENSION'>Tag: C_EXTENSION</OTAG>
+            <ALIAS value='-ec'>Alias: -ec</ALIAS>
+            <ARG type='STRING' name='.ext' status='required' >.ext</ARG>
+            <TOOLTIP>Extension for C files (default is .c)</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--cpp_default'>Option: --cpp_default</ONAME>
+            <OTAG tag='CPP_DEFAULT'>Tag: CPP_DEFAULT</OTAG>
+            <ALIAS value='-fg'>Alias: -fg</ALIAS>
+            <TOOLTIP>Treat C files as C++ files</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--cpp_extension'>Option: --cpp_extension=STRING(.ext)</ONAME>
+            <OTAG tag='CPP_EXTENSION'>Tag: CPP_EXTENSION</OTAG>
+            <ALIAS value='-ep'>Alias: -ep</ALIAS>
+            <ARG type='STRING' name='.ext' status='required' >.ext</ARG>
+            <TOOLTIP>Extension for C++ files (default is .cpp)</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--listing_extension'>Option: --listing_extension=STRING(.ext)</ONAME>
+            <OTAG tag='LISTING_EXTENSION'>Tag: LISTING_EXTENSION</OTAG>
+            <ALIAS value='-es'>Alias: -es</ALIAS>
+            <ARG type='STRING' name='.ext' status='required' >.ext</ARG>
+            <TOOLTIP>Extension for listing files (default is .lst)</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--obj_extension'>Option: --obj_extension=STRING(.ext)</ONAME>
+            <OTAG tag='OBJ_EXTENSION'>Tag: OBJ_EXTENSION</OTAG>
+            <ALIAS value='-eo'>Alias: -eo</ALIAS>
+            <ARG type='STRING' name='.ext' status='required' >.ext</ARG>
+            <TOOLTIP>Extension for object files (default is .obj)</TOOLTIP>
+        </OPTION>
+        
+    </CATEGORY>
+    
+</TOOL>
+<TOOL tag='LINKER'>
+    <TOOLNAME>C/C++ LINKER</TOOLNAME>
+    <CATEGORY>
+        <CNAME>_OTHER</CNAME>
+        <CDESC>General Options:</CDESC>
+        <MUTEX>
+            <MNAME>Mutually Exclusive Group: Initialization model</MNAME>
+            <SEVERITY value='RESET'></SEVERITY>
+            <NONE>Option: NONE_OK</NONE>
+            <OPTION>
+                <ONAME value='--rom_model'>Option: --rom_model</ONAME>
+                <OTAG tag='ROM_MODEL'>Tag: ROM_MODEL</OTAG>
+                <ALIAS value='-c'>Alias: -c</ALIAS>
+                <TOOLTIP>Link using ROM autoinitialization model</TOOLTIP>
+                <RESETS value='--ram_model'>Resets: --ram_model</RESETS>
+            </OPTION>
+            
+            <OPTION>
+                <ONAME value='--ram_model'>Option: --ram_model</ONAME>
+                <OTAG tag='RAM_MODEL'>Tag: RAM_MODEL</OTAG>
+                <ALIAS value='-cr'>Alias: -cr</ALIAS>
+                <TOOLTIP>Link using RAM autoinitialization model</TOOLTIP>
+                <RESETS value='--rom_model'>Resets: --rom_model</RESETS>
+            </OPTION>
+            
+        </MUTEX>
+        <OPTION>
+            <ONAME value='--absolute_exe'>Option: --absolute_exe</ONAME>
+            <OTAG tag='ABSOLUTE_EXE'>Tag: ABSOLUTE_EXE</OTAG>
+            <ALIAS value='-a'>Alias: -a</ALIAS>
+            <TOOLTIP>Produce an absolute, executable object file (default)</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--arg_size'>Option: --arg_size=HEXNUMBER(size)</ONAME>
+            <OTAG tag='ARG_SIZE'>Tag: ARG_SIZE</OTAG>
+            <ALIAS value='--args'>Alias: --args</ALIAS>
+            <ARG type='HEXNUMBER' name='size' status='required' >size</ARG>
+            <TOOLTIP>Set C argc/argv memory size</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--disable_clink'>Option: --disable_clink</ONAME>
+            <OTAG tag='DISABLE_CLINK'>Tag: DISABLE_CLINK</OTAG>
+            <ALIAS value='-j'>Alias: -j</ALIAS>
+            <TOOLTIP>Disable conditional linking; ignore .clink directives</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--entry_point'>Option: --entry_point=STRING(symbol)</ONAME>
+            <OTAG tag='ENTRY_POINT'>Tag: ENTRY_POINT</OTAG>
+            <ALIAS value='-e'>Alias: -e</ALIAS>
+            <ARG type='STRING' name='symbol' status='required' >symbol</ARG>
+            <TOOLTIP>Specify the program entry point for the output module</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--fill_value'>Option: --fill_value=HEXNUMBER(value)</ONAME>
+            <OTAG tag='FILL_VALUE'>Tag: FILL_VALUE</OTAG>
+            <ALIAS value='-f'>Alias: -f</ALIAS>
+            <ARG type='HEXNUMBER' name='value' status='required' >value</ARG>
+            <TOOLTIP>Set default fill value for holes in output sections</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--heap_size'>Option: --heap_size=HEXNUMBER(size)</ONAME>
+            <OTAG tag='HEAP_SIZE'>Tag: HEAP_SIZE</OTAG>
+            <ALIAS value='-heap'>Alias: -heap</ALIAS>
+            <ALIAS value='--heap'>Alias: --heap</ALIAS>
+            <ARG type='HEXNUMBER' name='size' status='required' >size</ARG>
+            <TOOLTIP>Specify heap size for C/C++ dynamic memory allocation</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--ignore_align_flags'>Option: --ignore_align_flags</ONAME>
+            <OTAG tag='IGNORE_ALIGN_FLAGS'>Tag: IGNORE_ALIGN_FLAGS</OTAG>
+            <ALIAS value='-k'>Alias: -k</ALIAS>
+            <TOOLTIP>Ignore alignment flags specified in input sections</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--library'>Option: --library=STRINGLIST(file)</ONAME>
+            <OTAG tag='LIBRARY'>Tag: LIBRARY</OTAG>
+            <ALIAS value='-l'>Alias: -l</ALIAS>
+            <ARG type='STRINGLIST' name='file' status='required' >file</ARG>
+            <TOOLTIP>Include library file or command file as input</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--linker_help'>Option: --linker_help</ONAME>
+            <OTAG tag='LINKER_HELP'>Tag: LINKER_HELP</OTAG>
+            <ALIAS value='-help'>Alias: -help</ALIAS>
+            <ALIAS value='--help'>Alias: --help</ALIAS>
+            <TOOLTIP>Display usage information</TOOLTIP>
+            <ODESC>Display usage information.  Followed by another option, will display detailed information on that option.</ODESC>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--make_global'>Option: --make_global=STRINGLIST(symbol)</ONAME>
+            <OTAG tag='MAKE_GLOBAL'>Tag: MAKE_GLOBAL</OTAG>
+            <ALIAS value='-g'>Alias: -g</ALIAS>
+            <ARG type='STRINGLIST' name='symbol' status='required' >symbol</ARG>
+            <TOOLTIP>Make specified symbol global (overrides -h)</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--make_static'>Option: --make_static</ONAME>
+            <OTAG tag='MAKE_STATIC'>Tag: MAKE_STATIC</OTAG>
+            <ALIAS value='-h'>Alias: -h</ALIAS>
+            <TOOLTIP>Make all global symbols static</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--map_file'>Option: --map_file=STRING(file)</ONAME>
+            <OTAG tag='MAP_FILE'>Tag: MAP_FILE</OTAG>
+            <ALIAS value='-m'>Alias: -m</ALIAS>
+            <ARG type='STRING' name='file' status='required' >file</ARG>
+            <TOOLTIP>Produce listing of input and output sections in &lt;file&gt;</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--no_sym_merge'>Option: --no_sym_merge</ONAME>
+            <OTAG tag='NO_SYM_MERGE'>Tag: NO_SYM_MERGE</OTAG>
+            <ALIAS value='-b'>Alias: -b</ALIAS>
+            <TOOLTIP>Disable type merging in symbolic debugging information</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--no_symtable'>Option: --no_symtable</ONAME>
+            <OTAG tag='NO_SYMTABLE'>Tag: NO_SYMTABLE</OTAG>
+            <ALIAS value='-s'>Alias: -s</ALIAS>
+            <TOOLTIP>Strip symbol table and line number entries</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--output_file'>Option: --output_file=STRING(file)</ONAME>
+            <OTAG tag='OUTPUT_FILE'>Tag: OUTPUT_FILE</OTAG>
+            <ALIAS value='-o'>Alias: -o</ALIAS>
+            <ARG type='STRING' name='file' status='required' >file</ARG>
+            <TOOLTIP>Specify output file name</TOOLTIP>
+            <ODESC>Full filename of the output file.</ODESC>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--priority'>Option: --priority</ONAME>
+            <OTAG tag='PRIORITY'>Tag: PRIORITY</OTAG>
+            <ALIAS value='-priority'>Alias: -priority</ALIAS>
+            <TOOLTIP>Search libraries in priority order</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--relocatable'>Option: --relocatable</ONAME>
+            <OTAG tag='RELOCATABLE'>Tag: RELOCATABLE</OTAG>
+            <ALIAS value='-r'>Alias: -r</ALIAS>
+            <TOOLTIP>Produce a relocatable output module</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--reread_libs'>Option: --reread_libs</ONAME>
+            <OTAG tag='REREAD_LIBS'>Tag: REREAD_LIBS</OTAG>
+            <ALIAS value='-x'>Alias: -x</ALIAS>
+            <TOOLTIP>Reread libraries; resolve backward references</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--run_abs'>Option: --run_abs</ONAME>
+            <OTAG tag='RUN_ABS'>Tag: RUN_ABS</OTAG>
+            <ALIAS value='-abs'>Alias: -abs</ALIAS>
+            <TOOLTIP>Produce absolute listing file</TOOLTIP>
+            <CMDLINE_OPTION/>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--search_path'>Option: --search_path=STRINGLIST(dir)</ONAME>
+            <OTAG tag='SEARCH_PATH'>Tag: SEARCH_PATH</OTAG>
+            <ALIAS value='-i'>Alias: -i</ALIAS>
+            <ARG type='STRINGLIST' name='dir' status='required' >dir</ARG>
+            <TOOLTIP>Add &lt;dir&gt; to library search path</TOOLTIP>
+            <ODESC>Alter the library-search algorithm to look in dir before looking in the default location.  This option must appear before the -l option.</ODESC>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--stack_size'>Option: --stack_size=HEXNUMBER(size)</ONAME>
+            <OTAG tag='STACK_SIZE'>Tag: STACK_SIZE</OTAG>
+            <ALIAS value='-stack'>Alias: -stack</ALIAS>
+            <ALIAS value='--stack'>Alias: --stack</ALIAS>
+            <ARG type='HEXNUMBER' name='size' status='required' >size</ARG>
+            <TOOLTIP>Set C system stack size</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--sys_stacksize'>Option: --sys_stacksize=HEXNUMBER(size)</ONAME>
+            <OTAG tag='SYS_STACKSIZE'>Tag: SYS_STACKSIZE</OTAG>
+            <ALIAS value='-sysstack'>Alias: -sysstack</ALIAS>
+            <ARG type='HEXNUMBER' name='size' status='required' >size</ARG>
+            <TOOLTIP>Specify size of output sysstack section</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--undef_sym'>Option: --undef_sym=STRINGLIST(sym)</ONAME>
+            <OTAG tag='UNDEF_SYM'>Tag: UNDEF_SYM</OTAG>
+            <ALIAS value='-u'>Alias: -u</ALIAS>
+            <ARG type='STRINGLIST' name='sym' status='required' >sym</ARG>
+            <TOOLTIP>Add &lt;sym&gt; to symbol table as an unresolved symbol</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--warn_sections'>Option: --warn_sections</ONAME>
+            <OTAG tag='WARN_SECTIONS'>Tag: WARN_SECTIONS</OTAG>
+            <ALIAS value='-w'>Alias: -w</ALIAS>
+            <TOOLTIP>Warn if an unspecified output section is created</TOOLTIP>
+        </OPTION>
+        
+        <OPTION>
+            <ONAME value='--xml_link_info'>Option: --xml_link_info=STRING(file)</ONAME>
+            <OTAG tag='XML_LINK_INFO'>Tag: XML_LINK_INFO</OTAG>
+            <ALIAS value='-xml_link_info'>Alias: -xml_link_info</ALIAS>
+            <ARG type='STRING' name='file' status='required' >file</ARG>
+            <TOOLTIP>Produce detailed link information data-base in &lt;file&gt;</TOOLTIP>
+        </OPTION>
+        
+    </CATEGORY>
+    
+</TOOL>
+</TOOLSET>

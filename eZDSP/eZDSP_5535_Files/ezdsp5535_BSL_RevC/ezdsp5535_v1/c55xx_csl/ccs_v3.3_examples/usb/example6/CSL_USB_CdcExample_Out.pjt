@@ -1,0 +1,41 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="C:\mwei\Medical\Technical\C5515\Software_Release\USB_CDC_ACM\c5515_usb_cdc_acm_echo_api_003\c55xx_csl\ccs_v3.3_examples\usb\example6\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Project Dependencies]
+Source="..\..\..\build\cslVC5505.pjt"
+
+["..\..\..\build\cslVC5505.pjt" Settings]
+MatchConfigName=true
+
+[Source Files]
+Source="csl_usb_cdc_example.c"
+Source="VC5505_USB.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -al -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)\..\..\..\src" -i"$(Proj_dir)\..\..\..\inc" -d"_DEBUG" -ml -vcore:3.3
+
+["Compiler" Settings: "Release"]
+Options=-mg -o2 -fr"$(Proj_dir)\Release" -i"$(Proj_dir)\..\..\..\src" -i"$(Proj_dir)\..\..\..\inc" -ml -vcore:3.3
+
+["Linker" Settings: "Debug"]
+Options=-c -m".\Debug\CSL_USB_CdcExample_Out.map" -o".\Debug\CSL_USB_CdcExample_Out.out" -x -i"$(Install_dir)\C5500\cgtools\lib" -l"rts55x.lib"
+
+["Linker" Settings: "Release"]
+Options=-c -m".\Release\CSL_USB_CdcExample_Out.map" -o".\Release\CSL_USB_CdcExample_Out.out" -x -i"$(Install_dir)\C5500\cgtools\lib" -l"rts55x.lib"
+
+["VC5505_USB.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["VC5505_USB.cmd" Settings: "Release"]
+LinkOrder=1
+

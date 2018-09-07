@@ -1,0 +1,1867 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+	<extension point="org.eclipse.cdt.managedbuilder.core.buildDefinitions"
+		id="C6000_5.1"
+		name="C6000 v5.1 Build Definitions">
+		
+		<managedBuildRevision fileVersion="3.1.0"/>
+		
+		<!-- =================== Executable project-type / Debug configuration =================== -->
+		<toolChain
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exe.DebugToolchain"
+			superClass="com.ti.ccstudio.buildDefinitions.core.toolChain"
+			targetTool="com.ti.ccstudio.buildDefinitions.C6000_5.1.exe.linkerDebug">
+			<builder
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exe.builderDebug"
+				superClass="com.ti.ccstudio.buildDefinitions.core.GNUMakeBuilder"/>
+			<targetPlatform
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exe.targetPlatformDebug"
+				superClass="com.ti.ccstudio.buildDefinitions.core.targetPlatform"/>
+		</toolChain>
+		<tool
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exe.compilerDebug"
+			superClass="com.ti.ccstudio.buildDefinitions.C6000_5.1.compiler"/>
+		<tool
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exe.linkerDebug"
+			superClass="com.ti.ccstudio.buildDefinitions.C6000_5.1.exeLinker"/>
+
+		<!-- ================== Executable project-type / Release configuration ================== -->
+		<toolChain
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exe.ReleaseToolchain"
+			superClass="com.ti.ccstudio.buildDefinitions.core.toolChain"
+			targetTool="com.ti.ccstudio.buildDefinitions.C6000_5.1.exe.linkerRelease">
+			<builder
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exe.builderRelease"
+				superClass="com.ti.ccstudio.buildDefinitions.core.GNUMakeBuilder"/>
+			<targetPlatform
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exe.targetPlatformRelease"
+				superClass="com.ti.ccstudio.buildDefinitions.core.targetPlatform"/>
+		</toolChain>
+		<tool
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exe.compilerRelease"
+			superClass="com.ti.ccstudio.buildDefinitions.C6000_5.1.compiler">
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_LEVEL.release"
+				defaultValue="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_LEVEL.2"
+				superClass="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_LEVEL"/>
+		</tool>
+		<tool
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exe.linkerRelease"
+			superClass="com.ti.ccstudio.buildDefinitions.C6000_5.1.exeLinker"/>
+
+		<!-- ===================== Library project-type / Debug configuration ==================== -->
+		<toolChain
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.libraryDebugToolchain"
+			superClass="com.ti.ccstudio.buildDefinitions.core.toolChain"
+			targetTool="com.ti.ccstudio.buildDefinitions.C6000_5.1.library.librarianDebug">
+			<builder
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.library.builderDebug"
+				superClass="com.ti.ccstudio.buildDefinitions.core.GNUMakeBuilder"/>
+			<targetPlatform
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.library.targetPlatformDebug"
+				superClass="com.ti.ccstudio.buildDefinitions.core.targetPlatform"/>
+		</toolChain>
+		<tool
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.library.compilerDebug"
+			superClass="com.ti.ccstudio.buildDefinitions.C6000_5.1.compiler"/>
+		<tool
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.library.librarianDebug"
+			superClass="com.ti.ccstudio.buildDefinitions.C6000_5.1.librarian"/>
+
+		<!-- ==================== Library project-type / Release configuration =================== -->
+		<toolChain
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.library.ReleaseToolchain"
+			superClass="com.ti.ccstudio.buildDefinitions.core.toolChain"
+			targetTool="com.ti.ccstudio.buildDefinitions.C6000_5.1.library.librarianRelease">
+			<builder
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.library.builderRelease"
+				superClass="com.ti.ccstudio.buildDefinitions.core.GNUMakeBuilder"/>
+			<targetPlatform
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.library.targetPlatformRelease"
+				superClass="com.ti.ccstudio.buildDefinitions.core.targetPlatform"/>
+		</toolChain>
+		<tool
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.library.compilerRelease"
+			superClass="com.ti.ccstudio.buildDefinitions.C6000_5.1.compiler">
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_LEVEL.library.release"
+				defaultValue="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_LEVEL.2"
+				superClass="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_LEVEL"/>               
+		</tool>
+		<tool
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.library.librarianRelease"
+			superClass="com.ti.ccstudio.buildDefinitions.C6000_5.1.librarian"/>
+
+		<!-- ============================= Target Tool Definitions =============================== -->
+		<tool
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compiler"
+			name="C6000 Compiler"
+			isAbstract="true"
+			natureFilter="both"
+			commandLinePattern="${command} ${flags} ${inputs}"
+			errorParsers="com.ti.ccstudio.errorparser.CoffErrorParser;com.ti.ccstudio.errorparser.AsmErrorParser"
+			commandLineGenerator="com.ti.ccstudio.managedbuild.core.CompilerCommandLineGenerator"
+			superClass="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID">
+			<inputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compiler.inputType__C"
+				name="C Sources"
+				sourceContentType="org.eclipse.cdt.core.cSource"
+				dependencyContentType="org.eclipse.cdt.core.cHeader"
+				dependencyCalculator="com.ti.ccstudio.managedbuild.core.CCEDependencyCalculator"/>
+			<inputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compiler.inputType__CPP"
+				name="C++ Sources"
+				sourceContentType="org.eclipse.cdt.core.cxxSource"
+				dependencyContentType="org.eclipse.cdt.core.cxxHeader"
+				dependencyCalculator="com.ti.ccstudio.managedbuild.core.CCEDependencyCalculator"/>
+			<inputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compiler.inputType__ASM"
+				name="Assembly Sources"
+				sourceContentType="org.eclipse.cdt.core.asmSource"/>
+			<inputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compiler.inputType__ASM2"
+				name="Assembly Sources"
+				sourceContentType="com.ti.common.core.asmSource"/>
+			<inputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compiler.inputType__GEN_OPTS"
+				name="Generated Command Option Files"
+				sourceContentType="com.ti.common.core.commandOptionFile"
+				buildVariable="GEN_OPTS"/>
+			<inputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compiler.inputType__GEN_SRCS"
+				name="Generated Source Files"
+				buildVariable="GEN_SRCS"/>
+			<outputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compiler.outputType__OBJS"
+				name="Object Files"
+				outputContentType="org.eclipse.cdt.managedbuilder.core.compiledObjectFile"
+				nameProvider="com.ti.ccstudio.managedbuild.core.CompilerOutputNameProvider"
+				primaryOutput="true"
+				buildVariable="OBJS"/>
+		</tool>
+		<tool
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exeLinker"
+			name="C6000 Linker"
+			isAbstract="true"
+			natureFilter="both"
+			commandLineGenerator="com.ti.ccstudio.managedbuild.core.LinkerCommandLineGenerator"
+			commandLinePattern="${command} ${flags} ${output_flag} ${output} ${inputs}"
+			errorParsers="com.ti.ccstudio.errorparser.LinkErrorParser"
+			superClass="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID">
+			<inputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exeLinker.inputType__OBJS"
+				name="Object Files"
+				sourceContentType="org.eclipse.cdt.managedbuilder.core.compiledObjectFile"
+				multipleOfType="true"
+				buildVariable="OBJS"/>
+			<inputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exeLinker.inputType__CMDS"
+				name="Linker Command Files"
+				sourceContentType="com.ti.common.core.linkerCommandFile"
+				multipleOfType="true"/>
+			<inputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exeLinker.inputType__CMDS2"
+				name="Linker Command Files"
+				sourceContentType="com.ti.common.core.linkerCommandFile2"
+				multipleOfType="true"/>
+			<inputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exeLinker.inputType__LIBS"
+				name="Runtime Support Libraries"
+				sourceContentType="org.eclipse.cdt.managedbuilder.core.staticLibrary"
+				multipleOfType="true"/>
+			<inputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exeLinker.inputType__GEN_CMDS"
+				name="Generated Linker Command Files"
+				sourceContentType="com.ti.common.core.linkerCommandFile"
+				buildVariable="GEN_CMDS"/>
+			<outputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.exeLinker.outputType__EXE"
+				name="C6000 Executable"
+				outputContentType="org.eclipse.cdt.managedbuilder.core.executableFile"
+				primaryOutput="true"/>
+		</tool>
+		<tool
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.librarian"
+			name="C6000 Archiver"
+			isAbstract="true"
+			natureFilter="both"
+			commandLineGenerator="com.ti.ccstudio.managedbuild.core.ArchiverCommandLineGenerator"
+			commandLinePattern="${command} ${flags} ${output} ${inputs}"
+			errorParsers="com.ti.ccstudio.errorparser.LinkErrorParser"
+			superClass="com.ti.ccstudio.buildDefinitions.C6000_5.1.archiverID">
+			<inputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.librarian.inputType__OBJS"
+				name="Object Files"
+				sourceContentType="org.eclipse.cdt.managedbuilder.core.compiledObjectFile"
+				multipleOfType="true"
+				buildVariable="OBJS"/>
+			<inputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.librarian.inputType__OBJ_SRCS"
+				name="Object Files"
+				sourceContentType="org.eclipse.cdt.managedbuilder.core.compiledObjectFile"
+				multipleOfType="true"/>
+			<inputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.librarian.inputType__CMDS"
+				name="Linker Command Files"
+				sourceContentType="com.ti.common.core.linkerCommandFile"
+				multipleOfType="true"/>
+			<inputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.librarian.inputType__LIBS"
+				name="Runtime Support Libraries"
+				sourceContentType="org.eclipse.cdt.managedbuilder.core.staticLibrary"
+				multipleOfType="true"/>
+			<outputType
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.librarian.outputType__LIB"
+				name="C6000 Library"
+				outputContentType="org.eclipse.cdt.managedbuilder.core.staticLibrary"
+				primaryOutput="true"/>
+		</tool>
+
+		<!-- ============================= Begin auto-generated body ============================= -->
+
+		<tool
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID"
+			superClass="com.ti.ccstudio.buildDefinitions.baseCompilerTool"
+			isAbstract="true"
+			name="C6000 Compiler"
+			command="&quot;${CG_TOOL_ROOT}/bin/cl6x&quot;">
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.ALIASED_VARIABLES"
+				name="Assume called funcs create hidden aliases (rare) (--aliased_variables, -ma)"
+				tip="Aliases: --aliased_variables, -ma&lt;BODY&gt;Assume called funcs create hidden aliases (rare)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				defaultValue="false"
+				command="--aliased_variables"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.C_SRC_INTERLIST"
+				name="Generate source interlisted assembly file (--c_src_interlist, -ss)"
+				tip="Aliases: --c_src_interlist, -ss&lt;BODY&gt;Generate source interlisted assembly file"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				defaultValue="false"
+				command="--c_src_interlist"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.generatedCommandOptionFiles"
+				name="[Deprecated] Generated Command Option Files"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				applicabilityCalculator="com.ti.common.managedbuild.core.options.DeprecatedOptionApplicability"
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.CMD_FILE"
+				name="Read options from file filename (--cmd_file, -@)"
+				tip="Aliases: --cmd_file, -@&lt;BODY&gt;Read options from file filename"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				applicabilityCalculator="com.ti.common.managedbuild.core.options.VirtualOptionApplicability"
+				command="--cmd_file="
+				browseType="file"
+				valueType="stringList"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.COMPILE_ONLY"
+				name="Disable linking (overrides -z) (--compile_only, -c)"
+				tip="Aliases: --compile_only, -c&lt;BODY&gt;Disable linking (overrides -z)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				defaultValue="false"
+				command="--compile_only"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.COMPILER_REVISION"
+				name="Print compiler revision and exit (--compiler_revision)"
+				tip="Aliases: --compiler_revision&lt;BODY&gt;Print out the compiler release revision and exit."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				defaultValue="false"
+				command="--compiler_revision"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.CONSULTANT"
+				name="Generate compiler consultant information (--consultant)"
+				tip="Aliases: --consultant&lt;BODY&gt;Generate compiler consultant information"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				defaultValue="false"
+				command="--consultant"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DEFINE"
+				name="Pre-define NAME (--define, -D)"
+				tip="Aliases: --define, -D&lt;BODY&gt;Pre-define the symbol NAME, optionally setting it's contents to 'value'."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				command="--define="
+				valueType="definedSymbols">
+				<listOptionValue value="__SIZE_T_TYPE=unsigned" builtIn="true"/>
+				<listOptionValue value="__PTRDIFF_T_TYPE=int" builtIn="true"/>
+				<listOptionValue value="__TI_COMPILER_VERSION" builtIn="true"/>
+				<listOptionValue value="__DATE__" builtIn="true"/>
+				<listOptionValue value="__TIME__" builtIn="true"/>
+				<listOptionValue value="__LINE__" builtIn="true"/>
+				<listOptionValue value="__FILE__" builtIn="true"/>
+				<listOptionValue value="__unsigned_chars=1" builtIn="true"/>
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.HELP"
+				name="Show help screen (--help, -h)"
+				tip="Aliases: --help, -h&lt;BODY&gt;Show usage information.  When followed by another option or a phrase display that option's detailed information, or search for options related to that phrase."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				defaultValue="false"
+				command="--help"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.INCLUDE_PATH"
+				name="Add dir to #include search path (--include_path, -I)"
+				tip="Aliases: --include_path, -I&lt;BODY&gt;Add dir to #include search path"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				command="--include_path="
+				browseType="directory"
+				valueType="includePath">
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.KEEP_ASM"
+				name="Keep the generated assembly language (.asm) file (--keep_asm, -k)"
+				tip="Aliases: --keep_asm, -k&lt;BODY&gt;Keep the generated assembly language (.asm) file"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				defaultValue="false"
+				command="--keep_asm"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.PROFILE__BREAKPT"
+				name="Compile for breakpoint-based profiling (--profile:breakpt)"
+				tip="Aliases: --profile:breakpt&lt;BODY&gt;Disable optimizations that cannot be handled by a breakpoint-based profiler"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				defaultValue="false"
+				command="--profile:breakpt"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.PROFILE__POWER"
+				name="Compile for power profiling (--profile:power)"
+				tip="Aliases: --profile:power&lt;BODY&gt;Enable power profiling support by inserting NOPs into the frame code.  These NOPs can then be instrumented by the power profiling tooling to track power usage of functions.  If the power profiling tool is not used, this option will increase the cycle count of each function because of the NOPs.  This switch also disables optimizations that cannot be handled by the power-profiler."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				defaultValue="false"
+				command="--profile:power"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.QUIET"
+				name="Quiet Mode (--quiet, -q)"
+				tip="Aliases: --quiet, -q&lt;BODY&gt;Suppress common compiler non-diagnostic output.  Remarks, errors and warnings will still be generated, as well as feature specific status."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				defaultValue="false"
+				command="--quiet"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.RUN_LINKER"
+				name="Perform link using options following (--run_linker, -z)"
+				tip="Aliases: --run_linker, -z&lt;BODY&gt;After compiling all the source files, perform a link and pass all the options following this option to the linker."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				command="--run_linker="
+				browseType="file"
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.SKIP_ASSEMBLER"
+				name="Compile only; do not assemble (--skip_assembler, -n)"
+				tip="Aliases: --skip_assembler, -n&lt;BODY&gt;Compile only; do not assemble"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				defaultValue="false"
+				command="--skip_assembler"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.SRC_INTERLIST"
+				name="Generate interlisted assembly file (--src_interlist, -s)"
+				tip="Aliases: --src_interlist, -s&lt;BODY&gt;Generate interlisted assembly file"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				defaultValue="false"
+				command="--src_interlist"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.SUPER_QUIET"
+				name="Super Quiet Mode (--super_quiet, -qq)"
+				tip="Aliases: --super_quiet, -qq&lt;BODY&gt;Suppress all compiler non-diagnostic output.  Remarks, errors and warnings will still be generated."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				defaultValue="false"
+				command="--super_quiet"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.TOOL_VERSION"
+				name="Print version numbers for each tool (--tool_version, -version)"
+				tip="Aliases: --tool_version, -version&lt;BODY&gt;Print version numbers for each tool"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				defaultValue="false"
+				command="--tool_version"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.UNDEFINE"
+				name="Undefine NAME (--undefine, -U)"
+				tip="Aliases: --undefine, -U&lt;BODY&gt;Undefine NAME"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				command="--undefine="
+				valueType="stringList">
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.VERBOSE"
+				name="Display banner and function progress information (--verbose)"
+				tip="Aliases: --verbose&lt;BODY&gt;Display progress information and toolset version when executing."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				defaultValue="false"
+				command="--verbose"
+				valueType="boolean"/>
+			<optionCategory
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID._OTHER"
+				name="General Options"
+				owner="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DEBUGGING_MODEL"
+				name="Debugging model"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.SYMDEBUG"
+				valueType="enumerated">
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DEBUGGING_MODEL._none"
+					name=""
+					command=""/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DEBUGGING_MODEL.SYMDEBUG__DWARF"
+					name="Full symbolic debug (same as -g) (--symdebug:dwarf)"
+					isDefault="true"
+					command="--symdebug:dwarf"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DEBUGGING_MODEL.SYMDEBUG__COFF"
+					name="Full symbolic debug (COFF, deprecated) (--symdebug:coff)"
+					command="--symdebug:coff"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DEBUGGING_MODEL.SYMDEBUG__PROFILE_COFF"
+					name="Function profile debug (COFF, deprecated) (--symdebug:profile_coff)"
+					command="--symdebug:profile_coff"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DEBUGGING_MODEL.SYMDEBUG__NONE"
+					name="Suppress all symbolic debug generation (--symdebug:none)"
+					command="--symdebug:none"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DEBUGGING_MODEL.SYMDEBUG__SKELETAL"
+					name="Symbolic debug for program analysis (default) (--symdebug:skeletal)"
+					command="--symdebug:skeletal"/>
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.MACHINE_REGS"
+				name="Display reg operands as machine registers in asm file (--machine_regs)"
+				tip="Aliases: --machine_regs&lt;BODY&gt;When compiling linear assembly, register operands can be displayed in the assembly file as either machine registers or symbolic registers.  Symbolic registers is the default. Use this option to display machine registers in the assembly file when compiling linear assembly.  When compiling C/C++ machine registers are the default."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.SYMDEBUG"
+				defaultValue="false"
+				command="--machine_regs"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.SYMDEBUG__DEFAULT"
+				name="Full symbolic debug (--symdebug:default, -g)"
+				tip="Aliases: --symdebug:default, -g&lt;BODY&gt;Full symbolic debug"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.SYMDEBUG"
+				defaultValue="false"
+				command="--symdebug:default"
+				valueType="boolean"/>
+			<optionCategory
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.SYMDEBUG"
+				name="Symbolic Debug Options"
+				owner="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.EMBEDDED_CPP"
+				name="Embedded C++ (--embedded_cpp, -pe)"
+				tip="Aliases: --embedded_cpp, -pe&lt;BODY&gt;Embedded C++"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PARSER"
+				defaultValue="false"
+				command="--embedded_cpp"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.EXCEPTIONS"
+				name="Enable C++ exception handling (--exceptions)"
+				tip="Aliases: --exceptions&lt;BODY&gt;Enable C++ exception handling"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PARSER"
+				defaultValue="false"
+				command="--exceptions"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.GEN_ACP_RAW"
+				name="Output raw listing to .rl file (--gen_acp_raw, -pl)"
+				tip="Aliases: --gen_acp_raw, -pl&lt;BODY&gt;Output raw listing to .rl file"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PARSER"
+				defaultValue="false"
+				command="--gen_acp_raw"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.GEN_ACP_XREF"
+				name="Output xref listing to .crl file (--gen_acp_xref, -px)"
+				tip="Aliases: --gen_acp_xref, -px&lt;BODY&gt;Output xref listing to .crl file"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PARSER"
+				defaultValue="false"
+				command="--gen_acp_xref"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.KR_COMPATIBLE"
+				name="K &amp; R compatibility (--kr_compatible, -pk)"
+				tip="Aliases: --kr_compatible, -pk&lt;BODY&gt;K &amp; R compatibility"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PARSER"
+				defaultValue="false"
+				command="--kr_compatible"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.MULTIBYTE_CHARS"
+				name="Multibyte character support (--multibyte_chars, -pc)"
+				tip="Aliases: --multibyte_chars, -pc&lt;BODY&gt;Multibyte character support"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PARSER"
+				defaultValue="false"
+				command="--multibyte_chars"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.NO_INLINING"
+				name="Ignore inline keyword (--no_inlining, -pi)"
+				tip="Aliases: --no_inlining, -pi&lt;BODY&gt;Ignore inline keyword"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PARSER"
+				defaultValue="false"
+				command="--no_inlining"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.NO_INTRINSICS"
+				name="Disable intrinsic functions (--no_intrinsics, -pn)"
+				tip="Aliases: --no_intrinsics, -pn&lt;BODY&gt;Disable intrinsic functions"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PARSER"
+				defaultValue="false"
+				command="--no_intrinsics"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.PROGRAM_LEVEL_COMPILE"
+				name="Program mode compilation (--program_level_compile, -pm)"
+				tip="Aliases: --program_level_compile, -pm&lt;BODY&gt;Program mode compilation"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PARSER"
+				resourceFilter="project"
+				defaultValue="false"
+				command="--program_level_compile"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.RELAXED_ANSI"
+				name="Relaxed parsing (non-strict ANSI) (--relaxed_ansi, -pr)"
+				tip="Aliases: --relaxed_ansi, -pr&lt;BODY&gt;Relaxed parsing (non-strict ANSI)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PARSER"
+				defaultValue="false"
+				command="--relaxed_ansi"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.RTTI"
+				name="Support C++ run-time type information (--rtti, -rtti)"
+				tip="Aliases: --rtti, -rtti&lt;BODY&gt;Support C++ run-time type information"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PARSER"
+				defaultValue="false"
+				command="--rtti"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.STRICT_ANSI"
+				name="Strict ANSI mode (errors) (--strict_ansi, -ps)"
+				tip="Aliases: --strict_ansi, -ps&lt;BODY&gt;Strict ANSI mode (errors)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PARSER"
+				defaultValue="false"
+				command="--strict_ansi"
+				valueType="boolean"/>
+			<optionCategory
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PARSER"
+				name="Parser Options"
+				owner="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.PREPROC_MODE"
+				name="Mode"
+				tip="In 'automatic' mode, CCS will implicitly use the parser-preprocessing options to generate source dependency-graph. In 'manual' mode, no dependency-graph is generated, and the user has full manual control over the preprocessing options."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PREPROC"
+				valueType="enumerated">
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.PREPROC_MODE.automatic"
+					name="automatic (default)"
+					isDefault="true"
+					command=""/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.PREPROC_MODE.manual"
+					name="manual"
+					command=""/>
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.PREPROC_DEPENDENCY"
+				name="Generate include file dependency information (--preproc_dependency, -ppd)"
+				tip="Aliases: --preproc_dependency, -ppd&lt;BODY&gt;Generate a dependency list for the source file into the file &lt;filename&gt;.pp   Optionally, name the output file.  The output will include all files included in the source file as well as any of the files included.  Also see the -ppa option to continue compilation after generating the dependency list (ala gcc)."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PREPROC"
+				applicabilityCalculator="com.ti.ccstudio.managedbuild.core.options.PreprocOptionApplicabilityCalculator"
+				command="--preproc_dependency="
+				browseType="file"
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.PREPROC_INCLUDES"
+				name="Generate first-level include file list (--preproc_includes, -ppi)"
+				tip="Aliases: --preproc_includes, -ppi&lt;BODY&gt;Generate an include list for the source file into the file &lt;filename&gt;.pp   Optionally, name the output file.  The output will include only those files directly included by the source file.   Also see the -ppa option to continue compilation after generating the include list (ala gcc)."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PREPROC"
+				applicabilityCalculator="com.ti.ccstudio.managedbuild.core.options.PreprocOptionApplicabilityCalculator"
+				command="--preproc_includes="
+				browseType="file"
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.PREPROC_ONLY"
+				name="Preprocess only (--preproc_only, -ppo)"
+				tip="Aliases: --preproc_only, -ppo&lt;BODY&gt;Preprocess only"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PREPROC"
+				applicabilityCalculator="com.ti.ccstudio.managedbuild.core.options.PreprocOptionApplicabilityCalculator"
+				defaultValue="false"
+				command="--preproc_only"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.PREPROC_WITH_COMMENT"
+				name="Preprocess only; maintain comments (--preproc_with_comment, -ppc)"
+				tip="Aliases: --preproc_with_comment, -ppc&lt;BODY&gt;Preprocess only; maintain comments"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PREPROC"
+				applicabilityCalculator="com.ti.ccstudio.managedbuild.core.options.PreprocOptionApplicabilityCalculator"
+				defaultValue="false"
+				command="--preproc_with_comment"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.PREPROC_WITH_COMPILE"
+				name="Generate a preprocessed file and continue compilation (--preproc_with_compile, -ppa)"
+				tip="Aliases: --preproc_with_compile, -ppa&lt;BODY&gt;Generate a preprocessed file and continue compilation"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PREPROC"
+				applicabilityCalculator="com.ti.ccstudio.managedbuild.core.options.PreprocOptionApplicabilityCalculator"
+				defaultValue="false"
+				command="--preproc_with_compile"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.PREPROC_WITH_LINE"
+				name="Preprocess only; maintain line directives (--preproc_with_line, -ppl)"
+				tip="Aliases: --preproc_with_line, -ppl&lt;BODY&gt;Preprocess only; maintain line directives"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PREPROC"
+				applicabilityCalculator="com.ti.ccstudio.managedbuild.core.options.PreprocOptionApplicabilityCalculator"
+				defaultValue="false"
+				command="--preproc_with_line"
+				valueType="boolean"/>
+			<optionCategory
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PREPROC"
+				name="Parser Preprocessing Options"
+				owner="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DIAG_ERROR"
+				name="Treat diagnostic &lt;id&gt; as error (--diag_error, -pdse)"
+				tip="Aliases: --diag_error, -pdse&lt;BODY&gt;Treat diagnostic &lt;id&gt; as error"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PDIAG"
+				command="--diag_error="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DIAG_REMARK"
+				name="Treat diagnostic &lt;id&gt; as remark (--diag_remark, -pdsr)"
+				tip="Aliases: --diag_remark, -pdsr&lt;BODY&gt;Treat diagnostic &lt;id&gt; as remark"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PDIAG"
+				command="--diag_remark="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DIAG_SUPPRESS"
+				name="Suppress diagnostic &lt;id&gt; (--diag_suppress, -pds)"
+				tip="Aliases: --diag_suppress, -pds&lt;BODY&gt;Suppress diagnostic &lt;id&gt;"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PDIAG"
+				command="--diag_suppress="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DIAG_WARNING"
+				name="Treat diagnostic &lt;id&gt; as warning (--diag_warning, -pdsw)"
+				tip="Aliases: --diag_warning, -pdsw&lt;BODY&gt;Treat diagnostic &lt;id&gt; as warning"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PDIAG"
+				command="--diag_warning="
+				valueType="stringList">
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DISPLAY_ERROR_NUMBER"
+				name="Emit diagnostic identifier numbers (--display_error_number, -pden)"
+				tip="Aliases: --display_error_number, -pden&lt;BODY&gt;Emit diagnostic identifier numbers"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PDIAG"
+				defaultValue="false"
+				command="--display_error_number"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.ISSUE_REMARKS"
+				name="Issue remarks (--issue_remarks, -pdr)"
+				tip="Aliases: --issue_remarks, -pdr&lt;BODY&gt;Issue remarks"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PDIAG"
+				defaultValue="false"
+				command="--issue_remarks"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.NO_WARNINGS"
+				name="Suppress warnings (--no_warnings, -pdw)"
+				tip="Aliases: --no_warnings, -pdw&lt;BODY&gt;Suppress warnings"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PDIAG"
+				defaultValue="false"
+				command="--no_warnings"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.SET_ERROR_LIMIT"
+				name="Set error limit to &lt;count&gt; (--set_error_limit, -pdel)"
+				tip="Aliases: --set_error_limit, -pdel&lt;BODY&gt;Set error limit to &lt;count&gt;"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PDIAG"
+				command="--set_error_limit="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.VERBOSE_DIAGNOSTICS"
+				name="Verbose diagnostics (--verbose_diagnostics, -pdv)"
+				tip="Aliases: --verbose_diagnostics, -pdv&lt;BODY&gt;Verbose diagnostics"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PDIAG"
+				defaultValue="false"
+				command="--verbose_diagnostics"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.WRITE_DIAGNOSTICS_FILE"
+				name="Output diagnostic to .err file (--write_diagnostics_file, -pdf)"
+				tip="Aliases: --write_diagnostics_file, -pdf&lt;BODY&gt;Output diagnostic to .err file"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PDIAG"
+				defaultValue="false"
+				command="--write_diagnostics_file"
+				valueType="boolean"/>
+			<optionCategory
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.PDIAG"
+				name="Parser Diagnostics Options"
+				owner="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.BIG_ENDIAN"
+				name="Generate big endian code (--big_endian, -me)"
+				tip="Aliases: --big_endian, -me&lt;BODY&gt;Generate big endian code"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.MODEL"
+				defaultValue="false"
+				command="--big_endian"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DEBUG_SOFTWARE_PIPELINE"
+				name="Generate verbose software pipelining information (--debug_software_pipeline, -mw)"
+				tip="Aliases: --debug_software_pipeline, -mw&lt;BODY&gt;Generate verbose software pipelining information"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.MODEL"
+				defaultValue="false"
+				command="--debug_software_pipeline"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DISABLE_SOFTWARE_PIPELINE"
+				name="Disable software pipelining (--disable_software_pipeline, -mu)"
+				tip="Aliases: --disable_software_pipeline, -mu&lt;BODY&gt;Disable software pipelining"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.MODEL"
+				defaultValue="false"
+				command="--disable_software_pipeline"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.FP_NOT_ASSOCIATIVE"
+				name="Do not reorder floating point operations (--fp_not_associative, -mc)"
+				tip="Aliases: --fp_not_associative, -mc&lt;BODY&gt;Do not reorder floating point operations"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.MODEL"
+				defaultValue="false"
+				command="--fp_not_associative"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.GEN_FUNC_SUBSECTIONS"
+				name="Place each function in a separate subsection (--gen_func_subsections, -mo)"
+				tip="Aliases: --gen_func_subsections, -mo&lt;BODY&gt;Place each function in a separate subsection"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.MODEL"
+				defaultValue="false"
+				command="--gen_func_subsections"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.INTERRUPT_THRESHOLD"
+				name="Specify maximum cycles that interrupts may be disabled (--interrupt_threshold, -mi)"
+				tip="Aliases: --interrupt_threshold, -mi&lt;BODY&gt;Specify maximum cycles that interrupts may be disabled"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.MODEL"
+				command="--interrupt_threshold="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.MEM_MODEL__DATA"
+				name="Data access model (--mem_model:data)"
+				tip="Aliases: --mem_model:data&lt;BODY&gt;Data access model"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.MODEL"
+				valueType="enumerated">
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.MEM_MODEL__DATA._none"
+					name=""
+					command=""/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.MEM_MODEL__DATA.far"
+					name="far"
+					command="--mem_model:data=far"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.MEM_MODEL__DATA.far_aggregates"
+					name="far_aggregates"
+					command="--mem_model:data=far_aggregates"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.MEM_MODEL__DATA.near"
+					name="near"
+					command="--mem_model:data=near"/>
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.NO_BAD_ALIASES"
+				name="Assume no irregular alias or loop behavior (--no_bad_aliases, -mt)"
+				tip="Aliases: --no_bad_aliases, -mt&lt;BODY&gt;Assume no irregular alias or loop behavior"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.MODEL"
+				defaultValue="false"
+				command="--no_bad_aliases"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.NO_RELOAD_ERRORS"
+				name="Prevent detection of loop buffer reload-related errors (--no_reload_errors)"
+				tip="Aliases: --no_reload_errors&lt;BODY&gt;Accept loop buffer assembly code that would normally cause the assembler to issue loop buffer reload-related errors."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.MODEL"
+				defaultValue="false"
+				command="--no_reload_errors"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_FOR_SPACE"
+				name="Optimize for code size (--opt_for_space, -ms)"
+				tip="Aliases: --opt_for_space, -ms&lt;BODY&gt;Optimize for code size"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.MODEL"
+				valueType="enumerated">
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_FOR_SPACE._none"
+					name=""
+					command=""/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_FOR_SPACE.0"
+					name="0"
+					command="--opt_for_space=0"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_FOR_SPACE.1"
+					name="1"
+					command="--opt_for_space=1"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_FOR_SPACE.2"
+					name="2"
+					command="--opt_for_space=2"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_FOR_SPACE.3"
+					name="3"
+					command="--opt_for_space=3"/>
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.SILICON_VERSION"
+				name="Target processor version (--silicon_version, -mv)"
+				tip="Aliases: --silicon_version, -mv&lt;BODY&gt;Target processor version"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.MODEL"
+				command="--silicon_version="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.SPECULATE_LOADS"
+				name="Specify speculative load byte count threshold (--speculate_loads, -mh)"
+				tip="Aliases: --speculate_loads, -mh&lt;BODY&gt;Specify speculative load byte count threshold"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.MODEL"
+				command="--speculate_loads="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.SPECULATE_UNKNOWN_LOADS"
+				name="Speculate loads with unbounded address ranges (--speculate_unknown_loads)"
+				tip="Aliases: --speculate_unknown_loads&lt;BODY&gt;Speculate loads with unbounded address ranges"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.MODEL"
+				defaultValue="false"
+				command="--speculate_unknown_loads"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.TARGET_COMPATIBILITY_6200"
+				name="Enable 62xx compatibility (--target_compatibility_6200, -mb)"
+				tip="Aliases: --target_compatibility_6200, -mb&lt;BODY&gt;Enable 62xx compatibility"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.MODEL"
+				defaultValue="false"
+				command="--target_compatibility_6200"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.USE_CONST_FOR_ALIAS_ANALYSIS"
+				name="Use const to disambiguate pointers. (--use_const_for_alias_analysis, -ox)"
+				tip="Aliases: --use_const_for_alias_analysis, -ox&lt;BODY&gt;Treats pointer-to-const as an indication that no other store within the pointer's scope will affect the pointer's target."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.MODEL"
+				defaultValue="false"
+				command="--use_const_for_alias_analysis"
+				valueType="boolean"/>
+			<optionCategory
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.MODEL"
+				name="Runtime Model Options"
+				owner="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.AUTO_INLINE"
+				name="Specify threshold for automatic inlining (--auto_inline, -oi)"
+				tip="Aliases: --auto_inline, -oi&lt;BODY&gt;Specify threshold for automatic inlining"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.OPTIM"
+				command="--auto_inline="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.CALL_ASSUMPTIONS"
+				name="Specify call assumptions when optimizing (--call_assumptions, -op)"
+				tip="Aliases: --call_assumptions, -op&lt;BODY&gt;Level 0 (-op0) indicates that the module has functions that are called from other modules.  Level 1 (-op1) indicates that the module does not have functions that are called by other modules but has global variables that are modified in other modules.  Level 2 (-op2) indicates that the module does not have functions that are called or globals that are modified by other modules.  Level 3 (-op3) indicates that the module has functions that are called by other modules but does not have globals that are modified by other modules."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.OPTIM"
+				valueType="enumerated">
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.CALL_ASSUMPTIONS._none"
+					name=""
+					command=""/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.CALL_ASSUMPTIONS.0"
+					name="0"
+					command="--call_assumptions=0"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.CALL_ASSUMPTIONS.1"
+					name="1"
+					command="--call_assumptions=1"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.CALL_ASSUMPTIONS.2"
+					name="2"
+					command="--call_assumptions=2"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.CALL_ASSUMPTIONS.3"
+					name="3"
+					command="--call_assumptions=3"/>
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.GEN_OPT_INFO"
+				name="Generate optimizer information file at level [0-2] (--gen_opt_info, -on)"
+				tip="Aliases: --gen_opt_info, -on&lt;BODY&gt;Set the optimizer information file level, or disable with 0. Level 1 includes basic information.  Level 2 includes detailed information.  The file will be created in the assembly directory if a custom asm directory is specified on the command line otherwise it will be created in the object file directory."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.OPTIM"
+				valueType="enumerated">
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.GEN_OPT_INFO._none"
+					name=""
+					command=""/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.GEN_OPT_INFO.0"
+					name="0"
+					command="--gen_opt_info=0"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.GEN_OPT_INFO.1"
+					name="1"
+					command="--gen_opt_info=1"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.GEN_OPT_INFO.2"
+					name="2"
+					command="--gen_opt_info=2"/>
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_LEVEL"
+				name="Optimization level (--opt_level, -O)"
+				tip="Aliases: --opt_level, -O&lt;BODY&gt;Set compiler optimization level.  Level 0 includes register optimizations.  Level 1 adds local optimizations.  Level 2 further adds global optimizations. Level 3 further adds interprocedure optimizations. Using -O without arguments defaults to -O2."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.OPTIM"
+				valueType="enumerated">
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_LEVEL._none"
+					name=""
+					command=""/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_LEVEL.0"
+					name="0"
+					command="--opt_level=0"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_LEVEL.1"
+					name="1"
+					command="--opt_level=1"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_LEVEL.2"
+					name="2"
+					command="--opt_level=2"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_LEVEL.3"
+					name="3"
+					command="--opt_level=3"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPT_LEVEL.4"
+					name="4"
+					command="--opt_level=4"/>
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OPTIMIZER_INTERLIST"
+				name="Generate optimized source interlisted assembly file (--optimizer_interlist, -os)"
+				tip="Aliases: --optimizer_interlist, -os&lt;BODY&gt;Generate optimized source interlisted assembly file"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.OPTIM"
+				defaultValue="false"
+				command="--optimizer_interlist"
+				valueType="boolean"/>
+			<optionCategory
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.OPTIM"
+				name="Optimizations"
+				owner="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.STD_LIB_FUNC_DEFINED"
+				name="File contains an RTS library function. (--std_lib_func_defined, -ol1)"
+				tip="Aliases: --std_lib_func_defined, -ol1&lt;BODY&gt;File contains an RTS library function."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.LIB"
+				defaultValue="false"
+				command="--std_lib_func_defined"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.STD_LIB_FUNC_NOT_DEFINED"
+				name="File does not define any RTS library func (def.) (--std_lib_func_not_defined, -ol2)"
+				tip="Aliases: --std_lib_func_not_defined, -ol2&lt;BODY&gt;File does not define any RTS library func (def.)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.LIB"
+				defaultValue="false"
+				command="--std_lib_func_not_defined"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.STD_LIB_FUNC_REDEFINED"
+				name="File redefines an RTS library function. (--std_lib_func_redefined, -ol0)"
+				tip="Aliases: --std_lib_func_redefined, -ol0&lt;BODY&gt;File redefines an RTS library function."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.LIB"
+				defaultValue="false"
+				command="--std_lib_func_redefined"
+				valueType="boolean"/>
+			<optionCategory
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.LIB"
+				name="Library Function Assumptions"
+				owner="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.ABSOLUTE_LISTING"
+				name="Generate absolute listing file (--absolute_listing, -aa)"
+				tip="Aliases: --absolute_listing, -aa&lt;BODY&gt;Generate absolute listing file"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.ASM"
+				defaultValue="false"
+				command="--absolute_listing"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.ASM_DEFINE"
+				name="Pre-define assembly symbol NAME (--asm_define, -ad)"
+				tip="Aliases: --asm_define, -ad&lt;BODY&gt;Pre-define the assembly symbol NAME, optionally setting its contents to 'value'."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.ASM"
+				command="--asm_define="
+				valueType="stringList">
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.ASM_DEPENDENCY"
+				name="Generate assembly dependency information (--asm_dependency, -apd)"
+				tip="Aliases: --asm_dependency, -apd&lt;BODY&gt;Generate assembly dependency information"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.ASM"
+				defaultValue="false"
+				command="--asm_dependency"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.ASM_INCLUDES"
+				name="Generate first-level assembly include file list (--asm_includes, -api)"
+				tip="Aliases: --asm_includes, -api&lt;BODY&gt;Generate first-level assembly include file list"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.ASM"
+				defaultValue="false"
+				command="--asm_includes"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.ASM_LISTING"
+				name="Generate listing file (--asm_listing, -al)"
+				tip="Aliases: --asm_listing, -al&lt;BODY&gt;Generate listing file"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.ASM"
+				defaultValue="false"
+				command="--asm_listing"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.ASM_UNDEFINE"
+				name="Undefine assembly symbol NAME (--asm_undefine, -au)"
+				tip="Aliases: --asm_undefine, -au&lt;BODY&gt;Undefine assembly symbol NAME"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.ASM"
+				command="--asm_undefine="
+				valueType="stringList">
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.COPY_FILE"
+				name="Simulate source '.copy filename' (--copy_file, -ahc)"
+				tip="Aliases: --copy_file, -ahc&lt;BODY&gt;Simulate source '.copy filename'"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.ASM"
+				command="--copy_file="
+				browseType="file"
+				valueType="stringList">
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.CROSS_REFERENCE"
+				name="Generate cross reference file (--cross_reference, -ax)"
+				tip="Aliases: --cross_reference, -ax&lt;BODY&gt;Generate cross reference file"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.ASM"
+				defaultValue="false"
+				command="--cross_reference"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.INCLUDE_FILE"
+				name="Simulate source '.include filename' (--include_file, -ahi)"
+				tip="Aliases: --include_file, -ahi&lt;BODY&gt;Simulate source '.include filename'"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.ASM"
+				command="--include_file="
+				browseType="file"
+				valueType="stringList">
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OUTPUT_ALL_SYMS"
+				name="Keep local symbols in output file (--output_all_syms, -as)"
+				tip="Aliases: --output_all_syms, -as&lt;BODY&gt;Keep local symbols in output file"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.ASM"
+				defaultValue="false"
+				command="--output_all_syms"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.SYMS_IGNORE_CASE"
+				name="Symbol names are not case-significant (--syms_ignore_case, -ac)"
+				tip="Aliases: --syms_ignore_case, -ac&lt;BODY&gt;Symbol names are not case-significant"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.ASM"
+				defaultValue="false"
+				command="--syms_ignore_case"
+				valueType="boolean"/>
+			<optionCategory
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.ASM"
+				name="Assembler Options"
+				owner="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.AP_FILE"
+				name="File is a linear asm file (default for .sa) (--ap_file, -fl)"
+				tip="Aliases: --ap_file, -fl&lt;BODY&gt;File is a linear asm file (default for .sa)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.FILE"
+				command="--ap_file="
+				browseType="file"
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.ASM_FILE"
+				name="File is an assembly file (default for .asm) (--asm_file, -fa)"
+				tip="Aliases: --asm_file, -fa&lt;BODY&gt;File is an assembly file (default for .asm)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.FILE"
+				command="--asm_file="
+				browseType="file"
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.C_FILE"
+				name="File is a C file (default for .c/no ext) (--c_file, -fc)"
+				tip="Aliases: --c_file, -fc&lt;BODY&gt;File is a C file (default for .c/no ext)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.FILE"
+				command="--c_file="
+				browseType="file"
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.CPP_FILE"
+				name="File is a C++ file (default for .C .cpp .cc) (--cpp_file, -fp)"
+				tip="Aliases: --cpp_file, -fp&lt;BODY&gt;File is a C++ file (default for .C .cpp .cc)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.FILE"
+				command="--cpp_file="
+				browseType="file"
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OBJ_FILE"
+				name="File is an object file (default for .obj) (--obj_file, -fo)"
+				tip="Aliases: --obj_file, -fo&lt;BODY&gt;File is an object file (default for .obj)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.FILE"
+				command="--obj_file="
+				browseType="file"
+				valueType="string"/>
+			<optionCategory
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.FILE"
+				name="File Type Specifier"
+				owner="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DIRECTORY_MODE"
+				name="Mode"
+				tip="In 'automatic' mode, CCS will implicitly control intermediate-file directories to reflect the source-file directory structure. In 'manual' mode, the user has full manual control over the intermediate-file directories."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.DIRECTORY"
+				valueType="enumerated">
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DIRECTORY_MODE.automatic"
+					name="automatic (default)"
+					isDefault="true"
+					command=""/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.DIRECTORY_MODE.manual"
+					name="manual"
+					command=""/>
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.ABS_DIRECTORY"
+				name="Absolute listing directory (default is .obj dir) (--abs_directory, -fb)"
+				tip="Aliases: --abs_directory, -fb&lt;BODY&gt;Absolute listing directory (default is .obj dir)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.DIRECTORY"
+				command="--abs_directory="
+				browseType="directory"
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.ASM_DIRECTORY"
+				name="Assembly file directory (default is .) (--asm_directory, -fs)"
+				tip="Aliases: --asm_directory, -fs&lt;BODY&gt;Assembly file directory (default is .)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.DIRECTORY"
+				command="--asm_directory="
+				browseType="directory"
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.LIST_DIRECTORY"
+				name="Listing/xref file directory (default is .obj dir) (--list_directory, -ff)"
+				tip="Aliases: --list_directory, -ff&lt;BODY&gt;Listing/xref file directory (default is .obj dir)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.DIRECTORY"
+				command="--list_directory="
+				browseType="directory"
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OBJ_DIRECTORY"
+				name="Object file directory (default is .) (--obj_directory, -fr)"
+				tip="Aliases: --obj_directory, -fr&lt;BODY&gt;Object file directory (default is .)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.DIRECTORY"
+				applicabilityCalculator="com.ti.ccstudio.managedbuild.core.options.DirectoryOptionApplicabilityCalculator"
+				command="--obj_directory="
+				browseType="directory"
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.TEMP_DIRECTORY"
+				name="Temporary file directory (default is .) (--temp_directory, -ft)"
+				tip="Aliases: --temp_directory, -ft&lt;BODY&gt;Temporary file directory (default is .)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.DIRECTORY"
+				command="--temp_directory="
+				browseType="directory"
+				valueType="string"/>
+			<optionCategory
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.DIRECTORY"
+				name="Directory Specifier"
+				owner="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.AP_EXTENSION"
+				name="Extension for linear asm files (default is .sa) (--ap_extension, -el)"
+				tip="Aliases: --ap_extension, -el&lt;BODY&gt;Extension for linear asm files (default is .sa)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.FILEEXT"
+				command="--ap_extension="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.ASM_EXTENSION"
+				name="Extension for assembly files (default is .asm) (--asm_extension, -ea)"
+				tip="Aliases: --asm_extension, -ea&lt;BODY&gt;Extension for assembly files (default is .asm)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.FILEEXT"
+				command="--asm_extension="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.C_EXTENSION"
+				name="Extension for C files (default is .c) (--c_extension, -ec)"
+				tip="Aliases: --c_extension, -ec&lt;BODY&gt;Extension for C files (default is .c)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.FILEEXT"
+				command="--c_extension="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.CPP_DEFAULT"
+				name="Treat C files as C++ files (--cpp_default, -fg)"
+				tip="Aliases: --cpp_default, -fg&lt;BODY&gt;Treat C files as C++ files"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.FILEEXT"
+				defaultValue="false"
+				command="--cpp_default"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.CPP_EXTENSION"
+				name="Extension for C++ files (default is .cpp) (--cpp_extension, -ep)"
+				tip="Aliases: --cpp_extension, -ep&lt;BODY&gt;Extension for C++ files (default is .cpp)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.FILEEXT"
+				command="--cpp_extension="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.LISTING_EXTENSION"
+				name="Extension for listing files (default is .lst) (--listing_extension, -es)"
+				tip="Aliases: --listing_extension, -es&lt;BODY&gt;Extension for listing files (default is .lst)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.FILEEXT"
+				command="--listing_extension="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID.OBJ_EXTENSION"
+				name="Extension for object files (default is .obj) (--obj_extension, -eo)"
+				tip="Aliases: --obj_extension, -eo&lt;BODY&gt;Extension for object files (default is .obj)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.FILEEXT"
+				command="--obj_extension="
+				valueType="string"/>
+			<optionCategory
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.compilerID.FILEEXT"
+				name="Default File Extensions"
+				owner="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID"/>
+		</tool>
+		<tool
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID"
+			superClass="com.ti.ccstudio.buildDefinitions.baseLinkerTool"
+			isAbstract="true"
+			name="C6000 Linker"
+			command="&quot;${CG_TOOL_ROOT}/bin/cl6x&quot;"
+			outputFlag="-o">
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.Z"
+				applicabilityCalculator="com.ti.common.managedbuild.core.options.HiddenOptionApplicability"
+				command="-z"
+				value="true"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.ABSOLUTE_EXE"
+				name="Produce an absolute, executable object file (default) (--absolute_exe, -a)"
+				tip="Aliases: --absolute_exe, -a&lt;BODY&gt;Produce an absolute, executable object file (default)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				defaultValue="false"
+				command="--absolute_exe"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.ARG_SIZE"
+				name="Set C argc/argv memory size (--arg_size, --args)"
+				tip="Aliases: --arg_size, --args&lt;BODY&gt;Set C argc/argv memory size"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				command="--arg_size="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.DISABLE_CLINK"
+				name="Disable conditional linking; ignore .clink directives (--disable_clink, -j)"
+				tip="Aliases: --disable_clink, -j&lt;BODY&gt;Disable conditional linking; ignore .clink directives"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				defaultValue="false"
+				command="--disable_clink"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.ENTRY_POINT"
+				name="Specify the program entry point for the output module (--entry_point, -e)"
+				tip="Aliases: --entry_point, -e&lt;BODY&gt;Specify the program entry point for the output module"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				command="--entry_point="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.FILL_VALUE"
+				name="Set default fill value for holes in output sections (--fill_value, -f)"
+				tip="Aliases: --fill_value, -f&lt;BODY&gt;Set default fill value for holes in output sections"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				command="--fill_value="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.HEAP_SIZE"
+				name="Specify heap size for C/C++ dynamic memory allocation (--heap_size, -heap)"
+				tip="Aliases: --heap_size, -heap&lt;BODY&gt;Specify heap size for C/C++ dynamic memory allocation"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				command="--heap_size="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.IGNORE_ALIGN_FLAGS"
+				name="Ignore alignment flags specified in input sections (--ignore_align_flags, -k)"
+				tip="Aliases: --ignore_align_flags, -k&lt;BODY&gt;Ignore alignment flags specified in input sections"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				defaultValue="false"
+				command="--ignore_align_flags"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.linkerCommandFiles"
+				name="[Deprecated] Linker Command files"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				applicabilityCalculator="com.ti.common.managedbuild.core.options.DeprecatedOptionApplicability"
+				valueType="libs"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.generatedLinkerCommandFiles"
+				name="Generated Linker Command files"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				applicabilityCalculator="com.ti.common.managedbuild.core.options.HiddenOptionApplicability"
+				valueType="libs">
+				<listOptionValue value="$(GEN_CMDS_QUOTED)"/>
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.LIBRARY"
+				name="Include library file or command file as input (--library, -l)"
+				tip="Aliases: --library, -l&lt;BODY&gt;Include library file or command file as input"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				command="--library="
+				browseType="file"
+				browseDir="${CG_TOOL_ROOT}/lib"
+				valueType="libs">
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.MAKE_GLOBAL"
+				name="Make specified symbol global (overrides -h) (--make_global, -g)"
+				tip="Aliases: --make_global, -g&lt;BODY&gt;Make specified symbol global (overrides -h)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				command="--make_global="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.MAKE_STATIC"
+				name="Make all global symbols static (--make_static, -h)"
+				tip="Aliases: --make_static, -h&lt;BODY&gt;Make all global symbols static"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				defaultValue="false"
+				command="--make_static"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.MAP_FILE"
+				name="Produce listing of input and output sections in &lt;file&gt; (--map_file, -m)"
+				tip="Aliases: --map_file, -m&lt;BODY&gt;Produce listing of input and output sections in &lt;file&gt;"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				command="--map_file="
+				browseType="file"
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.NO_SYM_MERGE"
+				name="Disable type merging in symbolic debugging information (--no_sym_merge, -b)"
+				tip="Aliases: --no_sym_merge, -b&lt;BODY&gt;Disable type merging in symbolic debugging information"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				defaultValue="false"
+				command="--no_sym_merge"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.NO_SYMTABLE"
+				name="Strip symbol table and line number entries (--no_symtable, -s)"
+				tip="Aliases: --no_symtable, -s&lt;BODY&gt;Strip symbol table and line number entries"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				defaultValue="false"
+				command="--no_symtable"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.OUTPUT_FILE"
+				name="Specify output file name (--output_file, -o)"
+				tip="Aliases: --output_file, -o&lt;BODY&gt;Full filename of the output file."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				valueHandler="com.ti.ccstudio.managedbuild.core.options.OutputFileOptionValueHandler"
+				applicabilityCalculator="com.ti.common.managedbuild.core.options.VirtualOptionApplicability"
+				command="--output_file="
+				browseType="file"
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.PRIORITY"
+				name="Search libraries in priority order (--priority, -priority)"
+				tip="Aliases: --priority, -priority&lt;BODY&gt;Search libraries in priority order"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				defaultValue="false"
+				command="--priority"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.RAM_MODEL"
+				name="Link using RAM autoinitialization model (--ram_model, -cr)"
+				tip="Aliases: --ram_model, -cr&lt;BODY&gt;Link using RAM autoinitialization model"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				defaultValue="false"
+				command="--ram_model"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.RELOCATABLE"
+				name="Produce a relocatable output module (--relocatable, -r)"
+				tip="Aliases: --relocatable, -r&lt;BODY&gt;Produce a relocatable output module"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				defaultValue="false"
+				command="--relocatable"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.REREAD_LIBS"
+				name="Reread libraries; resolve backward references (--reread_libs, -x)"
+				tip="Aliases: --reread_libs, -x&lt;BODY&gt;Reread libraries; resolve backward references"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				defaultValue="true"
+				command="--reread_libs"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.ROM_MODEL"
+				name="Link using ROM autoinitialization model (--rom_model, -c)"
+				tip="Aliases: --rom_model, -c&lt;BODY&gt;Link using ROM autoinitialization model"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				defaultValue="true"
+				command="--rom_model"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.RUN_ABS"
+				name="Produce absolute listing file (--run_abs, -abs)"
+				tip="Aliases: --run_abs, -abs&lt;BODY&gt;Produce absolute listing file"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				defaultValue="false"
+				command="--run_abs"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.SEARCH_PATH"
+				name="Add &lt;dir&gt; to library search path (--search_path, -i)"
+				tip="Aliases: --search_path, -i&lt;BODY&gt;Alter the library-search algorithm to look in dir before looking in the default location.  This option must appear before the -l option."
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				command="--search_path="
+				browseType="directory"
+				valueType="stringList">
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.STACK_SIZE"
+				name="Set C system stack size (--stack_size, -stack)"
+				tip="Aliases: --stack_size, -stack&lt;BODY&gt;Set C system stack size"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				command="--stack_size="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.TRAMPOLINES"
+				name="Generate far call trampolines (--trampolines)"
+				tip="Aliases: --trampolines&lt;BODY&gt;Generate far call trampolines"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				valueType="enumerated">
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.TRAMPOLINES._none"
+					name=""
+					command=""/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.TRAMPOLINES.off"
+					name="off"
+					command="--trampolines=off"/>
+				<enumeratedOptionValue
+					id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.TRAMPOLINES.on"
+					name="on"
+					command="--trampolines=on"/>
+			</option>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.UNDEF_SYM"
+				name="Add &lt;sym&gt; to symbol table as an unresolved symbol (--undef_sym, -u)"
+				tip="Aliases: --undef_sym, -u&lt;BODY&gt;Add &lt;sym&gt; to symbol table as an unresolved symbol"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				command="--undef_sym="
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.WARN_SECTIONS"
+				name="Warn if an unspecified output section is created (--warn_sections, -w)"
+				tip="Aliases: --warn_sections, -w&lt;BODY&gt;Warn if an unspecified output section is created"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				defaultValue="true"
+				command="--warn_sections"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID.XML_LINK_INFO"
+				name="Produce detailed link information data-base in &lt;file&gt; (--xml_link_info, -xml_link_info)"
+				tip="Aliases: --xml_link_info, -xml_link_info&lt;BODY&gt;Produce detailed link information data-base in &lt;file&gt;"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				command="--xml_link_info="
+				browseType="file"
+				valueType="string"/>
+			<optionCategory
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.linkerID._OTHER"
+				name="General Options"
+				owner="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID"/>
+		</tool>
+
+		<!-- ============================== End auto-generated body ============================== -->
+
+		<tool
+			id="com.ti.ccstudio.buildDefinitions.C6000_5.1.archiverID"
+			superClass="com.ti.ccstudio.buildDefinitions.baseArchiverTool"
+			isAbstract="true"
+			name="C6000 Archiver"
+			command="&quot;${CG_TOOL_ROOT}/bin/ar6x&quot;">
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.archiverID.R"
+				applicabilityCalculator="com.ti.common.managedbuild.core.options.HiddenOptionApplicability"
+				command="r"
+				value="true"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.archiverID.OUTPUT_FILE"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.archiverID.BASIC"
+				applicabilityCalculator="com.ti.common.managedbuild.core.options.HiddenOptionApplicability"
+				command=""
+				browseType="file"
+				valueType="string"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.archiverID.QUIET"
+				name="Quiet mode - normal status messages suppressed (q)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.archiverID.BASIC"
+				command="q"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.archiverID.PRINT_GLOBAL_SYMBOLS"
+				name="Print symbol table contents (s)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.archiverID.BASIC"
+				command="s"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.archiverID.VERBOSE"
+				name="Verbose (v)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.archiverID.BASIC"
+				command="v"
+				valueType="boolean"/>
+			<option
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.archiverID.CMD_FILE"
+				name="Read options from specified file (@)"
+				category="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.archiverID.BASIC"
+				applicabilityCalculator="com.ti.common.managedbuild.core.options.VirtualOptionApplicability"
+				command="@"
+				browseType="file"
+				valueType="string"/>
+			<optionCategory
+				id="com.ti.ccstudio.buildDefinitions.C6000_5.1.cat.archiverID.BASIC"
+				name="Basic Options:"
+				owner="com.ti.ccstudio.buildDefinitions.C6000_5.1.archiverID"/>
+		</tool>
+
+	</extension>
+
+	<extension point="com.ti.common.managedbuild.core.optionCommands"
+		id="C6000_5.1"
+		name="C6000 v5.1 Build-option Command Map">
+	
+		<tool id="com.ti.ccstudio.buildDefinitions.C6000_5.1.compilerID">
+			<option command="-ma" tag="ALIASED_VARIABLES"/>
+			<option command="--aliased_variables" tag="ALIASED_VARIABLES"/>
+			<option command="-ss" tag="C_SRC_INTERLIST"/>
+			<option command="--c_src_interlist" tag="C_SRC_INTERLIST"/>
+			<option command="-@" tag="CMD_FILE"/>
+			<option command="--cmd_file" tag="CMD_FILE"/>
+			<option command="-c" tag="COMPILE_ONLY"/>
+			<option command="--compile_only" tag="COMPILE_ONLY"/>
+			<option command="--compiler_revision" tag="COMPILER_REVISION"/>
+			<option command="--consultant" tag="CONSULTANT"/>
+			<option command="-D" tag="DEFINE"/>
+			<option command="--define" tag="DEFINE"/>
+			<option command="-h" tag="HELP"/>
+			<option command="--help" tag="HELP"/>
+			<option command="-I" tag="INCLUDE_PATH"/>
+			<option command="--include_path" tag="INCLUDE_PATH"/>
+			<option command="-k" tag="KEEP_ASM"/>
+			<option command="--keep_asm" tag="KEEP_ASM"/>
+			<option command="--profile:breakpt" tag="PROFILE__BREAKPT"/>
+			<option command="--profile:power" tag="PROFILE__POWER"/>
+			<option command="-q" tag="QUIET"/>
+			<option command="--quiet" tag="QUIET"/>
+			<option command="-z" tag="RUN_LINKER"/>
+			<option command="--run_linker" tag="RUN_LINKER"/>
+			<option command="-n" tag="SKIP_ASSEMBLER"/>
+			<option command="--skip_assembler" tag="SKIP_ASSEMBLER"/>
+			<option command="-s" tag="SRC_INTERLIST"/>
+			<option command="--src_interlist" tag="SRC_INTERLIST"/>
+			<option command="-qq" tag="SUPER_QUIET"/>
+			<option command="--super_quiet" tag="SUPER_QUIET"/>
+			<option command="-version" tag="TOOL_VERSION"/>
+			<option command="--tool_version" tag="TOOL_VERSION"/>
+			<option command="-U" tag="UNDEFINE"/>
+			<option command="--undefine" tag="UNDEFINE"/>
+			<option command="--verbose" tag="VERBOSE"/>
+			<option command="--symdebug:dwarf" tag="DEBUGGING_MODEL.SYMDEBUG__DWARF"/>
+			<option command="!--symdebug:dwarf" tag="DEBUGGING_MODEL._none"/>
+			<option command="--symdebug:coff" tag="DEBUGGING_MODEL.SYMDEBUG__COFF"/>
+			<option command="!--symdebug:coff" tag="DEBUGGING_MODEL._none"/>
+			<option command="--symdebug:profile_coff" tag="DEBUGGING_MODEL.SYMDEBUG__PROFILE_COFF"/>
+			<option command="!--symdebug:profile_coff" tag="DEBUGGING_MODEL._none"/>
+			<option command="--symdebug:none" tag="DEBUGGING_MODEL.SYMDEBUG__NONE"/>
+			<option command="!--symdebug:none" tag="DEBUGGING_MODEL._none"/>
+			<option command="--symdebug:skeletal" tag="DEBUGGING_MODEL.SYMDEBUG__SKELETAL"/>
+			<option command="!--symdebug:skeletal" tag="DEBUGGING_MODEL._none"/>
+			<option command="--machine_regs" tag="MACHINE_REGS"/>
+			<option command="-g" tag="SYMDEBUG__DEFAULT"/>
+			<option command="--symdebug:default" tag="SYMDEBUG__DEFAULT"/>
+			<option command="-pe" tag="EMBEDDED_CPP"/>
+			<option command="--embedded_cpp" tag="EMBEDDED_CPP"/>
+			<option command="--exceptions" tag="EXCEPTIONS"/>
+			<option command="-pl" tag="GEN_ACP_RAW"/>
+			<option command="--gen_acp_raw" tag="GEN_ACP_RAW"/>
+			<option command="-px" tag="GEN_ACP_XREF"/>
+			<option command="--gen_acp_xref" tag="GEN_ACP_XREF"/>
+			<option command="-pk" tag="KR_COMPATIBLE"/>
+			<option command="--kr_compatible" tag="KR_COMPATIBLE"/>
+			<option command="-pc" tag="MULTIBYTE_CHARS"/>
+			<option command="--multibyte_chars" tag="MULTIBYTE_CHARS"/>
+			<option command="-pi" tag="NO_INLINING"/>
+			<option command="--no_inlining" tag="NO_INLINING"/>
+			<option command="-pn" tag="NO_INTRINSICS"/>
+			<option command="--no_intrinsics" tag="NO_INTRINSICS"/>
+			<option command="-pm" tag="PROGRAM_LEVEL_COMPILE"/>
+			<option command="--program_level_compile" tag="PROGRAM_LEVEL_COMPILE"/>
+			<option command="-pr" tag="RELAXED_ANSI"/>
+			<option command="--relaxed_ansi" tag="RELAXED_ANSI"/>
+			<option command="-rtti" tag="RTTI"/>
+			<option command="--rtti" tag="RTTI"/>
+			<option command="-ps" tag="STRICT_ANSI"/>
+			<option command="--strict_ansi" tag="STRICT_ANSI"/>
+			<option command="-ppd" tag="PREPROC_DEPENDENCY"/>
+			<option command="--preproc_dependency" tag="PREPROC_DEPENDENCY"/>
+			<option command="-ppi" tag="PREPROC_INCLUDES"/>
+			<option command="--preproc_includes" tag="PREPROC_INCLUDES"/>
+			<option command="-ppo" tag="PREPROC_ONLY"/>
+			<option command="--preproc_only" tag="PREPROC_ONLY"/>
+			<option command="-ppc" tag="PREPROC_WITH_COMMENT"/>
+			<option command="--preproc_with_comment" tag="PREPROC_WITH_COMMENT"/>
+			<option command="-ppa" tag="PREPROC_WITH_COMPILE"/>
+			<option command="--preproc_with_compile" tag="PREPROC_WITH_COMPILE"/>
+			<option command="-ppl" tag="PREPROC_WITH_LINE"/>
+			<option command="--preproc_with_line" tag="PREPROC_WITH_LINE"/>
+			<option command="-pdse" tag="DIAG_ERROR"/>
+			<option command="--diag_error" tag="DIAG_ERROR"/>
+			<option command="-pdsr" tag="DIAG_REMARK"/>
+			<option command="--diag_remark" tag="DIAG_REMARK"/>
+			<option command="-pds" tag="DIAG_SUPPRESS"/>
+			<option command="--diag_suppress" tag="DIAG_SUPPRESS"/>
+			<option command="-pdsw" tag="DIAG_WARNING"/>
+			<option command="--diag_warning" tag="DIAG_WARNING"/>
+			<option command="-pden" tag="DISPLAY_ERROR_NUMBER"/>
+			<option command="--display_error_number" tag="DISPLAY_ERROR_NUMBER"/>
+			<option command="-pdr" tag="ISSUE_REMARKS"/>
+			<option command="--issue_remarks" tag="ISSUE_REMARKS"/>
+			<option command="-pdw" tag="NO_WARNINGS"/>
+			<option command="--no_warnings" tag="NO_WARNINGS"/>
+			<option command="-pdel" tag="SET_ERROR_LIMIT"/>
+			<option command="--set_error_limit" tag="SET_ERROR_LIMIT"/>
+			<option command="-pdv" tag="VERBOSE_DIAGNOSTICS"/>
+			<option command="--verbose_diagnostics" tag="VERBOSE_DIAGNOSTICS"/>
+			<option command="-pdf" tag="WRITE_DIAGNOSTICS_FILE"/>
+			<option command="--write_diagnostics_file" tag="WRITE_DIAGNOSTICS_FILE"/>
+			<option command="-me" tag="BIG_ENDIAN"/>
+			<option command="--big_endian" tag="BIG_ENDIAN"/>
+			<option command="-mw" tag="DEBUG_SOFTWARE_PIPELINE"/>
+			<option command="--debug_software_pipeline" tag="DEBUG_SOFTWARE_PIPELINE"/>
+			<option command="-mu" tag="DISABLE_SOFTWARE_PIPELINE"/>
+			<option command="--disable_software_pipeline" tag="DISABLE_SOFTWARE_PIPELINE"/>
+			<option command="-mc" tag="FP_NOT_ASSOCIATIVE"/>
+			<option command="--fp_not_associative" tag="FP_NOT_ASSOCIATIVE"/>
+			<option command="-mo" tag="GEN_FUNC_SUBSECTIONS"/>
+			<option command="--gen_func_subsections" tag="GEN_FUNC_SUBSECTIONS"/>
+			<option command="-mi" tag="INTERRUPT_THRESHOLD"/>
+			<option command="--interrupt_threshold" tag="INTERRUPT_THRESHOLD"/>
+			<option command="!--mem_model:data" tag="MEM_MODEL__DATA._none"/>
+			<option command="--mem_model:data=far" tag="MEM_MODEL__DATA.far"/>
+			<option command="--mem_model:data=far_aggregates" tag="MEM_MODEL__DATA.far_aggregates"/>
+			<option command="--mem_model:data=near" tag="MEM_MODEL__DATA.near"/>
+			<option command="-mt" tag="NO_BAD_ALIASES"/>
+			<option command="--no_bad_aliases" tag="NO_BAD_ALIASES"/>
+			<option command="--no_reload_errors" tag="NO_RELOAD_ERRORS"/>
+			<option command="!-ms" tag="OPT_FOR_SPACE._none"/>
+			<option command="!--opt_for_space" tag="OPT_FOR_SPACE._none"/>
+			<option command="-ms0" tag="OPT_FOR_SPACE.0"/>
+			<option command="--opt_for_space=0" tag="OPT_FOR_SPACE.0"/>
+			<option command="-ms1" tag="OPT_FOR_SPACE.1"/>
+			<option command="--opt_for_space=1" tag="OPT_FOR_SPACE.1"/>
+			<option command="-ms2" tag="OPT_FOR_SPACE.2"/>
+			<option command="--opt_for_space=2" tag="OPT_FOR_SPACE.2"/>
+			<option command="-ms3" tag="OPT_FOR_SPACE.3"/>
+			<option command="--opt_for_space=3" tag="OPT_FOR_SPACE.3"/>
+			<option command="-mv" tag="SILICON_VERSION"/>
+			<option command="--silicon_version" tag="SILICON_VERSION"/>
+			<option command="-mh" tag="SPECULATE_LOADS"/>
+			<option command="--speculate_loads" tag="SPECULATE_LOADS"/>
+			<option command="--speculate_unknown_loads" tag="SPECULATE_UNKNOWN_LOADS"/>
+			<option command="-mb" tag="TARGET_COMPATIBILITY_6200"/>
+			<option command="--target_compatibility_6200" tag="TARGET_COMPATIBILITY_6200"/>
+			<option command="-ox" tag="USE_CONST_FOR_ALIAS_ANALYSIS"/>
+			<option command="--use_const_for_alias_analysis" tag="USE_CONST_FOR_ALIAS_ANALYSIS"/>
+			<option command="-oi" tag="AUTO_INLINE"/>
+			<option command="--auto_inline" tag="AUTO_INLINE"/>
+			<option command="!-op" tag="CALL_ASSUMPTIONS._none"/>
+			<option command="!--call_assumptions" tag="CALL_ASSUMPTIONS._none"/>
+			<option command="-op0" tag="CALL_ASSUMPTIONS.0"/>
+			<option command="--call_assumptions=0" tag="CALL_ASSUMPTIONS.0"/>
+			<option command="-op1" tag="CALL_ASSUMPTIONS.1"/>
+			<option command="--call_assumptions=1" tag="CALL_ASSUMPTIONS.1"/>
+			<option command="-op2" tag="CALL_ASSUMPTIONS.2"/>
+			<option command="--call_assumptions=2" tag="CALL_ASSUMPTIONS.2"/>
+			<option command="-op3" tag="CALL_ASSUMPTIONS.3"/>
+			<option command="--call_assumptions=3" tag="CALL_ASSUMPTIONS.3"/>
+			<option command="!-on" tag="GEN_OPT_INFO._none"/>
+			<option command="!--gen_opt_info" tag="GEN_OPT_INFO._none"/>
+			<option command="-on0" tag="GEN_OPT_INFO.0"/>
+			<option command="--gen_opt_info=0" tag="GEN_OPT_INFO.0"/>
+			<option command="-on1" tag="GEN_OPT_INFO.1"/>
+			<option command="--gen_opt_info=1" tag="GEN_OPT_INFO.1"/>
+			<option command="-on2" tag="GEN_OPT_INFO.2"/>
+			<option command="--gen_opt_info=2" tag="GEN_OPT_INFO.2"/>
+			<option command="!-O" tag="OPT_LEVEL._none"/>
+			<option command="!--opt_level" tag="OPT_LEVEL._none"/>
+			<option command="-O0" tag="OPT_LEVEL.0"/>
+			<option command="--opt_level=0" tag="OPT_LEVEL.0"/>
+			<option command="-O1" tag="OPT_LEVEL.1"/>
+			<option command="--opt_level=1" tag="OPT_LEVEL.1"/>
+			<option command="-O2" tag="OPT_LEVEL.2"/>
+			<option command="--opt_level=2" tag="OPT_LEVEL.2"/>
+			<option command="-O3" tag="OPT_LEVEL.3"/>
+			<option command="--opt_level=3" tag="OPT_LEVEL.3"/>
+			<option command="-O4" tag="OPT_LEVEL.4"/>
+			<option command="--opt_level=4" tag="OPT_LEVEL.4"/>
+			<option command="-os" tag="OPTIMIZER_INTERLIST"/>
+			<option command="--optimizer_interlist" tag="OPTIMIZER_INTERLIST"/>
+			<option command="-ol1" tag="STD_LIB_FUNC_DEFINED"/>
+			<option command="--std_lib_func_defined" tag="STD_LIB_FUNC_DEFINED"/>
+			<option command="-ol2" tag="STD_LIB_FUNC_NOT_DEFINED"/>
+			<option command="--std_lib_func_not_defined" tag="STD_LIB_FUNC_NOT_DEFINED"/>
+			<option command="-ol0" tag="STD_LIB_FUNC_REDEFINED"/>
+			<option command="--std_lib_func_redefined" tag="STD_LIB_FUNC_REDEFINED"/>
+			<option command="-aa" tag="ABSOLUTE_LISTING"/>
+			<option command="--absolute_listing" tag="ABSOLUTE_LISTING"/>
+			<option command="-ad" tag="ASM_DEFINE"/>
+			<option command="--asm_define" tag="ASM_DEFINE"/>
+			<option command="-apd" tag="ASM_DEPENDENCY"/>
+			<option command="--asm_dependency" tag="ASM_DEPENDENCY"/>
+			<option command="-api" tag="ASM_INCLUDES"/>
+			<option command="--asm_includes" tag="ASM_INCLUDES"/>
+			<option command="-al" tag="ASM_LISTING"/>
+			<option command="--asm_listing" tag="ASM_LISTING"/>
+			<option command="-au" tag="ASM_UNDEFINE"/>
+			<option command="--asm_undefine" tag="ASM_UNDEFINE"/>
+			<option command="-ahc" tag="COPY_FILE"/>
+			<option command="--copy_file" tag="COPY_FILE"/>
+			<option command="-ax" tag="CROSS_REFERENCE"/>
+			<option command="--cross_reference" tag="CROSS_REFERENCE"/>
+			<option command="-ahi" tag="INCLUDE_FILE"/>
+			<option command="--include_file" tag="INCLUDE_FILE"/>
+			<option command="-as" tag="OUTPUT_ALL_SYMS"/>
+			<option command="--output_all_syms" tag="OUTPUT_ALL_SYMS"/>
+			<option command="-ac" tag="SYMS_IGNORE_CASE"/>
+			<option command="--syms_ignore_case" tag="SYMS_IGNORE_CASE"/>
+			<option command="-fl" tag="AP_FILE"/>
+			<option command="--ap_file" tag="AP_FILE"/>
+			<option command="-fa" tag="ASM_FILE"/>
+			<option command="--asm_file" tag="ASM_FILE"/>
+			<option command="-fc" tag="C_FILE"/>
+			<option command="--c_file" tag="C_FILE"/>
+			<option command="-fp" tag="CPP_FILE"/>
+			<option command="--cpp_file" tag="CPP_FILE"/>
+			<option command="-fo" tag="OBJ_FILE"/>
+			<option command="--obj_file" tag="OBJ_FILE"/>
+			<option command="-fb" tag="ABS_DIRECTORY"/>
+			<option command="--abs_directory" tag="ABS_DIRECTORY"/>
+			<option command="-fs" tag="ASM_DIRECTORY"/>
+			<option command="--asm_directory" tag="ASM_DIRECTORY"/>
+			<option command="-ff" tag="LIST_DIRECTORY"/>
+			<option command="--list_directory" tag="LIST_DIRECTORY"/>
+			<option command="-fr" tag="OBJ_DIRECTORY"/>
+			<option command="--obj_directory" tag="OBJ_DIRECTORY"/>
+			<option command="-ft" tag="TEMP_DIRECTORY"/>
+			<option command="--temp_directory" tag="TEMP_DIRECTORY"/>
+			<option command="-el" tag="AP_EXTENSION"/>
+			<option command="--ap_extension" tag="AP_EXTENSION"/>
+			<option command="-ea" tag="ASM_EXTENSION"/>
+			<option command="--asm_extension" tag="ASM_EXTENSION"/>
+			<option command="-ec" tag="C_EXTENSION"/>
+			<option command="--c_extension" tag="C_EXTENSION"/>
+			<option command="-fg" tag="CPP_DEFAULT"/>
+			<option command="--cpp_default" tag="CPP_DEFAULT"/>
+			<option command="-ep" tag="CPP_EXTENSION"/>
+			<option command="--cpp_extension" tag="CPP_EXTENSION"/>
+			<option command="-es" tag="LISTING_EXTENSION"/>
+			<option command="--listing_extension" tag="LISTING_EXTENSION"/>
+			<option command="-eo" tag="OBJ_EXTENSION"/>
+			<option command="--obj_extension" tag="OBJ_EXTENSION"/>
+		</tool>
+		<tool id="com.ti.ccstudio.buildDefinitions.C6000_5.1.linkerID">
+			<option command="-a" tag="ABSOLUTE_EXE"/>
+			<option command="--absolute_exe" tag="ABSOLUTE_EXE"/>
+			<option command="--args" tag="ARG_SIZE"/>
+			<option command="--arg_size" tag="ARG_SIZE"/>
+			<option command="-j" tag="DISABLE_CLINK"/>
+			<option command="--disable_clink" tag="DISABLE_CLINK"/>
+			<option command="-e" tag="ENTRY_POINT"/>
+			<option command="--entry_point" tag="ENTRY_POINT"/>
+			<option command="-f" tag="FILL_VALUE"/>
+			<option command="--fill_value" tag="FILL_VALUE"/>
+			<option command="-heap" tag="HEAP_SIZE"/>
+			<option command="--heap_size" tag="HEAP_SIZE"/>
+			<option command="-k" tag="IGNORE_ALIGN_FLAGS"/>
+			<option command="--ignore_align_flags" tag="IGNORE_ALIGN_FLAGS"/>
+			<option command="-l" tag="LIBRARY"/>
+			<option command="--library" tag="LIBRARY"/>
+			<option command="-g" tag="MAKE_GLOBAL"/>
+			<option command="--make_global" tag="MAKE_GLOBAL"/>
+			<option command="-h" tag="MAKE_STATIC"/>
+			<option command="--make_static" tag="MAKE_STATIC"/>
+			<option command="-m" tag="MAP_FILE"/>
+			<option command="--map_file" tag="MAP_FILE"/>
+			<option command="-b" tag="NO_SYM_MERGE"/>
+			<option command="--no_sym_merge" tag="NO_SYM_MERGE"/>
+			<option command="-s" tag="NO_SYMTABLE"/>
+			<option command="--no_symtable" tag="NO_SYMTABLE"/>
+			<option command="-o" tag="OUTPUT_FILE"/>
+			<option command="--output_file" tag="OUTPUT_FILE"/>
+			<option command="-priority" tag="PRIORITY"/>
+			<option command="--priority" tag="PRIORITY"/>
+			<option command="-cr" tag="RAM_MODEL"/>
+			<option command="--ram_model" tag="RAM_MODEL"/>
+			<option command="-r" tag="RELOCATABLE"/>
+			<option command="--relocatable" tag="RELOCATABLE"/>
+			<option command="-x" tag="REREAD_LIBS"/>
+			<option command="--reread_libs" tag="REREAD_LIBS"/>
+			<option command="-c" tag="ROM_MODEL"/>
+			<option command="--rom_model" tag="ROM_MODEL"/>
+			<option command="-abs" tag="RUN_ABS"/>
+			<option command="--run_abs" tag="RUN_ABS"/>
+			<option command="-i" tag="SEARCH_PATH"/>
+			<option command="--search_path" tag="SEARCH_PATH"/>
+			<option command="-stack" tag="STACK_SIZE"/>
+			<option command="--stack_size" tag="STACK_SIZE"/>
+			<option command="!--trampolines" tag="TRAMPOLINES._none"/>
+			<option command="--trampolines=off" tag="TRAMPOLINES.off"/>
+			<option command="--trampolines=on" tag="TRAMPOLINES.on"/>
+			<option command="-u" tag="UNDEF_SYM"/>
+			<option command="--undef_sym" tag="UNDEF_SYM"/>
+			<option command="-w" tag="WARN_SECTIONS"/>
+			<option command="--warn_sections" tag="WARN_SECTIONS"/>
+			<option command="-xml_link_info" tag="XML_LINK_INFO"/>
+			<option command="--xml_link_info" tag="XML_LINK_INFO"/>
+		</tool>
+		<tool id="com.ti.ccstudio.buildDefinitions.C6000_5.1.archiverID">
+			<option command="-o" tag="OUTPUT_FILE"/>
+			<option command="q" tag="QUIET"/>
+			<option command="s" tag="PRINT_GLOBAL_SYMBOLS"/>
+			<option command="v" tag="VERBOSE"/>
+			<option command="@" tag="CMD_FILE"/>
+		</tool>
+		
+	</extension>
+		
+</plugin>

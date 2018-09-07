@@ -1,0 +1,1219 @@
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE    1
+
+     921              ; Temporary Registers Used: None
+       1              ;*******************************************************************************
+       2              ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
+       3              ;* Date/Time created: Fri Aug 19 02:56:38 2016                                 *
+       4              ;*******************************************************************************
+       5                      .compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --si
+       6                      .mmregs
+       7                      .cpl_on
+       8                      .arms_on
+       9                      .c54cm_off
+      10                      .asg AR6, FP
+      11                      .asg XAR6, XFP
+      12                      .asg DPH, MDP
+      13                      .model call=c55_std
+      14                      .model mem=large
+      15                      .noremark 5002  ; code respects overwrite rules
+      16              ;*******************************************************************************
+      17              ;* GLOBAL FILE PARAMETERS                                                      *
+      18              ;*                                                                             *
+      19              ;*   Architecture       : TMS320C55x                                           *
+      20              ;*   Optimizing for     : Speed                                                *
+      21              ;*   Memory             : Large Model (23-Bit Data Pointers)                   *
+      22              ;*   Calls              : Normal Library ASM calls                             *
+      23              ;*   Debug Info         : Standard TI Debug Information                        *
+      24              ;*******************************************************************************
+      25              
+      26              $C$DW$CU        .dwtag  DW_TAG_compile_unit
+      27                      .dwattr $C$DW$CU, DW_AT_name("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test
+      28                      .dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas In
+      29                      .dwattr $C$DW$CU, DW_AT_TI_version(0x01)
+      30                      .dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug")
+      31              
+      32              $C$DW$1 .dwtag  DW_TAG_subprogram, DW_AT_name("EZDSP5535_SPIFLASH_init")
+      33                      .dwattr $C$DW$1, DW_AT_TI_symbol_name("_EZDSP5535_SPIFLASH_init")
+      34                      .dwattr $C$DW$1, DW_AT_type(*$C$DW$T$26)
+      35                      .dwattr $C$DW$1, DW_AT_declaration
+      36                      .dwattr $C$DW$1, DW_AT_external
+      37              
+      38              $C$DW$2 .dwtag  DW_TAG_subprogram, DW_AT_name("EZDSP5535_SPIFLASH_erase")
+      39                      .dwattr $C$DW$2, DW_AT_TI_symbol_name("_EZDSP5535_SPIFLASH_erase")
+      40                      .dwattr $C$DW$2, DW_AT_declaration
+      41                      .dwattr $C$DW$2, DW_AT_external
+      42              $C$DW$3 .dwtag  DW_TAG_formal_parameter
+      43                      .dwattr $C$DW$3, DW_AT_type(*$C$DW$T$19)
+      44              $C$DW$4 .dwtag  DW_TAG_formal_parameter
+      45                      .dwattr $C$DW$4, DW_AT_type(*$C$DW$T$19)
+      46                      .dwendtag $C$DW$2
+      47              
+      48              
+      49              $C$DW$5 .dwtag  DW_TAG_subprogram, DW_AT_name("EZDSP5535_SPIFLASH_read")
+      50                      .dwattr $C$DW$5, DW_AT_TI_symbol_name("_EZDSP5535_SPIFLASH_read")
+      51                      .dwattr $C$DW$5, DW_AT_type(*$C$DW$T$26)
+      52                      .dwattr $C$DW$5, DW_AT_declaration
+      53                      .dwattr $C$DW$5, DW_AT_external
+      54              $C$DW$6 .dwtag  DW_TAG_formal_parameter
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE    2
+
+      55                      .dwattr $C$DW$6, DW_AT_type(*$C$DW$T$19)
+      56              $C$DW$7 .dwtag  DW_TAG_formal_parameter
+      57                      .dwattr $C$DW$7, DW_AT_type(*$C$DW$T$19)
+      58              $C$DW$8 .dwtag  DW_TAG_formal_parameter
+      59                      .dwattr $C$DW$8, DW_AT_type(*$C$DW$T$19)
+      60                      .dwendtag $C$DW$5
+      61              
+      62              
+      63              $C$DW$9 .dwtag  DW_TAG_subprogram, DW_AT_name("EZDSP5535_SPIFLASH_write")
+      64                      .dwattr $C$DW$9, DW_AT_TI_symbol_name("_EZDSP5535_SPIFLASH_write")
+      65                      .dwattr $C$DW$9, DW_AT_type(*$C$DW$T$26)
+      66                      .dwattr $C$DW$9, DW_AT_declaration
+      67                      .dwattr $C$DW$9, DW_AT_external
+      68              $C$DW$10        .dwtag  DW_TAG_formal_parameter
+      69                      .dwattr $C$DW$10, DW_AT_type(*$C$DW$T$19)
+      70              $C$DW$11        .dwtag  DW_TAG_formal_parameter
+      71                      .dwattr $C$DW$11, DW_AT_type(*$C$DW$T$19)
+      72              $C$DW$12        .dwtag  DW_TAG_formal_parameter
+      73                      .dwattr $C$DW$12, DW_AT_type(*$C$DW$T$19)
+      74                      .dwendtag $C$DW$9
+      75              
+      76              
+      77              $C$DW$13        .dwtag  DW_TAG_subprogram, DW_AT_name("printf")
+      78                      .dwattr $C$DW$13, DW_AT_TI_symbol_name("_printf")
+      79                      .dwattr $C$DW$13, DW_AT_type(*$C$DW$T$10)
+      80                      .dwattr $C$DW$13, DW_AT_declaration
+      81                      .dwattr $C$DW$13, DW_AT_external
+      82              $C$DW$14        .dwtag  DW_TAG_formal_parameter
+      83                      .dwattr $C$DW$14, DW_AT_type(*$C$DW$T$35)
+      84              $C$DW$15        .dwtag  DW_TAG_unspecified_parameters
+      85                      .dwendtag $C$DW$13
+      86              
+      87 000000               .bss    _tx,256,0,0
+      88              $C$DW$16        .dwtag  DW_TAG_variable, DW_AT_name("tx")
+      89                      .dwattr $C$DW$16, DW_AT_TI_symbol_name("_tx")
+      90                      .dwattr $C$DW$16, DW_AT_type(*$C$DW$T$23)
+      91                      .dwattr $C$DW$16, DW_AT_location[DW_OP_addr _tx]
+      92 000100               .bss    _rx,256,0,0
+      93              $C$DW$17        .dwtag  DW_TAG_variable, DW_AT_name("rx")
+      94                      .dwattr $C$DW$17, DW_AT_TI_symbol_name("_rx")
+      95                      .dwattr $C$DW$17, DW_AT_type(*$C$DW$T$23)
+      96                      .dwattr $C$DW$17, DW_AT_location[DW_OP_addr _rx]
+      97              ;       F:\ti\ccsv6\tools\compiler\c5500_4.4.1\bin\acp55.exe -@e:\\users\\john\\AppData\\Local\\Temp\\1840412
+      98 000000               .sect   ".text"
+      99                      .align 4
+     100                      .global _spiflash_test
+     101              
+     102              $C$DW$18        .dwtag  DW_TAG_subprogram, DW_AT_name("spiflash_test")
+     103                      .dwattr $C$DW$18, DW_AT_low_pc(_spiflash_test)
+     104                      .dwattr $C$DW$18, DW_AT_high_pc(0x00)
+     105                      .dwattr $C$DW$18, DW_AT_TI_symbol_name("_spiflash_test")
+     106                      .dwattr $C$DW$18, DW_AT_external
+     107                      .dwattr $C$DW$18, DW_AT_type(*$C$DW$T$26)
+     108                      .dwattr $C$DW$18, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spif
+     109                      .dwattr $C$DW$18, DW_AT_TI_begin_line(0x36)
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE    3
+
+     110                      .dwattr $C$DW$18, DW_AT_TI_begin_column(0x07)
+     111                      .dwattr $C$DW$18, DW_AT_TI_max_frame_size(0x0a)
+     112                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 55,colu
+     113              
+     114                      .dwfde $C$DW$CIE, _spiflash_test
+     115              ;*******************************************************************************
+     116              ;* FUNCTION NAME: spiflash_test                                                *
+     117              ;*                                                                             *
+     118              ;*   Function Uses Regs : AC0,AC0,AC1,AC1,AC2,AC2,T0,AR1,AR2,XAR2,AR3,XAR3,SP, *
+     119              ;*                        CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL                *
+     120              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     121              ;*   Total Frame Size   : 10 words                                             *
+     122              ;*                        (2 return address/alignment)                         *
+     123              ;*                        (3 function parameters)                              *
+     124              ;*                        (5 local values)                                     *
+     125              ;*   Min System Stack   : 1 word                                               *
+     126              ;*******************************************************************************
+     127 000000       _spiflash_test:
+     128                      .dwcfi  cfa_offset, 1
+     129                      .dwcfi  save_reg_to_mem, 91, -1
+     130 000000 4EF7          AADD #-9, SP
+     131                      .dwcfi  cfa_offset, 10
+     132              $C$DW$19        .dwtag  DW_TAG_variable, DW_AT_name("i")
+     133                      .dwattr $C$DW$19, DW_AT_TI_symbol_name("_i")
+     134                      .dwattr $C$DW$19, DW_AT_type(*$C$DW$T$26)
+     135                      .dwattr $C$DW$19, DW_AT_location[DW_OP_bregx 0x24 3]
+     136              $C$DW$20        .dwtag  DW_TAG_variable, DW_AT_name("j")
+     137                      .dwattr $C$DW$20, DW_AT_TI_symbol_name("_j")
+     138                      .dwattr $C$DW$20, DW_AT_type(*$C$DW$T$26)
+     139                      .dwattr $C$DW$20, DW_AT_location[DW_OP_bregx 0x24 4]
+     140              $C$DW$21        .dwtag  DW_TAG_variable, DW_AT_name("error")
+     141                      .dwattr $C$DW$21, DW_AT_TI_symbol_name("_error")
+     142                      .dwattr $C$DW$21, DW_AT_type(*$C$DW$T$26)
+     143                      .dwattr $C$DW$21, DW_AT_location[DW_OP_bregx 0x24 5]
+     144              $C$DW$22        .dwtag  DW_TAG_variable, DW_AT_name("pdata")
+     145                      .dwattr $C$DW$22, DW_AT_TI_symbol_name("_pdata")
+     146                      .dwattr $C$DW$22, DW_AT_type(*$C$DW$T$32)
+     147                      .dwattr $C$DW$22, DW_AT_location[DW_OP_bregx 0x24 6]
+     148                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 56,colu
+     149 000002 E60A          MOV #0, *SP(#5) ; |56| 
+         000004 00   
+     150                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 60,colu
+     151              $C$DW$23        .dwtag  DW_TAG_TI_branch
+     152                      .dwattr $C$DW$23, DW_AT_low_pc(0x00)
+     153                      .dwattr $C$DW$23, DW_AT_name("_EZDSP5535_SPIFLASH_init")
+     154                      .dwattr $C$DW$23, DW_AT_TI_call
+     155 000005 6C00          CALL #_EZDSP5535_SPIFLASH_init ; |60| 
+         000007 0000!
+     156                                                      ; call occurs [#_EZDSP5535_SPIFLASH_init] ; |60| 
+     157 000009 0404          BCC $C$L1,T0 == #0 ; |60| 
+         00000b 12   
+     158                                                      ; branchcc occurs ; |60| 
+     159                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 62,colu
+     160 00000c EC31          AMOV #$C$FSL1, XAR3 ; |62| 
+         00000e BE00 
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE    4
+
+         000010 0000+
+     161 000012 EB00          MOV XAR3, dbl(*SP(#0))
+         000014 B5   
+     162              $C$DW$24        .dwtag  DW_TAG_TI_branch
+     163                      .dwattr $C$DW$24, DW_AT_low_pc(0x00)
+     164                      .dwattr $C$DW$24, DW_AT_name("_printf")
+     165                      .dwattr $C$DW$24, DW_AT_TI_call
+     166 000015 6C00          CALL #_printf ; |62| 
+         000017 0000!
+     167                                                      ; call occurs [#_printf] ; |62| 
+     168                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 63,colu
+     169 000019 3C14          MOV #1, T0
+     170 00001b 0601          B $C$L16  ; |63| 
+         00001d 69   
+     171                                                      ; branch occurs ; |63| 
+     172 00001e       $C$L1:    
+     173                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 67,colu
+     174 00001e EC31          AMOV #4193280, XAR3 ; |67| 
+         000020 BE3F 
+         000022 FC00 
+     175 000024 7604          MOV #1024, AC1 ; |67| 
+         000026 0018 
+     176 000028 90B0          MOV XAR3, AC0
+     177              $C$DW$25        .dwtag  DW_TAG_TI_branch
+     178                      .dwattr $C$DW$25, DW_AT_low_pc(0x00)
+     179                      .dwattr $C$DW$25, DW_AT_name("_EZDSP5535_SPIFLASH_erase")
+     180                      .dwattr $C$DW$25, DW_AT_TI_call
+     181 00002a 6C00          CALL #_EZDSP5535_SPIFLASH_erase ; |67| 
+         00002c 0000!
+     182                                                      ; call occurs [#_EZDSP5535_SPIFLASH_erase] ; |67| 
+     183                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 71,colu
+     184 00002e FB06          MOV #16380, *SP(#3) ; |71| 
+         000030 3FFC 
+     185                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 71,colu
+     186 000032 7640          MOV #16384, AR2 ; |71| 
+         000034 00A8 
+     187 000036 A906          MOV *SP(#3), AR1 ; |71| 
+     188 000038 1298          CMP AR1 >= AR2, TC1 ; |71| 
+         00003a A0   
+     189 00003b 0464          BCC $C$L6,TC1 ; |71| 
+         00003d 7B   
+     190                                                      ; branchcc occurs ; |71| 
+     191 00003e       $C$L2:    
+     192 00003e       $C$DW$L$_spiflash_test$4$B:
+     193                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 74,colu
+     194 00003e EC31          AMOV #_tx, XAR3 ; |74| 
+         000040 BE00 
+         000042 0000-
+     195 000044 EB0C          MOV XAR3, dbl(*SP(#6))
+         000046 B5   
+     196                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 75,colu
+     197 000047 E608          MOV #0, *SP(#4) ; |75| 
+         000049 00   
+     198                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 75,colu
+     199 00004a 7601          MOV #256, AR2 ; |75| 
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE    5
+
+         00004c 00A8 
+     200 00004e A908          MOV *SP(#4), AR1 ; |75| 
+     201 000050 1298          CMP AR1 >= AR2, TC1 ; |75| 
+         000052 A0   
+     202 000053 0464          BCC $C$L4,TC1 ; |75| 
+         000055 27   
+     203                                                      ; branchcc occurs ; |75| 
+     204 000056       $C$DW$L$_spiflash_test$4$E:
+     205 000056       $C$L3:    
+     206 000056       $C$DW$L$_spiflash_test$5$B:
+     207                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 76,colu
+     208 000056 ED0C          MOV dbl(*SP(#6)), XAR2
+         000058 AF   
+     209 000059 EC41          AMAR *AR2, XAR3
+         00005b BE   
+     210 00005c B463          AMAR *AR3+
+     211 00005e EB0C          MOV XAR3, dbl(*SP(#6))
+         000060 B5   
+     212 000061 A908          MOV *SP(#4), AR1 ; |76| 
+     213 000063 D606          ADD *SP(#3), AR1, AR1 ; |76| 
+         000065 99   
+     214 000066 4029          ADD #2, AR1 ; |76| 
+     215 000068 18FF          AND #0x00ff, AR1, AC0 ; |76| 
+         00006a 09   
+     216 00006b C041          MOV AC0, *AR2 ; |76| 
+     217                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 75,colu
+     218 00006d F708          ADD #1, *SP(#4) ; |75| 
+         00006f 0001 
+     219                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 75,colu
+     220 000071 7601          MOV #256, AR2 ; |75| 
+         000073 00A8 
+     221 000075 A908          MOV *SP(#4), AR1 ; |75| 
+     222 000077 1294          CMP AR1 < AR2, TC1 ; |75| 
+         000079 A0   
+     223 00007a 0464          BCC $C$L3,TC1 ; |75| 
+         00007c D9   
+     224                                                      ; branchcc occurs ; |75| 
+     225 00007d       $C$DW$L$_spiflash_test$5$E:
+     226 00007d       $C$L4:    
+     227 00007d       $C$DW$L$_spiflash_test$6$B:
+     228                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 79,colu
+     229 00007d 7A00          MOV #(_tx >> 16) << #16, AC0 ; |79| 
+         00007f 000A%
+     230 000081 F906          MOV *SP(#3) << #8, AC1 ; |79| 
+         000083 0818 
+     231 000085 7601          MOV #256, AC2 ; |79| 
+         000087 0028 
+     232 000089 7E00          OR #(_tx & 0xffff), AC0, AC0 ; |79| 
+         00008b 0000%
+     233 00008d A116          MOV mmap(AC1L), AC1 ; |79| 
+         00008f 98   
+     234              $C$DW$26        .dwtag  DW_TAG_TI_branch
+     235                      .dwattr $C$DW$26, DW_AT_low_pc(0x00)
+     236                      .dwattr $C$DW$26, DW_AT_name("_EZDSP5535_SPIFLASH_write")
+     237                      .dwattr $C$DW$26, DW_AT_TI_call
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE    6
+
+     238 000090 6C00          CALL #_EZDSP5535_SPIFLASH_write ; |79| 
+         000092 0000!
+     239                                                      ; call occurs [#_EZDSP5535_SPIFLASH_write] ; |79| 
+     240 000094 0404          BCC $C$L5,T0 == #0 ; |79| 
+         000096 12   
+     241                                                      ; branchcc occurs ; |79| 
+     242 000097       $C$DW$L$_spiflash_test$6$E:
+     243                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 81,colu
+     244 000097 EC31          AMOV #$C$FSL2, XAR3 ; |81| 
+         000099 BE00 
+         00009b 0020+
+     245 00009d EB00          MOV XAR3, dbl(*SP(#0))
+         00009f B5   
+     246              $C$DW$27        .dwtag  DW_TAG_TI_branch
+     247                      .dwattr $C$DW$27, DW_AT_low_pc(0x00)
+     248                      .dwattr $C$DW$27, DW_AT_name("_printf")
+     249                      .dwattr $C$DW$27, DW_AT_TI_call
+     250 0000a0 6C00          CALL #_printf ; |81| 
+         0000a2 0000!
+     251                                                      ; call occurs [#_printf] ; |81| 
+     252                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 82,colu
+     253 0000a4 3C14          MOV #1, T0
+     254 0000a6 0600          B $C$L16  ; |82| 
+         0000a8 DE   
+     255                                                      ; branch occurs ; |82| 
+     256 0000a9       $C$L5:    
+     257 0000a9       $C$DW$L$_spiflash_test$8$B:
+     258                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 71,colu
+     259 0000a9 F706          ADD #1, *SP(#3) ; |71| 
+         0000ab 0001 
+     260                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 71,colu
+     261 0000ad 7640          MOV #16384, AR2 ; |71| 
+         0000af 00A8 
+     262 0000b1 A906          MOV *SP(#3), AR1 ; |71| 
+     263 0000b3 1294          CMP AR1 < AR2, TC1 ; |71| 
+         0000b5 A0   
+     264 0000b6 0464          BCC $C$L2,TC1 ; |71| 
+         0000b8 85   
+     265                                                      ; branchcc occurs ; |71| 
+     266 0000b9       $C$DW$L$_spiflash_test$8$E:
+     267 0000b9       $C$L6:    
+     268                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 87,colu
+     269 0000b9 FB06          MOV #16380, *SP(#3) ; |87| 
+         0000bb 3FFC 
+     270                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 87,colu
+     271 0000bd A906          MOV *SP(#3), AR1 ; |87| 
+     272 0000bf 1298          CMP AR1 >= AR2, TC1 ; |87| 
+         0000c1 A0   
+     273 0000c2 6D64          BCC $C$L15,TC1 ; |87| 
+         0000c4 00BF 
+     274                                                      ; branchcc occurs ; |87| 
+     275 0000c6       $C$L7:    
+     276 0000c6       $C$DW$L$_spiflash_test$10$B:
+     277                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 90,colu
+     278 0000c6 E608          MOV #0, *SP(#4) ; |90| 
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE    7
+
+         0000c8 00   
+     279                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 90,colu
+     280 0000c9 7601          MOV #256, AR2 ; |90| 
+         0000cb 00A8 
+     281 0000cd A908          MOV *SP(#4), AR1 ; |90| 
+     282 0000cf 1298          CMP AR1 >= AR2, TC1 ; |90| 
+         0000d1 A0   
+     283 0000d2 0464          BCC $C$L9,TC1 ; |90| 
+         0000d4 17   
+     284                                                      ; branchcc occurs ; |90| 
+     285 0000d5       $C$DW$L$_spiflash_test$10$E:
+     286 0000d5       $C$L8:    
+     287 0000d5       $C$DW$L$_spiflash_test$11$B:
+     288                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 91,colu
+     289 0000d5 2294          MOV AR1, T0 ; |91| 
+     290 0000d7 EC31          AMOV #_rx, XAR3 ; |91| 
+         0000d9 BE00 
+         0000db 0100-
+     291 0000dd E66B          MOV #0, *AR3(T0) ; |91| 
+         0000df 00   
+     292                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 90,colu
+     293 0000e0 F708          ADD #1, *SP(#4) ; |90| 
+         0000e2 0001 
+     294                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 90,colu
+     295 0000e4 A908          MOV *SP(#4), AR1 ; |90| 
+     296 0000e6 1294          CMP AR1 < AR2, TC1 ; |90| 
+         0000e8 A0   
+     297 0000e9 0464          BCC $C$L8,TC1 ; |90| 
+         0000eb E9   
+     298                                                      ; branchcc occurs ; |90| 
+     299 0000ec       $C$DW$L$_spiflash_test$11$E:
+     300 0000ec       $C$L9:    
+     301 0000ec       $C$DW$L$_spiflash_test$12$B:
+     302                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 94,colu
+     303 0000ec 7A00          MOV #(_rx >> 16) << #16, AC1 ; |94| 
+         0000ee 001A%
+     304 0000f0 F906          MOV *SP(#3) << #8, AC0 ; |94| 
+         0000f2 0808 
+     305 0000f4 7601          MOV #256, AC2 ; |94| 
+         0000f6 0028 
+     306 0000f8 7E00          OR #(_rx & 0xffff), AC1, AC1 ; |94| 
+         0000fa 0011%
+     307 0000fc A010          MOV mmap(AC0L), AC0 ; |94| 
+         0000fe 98   
+     308              $C$DW$28        .dwtag  DW_TAG_TI_branch
+     309                      .dwattr $C$DW$28, DW_AT_low_pc(0x00)
+     310                      .dwattr $C$DW$28, DW_AT_name("_EZDSP5535_SPIFLASH_read")
+     311                      .dwattr $C$DW$28, DW_AT_TI_call
+     312 0000ff 6C00          CALL #_EZDSP5535_SPIFLASH_read ; |94| 
+         000101 0000!
+     313                                                      ; call occurs [#_EZDSP5535_SPIFLASH_read] ; |94| 
+     314 000103 0404          BCC $C$L10,T0 == #0 ; |94| 
+         000105 12   
+     315                                                      ; branchcc occurs ; |94| 
+     316 000106       $C$DW$L$_spiflash_test$12$E:
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE    8
+
+     317                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 96,colu
+     318 000106 EC31          AMOV #$C$FSL3, XAR3 ; |96| 
+         000108 BE00 
+         00010a 0036+
+     319 00010c EB00          MOV XAR3, dbl(*SP(#0))
+         00010e B5   
+     320              $C$DW$29        .dwtag  DW_TAG_TI_branch
+     321                      .dwattr $C$DW$29, DW_AT_low_pc(0x00)
+     322                      .dwattr $C$DW$29, DW_AT_name("_printf")
+     323                      .dwattr $C$DW$29, DW_AT_TI_call
+     324 00010f 6C00          CALL #_printf ; |96| 
+         000111 0000!
+     325                                                      ; call occurs [#_printf] ; |96| 
+     326                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 97,colu
+     327 000113 3C14          MOV #1, T0
+     328 000115 0600          B $C$L16  ; |97| 
+         000117 6F   
+     329                                                      ; branch occurs ; |97| 
+     330 000118       $C$L10:    
+     331 000118       $C$DW$L$_spiflash_test$14$B:
+     332                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 101,col
+     333 000118 E60A          MOV #0, *SP(#5) ; |101| 
+         00011a 00   
+     334                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 102,col
+     335 00011b EC31          AMOV #_rx, XAR3 ; |102| 
+         00011d BE00 
+         00011f 0100-
+     336 000121 EB0C          MOV XAR3, dbl(*SP(#6))
+         000123 B5   
+     337                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 103,col
+     338 000124 E608          MOV #0, *SP(#4) ; |103| 
+         000126 00   
+     339                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 103,col
+     340 000127 7601          MOV #256, AR2 ; |103| 
+         000129 00A8 
+     341 00012b A908          MOV *SP(#4), AR1 ; |103| 
+     342 00012d 1298          CMP AR1 >= AR2, TC1 ; |103| 
+         00012f A0   
+     343 000130 0464          BCC $C$L13,TC1 ; |103| 
+         000132 2B   
+     344                                                      ; branchcc occurs ; |103| 
+     345 000133       $C$DW$L$_spiflash_test$14$E:
+     346 000133       $C$L11:    
+     347 000133       $C$DW$L$_spiflash_test$15$B:
+     348                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 104,col
+     349 000133 ED0C          MOV dbl(*SP(#6)), XAR3
+         000135 BF   
+     350 000136 A963          MOV *AR3+, AR1 ; |104| 
+     351 000138 EB0C          MOV XAR3, dbl(*SP(#6))
+         00013a B5   
+     352 00013b AA08          MOV *SP(#4), AR2 ; |104| 
+     353 00013d D606          ADD *SP(#3), AR2, AR2 ; |104| 
+         00013f AA   
+     354 000140 402A          ADD #2, AR2 ; |104| 
+     355 000142 18FF          AND #0x00ff, AR2, AR2 ; |104| 
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE    9
+
+         000144 AA   
+     356 000145 1290          CMPU AR1 == AR2, TC1 ; |104| 
+         000147 A4   
+     357 000148 6264          BCC $C$L12,TC1 ; |104| 
+     358                                                      ; branchcc occurs ; |104| 
+     359 00014a       $C$DW$L$_spiflash_test$15$E:
+     360 00014a       $C$DW$L$_spiflash_test$16$B:
+     361                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 105,col
+     362 00014a F70A          ADD #1, *SP(#5) ; |105| 
+         00014c 0001 
+     363 00014e       $C$DW$L$_spiflash_test$16$E:
+     364 00014e       $C$L12:    
+     365 00014e       $C$DW$L$_spiflash_test$17$B:
+     366                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 103,col
+     367 00014e F708          ADD #1, *SP(#4) ; |103| 
+         000150 0001 
+     368                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 103,col
+     369 000152 7601          MOV #256, AR2 ; |103| 
+         000154 00A8 
+     370 000156 A908          MOV *SP(#4), AR1 ; |103| 
+     371 000158 1294          CMP AR1 < AR2, TC1 ; |103| 
+         00015a A0   
+     372 00015b 0464          BCC $C$L11,TC1 ; |103| 
+         00015d D5   
+     373                                                      ; branchcc occurs ; |103| 
+     374 00015e       $C$DW$L$_spiflash_test$17$E:
+     375 00015e       $C$L13:    
+     376 00015e       $C$DW$L$_spiflash_test$18$B:
+     377                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 106,col
+     378 00015e A90A          MOV *SP(#5), AR1 ; |106| 
+     379 000160 0409          BCC $C$L14,AR1 == #0 ; |106| 
+         000162 11   
+     380                                                      ; branchcc occurs ; |106| 
+     381 000163       $C$DW$L$_spiflash_test$18$E:
+     382 000163       $C$DW$L$_spiflash_test$19$B:
+     383                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 108,col
+     384 000163 EC31          AMOV #$C$FSL4, XAR3 ; |108| 
+         000165 BE00 
+         000167 004C+
+     385 000169 EB00          MOV XAR3, dbl(*SP(#0))
+         00016b B5   
+     386 00016c A906          MOV *SP(#3), AR1 ; |108| 
+     387 00016e C904          MOV AR1, *SP(#2) ; |108| 
+     388              $C$DW$30        .dwtag  DW_TAG_TI_branch
+     389                      .dwattr $C$DW$30, DW_AT_low_pc(0x00)
+     390                      .dwattr $C$DW$30, DW_AT_name("_printf")
+     391                      .dwattr $C$DW$30, DW_AT_TI_call
+     392 000170 6C00          CALL #_printf ; |108| 
+         000172 0000!
+     393                                                      ; call occurs [#_printf] ; |108| 
+     394 000174       $C$DW$L$_spiflash_test$19$E:
+     395 000174       $C$L14:    
+     396 000174       $C$DW$L$_spiflash_test$20$B:
+     397                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 87,colu
+     398 000174 F706          ADD #1, *SP(#3) ; |87| 
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE   10
+
+         000176 0001 
+     399                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 87,colu
+     400 000178 7640          MOV #16384, AR2 ; |87| 
+         00017a 00A8 
+     401 00017c A906          MOV *SP(#3), AR1 ; |87| 
+     402 00017e 1294          CMP AR1 < AR2, TC1 ; |87| 
+         000180 A0   
+     403 000181 6D64          BCC $C$L7,TC1 ; |87| 
+         000183 FF41 
+     404                                                      ; branchcc occurs ; |87| 
+     405 000185       $C$DW$L$_spiflash_test$20$E:
+     406 000185       $C$L15:    
+     407                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 113,col
+     408 000185 3C04          MOV #0, T0
+     409 000187       $C$L16:    
+     410                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c",line 114,col
+     411 000187 4E09          AADD #9, SP
+     412                      .dwcfi  cfa_offset, 1
+     413              $C$DW$31        .dwtag  DW_TAG_TI_branch
+     414                      .dwattr $C$DW$31, DW_AT_low_pc(0x00)
+     415                      .dwattr $C$DW$31, DW_AT_TI_return
+     416 000189 4804          RET
+     417                                                      ; return occurs
+     418              
+     419              $C$DW$32        .dwtag  DW_TAG_TI_loop
+     420                      .dwattr $C$DW$32, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\spiflash_test.asm:$C$L7:1:1
+     421                      .dwattr $C$DW$32, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spif
+     422                      .dwattr $C$DW$32, DW_AT_TI_begin_line(0x57)
+     423                      .dwattr $C$DW$32, DW_AT_TI_end_line(0x6f)
+     424              $C$DW$33        .dwtag  DW_TAG_TI_loop_range
+     425                      .dwattr $C$DW$33, DW_AT_low_pc($C$DW$L$_spiflash_test$10$B)
+     426                      .dwattr $C$DW$33, DW_AT_high_pc($C$DW$L$_spiflash_test$10$E)
+     427              $C$DW$34        .dwtag  DW_TAG_TI_loop_range
+     428                      .dwattr $C$DW$34, DW_AT_low_pc($C$DW$L$_spiflash_test$12$B)
+     429                      .dwattr $C$DW$34, DW_AT_high_pc($C$DW$L$_spiflash_test$12$E)
+     430              $C$DW$35        .dwtag  DW_TAG_TI_loop_range
+     431                      .dwattr $C$DW$35, DW_AT_low_pc($C$DW$L$_spiflash_test$14$B)
+     432                      .dwattr $C$DW$35, DW_AT_high_pc($C$DW$L$_spiflash_test$14$E)
+     433              $C$DW$36        .dwtag  DW_TAG_TI_loop_range
+     434                      .dwattr $C$DW$36, DW_AT_low_pc($C$DW$L$_spiflash_test$18$B)
+     435                      .dwattr $C$DW$36, DW_AT_high_pc($C$DW$L$_spiflash_test$18$E)
+     436              $C$DW$37        .dwtag  DW_TAG_TI_loop_range
+     437                      .dwattr $C$DW$37, DW_AT_low_pc($C$DW$L$_spiflash_test$19$B)
+     438                      .dwattr $C$DW$37, DW_AT_high_pc($C$DW$L$_spiflash_test$19$E)
+     439              $C$DW$38        .dwtag  DW_TAG_TI_loop_range
+     440                      .dwattr $C$DW$38, DW_AT_low_pc($C$DW$L$_spiflash_test$20$B)
+     441                      .dwattr $C$DW$38, DW_AT_high_pc($C$DW$L$_spiflash_test$20$E)
+     442              
+     443              $C$DW$39        .dwtag  DW_TAG_TI_loop
+     444                      .dwattr $C$DW$39, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\spiflash_test.asm:$C$L8:2:1
+     445                      .dwattr $C$DW$39, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spif
+     446                      .dwattr $C$DW$39, DW_AT_TI_begin_line(0x5a)
+     447                      .dwattr $C$DW$39, DW_AT_TI_end_line(0x5b)
+     448              $C$DW$40        .dwtag  DW_TAG_TI_loop_range
+     449                      .dwattr $C$DW$40, DW_AT_low_pc($C$DW$L$_spiflash_test$11$B)
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE   11
+
+     450                      .dwattr $C$DW$40, DW_AT_high_pc($C$DW$L$_spiflash_test$11$E)
+     451                      .dwendtag $C$DW$39
+     452              
+     453              
+     454              $C$DW$41        .dwtag  DW_TAG_TI_loop
+     455                      .dwattr $C$DW$41, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\spiflash_test.asm:$C$L11:2:
+     456                      .dwattr $C$DW$41, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spif
+     457                      .dwattr $C$DW$41, DW_AT_TI_begin_line(0x67)
+     458                      .dwattr $C$DW$41, DW_AT_TI_end_line(0x69)
+     459              $C$DW$42        .dwtag  DW_TAG_TI_loop_range
+     460                      .dwattr $C$DW$42, DW_AT_low_pc($C$DW$L$_spiflash_test$15$B)
+     461                      .dwattr $C$DW$42, DW_AT_high_pc($C$DW$L$_spiflash_test$15$E)
+     462              $C$DW$43        .dwtag  DW_TAG_TI_loop_range
+     463                      .dwattr $C$DW$43, DW_AT_low_pc($C$DW$L$_spiflash_test$16$B)
+     464                      .dwattr $C$DW$43, DW_AT_high_pc($C$DW$L$_spiflash_test$16$E)
+     465              $C$DW$44        .dwtag  DW_TAG_TI_loop_range
+     466                      .dwattr $C$DW$44, DW_AT_low_pc($C$DW$L$_spiflash_test$17$B)
+     467                      .dwattr $C$DW$44, DW_AT_high_pc($C$DW$L$_spiflash_test$17$E)
+     468                      .dwendtag $C$DW$41
+     469              
+     470                      .dwendtag $C$DW$32
+     471              
+     472              
+     473              $C$DW$45        .dwtag  DW_TAG_TI_loop
+     474                      .dwattr $C$DW$45, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\spiflash_test.asm:$C$L2:1:1
+     475                      .dwattr $C$DW$45, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spif
+     476                      .dwattr $C$DW$45, DW_AT_TI_begin_line(0x47)
+     477                      .dwattr $C$DW$45, DW_AT_TI_end_line(0x54)
+     478              $C$DW$46        .dwtag  DW_TAG_TI_loop_range
+     479                      .dwattr $C$DW$46, DW_AT_low_pc($C$DW$L$_spiflash_test$4$B)
+     480                      .dwattr $C$DW$46, DW_AT_high_pc($C$DW$L$_spiflash_test$4$E)
+     481              $C$DW$47        .dwtag  DW_TAG_TI_loop_range
+     482                      .dwattr $C$DW$47, DW_AT_low_pc($C$DW$L$_spiflash_test$6$B)
+     483                      .dwattr $C$DW$47, DW_AT_high_pc($C$DW$L$_spiflash_test$6$E)
+     484              $C$DW$48        .dwtag  DW_TAG_TI_loop_range
+     485                      .dwattr $C$DW$48, DW_AT_low_pc($C$DW$L$_spiflash_test$8$B)
+     486                      .dwattr $C$DW$48, DW_AT_high_pc($C$DW$L$_spiflash_test$8$E)
+     487              
+     488              $C$DW$49        .dwtag  DW_TAG_TI_loop
+     489                      .dwattr $C$DW$49, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\spiflash_test.asm:$C$L3:2:1
+     490                      .dwattr $C$DW$49, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spif
+     491                      .dwattr $C$DW$49, DW_AT_TI_begin_line(0x4b)
+     492                      .dwattr $C$DW$49, DW_AT_TI_end_line(0x4c)
+     493              $C$DW$50        .dwtag  DW_TAG_TI_loop_range
+     494                      .dwattr $C$DW$50, DW_AT_low_pc($C$DW$L$_spiflash_test$5$B)
+     495                      .dwattr $C$DW$50, DW_AT_high_pc($C$DW$L$_spiflash_test$5$E)
+     496                      .dwendtag $C$DW$49
+     497              
+     498                      .dwendtag $C$DW$45
+     499              
+     500                      .dwattr $C$DW$18, DW_AT_TI_end_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spifla
+     501                      .dwattr $C$DW$18, DW_AT_TI_end_line(0x72)
+     502                      .dwattr $C$DW$18, DW_AT_TI_end_column(0x01)
+     503                      .dwendentry
+     504                      .dwendtag $C$DW$18
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE   12
+
+     505              
+     506              ;*******************************************************************************
+     507              ;* FAR STRINGS                                                                 *
+     508              ;*******************************************************************************
+     509 000000               .sect   ".const:.string"
+     510                      .align  2
+     511 000000 0053  $C$FSL1:        .string "SPIFLASH initialiation failed.",10,0
+         000001 0050 
+         000002 0049 
+         000003 0046 
+         000004 004C 
+         000005 0041 
+         000006 0053 
+         000007 0048 
+         000008 0020 
+         000009 0069 
+         00000a 006E 
+         00000b 0069 
+         00000c 0074 
+         00000d 0069 
+         00000e 0061 
+         00000f 006C 
+         000010 0069 
+         000011 0061 
+         000012 0074 
+         000013 0069 
+         000014 006F 
+         000015 006E 
+         000016 0020 
+         000017 0066 
+         000018 0061 
+         000019 0069 
+         00001a 006C 
+         00001b 0065 
+         00001c 0064 
+         00001d 002E 
+         00001e 000A 
+         00001f 0000 
+     512                      .align  2
+     513 000020 0053  $C$FSL2:        .string "SPIFLASH write fail.",10,0
+         000021 0050 
+         000022 0049 
+         000023 0046 
+         000024 004C 
+         000025 0041 
+         000026 0053 
+         000027 0048 
+         000028 0020 
+         000029 0077 
+         00002a 0072 
+         00002b 0069 
+         00002c 0074 
+         00002d 0065 
+         00002e 0020 
+         00002f 0066 
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE   13
+
+         000030 0061 
+         000031 0069 
+         000032 006C 
+         000033 002E 
+         000034 000A 
+         000035 0000 
+     514                      .align  2
+     515 000036 0053  $C$FSL3:        .string "SPIFLASH read fail.",10,0
+         000037 0050 
+         000038 0049 
+         000039 0046 
+         00003a 004C 
+         00003b 0041 
+         00003c 0053 
+         00003d 0048 
+         00003e 0020 
+         00003f 0072 
+         000040 0065 
+         000041 0061 
+         000042 0064 
+         000043 0020 
+         000044 0066 
+         000045 0061 
+         000046 0069 
+         000047 006C 
+         000048 002E 
+         000049 000A 
+         00004a 0000 
+     516                      .align  2
+     517 00004c 0045  $C$FSL4:        .string "Error on page %d",0
+         00004d 0072 
+         00004e 0072 
+         00004f 006F 
+         000050 0072 
+         000051 0020 
+         000052 006F 
+         000053 006E 
+         000054 0020 
+         000055 0070 
+         000056 0061 
+         000057 0067 
+         000058 0065 
+         000059 0020 
+         00005a 0025 
+         00005b 0064 
+         00005c 0000 
+     518              ;******************************************************************************
+     519              ;* UNDEFINED EXTERNAL REFERENCES                                              *
+     520              ;******************************************************************************
+     521                      .global _EZDSP5535_SPIFLASH_init
+     522                      .global _EZDSP5535_SPIFLASH_erase
+     523                      .global _EZDSP5535_SPIFLASH_read
+     524                      .global _EZDSP5535_SPIFLASH_write
+     525                      .global _printf
+     526              
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE   14
+
+     527              ;*******************************************************************************
+     528              ;* TYPE INFORMATION                                                            *
+     529              ;*******************************************************************************
+     530              $C$DW$T$4       .dwtag  DW_TAG_base_type
+     531                      .dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
+     532                      .dwattr $C$DW$T$4, DW_AT_name("bool")
+     533                      .dwattr $C$DW$T$4, DW_AT_byte_size(0x01)
+     534              $C$DW$T$5       .dwtag  DW_TAG_base_type
+     535                      .dwattr $C$DW$T$5, DW_AT_encoding(DW_ATE_signed_char)
+     536                      .dwattr $C$DW$T$5, DW_AT_name("signed char")
+     537                      .dwattr $C$DW$T$5, DW_AT_byte_size(0x01)
+     538              $C$DW$T$6       .dwtag  DW_TAG_base_type
+     539                      .dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
+     540                      .dwattr $C$DW$T$6, DW_AT_name("unsigned char")
+     541                      .dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
+     542              $C$DW$T$22      .dwtag  DW_TAG_typedef, DW_AT_name("Uint8")
+     543                      .dwattr $C$DW$T$22, DW_AT_type(*$C$DW$T$6)
+     544                      .dwattr $C$DW$T$22, DW_AT_language(DW_LANG_C)
+     545              
+     546              $C$DW$T$23      .dwtag  DW_TAG_array_type
+     547                      .dwattr $C$DW$T$23, DW_AT_type(*$C$DW$T$22)
+     548                      .dwattr $C$DW$T$23, DW_AT_language(DW_LANG_C)
+     549                      .dwattr $C$DW$T$23, DW_AT_byte_size(0x100)
+     550              $C$DW$51        .dwtag  DW_TAG_subrange_type
+     551                      .dwattr $C$DW$51, DW_AT_upper_bound(0xff)
+     552                      .dwendtag $C$DW$T$23
+     553              
+     554              $C$DW$T$7       .dwtag  DW_TAG_base_type
+     555                      .dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
+     556                      .dwattr $C$DW$T$7, DW_AT_name("wchar_t")
+     557                      .dwattr $C$DW$T$7, DW_AT_byte_size(0x01)
+     558              $C$DW$T$8       .dwtag  DW_TAG_base_type
+     559                      .dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
+     560                      .dwattr $C$DW$T$8, DW_AT_name("short")
+     561                      .dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
+     562              $C$DW$T$26      .dwtag  DW_TAG_typedef, DW_AT_name("Int16")
+     563                      .dwattr $C$DW$T$26, DW_AT_type(*$C$DW$T$8)
+     564                      .dwattr $C$DW$T$26, DW_AT_language(DW_LANG_C)
+     565              $C$DW$T$9       .dwtag  DW_TAG_base_type
+     566                      .dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
+     567                      .dwattr $C$DW$T$9, DW_AT_name("unsigned short")
+     568                      .dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
+     569              $C$DW$T$31      .dwtag  DW_TAG_typedef, DW_AT_name("Uint16")
+     570                      .dwattr $C$DW$T$31, DW_AT_type(*$C$DW$T$9)
+     571                      .dwattr $C$DW$T$31, DW_AT_language(DW_LANG_C)
+     572              $C$DW$T$32      .dwtag  DW_TAG_pointer_type
+     573                      .dwattr $C$DW$T$32, DW_AT_type(*$C$DW$T$31)
+     574                      .dwattr $C$DW$T$32, DW_AT_address_class(0x17)
+     575              $C$DW$T$10      .dwtag  DW_TAG_base_type
+     576                      .dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
+     577                      .dwattr $C$DW$T$10, DW_AT_name("int")
+     578                      .dwattr $C$DW$T$10, DW_AT_byte_size(0x01)
+     579              $C$DW$T$11      .dwtag  DW_TAG_base_type
+     580                      .dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
+     581                      .dwattr $C$DW$T$11, DW_AT_name("unsigned int")
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE   15
+
+     582                      .dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
+     583              $C$DW$T$12      .dwtag  DW_TAG_base_type
+     584                      .dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
+     585                      .dwattr $C$DW$T$12, DW_AT_name("long")
+     586                      .dwattr $C$DW$T$12, DW_AT_byte_size(0x02)
+     587              $C$DW$T$13      .dwtag  DW_TAG_base_type
+     588                      .dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
+     589                      .dwattr $C$DW$T$13, DW_AT_name("unsigned long")
+     590                      .dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+     591              $C$DW$T$19      .dwtag  DW_TAG_typedef, DW_AT_name("Uint32")
+     592                      .dwattr $C$DW$T$19, DW_AT_type(*$C$DW$T$13)
+     593                      .dwattr $C$DW$T$19, DW_AT_language(DW_LANG_C)
+     594              $C$DW$T$14      .dwtag  DW_TAG_base_type
+     595                      .dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
+     596                      .dwattr $C$DW$T$14, DW_AT_name("long long")
+     597                      .dwattr $C$DW$T$14, DW_AT_byte_size(0x04)
+     598                      .dwattr $C$DW$T$14, DW_AT_bit_size(0x28)
+     599                      .dwattr $C$DW$T$14, DW_AT_bit_offset(0x18)
+     600              $C$DW$T$15      .dwtag  DW_TAG_base_type
+     601                      .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
+     602                      .dwattr $C$DW$T$15, DW_AT_name("unsigned long long")
+     603                      .dwattr $C$DW$T$15, DW_AT_byte_size(0x04)
+     604                      .dwattr $C$DW$T$15, DW_AT_bit_size(0x28)
+     605                      .dwattr $C$DW$T$15, DW_AT_bit_offset(0x18)
+     606              $C$DW$T$16      .dwtag  DW_TAG_base_type
+     607                      .dwattr $C$DW$T$16, DW_AT_encoding(DW_ATE_float)
+     608                      .dwattr $C$DW$T$16, DW_AT_name("float")
+     609                      .dwattr $C$DW$T$16, DW_AT_byte_size(0x02)
+     610              $C$DW$T$17      .dwtag  DW_TAG_base_type
+     611                      .dwattr $C$DW$T$17, DW_AT_encoding(DW_ATE_float)
+     612                      .dwattr $C$DW$T$17, DW_AT_name("double")
+     613                      .dwattr $C$DW$T$17, DW_AT_byte_size(0x02)
+     614              $C$DW$T$18      .dwtag  DW_TAG_base_type
+     615                      .dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
+     616                      .dwattr $C$DW$T$18, DW_AT_name("long double")
+     617                      .dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
+     618              $C$DW$T$33      .dwtag  DW_TAG_base_type
+     619                      .dwattr $C$DW$T$33, DW_AT_encoding(DW_ATE_signed_char)
+     620                      .dwattr $C$DW$T$33, DW_AT_name("signed char")
+     621                      .dwattr $C$DW$T$33, DW_AT_byte_size(0x01)
+     622              $C$DW$52        .dwtag  DW_TAG_TI_far_type
+     623                      .dwattr $C$DW$52, DW_AT_type(*$C$DW$T$33)
+     624              $C$DW$T$34      .dwtag  DW_TAG_const_type
+     625                      .dwattr $C$DW$T$34, DW_AT_type(*$C$DW$52)
+     626              $C$DW$T$35      .dwtag  DW_TAG_pointer_type
+     627                      .dwattr $C$DW$T$35, DW_AT_type(*$C$DW$T$34)
+     628                      .dwattr $C$DW$T$35, DW_AT_address_class(0x17)
+     629                      .dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
+     630              
+     631              ;***************************************************************
+     632              ;* DWARF CIE ENTRIES                                           *
+     633              ;***************************************************************
+     634              
+     635              $C$DW$CIE       .dwcie 91
+     636                      .dwcfi  cfa_register, 36
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE   16
+
+     637                      .dwcfi  cfa_offset, 0
+     638                      .dwcfi  undefined, 0
+     639                      .dwcfi  undefined, 1
+     640                      .dwcfi  undefined, 2
+     641                      .dwcfi  undefined, 3
+     642                      .dwcfi  undefined, 4
+     643                      .dwcfi  undefined, 5
+     644                      .dwcfi  undefined, 6
+     645                      .dwcfi  undefined, 7
+     646                      .dwcfi  undefined, 8
+     647                      .dwcfi  undefined, 9
+     648                      .dwcfi  undefined, 10
+     649                      .dwcfi  undefined, 11
+     650                      .dwcfi  undefined, 12
+     651                      .dwcfi  undefined, 13
+     652                      .dwcfi  same_value, 14
+     653                      .dwcfi  same_value, 15
+     654                      .dwcfi  undefined, 16
+     655                      .dwcfi  undefined, 17
+     656                      .dwcfi  undefined, 18
+     657                      .dwcfi  undefined, 19
+     658                      .dwcfi  undefined, 20
+     659                      .dwcfi  undefined, 21
+     660                      .dwcfi  undefined, 22
+     661                      .dwcfi  undefined, 23
+     662                      .dwcfi  undefined, 24
+     663                      .dwcfi  undefined, 25
+     664                      .dwcfi  same_value, 26
+     665                      .dwcfi  same_value, 27
+     666                      .dwcfi  same_value, 28
+     667                      .dwcfi  same_value, 29
+     668                      .dwcfi  same_value, 30
+     669                      .dwcfi  same_value, 31
+     670                      .dwcfi  undefined, 32
+     671                      .dwcfi  undefined, 33
+     672                      .dwcfi  undefined, 34
+     673                      .dwcfi  undefined, 35
+     674                      .dwcfi  undefined, 36
+     675                      .dwcfi  undefined, 37
+     676                      .dwcfi  undefined, 38
+     677                      .dwcfi  undefined, 39
+     678                      .dwcfi  undefined, 40
+     679                      .dwcfi  undefined, 41
+     680                      .dwcfi  undefined, 42
+     681                      .dwcfi  undefined, 43
+     682                      .dwcfi  undefined, 44
+     683                      .dwcfi  undefined, 45
+     684                      .dwcfi  undefined, 46
+     685                      .dwcfi  undefined, 47
+     686                      .dwcfi  undefined, 48
+     687                      .dwcfi  undefined, 49
+     688                      .dwcfi  undefined, 50
+     689                      .dwcfi  undefined, 51
+     690                      .dwcfi  undefined, 52
+     691                      .dwcfi  undefined, 53
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE   17
+
+     692                      .dwcfi  undefined, 54
+     693                      .dwcfi  undefined, 55
+     694                      .dwcfi  undefined, 56
+     695                      .dwcfi  undefined, 57
+     696                      .dwcfi  undefined, 58
+     697                      .dwcfi  undefined, 59
+     698                      .dwcfi  undefined, 60
+     699                      .dwcfi  undefined, 61
+     700                      .dwcfi  undefined, 62
+     701                      .dwcfi  undefined, 63
+     702                      .dwcfi  undefined, 64
+     703                      .dwcfi  undefined, 65
+     704                      .dwcfi  undefined, 66
+     705                      .dwcfi  undefined, 67
+     706                      .dwcfi  undefined, 68
+     707                      .dwcfi  undefined, 69
+     708                      .dwcfi  undefined, 70
+     709                      .dwcfi  undefined, 71
+     710                      .dwcfi  undefined, 72
+     711                      .dwcfi  undefined, 73
+     712                      .dwcfi  undefined, 74
+     713                      .dwcfi  undefined, 75
+     714                      .dwcfi  undefined, 76
+     715                      .dwcfi  undefined, 77
+     716                      .dwcfi  undefined, 78
+     717                      .dwcfi  undefined, 79
+     718                      .dwcfi  undefined, 80
+     719                      .dwcfi  undefined, 81
+     720                      .dwcfi  undefined, 82
+     721                      .dwcfi  undefined, 83
+     722                      .dwcfi  undefined, 84
+     723                      .dwcfi  undefined, 85
+     724                      .dwcfi  undefined, 86
+     725                      .dwcfi  undefined, 87
+     726                      .dwcfi  undefined, 88
+     727                      .dwcfi  undefined, 89
+     728                      .dwcfi  undefined, 90
+     729                      .dwcfi  undefined, 91
+     730                      .dwendentry
+     731              
+     732              ;***************************************************************
+     733              ;* DWARF REGISTER MAP                                          *
+     734              ;***************************************************************
+     735              
+     736              $C$DW$53        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+     737                      .dwattr $C$DW$53, DW_AT_location[DW_OP_reg0]
+     738              $C$DW$54        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+     739                      .dwattr $C$DW$54, DW_AT_location[DW_OP_reg1]
+     740              $C$DW$55        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0_G")
+     741                      .dwattr $C$DW$55, DW_AT_location[DW_OP_reg2]
+     742              $C$DW$56        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+     743                      .dwattr $C$DW$56, DW_AT_location[DW_OP_reg3]
+     744              $C$DW$57        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+     745                      .dwattr $C$DW$57, DW_AT_location[DW_OP_reg4]
+     746              $C$DW$58        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1_G")
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE   18
+
+     747                      .dwattr $C$DW$58, DW_AT_location[DW_OP_reg5]
+     748              $C$DW$59        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+     749                      .dwattr $C$DW$59, DW_AT_location[DW_OP_reg6]
+     750              $C$DW$60        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+     751                      .dwattr $C$DW$60, DW_AT_location[DW_OP_reg7]
+     752              $C$DW$61        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2_G")
+     753                      .dwattr $C$DW$61, DW_AT_location[DW_OP_reg8]
+     754              $C$DW$62        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+     755                      .dwattr $C$DW$62, DW_AT_location[DW_OP_reg9]
+     756              $C$DW$63        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+     757                      .dwattr $C$DW$63, DW_AT_location[DW_OP_reg10]
+     758              $C$DW$64        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3_G")
+     759                      .dwattr $C$DW$64, DW_AT_location[DW_OP_reg11]
+     760              $C$DW$65        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T0")
+     761                      .dwattr $C$DW$65, DW_AT_location[DW_OP_reg12]
+     762              $C$DW$66        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T1")
+     763                      .dwattr $C$DW$66, DW_AT_location[DW_OP_reg13]
+     764              $C$DW$67        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T2")
+     765                      .dwattr $C$DW$67, DW_AT_location[DW_OP_reg14]
+     766              $C$DW$68        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T3")
+     767                      .dwattr $C$DW$68, DW_AT_location[DW_OP_reg15]
+     768              $C$DW$69        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0")
+     769                      .dwattr $C$DW$69, DW_AT_location[DW_OP_reg16]
+     770              $C$DW$70        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR0")
+     771                      .dwattr $C$DW$70, DW_AT_location[DW_OP_reg17]
+     772              $C$DW$71        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1")
+     773                      .dwattr $C$DW$71, DW_AT_location[DW_OP_reg18]
+     774              $C$DW$72        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR1")
+     775                      .dwattr $C$DW$72, DW_AT_location[DW_OP_reg19]
+     776              $C$DW$73        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
+     777                      .dwattr $C$DW$73, DW_AT_location[DW_OP_reg20]
+     778              $C$DW$74        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR2")
+     779                      .dwattr $C$DW$74, DW_AT_location[DW_OP_reg21]
+     780              $C$DW$75        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3")
+     781                      .dwattr $C$DW$75, DW_AT_location[DW_OP_reg22]
+     782              $C$DW$76        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR3")
+     783                      .dwattr $C$DW$76, DW_AT_location[DW_OP_reg23]
+     784              $C$DW$77        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4")
+     785                      .dwattr $C$DW$77, DW_AT_location[DW_OP_reg24]
+     786              $C$DW$78        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR4")
+     787                      .dwattr $C$DW$78, DW_AT_location[DW_OP_reg25]
+     788              $C$DW$79        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5")
+     789                      .dwattr $C$DW$79, DW_AT_location[DW_OP_reg26]
+     790              $C$DW$80        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR5")
+     791                      .dwattr $C$DW$80, DW_AT_location[DW_OP_reg27]
+     792              $C$DW$81        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6")
+     793                      .dwattr $C$DW$81, DW_AT_location[DW_OP_reg28]
+     794              $C$DW$82        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR6")
+     795                      .dwattr $C$DW$82, DW_AT_location[DW_OP_reg29]
+     796              $C$DW$83        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7")
+     797                      .dwattr $C$DW$83, DW_AT_location[DW_OP_reg30]
+     798              $C$DW$84        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR7")
+     799                      .dwattr $C$DW$84, DW_AT_location[DW_OP_reg31]
+     800              $C$DW$85        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FP")
+     801                      .dwattr $C$DW$85, DW_AT_location[DW_OP_regx 0x20]
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE   19
+
+     802              $C$DW$86        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XFP")
+     803                      .dwattr $C$DW$86, DW_AT_location[DW_OP_regx 0x21]
+     804              $C$DW$87        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
+     805                      .dwattr $C$DW$87, DW_AT_location[DW_OP_regx 0x22]
+     806              $C$DW$88        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
+     807                      .dwattr $C$DW$88, DW_AT_location[DW_OP_regx 0x23]
+     808              $C$DW$89        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XSP")
+     809                      .dwattr $C$DW$89, DW_AT_location[DW_OP_regx 0x24]
+     810              $C$DW$90        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BKC")
+     811                      .dwattr $C$DW$90, DW_AT_location[DW_OP_regx 0x25]
+     812              $C$DW$91        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK03")
+     813                      .dwattr $C$DW$91, DW_AT_location[DW_OP_regx 0x26]
+     814              $C$DW$92        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK47")
+     815                      .dwattr $C$DW$92, DW_AT_location[DW_OP_regx 0x27]
+     816              $C$DW$93        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST0")
+     817                      .dwattr $C$DW$93, DW_AT_location[DW_OP_regx 0x28]
+     818              $C$DW$94        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST1")
+     819                      .dwattr $C$DW$94, DW_AT_location[DW_OP_regx 0x29]
+     820              $C$DW$95        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST2")
+     821                      .dwattr $C$DW$95, DW_AT_location[DW_OP_regx 0x2a]
+     822              $C$DW$96        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST3")
+     823                      .dwattr $C$DW$96, DW_AT_location[DW_OP_regx 0x2b]
+     824              $C$DW$97        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP")
+     825                      .dwattr $C$DW$97, DW_AT_location[DW_OP_regx 0x2c]
+     826              $C$DW$98        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP05")
+     827                      .dwattr $C$DW$98, DW_AT_location[DW_OP_regx 0x2d]
+     828              $C$DW$99        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP67")
+     829                      .dwattr $C$DW$99, DW_AT_location[DW_OP_regx 0x2e]
+     830              $C$DW$100       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
+     831                      .dwattr $C$DW$100, DW_AT_location[DW_OP_regx 0x2f]
+     832              $C$DW$101       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
+     833                      .dwattr $C$DW$101, DW_AT_location[DW_OP_regx 0x30]
+     834              $C$DW$102       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0_H")
+     835                      .dwattr $C$DW$102, DW_AT_location[DW_OP_regx 0x31]
+     836              $C$DW$103       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0")
+     837                      .dwattr $C$DW$103, DW_AT_location[DW_OP_regx 0x32]
+     838              $C$DW$104       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0_H")
+     839                      .dwattr $C$DW$104, DW_AT_location[DW_OP_regx 0x33]
+     840              $C$DW$105       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRS1")
+     841                      .dwattr $C$DW$105, DW_AT_location[DW_OP_regx 0x34]
+     842              $C$DW$106       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC1")
+     843                      .dwattr $C$DW$106, DW_AT_location[DW_OP_regx 0x35]
+     844              $C$DW$107       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1")
+     845                      .dwattr $C$DW$107, DW_AT_location[DW_OP_regx 0x36]
+     846              $C$DW$108       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1_H")
+     847                      .dwattr $C$DW$108, DW_AT_location[DW_OP_regx 0x37]
+     848              $C$DW$109       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1")
+     849                      .dwattr $C$DW$109, DW_AT_location[DW_OP_regx 0x38]
+     850              $C$DW$110       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1_H")
+     851                      .dwattr $C$DW$110, DW_AT_location[DW_OP_regx 0x39]
+     852              $C$DW$111       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CSR")
+     853                      .dwattr $C$DW$111, DW_AT_location[DW_OP_regx 0x3a]
+     854              $C$DW$112       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RPTC")
+     855                      .dwattr $C$DW$112, DW_AT_location[DW_OP_regx 0x3b]
+     856              $C$DW$113       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDP")
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE   20
+
+     857                      .dwattr $C$DW$113, DW_AT_location[DW_OP_regx 0x3c]
+     858              $C$DW$114       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XCDP")
+     859                      .dwattr $C$DW$114, DW_AT_location[DW_OP_regx 0x3d]
+     860              $C$DW$115       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN0")
+     861                      .dwattr $C$DW$115, DW_AT_location[DW_OP_regx 0x3e]
+     862              $C$DW$116       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN1")
+     863                      .dwattr $C$DW$116, DW_AT_location[DW_OP_regx 0x3f]
+     864              $C$DW$117       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA01")
+     865                      .dwattr $C$DW$117, DW_AT_location[DW_OP_regx 0x40]
+     866              $C$DW$118       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA23")
+     867                      .dwattr $C$DW$118, DW_AT_location[DW_OP_regx 0x41]
+     868              $C$DW$119       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA45")
+     869                      .dwattr $C$DW$119, DW_AT_location[DW_OP_regx 0x42]
+     870              $C$DW$120       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA67")
+     871                      .dwattr $C$DW$120, DW_AT_location[DW_OP_regx 0x43]
+     872              $C$DW$121       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSAC")
+     873                      .dwattr $C$DW$121, DW_AT_location[DW_OP_regx 0x44]
+     874              $C$DW$122       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CARRY")
+     875                      .dwattr $C$DW$122, DW_AT_location[DW_OP_regx 0x45]
+     876              $C$DW$123       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC1")
+     877                      .dwattr $C$DW$123, DW_AT_location[DW_OP_regx 0x46]
+     878              $C$DW$124       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC2")
+     879                      .dwattr $C$DW$124, DW_AT_location[DW_OP_regx 0x47]
+     880              $C$DW$125       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("M40")
+     881                      .dwattr $C$DW$125, DW_AT_location[DW_OP_regx 0x48]
+     882              $C$DW$126       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SXMD")
+     883                      .dwattr $C$DW$126, DW_AT_location[DW_OP_regx 0x49]
+     884              $C$DW$127       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ARMS")
+     885                      .dwattr $C$DW$127, DW_AT_location[DW_OP_regx 0x4a]
+     886              $C$DW$128       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
+     887                      .dwattr $C$DW$128, DW_AT_location[DW_OP_regx 0x4b]
+     888              $C$DW$129       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATA")
+     889                      .dwattr $C$DW$129, DW_AT_location[DW_OP_regx 0x4c]
+     890              $C$DW$130       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATD")
+     891                      .dwattr $C$DW$130, DW_AT_location[DW_OP_regx 0x4d]
+     892              $C$DW$131       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RDM")
+     893                      .dwattr $C$DW$131, DW_AT_location[DW_OP_regx 0x4e]
+     894              $C$DW$132       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FRCT")
+     895                      .dwattr $C$DW$132, DW_AT_location[DW_OP_regx 0x4f]
+     896              $C$DW$133       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SMUL")
+     897                      .dwattr $C$DW$133, DW_AT_location[DW_OP_regx 0x50]
+     898              $C$DW$134       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("INTM")
+     899                      .dwattr $C$DW$134, DW_AT_location[DW_OP_regx 0x51]
+     900              $C$DW$135       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0LC")
+     901                      .dwattr $C$DW$135, DW_AT_location[DW_OP_regx 0x52]
+     902              $C$DW$136       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1LC")
+     903                      .dwattr $C$DW$136, DW_AT_location[DW_OP_regx 0x53]
+     904              $C$DW$137       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2LC")
+     905                      .dwattr $C$DW$137, DW_AT_location[DW_OP_regx 0x54]
+     906              $C$DW$138       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3LC")
+     907                      .dwattr $C$DW$138, DW_AT_location[DW_OP_regx 0x55]
+     908              $C$DW$139       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4LC")
+     909                      .dwattr $C$DW$139, DW_AT_location[DW_OP_regx 0x56]
+     910              $C$DW$140       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5LC")
+     911                      .dwattr $C$DW$140, DW_AT_location[DW_OP_regx 0x57]
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:38 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+spiflash_test.asm                                                    PAGE   21
+
+     912              $C$DW$141       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6LC")
+     913                      .dwattr $C$DW$141, DW_AT_location[DW_OP_regx 0x58]
+     914              $C$DW$142       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7LC")
+     915                      .dwattr $C$DW$142, DW_AT_location[DW_OP_regx 0x59]
+     916              $C$DW$143       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDPLC")
+     917                      .dwattr $C$DW$143, DW_AT_location[DW_OP_regx 0x5a]
+     918              $C$DW$144       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
+     919                      .dwattr $C$DW$144, DW_AT_location[DW_OP_regx 0x5b]
+     920                      .dwendtag $C$DW$CU
+     921              
+     921              
+     921              
+
+No Assembly Errors, No Assembly Warnings

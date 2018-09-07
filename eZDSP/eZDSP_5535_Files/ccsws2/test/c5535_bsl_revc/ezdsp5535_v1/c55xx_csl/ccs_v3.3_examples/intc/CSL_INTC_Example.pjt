@@ -1,0 +1,41 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="D:\Projects_SVN\C5505_CSL\Design\SW\Source_Codes\VC5505_CSL\CCS_v3.3_Examples\intc\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Project Dependencies]
+Source="..\..\build\cslVC5505.pjt"
+
+["..\..\build\cslVC5505.pjt" Settings]
+MatchConfigName=true
+
+[Source Files]
+Source="intc_example.c"
+Source="VC5505.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)\..\..\inc" -i"$(Proj_dir)\..\..\..\inc" -d"_DEBUG" -ml -vcore:3.3
+
+["Compiler" Settings: "Release"]
+Options=-g -mg -fr"$(Proj_dir)\Release" -i"$(Proj_dir)\..\..\inc" -i"$(Proj_dir)\..\..\..\inc" -ml -vcore:3.3
+
+["Linker" Settings: "Debug"]
+Options=-c -m".\Debug\CSL_INTC_Example.map" -o".\Debug\CSL_INTC_Example.out" -w -x -l"rts55x.lib"
+
+["Linker" Settings: "Release"]
+Options=-c -m".\Release\CSL_INTC_Example.map" -o".\Release\CSL_INTC_Example.out" -w -x -l"rts55x.lib"
+
+["VC5505.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["VC5505.cmd" Settings: "Release"]
+LinkOrder=1
+

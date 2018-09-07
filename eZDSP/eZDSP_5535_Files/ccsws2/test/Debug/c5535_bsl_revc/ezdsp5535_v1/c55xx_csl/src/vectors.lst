@@ -1,0 +1,382 @@
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:57:37 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/vectors.asm             PAGE    1
+
+       1              *****************************************************************************
+       2              * Copyright (c) Texas Instruments Inc 2002, 2003, 2004, 2005, 2008
+       3              *
+       4              *   Use of this software is controlled by the terms and conditions found in the
+       5              *   license agreement under which this software has been supplied.
+       6              *****************************************************************************
+       7              ;Module: INTC 
+       8              ;File: vectors.asm - vector table
+       9              ;**************************************************************************
+      10              ;;**************************************************************************
+      11              
+      12                       .mmregs
+      13                       .include "lpva200.inc"
+      14                       
+      15                       .C54CM_off
+      16                       .CPL_off
+      17                       .ARMS_off
+      18                 
+      19              ;**********************************************************************************
+      20              ;        predefined stack operation modes  
+      21              ;**********************************************************************************
+      22              ;        USE_RETA     : 2x16-bit fast return mode (RETA used)
+      23              ;        NO_RETA      : 2x16-bit slow return mode (RETA not used)
+      24              ;        C54X_STK     : 32-bit fast return mode 
+      25              
+      26              ;**********************************************************************************    
+      27                       .global _RTC_Isr
+      28                               .global _Timer_isr
+      29              ;                .global _Timer02_isr
+      30                               .global _VECSTART  
+      31                               .global _vTickISR
+      32              
+      33                      
+      34                              ;.ref _sarISR
+      35              ;        .def RST    
+      36              
+      37              ;**********************************************************************************
+      38 000000               .sect "vectors"
+      39                      .align  256 
+      40                              .global _VECSTART        
+      41              ;**********************************************************************************
+      42                      .def    _RST
+      43 000000       _VECSTART:
+      44 000000 EA    _RST:           .ivec    reset_isr, C54X_STK ; Reset / Software Interrupt #0
+         000001 0000 
+         000003 00%  
+      45              
+      46 000008 EA    NMI:            .ivec    reset_isr             ; Nonmaskable Interrupt
+         000009 0000 
+         00000b 00%  
+      47              
+      48 000010 EA    INT0:           .ivec    dummy_isr          ; External User Interrupt #0 
+         000011 0000 
+         000013 7D%  
+      49              
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:57:37 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/vectors.asm             PAGE    2
+
+      50 000018 EA    INT1:           .ivec    dummy_isr             ; External User Interrupt #1
+         000019 0000 
+         00001b 7D%  
+      51              
+      52 000020 EA    TINT:           .ivec    _vTickISR             ; Timer #0 / Software Interrupt #4
+         000021 0000 
+         000023 00%  
+      53              ; TINT:         .ivec    _Timer_isr            ; Timer #0 / Software Interrupt #4
+      54              
+      55 000028 EA    PROG0:          .ivec    i2s0_mmc0_tx_isr  ; Programmable 0 Interrupt
+         000029 0000 
+         00002b 43%  
+      56              
+      57 000030 EA    UART:           .ivec    uart_isr                  ; IIS #1 Receive Interrupt
+         000031 0000 
+         000033 45%  
+      58              
+      59 000038 EA    PROG1:          .ivec    i2s0_mmc0_rx_isr  ; Programmable 1 Interrupt
+         000039 0000 
+         00003b 47%  
+      60              
+      61 000040 EA    DMA:            .ivec    dma_isr           ; DMA Interrupt
+         000041 0000 
+         000043 49%  
+      62              
+      63 000048 EA    PROG2:          .ivec    i2s1_mmc1_tx_isr  ; Programmable 2 Interrupt
+         000049 0000 
+         00004b 4B%  
+      64              
+      65 000050 EA    COPROCFFT:  .ivec    coprocfft_isr         ; Coprocessor FFT Module Interrupt
+         000051 0000 
+         000053 4D%  
+      66              
+      67 000058 EA    PROG3:          .ivec    i2s1_mmc1_rx_isr  ; Programmable 3 Interrupt
+         000059 0000 
+         00005b 4F%  
+      68              
+      69 000060 EA    LCD:            .ivec    lcd_isr                   ; LCD Interrupt
+         000061 0000 
+         000063 51%  
+      70              
+      71 000068 EA    SARADC:         .ivec    saradc_isr                ; SAR ADC Interrupt
+         000069 0000 
+         00006b 53%  
+      72              
+      73 000070 EA    XMT2:           .ivec    i2s2_tx_isr       ; I2S2 Tx Interrupt
+         000071 0000 
+         000073 55%  
+      74              
+      75 000078 EA    RCV2:           .ivec    i2s2_rx_isr       ; I2S2 Rx Interrupt
+         000079 0000 
+         00007b 57%  
+      76              
+      77 000080 EA    XMT3:           .ivec    i2s3_tx_isr       ; I2S3 Tx Interrupt
+         000081 0000 
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:57:37 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/vectors.asm             PAGE    3
+
+         000083 59%  
+      78              
+      79 000088 EA    RCV3:           .ivec    i2s3_rx_isr       ; I2S3 Rx Interrupt
+         000089 0000 
+         00008b 5B%  
+      80              
+      81 000090 EA    RTC:            .ivec     _RTC_Isr                 ; RTC interrupt
+         000091 0000 
+         000093 00%  
+      82              
+      83 000098 EA    SPI:            .ivec    spi_isr                   ; SPI Receive Interrupt
+         000099 0000 
+         00009b 5F%  
+      84              
+      85 0000a0 EA    USB:            .ivec    usb_isr                   ; USB Transmit Interrupt
+         0000a1 0000 
+         0000a3 61%  
+      86              
+      87 0000a8 EA    GPIO:           .ivec    gpio_isr                  ; GPIO Interrupt
+         0000a9 0000 
+         0000ab 63%  
+      88              
+      89 0000b0 EA    EMIF:       .ivec    emif_error_isr        ; EMIF Error Interrupt
+         0000b1 0000 
+         0000b3 65%  
+      90              
+      91 0000b8 EA    I2C:            .ivec    i2c_isr                   ; IIC interrupt
+         0000b9 0000 
+         0000bb 67%  
+      92              
+      93 0000c0 EA    BERR:           .ivec    berr_isr                  ; Bus Error Interrupt
+         0000c1 0000 
+         0000c3 69%  
+      94              
+      95 0000c8 EA    DLOG:           .ivec    dlog_isr                  ; Emulation Interrupt - DLOG
+         0000c9 0000 
+         0000cb 6D%  
+      96              
+      97 0000d0 EA    RTOS:           .ivec    rtos_isr                  ; Emulation Interrupt - RTOS
+         0000d1 0000 
+         0000d3 6F%  
+      98              
+      99 0000d8 EA    RTDXRCV:        .ivec    rtdxrcv_isr       ; Emulation Interrupt - RTDX receive
+         0000d9 0000 
+         0000db 71%  
+     100              
+     101 0000e0 EA    RTDXXMT:        .ivec    rtdxxmt_isr       ; Emulation Interrupt - RTDX transmit
+         0000e1 0000 
+         0000e3 73%  
+     102              
+     103 0000e8 EA    EMUINT:         .ivec    emuint_isr                ; Emulation monitor mode interrupt
+         0000e9 0000 
+         0000eb 75%  
+     104              
+     105 0000f0 EA    SINT30:         .ivec    sint30_isr                ; Software Interrupt #30
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:57:37 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/vectors.asm             PAGE    4
+
+         0000f1 0000 
+         0000f3 77%  
+     106              
+     107 0000f8 EA    SINT31:         .ivec    sint31_isr                ; Software Interrupt #31
+         0000f9 0000 
+         0000fb 79%  
+     108              
+     109              ;*****************************************************************
+     110              ; Reset
+     111              ;*****************************************************************
+     112              
+     113 000000             .text
+     114                    .def reset_isr
+     115                    .ref _c_int00
+     116              
+     117                    .align 2
+     118              
+     119 000000       reset_isr:
+     120                      ;       *port(#0x1C01) = #0x0                           ; Clear idles
+     121 000000 46B3                  bit (ST1, #11) = #1                                     ; Disable interrupts
+     122 000002 FB92                  @IVPD_L = #(_RST >> 8) || mmap()
+         000004 0000%
+         000006 98   
+     123 000007 FB94                  @IVPH_L = #(_RST >> 8) || mmap()
+         000009 0000%
+         00000b 98   
+     124 00000c 4676                           bit(ST3,#7) = #0                       ; Clear bus error interrupts
+     125 00000e 4626                           bit(ST3,#2) = #0               ; turn on clockout port
+     126 000010 46D2                           bit(ST1,#13) = #0              ; shut off XF port
+     127 000012 4652                           bit(ST1,#5) = #0               ; turn off C54CM
+     128              
+     129              
+     130 000014 FB02                  @#IFR0_L = #0xFFFF   || mmap()      ; clear all pending interrupts
+         000016 FFFF 
+         000018 98   
+     131 000019 FB8C                  @#IFR1_L = #0xFFFF   || mmap()
+         00001b FFFF 
+         00001d 98   
+     132              
+     133 00001e FB51                  *port(#IDLE_ICR) = #(RESERVED_ICR|IPORT_IDLE|HWA_IDLE|DPORT_IDLE)
+         000020 FF2E 
+         000022 0001 
+     134 000024 7A00                  idle
+         000026 000C 
+     135                      
+     136              ;**********************************************************************************
+     137              ;     Reset all peripherals
+     138              ;**********************************************************************************
+     139 000028 E651                  *port(#0x1C04) = 0x20
+         00002a 201C 
+         00002c 04   
+     140 00002d 5E80                  nop_16
+     141 00002f FB51                  *port(#0x1C05) = 0x00FF ; Reset all peripherals
+         000031 00FF 
+         000033 1C05 
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:57:37 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/vectors.asm             PAGE    5
+
+     142 000035 5E80                  nop_16
+     143              
+     144              ;**********************************************************************************
+     145              ;     Enalbe EMIF
+     146              ;**********************************************************************************
+     147              
+     148              ;   *port(IDLE_PCGCR) = #0x0
+     149              
+     150                  ;/* Config EMIF - System Control Regsiter */
+     151              ;    *port(#0x1C33) = #0x0
+     152              
+     153                  ;// for SRAM in memory card (Async_CE1)
+     154                  ;/* Config EMIF - ASYNC Regsiters */
+     155              ;    *port(#0x1004) = #0x0080
+     156              ;    *port(#0x1005) = #0x00E4
+     157              
+     158                      ;/* Configure as 16-bit data bus */    
+     159                  ;// Async4 ==> Async_CE1 (SRAM)     
+     160              ;    *port(#0x101C) = #0x40AD
+     161              ;    *port(#0x101D) = #0x0020
+     162              
+     163                  ;// Async3 ==> Async_CE0(Flash)
+     164              ;    *port(#0x1018) = #0xFFFD
+     165              ;    *port(#0x1019) = #0x3FFF
+     166              
+     167              
+     168                  ;// do not assign Async_CE0 and Async_CE1 for NAND
+     169              ;    *port(#0x1060) = #0x0003
+     170                  
+     171                  ;// Turn off page mode for all Chip Selects
+     172              ;    *port(#0x1068) = #0xFCFC
+     173              ;    *port(#0x1069) = #0xFCFC
+     174              
+     175 000037 6A00                  goto    _c_int00
+         000039 0000!
+     176                      
+     177              
+     178 00003b 4A7E  nmi_isr:                        goto    nmi_isr
+     179              
+     180 00003d 4A7E  int0_isr:                       goto    int0_isr
+     181              
+     182 00003f 4A7E  int1_isr:                       goto    int1_isr
+     183                      
+     184 000041 4A7E  tim_isr:                        goto    tim_isr
+     185                      
+     186 000043 4A7E  i2s0_mmc0_tx_isr:       goto    i2s0_mmc0_tx_isr
+     187              
+     188 000045 4A7E  uart_isr:                       goto    uart_isr
+     189              
+     190 000047 4A7E  i2s0_mmc0_rx_isr:       goto    i2s0_mmc0_rx_isr
+     191              
+     192 000049 4A7E  dma_isr:                        goto    dma_isr
+     193              
+     194 00004b 4A7E  i2s1_mmc1_tx_isr:       goto    i2s1_mmc1_tx_isr
+     195              
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:57:37 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/vectors.asm             PAGE    6
+
+     196 00004d 4A7E  coprocfft_isr:          goto    coprocfft_isr
+     197              
+     198 00004f 4A7E  i2s1_mmc1_rx_isr:       goto    i2s1_mmc1_rx_isr
+     199              
+     200 000051 4A7E  lcd_isr:                        goto    lcd_isr
+     201              
+     202 000053       saradc_isr:
+     203              ;                               MOV #0010000000000000b, mmap(@IFR0)
+     204              ;                                IFR0 = IFR0 | #0FFFFh  ; clear the interrupt 
+     205              ;                                IF13 = IF13 | #1       ;
+     206              ;                                bset( mmap(@IFR0),#13) = #1
+     207              ;                                mmap(@IFR0) = #FFFFh
+     208              ;                               goto saradc_isr
+     209 000053 4805                                  return_int
+     210              
+     211 000055 4A7E  i2s2_tx_isr:            goto    i2s2_tx_isr
+     212              
+     213 000057 4A7E  i2s2_rx_isr:            goto    i2s2_rx_isr
+     214              
+     215 000059 4A7E  i2s3_tx_isr:            goto    i2s3_tx_isr
+     216              
+     217 00005b 4A7E  i2s3_rx_isr:            goto    i2s3_rx_isr
+     218              
+     219 00005d 4A7E  rtc_isr:                        goto    rtc_isr
+     220              
+     221 00005f 4A7E  spi_isr:                        goto    spi_isr
+     222              
+     223 000061 4A7E  usb_isr:                        goto    usb_isr
+     224              
+     225 000063 4A7E  gpio_isr:                       goto    gpio_isr
+     226              
+     227 000065 4A7E  emif_error_isr:         goto    emif_error_isr
+     228              
+     229 000067 4A7E  i2c_isr:                        goto    i2c_isr
+     230              
+     231 000069       berr_isr:               
+     232 000069 4676                                          bit(ST3,#7) = #0   ; Clear bus error interrupts
+     233 00006b 4A7C                                          goto    berr_isr
+     234              
+     235 00006d 4A7E  dlog_isr:                       goto    dlog_isr
+     236              
+     237 00006f 4A7E  rtos_isr:                       goto    rtos_isr
+     238              
+     239 000071 4A7E  rtdxrcv_isr:            goto    rtdxrcv_isr 
+     240              
+     241 000073 4A7E  rtdxxmt_isr:            goto    rtdxxmt_isr
+     242              
+     243 000075 4A7E  emuint_isr:                     goto    emuint_isr
+     244              
+     245 000077 4A7E  sint30_isr:                     goto    sint30_isr
+     246              
+     247 000079 4A7E  sint31_isr:                     goto    sint31_isr 
+     248              
+     249 00007b                    .text             
+     250              
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:57:37 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/vectors.asm             PAGE    7
+
+     251              ********************************************************************************
+     252              ** Name     : no_isr                                                          **
+     253              **                                                                            **
+     254              ** Purpose  : Spurious interrupt handler                                      **
+     255              **                                                                            **
+     256              ** Author   :                                                                 **
+     257              **                                                                            **
+     258              ********************************************************************************
+     259 00007b 4A7E  no_isr:                  goto no_isr 
+     260              
+     261 00007d       dummy_isr:
+     262 00007d 4805      return_int
+     263               
+     264                  
+     265                  .end
+
+No Assembly Errors, No Assembly Warnings

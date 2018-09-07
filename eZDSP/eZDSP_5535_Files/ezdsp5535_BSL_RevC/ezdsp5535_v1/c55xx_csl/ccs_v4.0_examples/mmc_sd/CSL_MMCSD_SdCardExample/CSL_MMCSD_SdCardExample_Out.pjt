@@ -1,0 +1,41 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="F:\CSL\CSL_SVN\Design\SW\Source_Codes\VC5505_CSL\example\mmc_sd\example2\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Project Dependencies]
+Source="..\..\..\build\cslVC5505.pjt"
+
+["..\..\..\build\cslVC5505.pjt" Settings]
+MatchConfigName=true
+
+[Source Files]
+Source="csl_mmcsd_SdCardExample.c"
+Source="VC5505_MMCSD.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)\..\..\..\inc" -d"_DEBUG" -ml -vcore:3.3
+
+["Compiler" Settings: "Release"]
+Options=-o2 -fr"$(Proj_dir)\Release" -i"$(Proj_dir)\..\..\..\inc" -ml -vcore:3.3
+
+["Linker" Settings: "Debug"]
+Options=-c -eCSL_dmaTest -m".\Debug\CSL_MMCSD_SdCardExample.map" -o".\Debug\CSL_MMCSD_SdCardExample.out" -w -x -i"$(Install_dir)\C5500\cgtools\lib" -l"rts55x.lib"
+
+["Linker" Settings: "Release"]
+Options=-c -m".\Release\CSL_MMCSD_SdCardExample.map" -o".\Release\CSL_MMCSD_SdCardExample.out" -w -x -l"rts55x.lib"
+
+["VC5505_MMCSD.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["VC5505_MMCSD.cmd" Settings: "Release"]
+LinkOrder=1
+

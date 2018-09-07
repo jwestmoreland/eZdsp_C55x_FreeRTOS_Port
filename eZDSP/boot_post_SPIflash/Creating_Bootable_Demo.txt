@@ -1,0 +1,37 @@
+
+Creating a Bootable Demo
+------------------------
+This file contains instructions for creating and flashing a bootable demo into the SPI Flash that will run when the eZDSP is powered.
+
+There are three major steps in flashing the demo.
+1. Creating the demo program.
+2. Creating the boot image.
+3. Programming the boot image.
+
+Creating the demo program
+-------------------------
+    This is a program that runs when the eZDSP is powered. Create a project with all the necessary setup and build it  to get a .out file. The "boot_post" test can be used for this.
+Creating the boot image
+-----------------------
+The demo program needs to be converted to a bootable format for the boot image. This can be done by the following steps.
+1. Copy the Demo program (.out file) to the folder "ezdsp5535_v1\boot_post\hex_utility".
+2. In that directory, edit the last line and second last line of "demo.cmd" to reflect the input (.out) and output (.bin) file respectively.
+3. Go to the Windows command prompt and change directory to the "hex_utility" directory.
+4. Enter the following command in the command prompt:
+   hex55 demo.cmd
+5. The output .bin file will be created in the same directory.
+
+Programming the boot image
+--------------------------
+This involves flashing the .bin boot image to the SPI Flash. 
+
+WARNING!
+The SPI boot takes precedence over the SD card boot. So the SPI Flash must be erased or disabled to boot from the SD card after this.
+
+Follow the steps below to program the demo on the SPI Flash.
+1. Open Code Composer Studio configured for the eZDSP. Use the gel file provided with the target content (ezdsp5535_v1\gel\ezdsp5535.gel).
+2. Load and run the "spiflash_writer" program which can be found in "ezdsp5535_v1\boot_post\spiflash_writer".
+3. The program will ask for a file name. Enter the full path of the .bin file created earlier.
+4. The program will write the file to flash and verfy it. Wait for the "All Tests Passed" message.
+5. Verify the demo by disconnecting from Code Composer and power cycling the board (Remove USB connector J2 then plug it back in).
+6. The reset due to power cycling will cause the boot loader to load the program from the SPI Flash and run it.

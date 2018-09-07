@@ -1,0 +1,42 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="D:\VC5505_CSL\Design\SW\Source_Codes\VC5505_CSL\example\lcd\example1\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Project Dependencies]
+Source="..\..\..\build\cslVC5505.pjt"
+
+["..\..\..\build\cslVC5505.pjt" Settings]
+MatchConfigName=true
+
+[Source Files]
+Source="csl_lcdc_DiagramExample.c"
+Source="lcdc_panel.c"
+Source="VC5505_LCDC.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)\..\..\..\inc" -d"_DEBUG" -ml -vcore:3.3
+
+["Compiler" Settings: "Release"]
+Options=-mg -o2 -fr"$(Proj_dir)\Release" -i"$(Proj_dir)\..\..\..\inc" -ml -vcore:3.3
+
+["Linker" Settings: "Debug"]
+Options=-c -heap0x1000 -m".\Debug\CSL_LCDC_DiagramExample.map" -o".\Debug\CSL_LCDC_DiagramExample.out" -stack0x1000 -sysstack0x1000 -w -x -i"$(Install_dir)\C5500\cgtools\lib" -l"rts55x.lib"
+
+["Linker" Settings: "Release"]
+Options=-c -heap0x2000 -m".\Release\CSL_LCDC_DiagramExample.map" -o".\Release\CSL_LCDC_DiagramExample.out" -stack0x2000 -sysstack0x1000 -w -x -l"rts55x.lib"
+
+["VC5505_LCDC.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["VC5505_LCDC.cmd" Settings: "Release"]
+LinkOrder=1
+

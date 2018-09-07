@@ -1,0 +1,161 @@
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:54 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_irqplug.asm         PAGE    1
+
+       1              ;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+       2              ;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+       3              ;******************************************************************************
+       4              ;Copyright (c) Texas Instruments Inc 2002, 2003, 2004, 2005, 2008
+       5              ;*
+       6              ;*  Use of this software is controlled by the terms and conditions found in the
+       7              ;*  license agreement under which this software has been supplied.
+       8              ;******************************************************************************
+       9              ; Module: INTC
+      10              ; Function: IRQ_PLUG
+      11              ; File: csl_irqplug.asm
+      12              ;
+      13              ;
+      14              ;--------------------------------------------------------
+      15              ; Description:
+      16              ;   This function writes the address of the given ISR into
+      17              ; the correct location in the interrupt vector table.
+      18              ;
+      19              ; Arguments:
+      20              ;     T0 - contains EventId of associated vector
+      21              ;     AC0 - contains address of ISR
+      22              ;
+      23              ; Local Function Variables:
+      24              ;     SP(#0)   - location in vector table where ISR address
+      25              ;                needs to be placed
+      26              ;     SP(#2)   - ISR function address
+      27              ;     SP(#4)   - IVPD pointer value
+      28              ;     SP(#5)   - Bit in IER corresponding to event
+      29              ;     SP(#6)   - Mask used to clear event in IFR
+      30              ;     SP(#7)   - EventId
+      31              ;     SP(#8)   - old_intm, old value of INTM bit
+      32              ;////////////////////////////////////////////////////////
+      33                      .asg 123, CSL_DATA_PTR
+      34                      .asg 05E80h, NOP16_Operator
+      35                      .asg 0, VecLoc
+      36                      .asg 2, IsrAddr
+      37                      .asg 4, Iptr
+      38                      .asg 5, EventBit
+      39                      .asg 6, EventMask
+      40                      .asg 7, EventId
+      41                      .asg 8, Old_INTM
+      42                      .asg 9, LocalFrameSz
+      43                      .asg 12, BiosPresentFlag
+      44                      .asg 049h, IVPD_ADDR
+      45                      .asg 04Ah, IVPH_ADDR
+      46                      .asg 001h, IFR0_ADDR
+      47                      .asg 046h, IFR1_ADDR
+      48              
+      49                      .mmregs
+      50              
+      51                      .def _IRQ_plug
+      52              
+      53                      .ref _IRQ_globalDisable
+      54                      .ref _IRQ_globalRestore
+      55                        .cpl_on
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:54 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_irqplug.asm         PAGE    2
+
+      56 000000       _IRQ_plug:
+      57 000000 50B5        PSHBOTH(XAR3)
+      58 000002 50A5        PSHBOTH(XAR2)
+      59 000004 4EF7        SP = SP - #LocalFrameSz          ; Reserve local space
+      60 000006 EB04        dbl(*SP(#IsrAddr)) = AC0         ; Store ISR function address
+         000008 08   
+      61 000009 C40E        *SP(#EventId) = T0               ; Store EventId
+      62 00000b 3C00        AC0 = #0                         ; Clear XAR2/XAR3
+      63 00000d 900A        XAR2 = AC0                       ;
+      64 00000f 900B        XAR3 = AC0                           ;
+      65              
+      66 000011 6C00        CALL _IRQ_globalDisable          ; Disable Interrupts
+         000013 0000!
+      67 000015 C410        *SP(#Old_INTM) = T0              ; Save OLD VALUE of INTM
+      68 000017 20          NOP
+      69 000018 20          NOP
+      70 000019 20          NOP
+      71 00001a 20          NOP
+      72 00001b 20          NOP
+      73 00001c EC31        XAR2 = #IVPD_ADDR                ; Get IVPD value
+         00001e AE00 
+         000020 0049 
+      74 000022 20          NOP
+      75 000023 20          NOP
+      76 000024 20          NOP
+      77 000025 20          NOP
+      78 000026 20          NOP
+      79 000027 A10E        AC1 = *SP(#EventId)              ; EventId Gets placed in AC1
+      80              
+      81 000029 1818        AC3  = AC1 & #018h               ; Check for ISRs 16-23
+         00002b 31   
+      82 00002c 7C00        AC3 = AC3 - #16                  ; If ISR is 16-23 then use
+         00002e 1033 
+      83 000030 9603        if (AC3 == 0) execute (AD_UNIT)  ; IVPH value for determining
+      84 000032 EC31        XAR2 = #IVPH_ADDR                ; vector address
+         000034 AE00 
+         000036 004A 
+      85              
+      86 000038 1055        AC1 = AC1 << #3                  ; Multiply EventId by 8 to get Vector Offset          
+         00003a 03   
+      87 00003b A041        AC0 = *AR2                       ; AC0 should now have IVPD value
+      88 00003d 1005        AC0 = AC0 <<  #4                 ; Shift up to get Vector Base Address
+         00003f 04   
+      89 000040 1005            AC0 = AC0 <<  #4                 ; Shift up to get Vector Base Address
+         000042 04   
+      90 000043 2A10        AC0 = AC0 | AC1                  ; AC0 now has Vector Address
+      91 000045 1005        AC0 = AC0 << #-1                 ; Shift to get word address
+         000047 3F   
+      92 000048 EB00        dbl(*SP(#VecLoc)) = AC0          ; Store Vector Address
+         00004a 08   
+      93 00004b ED04        AC0 = dbl(*SP(#IsrAddr))         ; AC0 now has ISR address
+         00004d 08   
+      94 00004e ED00        XAR3 = dbl(*SP(#VecLoc))         ; XAR3 has Vector Address
+         000050 BF   
+      95 000051 A90E        AR1 = *SP(#EventId)              ; AR1 gets EventId
+TMS320C55x Assembler PC v4.4.1 Fri Aug 19 02:56:54 2016
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_irqplug.asm         PAGE    3
+
+      96 000053 180F        AR2 = AR1 & #15                  ; Get only lower bits
+         000055 A9   
+      97 000056 EB61        dbl(*AR3) = AC0                  ; Store ISR address at Vector Location
+         000058 08   
+      98 000059 765E        AC3 = NOP16_Operator             ; Load NOP instruction into AC3
+         00005b 8038 
+      99 00005d 402B        AR3 += 2                         ; Set byte address to next location
+     100 00005f C361        *AR3 = AC3                       ; Plug remaining part of vector with nop
+     101 000061 401B        AR3 += 1                         ; Increment to next part of vector location
+     102 000063 C361        *AR3 = AC3                       ; Plug remaining part of vector with nop
+     103 000065 22A4        T0 = AR2                         ; Use lower Bits as shift value
+     104 000067 1810        AR1 = AR1 & #16                  ; Check to see if event is flagged in IFR1
+         000069 99   
+     105 00006a 3C10        AC0 = #1                         ; Set AC0 = 1
+     106 00006c 5C00        AC0 = AC0 <<< T0                 ; Shift AC0 by Bit value
+     107 00006e 2203        AC3 = AC0                        ; This is mask for IFR
+     108              
+     109 000070 6319        if (AR1 != #0) goto LIFR1        ; IF AR1 != 0, mask IFR1
+     110 000072 3C1A        AR2 = #IFR0_ADDR                 ; Point AR2 to IFR0
+     111 000074 C341        *AR2 = AC3                       ; Mask IFR0
+     112 000076 4A06        goto RESTORE_INTM
+     113 000078       LIFR1:
+     114 000078 7600        AR2 = #IFR1_ADDR                 ; Point AR2 to IFR1
+         00007a 46A8 
+     115 00007c C341        *AR2 = AC3                       ; Mask IFR1
+     116 00007e       RESTORE_INTM:
+     117 00007e A410        T0 = *SP(#Old_INTM)              ; Set T0 to old INTM Value
+     118 000080 6C00        CALL _IRQ_globalRestore          ; Call IRQ function to restore old_intm
+         000082 0000!
+     119 000084       EPILOGUE:
+     120 000084 4E09        SP = SP + #LocalFrameSz          ; Restore Stack Pointer
+     121 000086 50A4        XAR2 = POPBOTH()                 ; POP XAR regs
+     122 000088 50B4        XAR3 = POPBOTH()
+     123 00008a 4804        RETURN
+
+No Assembly Errors, No Assembly Warnings

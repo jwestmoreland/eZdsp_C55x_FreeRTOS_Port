@@ -1,0 +1,958 @@
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:20 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/aic_test_i2c.asm               PAGE    1
+
+       1              ;****************************************************************************************
+       2              ;    File Name   : aic_test_main.asm
+       3              ;    Author      : Sunil Kamath
+       4              ;
+       5              ;    Version     : 2
+       6              ;    Date        : 30 April 2008
+       7              ;    Update      : with Ping Pong Buffering
+       8              ;
+       9              ;    Description : Code for playback using I2S2 and DMA1 to AIC3254
+      10              ;
+      11              ;****************************************************************************************
+      12                      .mmregs
+      13                      ;.global  BOOT_START, _SETUP, no_isr, i2c_PutData8, Config_DMA, _AIC3254_init
+      14                      ;.global  ISR_DMA, ISR_XMT2, ISR_RCV2
+      15              
+      16                      .global  _AIC3254_init
+      17              
+      18                      .include "lpva200.inc"
+      19              
+      20 000000               .text
+      21                      ;.copy    "setup_da200.inc"                            ; setup code
+      22              
+      23              ;        .C54CM_off
+      24                      .CPL_off
+      25                      .ARMS_off
+      26                      .C54CM_off
+      27                       
+      28              ;****************************************************************************************
+      29              ;   Define constants
+      30              ;****************************************************************************************
+      31              I2C_CLKDIV_VAL   .set     35
+      32              AIC3254_I2C_ADDR .set    0x18
+      33              
+      34              
+      35              DO_I2S_MASTER   .set     0        ; DO_I2S_MASTER = 1 to use I2S in master mode   
+      36                                                ; DO_I2S_MASTER = 0 to use I2S in slave mode
+      37              DO_48K          .set     1        ; DO_48K = 1 to use 48 KHz sampling frequency  
+      38                                                ; DO_48K = 0 to use 12 KHz sampling frequency
+      39              
+      40              ;****************************************************************************************
+      41 000000               .text 
+      42              ;****************************************************************************************
+      43              ;****************************************************************************************
+      44              ;   Configure AIC3254
+      45              ;****************************************************************************************
+      46              _AIC3254_init:
+      47              ;****************************************************************************************
+      48              ; Configure I2C
+      49              ;****************************************************************************************
+      50               .if 1
+      51                      ; Reset all Modules
+      52                      ;*port(#0x1C04) = #0x0020;
+      53                      ;*port(#0x1C05) = #0x00FF;
+      54              
+      55                      ; Set GPIO26 as output
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:20 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/aic_test_i2c.asm               PAGE    2
+
+      56 000000 A451                  T0 = *port(#0x1C00)
+         000002 1C00 
+      57 000004 1A3F          T0 |= #0x003F
+         000006 44   
+      58 000007 C451          *port(#0x1C00) = T0
+         000009 1C00 
+      59 00000b 4C09          repeat(#9)
+      60 00000d 5E80          NOP_16
+      61              
+      62 00000f A451          T0 = *port(#0x1C07)
+         000011 1C07 
+      63 000013 7E04          T0 |= #0x0400
+         000015 0044 
+      64 000017 C451          *port(#0x1C07) = T0
+         000019 1C07 
+      65 00001b 4C09          repeat(#9)
+      66 00001d 5E80          NOP_16
+      67                      ; Set GPIO26 = 0
+      68 00001f A451          T0 = *port(#0x1C0B)
+         000021 1C0B 
+      69 000023 7DFB          T0 &= #0xFBFF
+         000025 FF44 
+      70 000027 C451          *port(#0x1C0B) = T0
+         000029 1C0B 
+      71 00002b 4C63          repeat(#99)
+      72 00002d 5E80          NOP_16
+      73                      ; Set GPIO26 = 1
+      74 00002f A451          T0 = *port(#0x1C0B)
+         000031 1C0B 
+      75 000033 7E04          T0 |= #0x0400
+         000035 0044 
+      76 000037 C451          *port(#0x1C0B) = T0
+         000039 1C0B 
+      77 00003b 4C09          repeat(#9)
+      78 00003d 5E80          NOP_16
+      79              
+      80                      ; Initialize IIC
+      81 00003f E651          *port(#I2C_PSC)   = #0x0004            ; Set prescaler to divide by 4+1=5
+         000041 041A 
+         000043 30   
+      82                                                             ; I2C CLK = 49.156 MHZ / 5 = 9.8312 MHz
+      83 000044 E651          *port(#I2C_CLKL)  = #(I2C_CLKDIV_VAL)  ; CPU clock divided by 35+5 for low period 
+         000046 231A 
+         000048 0C   
+      84 000049 E651          *port(#I2C_CLKH)  = #(I2C_CLKDIV_VAL)  ; CPU clock divided by 35+5 for high period
+         00004b 231A 
+         00004d 10   
+      85                                                             ;   SCL_High_Period = (1/9.8312M) *(35+5) = 4.07us
+      86                                                             ;   SCL_Low_Period = (1/9.8312) *(35+5) = 4.07us
+      87                                                                                                         ;   1/(4.07u+4.07u
+      88 00004e E651          *port(#I2C_OAR)   = #0x002F            ; I2C Address - 5515 is set to 01011xx
+         000050 2F1A 
+         000052 00   
+      89 000053 FB51          *port(#I2C_MDR)   = #0x0400            ; Place I2C module in reset
+         000055 0400 
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:20 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/aic_test_i2c.asm               PAGE    3
+
+         000057 1A24 
+      90 000059 0C23          repeat(#(8999))
+         00005b 27   
+      91 00005c 5E80          NOP_16
+      92              
+      93 00005e FB51          *port(#I2C_MDR)   = #0x0420            ; master, transmitter,out of reset, 7-bit address
+         000060 0420 
+         000062 1A24 
+      94 000064 E651          *port(#I2C_EMDR)  = #0x000             ; Backward compatibility mode free data mode disabled
+         000066 001A 
+         000068 2C   
+      95              
+      96 000069 E651          *port(#I2C_SAR)   = #AIC3254_I2C_ADDR  ; I2C Address for AIC3254
+         00006b 181A 
+         00006d 1C   
+      97              
+      98              ;****************************************************************************************
+      99              ; Configure AIC3254
+     100              ;****************************************************************************************
+     101                          ; Point to page 0
+     102 00006e 3C01          AC1 = #0
+     103 000070 3C09          AR1 = #0x0
+     104 000072 0801          call i2c_WriteData8
+         000074 79   
+     105              
+     106                      ;reset codec
+     107 000075 3C11          AC1 = #1
+     108 000077 3C19          AR1 = #0x1
+     109 000079 0801          call i2c_WriteData8
+         00007b 72   
+     110              
+     111                          ; Point to page 1
+     112 00007c 3C01          AC1 = #0
+     113 00007e 3C19          AR1 = #0x1
+     114 000080 0801          call i2c_WriteData8
+         000082 6B   
+     115 000083 3C01          AC1 = #0
+     116              ;        call i2c_ReadData8
+     117              
+     118                      ;Disable crude AVDD generation from DVDD
+     119 000085 3C11          AC1 = #1
+     120 000087 3C89          AR1 = #0x08
+     121 000089 0801          call i2c_WriteData8
+         00008b 62   
+     122 00008c 3C11          AC1 = #1
+     123              ;        call i2c_ReadData8
+     124              
+     125                      ;Enable Analog Blocks and LDO
+     126 00008e 3C21          AC1 = #2
+     127 000090 3C19          AR1 = #0x01
+     128 000092 0801          call i2c_WriteData8
+         000094 59   
+     129              
+     130                              ;***********************************************************************
+     131                      ;* PLL and Clocks config and Power Up                                  
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:20 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/aic_test_i2c.asm               PAGE    4
+
+     132                              ;***********************************************************************
+     133                          ; Point to page 0
+     134 000095 3C01          AC1 = #0
+     135 000097 3C09          AR1 = #0x0
+     136 000099 0801          call i2c_WriteData8
+         00009b 52   
+     137              
+     138               .if (!DO_I2S_MASTER) ;AIC is master running off of 12 MHz crystal
+     139                      ;BCLK and WCLK is set as op to AIC3254(Master)
+     140 00009c 7600          AC1 = #27
+         00009e 1B18 
+     141 0000a0 3CD9          AR1 = #0x0D
+     142 0000a2 0801          call i2c_WriteData8
+         0000a4 49   
+     143              
+     144                      ;PLL setting: PLLCLK <- MCLK and CODEC_CLKIN <-PLL CLK
+     145 0000a5 3C41          AC1 = #4
+     146 0000a7 3C39          AR1 = #0x03
+     147 0000a9 0801          call i2c_WriteData8
+         0000ab 42   
+     148              
+     149                      ;PLL setting: J=8
+     150 0000ac 3C61          AC1 = #6
+     151 0000ae 3C89          AR1 = #0x08
+     152 0000b0 0801          call i2c_WriteData8
+         0000b2 3B   
+     153              
+     154                      ;PLL setting: HI_BYTE(D) for D=0x0780 (or 1920 decimal)
+     155 0000b3 3C71          AC1 = #7
+     156 0000b5 3C79          AR1 = #0x07
+     157 0000b7 0801          call i2c_WriteData8
+         0000b9 34   
+     158              
+     159                      ;PLL setting: LO_BYTE(D) for D=0x0780
+     160 0000ba 3C81          AC1 = #8
+     161 0000bc 7600          AR1 = #0x80
+         0000be 8098 
+     162 0000c0 0801          call i2c_WriteData8
+         0000c2 2B   
+     163              
+     164                       .if (DO_48K) ;for 48 KHz sampling
+     165                              ;For 32 bit clocks per frame in Master mode ONLY
+     166                          ;BCLK=DAC_CLK/N =(12288000/8) = 1.536MHz = 32*fs
+     167 0000c3 7600                  AC1 = 30
+         0000c5 1E18 
+     168 0000c7 7600                  AR1 = 0x88
+         0000c9 8898 
+     169 0000cb 0801                  call i2c_WriteData8
+         0000cd 20   
+     170                       .else ;for 12 KHz sampling
+     171                              ;For 32 bit clocks per frame in Master mode ONLY
+     172                          ;BCLK=DAC_CLK/N =(12288000/32) = 384 KHz = 32*fs
+     173                              AC1 = 30
+     174                              AR1 = 0xA0
+     175                              call i2c_WriteData8
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:20 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/aic_test_i2c.asm               PAGE    5
+
+     176                   .endif
+     177                      
+     178                              ;PLL setting: Power up PLL, P=1 and R=1
+     179 0000ce 3C51          AC1 = #5
+     180 0000d0 7600          AR1 = #0x91
+         0000d2 9198 
+     181 0000d4 0801          call i2c_WriteData8
+         0000d6 17   
+     182              
+     183               .else  ;For AIC Slave running off of 768 kHz or 1.536 MHz BCLK supplied by I2S
+     184                      ;BCLK and WCLK is set as ip to AIC3254(slave)
+     185                      AC1 = #27
+     186                      AR1 = #0x00
+     187                      call i2c_WriteData8
+     188              
+     189                      ;PLL setting: PLLCLK <- BCLK and CODEC_CLKIN <-PLL CLK
+     190                      AC1 = #4
+     191                      AR1 = #0x07
+     192                      call i2c_WriteData8
+     193              
+     194                      ;PLL setting: J=32
+     195                      AC1 = #6
+     196                      AR1 = #0x20
+     197                      call i2c_WriteData8
+     198              
+     199                      ;PLL setting: HI_BYTE(D) for D=0x0 (or 0 decimal)
+     200                      AC1 = #7
+     201                      AR1 = #0x00
+     202                      call i2c_WriteData8
+     203              
+     204                      ;PLL setting: LO_BYTE(D) for D=0x0
+     205                      AC1 = #8
+     206                      AR1 = #0x00
+     207                      call i2c_WriteData8
+     208              
+     209                       .if (DO_48K) ;for 48 KHz sampling
+     210                                      ;PLL setting: Power up PLL, P=1 and R=2
+     211                              AC1 = #5
+     212                              AR1 = #0x92
+     213                              call i2c_WriteData8
+     214                       .else ;for 12 KHz sampling
+     215                                      ;PLL setting: Power up PLL, P=1 and R=4
+     216                              AC1 = #5
+     217                              AR1 = #0x94
+     218                              call i2c_WriteData8
+     219                   .endif
+     220               .endif
+     221              
+     222               .if (DO_48K) ;for 48 KHz sampling
+     223                              ;Hi_Byte(DOSR) for DOSR = 128 decimal or 0x0080 DAC oversamppling
+     224 0000d7 3CD1              AC1 = #13
+     225 0000d9 3C09              AR1 = #0x00
+     226 0000db 0801              call i2c_WriteData8
+         0000dd 10   
+     227              
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:20 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/aic_test_i2c.asm               PAGE    6
+
+     228                              ;Lo_Byte(DOSR) for DOSR = 128 decimal or 0x0080
+     229 0000de 3CE1              AC1 = #14
+     230 0000e0 7600              AR1 = #0x80
+         0000e2 8098 
+     231 0000e4 0801              call i2c_WriteData8
+         0000e6 07   
+     232               .else ;for 12 KHz sampling
+     233                              ;Hi_Byte(DOSR) for DOSR = 512 decimal or 0x0200 DAC oversamppling
+     234                          AC1 = #13
+     235                          AR1 = #0x02
+     236                          call i2c_WriteData8
+     237              
+     238                              ;Lo_Byte(DOSR) for DOSR = 512 decimal or 0x0200
+     239                          AC1 = #14
+     240                          AR1 = #0x00
+     241                          call i2c_WriteData8
+     242               .endif
+     243              
+     244                              ;AOSR for AOSR = 128 decimal or 0x0080 for decimation filters 1 to 6
+     245 0000e7 7600              AC1 = #20
+         0000e9 1418 
+     246 0000eb 7600              AR1 = #0x80
+         0000ed 8098 
+     247 0000ef 0800              call i2c_WriteData8
+         0000f1 FC   
+     248              
+     249                              ;Power up NDAC and set NDAC value to 8
+     250 0000f2 3CB1              AC1 = #11
+     251 0000f4 7600              AR1 = #0x88
+         0000f6 8898 
+     252 0000f8 0800              call i2c_WriteData8
+         0000fa F3   
+     253              
+     254                              ;Power up MDAC and set MDAC value to 2
+     255 0000fb 3CC1              AC1 = #12
+     256 0000fd 7600              AR1 = #0x82
+         0000ff 8298 
+     257 000101 0800              call i2c_WriteData8
+         000103 EA   
+     258              
+     259                              ;Power up NADC and set NADC value to 8
+     260 000104 7600              AC1 = #18
+         000106 1218 
+     261 000108 7600              AR1 = #0x88
+         00010a 8898 
+     262 00010c 0800              call i2c_WriteData8
+         00010e DF   
+     263              
+     264               .if (DO_48K) ;for 48 KHz sampling
+     265                              ;Power up MADC and set MADC value to 2
+     266 00010f 7600              AC1 = #19
+         000111 1318 
+     267 000113 7600              AR1 = #0x82
+         000115 8298 
+     268 000117 0800              call i2c_WriteData8
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:20 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/aic_test_i2c.asm               PAGE    7
+
+         000119 D4   
+     269               .else ;for 12 KHz sampling
+     270                              ;Power up MADC and set MADC value to 8
+     271                          AC1 = #19
+     272                          AR1 = #0x88
+     273                          call i2c_WriteData8
+     274               .endif
+     275              
+     276              
+     277                              ;***********************************************************************
+     278                      ;* DAC ROUTING and Power Up                                            
+     279                              ;***********************************************************************
+     280                      ;Select page 1
+     281 00011a 3C01          AC1 = 0
+     282 00011c 3C19          AR1 = 0x01
+     283 00011e 0800          call i2c_WriteData8
+         000120 CD   
+     284              
+     285                      ;LDAC AFIR routed to HPL
+     286 000121 3CC1          AC1 = 0xC
+     287 000123 3C89          AR1 = 0x08
+     288 000125 0800          call i2c_WriteData8
+         000127 C6   
+     289              
+     290                      ;RDAC AFIR routed to HPR
+     291 000128 3CD1          AC1 = 0xD
+     292 00012a 3C89          AR1 = 0x08
+     293 00012c 0800          call i2c_WriteData8
+         00012e BF   
+     294              
+     295                      ;Select page 0
+     296 00012f 3C01          AC1 = 0
+     297 000131 3C09          AR1 = 0x00
+     298 000133 0800          call i2c_WriteData8
+         000135 B8   
+     299              
+     300                      ;Left vol=right vol
+     301 000136 7600          AC1 = 64
+         000138 4018 
+     302 00013a 3C29          AR1 = 0x02
+     303 00013c 0800          call i2c_WriteData8
+         00013e AF   
+     304              
+     305                      ;Left DAC gain to 0dB VOL; Right tracks Left
+     306 00013f 7600          AC1 = 65
+         000141 4118 
+     307 000143 3C09          AR1 = 0x00
+     308 000145 0800          call i2c_WriteData8
+         000147 A6   
+     309              
+     310                      ;Power up left,right data paths and set channel
+     311 000148 7600          AC1 = 63
+         00014a 3F18 
+     312 00014c 7600          AR1 = 0xD4
+         00014e D498 
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:20 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/aic_test_i2c.asm               PAGE    8
+
+     313 000150 0800          call i2c_WriteData8
+         000152 9B   
+     314              
+     315                      ;Select page 1
+     316 000153 3C01          AC1 = 0
+     317 000155 3C19          AR1 = 0x01
+     318 000157 0800          call i2c_WriteData8
+         000159 94   
+     319              
+     320                      ;Unmute HPL , 0dB gain
+     321 00015a 7600          AC1 = 0x10
+         00015c 1018 
+     322 00015e 3C09          AR1 = 0x00
+     323 000160 0800          call i2c_WriteData8
+         000162 8B   
+     324              
+     325                      ;Unmute HPR , 0dB gain
+     326 000163 7600          AC1 = 0x11
+         000165 1118 
+     327 000167 3C09          AR1 = 0x00
+     328 000169 0800          call i2c_WriteData8
+         00016b 82   
+     329              
+     330                      ;Power up HPL,HPR
+     331 00016c 3C91          AC1 = 9
+     332 00016e 7600          AR1 = 0x30
+         000170 3098 
+     333 000172 0800          call i2c_WriteData8
+         000174 79   
+     334              
+     335                              ;Select page 0
+     336 000175 3C01          AC1 = 0
+     337 000177 3C09          AR1 = 0x00
+     338 000179 0800          call i2c_WriteData8
+         00017b 72   
+     339              
+     340 00017c FB34                  @BRC0_L = #0x02FF || mmap()
+         00017e 02FF 
+         000180 98   
+     341 000181 4A85                  localrepeat {
+     342 000183 0CFF                          repeat(#0xFFFF)
+         000185 FF   
+     343 000186 5E80                          NOP_16
+     344 000188 5E80                          NOP_16
+     345                              }
+     346              
+     347                              ;***********************************************************************
+     348                      ;* ADC ROUTING and Power Up                                            
+     349                              ;***********************************************************************
+     350                              ;Select page 1
+     351 00018a 3C01              AC1 = #0
+     352 00018c 3C19              AR1 = #0x01
+     353 00018e 0800              call i2c_WriteData8
+         000190 5D   
+     354              
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:20 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/aic_test_i2c.asm               PAGE    9
+
+     355               .if 0 ;STEREO 2 Jacks are not connected properly on board A15
+     356                              ;IN3_L to LADC_P through 40 kohm
+     357                          AC1 = #0x34
+     358                          AR1 = #0x0C
+     359                          call i2c_WriteData8
+     360              
+     361                              ;IN3_R to RADC_P through 40 kohmm
+     362                          AC1 = #0x37
+     363                          AR1 = #0x0C
+     364                          call i2c_WriteData8
+     365               .else  ;STEREO 1 Jack
+     366                              ;IN2_L to LADC_P through 40 kohm
+     367 000191 7600              AC1 = #0x34
+         000193 3418 
+     368 000195 7600              AR1 = #0x30
+         000197 3098 
+     369 000199 0800              call i2c_WriteData8
+         00019b 52   
+     370              
+     371                              ;IN2_R to RADC_P through 40 kohmm
+     372 00019c 7600              AC1 = #0x37
+         00019e 3718 
+     373 0001a0 7600              AR1 = #0x30
+         0001a2 3098 
+     374 0001a4 0800              call i2c_WriteData8
+         0001a6 47   
+     375               .endif
+     376              
+     377                              ;CM_1 (common mode) to LADC_M through 40 kohm
+     378 0001a7 7600              AC1 = #0x36
+         0001a9 3618 
+     379 0001ab 3C39              AR1 = #0x03
+     380 0001ad 0800              call i2c_WriteData8
+         0001af 3E   
+     381              
+     382                              ;CM_1 (common mode) to RADC_M through 40 kohm
+     383 0001b0 7600              AC1 = #0x39
+         0001b2 3918 
+     384 0001b4 7600              AR1 = #0xC0
+         0001b6 C098 
+     385 0001b8 0800              call i2c_WriteData8
+         0001ba 33   
+     386              
+     387                              ;MIC_PGA_L unmute
+     388 0001bb 7600              AC1 = #0x3B
+         0001bd 3B18 
+     389 0001bf 3C09              AR1 = #0x00
+     390 0001c1 0800              call i2c_WriteData8
+         0001c3 2A   
+     391              
+     392                              ;MIC_PGA_R unmute
+     393 0001c4 7600              AC1 = #0x3C
+         0001c6 3C18 
+     394 0001c8 3C09              AR1 = #0x00
+     395 0001ca 0800              call i2c_WriteData8
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:20 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/aic_test_i2c.asm               PAGE   10
+
+         0001cc 21   
+     396              
+     397                      ;Select page 0
+     398 0001cd 3C01          AC1 = 0
+     399 0001cf 3C09          AR1 = 0x00
+     400 0001d1 0800          call i2c_WriteData8
+         0001d3 1A   
+     401              
+     402                      ;Powerup Left and Right ADC
+     403 0001d4 7600          AC1 = 0x51
+         0001d6 5118 
+     404 0001d8 7600          AR1 = 0xC0
+         0001da C098 
+     405 0001dc 0800          call i2c_WriteData8
+         0001de 0F   
+     406              
+     407                      ;Unmute Left and Right ADC
+     408 0001df 7600          AC1 = 0x52
+         0001e1 5218 
+     409 0001e3 3C09          AR1 = 0x00
+     410 0001e5 0800          call i2c_WriteData8
+         0001e7 06   
+     411              
+     412                      ;Dummy read
+     413 0001e8 3C91          AC1 = 9
+     414 0001ea 76AB          AR1 = 0xABAB
+         0001ec AB98 
+     415              ;        call i2c_ReadData8
+     416               .endif
+     417              
+     418 0001ee       i2c_WriteData8:
+     419                          
+     420                              ; Data count register = 2 for 1)address + 2)data
+     421 0001ee E651                  *port(#I2C_CNT) = #0x0002
+         0001f0 021A 
+         0001f2 14   
+     422              
+     423                              ; Disable interrupts
+     424 0001f3 E651                  *port(#I2C_IMR) = #0000
+         0001f5 001A 
+         0001f7 04   
+     425              
+     426 0001f8 4C63          repeat(#99)
+     427 0001fa 5E80                  NOP_16
+     428              
+     429                          ; Place I2C as transmitter
+     430 0001fc FB51              *port(#I2C_MDR) = #0010011000100000b        ; Master transit with Start
+         0001fe 2620 
+         000200 1A24 
+     431                                                ;0~~~~~~~~~~~~~~~ NACK MOD - Master Receiver Mode: 
+     432                                            ;                 1 -> the I2C sends NACK to transmitter during acknowledge cyc
+     433                                            ;                 0 -> the I2C sends ACK to transmitter during acknowledge cycl
+     434                                            ;~0~~~~~~~~~~~~~~ FREE: 0-> Disable free-run 1 -> I2C runs free during debugger
+     435                                            ;~~1~~~~~~~~~~~~~ STT - Start Condition Bit: 1 -> (master mode) generates start
+     436                                            ;~~~0~~~~~~~~~~~~ Reserved (?)
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:20 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/aic_test_i2c.asm               PAGE   11
+
+     437                                            ;~~~~1~~~~~~~~~~~ STP: Set to 1 to generate STOP condition.
+     438                                            ;~~~~~1~~~~~~~~~~ MST: 1 -> I2C is in master mode.
+     439                                            ;~~~~~~1~~~~~~~~~ TRX - Transmitter: 0 -> I2C is in receiver mode 
+     440                                                              ; MST|TRX = 10 -> master receiver mode.
+     441                                                              ; MST|TRX = 11 -> master transmitter mode.
+     442                                            ;~~~~~~~0~~~~~~~~ XA - Expanded Address: 0 -> 7-bit address mode, 1 -> 10-bit a
+     443                                            ;~~~~~~~~0~~~~~~~ RM - Repeat Mode
+     444                                                              ; RM|STT|STP = 110 -> (Re) Start: S-A-D-D-D-D... continuous
+     445                                            ;~~~~~~~~~0~~~~~~ DLB - Digital Loopback Mode: 1 -> I2C in digital loopback mod
+     446                                            ;~~~~~~~~~~1~~~~~ nIRS: 1 -> I2C not in reset, 0 -> I2C in reset.
+     447                                            ;~~~~~~~~~~~0~~~~ START byte mode: 0 -> I2C in not in START byte mode.
+     448                                            ;~~~~~~~~~~~~0~~~ 1 -> I2C is in free data format (Figure 6d).
+     449                                            ;~~~~~~~~~~~~~000 BC - Bit Count, number of bits which are yet to be received/t
+     450 000202 4C63          repeat(#99)
+     451 000204 5E80                  NOP_16
+     452 000206 0800              call i2c_wait_for_slave_ack 
+         000208 95   
+     453 000209 0800                  call i2c_wait_for_tx
+         00020b A3   
+     454              
+     455                          ; Place Register Address in TX data register
+     456 00020c 18FF              AC1 = AC1 & #0x00FF
+         00020e 11   
+     457 00020f C151              *port(#I2C_DXR) = AC1                   ; place address
+         000211 1A20 
+     458 000213 4C63          repeat(#99)
+     459 000215 5E80                  NOP_16
+     460 000217 0800              call i2c_wait_for_slave_ack 
+         000219 84   
+     461 00021a 0800              call i2c_wait_for_tx
+         00021c 92   
+     462                              
+     463 00021d 18FF              AC2 = AR1 & 0x00FF
+         00021f 29   
+     464 000220 C251              *port(#I2C_DXR) = AC2                               ; write data
+         000222 1A20 
+     465 000224 4C63          repeat(#99)
+     466 000226 5E80                  NOP_16
+     467 000228 0800              call i2c_wait_for_slave_ack 
+         00022a 73   
+     468              
+     469 00022b 4C63          repeat(#99)
+     470 00022d 5E80                  NOP_16
+     471              
+     472 00022f 4804          return
+     473              
+     474              ;****************************************************************************************
+     475              ;       i2c_ReadData8 - Reads 8-bits
+     476              ;****************************************************************************************
+     477 000231       i2c_ReadData8:
+     478              
+     479                              ; Data count register = 2 for 1)address + 2)data
+     480 000231 E651                  *port(#I2C_CNT) = #0x0000
+         000233 001A 
+         000235 14   
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:20 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/aic_test_i2c.asm               PAGE   12
+
+     481              
+     482                          ; Place I2C as transmitter
+     483 000236 FB51          *port(#I2C_MDR) = #0010001010100000b        ; Master transit with Start
+         000238 22A0 
+         00023a 1A24 
+     484                                                ;0~~~~~~~~~~~~~~~ NACK MOD - Master Receiver Mode: 
+     485                                            ;                 1 -> the I2C sends NACK to transmitter during acknowledge cyc
+     486                                            ;                 0 -> the I2C sends ACK to transmitter during acknowledge cycl
+     487                                            ;~0~~~~~~~~~~~~~~ FREE: 0-> Disable free-run 1 -> I2C runs free during debugger
+     488                                            ;~~1~~~~~~~~~~~~~ STT - Start Condition Bit: 1 -> (master mode) generates start
+     489                                            ;~~~0~~~~~~~~~~~~ Reserved (?)
+     490                                            ;~~~~0~~~~~~~~~~~ STP: Set to 1 to generate STOP condition.
+     491                                            ;~~~~~1~~~~~~~~~~ MST: 1 -> I2C is in master mode.
+     492                                            ;~~~~~~1~~~~~~~~~ TRX - Transmitter: 0 -> I2C is in receiver mode 
+     493                                                              ; MST|TRX = 10 -> master receiver mode.
+     494                                                              ; MST|TRX = 11 -> master transmitter mode.
+     495                                            ;~~~~~~~0~~~~~~~~ XA - Expanded Address: 0 -> 7-bit address mode, 1 -> 10-bit a
+     496                                            ;~~~~~~~~1~~~~~~~ RM - Repeat Mode
+     497                                                              ; RM|STT|STP = 110 -> (Re) Start: S-A-D-D-D-D... continuous
+     498                                            ;~~~~~~~~~0~~~~~~ DLB - Digital Loopback Mode: 1 -> I2C in digital loopback mod
+     499                                            ;~~~~~~~~~~1~~~~~ nIRS: 1 -> I2C not in reset, 0 -> I2C in reset.
+     500                                            ;~~~~~~~~~~~0~~~~ START byte mode: 0 -> I2C in not in START byte mode.
+     501                                            ;~~~~~~~~~~~~0~~~ 1 -> I2C is in free data format (Figure 6d).
+     502                                            ;~~~~~~~~~~~~~000 BC - Bit Count, number of bits which are yet to be received/t
+     503 00023c 4C63          repeat(#99)
+     504 00023e 5E80                  NOP_16
+     505 000240 0800              call i2c_wait_for_slave_ack 
+         000242 5B   
+     506 000243 0800                  call i2c_wait_for_tx
+         000245 69   
+     507              
+     508                          ; Place Register Address in TX data register
+     509 000246 18FF              AC1 = AC1 & #0x00FF
+         000248 11   
+     510 000249 C151              *port(#I2C_DXR) = AC1                   ; place address
+         00024b 1A20 
+     511 00024d 4C63          repeat(#99)
+     512 00024f 5E80                  NOP_16
+     513 000251 0800              call i2c_wait_for_slave_ack 
+         000253 4A   
+     514 000254 0800              call i2c_wait_for_tx
+         000256 58   
+     515                              
+     516                      ; Place I2C in receive mode
+     517 000257 FB51              *port(#I2C_MDR) = #0000010010100000b        ; Master transit with Start
+         000259 04A0 
+         00025b 1A24 
+     518                                                ;0~~~~~~~~~~~~~~~ NACK MOD - Master Receiver Mode: 
+     519                                            ;                 1 -> the I2C sends NACK to transmitter during acknowledge cyc
+     520                                            ;                 0 -> the I2C sends ACK to transmitter during acknowledge cycl
+     521                                            ;~0~~~~~~~~~~~~~~ FREE: 0-> Disable free-run 1 -> I2C runs free during debugger
+     522                                            ;~~0~~~~~~~~~~~~~ STT - Start Condition Bit: 1 -> (master mode) generates start
+     523                                            ;~~~0~~~~~~~~~~~~ Reserved (?)
+     524                                            ;~~~~0~~~~~~~~~~~ STP: Set to 1 to generate STOP condition.
+     525                                            ;~~~~~1~~~~~~~~~~ MST: 1 -> I2C is in master mode.
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:20 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/aic_test_i2c.asm               PAGE   13
+
+     526                                            ;~~~~~~0~~~~~~~~~ TRX - Transmitter: 0 -> I2C is in receiver mode 
+     527                                                              ; MST|TRX = 10 -> master receiver mode.
+     528                                                              ; MST|TRX = 11 -> master transmitter mode.
+     529                                            ;~~~~~~~0~~~~~~~~ XA - Expanded Address: 0 -> 7-bit address mode, 1 -> 10-bit a
+     530                                            ;~~~~~~~~1~~~~~~~ RM - Repeat Mode
+     531                                                              ; RM|STT|STP = 110 -> (Re) Start: S-A-D-D-D-D... continuous
+     532                                            ;~~~~~~~~~0~~~~~~ DLB - Digital Loopback Mode: 1 -> I2C in digital loopback mod
+     533                                            ;~~~~~~~~~~1~~~~~ nIRS: 1 -> I2C not in reset, 0 -> I2C in reset.
+     534                                            ;~~~~~~~~~~~0~~~~ START byte mode: 0 -> I2C in not in START byte mode.
+     535                                            ;~~~~~~~~~~~~0~~~ 1 -> I2C is in free data format (Figure 6d).
+     536                                            ;~~~~~~~~~~~~~000 BC - Bit Count, number of bits which are yet to be received/t
+     537              
+     538                      ; Set NACK to finish read cycle
+     539              ;           *port(#I2C_MDR) = #1000010010100000b        ; Master transit with Start
+     540                                                ;1~~~~~~~~~~~~~~~ NACK MOD - Master Receiver Mode: 
+     541                                            ;                 1 -> the I2C sends NACK to transmitter during acknowledge cyc
+     542                                            ;                 0 -> the I2C sends ACK to transmitter during acknowledge cycl
+     543                                            ;~0~~~~~~~~~~~~~~ FREE: 0-> Disable free-run 1 -> I2C runs free during debugger
+     544                                            ;~~0~~~~~~~~~~~~~ STT - Start Condition Bit: 1 -> (master mode) generates start
+     545                                            ;~~~0~~~~~~~~~~~~ Reserved (?)
+     546                                            ;~~~~0~~~~~~~~~~~ STP: Set to 1 to generate STOP condition.
+     547                                            ;~~~~~1~~~~~~~~~~ MST: 1 -> I2C is in master mode.
+     548                                            ;~~~~~~0~~~~~~~~~ TRX - Transmitter: 0 -> I2C is in receiver mode 
+     549                                                              ; MST|TRX = 10 -> master receiver mode.
+     550                                                              ; MST|TRX = 11 -> master transmitter mode.
+     551                                            ;~~~~~~~0~~~~~~~~ XA - Expanded Address: 0 -> 7-bit address mode, 1 -> 10-bit a
+     552                                            ;~~~~~~~~1~~~~~~~ RM - Repeat Mode
+     553                                                              ; RM|STT|STP = 110 -> (Re) Start: S-A-D-D-D-D... continuous
+     554                                            ;~~~~~~~~~0~~~~~~ DLB - Digital Loopback Mode: 1 -> I2C in digital loopback mod
+     555                                            ;~~~~~~~~~~1~~~~~ nIRS: 1 -> I2C not in reset, 0 -> I2C in reset.
+     556                                            ;~~~~~~~~~~~0~~~~ START byte mode: 0 -> I2C in not in START byte mode.
+     557                                            ;~~~~~~~~~~~~0~~~ 1 -> I2C is in free data format (Figure 6d).
+     558                                            ;~~~~~~~~~~~~~000 BC - Bit Count, number of bits which are yet to be received/t
+     559              
+     560 00025d 4C63          repeat(#99)
+     561 00025f 5E80                  NOP_16
+     562                      ; Generate start condition
+     563 000261 FB51              *port(#I2C_MDR) = #1010010010100000b        ; Master transit with Start
+         000263 A4A0 
+         000265 1A24 
+     564                                                ;0~~~~~~~~~~~~~~~ NACK MOD - Master Receiver Mode: 
+     565                                            ;                 1 -> the I2C sends NACK to transmitter during acknowledge cyc
+     566                                            ;                 0 -> the I2C sends ACK to transmitter during acknowledge cycl
+     567                                            ;~0~~~~~~~~~~~~~~ FREE: 0-> Disable free-run 1 -> I2C runs free during debugger
+     568                                            ;~~1~~~~~~~~~~~~~ STT - Start Condition Bit: 1 -> (master mode) generates start
+     569                                            ;~~~0~~~~~~~~~~~~ Reserved (?)
+     570                                            ;~~~~0~~~~~~~~~~~ STP: Set to 1 to generate STOP condition.
+     571                                            ;~~~~~1~~~~~~~~~~ MST: 1 -> I2C is in master mode.
+     572                                            ;~~~~~~0~~~~~~~~~ TRX - Transmitter: 0 -> I2C is in receiver mode 
+     573                                                              ; MST|TRX = 10 -> master receiver mode.
+     574                                                              ; MST|TRX = 11 -> master transmitter mode.
+     575                                            ;~~~~~~~0~~~~~~~~ XA - Expanded Address: 0 -> 7-bit address mode, 1 -> 10-bit a
+     576                                            ;~~~~~~~~1~~~~~~~ RM - Repeat Mode
+     577                                                              ; RM|STT|STP = 110 -> (Re) Start: S-A-D-D-D-D... continuous
+     578                                            ;~~~~~~~~~0~~~~~~ DLB - Digital Loopback Mode: 1 -> I2C in digital loopback mod
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:20 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/aic_test_i2c.asm               PAGE   14
+
+     579                                            ;~~~~~~~~~~1~~~~~ nIRS: 1 -> I2C not in reset, 0 -> I2C in reset.
+     580                                            ;~~~~~~~~~~~0~~~~ START byte mode: 0 -> I2C in not in START byte mode.
+     581                                            ;~~~~~~~~~~~~0~~~ 1 -> I2C is in free data format (Figure 6d).
+     582                                            ;~~~~~~~~~~~~~000 BC - Bit Count, number of bits which are yet to be received/t
+     583              
+     584 000267 4C63          repeat(#99)
+     585 000269 5E80                  NOP_16
+     586 00026b 0800              call i2c_wait_for_slave_ack 
+         00026d 30   
+     587 00026e 0800          call i2c_wait_for_data
+         000270 4F   
+     588              
+     589 000271 A251              AC2 = *port(#I2C_DRR)                               ; read data
+         000273 1A18 
+     590 000275 18FF              AR1 = AC2 & 0x00FF
+         000277 92   
+     591              
+     592                          ; Place I2C as transmitter
+     593 000278 FB51              *port(#I2C_MDR) = #1010011010100000b        ; Master transit with Start
+         00027a A6A0 
+         00027c 1A24 
+     594                                                ;0~~~~~~~~~~~~~~~ NACK MOD - Master Receiver Mode: 
+     595                                            ;                 1 -> the I2C sends NACK to transmitter during acknowledge cyc
+     596                                            ;                 0 -> the I2C sends ACK to transmitter during acknowledge cycl
+     597                                            ;~0~~~~~~~~~~~~~~ FREE: 0-> Disable free-run 1 -> I2C runs free during debugger
+     598                                            ;~~1~~~~~~~~~~~~~ STT - Start Condition Bit: 1 -> (master mode) generates start
+     599                                            ;~~~0~~~~~~~~~~~~ Reserved (?)
+     600                                            ;~~~~0~~~~~~~~~~~ STP: Set to 1 to generate STOP condition.
+     601                                            ;~~~~~1~~~~~~~~~~ MST: 1 -> I2C is in master mode.
+     602                                            ;~~~~~~1~~~~~~~~~ TRX - Transmitter: 0 -> I2C is in receiver mode 
+     603                                                              ; MST|TRX = 10 -> master receiver mode.
+     604                                                              ; MST|TRX = 11 -> master transmitter mode.
+     605                                            ;~~~~~~~0~~~~~~~~ XA - Expanded Address: 0 -> 7-bit address mode, 1 -> 10-bit a
+     606                                            ;~~~~~~~~1~~~~~~~ RM - Repeat Mode
+     607                                                              ; RM|STT|STP = 110 -> (Re) Start: S-A-D-D-D-D... continuous
+     608                                            ;~~~~~~~~~0~~~~~~ DLB - Digital Loopback Mode: 1 -> I2C in digital loopback mod
+     609                                            ;~~~~~~~~~~1~~~~~ nIRS: 1 -> I2C not in reset, 0 -> I2C in reset.
+     610                                            ;~~~~~~~~~~~0~~~~ START byte mode: 0 -> I2C in not in START byte mode.
+     611                                            ;~~~~~~~~~~~~0~~~ 1 -> I2C is in free data format (Figure 6d).
+     612                                            ;~~~~~~~~~~~~~000 BC - Bit Count, number of bits which are yet to be received/t
+     613              
+     614              
+     615                          ; I2C Set back ACK_enable
+     616 00027e FB51              *port(#I2C_MDR) = #1010011010100000b        ; Master transit with Start
+         000280 A6A0 
+         000282 1A24 
+     617                                                ;1~~~~~~~~~~~~~~~ NACK MOD - Master Receiver Mode: 
+     618                                            ;                 1 -> the I2C sends NACK to transmitter during acknowledge cyc
+     619                                            ;                 0 -> the I2C sends ACK to transmitter during acknowledge cycl
+     620                                            ;~0~~~~~~~~~~~~~~ FREE: 0-> Disable free-run 1 -> I2C runs free during debugger
+     621                                            ;~~1~~~~~~~~~~~~~ STT - Start Condition Bit: 1 -> (master mode) generates start
+     622                                            ;~~~0~~~~~~~~~~~~ Reserved (?)
+     623                                            ;~~~~0~~~~~~~~~~~ STP: Set to 1 to generate STOP condition.
+     624                                            ;~~~~~1~~~~~~~~~~ MST: 1 -> I2C is in master mode.
+     625                                            ;~~~~~~1~~~~~~~~~ TRX - Transmitter: 0 -> I2C is in receiver mode 
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:20 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/aic_test_i2c.asm               PAGE   15
+
+     626                                                              ; MST|TRX = 10 -> master receiver mode.
+     627                                                              ; MST|TRX = 11 -> master transmitter mode.
+     628                                            ;~~~~~~~0~~~~~~~~ XA - Expanded Address: 0 -> 7-bit address mode, 1 -> 10-bit a
+     629                                            ;~~~~~~~~1~~~~~~~ RM - Repeat Mode
+     630                                                              ; RM|STT|STP = 110 -> (Re) Start: S-A-D-D-D-D... continuous
+     631                                            ;~~~~~~~~~0~~~~~~ DLB - Digital Loopback Mode: 1 -> I2C in digital loopback mod
+     632                                            ;~~~~~~~~~~1~~~~~ nIRS: 1 -> I2C not in reset, 0 -> I2C in reset.
+     633                                            ;~~~~~~~~~~~0~~~~ START byte mode: 0 -> I2C in not in START byte mode.
+     634                                            ;~~~~~~~~~~~~0~~~ 1 -> I2C is in free data format (Figure 6d).
+     635                                            ;~~~~~~~~~~~~~000 BC - Bit Count, number of bits which are yet to be received/t
+     636              
+     637              
+     638 000284 FB51              *port(#I2C_MDR) = #0010111010100000b ; Stop I2S transmission
+         000286 2EA0 
+         000288 1A24 
+     639 00028a 0C07          repeat(#1999)
+         00028c CF   
+     640 00028d 5E80                  NOP_16
+     641              
+     642 00028f 4804          return
+     643              
+     644              ;****************************************************************************************
+     645              ;   i2c_wait_for_bus_busy - Waits for bus to be unused
+     646              ;****************************************************************************************
+     647 000291       i2c_wait_for_bus_busy:
+     648 000291 A551              T1 = *port(#I2C_STR)             ; wait for bus busy flag set (BB)
+         000293 1A08 
+     649 000295 7D10              T0 = T1 & #ICBB_FLAG
+         000297 0045 
+     650 000299 0414              if ( T0 != #0 ) goto i2c_wait_for_bus_busy ; bus is being used
+         00029b F5   
+     651 00029c 4804              return
+     652              
+     653              ;****************************************************************************************
+     654              ;   i2c_wait_for_slave_ack - Waits for Slave ACK
+     655              ;****************************************************************************************
+     656 00029e       i2c_wait_for_slave_ack:
+     657 00029e A551              T1 = *port(#I2C_STR)             ; wait for ack flag cleared (NACK)
+         0002a0 1A08 
+     658 0002a2 1802              T0 = T1 & #ICNACK_FLAG
+         0002a4 45   
+     659 0002a5 0414              if ( T0 != #0 ) goto i2c_wait_for_slave_ack ; still no ack
+         0002a7 F6   
+     660 0002a8 E651              *port(#I2C_STR) = #ICNACK_FLAG    ; clear NACK
+         0002aa 021A 
+         0002ac 08   
+     661 0002ad 4804              return
+     662              
+     663              ;****************************************************************************************
+     664              ;   i2c_wait_for_tx - Waits for Data Transmit
+     665              ;****************************************************************************************
+     666 0002af       i2c_wait_for_tx:
+     667 0002af A551              T1 = *port(#I2C_STR)             ; wait for transmit flag set (ICXRDY)
+         0002b1 1A08 
+     668 0002b3 1810              T0 = T1 & #ICXRDY_FLAG
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:20 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/aic_test_i2c.asm               PAGE   16
+
+         0002b5 45   
+     669 0002b6 0404              if ( T0 == #0 ) goto i2c_wait_for_tx ; still in transmission
+         0002b8 F6   
+     670 0002b9 E651              *port(#I2C_STR) = #ICXRDY_FLAG    ; clear ICXRDY
+         0002bb 101A 
+         0002bd 08   
+     671 0002be 4804              return
+     672              
+     673              ;****************************************************************************************
+     674              ;   i2c_wait_for_data - Waits for Data receive
+     675              ;****************************************************************************************
+     676 0002c0       i2c_wait_for_data:
+     677 0002c0 A551              T1 = *port(#I2C_STR)             ; wait for transmit flag set (ICRRDY)
+         0002c2 1A08 
+     678 0002c4 1808              T0 = T1 & #ICRRDY_FLAG
+         0002c6 45   
+     679 0002c7 0404              if ( T0 == #0 ) goto i2c_wait_for_data ; still in transmission
+         0002c9 F6   
+     680 0002ca E651              *port(#I2C_STR) = #ICRRDY_FLAG    ; clear ICRRDY
+         0002cc 081A 
+         0002ce 08   
+     681 0002cf 4804              return
+     682              
+     683              ;****************************************************************************************
+     684              ;   i2c_wait_for_register_access - Waits for register access ready
+     685              ;****************************************************************************************
+     686 0002d1       i2c_wait_for_register_access:
+     687 0002d1 A551              T1 = *port(#I2C_STR)             ; wait for register access ready (ARDY)
+         0002d3 1A08 
+     688 0002d5 7D10              T0 = T1 & #ICBB_FLAG
+         0002d7 0045 
+     689 0002d9 0404              if ( T0 == #0 ) goto i2c_wait_for_register_access ; registers are being used
+         0002db F5   
+     690 0002dc 4804              return
+     691              
+     692              ;****************************************************************************************
+     693              ;   i2c_wait_for_stop - Waits for stop condition
+     694              ;****************************************************************************************
+     695 0002de       i2c_wait_for_stop:
+     696 0002de A551              T1 = *port(#I2C_STR)             ; wait for stop condition (SCD)
+         0002e0 1A08 
+     697 0002e2 1820              T0 = T1 & #ICSCD_FLAG
+         0002e4 45   
+     698 0002e5 0404              if ( T0 == #0 ) goto i2c_wait_for_stop ; no stop yet
+         0002e7 F6   
+     699 0002e8 E651              *port(#I2C_STR) = #ICSCD_FLAG    ; clear SCD
+         0002ea 201A 
+         0002ec 08   
+     700 0002ed 4804              return
+     701              
+     702              ;****************************************************************************************
+
+No Assembly Errors, No Assembly Warnings

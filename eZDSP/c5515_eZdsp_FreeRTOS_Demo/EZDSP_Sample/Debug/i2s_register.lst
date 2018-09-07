@@ -1,0 +1,800 @@
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:22 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/i2s_register.asm               PAGE    1
+
+       1              *****************************************************************************
+       2              *  Copyright (c) 2008 -2010 Texas Instruments, Inc. All Rights Reserved          *
+       3              *  This is proprietary information, not to be published -- TI INTERNAL DATA *
+       4              *****************************************************************************
+       5              
+       6                       .mmregs
+       7                       .include "lpva200.inc"
+       8                       
+       9                       .C54CM_off
+      10                       .CPL_off
+      11                       .ARMS_off
+      12              
+      13 000000                .text   
+      14              
+      15                      .global _i2s0_read_CR
+      16                      .global _i2s0_write_CR
+      17                      .global _i2s0_read_SRGR
+      18                      .global _i2s0_write_SRGR
+      19                      .global _i2s0_read_TXL_LSW
+      20                      .global _i2s0_write_TXL_LSW
+      21                      .global _i2s0_read_TXL_MSW
+      22                      .global _i2s0_write_TXL_MSW
+      23                      .global _i2s0_read_TXR_LSW
+      24                      .global _i2s0_write_TXR_LSW
+      25                      .global _i2s0_read_TXR_MSW
+      26                      .global _i2s0_write_TXR_MSW
+      27                      .global _i2s0_read_INTR
+      28                      .global _i2s0_read_INT_MASK
+      29                      .global _i2s0_write_INT_MASK
+      30                      .global _i2s0_read_RXL_LSW
+      31                      .global _i2s0_write_RXL_LSW
+      32                      .global _i2s0_read_RXL_MSW
+      33                      .global _i2s0_write_RXL_MSW
+      34                      .global _i2s0_read_RXR_LSW
+      35                      .global _i2s0_write_RXR_LSW
+      36                      .global _i2s0_read_RXR_MSW
+      37                      .global _i2s0_write_RXR_MSW
+      38                      .global _i2s1_read_CR
+      39                      .global _i2s1_write_CR
+      40                      .global _i2s1_read_SRGR
+      41                      .global _i2s1_write_SRGR
+      42                      .global _i2s1_read_TXL_LSW
+      43                      .global _i2s1_write_TXL_LSW
+      44                      .global _i2s1_read_TXL_MSW
+      45                      .global _i2s1_write_TXL_MSW
+      46                      .global _i2s1_read_TXR_LSW
+      47                      .global _i2s1_write_TXR_LSW
+      48                      .global _i2s1_read_TXR_MSW
+      49                      .global _i2s1_write_TXR_MSW
+      50                      .global _i2s1_read_INTR
+      51                      .global _i2s1_read_INT_MASK
+      52                      .global _i2s1_write_INT_MASK
+      53                      .global _i2s1_read_RXL_LSW
+      54                      .global _i2s1_write_RXL_LSW
+      55                      .global _i2s1_read_RXL_MSW
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:22 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/i2s_register.asm               PAGE    2
+
+      56                      .global _i2s1_write_RXL_MSW
+      57                      .global _i2s1_read_RXR_LSW
+      58                      .global _i2s1_write_RXR_LSW
+      59                      .global _i2s1_read_RXR_MSW
+      60                      .global _i2s1_write_RXR_MSW
+      61                      .global _i2s2_read_CR
+      62                      .global _i2s2_write_CR
+      63                      .global _i2s2_read_SRGR
+      64                      .global _i2s2_write_SRGR
+      65                      .global _i2s2_read_TXL_LSW
+      66                      .global _i2s2_write_TXL_LSW
+      67                      .global _i2s2_read_TXL_MSW
+      68                      .global _i2s2_write_TXL_MSW
+      69                      .global _i2s2_read_TXR_LSW
+      70                      .global _i2s2_write_TXR_LSW
+      71                      .global _i2s2_read_TXR_MSW
+      72                      .global _i2s2_write_TXR_MSW
+      73                      .global _i2s2_read_INTR
+      74                      .global _i2s2_read_INT_MASK
+      75                      .global _i2s2_write_INT_MASK
+      76                      .global _i2s2_read_RXL_LSW
+      77                      .global _i2s2_write_RXL_LSW
+      78                      .global _i2s2_read_RXL_MSW
+      79                      .global _i2s2_write_RXL_MSW
+      80                      .global _i2s2_read_RXR_LSW
+      81                      .global _i2s2_write_RXR_LSW
+      82                      .global _i2s2_read_RXR_MSW
+      83                      .global _i2s2_write_RXR_MSW
+      84                      .global _i2s3_read_CR
+      85                      .global _i2s3_write_CR
+      86                      .global _i2s3_read_SRGR
+      87                      .global _i2s3_write_SRGR
+      88                      .global _i2s3_read_TXL_LSW
+      89                      .global _i2s3_write_TXL_LSW
+      90                      .global _i2s3_read_TXL_MSW
+      91                      .global _i2s3_write_TXL_MSW
+      92                      .global _i2s3_read_TXR_LSW
+      93                      .global _i2s3_write_TXR_LSW
+      94                      .global _i2s3_read_TXR_MSW
+      95                      .global _i2s3_write_TXR_MSW
+      96                      .global _i2s3_read_INTR
+      97                      .global _i2s3_read_INT_MASK
+      98                      .global _i2s3_write_INT_MASK
+      99                      .global _i2s3_read_RXL_LSW
+     100                      .global _i2s3_write_RXL_LSW
+     101                      .global _i2s3_read_RXL_MSW
+     102                      .global _i2s3_write_RXL_MSW
+     103                      .global _i2s3_read_RXR_LSW
+     104                      .global _i2s3_write_RXR_LSW
+     105                      .global _i2s3_read_RXR_MSW
+     106                      .global _i2s3_write_RXR_MSW
+     107                      .global _enable_i2s0
+     108                      .global _enable_i2s1
+     109                      .global _enable_i2s2
+     110                      .global _enable_i2s3
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:22 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/i2s_register.asm               PAGE    3
+
+     111                      .global _disable_i2s0
+     112                      .global _disable_i2s1
+     113                      .global _disable_i2s2
+     114                      .global _disable_i2s3
+     115              
+     116              
+     117              
+     118              
+     119              
+     120               
+     121                      
+     122              ;//==============================================================================
+     123              ;// I2S0 registers
+     124              ;//==============================================================================
+     125 000000       _i2s0_read_CR:
+     126 000000 A451      T0 = *port(I2S0_CR_LSW)
+         000002 2800 
+     127 000004 4804      return
+     128              
+     129 000006       _i2s0_write_CR:
+     130 000006 C451      *port(I2S0_CR_LSW) = T0
+         000008 2800 
+     131 00000a 4804      return    
+     132              
+     133 00000c       _i2s0_read_SRGR:
+     134 00000c A451      T0 = *port(I2S0_SRGR)
+         00000e 2804 
+     135 000010 4804      return
+     136              
+     137 000012       _i2s0_write_SRGR:
+     138 000012 C451      *port(I2S0_SRGR) = T0
+         000014 2804 
+     139 000016 4804      return    
+     140              
+     141 000018       _i2s0_read_TXL_LSW:
+     142 000018 A451      T0 = *port(I2S0_TXW0_LSW)
+         00001a 2808 
+     143 00001c 4804      return
+     144              
+     145 00001e       _i2s0_write_TXL_LSW:
+     146 00001e C451      *port(I2S0_TXW0_LSW) = T0
+         000020 2808 
+     147 000022 4804      return    
+     148              
+     149 000024       _i2s0_read_TXL_MSW:
+     150 000024 A451      T0 = *port(I2S0_TXW0_MSW)
+         000026 2809 
+     151 000028 4804      return
+     152              
+     153 00002a       _i2s0_write_TXL_MSW:
+     154 00002a C451      *port(I2S0_TXW0_MSW) = T0
+         00002c 2809 
+     155 00002e 4804      return    
+     156              
+     157 000030       _i2s0_read_TXR_LSW:
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:22 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/i2s_register.asm               PAGE    4
+
+     158 000030 A451      T0 = *port(I2S0_TXW1_LSW)
+         000032 280C 
+     159 000034 4804      return
+     160              
+     161 000036       _i2s0_write_TXR_LSW:
+     162 000036 C451      *port(I2S0_TXW1_LSW) = T0
+         000038 280C 
+     163 00003a 4804      return    
+     164              
+     165 00003c       _i2s0_read_TXR_MSW:
+     166 00003c A451      T0 = *port(I2S0_TXW1_MSW)
+         00003e 280D 
+     167 000040 4804      return
+     168              
+     169 000042       _i2s0_write_TXR_MSW:
+     170 000042 C451      *port(I2S0_TXW1_MSW) = T0
+         000044 280D 
+     171 000046 4804      return      
+     172              
+     173              
+     174 000048       _i2s0_read_INTR:
+     175 000048 A451      T0 = *port(I2S0_IR)
+         00004a 2810 
+     176 00004c 4804      return
+     177              
+     178 00004e       _i2s0_read_INT_MASK:
+     179 00004e A451      T0 = *port(I2S0_IMCR)
+         000050 2814 
+     180 000052 4804      return
+     181              
+     182 000054       _i2s0_write_INT_MASK:
+     183 000054 C451      *port(I2S0_IMCR) = T0
+         000056 2814 
+     184 000058 4804      return 
+     185              
+     186 00005a       _i2s0_read_RXL_LSW:
+     187 00005a A451      T0 = *port(I2S0_RXW0_LSW)
+         00005c 2828 
+     188 00005e 4804      return
+     189              
+     190 000060       _i2s0_write_RXL_LSW:
+     191 000060 C451      *port(I2S0_RXW0_LSW) = T0
+         000062 2828 
+     192 000064 4804      return    
+     193              
+     194 000066       _i2s0_read_RXL_MSW:
+     195 000066 A451      T0 = *port(I2S0_RXW0_MSW)
+         000068 2829 
+     196 00006a 4804      return
+     197              
+     198 00006c       _i2s0_write_RXL_MSW:
+     199 00006c C451      *port(I2S0_RXW0_MSW) = T0
+         00006e 2829 
+     200 000070 4804      return    
+     201              
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:22 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/i2s_register.asm               PAGE    5
+
+     202 000072       _i2s0_read_RXR_LSW:
+     203 000072 A451      T0 = *port(I2S0_RXW1_LSW)
+         000074 282C 
+     204 000076 4804      return
+     205              
+     206 000078       _i2s0_write_RXR_LSW:
+     207 000078 C451      *port(I2S0_RXW1_LSW) = T0
+         00007a 282C 
+     208 00007c 4804      return    
+     209              
+     210 00007e       _i2s0_read_RXR_MSW:
+     211 00007e A451      T0 = *port(I2S0_RXW1_MSW)
+         000080 282D 
+     212 000082 4804      return
+     213              
+     214 000084       _i2s0_write_RXR_MSW:
+     215 000084 C451      *port(I2S0_RXW1_MSW) = T0
+         000086 282D 
+     216 000088 4804      return 
+     217              
+     218              
+     219              ;//==============================================================================
+     220              ;// I2S1 registers
+     221              ;//==============================================================================
+     222 00008a       _i2s1_read_CR:
+     223 00008a A451      T0 = *port(I2S1_CR_LSW)
+         00008c 2900 
+     224 00008e 4804      return
+     225              
+     226 000090       _i2s1_write_CR:
+     227 000090 C451      *port(I2S1_CR_LSW) = T0
+         000092 2900 
+     228 000094 4804      return    
+     229              
+     230 000096       _i2s1_read_SRGR:
+     231 000096 A451      T0 = *port(I2S1_SRGR)
+         000098 2904 
+     232 00009a 4804      return
+     233              
+     234 00009c       _i2s1_write_SRGR:
+     235 00009c C451      *port(I2S1_SRGR) = T0
+         00009e 2904 
+     236 0000a0 4804      return    
+     237              
+     238 0000a2       _i2s1_read_TXL_LSW:
+     239 0000a2 A451      T0 = *port(I2S1_TXW0_LSW)
+         0000a4 2908 
+     240 0000a6 4804      return
+     241              
+     242 0000a8       _i2s1_write_TXL_LSW:
+     243 0000a8 C451      *port(I2S1_TXW0_LSW) = T0
+         0000aa 2908 
+     244 0000ac 4804      return    
+     245              
+     246 0000ae       _i2s1_read_TXL_MSW:
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:22 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/i2s_register.asm               PAGE    6
+
+     247 0000ae A451      T0 = *port(I2S1_TXW0_MSW)
+         0000b0 2909 
+     248 0000b2 4804      return
+     249              
+     250 0000b4       _i2s1_write_TXL_MSW:
+     251 0000b4 C451      *port(I2S1_TXW0_MSW) = T0
+         0000b6 2909 
+     252 0000b8 4804      return    
+     253              
+     254 0000ba       _i2s1_read_TXR_LSW:
+     255 0000ba A451      T0 = *port(I2S1_TXW1_LSW)
+         0000bc 290C 
+     256 0000be 4804      return
+     257              
+     258 0000c0       _i2s1_write_TXR_LSW:
+     259 0000c0 C451      *port(I2S1_TXW1_LSW) = T0
+         0000c2 290C 
+     260 0000c4 4804      return    
+     261              
+     262 0000c6       _i2s1_read_TXR_MSW:
+     263 0000c6 A451      T0 = *port(I2S1_TXW1_MSW)
+         0000c8 290D 
+     264 0000ca 4804      return
+     265              
+     266 0000cc       _i2s1_write_TXR_MSW:
+     267 0000cc C451      *port(I2S1_TXW1_MSW) = T0
+         0000ce 290D 
+     268 0000d0 4804      return      
+     269              
+     270              
+     271 0000d2       _i2s1_read_INTR:
+     272 0000d2 A451      T0 = *port(I2S1_IR)
+         0000d4 2910 
+     273 0000d6 4804      return
+     274              
+     275 0000d8       _i2s1_read_INT_MASK:
+     276 0000d8 A451      T0 = *port(I2S1_IMCR)
+         0000da 2914 
+     277 0000dc 4804      return
+     278              
+     279 0000de       _i2s1_write_INT_MASK:
+     280 0000de C451      *port(I2S1_IMCR) = T0
+         0000e0 2914 
+     281 0000e2 4804      return 
+     282              
+     283 0000e4       _i2s1_read_RXL_LSW:
+     284 0000e4 A451      T0 = *port(I2S1_RXW0_LSW)
+         0000e6 2928 
+     285 0000e8 4804      return
+     286              
+     287 0000ea       _i2s1_write_RXL_LSW:
+     288 0000ea C451      *port(I2S1_RXW0_LSW) = T0
+         0000ec 2928 
+     289 0000ee 4804      return    
+     290              
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:22 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/i2s_register.asm               PAGE    7
+
+     291 0000f0       _i2s1_read_RXL_MSW:
+     292 0000f0 A451      T0 = *port(I2S1_RXW0_MSW)
+         0000f2 2929 
+     293 0000f4 4804      return
+     294              
+     295 0000f6       _i2s1_write_RXL_MSW:
+     296 0000f6 C451      *port(I2S1_RXW0_MSW) = T0
+         0000f8 2929 
+     297 0000fa 4804      return    
+     298              
+     299 0000fc       _i2s1_read_RXR_LSW:
+     300 0000fc A451      T0 = *port(I2S1_RXW1_LSW)
+         0000fe 292C 
+     301 000100 4804      return
+     302              
+     303 000102       _i2s1_write_RXR_LSW:
+     304 000102 C451      *port(I2S1_RXW1_LSW) = T0
+         000104 292C 
+     305 000106 4804      return    
+     306              
+     307 000108       _i2s1_read_RXR_MSW:
+     308 000108 A451      T0 = *port(I2S1_RXW1_MSW)
+         00010a 292D 
+     309 00010c 4804      return
+     310              
+     311 00010e       _i2s1_write_RXR_MSW:
+     312 00010e C451      *port(I2S1_RXW1_MSW) = T0
+         000110 292D 
+     313 000112 4804      return 
+     314              
+     315              ;//==============================================================================
+     316              ;// I2S2 registers
+     317              ;//==============================================================================
+     318 000114       _i2s2_read_CR:
+     319 000114 A451      T0 = *port(I2S2_CR_LSW)
+         000116 2A00 
+     320 000118 4804      return
+     321              
+     322 00011a       _i2s2_write_CR:
+     323 00011a C451      *port(I2S2_CR_LSW) = T0
+         00011c 2A00 
+     324 00011e 4804      return    
+     325              
+     326 000120       _i2s2_read_SRGR:
+     327 000120 A451      T0 = *port(I2S2_SRGR)
+         000122 2A04 
+     328 000124 4804      return
+     329              
+     330 000126       _i2s2_write_SRGR:
+     331 000126 C451      *port(I2S2_SRGR) = T0
+         000128 2A04 
+     332 00012a 4804      return    
+     333              
+     334 00012c       _i2s2_read_TXL_LSW:
+     335 00012c A451      T0 = *port(I2S2_TXW0_LSW)
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:22 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/i2s_register.asm               PAGE    8
+
+         00012e 2A08 
+     336 000130 4804      return
+     337              
+     338 000132       _i2s2_write_TXL_LSW:
+     339 000132 C451      *port(I2S2_TXW0_LSW) = T0
+         000134 2A08 
+     340 000136 4804      return    
+     341              
+     342 000138       _i2s2_read_TXL_MSW:
+     343 000138 A451      T0 = *port(I2S2_TXW0_MSW)
+         00013a 2A09 
+     344 00013c 4804      return
+     345              
+     346 00013e       _i2s2_write_TXL_MSW:
+     347 00013e C451      *port(I2S2_TXW0_MSW) = T0
+         000140 2A09 
+     348 000142 4804      return    
+     349              
+     350 000144       _i2s2_read_TXR_LSW:
+     351 000144 A451      T0 = *port(I2S2_TXW1_LSW)
+         000146 2A0C 
+     352 000148 4804      return
+     353              
+     354 00014a       _i2s2_write_TXR_LSW:
+     355 00014a C451      *port(I2S2_TXW1_LSW) = T0
+         00014c 2A0C 
+     356 00014e 4804      return    
+     357              
+     358 000150       _i2s2_read_TXR_MSW:
+     359 000150 A451      T0 = *port(I2S2_TXW1_MSW)
+         000152 2A0D 
+     360 000154 4804      return
+     361              
+     362 000156       _i2s2_write_TXR_MSW:
+     363 000156 C451      *port(I2S2_TXW1_MSW) = T0
+         000158 2A0D 
+     364 00015a 4804      return      
+     365              
+     366              
+     367 00015c       _i2s2_read_INTR:
+     368 00015c A451      T0 = *port(I2S2_IR)
+         00015e 2A10 
+     369 000160 4804      return
+     370              
+     371 000162       _i2s2_read_INT_MASK:
+     372 000162 A451      T0 = *port(I2S2_IMCR)
+         000164 2A14 
+     373 000166 4804      return
+     374              
+     375 000168       _i2s2_write_INT_MASK:
+     376 000168 C451      *port(I2S2_IMCR) = T0
+         00016a 2A14 
+     377 00016c 4804      return 
+     378              
+     379 00016e       _i2s2_read_RXL_LSW:
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:22 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/i2s_register.asm               PAGE    9
+
+     380 00016e A451      T0 = *port(I2S2_RXW0_LSW)
+         000170 2A28 
+     381 000172 4804      return
+     382              
+     383 000174       _i2s2_write_RXL_LSW:
+     384 000174 C451      *port(I2S2_RXW0_LSW) = T0
+         000176 2A28 
+     385 000178 4804      return    
+     386              
+     387 00017a       _i2s2_read_RXL_MSW:
+     388 00017a A451      T0 = *port(I2S2_RXW0_MSW)
+         00017c 2A29 
+     389 00017e 4804      return
+     390              
+     391 000180       _i2s2_write_RXL_MSW:
+     392 000180 C451      *port(I2S2_RXW0_MSW) = T0
+         000182 2A29 
+     393 000184 4804      return    
+     394              
+     395 000186       _i2s2_read_RXR_LSW:
+     396 000186 A451      T0 = *port(I2S2_RXW1_LSW)
+         000188 2A2C 
+     397 00018a 4804      return
+     398              
+     399 00018c       _i2s2_write_RXR_LSW:
+     400 00018c C451      *port(I2S2_RXW1_LSW) = T0
+         00018e 2A2C 
+     401 000190 4804      return    
+     402              
+     403 000192       _i2s2_read_RXR_MSW:
+     404 000192 A451      T0 = *port(I2S2_RXW1_MSW)
+         000194 2A2D 
+     405 000196 4804      return
+     406              
+     407 000198       _i2s2_write_RXR_MSW:
+     408 000198 C451      *port(I2S2_RXW1_MSW) = T0
+         00019a 2A2D 
+     409 00019c 4804      return     
+     410              
+     411              
+     412              ;//==============================================================================
+     413              ;// I2S3 registers
+     414              ;//==============================================================================
+     415 00019e       _i2s3_read_CR:
+     416 00019e A451      T0 = *port(I2S3_CR_LSW)
+         0001a0 2B00 
+     417 0001a2 4804      return
+     418              
+     419 0001a4       _i2s3_write_CR:
+     420 0001a4 C451      *port(I2S3_CR_LSW) = T0
+         0001a6 2B00 
+     421 0001a8 4804      return    
+     422              
+     423 0001aa       _i2s3_read_SRGR:
+     424 0001aa A451      T0 = *port(I2S3_SRGR)
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:22 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/i2s_register.asm               PAGE   10
+
+         0001ac 2B04 
+     425 0001ae 4804      return
+     426              
+     427 0001b0       _i2s3_write_SRGR:
+     428 0001b0 C451      *port(I2S3_SRGR) = T0
+         0001b2 2B04 
+     429 0001b4 4804      return    
+     430              
+     431 0001b6       _i2s3_read_TXL_LSW:
+     432 0001b6 A451      T0 = *port(I2S3_TXW0_LSW)
+         0001b8 2B08 
+     433 0001ba 4804      return
+     434              
+     435 0001bc       _i2s3_write_TXL_LSW:
+     436 0001bc C451      *port(I2S3_TXW0_LSW) = T0
+         0001be 2B08 
+     437 0001c0 4804      return    
+     438              
+     439 0001c2       _i2s3_read_TXL_MSW:
+     440 0001c2 A451      T0 = *port(I2S3_TXW0_MSW)
+         0001c4 2B09 
+     441 0001c6 4804      return
+     442              
+     443 0001c8       _i2s3_write_TXL_MSW:
+     444 0001c8 C451      *port(I2S3_TXW0_MSW) = T0
+         0001ca 2B09 
+     445 0001cc 4804      return    
+     446              
+     447 0001ce       _i2s3_read_TXR_LSW:
+     448 0001ce A451      T0 = *port(I2S3_TXW1_LSW)
+         0001d0 2B0C 
+     449 0001d2 4804      return
+     450              
+     451 0001d4       _i2s3_write_TXR_LSW:
+     452 0001d4 C451      *port(I2S3_TXW1_LSW) = T0
+         0001d6 2B0C 
+     453 0001d8 4804      return    
+     454              
+     455 0001da       _i2s3_read_TXR_MSW:
+     456 0001da A451      T0 = *port(I2S3_TXW1_MSW)
+         0001dc 2B0D 
+     457 0001de 4804      return
+     458              
+     459 0001e0       _i2s3_write_TXR_MSW:
+     460 0001e0 C451      *port(I2S3_TXW1_MSW) = T0
+         0001e2 2B0D 
+     461 0001e4 4804      return      
+     462              
+     463              
+     464 0001e6       _i2s3_read_INTR:
+     465 0001e6 A451      T0 = *port(I2S3_IR)
+         0001e8 2B10 
+     466 0001ea 4804      return
+     467              
+     468 0001ec       _i2s3_read_INT_MASK:
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:22 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/i2s_register.asm               PAGE   11
+
+     469 0001ec A451      T0 = *port(I2S3_IMCR)
+         0001ee 2B14 
+     470 0001f0 4804      return
+     471              
+     472 0001f2       _i2s3_write_INT_MASK:
+     473 0001f2 C451      *port(I2S3_IMCR) = T0
+         0001f4 2B14 
+     474 0001f6 4804      return 
+     475              
+     476 0001f8       _i2s3_read_RXL_LSW:
+     477 0001f8 A451      T0 = *port(I2S3_RXW0_LSW)
+         0001fa 2B28 
+     478 0001fc 4804      return
+     479              
+     480 0001fe       _i2s3_write_RXL_LSW:
+     481 0001fe C451      *port(I2S3_RXW0_LSW) = T0
+         000200 2B28 
+     482 000202 4804      return    
+     483              
+     484 000204       _i2s3_read_RXL_MSW:
+     485 000204 A451      T0 = *port(I2S3_RXW0_MSW)
+         000206 2B29 
+     486 000208 4804      return
+     487              
+     488 00020a       _i2s3_write_RXL_MSW:
+     489 00020a C451      *port(I2S3_RXW0_MSW) = T0
+         00020c 2B29 
+     490 00020e 4804      return    
+     491              
+     492 000210       _i2s3_read_RXR_LSW:
+     493 000210 A451      T0 = *port(I2S3_RXW1_LSW)
+         000212 2B2C 
+     494 000214 4804      return
+     495              
+     496 000216       _i2s3_write_RXR_LSW:
+     497 000216 C451      *port(I2S3_RXW1_LSW) = T0
+         000218 2B2C 
+     498 00021a 4804      return    
+     499              
+     500 00021c       _i2s3_read_RXR_MSW:
+     501 00021c A451      T0 = *port(I2S3_RXW1_MSW)
+         00021e 2B2D 
+     502 000220 4804      return
+     503              
+     504 000222       _i2s3_write_RXR_MSW:
+     505 000222 C451      *port(I2S3_RXW1_MSW) = T0
+         000224 2B2D 
+     506 000226 4804      return 
+     507                                      
+     508              ;//==============================================================================
+     509              ;// Function: _enable_i2s0
+     510              ;//------------------------------------------------------------------------------
+     511              ;// Description: 
+     512              ;// Prototype: void enable_i2s0(void);  
+     513              ;//============================================================================== 
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:22 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/i2s_register.asm               PAGE   12
+
+     514              
+     515 000228       _enable_i2s0:
+     516 000228 A051      AC0 = *port(#I2S0_CR_LSW)
+         00022a 2800 
+     517 00022c 7E80      AC0 |= 0x8000
+         00022e 0000 
+     518 000230 C051      *port(#I2S0_CR_LSW)=AC0
+         000232 2800 
+     519 000234 4804      return
+     520              
+     521              ;//==============================================================================
+     522              ;// Function: _enable_i2s1
+     523              ;//------------------------------------------------------------------------------
+     524              ;// Description: 
+     525              ;// Prototype: void enable_i2s1(void);  
+     526              ;//============================================================================== 
+     527              
+     528 000236       _enable_i2s1:
+     529 000236 A051      AC0 = *port(#I2S1_CR_LSW)
+         000238 2900 
+     530 00023a 7E80      AC0 |= 0x8000
+         00023c 0000 
+     531 00023e C051      *port(#I2S1_CR_LSW)=AC0
+         000240 2900 
+     532 000242 4804      return
+     533              
+     534              ;//==============================================================================
+     535              ;// Function: _enable_i2s2
+     536              ;//------------------------------------------------------------------------------
+     537              ;// Description: 
+     538              ;// Prototype: void enable_i2s2(void);  
+     539              ;//============================================================================== 
+     540              
+     541 000244       _enable_i2s2:
+     542 000244 A051      AC0 = *port(#I2S2_CR_LSW)
+         000246 2A00 
+     543 000248 7E80      AC0 |= 0x8000
+         00024a 0000 
+     544 00024c C051      *port(#I2S2_CR_LSW)=AC0
+         00024e 2A00 
+     545 000250 4804      return
+     546              
+     547              ;//==============================================================================
+     548              ;// Function: _enable_i2s3
+     549              ;//------------------------------------------------------------------------------
+     550              ;// Description: 
+     551              ;// Prototype: void enable_i2s3(void);  
+     552              ;//============================================================================== 
+     553              
+     554 000252       _enable_i2s3:
+     555 000252 A051      AC0 = *port(#I2S3_CR_LSW)
+         000254 2B00 
+     556 000256 7E80      AC0 |= 0x8000
+         000258 0000 
+     557 00025a C051      *port(#I2S3_CR_LSW)=AC0
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:22 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/i2s_register.asm               PAGE   13
+
+         00025c 2B00 
+     558 00025e 4804      return
+     559              
+     560              ;//==============================================================================
+     561              ;// Function: _disable_i2s0
+     562              ;//------------------------------------------------------------------------------
+     563              ;// Description: 
+     564              ;// Prototype: void disable_i2s0(void);  
+     565              ;//============================================================================== 
+     566              
+     567 000260       _disable_i2s0:
+     568 000260 A051      AC0 = *port(#I2S0_CR_LSW)
+         000262 2800 
+     569 000264 7D7F      AC0 &= 0x7FFF
+         000266 FF00 
+     570 000268 C051      *port(#I2S0_CR_LSW)=AC0
+         00026a 2800 
+     571 00026c 4804      return
+     572              
+     573              ;//==============================================================================
+     574              ;// Function: _disable_i2s1
+     575              ;//------------------------------------------------------------------------------
+     576              ;// Description: 
+     577              ;// Prototype: void disable_i2s1(void);  
+     578              ;//============================================================================== 
+     579              
+     580 00026e       _disable_i2s1:
+     581 00026e A051      AC0 = *port(#I2S1_CR_LSW)
+         000270 2900 
+     582 000272 7D7F      AC0 &= 0x7FFF
+         000274 FF00 
+     583 000276 C051      *port(#I2S1_CR_LSW)=AC0
+         000278 2900 
+     584 00027a 4804      return
+     585              
+     586              ;//==============================================================================
+     587              ;// Function: _disable_i2s2
+     588              ;//------------------------------------------------------------------------------
+     589              ;// Description: 
+     590              ;// Prototype: void disable_i2s2(void);  
+     591              ;//============================================================================== 
+     592              
+     593 00027c       _disable_i2s2:
+     594 00027c A051      AC0 = *port(#I2S2_CR_LSW)
+         00027e 2A00 
+     595 000280 7D7F      AC0 &= 0x7FFF
+         000282 FF00 
+     596 000284 C051      *port(#I2S2_CR_LSW)=AC0
+         000286 2A00 
+     597 000288 4804      return
+     598              
+     599              ;//==============================================================================
+     600              ;// Function: _disable_i2s3
+     601              ;//------------------------------------------------------------------------------
+     602              ;// Description: 
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:22 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+E:/temp/c5515_eZdsp_FreeRTOS_Demo/asm/i2s_register.asm               PAGE   14
+
+     603              ;// Prototype: void disable_i2s3(void);  
+     604              ;//============================================================================== 
+     605              
+     606 00028a       _disable_i2s3:
+     607 00028a A051      AC0 = *port(#I2S3_CR_LSW)
+         00028c 2B00 
+     608 00028e 7D7F      AC0 &= 0x7FFF
+         000290 FF00 
+     609 000292 C051      *port(#I2S3_CR_LSW)=AC0
+         000294 2B00 
+     610 000296 4804      return
+     611              
+     612                  .end
+
+No Assembly Errors, No Assembly Warnings

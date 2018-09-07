@@ -1,0 +1,42 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="D:\DA225_CSL\Design\SW\Source_Codes\VC5505_CSL\example\nand\example1\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Project Dependencies]
+Source="..\..\..\build\cslVC5505.pjt"
+
+["..\..\..\build\cslVC5505.pjt" Settings]
+MatchConfigName=true
+
+[Source Files]
+Source="csl_nand_polled_example.c"
+Source="main.c"
+Source="VC5505_NAND.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)\..\..\..\src" -i"$(Proj_dir)\..\..\..\inc" -d"_DEBUG" -ml -vcore:3.3
+
+["Compiler" Settings: "Release"]
+Options=-mg -o2 -fr"$(Proj_dir)\Release" -i"$(Proj_dir)\..\..\..\src" -i"$(Proj_dir)\..\..\..\inc" -ml -vcore:3.3
+
+["Linker" Settings: "Debug"]
+Options=-c -m".\Debug\CSL_NAND_PolledExample_Out.map" -o".\Debug\CSL_NAND_PolledExample_Out.out" -w -x -l"rts55x.lib"
+
+["Linker" Settings: "Release"]
+Options=-c -m".\Release\CSL_NAND_PolledExample_Out.map" -o".\Release\CSL_NAND_PolledExample_Out.out" -w -x -l"rts55x.lib"
+
+["VC5505_NAND.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["VC5505_NAND.cmd" Settings: "Release"]
+LinkOrder=1
+

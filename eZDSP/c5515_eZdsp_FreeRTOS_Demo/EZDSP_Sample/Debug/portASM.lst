@@ -1,0 +1,1358 @@
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE    1
+
+     417              ; Temporary Registers Used: None
+       1              ;       .cdecls C,LIST,"FreeRTOSConfig.h"
+       2                      .mmregs
+       3              
+       4              
+       5                            .C54CM_off
+       6                       .CPL_on
+       7                       .ARMS_off
+       8                       .align 4
+       9                       
+      10              ;       .c28_amode
+      11                           .global _usCriticalNesting
+      12                           .global _save_xsp
+      13                           .global _save_xar7
+      14                           .global _pxCurrentTCB
+      15                           .global _vTaskIncrementTick
+      16                           .ref    _vTaskIncrementTick
+      17                           .global _vTaskSwitchContext
+      18                           .global _prvSetupTimerInterrupt
+      19              
+      20                           .def _vPortYield
+      21                           .def _xPortStartScheduler
+      22                           .def _vTickISR
+      23                           .global _vPortYield
+      24                           .global _xPortStartScheduler
+      25                           .global _vTickISR
+      26                           .global _INT14_ISR
+      27                           .global _portFLAGS_INT_ENABLED
+      28                           .global _portFLAGS_INT_ENABLED_POPPED
+      29                           .global _DBSTAT_LOW
+      30                           .global _DBSTAT_HIGH
+      31                           .global _STATUS0_LOW
+      32                           .global _STATUS0_HIGH
+      33                           .global _STATUS1_LOW
+      34                           .global _STATUS1_HIGH
+      35                           .global _STATUS2_LOW
+      36                           .global _STATUS2_HIGH
+      37              
+      38              ;                       CLRC AMODE
+      39              
+      40              ;       System Stac
+      41              
+      42              
+      43              
+      44              
+      45 000000               .text
+      46              portSAVE_CONTEXT .macro 
+      47              ;                       ;CONTEXT_SAVE
+      48              ;                       ASP  ; Align Stack Pointer
+      49              ;                       CLRC       OVM,PAGE0
+      50              ;                       CLRC       AMODE
+      51              ;                       EALLOW
+      52              
+      53                                      mov xsp, dbl (*(#_save_xsp))                    ; save xsp
+      54              
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE    2
+
+      55                                      mov xar7, dbl (*(#_save_xar7))                  ; save xar7 
+      56              
+      57                                      mov dbl (*(#_pxCurrentTCB)), xar7
+      58                                      mov dbl (*ar7), xsp                             ; xsp contains our TCB now
+      59              
+      60                                      mov dbl (*(#_save_xar7)), xar7                  ; restore xar7
+      61              
+      62                                      mov xar7, dbl(*sp(#4))                          ; save xar7
+      63                                      mov ar7, *sp(#5)
+      64              
+      65                                      mov xar6, dbl(*sp(#6))
+      66                                      mov ar6, *sp(#7)
+      67              
+      68                                      mov xar5, dbl(*sp(#8))
+      69                                      mov ar5, *sp(#9)
+      70              
+      71                                      mov xar4, dbl(*sp(#10))
+      72                                      mov ar4, *sp(#11)
+      73              
+      74                                      mov xar3, dbl(*sp(#12))
+      75                                      mov ar3, *sp(#13)
+      76              
+      77                                      mov xar2, dbl(*sp(#14))
+      78                                      mov ar2, *sp(#15)
+      79              
+      80                                      mov xar1, dbl(*sp(#16))
+      81                                      mov ar1, *sp(#17)
+      82              
+      83                                      mov xar0, dbl(*sp(#18))
+      84                                      mov ar0, *sp(#19)
+      85              
+      86                                      mov t0, *sp(#25)
+      87                                      mov t1, *sp(#26)
+      88                                      mov t2, *sp(#27)
+      89                                      mov t3, *sp(#28)
+      90              
+      91                                      mov mmap(ST0_55), t0
+      92                                      mov t0, *sp(#23)
+      93                                      mov mmap(ST1_55), t1
+      94                                      mov t1, *sp(#21)
+      95                                      mov mmap(ST2_55), t2
+      96                                      mov t2, *sp(#22)
+      97                                      mov mmap(ST2_55), t3
+      98                                      mov t3, *sp(#24)
+      99              
+     100              ;                       PSH dbl(AR0) ; 32-bit
+     101              ;                       PSH dbl(AR1) 
+     102              ;                       PSH dbl(AR2) ; 32-bit
+     103              ;                       PUSH XAR3 ; 32-bit
+     104              ;                       PUSH XAR4 ; 32-bit
+     105                              ;-- Comment these to save cycles --------
+     106              ;                       PUSH XAR5 ; 32-bit
+     107              ;                       PUSH XAR6 ; 32-bit
+     108              ;                       PUSH XAR7 ; 32-bit
+     109                              ;----------------------------------------
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE    3
+
+     110              
+     111              ;                       PUSH XT   ; 32-bit
+     112              
+     113              ;                       movl xar6, @_portFLAGS_INT_ENABLED
+     114              ;                       push xar6 ; portFLAGS_INT_ENABLED
+     115              
+     116                                      mov dbl (*(#_portFLAGS_INT_ENABLED)), xar6
+     117                                      mov xar6, dbl(*sp(#2))
+     118                                      
+     119              
+     120              ;                       movl xar7, @_usCriticalNesting
+     121              ;                       push xar7
+     122                                      mov dbl (*(#_usCriticalNesting)), xar7
+     123                                      mov xar7, dbl(*sp(#0))
+     124              
+     125              ;                       sub #20, sp
+     126              
+     127                                      ; move contents of SP into address of current TCB
+     128              ;                       mov xsp, dbl (*(#_pxCurrentTCB))                ; xsp contains our TCB now
+     129              
+     130              ;                       mov xar7, dbl (*(#_save_xar7))                  ; save xar7 
+     131              ;                       mov dbl (*(#_pxCurrentTCB)), xar7
+     132              ;                       mov dbl (*ar7), xsp                             ; xsp contains our TCB now
+     133              
+     134              ;                       movl xar6, @_pxCurrentTCB ; XAR6 contains current TCB addr
+     135              ;                       mov al, @sp
+     136              ;                       movl  *xar6, acc        
+     137              ;;                      mov  ar0, @sp
+     138              ;;                      mov  @ar6, al
+     139              ;;                      mov  ar0, @sp
+     140              ;;                      movl 0(xar6), sp
+     141              ;                       EDIS
+     142              ;                       NASP
+     143              ;; ;;                   mov dbl (*(#_save_xsp)), xsp    ; restore xsp           
+     144              ;                       NOP             
+     145                                      .endm
+     146              
+     147              portRESTORE_CONTEXT .macro
+     148              
+     149                                      .align 4
+     150              
+     151              ; Restore context & return
+     152                                      ;CONTEXT_RESTORE
+     153              ;                       ASP
+     154              ;                       EALLOW
+     155              ;                       nop
+     156              ;                       nop
+     157              ;                       nop
+     158                                      nop
+     159              ;               xssp = dbl(*(#_pxCurrentTCB))
+     160              ;               xsp  = dbl(*(#_pxCurrentTCB))
+     161                                      mov xsp, dbl (*(#_save_xsp))                    ; save xsp
+     162                                      mov xar7, dbl (*(#_save_xar7))                  ; save xar7 
+     163                                      mov dbl (*(#_pxCurrentTCB)), xar7
+     164                                      mov dbl (*ar7), xsp                             ; xsp contains our TCB now
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE    4
+
+     165              ;                       mov xar6, xsp
+     166              ;                       mov xssp, xar7
+     167              ;                       add #1, ar7
+     168              ;                       mov xar7, xsp
+     169              ;                       mov sp, t0
+     170              ;                       mov ssp, t1
+     171              ;                       mov dbl(*(#_pxCurrentTCB)), xsp
+     172              ;                       ar0 = *ar6
+     173              ;                       xssp = xar0
+     174              ;                       mov *xar6, xar0
+     175              ;                       mov xar0, xssp  ; stack now points to our TCB
+     176              ;;                      mov sp, *ar6
+     177              ;;                      mov sp, ar0
+     178              ;;                      mov sp, *_pxCurrentTCB
+     179              ;;                      clr ar0
+     180              ;;                      mov ar0, @xar6
+     181              ;;                      mov sp, AR0
+     182              ;;                      add sp, xar6
+     183              
+     184              ;                       popboth xar7
+     185                                      mov dbl(*sp(#0)), xar7
+     186              ;                       mov *sp(#1), ar7
+     187                                      mov xar7, dbl(*(#_usCriticalNesting))   
+     188              
+     189                                      mov dbl(*sp(#2)), xar6
+     190              ;                       mov *sp(#3), ar6
+     191              ;                       popboth xar6 ; portFLAGS_INT_ENABLED
+     192                                      mov xar6, dbl(*(#_portFLAGS_INT_ENABLED))       
+     193              
+     194              ;                       POP XT
+     195                              ;-- Comment these to save cycles ---
+     196                                      mov dbl(*sp(#4)), xar7
+     197                                      mov *sp(#5), ar7
+     198              ;                       mov *sp(#5), ar7
+     199              ;                       mov dbl(*sp(#0)), hi(ar7)
+     200              ;                       mov (*sp(#0)), lo(ar7)
+     201                                      mov dbl(*sp(#6)), xar6
+     202                                      mov *sp(#7), ar6
+     203                                      mov dbl(*sp(#8)), xar5
+     204                                      mov *sp(#9), ar5
+     205                                      mov dbl(*sp(#10)), xar4
+     206                                      mov *sp(#11), ar4
+     207                                      mov dbl(*sp(#12)), xar3
+     208                                      mov *sp(#13), ar3
+     209                                      mov dbl(*sp(#14)), xar2
+     210                                      mov *sp(#15), ar2
+     211                                      mov dbl(*sp(#16)), xar1
+     212                                      mov *sp(#17), ar1
+     213                                      mov dbl(*sp(#18)), xar0
+     214                                      mov *sp(#19), ar0
+     215              ;                       mov dbl(*sp(#21)), *xssp(#0)
+     216              ;                       mov *sp(#21), *ssp
+     217              ;                       mov *sp(#21), RETA
+     218              ; need to move 23-16 to XSSP contents
+     219                                      mov xar0, dbl (*(#_save_xar7))
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE    5
+
+     220                                      mov xssp, xar0
+     221              ;                       mov dbl (*(#_save_xsp)), xar0                   ; save xsp
+     222                                      aadd #20, sp            ; this is ok - ssp also incremented
+     223              ;                       asub #20, ar0
+     224                                      mov ar0, ssp
+     225                                      mov *sp(#1), t0
+     226                                      mov *sp(#3), t3         ; ST0
+     227                                      mov *sp(#4), t2         ; DBSTAT
+     228                                      mov t3, *ar0(#2)
+     229                                      mov t2, *ar0(#1)
+     230                                      mov t0, *ar0(#0)
+     231              
+     232                                      mov *sp(#5), t0
+     233                                      mov *sp(#6), t1
+     234                                      mov *sp(#7), t2
+     235                                      mov *sp(#8), t3
+     236              
+     237              
+     238              
+     239              ; restore ar0
+     240              ;                       mov dbl(*sp(#-2)), xar0
+     241              ;                       mov #-1, ar0
+     242                                      mov dbl (*(#_save_xar7)), xar0
+     243              
+     244              ;                       mov *sp(#3), *(#00004ch+#1)
+     245              
+     246              ;                       mov t3, *ssp(#1) 
+     247              ;                       mov t2, *ssp(#2)
+     248              
+     249              ;;                      mov *sp(#1), dbl(*(#_save_xsp)) 
+     250              ;;                      mov t3, *(ssp(#0))
+     251              ;                       mov t3, *ssp
+     252              ;                       mov *sp(#3), t3 ; 
+     253              ;                       mov t3, *ssp(#1)
+     254              ;;                      mov *sp(#21), PC        
+     255              
+     256              ;; ;;                   mov dbl (*(#_save_xsp)), xsp    ; restore xsp           
+     257              ;                       mov dbl(xsp), dbl(lcrpc)
+     258              ;                       popboth XAR7
+     259              ;                       add #1, sp
+     260              ;                       add #1, ssp
+     261              ;                       add #2, t0
+     262              ;                       add #2, t1
+     263              ;                       mov t0, sp
+     264              ;                       mov t1, ssp
+     265              ;                       popboth XAR6
+     266              ;                       add #2, t0
+     267              ;                       add #2, t1
+     268              ;                       mov t0, sp
+     269              ;                       mov t1, ssp
+     270              ;                       popboth XAR5
+     271              ;                       add #2, t0
+     272              ;                       add #2, t1
+     273              ;                       mov t0, sp
+     274              ;                       mov t1, ssp
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE    6
+
+     275                              ;-----------------------------------
+     276              ;                       popboth XAR4
+     277              ;                       add #2, t0
+     278              ;                       add #2, t1
+     279              ;                       mov t0, sp
+     280              ;                       mov t1, ssp
+     281              ;                       popboth XAR3
+     282              ;                       add #2, t0
+     283              ;                       add #2, t1
+     284              ;                       mov t0, sp
+     285              ;                       mov t1, ssp
+     286              ;                       popboth XAR2
+     287              ;                       add #2, t0
+     288              ;                       add #2, t1
+     289              ;                       mov t0, sp
+     290              ;                       mov t1, ssp
+     291              ;                       popboth XAR1
+     292              ;                       add #2, t0
+     293              ;                       add #2, t1
+     294              ;                       mov t0, sp
+     295              ;                       mov t1, ssp
+     296              ;                       popboth XAR0
+     297              ;                       add #2, t0
+     298              ;                       add #2, t1
+     299              ;                       mov t0, sp
+     300              ;                       mov t1, ssp
+     301              ;                       EDIS
+     302              ;                       NASP    ; Un-align stack pointer
+     303                                      bclr INTM               ; enable interrupts
+     304              ;                       aadd #1, sp
+     305                                      RETI                            
+     306                                      .endm
+     307              ; /*-----------------------------------------------------------*/
+     308              
+     309              ; /*
+     310              ; * The RTOS tick ISR.
+     311              ; *
+     312              ; * If the cooperative scheduler is in use this simply increments the tick
+     313              ; * count.
+     314              ; *
+     315              ; * If the preemptive scheduler is in use a context switch can also occur.
+     316              ; */
+     317              
+     318              
+     319 000000       _xPortStartScheduler:
+     320              
+     321              ;                /* Setup the hardware to generate the tick.  Interrupts are disabled
+     322              ;                when this function is called. */
+     323 000000 4EFF                                  aadd #-1, sp
+     324 000002 6C00                 call    #_prvSetupTimerInterrupt
+         000004 0000!
+     325              
+     326              ;                /* Restore the context of the first task that is going to run. */
+     327              
+     328              ;;              INTR INT14      ; force interrupt - just for debug purposes.
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE    7
+
+     329              
+     330 ****** MACRO                 portRESTORE_CONTEXT
+     330              
+     330                                      .align 4
+     330              
+     330              ; Restore context & return
+     330                                      ;CONTEXT_RESTORE
+     330              ;                       ASP
+     330              ;                       EALLOW
+     330              ;                       nop
+     330              ;                       nop
+     330              ;                       nop
+     330 000008 20                            nop
+     330              ;               xssp = dbl(*(#_pxCurrentTCB))
+     330              ;               xsp  = dbl(*(#_pxCurrentTCB))
+     330 000009 EB31                          mov xsp, dbl (*(#_save_xsp))                    ; save xsp
+         00000b 4500 
+         00000d 0000!
+     330 00000f EB31                          mov xar7, dbl (*(#_save_xar7))                  ; save xar7 
+         000011 F500 
+         000013 0000!
+     330 000015 ED31                          mov dbl (*(#_pxCurrentTCB)), xar7
+         000017 FF00 
+         000019 0000!
+     330 00001b EDE1                          mov dbl (*ar7), xsp                             ; xsp contains our TCB now
+         00001d 4F   
+     330              ;                       mov xar6, xsp
+     330              ;                       mov xssp, xar7
+     330              ;                       add #1, ar7
+     330              ;                       mov xar7, xsp
+     330              ;                       mov sp, t0
+     330              ;                       mov ssp, t1
+     330              ;                       mov dbl(*(#_pxCurrentTCB)), xsp
+     330              ;                       ar0 = *ar6
+     330              ;                       xssp = xar0
+     330              ;                       mov *xar6, xar0
+     330              ;                       mov xar0, xssp  ; stack now points to our TCB
+     330              ;;                      mov sp, *ar6
+     330              ;;                      mov sp, ar0
+     330              ;;                      mov sp, *_pxCurrentTCB
+     330              ;;                      clr ar0
+     330              ;;                      mov ar0, @xar6
+     330              ;;                      mov sp, AR0
+     330              ;;                      add sp, xar6
+     330              
+     330              ;                       popboth xar7
+     330 00001e ED00                          mov dbl(*sp(#0)), xar7
+         000020 FF   
+     330              ;                       mov *sp(#1), ar7
+     330 000021 EB31                          mov xar7, dbl(*(#_usCriticalNesting))   
+         000023 F500 
+         000025 0000!
+     330              
+     330 000027 ED04                          mov dbl(*sp(#2)), xar6
+         000029 EF   
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE    8
+
+     330              ;                       mov *sp(#3), ar6
+     330              ;                       popboth xar6 ; portFLAGS_INT_ENABLED
+     330 00002a EB31                          mov xar6, dbl(*(#_portFLAGS_INT_ENABLED))       
+         00002c E500 
+         00002e 0000!
+     330              
+     330              ;                       POP XT
+     330                              ;-- Comment these to save cycles ---
+     330 000030 ED08                          mov dbl(*sp(#4)), xar7
+         000032 FF   
+     330 000033 AF0A                          mov *sp(#5), ar7
+     330              ;                       mov *sp(#5), ar7
+     330              ;                       mov dbl(*sp(#0)), hi(ar7)
+     330              ;                       mov (*sp(#0)), lo(ar7)
+     330 000035 ED0C                          mov dbl(*sp(#6)), xar6
+         000037 EF   
+     330 000038 AE0E                          mov *sp(#7), ar6
+     330 00003a ED10                          mov dbl(*sp(#8)), xar5
+         00003c DF   
+     330 00003d AD12                          mov *sp(#9), ar5
+     330 00003f ED14                          mov dbl(*sp(#10)), xar4
+         000041 CF   
+     330 000042 AC16                          mov *sp(#11), ar4
+     330 000044 ED18                          mov dbl(*sp(#12)), xar3
+         000046 BF   
+     330 000047 AB1A                          mov *sp(#13), ar3
+     330 000049 ED1C                          mov dbl(*sp(#14)), xar2
+         00004b AF   
+     330 00004c AA1E                          mov *sp(#15), ar2
+     330 00004e ED20                          mov dbl(*sp(#16)), xar1
+         000050 9F   
+     330 000051 A922                          mov *sp(#17), ar1
+     330 000053 ED24                          mov dbl(*sp(#18)), xar0
+         000055 8F   
+     330 000056 A826                          mov *sp(#19), ar0
+     330              ;                       mov dbl(*sp(#21)), *xssp(#0)
+     330              ;                       mov *sp(#21), *ssp
+     330              ;                       mov *sp(#21), RETA
+     330              ; need to move 23-16 to XSSP contents
+     330 000058 EB31                          mov xar0, dbl (*(#_save_xar7))
+         00005a 8500 
+         00005c 0000!
+     330 00005e 9058                          mov xssp, xar0
+     330              ;                       mov dbl (*(#_save_xsp)), xar0                   ; save xsp
+     330 000060 4E14                          aadd #20, sp            ; this is ok - ssp also incremented
+     330              ;                       asub #20, ar0
+     330 000062 5289                          mov ar0, ssp
+     330 000064 A402                          mov *sp(#1), t0
+     330 000066 A706                          mov *sp(#3), t3         ; ST0
+     330 000068 A608                          mov *sp(#4), t2         ; DBSTAT
+     330 00006a C70D                          mov t3, *ar0(#2)
+         00006c 0002 
+     330 00006e C60D                          mov t2, *ar0(#1)
+         000070 0001 
+     330 000072 C40D                          mov t0, *ar0(#0)
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE    9
+
+         000074 0000 
+     330              
+     330 000076 A40A                          mov *sp(#5), t0
+     330 000078 A50C                          mov *sp(#6), t1
+     330 00007a A60E                          mov *sp(#7), t2
+     330 00007c A710                          mov *sp(#8), t3
+     330              
+     330              
+     330              
+     330              ; restore ar0
+     330              ;                       mov dbl(*sp(#-2)), xar0
+     330              ;                       mov #-1, ar0
+     330 00007e ED31                          mov dbl (*(#_save_xar7)), xar0
+         000080 8F00 
+         000082 0000!
+     330              
+     330              ;                       mov *sp(#3), *(#00004ch+#1)
+     330              
+     330              ;                       mov t3, *ssp(#1) 
+     330              ;                       mov t2, *ssp(#2)
+     330              
+     330              ;;                      mov *sp(#1), dbl(*(#_save_xsp)) 
+     330              ;;                      mov t3, *(ssp(#0))
+     330              ;                       mov t3, *ssp
+     330              ;                       mov *sp(#3), t3 ; 
+     330              ;                       mov t3, *ssp(#1)
+     330              ;;                      mov *sp(#21), PC        
+     330              
+     330              ;; ;;                   mov dbl (*(#_save_xsp)), xsp    ; restore xsp           
+     330              ;                       mov dbl(xsp), dbl(lcrpc)
+     330              ;                       popboth XAR7
+     330              ;                       add #1, sp
+     330              ;                       add #1, ssp
+     330              ;                       add #2, t0
+     330              ;                       add #2, t1
+     330              ;                       mov t0, sp
+     330              ;                       mov t1, ssp
+     330              ;                       popboth XAR6
+     330              ;                       add #2, t0
+     330              ;                       add #2, t1
+     330              ;                       mov t0, sp
+     330              ;                       mov t1, ssp
+     330              ;                       popboth XAR5
+     330              ;                       add #2, t0
+     330              ;                       add #2, t1
+     330              ;                       mov t0, sp
+     330              ;                       mov t1, ssp
+     330                              ;-----------------------------------
+     330              ;                       popboth XAR4
+     330              ;                       add #2, t0
+     330              ;                       add #2, t1
+     330              ;                       mov t0, sp
+     330              ;                       mov t1, ssp
+     330              ;                       popboth XAR3
+     330              ;                       add #2, t0
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE   10
+
+     330              ;                       add #2, t1
+     330              ;                       mov t0, sp
+     330              ;                       mov t1, ssp
+     330              ;                       popboth XAR2
+     330              ;                       add #2, t0
+     330              ;                       add #2, t1
+     330              ;                       mov t0, sp
+     330              ;                       mov t1, ssp
+     330              ;                       popboth XAR1
+     330              ;                       add #2, t0
+     330              ;                       add #2, t1
+     330              ;                       mov t0, sp
+     330              ;                       mov t1, ssp
+     330              ;                       popboth XAR0
+     330              ;                       add #2, t0
+     330              ;                       add #2, t1
+     330              ;                       mov t0, sp
+     330              ;                       mov t1, ssp
+     330              ;                       EDIS
+     330              ;                       NASP    ; Un-align stack pointer
+     330 000084 46B2                          bclr INTM               ; enable interrupts
+     330              ;                       aadd #1, sp
+     330 000086 4805                          RETI                            
+     331              
+     332              
+     333              
+     334 000088       _vTickISR:
+     335               ;               bclr IFR0.IF4          ; enable interrupts
+     336                              
+     337 000088 4EFF                  aadd #-1, sp
+     338 00008a F402                  AND #0x0010, mmap(@IFR0)
+         00008c 0010 
+         00008e 98   
+     339 ****** MACRO                 portSAVE_CONTEXT
+     339              ;                       ;CONTEXT_SAVE
+     339              ;                       ASP  ; Align Stack Pointer
+     339              ;                       CLRC       OVM,PAGE0
+     339              ;                       CLRC       AMODE
+     339              ;                       EALLOW
+     339              
+     339 00008f EB31                          mov xsp, dbl (*(#_save_xsp))                    ; save xsp
+         000091 4500 
+         000093 0000!
+     339              
+     339 000095 EB31                          mov xar7, dbl (*(#_save_xar7))                  ; save xar7 
+         000097 F500 
+         000099 0000!
+     339              
+     339 00009b ED31                          mov dbl (*(#_pxCurrentTCB)), xar7
+         00009d FF00 
+         00009f 0000!
+     339 0000a1 EDE1                          mov dbl (*ar7), xsp                             ; xsp contains our TCB now
+         0000a3 4F   
+     339              
+     339 0000a4 ED31                          mov dbl (*(#_save_xar7)), xar7                  ; restore xar7
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE   11
+
+         0000a6 FF00 
+         0000a8 0000!
+     339              
+     339 0000aa EB08                          mov xar7, dbl(*sp(#4))                          ; save xar7
+         0000ac F5   
+     339 0000ad CF0A                          mov ar7, *sp(#5)
+     339              
+     339 0000af EB0C                          mov xar6, dbl(*sp(#6))
+         0000b1 E5   
+     339 0000b2 CE0E                          mov ar6, *sp(#7)
+     339              
+     339 0000b4 EB10                          mov xar5, dbl(*sp(#8))
+         0000b6 D5   
+     339 0000b7 CD12                          mov ar5, *sp(#9)
+     339              
+     339 0000b9 EB14                          mov xar4, dbl(*sp(#10))
+         0000bb C5   
+     339 0000bc CC16                          mov ar4, *sp(#11)
+     339              
+     339 0000be EB18                          mov xar3, dbl(*sp(#12))
+         0000c0 B5   
+     339 0000c1 CB1A                          mov ar3, *sp(#13)
+     339              
+     339 0000c3 EB1C                          mov xar2, dbl(*sp(#14))
+         0000c5 A5   
+     339 0000c6 CA1E                          mov ar2, *sp(#15)
+     339              
+     339 0000c8 EB20                          mov xar1, dbl(*sp(#16))
+         0000ca 95   
+     339 0000cb C922                          mov ar1, *sp(#17)
+     339              
+     339 0000cd EB24                          mov xar0, dbl(*sp(#18))
+         0000cf 85   
+     339 0000d0 C826                          mov ar0, *sp(#19)
+     339              
+     339 0000d2 C432                          mov t0, *sp(#25)
+     339 0000d4 C534                          mov t1, *sp(#26)
+     339 0000d6 C636                          mov t2, *sp(#27)
+     339 0000d8 C738                          mov t3, *sp(#28)
+     339              
+     339 0000da A404                          mov mmap(ST0_55), t0
+         0000dc 98   
+     339 0000dd C42E                          mov t0, *sp(#23)
+     339 0000df A506                          mov mmap(ST1_55), t1
+         0000e1 98   
+     339 0000e2 C52A                          mov t1, *sp(#21)
+     339 0000e4 A696                          mov mmap(ST2_55), t2
+         0000e6 98   
+     339 0000e7 C62C                          mov t2, *sp(#22)
+     339 0000e9 A796                          mov mmap(ST2_55), t3
+         0000eb 98   
+     339 0000ec C730                          mov t3, *sp(#24)
+     339              
+     339              ;                       PSH dbl(AR0) ; 32-bit
+     339              ;                       PSH dbl(AR1) 
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE   12
+
+     339              ;                       PSH dbl(AR2) ; 32-bit
+     339              ;                       PUSH XAR3 ; 32-bit
+     339              ;                       PUSH XAR4 ; 32-bit
+     339                              ;-- Comment these to save cycles --------
+     339              ;                       PUSH XAR5 ; 32-bit
+     339              ;                       PUSH XAR6 ; 32-bit
+     339              ;                       PUSH XAR7 ; 32-bit
+     339                              ;----------------------------------------
+     339              
+     339              ;                       PUSH XT   ; 32-bit
+     339              
+     339              ;                       movl xar6, @_portFLAGS_INT_ENABLED
+     339              ;                       push xar6 ; portFLAGS_INT_ENABLED
+     339              
+     339 0000ee ED31                          mov dbl (*(#_portFLAGS_INT_ENABLED)), xar6
+         0000f0 EF00 
+         0000f2 0000!
+     339 0000f4 EB04                          mov xar6, dbl(*sp(#2))
+         0000f6 E5   
+     339                                      
+     339              
+     339              ;                       movl xar7, @_usCriticalNesting
+     339              ;                       push xar7
+     339 0000f7 ED31                          mov dbl (*(#_usCriticalNesting)), xar7
+         0000f9 FF00 
+         0000fb 0000!
+     339 0000fd EB00                          mov xar7, dbl(*sp(#0))
+         0000ff F5   
+     339              
+     339              ;                       sub #20, sp
+     339              
+     339                                      ; move contents of SP into address of current TCB
+     339              ;                       mov xsp, dbl (*(#_pxCurrentTCB))                ; xsp contains our TCB now
+     339              
+     339              ;                       mov xar7, dbl (*(#_save_xar7))                  ; save xar7 
+     339              ;                       mov dbl (*(#_pxCurrentTCB)), xar7
+     339              ;                       mov dbl (*ar7), xsp                             ; xsp contains our TCB now
+     339              
+     339              ;                       movl xar6, @_pxCurrentTCB ; XAR6 contains current TCB addr
+     339              ;                       mov al, @sp
+     339              ;                       movl  *xar6, acc        
+     339              ;;                      mov  ar0, @sp
+     339              ;;                      mov  @ar6, al
+     339              ;;                      mov  ar0, @sp
+     339              ;;                      movl 0(xar6), sp
+     339              ;                       EDIS
+     339              ;                       NASP
+     339              ;; ;;                   mov dbl (*(#_save_xsp)), xsp    ; restore xsp           
+     339              ;                       NOP             
+     340              
+     341 000100 6C00                  call     #_vTaskIncrementTick
+         000102 0000!
+     342              
+     343                              .if configUSE_PREEMPTION == 1
+     344                              call    #_vTaskSwitchContext
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE   13
+
+     345                              .endif
+     346              
+     347 000104 E651                  mov #1, *port(#6166) ; |127| 
+         000106 0118 
+         000108 16   
+     348 000109 F551                  or #0x0001, *port(#7188) ; |130| 
+         00010b 0001 
+         00010d 1C14 
+     349              
+     350 ****** MACRO                 portRESTORE_CONTEXT
+     350              
+     350                                      .align 4
+     350              
+     350              ; Restore context & return
+     350                                      ;CONTEXT_RESTORE
+     350              ;                       ASP
+     350              ;                       EALLOW
+     350              ;                       nop
+     350              ;                       nop
+     350              ;                       nop
+     350 000110 20                            nop
+     350              ;               xssp = dbl(*(#_pxCurrentTCB))
+     350              ;               xsp  = dbl(*(#_pxCurrentTCB))
+     350 000111 EB31                          mov xsp, dbl (*(#_save_xsp))                    ; save xsp
+         000113 4500 
+         000115 0000!
+     350 000117 EB31                          mov xar7, dbl (*(#_save_xar7))                  ; save xar7 
+         000119 F500 
+         00011b 0000!
+     350 00011d ED31                          mov dbl (*(#_pxCurrentTCB)), xar7
+         00011f FF00 
+         000121 0000!
+     350 000123 EDE1                          mov dbl (*ar7), xsp                             ; xsp contains our TCB now
+         000125 4F   
+     350              ;                       mov xar6, xsp
+     350              ;                       mov xssp, xar7
+     350              ;                       add #1, ar7
+     350              ;                       mov xar7, xsp
+     350              ;                       mov sp, t0
+     350              ;                       mov ssp, t1
+     350              ;                       mov dbl(*(#_pxCurrentTCB)), xsp
+     350              ;                       ar0 = *ar6
+     350              ;                       xssp = xar0
+     350              ;                       mov *xar6, xar0
+     350              ;                       mov xar0, xssp  ; stack now points to our TCB
+     350              ;;                      mov sp, *ar6
+     350              ;;                      mov sp, ar0
+     350              ;;                      mov sp, *_pxCurrentTCB
+     350              ;;                      clr ar0
+     350              ;;                      mov ar0, @xar6
+     350              ;;                      mov sp, AR0
+     350              ;;                      add sp, xar6
+     350              
+     350              ;                       popboth xar7
+     350 000126 ED00                          mov dbl(*sp(#0)), xar7
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE   14
+
+         000128 FF   
+     350              ;                       mov *sp(#1), ar7
+     350 000129 EB31                          mov xar7, dbl(*(#_usCriticalNesting))   
+         00012b F500 
+         00012d 0000!
+     350              
+     350 00012f ED04                          mov dbl(*sp(#2)), xar6
+         000131 EF   
+     350              ;                       mov *sp(#3), ar6
+     350              ;                       popboth xar6 ; portFLAGS_INT_ENABLED
+     350 000132 EB31                          mov xar6, dbl(*(#_portFLAGS_INT_ENABLED))       
+         000134 E500 
+         000136 0000!
+     350              
+     350              ;                       POP XT
+     350                              ;-- Comment these to save cycles ---
+     350 000138 ED08                          mov dbl(*sp(#4)), xar7
+         00013a FF   
+     350 00013b AF0A                          mov *sp(#5), ar7
+     350              ;                       mov *sp(#5), ar7
+     350              ;                       mov dbl(*sp(#0)), hi(ar7)
+     350              ;                       mov (*sp(#0)), lo(ar7)
+     350 00013d ED0C                          mov dbl(*sp(#6)), xar6
+         00013f EF   
+     350 000140 AE0E                          mov *sp(#7), ar6
+     350 000142 ED10                          mov dbl(*sp(#8)), xar5
+         000144 DF   
+     350 000145 AD12                          mov *sp(#9), ar5
+     350 000147 ED14                          mov dbl(*sp(#10)), xar4
+         000149 CF   
+     350 00014a AC16                          mov *sp(#11), ar4
+     350 00014c ED18                          mov dbl(*sp(#12)), xar3
+         00014e BF   
+     350 00014f AB1A                          mov *sp(#13), ar3
+     350 000151 ED1C                          mov dbl(*sp(#14)), xar2
+         000153 AF   
+     350 000154 AA1E                          mov *sp(#15), ar2
+     350 000156 ED20                          mov dbl(*sp(#16)), xar1
+         000158 9F   
+     350 000159 A922                          mov *sp(#17), ar1
+     350 00015b ED24                          mov dbl(*sp(#18)), xar0
+         00015d 8F   
+     350 00015e A826                          mov *sp(#19), ar0
+     350              ;                       mov dbl(*sp(#21)), *xssp(#0)
+     350              ;                       mov *sp(#21), *ssp
+     350              ;                       mov *sp(#21), RETA
+     350              ; need to move 23-16 to XSSP contents
+     350 000160 EB31                          mov xar0, dbl (*(#_save_xar7))
+         000162 8500 
+         000164 0000!
+     350 000166 9058                          mov xssp, xar0
+     350              ;                       mov dbl (*(#_save_xsp)), xar0                   ; save xsp
+     350 000168 4E14                          aadd #20, sp            ; this is ok - ssp also incremented
+     350              ;                       asub #20, ar0
+     350 00016a 5289                          mov ar0, ssp
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE   15
+
+     350 00016c A402                          mov *sp(#1), t0
+     350 00016e A706                          mov *sp(#3), t3         ; ST0
+     350 000170 A608                          mov *sp(#4), t2         ; DBSTAT
+     350 000172 C70D                          mov t3, *ar0(#2)
+         000174 0002 
+     350 000176 C60D                          mov t2, *ar0(#1)
+         000178 0001 
+     350 00017a C40D                          mov t0, *ar0(#0)
+         00017c 0000 
+     350              
+     350 00017e A40A                          mov *sp(#5), t0
+     350 000180 A50C                          mov *sp(#6), t1
+     350 000182 A60E                          mov *sp(#7), t2
+     350 000184 A710                          mov *sp(#8), t3
+     350              
+     350              
+     350              
+     350              ; restore ar0
+     350              ;                       mov dbl(*sp(#-2)), xar0
+     350              ;                       mov #-1, ar0
+     350 000186 ED31                          mov dbl (*(#_save_xar7)), xar0
+         000188 8F00 
+         00018a 0000!
+     350              
+     350              ;                       mov *sp(#3), *(#00004ch+#1)
+     350              
+     350              ;                       mov t3, *ssp(#1) 
+     350              ;                       mov t2, *ssp(#2)
+     350              
+     350              ;;                      mov *sp(#1), dbl(*(#_save_xsp)) 
+     350              ;;                      mov t3, *(ssp(#0))
+     350              ;                       mov t3, *ssp
+     350              ;                       mov *sp(#3), t3 ; 
+     350              ;                       mov t3, *ssp(#1)
+     350              ;;                      mov *sp(#21), PC        
+     350              
+     350              ;; ;;                   mov dbl (*(#_save_xsp)), xsp    ; restore xsp           
+     350              ;                       mov dbl(xsp), dbl(lcrpc)
+     350              ;                       popboth XAR7
+     350              ;                       add #1, sp
+     350              ;                       add #1, ssp
+     350              ;                       add #2, t0
+     350              ;                       add #2, t1
+     350              ;                       mov t0, sp
+     350              ;                       mov t1, ssp
+     350              ;                       popboth XAR6
+     350              ;                       add #2, t0
+     350              ;                       add #2, t1
+     350              ;                       mov t0, sp
+     350              ;                       mov t1, ssp
+     350              ;                       popboth XAR5
+     350              ;                       add #2, t0
+     350              ;                       add #2, t1
+     350              ;                       mov t0, sp
+     350              ;                       mov t1, ssp
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE   16
+
+     350                              ;-----------------------------------
+     350              ;                       popboth XAR4
+     350              ;                       add #2, t0
+     350              ;                       add #2, t1
+     350              ;                       mov t0, sp
+     350              ;                       mov t1, ssp
+     350              ;                       popboth XAR3
+     350              ;                       add #2, t0
+     350              ;                       add #2, t1
+     350              ;                       mov t0, sp
+     350              ;                       mov t1, ssp
+     350              ;                       popboth XAR2
+     350              ;                       add #2, t0
+     350              ;                       add #2, t1
+     350              ;                       mov t0, sp
+     350              ;                       mov t1, ssp
+     350              ;                       popboth XAR1
+     350              ;                       add #2, t0
+     350              ;                       add #2, t1
+     350              ;                       mov t0, sp
+     350              ;                       mov t1, ssp
+     350              ;                       popboth XAR0
+     350              ;                       add #2, t0
+     350              ;                       add #2, t1
+     350              ;                       mov t0, sp
+     350              ;                       mov t1, ssp
+     350              ;                       EDIS
+     350              ;                       NASP    ; Un-align stack pointer
+     350 00018c 46B2                          bclr INTM               ; enable interrupts
+     350              ;                       aadd #1, sp
+     350 00018e 4805                          RETI                            
+     351                                              
+     352              ; /*-----------------------------------------------------------*/
+     353              
+     354              
+     355              ;/*
+     356              ; * Manual context switch called by the portYIELD() macro.
+     357              ; */
+     358              
+     359              ; We are using the slow return model:
+     360              
+     361              ; System Stack (SSP)                    Data Stack (SP)
+     362              ; SSP = x - 3:  (Loop Bits):PC(23-16)   SP = y - 3: PC(15-0)  <<= Last pushed - first to POP
+     363              ; SSP = x - 2:  DBSTAT                  SP = y - 2: ST1_55
+     364              ; SSP = x - 1:  ST0_55                  SP = y - 1: ST2_55
+     365              ; SSP = x:      Previously saved data   SP = y:     Previously saved data
+     366              
+     367              
+     368 000190       _vPortYield:
+     369              
+     370 000190 4EFF                  aadd #-1, sp
+     371 000192 F402                  AND #0x0010, mmap(@IFR0)
+         000194 0010 
+         000196 98   
+     372              ;                /* Mimic an interrupt by pushing the SR. */
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE   17
+
+     373              
+     374              ;               /* SR is 16-bits in 430X architecture */
+     375              
+     376              ;;                pushx.w    SR
+     377              
+     378              ;                /* Now the SR is stacked we can disable interrupts. */
+     379              
+     380              ;                dint
+     381              
+     382 000197 46B3                    bset INTM             ; disable interrupts
+     383              
+     384              ;;                bicx.w #0xF000,0(r1)
+     385              ;;                swpbx.w +4(r1)
+     386              ;;                rlax.w +4(r1)
+     387              ;;                rlax.w +4(r1)
+     388              ;;                rlax.w +4(r1)
+     389              ;;                rlax.w +4(r1)
+     390              ;;                addx.w +4(r1),0(r1)
+     391              ;;                movx.w +2(r1),+4(r1)
+     392              ;;                movx.w 0(r1),+2(r1)
+     393              ;;                incdx.a r1
+     394              
+     395              ;                /* Save the context of the current task. */
+     396 ****** MACRO         portSAVE_CONTEXT
+     396              ;                       ;CONTEXT_SAVE
+     396              ;                       ASP  ; Align Stack Pointer
+     396              ;                       CLRC       OVM,PAGE0
+     396              ;                       CLRC       AMODE
+     396              ;                       EALLOW
+     396              
+     396 000199 EB31                          mov xsp, dbl (*(#_save_xsp))                    ; save xsp
+         00019b 4500 
+         00019d 0000!
+     396              
+     396 00019f EB31                          mov xar7, dbl (*(#_save_xar7))                  ; save xar7 
+         0001a1 F500 
+         0001a3 0000!
+     396              
+     396 0001a5 ED31                          mov dbl (*(#_pxCurrentTCB)), xar7
+         0001a7 FF00 
+         0001a9 0000!
+     396 0001ab EDE1                          mov dbl (*ar7), xsp                             ; xsp contains our TCB now
+         0001ad 4F   
+     396              
+     396 0001ae ED31                          mov dbl (*(#_save_xar7)), xar7                  ; restore xar7
+         0001b0 FF00 
+         0001b2 0000!
+     396              
+     396 0001b4 EB08                          mov xar7, dbl(*sp(#4))                          ; save xar7
+         0001b6 F5   
+     396 0001b7 CF0A                          mov ar7, *sp(#5)
+     396              
+     396 0001b9 EB0C                          mov xar6, dbl(*sp(#6))
+         0001bb E5   
+     396 0001bc CE0E                          mov ar6, *sp(#7)
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE   18
+
+     396              
+     396 0001be EB10                          mov xar5, dbl(*sp(#8))
+         0001c0 D5   
+     396 0001c1 CD12                          mov ar5, *sp(#9)
+     396              
+     396 0001c3 EB14                          mov xar4, dbl(*sp(#10))
+         0001c5 C5   
+     396 0001c6 CC16                          mov ar4, *sp(#11)
+     396              
+     396 0001c8 EB18                          mov xar3, dbl(*sp(#12))
+         0001ca B5   
+     396 0001cb CB1A                          mov ar3, *sp(#13)
+     396              
+     396 0001cd EB1C                          mov xar2, dbl(*sp(#14))
+         0001cf A5   
+     396 0001d0 CA1E                          mov ar2, *sp(#15)
+     396              
+     396 0001d2 EB20                          mov xar1, dbl(*sp(#16))
+         0001d4 95   
+     396 0001d5 C922                          mov ar1, *sp(#17)
+     396              
+     396 0001d7 EB24                          mov xar0, dbl(*sp(#18))
+         0001d9 85   
+     396 0001da C826                          mov ar0, *sp(#19)
+     396              
+     396 0001dc C432                          mov t0, *sp(#25)
+     396 0001de C534                          mov t1, *sp(#26)
+     396 0001e0 C636                          mov t2, *sp(#27)
+     396 0001e2 C738                          mov t3, *sp(#28)
+     396              
+     396 0001e4 A404                          mov mmap(ST0_55), t0
+         0001e6 98   
+     396 0001e7 C42E                          mov t0, *sp(#23)
+     396 0001e9 A506                          mov mmap(ST1_55), t1
+         0001eb 98   
+     396 0001ec C52A                          mov t1, *sp(#21)
+     396 0001ee A696                          mov mmap(ST2_55), t2
+         0001f0 98   
+     396 0001f1 C62C                          mov t2, *sp(#22)
+     396 0001f3 A796                          mov mmap(ST2_55), t3
+         0001f5 98   
+     396 0001f6 C730                          mov t3, *sp(#24)
+     396              
+     396              ;                       PSH dbl(AR0) ; 32-bit
+     396              ;                       PSH dbl(AR1) 
+     396              ;                       PSH dbl(AR2) ; 32-bit
+     396              ;                       PUSH XAR3 ; 32-bit
+     396              ;                       PUSH XAR4 ; 32-bit
+     396                              ;-- Comment these to save cycles --------
+     396              ;                       PUSH XAR5 ; 32-bit
+     396              ;                       PUSH XAR6 ; 32-bit
+     396              ;                       PUSH XAR7 ; 32-bit
+     396                              ;----------------------------------------
+     396              
+     396              ;                       PUSH XT   ; 32-bit
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE   19
+
+     396              
+     396              ;                       movl xar6, @_portFLAGS_INT_ENABLED
+     396              ;                       push xar6 ; portFLAGS_INT_ENABLED
+     396              
+     396 0001f8 ED31                          mov dbl (*(#_portFLAGS_INT_ENABLED)), xar6
+         0001fa EF00 
+         0001fc 0000!
+     396 0001fe EB04                          mov xar6, dbl(*sp(#2))
+         000200 E5   
+     396                                      
+     396              
+     396              ;                       movl xar7, @_usCriticalNesting
+     396              ;                       push xar7
+     396 000201 ED31                          mov dbl (*(#_usCriticalNesting)), xar7
+         000203 FF00 
+         000205 0000!
+     396 000207 EB00                          mov xar7, dbl(*sp(#0))
+         000209 F5   
+     396              
+     396              ;                       sub #20, sp
+     396              
+     396                                      ; move contents of SP into address of current TCB
+     396              ;                       mov xsp, dbl (*(#_pxCurrentTCB))                ; xsp contains our TCB now
+     396              
+     396              ;                       mov xar7, dbl (*(#_save_xar7))                  ; save xar7 
+     396              ;                       mov dbl (*(#_pxCurrentTCB)), xar7
+     396              ;                       mov dbl (*ar7), xsp                             ; xsp contains our TCB now
+     396              
+     396              ;                       movl xar6, @_pxCurrentTCB ; XAR6 contains current TCB addr
+     396              ;                       mov al, @sp
+     396              ;                       movl  *xar6, acc        
+     396              ;;                      mov  ar0, @sp
+     396              ;;                      mov  @ar6, al
+     396              ;;                      mov  ar0, @sp
+     396              ;;                      movl 0(xar6), sp
+     396              ;                       EDIS
+     396              ;                       NASP
+     396              ;; ;;                   mov dbl (*(#_save_xsp)), xsp    ; restore xsp           
+     396              ;                       NOP             
+     397              
+     398              ;        /* Switch to the highest priority task that is ready to run. */
+     399 00020a 6C00          call    #_vTaskSwitchContext
+         00020c 0000!
+     400 00020e E651      mov #1, *port(#6166) ; |127| 
+         000210 0118 
+         000212 16   
+     401 000213 F551                  or #0x0001, *port(#7188) ; |130| 
+         000215 0001 
+         000217 1C14 
+     402              
+     403 ****** MACRO         portRESTORE_CONTEXT
+     403              
+     403                                      .align 4
+     403              
+     403              ; Restore context & return
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE   20
+
+     403                                      ;CONTEXT_RESTORE
+     403              ;                       ASP
+     403              ;                       EALLOW
+     403              ;                       nop
+     403              ;                       nop
+     403              ;                       nop
+     403 00021c 20                            nop
+     403              ;               xssp = dbl(*(#_pxCurrentTCB))
+     403              ;               xsp  = dbl(*(#_pxCurrentTCB))
+     403 00021d EB31                          mov xsp, dbl (*(#_save_xsp))                    ; save xsp
+         00021f 4500 
+         000221 0000!
+     403 000223 EB31                          mov xar7, dbl (*(#_save_xar7))                  ; save xar7 
+         000225 F500 
+         000227 0000!
+     403 000229 ED31                          mov dbl (*(#_pxCurrentTCB)), xar7
+         00022b FF00 
+         00022d 0000!
+     403 00022f EDE1                          mov dbl (*ar7), xsp                             ; xsp contains our TCB now
+         000231 4F   
+     403              ;                       mov xar6, xsp
+     403              ;                       mov xssp, xar7
+     403              ;                       add #1, ar7
+     403              ;                       mov xar7, xsp
+     403              ;                       mov sp, t0
+     403              ;                       mov ssp, t1
+     403              ;                       mov dbl(*(#_pxCurrentTCB)), xsp
+     403              ;                       ar0 = *ar6
+     403              ;                       xssp = xar0
+     403              ;                       mov *xar6, xar0
+     403              ;                       mov xar0, xssp  ; stack now points to our TCB
+     403              ;;                      mov sp, *ar6
+     403              ;;                      mov sp, ar0
+     403              ;;                      mov sp, *_pxCurrentTCB
+     403              ;;                      clr ar0
+     403              ;;                      mov ar0, @xar6
+     403              ;;                      mov sp, AR0
+     403              ;;                      add sp, xar6
+     403              
+     403              ;                       popboth xar7
+     403 000232 ED00                          mov dbl(*sp(#0)), xar7
+         000234 FF   
+     403              ;                       mov *sp(#1), ar7
+     403 000235 EB31                          mov xar7, dbl(*(#_usCriticalNesting))   
+         000237 F500 
+         000239 0000!
+     403              
+     403 00023b ED04                          mov dbl(*sp(#2)), xar6
+         00023d EF   
+     403              ;                       mov *sp(#3), ar6
+     403              ;                       popboth xar6 ; portFLAGS_INT_ENABLED
+     403 00023e EB31                          mov xar6, dbl(*(#_portFLAGS_INT_ENABLED))       
+         000240 E500 
+         000242 0000!
+     403              
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE   21
+
+     403              ;                       POP XT
+     403                              ;-- Comment these to save cycles ---
+     403 000244 ED08                          mov dbl(*sp(#4)), xar7
+         000246 FF   
+     403 000247 AF0A                          mov *sp(#5), ar7
+     403              ;                       mov *sp(#5), ar7
+     403              ;                       mov dbl(*sp(#0)), hi(ar7)
+     403              ;                       mov (*sp(#0)), lo(ar7)
+     403 000249 ED0C                          mov dbl(*sp(#6)), xar6
+         00024b EF   
+     403 00024c AE0E                          mov *sp(#7), ar6
+     403 00024e ED10                          mov dbl(*sp(#8)), xar5
+         000250 DF   
+     403 000251 AD12                          mov *sp(#9), ar5
+     403 000253 ED14                          mov dbl(*sp(#10)), xar4
+         000255 CF   
+     403 000256 AC16                          mov *sp(#11), ar4
+     403 000258 ED18                          mov dbl(*sp(#12)), xar3
+         00025a BF   
+     403 00025b AB1A                          mov *sp(#13), ar3
+     403 00025d ED1C                          mov dbl(*sp(#14)), xar2
+         00025f AF   
+     403 000260 AA1E                          mov *sp(#15), ar2
+     403 000262 ED20                          mov dbl(*sp(#16)), xar1
+         000264 9F   
+     403 000265 A922                          mov *sp(#17), ar1
+     403 000267 ED24                          mov dbl(*sp(#18)), xar0
+         000269 8F   
+     403 00026a A826                          mov *sp(#19), ar0
+     403              ;                       mov dbl(*sp(#21)), *xssp(#0)
+     403              ;                       mov *sp(#21), *ssp
+     403              ;                       mov *sp(#21), RETA
+     403              ; need to move 23-16 to XSSP contents
+     403 00026c EB31                          mov xar0, dbl (*(#_save_xar7))
+         00026e 8500 
+         000270 0000!
+     403 000272 9058                          mov xssp, xar0
+     403              ;                       mov dbl (*(#_save_xsp)), xar0                   ; save xsp
+     403 000274 4E14                          aadd #20, sp            ; this is ok - ssp also incremented
+     403              ;                       asub #20, ar0
+     403 000276 5289                          mov ar0, ssp
+     403 000278 A402                          mov *sp(#1), t0
+     403 00027a A706                          mov *sp(#3), t3         ; ST0
+     403 00027c A608                          mov *sp(#4), t2         ; DBSTAT
+     403 00027e C70D                          mov t3, *ar0(#2)
+         000280 0002 
+     403 000282 C60D                          mov t2, *ar0(#1)
+         000284 0001 
+     403 000286 C40D                          mov t0, *ar0(#0)
+         000288 0000 
+     403              
+     403 00028a A40A                          mov *sp(#5), t0
+     403 00028c A50C                          mov *sp(#6), t1
+     403 00028e A60E                          mov *sp(#7), t2
+     403 000290 A710                          mov *sp(#8), t3
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE   22
+
+     403              
+     403              
+     403              
+     403              ; restore ar0
+     403              ;                       mov dbl(*sp(#-2)), xar0
+     403              ;                       mov #-1, ar0
+     403 000292 ED31                          mov dbl (*(#_save_xar7)), xar0
+         000294 8F00 
+         000296 0000!
+     403              
+     403              ;                       mov *sp(#3), *(#00004ch+#1)
+     403              
+     403              ;                       mov t3, *ssp(#1) 
+     403              ;                       mov t2, *ssp(#2)
+     403              
+     403              ;;                      mov *sp(#1), dbl(*(#_save_xsp)) 
+     403              ;;                      mov t3, *(ssp(#0))
+     403              ;                       mov t3, *ssp
+     403              ;                       mov *sp(#3), t3 ; 
+     403              ;                       mov t3, *ssp(#1)
+     403              ;;                      mov *sp(#21), PC        
+     403              
+     403              ;; ;;                   mov dbl (*(#_save_xsp)), xsp    ; restore xsp           
+     403              ;                       mov dbl(xsp), dbl(lcrpc)
+     403              ;                       popboth XAR7
+     403              ;                       add #1, sp
+     403              ;                       add #1, ssp
+     403              ;                       add #2, t0
+     403              ;                       add #2, t1
+     403              ;                       mov t0, sp
+     403              ;                       mov t1, ssp
+     403              ;                       popboth XAR6
+     403              ;                       add #2, t0
+     403              ;                       add #2, t1
+     403              ;                       mov t0, sp
+     403              ;                       mov t1, ssp
+     403              ;                       popboth XAR5
+     403              ;                       add #2, t0
+     403              ;                       add #2, t1
+     403              ;                       mov t0, sp
+     403              ;                       mov t1, ssp
+     403                              ;-----------------------------------
+     403              ;                       popboth XAR4
+     403              ;                       add #2, t0
+     403              ;                       add #2, t1
+     403              ;                       mov t0, sp
+     403              ;                       mov t1, ssp
+     403              ;                       popboth XAR3
+     403              ;                       add #2, t0
+     403              ;                       add #2, t1
+     403              ;                       mov t0, sp
+     403              ;                       mov t1, ssp
+     403              ;                       popboth XAR2
+     403              ;                       add #2, t0
+     403              ;                       add #2, t1
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:31 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+..\FreeRTOS\Source\portable\CCS\c55x\portASM.asm                     PAGE   23
+
+     403              ;                       mov t0, sp
+     403              ;                       mov t1, ssp
+     403              ;                       popboth XAR1
+     403              ;                       add #2, t0
+     403              ;                       add #2, t1
+     403              ;                       mov t0, sp
+     403              ;                       mov t1, ssp
+     403              ;                       popboth XAR0
+     403              ;                       add #2, t0
+     403              ;                       add #2, t1
+     403              ;                       mov t0, sp
+     403              ;                       mov t1, ssp
+     403              ;                       EDIS
+     403              ;                       NASP    ; Un-align stack pointer
+     403 000298 46B2                          bclr INTM               ; enable interrupts
+     403              ;                       aadd #1, sp
+     403 00029a 4805                          RETI                            
+     404              
+     405              ;;;
+     406              
+     407              ;                /* Place the tick ISR in the correct vector. */
+     408              
+     409              ;;;                .sect ".int49"                       ; TIMER1_A0_VECTOR                      
+     410              ;;                .sect ".int14"                        ; CPUTIMER2
+     411              ;                 .sect ".text"                 ; CPUTIMER2
+     412              ;;;;             .sect ".INT14_ISR"
+     413              ;               .global _INT14_ISR
+     414              ;;;; _INT14_ISR:
+     415              ;;;;                .short   _vTickISR
+     416              ;;;;            LCR #_vTickISR
+     417                              .end
+
+No Assembly Errors, No Assembly Warnings

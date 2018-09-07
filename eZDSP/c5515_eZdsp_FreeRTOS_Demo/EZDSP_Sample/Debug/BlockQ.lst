@@ -1,0 +1,2596 @@
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE    1
+
+       1              ;*******************************************************************************
+       2              ;* TMS320C55x C/C++ Codegen                                          PC v4.3.8 *
+       3              ;* Date/Time created: Fri Jan 21 01:13:31 2011                                 *
+       4              ;*******************************************************************************
+       5                      .compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=huge --silicon_core_3_3 --symde
+       6                      .mmregs
+       7                      .cpl_on
+       8                      .arms_on
+       9                      .c54cm_off
+      10                      .asg AR6, FP
+      11                      .asg XAR6, XFP
+      12                      .model call=c55_std
+      13                      .model mem=huge
+      14                      .noremark 5002  ; code respects overwrite rules
+      15              ;*******************************************************************************
+      16              ;* GLOBAL FILE PARAMETERS                                                      *
+      17              ;*                                                                             *
+      18              ;*   Architecture       : TMS320C55x                                           *
+      19              ;*   Optimizing for     : Speed                                                *
+      20              ;*   Memory             : Huge Model (23-Bit Data Pointers)                    *
+      21              ;*   Calls              : Normal Library ASM calls                             *
+      22              ;*   Debug Info         : Standard TI Debug Information                        *
+      23              ;*******************************************************************************
+      24              
+      25              $C$DW$CU        .dwtag  DW_TAG_compile_unit
+      26                      .dwattr $C$DW$CU, DW_AT_name("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+      27                      .dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.3.8 Copyright (c) 1996-2010 Texas In
+      28                      .dwattr $C$DW$CU, DW_AT_TI_version(0x01)
+      29                      .dwattr $C$DW$CU, DW_AT_comp_dir("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\Debug")
+      30              ;******************************************************************************
+      31              ;* CINIT RECORDS                                                              *
+      32              ;******************************************************************************
+      33 000000               .sect   ".cinit"
+      34                      .align  1
+      35 000000 0003          .field          $C$IR_1,16
+      36 000001 0000-         .field          _sBlockingConsumerCount+0,24
+         000002 0000 
+      37 000002 0000          .field          0,8
+      38 000003 0000          .field          0,16                    ; _sBlockingConsumerCount[0] @ 0
+      39 000004 0000          .field          0,16                    ; _sBlockingConsumerCount[1] @ 16
+      40 000005 0000          .field          0,16                    ; _sBlockingConsumerCount[2] @ 32
+      41              $C$IR_1:        .set    3
+      42              
+      43 000006               .sect   ".cinit"
+      44                      .align  1
+      45 000006 0003          .field          $C$IR_2,16
+      46 000007 0000-         .field          _sBlockingProducerCount+0,24
+         000008 0300 
+      47 000008 0300          .field          0,8
+      48 000009 0000          .field          0,16                    ; _sBlockingProducerCount[0] @ 0
+      49 00000a 0000          .field          0,16                    ; _sBlockingProducerCount[1] @ 16
+      50 00000b 0000          .field          0,16                    ; _sBlockingProducerCount[2] @ 32
+      51              $C$IR_2:        .set    3
+      52              
+      53 00000c               .sect   ".cinit"
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE    2
+
+      54                      .align  1
+      55 00000c 0003          .field          $C$IR_3,16
+      56 00000d 0000-         .field          _sLastBlockingConsumerCount$1+0,24
+         00000e 0600 
+      57 00000e 0600          .field          0,8
+      58 00000f 0000          .field          0,16                    ; _sLastBlockingConsumerCount$1[0] @ 0
+      59 000010 0000          .field          0,16                    ; _sLastBlockingConsumerCount$1[1] @ 16
+      60 000011 0000          .field          0,16                    ; _sLastBlockingConsumerCount$1[2] @ 32
+      61              $C$IR_3:        .set    3
+      62              
+      63 000012               .sect   ".cinit"
+      64                      .align  1
+      65 000012 0003          .field          $C$IR_4,16
+      66 000013 0000-         .field          _sLastBlockingProducerCount$2+0,24
+         000014 0900 
+      67 000014 0900          .field          0,8
+      68 000015 0000          .field          0,16                    ; _sLastBlockingProducerCount$2[0] @ 0
+      69 000016 0000          .field          0,16                    ; _sLastBlockingProducerCount$2[1] @ 16
+      70 000017 0000          .field          0,16                    ; _sLastBlockingProducerCount$2[2] @ 32
+      71              $C$IR_4:        .set    3
+      72              
+      73              
+      74              $C$DW$1 .dwtag  DW_TAG_subprogram, DW_AT_name("pvPortMalloc")
+      75                      .dwattr $C$DW$1, DW_AT_TI_symbol_name("_pvPortMalloc")
+      76                      .dwattr $C$DW$1, DW_AT_type(*$C$DW$T$3)
+      77                      .dwattr $C$DW$1, DW_AT_declaration
+      78                      .dwattr $C$DW$1, DW_AT_external
+      79                      .dwattr $C$DW$1, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\incl
+      80                      .dwattr $C$DW$1, DW_AT_decl_line(0x167)
+      81                      .dwattr $C$DW$1, DW_AT_decl_column(0x07)
+      82              $C$DW$2 .dwtag  DW_TAG_formal_parameter
+      83                      .dwattr $C$DW$2, DW_AT_type(*$C$DW$T$51)
+      84                      .dwendtag $C$DW$1
+      85              
+      86              
+      87              $C$DW$3 .dwtag  DW_TAG_subprogram, DW_AT_name("xTaskGenericCreate")
+      88                      .dwattr $C$DW$3, DW_AT_TI_symbol_name("_xTaskGenericCreate")
+      89                      .dwattr $C$DW$3, DW_AT_type(*$C$DW$T$10)
+      90                      .dwattr $C$DW$3, DW_AT_declaration
+      91                      .dwattr $C$DW$3, DW_AT_external
+      92                      .dwattr $C$DW$3, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/incl
+      93                      .dwattr $C$DW$3, DW_AT_decl_line(0x4e7)
+      94                      .dwattr $C$DW$3, DW_AT_decl_column(0x16)
+      95              $C$DW$4 .dwtag  DW_TAG_formal_parameter
+      96                      .dwattr $C$DW$4, DW_AT_type(*$C$DW$T$42)
+      97              $C$DW$5 .dwtag  DW_TAG_formal_parameter
+      98                      .dwattr $C$DW$5, DW_AT_type(*$C$DW$T$45)
+      99              $C$DW$6 .dwtag  DW_TAG_formal_parameter
+     100                      .dwattr $C$DW$6, DW_AT_type(*$C$DW$T$9)
+     101              $C$DW$7 .dwtag  DW_TAG_formal_parameter
+     102                      .dwattr $C$DW$7, DW_AT_type(*$C$DW$T$3)
+     103              $C$DW$8 .dwtag  DW_TAG_formal_parameter
+     104                      .dwattr $C$DW$8, DW_AT_type(*$C$DW$T$11)
+     105              $C$DW$9 .dwtag  DW_TAG_formal_parameter
+     106                      .dwattr $C$DW$9, DW_AT_type(*$C$DW$T$55)
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE    3
+
+     107              $C$DW$10        .dwtag  DW_TAG_formal_parameter
+     108                      .dwattr $C$DW$10, DW_AT_type(*$C$DW$T$46)
+     109              $C$DW$11        .dwtag  DW_TAG_formal_parameter
+     110                      .dwattr $C$DW$11, DW_AT_type(*$C$DW$T$69)
+     111                      .dwendtag $C$DW$3
+     112              
+     113              
+     114              $C$DW$12        .dwtag  DW_TAG_subprogram, DW_AT_name("xQueueCreate")
+     115                      .dwattr $C$DW$12, DW_AT_TI_symbol_name("_xQueueCreate")
+     116                      .dwattr $C$DW$12, DW_AT_type(*$C$DW$T$20)
+     117                      .dwattr $C$DW$12, DW_AT_declaration
+     118                      .dwattr $C$DW$12, DW_AT_external
+     119                      .dwattr $C$DW$12, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/inc
+     120                      .dwattr $C$DW$12, DW_AT_decl_line(0x88)
+     121                      .dwattr $C$DW$12, DW_AT_decl_column(0x0e)
+     122              $C$DW$13        .dwtag  DW_TAG_formal_parameter
+     123                      .dwattr $C$DW$13, DW_AT_type(*$C$DW$T$11)
+     124              $C$DW$14        .dwtag  DW_TAG_formal_parameter
+     125                      .dwattr $C$DW$14, DW_AT_type(*$C$DW$T$11)
+     126                      .dwendtag $C$DW$12
+     127              
+     128              
+     129              $C$DW$15        .dwtag  DW_TAG_subprogram, DW_AT_name("xQueueGenericSend")
+     130                      .dwattr $C$DW$15, DW_AT_TI_symbol_name("_xQueueGenericSend")
+     131                      .dwattr $C$DW$15, DW_AT_type(*$C$DW$T$10)
+     132                      .dwattr $C$DW$15, DW_AT_declaration
+     133                      .dwattr $C$DW$15, DW_AT_external
+     134                      .dwattr $C$DW$15, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/inc
+     135                      .dwattr $C$DW$15, DW_AT_decl_line(0x1d8)
+     136                      .dwattr $C$DW$15, DW_AT_decl_column(0x16)
+     137              $C$DW$16        .dwtag  DW_TAG_formal_parameter
+     138                      .dwattr $C$DW$16, DW_AT_type(*$C$DW$T$20)
+     139              $C$DW$17        .dwtag  DW_TAG_formal_parameter
+     140                      .dwattr $C$DW$17, DW_AT_type(*$C$DW$T$62)
+     141              $C$DW$18        .dwtag  DW_TAG_formal_parameter
+     142                      .dwattr $C$DW$18, DW_AT_type(*$C$DW$T$21)
+     143              $C$DW$19        .dwtag  DW_TAG_formal_parameter
+     144                      .dwattr $C$DW$19, DW_AT_type(*$C$DW$T$10)
+     145                      .dwendtag $C$DW$15
+     146              
+     147              
+     148              $C$DW$20        .dwtag  DW_TAG_subprogram, DW_AT_name("xQueueGenericReceive")
+     149                      .dwattr $C$DW$20, DW_AT_TI_symbol_name("_xQueueGenericReceive")
+     150                      .dwattr $C$DW$20, DW_AT_type(*$C$DW$T$10)
+     151                      .dwattr $C$DW$20, DW_AT_declaration
+     152                      .dwattr $C$DW$20, DW_AT_external
+     153                      .dwattr $C$DW$20, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/inc
+     154                      .dwattr $C$DW$20, DW_AT_decl_line(0x2f6)
+     155                      .dwattr $C$DW$20, DW_AT_decl_column(0x16)
+     156              $C$DW$21        .dwtag  DW_TAG_formal_parameter
+     157                      .dwattr $C$DW$21, DW_AT_type(*$C$DW$T$20)
+     158              $C$DW$22        .dwtag  DW_TAG_formal_parameter
+     159                      .dwattr $C$DW$22, DW_AT_type(*$C$DW$T$56)
+     160              $C$DW$23        .dwtag  DW_TAG_formal_parameter
+     161                      .dwattr $C$DW$23, DW_AT_type(*$C$DW$T$21)
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE    4
+
+     162              $C$DW$24        .dwtag  DW_TAG_formal_parameter
+     163                      .dwattr $C$DW$24, DW_AT_type(*$C$DW$T$10)
+     164                      .dwendtag $C$DW$20
+     165              
+     166 000000               .bss    _sBlockingConsumerCount,3,0,0
+     167              $C$DW$25        .dwtag  DW_TAG_variable, DW_AT_name("sBlockingConsumerCount")
+     168                      .dwattr $C$DW$25, DW_AT_TI_symbol_name("_sBlockingConsumerCount")
+     169                      .dwattr $C$DW$25, DW_AT_type(*$C$DW$T$64)
+     170                      .dwattr $C$DW$25, DW_AT_location[DW_OP_addr _sBlockingConsumerCount]
+     171                      .dwattr $C$DW$25, DW_AT_decl_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+     172                      .dwattr $C$DW$25, DW_AT_decl_line(0x76)
+     173                      .dwattr $C$DW$25, DW_AT_decl_column(0x17)
+     174 000003               .bss    _sBlockingProducerCount,3,0,0
+     175              $C$DW$26        .dwtag  DW_TAG_variable, DW_AT_name("sBlockingProducerCount")
+     176                      .dwattr $C$DW$26, DW_AT_TI_symbol_name("_sBlockingProducerCount")
+     177                      .dwattr $C$DW$26, DW_AT_type(*$C$DW$T$64)
+     178                      .dwattr $C$DW$26, DW_AT_location[DW_OP_addr _sBlockingProducerCount]
+     179                      .dwattr $C$DW$26, DW_AT_decl_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+     180                      .dwattr $C$DW$26, DW_AT_decl_line(0x7a)
+     181                      .dwattr $C$DW$26, DW_AT_decl_column(0x17)
+     182 000006               .bss    _sLastBlockingConsumerCount$1,3,0,0
+     183 000009               .bss    _sLastBlockingProducerCount$2,3,0,0
+     184              ;       C:\Texas Instruments Tools\ccsv4\tools\compiler\C5500 Code Generation Tools 4.3.8\bin\opt55.exe C:\\U
+     185 000000               .sect   ".text"
+     186                      .global _vStartBlockingQueueTasks
+     187              
+     188              $C$DW$27        .dwtag  DW_TAG_subprogram, DW_AT_name("vStartBlockingQueueTasks")
+     189                      .dwattr $C$DW$27, DW_AT_low_pc(_vStartBlockingQueueTasks)
+     190                      .dwattr $C$DW$27, DW_AT_high_pc(0x00)
+     191                      .dwattr $C$DW$27, DW_AT_TI_symbol_name("_vStartBlockingQueueTasks")
+     192                      .dwattr $C$DW$27, DW_AT_external
+     193                      .dwattr $C$DW$27, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+     194                      .dwattr $C$DW$27, DW_AT_TI_begin_line(0x7e)
+     195                      .dwattr $C$DW$27, DW_AT_TI_begin_column(0x06)
+     196                      .dwattr $C$DW$27, DW_AT_decl_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+     197                      .dwattr $C$DW$27, DW_AT_decl_line(0x7e)
+     198                      .dwattr $C$DW$27, DW_AT_decl_column(0x06)
+     199                      .dwattr $C$DW$27, DW_AT_TI_max_frame_size(0x0a)
+     200                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 127,column 1,is_stmt,address _vStartBloc
+     201              
+     202                      .dwfde $C$DW$CIE, _vStartBlockingQueueTasks
+     203              $C$DW$28        .dwtag  DW_TAG_formal_parameter, DW_AT_name("uxPriority")
+     204                      .dwattr $C$DW$28, DW_AT_TI_symbol_name("_uxPriority")
+     205                      .dwattr $C$DW$28, DW_AT_type(*$C$DW$T$11)
+     206                      .dwattr $C$DW$28, DW_AT_location[DW_OP_reg12]
+     207              ;*******************************************************************************
+     208              ;* FUNCTION NAME: vStartBlockingQueueTasks                                     *
+     209              ;*                                                                             *
+     210              ;*   Function Uses Regs : AC0,AC0,T0,T1,T2,T3,AR0,XAR0,AR1,XAR1,AR2,XAR2,AR3,  *
+     211              ;*                        XAR3,AR4,XAR4,AR5,XAR5,AR7,XAR7,SP,M40,SATA,SATD,RDM,*
+     212              ;*                        FRCT,SMUL                                            *
+     213              ;*   Save On Entry Regs : T2,T3,AR5,AR7                                        *
+     214              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     215              ;*   Total Frame Size   : 10 words                                             *
+     216              ;*                        (2 return address/alignment)                         *
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE    5
+
+     217              ;*                        (4 local values)                                     *
+     218              ;*                        (4 register save area)                               *
+     219              ;*   Min System Stack   : 3 words                                              *
+     220              ;*******************************************************************************
+     221              
+     222              ;*******************************************************************************
+     223              ;*                                                                             *
+     224              ;* Using -g (debug) with optimization (-o0) may disable key optimizations!     *
+     225              ;*                                                                             *
+     226              ;*******************************************************************************
+     227 000000       _vStartBlockingQueueTasks:
+     228              ;** 138 -----------------------    pxQueueParameters1 = (struct _BLOCKING_QUEUE_PARAMETERS *)pvPortMalloc(6uL
+     229              ;** 142 -----------------------    (*pxQueueParameters1).xQueue = xQueueCreate(uxQueueSize1 = 1u, 1u);
+     230              ;** 145 -----------------------    (*pxQueueParameters1).xBlockTime = xBlockTime = 1000uL;
+     231              ;** 149 -----------------------    (*pxQueueParameters1).psCheckVariable = &sBlockingConsumerCount[0];
+     232              ;** 152 -----------------------    pxQueueParameters2 = (struct _BLOCKING_QUEUE_PARAMETERS *)pvPortMalloc(6uL
+     233              ;** 155 -----------------------    (*pxQueueParameters2).xQueue = (*pxQueueParameters1).xQueue;
+     234              ;** 159 -----------------------    (*pxQueueParameters2).xBlockTime = xDontBlock = 0uL;
+     235              ;** 163 -----------------------    (*pxQueueParameters2).psCheckVariable = &sBlockingProducerCount[0];
+     236              ;** 168 -----------------------    xTaskGenericCreate(&vBlockingQueueConsumer, (char *)(char *)"QConsB1", 64u
+     237              ;** 169 -----------------------    xTaskGenericCreate(&vBlockingQueueProducer, (char *)(char *)"QProdB2", 64u
+     238              ;** 176 -----------------------    pxQueueParameters3 = (struct _BLOCKING_QUEUE_PARAMETERS *)pvPortMalloc(6uL
+     239              ;** 177 -----------------------    (*pxQueueParameters3).xQueue = xQueueCreate(uxQueueSize1, 1u);
+     240              ;** 178 -----------------------    (*pxQueueParameters3).xBlockTime = xDontBlock;
+     241              ;** 179 -----------------------    (*pxQueueParameters3).psCheckVariable = &sBlockingProducerCount[1];
+     242              ;** 181 -----------------------    pxQueueParameters4 = (struct _BLOCKING_QUEUE_PARAMETERS *)pvPortMalloc(6uL
+     243              ;** 182 -----------------------    (*pxQueueParameters4).xQueue = (*pxQueueParameters3).xQueue;
+     244              ;** 183 -----------------------    (*pxQueueParameters4).xBlockTime = xBlockTime;
+     245              ;** 184 -----------------------    (*pxQueueParameters4).psCheckVariable = &sBlockingConsumerCount[1];
+     246              ;** 186 -----------------------    xTaskGenericCreate(&vBlockingQueueConsumer, (char *)(char *)"QProdB3", 64u
+     247              ;** 187 -----------------------    xTaskGenericCreate(&vBlockingQueueProducer, (char *)(char *)"QConsB4", 64u
+     248              ;** 193 -----------------------    pxQueueParameters5 = (struct _BLOCKING_QUEUE_PARAMETERS *)pvPortMalloc(6uL
+     249                      .dwcfi  cfa_offset, 1
+     250                      .dwcfi  save_reg_to_mem, 91, -1
+     251 000000 5066          push(T2)
+     252                      .dwcfi  cfa_offset, 2
+     253                      .dwcfi  save_reg_to_mem, 14, -2
+     254 000002 5076          push(T3)
+     255                      .dwcfi  cfa_offset, 3
+     256                      .dwcfi  save_reg_to_mem, 15, -3
+     257 000004 50D5          pshboth(XAR5)
+     258                      .dwcfi  cfa_offset, 4
+     259                      .dwcfi  save_reg_to_mem, 26, -4
+     260 000006 50F5          pshboth(XAR7)
+     261                      .dwcfi  cfa_offset, 5
+     262                      .dwcfi  save_reg_to_mem, 30, -5
+     263 000008 4EFB          SP = SP + #-5
+     264                      .dwcfi  cfa_offset, 10
+     265              $C$DW$29        .dwtag  DW_TAG_variable, DW_AT_name("xDontBlock")
+     266                      .dwattr $C$DW$29, DW_AT_TI_symbol_name("_xDontBlock")
+     267                      .dwattr $C$DW$29, DW_AT_type(*$C$DW$T$89)
+     268                      .dwattr $C$DW$29, DW_AT_location[DW_OP_bregx 0x24 2]
+     269              $C$DW$30        .dwtag  DW_TAG_variable, DW_AT_name("xBlockTime")
+     270                      .dwattr $C$DW$30, DW_AT_TI_symbol_name("_xBlockTime")
+     271                      .dwattr $C$DW$30, DW_AT_type(*$C$DW$T$89)
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE    6
+
+     272                      .dwattr $C$DW$30, DW_AT_location[DW_OP_bregx 0x24 0]
+     273              ;* T0    assigned to _uxQueueSize5
+     274              $C$DW$31        .dwtag  DW_TAG_variable, DW_AT_name("uxQueueSize5")
+     275                      .dwattr $C$DW$31, DW_AT_TI_symbol_name("_uxQueueSize5")
+     276                      .dwattr $C$DW$31, DW_AT_type(*$C$DW$T$86)
+     277                      .dwattr $C$DW$31, DW_AT_location[DW_OP_reg12]
+     278              ;* T3    assigned to _uxQueueSize1
+     279              $C$DW$32        .dwtag  DW_TAG_variable, DW_AT_name("uxQueueSize1")
+     280                      .dwattr $C$DW$32, DW_AT_TI_symbol_name("_uxQueueSize1")
+     281                      .dwattr $C$DW$32, DW_AT_type(*$C$DW$T$86)
+     282                      .dwattr $C$DW$32, DW_AT_location[DW_OP_reg15]
+     283              ;* AR7   assigned to _pxQueueParameters6
+     284              $C$DW$33        .dwtag  DW_TAG_variable, DW_AT_name("pxQueueParameters6")
+     285                      .dwattr $C$DW$33, DW_AT_TI_symbol_name("_pxQueueParameters6")
+     286                      .dwattr $C$DW$33, DW_AT_type(*$C$DW$T$94)
+     287                      .dwattr $C$DW$33, DW_AT_location[DW_OP_reg31]
+     288              ;* AR5   assigned to _pxQueueParameters5
+     289              $C$DW$34        .dwtag  DW_TAG_variable, DW_AT_name("pxQueueParameters5")
+     290                      .dwattr $C$DW$34, DW_AT_TI_symbol_name("_pxQueueParameters5")
+     291                      .dwattr $C$DW$34, DW_AT_type(*$C$DW$T$94)
+     292                      .dwattr $C$DW$34, DW_AT_location[DW_OP_reg27]
+     293              ;* AR7   assigned to _pxQueueParameters4
+     294              $C$DW$35        .dwtag  DW_TAG_variable, DW_AT_name("pxQueueParameters4")
+     295                      .dwattr $C$DW$35, DW_AT_TI_symbol_name("_pxQueueParameters4")
+     296                      .dwattr $C$DW$35, DW_AT_type(*$C$DW$T$94)
+     297                      .dwattr $C$DW$35, DW_AT_location[DW_OP_reg31]
+     298              ;* AR5   assigned to _pxQueueParameters3
+     299              $C$DW$36        .dwtag  DW_TAG_variable, DW_AT_name("pxQueueParameters3")
+     300                      .dwattr $C$DW$36, DW_AT_TI_symbol_name("_pxQueueParameters3")
+     301                      .dwattr $C$DW$36, DW_AT_type(*$C$DW$T$94)
+     302                      .dwattr $C$DW$36, DW_AT_location[DW_OP_reg27]
+     303              ;* AR7   assigned to _pxQueueParameters2
+     304              $C$DW$37        .dwtag  DW_TAG_variable, DW_AT_name("pxQueueParameters2")
+     305                      .dwattr $C$DW$37, DW_AT_TI_symbol_name("_pxQueueParameters2")
+     306                      .dwattr $C$DW$37, DW_AT_type(*$C$DW$T$94)
+     307                      .dwattr $C$DW$37, DW_AT_location[DW_OP_reg31]
+     308              ;* AR5   assigned to _pxQueueParameters1
+     309              $C$DW$38        .dwtag  DW_TAG_variable, DW_AT_name("pxQueueParameters1")
+     310                      .dwattr $C$DW$38, DW_AT_TI_symbol_name("_pxQueueParameters1")
+     311                      .dwattr $C$DW$38, DW_AT_type(*$C$DW$T$94)
+     312                      .dwattr $C$DW$38, DW_AT_location[DW_OP_reg27]
+     313              ;* T2    assigned to _uxPriority
+     314              $C$DW$39        .dwtag  DW_TAG_variable, DW_AT_name("uxPriority")
+     315                      .dwattr $C$DW$39, DW_AT_TI_symbol_name("_uxPriority")
+     316                      .dwattr $C$DW$39, DW_AT_type(*$C$DW$T$11)
+     317                      .dwattr $C$DW$39, DW_AT_location[DW_OP_reg14]
+     318 00000a 2246          T2 = T0   ; |127| 
+     319                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 138,column 2,is_stmt
+     320              $C$DW$40        .dwtag  DW_TAG_TI_branch
+     321                      .dwattr $C$DW$40, DW_AT_low_pc(0x00)
+     322                      .dwattr $C$DW$40, DW_AT_name("_pvPortMalloc")
+     323                      .dwattr $C$DW$40, DW_AT_TI_call
+     324              
+     325 00000c 6C00          call #_pvPortMalloc ; |138| 
+         00000e 0000!
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE    7
+
+     326 000010 3D60  ||      AC0 = #6  ; |138| 
+     327              
+     328                                                      ; call occurs [#_pvPortMalloc] ; |138| 
+     329 000012 EC01          XAR5 = mar(*AR0)
+         000014 DE   
+     330                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 142,column 2,is_stmt
+     331              
+     332 000015 3C15          T1 = #1
+     333 000017 3D17  ||      T3 = #1
+     334              
+     335              $C$DW$41        .dwtag  DW_TAG_TI_branch
+     336                      .dwattr $C$DW$41, DW_AT_low_pc(0x00)
+     337                      .dwattr $C$DW$41, DW_AT_name("_xQueueCreate")
+     338                      .dwattr $C$DW$41, DW_AT_TI_call
+     339              
+     340 000019 6C00          call #_xQueueCreate ; |142| 
+         00001b 0000!
+     341 00001d 2374  ||      T0 = T3   ; |142| 
+     342              
+     343                                                      ; call occurs [#_xQueueCreate] ; |142| 
+     344 00001f EBA1          dbl(*AR5) = XAR0
+         000021 85   
+     345                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 145,column 2,is_stmt
+     346 000022 7603          AC0 = #1000 ; |145| 
+         000024 E808 
+     347 000026 EB00          dbl(*SP(#0)) = AC0 ; |145| 
+         000028 08   
+     348 000029 ED00          AC0 = dbl(*SP(#0)) ; |145| 
+         00002b 08   
+     349 00002c EBB5          dbl(*AR5(short(#2))) = AC0 ; |145| 
+         00002e 08   
+     350                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 149,column 2,is_stmt
+     351 00002f EC31          XAR3 = #_sBlockingConsumerCount ; |149| 
+         000031 BE00 
+         000033 0000-
+     352 000035 EBB9          dbl(*AR5(short(#4))) = XAR3
+         000037 B5   
+     353                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 152,column 2,is_stmt
+     354              $C$DW$42        .dwtag  DW_TAG_TI_branch
+     355                      .dwattr $C$DW$42, DW_AT_low_pc(0x00)
+     356                      .dwattr $C$DW$42, DW_AT_name("_pvPortMalloc")
+     357                      .dwattr $C$DW$42, DW_AT_TI_call
+     358              
+     359 000038 6C00          call #_pvPortMalloc ; |152| 
+         00003a 0000!
+     360 00003c 3D60  ||      AC0 = #6  ; |152| 
+     361              
+     362                                                      ; call occurs [#_pvPortMalloc] ; |152| 
+     363 00003e EC01          XAR7 = mar(*AR0)
+         000040 FE   
+     364                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 155,column 2,is_stmt
+     365 000041 80A3          dbl(*AR7) = dbl(*AR5)
+         000043 80   
+     366                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 159,column 2,is_stmt
+     367 000044 3C00          AC0 = #0  ; |159| 
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE    8
+
+     368 000046 EB04          dbl(*SP(#2)) = AC0 ; |159| 
+         000048 08   
+     369 000049 ED04          AC0 = dbl(*SP(#2)) ; |159| 
+         00004b 08   
+     370 00004c EBF5          dbl(*AR7(short(#2))) = AC0 ; |159| 
+         00004e 08   
+     371                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 163,column 2,is_stmt
+     372 00004f EC31          XAR3 = #_sBlockingProducerCount ; |163| 
+         000051 BE00 
+         000053 0003-
+     373 000055 EBF9          dbl(*AR7(short(#4))) = XAR3
+         000057 B5   
+     374                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 168,column 2,is_stmt
+     375 000058 7A00          AC0 = #(_vBlockingQueueConsumer >> 16) << #16 ; |168| 
+         00005a 000A%
+     376 00005c EC31          XAR0 = #$C$FSL1 ; |168| 
+         00005e 8E00 
+         000060 0000+
+     377 000062 7600          T0 = #64  ; |168| 
+         000064 4048 
+     378 000066 EC31          XAR4 = #0 ; |168| 
+         000068 CE00 
+         00006a 0000 
+     379 00006c EC31          XAR2 = #0 ; |168| 
+         00006e AE00 
+         000070 0000 
+     380 000072 7E00          AC0 = AC0 | #(_vBlockingQueueConsumer & 0xffff) ; |168| 
+         000074 0000%
+     381 000076 EC31          XAR3 = #0 ; |168| 
+         000078 BE00 
+         00007a 0000 
+     382 00007c ECA1          XAR1 = mar(*AR5)
+         00007e 9E   
+     383              $C$DW$43        .dwtag  DW_TAG_TI_branch
+     384                      .dwattr $C$DW$43, DW_AT_low_pc(0x00)
+     385                      .dwattr $C$DW$43, DW_AT_name("_xTaskGenericCreate")
+     386                      .dwattr $C$DW$43, DW_AT_TI_call
+     387              
+     388 00007f 6C00          call #_xTaskGenericCreate ; |168| 
+         000081 0000!
+     389 000083 2365  ||      T1 = T2   ; |168| 
+     390              
+     391                                                      ; call occurs [#_xTaskGenericCreate] ; |168| 
+     392                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 169,column 2,is_stmt
+     393 000085 7600          T0 = #64  ; |169| 
+         000087 4048 
+     394 000089 EC31          XAR4 = #0 ; |169| 
+         00008b CE00 
+         00008d 0000 
+     395 00008f EC31          XAR2 = #0 ; |169| 
+         000091 AE00 
+         000093 0000 
+     396 000095 EC31          XAR0 = #$C$FSL2 ; |169| 
+         000097 8E00 
+         000099 0008+
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE    9
+
+     397 00009b ECE1          XAR1 = mar(*AR7)
+         00009d 9E   
+     398 00009e EC31          XAR3 = #0 ; |169| 
+         0000a0 BE00 
+         0000a2 0000 
+     399 0000a4 7A00          AC0 = #(_vBlockingQueueProducer >> 16) << #16 ; |169| 
+         0000a6 000A%
+     400 0000a8 7E00          AC0 = AC0 | #(_vBlockingQueueProducer & 0xffff) ; |169| 
+         0000aa 0000%
+     401              $C$DW$44        .dwtag  DW_TAG_TI_branch
+     402                      .dwattr $C$DW$44, DW_AT_low_pc(0x00)
+     403                      .dwattr $C$DW$44, DW_AT_name("_xTaskGenericCreate")
+     404                      .dwattr $C$DW$44, DW_AT_TI_call
+     405              
+     406 0000ac 6C00          call #_xTaskGenericCreate ; |169| 
+         0000ae 0000!
+     407 0000b0 3D05  ||      T1 = #0
+     408              
+     409                                                      ; call occurs [#_xTaskGenericCreate] ; |169| 
+     410                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 176,column 2,is_stmt
+     411              $C$DW$45        .dwtag  DW_TAG_TI_branch
+     412                      .dwattr $C$DW$45, DW_AT_low_pc(0x00)
+     413                      .dwattr $C$DW$45, DW_AT_name("_pvPortMalloc")
+     414                      .dwattr $C$DW$45, DW_AT_TI_call
+     415              
+     416 0000b2 6C00          call #_pvPortMalloc ; |176| 
+         0000b4 0000!
+     417 0000b6 3D60  ||      AC0 = #6  ; |176| 
+     418              
+     419                                                      ; call occurs [#_pvPortMalloc] ; |176| 
+     420 0000b8 EC01          XAR5 = mar(*AR0)
+         0000ba DE   
+     421                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 177,column 2,is_stmt
+     422 0000bb 3C15          T1 = #1
+     423              $C$DW$46        .dwtag  DW_TAG_TI_branch
+     424                      .dwattr $C$DW$46, DW_AT_low_pc(0x00)
+     425                      .dwattr $C$DW$46, DW_AT_name("_xQueueCreate")
+     426                      .dwattr $C$DW$46, DW_AT_TI_call
+     427              
+     428 0000bd 6C00          call #_xQueueCreate ; |177| 
+         0000bf 0000!
+     429 0000c1 2374  ||      T0 = T3   ; |177| 
+     430              
+     431                                                      ; call occurs [#_xQueueCreate] ; |177| 
+     432 0000c3 EBA1          dbl(*AR5) = XAR0
+         0000c5 85   
+     433                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 178,column 2,is_stmt
+     434 0000c6 ED04          AC0 = dbl(*SP(#2))
+         0000c8 08   
+     435 0000c9 EBB5          dbl(*AR5(short(#2))) = AC0 ; |178| 
+         0000cb 08   
+     436                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 179,column 2,is_stmt
+     437 0000cc EC31          XAR3 = #(_sBlockingProducerCount+1) ; |179| 
+         0000ce BE00 
+         0000d0 0004-
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   10
+
+     438 0000d2 EBB9          dbl(*AR5(short(#4))) = XAR3
+         0000d4 B5   
+     439                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 181,column 2,is_stmt
+     440              $C$DW$47        .dwtag  DW_TAG_TI_branch
+     441                      .dwattr $C$DW$47, DW_AT_low_pc(0x00)
+     442                      .dwattr $C$DW$47, DW_AT_name("_pvPortMalloc")
+     443                      .dwattr $C$DW$47, DW_AT_TI_call
+     444              
+     445 0000d5 6C00          call #_pvPortMalloc ; |181| 
+         0000d7 0000!
+     446 0000d9 3D60  ||      AC0 = #6  ; |181| 
+     447              
+     448                                                      ; call occurs [#_pvPortMalloc] ; |181| 
+     449 0000db EC01          XAR7 = mar(*AR0)
+         0000dd FE   
+     450                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 182,column 2,is_stmt
+     451 0000de 80A3          dbl(*AR7) = dbl(*AR5)
+         0000e0 80   
+     452                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 183,column 2,is_stmt
+     453 0000e1 ED00          AC0 = dbl(*SP(#0))
+         0000e3 08   
+     454 0000e4 EBF5          dbl(*AR7(short(#2))) = AC0 ; |183| 
+         0000e6 08   
+     455                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 184,column 2,is_stmt
+     456 0000e7 EC31          XAR3 = #(_sBlockingConsumerCount+1) ; |184| 
+         0000e9 BE00 
+         0000eb 0001-
+     457 0000ed EBF9          dbl(*AR7(short(#4))) = XAR3
+         0000ef B5   
+     458                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 186,column 2,is_stmt
+     459 0000f0 7A00          AC0 = #(_vBlockingQueueConsumer >> 16) << #16 ; |186| 
+         0000f2 000A%
+     460 0000f4 EC31          XAR0 = #$C$FSL3 ; |186| 
+         0000f6 8E00 
+         0000f8 0010+
+     461 0000fa 7600          T0 = #64  ; |186| 
+         0000fc 4048 
+     462 0000fe 7E00          AC0 = AC0 | #(_vBlockingQueueConsumer & 0xffff) ; |186| 
+         000100 0000%
+     463 000102 EC31          XAR3 = #0 ; |186| 
+         000104 BE00 
+         000106 0000 
+     464 000108 EC31          XAR4 = #0 ; |186| 
+         00010a CE00 
+         00010c 0000 
+     465 00010e EC31          XAR2 = #0 ; |186| 
+         000110 AE00 
+         000112 0000 
+     466 000114 ECA1          XAR1 = mar(*AR5)
+         000116 9E   
+     467              $C$DW$48        .dwtag  DW_TAG_TI_branch
+     468                      .dwattr $C$DW$48, DW_AT_low_pc(0x00)
+     469                      .dwattr $C$DW$48, DW_AT_name("_xTaskGenericCreate")
+     470                      .dwattr $C$DW$48, DW_AT_TI_call
+     471              
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   11
+
+     472 000117 6C00          call #_xTaskGenericCreate ; |186| 
+         000119 0000!
+     473 00011b 3D05  ||      T1 = #0
+     474              
+     475                                                      ; call occurs [#_xTaskGenericCreate] ; |186| 
+     476                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 187,column 2,is_stmt
+     477 00011d 7600          T0 = #64  ; |187| 
+         00011f 4048 
+     478 000121 EC31          XAR4 = #0 ; |187| 
+         000123 CE00 
+         000125 0000 
+     479 000127 EC31          XAR3 = #0 ; |187| 
+         000129 BE00 
+         00012b 0000 
+     480 00012d EC31          XAR2 = #0 ; |187| 
+         00012f AE00 
+         000131 0000 
+     481 000133 EC31          XAR0 = #$C$FSL4 ; |187| 
+         000135 8E00 
+         000137 0018+
+     482 000139 ECE1          XAR1 = mar(*AR7)
+         00013b 9E   
+     483 00013c 7A00          AC0 = #(_vBlockingQueueProducer >> 16) << #16 ; |187| 
+         00013e 000A%
+     484 000140 7E00          AC0 = AC0 | #(_vBlockingQueueProducer & 0xffff) ; |187| 
+         000142 0000%
+     485              $C$DW$49        .dwtag  DW_TAG_TI_branch
+     486                      .dwattr $C$DW$49, DW_AT_low_pc(0x00)
+     487                      .dwattr $C$DW$49, DW_AT_name("_xTaskGenericCreate")
+     488                      .dwattr $C$DW$49, DW_AT_TI_call
+     489              
+     490 000144 6C00          call #_xTaskGenericCreate ; |187| 
+         000146 0000!
+     491 000148 2365  ||      T1 = T2   ; |187| 
+     492              
+     493                                                      ; call occurs [#_xTaskGenericCreate] ; |187| 
+     494                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 193,column 2,is_stmt
+     495              $C$DW$50        .dwtag  DW_TAG_TI_branch
+     496                      .dwattr $C$DW$50, DW_AT_low_pc(0x00)
+     497                      .dwattr $C$DW$50, DW_AT_name("_pvPortMalloc")
+     498                      .dwattr $C$DW$50, DW_AT_TI_call
+     499              
+     500 00014a 6C00          call #_pvPortMalloc ; |193| 
+         00014c 0000!
+     501 00014e 3D60  ||      AC0 = #6  ; |193| 
+     502              
+     503                                                      ; call occurs [#_pvPortMalloc] ; |193| 
+     504              ;** 194 -----------------------    (*pxQueueParameters5).xQueue = xQueueCreate(uxQueueSize5 = 5u, 1u);
+     505              ;** 195 -----------------------    (*pxQueueParameters5).xBlockTime = xBlockTime;
+     506              ;** 196 -----------------------    (*pxQueueParameters5).psCheckVariable = &sBlockingProducerCount[2];
+     507              ;** 198 -----------------------    pxQueueParameters6 = (struct _BLOCKING_QUEUE_PARAMETERS *)pvPortMalloc(6uL
+     508              ;** 199 -----------------------    (*pxQueueParameters6).xQueue = (*pxQueueParameters5).xQueue;
+     509              ;** 200 -----------------------    (*pxQueueParameters6).xBlockTime = xBlockTime;
+     510              ;** 201 -----------------------    (*pxQueueParameters6).psCheckVariable = &sBlockingConsumerCount[2];
+     511              ;** 203 -----------------------    xTaskGenericCreate(&vBlockingQueueProducer, (char *)(char *)"QProdB5", 64u
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   12
+
+     512              ;** 204 -----------------------    xTaskGenericCreate(&vBlockingQueueConsumer, (char *)(char *)"QConsB6", 64u
+     513              ;**     -----------------------    return;
+     514 000150 EC01          XAR5 = mar(*AR0)
+         000152 DE   
+     515                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 194,column 2,is_stmt
+     516 000153 3C54          T0 = #5
+     517              $C$DW$51        .dwtag  DW_TAG_TI_branch
+     518                      .dwattr $C$DW$51, DW_AT_low_pc(0x00)
+     519                      .dwattr $C$DW$51, DW_AT_name("_xQueueCreate")
+     520                      .dwattr $C$DW$51, DW_AT_TI_call
+     521              
+     522 000155 6C00          call #_xQueueCreate ; |194| 
+         000157 0000!
+     523 000159 3D15  ||      T1 = #1
+     524              
+     525                                                      ; call occurs [#_xQueueCreate] ; |194| 
+     526 00015b EBA1          dbl(*AR5) = XAR0
+         00015d 85   
+     527                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 195,column 2,is_stmt
+     528 00015e ED00          AC0 = dbl(*SP(#0))
+         000160 08   
+     529 000161 EBB5          dbl(*AR5(short(#2))) = AC0 ; |195| 
+         000163 08   
+     530                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 196,column 2,is_stmt
+     531 000164 EC31          XAR3 = #(_sBlockingProducerCount+2) ; |196| 
+         000166 BE00 
+         000168 0005-
+     532 00016a EBB9          dbl(*AR5(short(#4))) = XAR3
+         00016c B5   
+     533                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 198,column 2,is_stmt
+     534              $C$DW$52        .dwtag  DW_TAG_TI_branch
+     535                      .dwattr $C$DW$52, DW_AT_low_pc(0x00)
+     536                      .dwattr $C$DW$52, DW_AT_name("_pvPortMalloc")
+     537                      .dwattr $C$DW$52, DW_AT_TI_call
+     538              
+     539 00016d 6C00          call #_pvPortMalloc ; |198| 
+         00016f 0000!
+     540 000171 3D60  ||      AC0 = #6  ; |198| 
+     541              
+     542                                                      ; call occurs [#_pvPortMalloc] ; |198| 
+     543 000173 EC01          XAR7 = mar(*AR0)
+         000175 FE   
+     544                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 199,column 2,is_stmt
+     545 000176 80A3          dbl(*AR7) = dbl(*AR5)
+         000178 80   
+     546                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 200,column 2,is_stmt
+     547 000179 ED00          AC0 = dbl(*SP(#0))
+         00017b 08   
+     548 00017c EBF5          dbl(*AR7(short(#2))) = AC0 ; |200| 
+         00017e 08   
+     549                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 201,column 2,is_stmt
+     550 00017f EC31          XAR3 = #(_sBlockingConsumerCount+2) ; |201| 
+         000181 BE00 
+         000183 0002-
+     551 000185 EBF9          dbl(*AR7(short(#4))) = XAR3
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   13
+
+         000187 B5   
+     552                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 203,column 2,is_stmt
+     553 000188 7A00          AC0 = #(_vBlockingQueueProducer >> 16) << #16 ; |203| 
+         00018a 000A%
+     554 00018c EC31          XAR0 = #$C$FSL5 ; |203| 
+         00018e 8E00 
+         000190 0020+
+     555 000192 7600          T0 = #64  ; |203| 
+         000194 4048 
+     556 000196 EC31          XAR4 = #0 ; |203| 
+         000198 CE00 
+         00019a 0000 
+     557 00019c EC31          XAR2 = #0 ; |203| 
+         00019e AE00 
+         0001a0 0000 
+     558 0001a2 ECA1          XAR1 = mar(*AR5)
+         0001a4 9E   
+     559 0001a5 7E00          AC0 = AC0 | #(_vBlockingQueueProducer & 0xffff) ; |203| 
+         0001a7 0000%
+     560 0001a9 EC31          XAR3 = #0 ; |203| 
+         0001ab BE00 
+         0001ad 0000 
+     561              $C$DW$53        .dwtag  DW_TAG_TI_branch
+     562                      .dwattr $C$DW$53, DW_AT_low_pc(0x00)
+     563                      .dwattr $C$DW$53, DW_AT_name("_xTaskGenericCreate")
+     564                      .dwattr $C$DW$53, DW_AT_TI_call
+     565              
+     566 0001af 6C00          call #_xTaskGenericCreate ; |203| 
+         0001b1 0000!
+     567 0001b3 3D05  ||      T1 = #0
+     568              
+     569                                                      ; call occurs [#_xTaskGenericCreate] ; |203| 
+     570                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 204,column 2,is_stmt
+     571 0001b5 7600          T0 = #64  ; |204| 
+         0001b7 4048 
+     572 0001b9 EC31          XAR4 = #0 ; |204| 
+         0001bb CE00 
+         0001bd 0000 
+     573 0001bf EC31          XAR2 = #0 ; |204| 
+         0001c1 AE00 
+         0001c3 0000 
+     574 0001c5 EC31          XAR0 = #$C$FSL6 ; |204| 
+         0001c7 8E00 
+         0001c9 0028+
+     575 0001cb ECE1          XAR1 = mar(*AR7)
+         0001cd 9E   
+     576 0001ce EC31          XAR3 = #0 ; |204| 
+         0001d0 BE00 
+         0001d2 0000 
+     577 0001d4 7A00          AC0 = #(_vBlockingQueueConsumer >> 16) << #16 ; |204| 
+         0001d6 000A%
+     578 0001d8 7E00          AC0 = AC0 | #(_vBlockingQueueConsumer & 0xffff) ; |204| 
+         0001da 0000%
+     579              $C$DW$54        .dwtag  DW_TAG_TI_branch
+     580                      .dwattr $C$DW$54, DW_AT_low_pc(0x00)
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   14
+
+     581                      .dwattr $C$DW$54, DW_AT_name("_xTaskGenericCreate")
+     582                      .dwattr $C$DW$54, DW_AT_TI_call
+     583              
+     584 0001dc 6C00          call #_xTaskGenericCreate ; |204| 
+         0001de 0000!
+     585 0001e0 3D05  ||      T1 = #0
+     586              
+     587                                                      ; call occurs [#_xTaskGenericCreate] ; |204| 
+     588                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 205,column 1,is_stmt
+     589 0001e2 4E05          SP = SP + #5
+     590                      .dwcfi  cfa_offset, 5
+     591 0001e4 50F4          XAR7 = popboth()
+     592                      .dwcfi  restore_reg, 30
+     593                      .dwcfi  cfa_offset, 4
+     594 0001e6 50D4          XAR5 = popboth()
+     595                      .dwcfi  restore_reg, 26
+     596                      .dwcfi  cfa_offset, 3
+     597 0001e8 5072          T3 = pop()
+     598                      .dwcfi  restore_reg, 15
+     599                      .dwcfi  cfa_offset, 2
+     600 0001ea 5062          T2 = pop()
+     601                      .dwcfi  restore_reg, 14
+     602                      .dwcfi  cfa_offset, 1
+     603              $C$DW$55        .dwtag  DW_TAG_TI_branch
+     604                      .dwattr $C$DW$55, DW_AT_low_pc(0x00)
+     605                      .dwattr $C$DW$55, DW_AT_TI_return
+     606 0001ec 4804          return
+     607                                                      ; return occurs
+     608                      .dwattr $C$DW$27, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+     609                      .dwattr $C$DW$27, DW_AT_TI_end_line(0xcd)
+     610                      .dwattr $C$DW$27, DW_AT_TI_end_column(0x01)
+     611                      .dwendentry
+     612                      .dwendtag $C$DW$27
+     613              
+     614 0001ee               .sect   ".text"
+     615              
+     616              $C$DW$56        .dwtag  DW_TAG_subprogram, DW_AT_name("vBlockingQueueProducer")
+     617                      .dwattr $C$DW$56, DW_AT_low_pc(_vBlockingQueueProducer)
+     618                      .dwattr $C$DW$56, DW_AT_high_pc(0x00)
+     619                      .dwattr $C$DW$56, DW_AT_TI_symbol_name("_vBlockingQueueProducer")
+     620                      .dwattr $C$DW$56, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+     621                      .dwattr $C$DW$56, DW_AT_TI_begin_line(0xd0)
+     622                      .dwattr $C$DW$56, DW_AT_TI_begin_column(0x08)
+     623                      .dwattr $C$DW$56, DW_AT_decl_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+     624                      .dwattr $C$DW$56, DW_AT_decl_line(0xd0)
+     625                      .dwattr $C$DW$56, DW_AT_decl_column(0x08)
+     626                      .dwattr $C$DW$56, DW_AT_TI_max_frame_size(0x06)
+     627                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 209,column 1,is_stmt,address _vBlockingQ
+     628              
+     629                      .dwfde $C$DW$CIE, _vBlockingQueueProducer
+     630              $C$DW$57        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
+     631                      .dwattr $C$DW$57, DW_AT_TI_symbol_name("_pvParameters")
+     632                      .dwattr $C$DW$57, DW_AT_type(*$C$DW$T$3)
+     633                      .dwattr $C$DW$57, DW_AT_location[DW_OP_reg17]
+     634              ;*******************************************************************************
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   15
+
+     635              ;* FUNCTION NAME: vBlockingQueueProducer                                       *
+     636              ;*                                                                             *
+     637              ;*   Function Uses Regs : AC0,AC0,T0,T2,T3,AR0,XAR0,AR1,XAR1,AR3,XAR3,AR5,XAR5,*
+     638              ;*                        SP,CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL             *
+     639              ;*   Save On Entry Regs : T2,T3,AR5                                            *
+     640              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     641              ;*   Total Frame Size   : 6 words                                              *
+     642              ;*                        (2 return address/alignment)                         *
+     643              ;*                        (1 local values)                                     *
+     644              ;*                        (3 register save area)                               *
+     645              ;*   Min System Stack   : 2 words                                              *
+     646              ;*******************************************************************************
+     647              
+     648              ;*******************************************************************************
+     649              ;*                                                                             *
+     650              ;* Using -g (debug) with optimization (-o0) may disable key optimizations!     *
+     651              ;*                                                                             *
+     652              ;*******************************************************************************
+     653 0001ee       _vBlockingQueueProducer:
+     654              ;** 210 -----------------------    usValue = 0u;
+     655              ;** 212 -----------------------    sErrorEverOccurred = 0;
+     656              ;** 214 -----------------------    pxQueueParameters = (struct _BLOCKING_QUEUE_PARAMETERS *)pvParameters;
+     657              ;**     -----------------------    goto g5;
+     658                      .dwcfi  cfa_offset, 1
+     659                      .dwcfi  save_reg_to_mem, 91, -1
+     660 0001ee 5066          push(T2)
+     661                      .dwcfi  cfa_offset, 2
+     662                      .dwcfi  save_reg_to_mem, 14, -2
+     663 0001f0 5076          push(T3)
+     664                      .dwcfi  cfa_offset, 3
+     665                      .dwcfi  save_reg_to_mem, 15, -3
+     666 0001f2 50D5          pshboth(XAR5)
+     667                      .dwcfi  cfa_offset, 4
+     668                      .dwcfi  save_reg_to_mem, 26, -4
+     669 0001f4 4EFE          SP = SP + #-2
+     670                      .dwcfi  cfa_offset, 6
+     671              ;* T2    assigned to _sErrorEverOccurred
+     672              $C$DW$58        .dwtag  DW_TAG_variable, DW_AT_name("sErrorEverOccurred")
+     673                      .dwattr $C$DW$58, DW_AT_TI_symbol_name("_sErrorEverOccurred")
+     674                      .dwattr $C$DW$58, DW_AT_type(*$C$DW$T$8)
+     675                      .dwattr $C$DW$58, DW_AT_location[DW_OP_reg14]
+     676              ;* AR5   assigned to _pxQueueParameters
+     677              $C$DW$59        .dwtag  DW_TAG_variable, DW_AT_name("pxQueueParameters")
+     678                      .dwattr $C$DW$59, DW_AT_TI_symbol_name("_pxQueueParameters")
+     679                      .dwattr $C$DW$59, DW_AT_type(*$C$DW$T$94)
+     680                      .dwattr $C$DW$59, DW_AT_location[DW_OP_reg27]
+     681              $C$DW$60        .dwtag  DW_TAG_variable, DW_AT_name("usValue")
+     682                      .dwattr $C$DW$60, DW_AT_TI_symbol_name("_usValue")
+     683                      .dwattr $C$DW$60, DW_AT_type(*$C$DW$T$9)
+     684                      .dwattr $C$DW$60, DW_AT_location[DW_OP_bregx 0x24 0]
+     685              ;* AR0   assigned to _pvParameters
+     686              $C$DW$61        .dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
+     687                      .dwattr $C$DW$61, DW_AT_TI_symbol_name("_pvParameters")
+     688                      .dwattr $C$DW$61, DW_AT_type(*$C$DW$T$3)
+     689                      .dwattr $C$DW$61, DW_AT_location[DW_OP_reg17]
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   16
+
+     690                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 210,column 16,is_stmt
+     691 0001f6 E600          *SP(#0) = #0 ; |210| 
+         0001f8 00   
+     692                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 212,column 7,is_stmt
+     693 0001f9 3C06          T2 = #0
+     694                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 214,column 2,is_stmt
+     695 0001fb EC01          XAR5 = mar(*AR0)
+         0001fd DE   
+     696              
+     697 0001fe 4A0D          goto $C$L3
+     698 000200 3D17  ||      T3 = #1
+     699              
+     700                                                      ; branch occurs
+     701 000202       $C$L1:    
+     702 000202       $C$DW$L$_vBlockingQueueProducer$2$B:
+     703              ;**     -----------------------g2:
+     704              ;** 226 -----------------------    if ( sErrorEverOccurred ) goto g4;
+     705                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 226,column 4,is_stmt
+     706 000202 6396          if (T2 != #0) goto $C$L2 ; |226| 
+     707                                                      ; branchcc occurs ; |226| 
+     708 000204       $C$DW$L$_vBlockingQueueProducer$2$E:
+     709 000204       $C$DW$L$_vBlockingQueueProducer$3$B:
+     710              ;** 228 -----------------------    ++(*(*pxQueueParameters).psCheckVariable);
+     711                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 228,column 5,is_stmt
+     712 000204 EDB9          XAR3 = dbl(*AR5(short(#4)))
+         000206 BF   
+     713 000207 F761          *AR3 = *AR3 + #1 ; |228| 
+         000209 0001 
+     714 00020b       $C$DW$L$_vBlockingQueueProducer$3$E:
+     715 00020b       $C$L2:    
+     716 00020b       $C$DW$L$_vBlockingQueueProducer$4$B:
+     717              ;**     -----------------------g4:
+     718              ;** 233 -----------------------    ++usValue;
+     719                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 233,column 4,is_stmt
+     720 00020b F700          *SP(#0) = *SP(#0) + #1 ; |233| 
+         00020d 0001 
+     721 00020f       $C$DW$L$_vBlockingQueueProducer$4$E:
+     722 00020f       $C$L3:    
+     723 00020f       $C$DW$L$_vBlockingQueueProducer$5$B:
+     724              ;**     -----------------------g5:
+     725              ;**     -----------------------g5:
+     726              ;** 218 -----------------------    if ( xQueueGenericSend((*pxQueueParameters).xQueue, &usValue, (*pxQueuePar
+     727                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 218,column 3,is_stmt
+     728 00020f EDA1          XAR0 = dbl(*AR5)
+         000211 8F   
+     729 000212 EDB5          AC0 = dbl(*AR5(short(#2))) ; |218| 
+         000214 08   
+     730 000215 EC00          XAR1 = mar(*SP(#0))
+         000217 9E   
+     731              $C$DW$62        .dwtag  DW_TAG_TI_branch
+     732                      .dwattr $C$DW$62, DW_AT_low_pc(0x00)
+     733                      .dwattr $C$DW$62, DW_AT_name("_xQueueGenericSend")
+     734                      .dwattr $C$DW$62, DW_AT_TI_call
+     735              
+     736 000218 6C00          call #_xQueueGenericSend ; |218| 
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   17
+
+         00021a 0000!
+     737 00021c 3D04  ||      T0 = #0
+     738              
+     739                                                      ; call occurs [#_xQueueGenericSend] ; |218| 
+     740 00021e 1240          TC1 = (T0 == T3) ; |218| 
+         000220 70   
+     741 000221 0464          if (TC1) goto $C$L1 ; |218| 
+         000223 DE   
+     742                                                      ; branchcc occurs ; |218| 
+     743 000224       $C$DW$L$_vBlockingQueueProducer$5$E:
+     744 000224       $C$DW$L$_vBlockingQueueProducer$6$B:
+     745              ;** 220 -----------------------    sErrorEverOccurred = 1;
+     746              ;** 221 -----------------------    goto g5;
+     747                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 220,column 4,is_stmt
+     748 000224 3C16          T2 = #1
+     749                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 221,column 3,is_stmt
+     750 000226 4A67          goto $C$L3 ; |221| 
+     751                                                      ; branch occurs ; |221| 
+     752 000228       $C$DW$L$_vBlockingQueueProducer$6$E:
+     753                      .dwcfi  cfa_offset, 4
+     754                      .dwcfi  restore_reg, 26
+     755                      .dwcfi  cfa_offset, 3
+     756                      .dwcfi  restore_reg, 15
+     757                      .dwcfi  cfa_offset, 2
+     758                      .dwcfi  restore_reg, 14
+     759                      .dwcfi  cfa_offset, 1
+     760              
+     761              $C$DW$63        .dwtag  DW_TAG_TI_loop
+     762                      .dwattr $C$DW$63, DW_AT_name("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\Debug\BlockQ.asm:$C$L3:1
+     763                      .dwattr $C$DW$63, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+     764                      .dwattr $C$DW$63, DW_AT_TI_begin_line(0xda)
+     765                      .dwattr $C$DW$63, DW_AT_TI_end_line(0xe9)
+     766              $C$DW$64        .dwtag  DW_TAG_TI_loop_range
+     767                      .dwattr $C$DW$64, DW_AT_low_pc($C$DW$L$_vBlockingQueueProducer$5$B)
+     768                      .dwattr $C$DW$64, DW_AT_high_pc($C$DW$L$_vBlockingQueueProducer$5$E)
+     769              $C$DW$65        .dwtag  DW_TAG_TI_loop_range
+     770                      .dwattr $C$DW$65, DW_AT_low_pc($C$DW$L$_vBlockingQueueProducer$2$B)
+     771                      .dwattr $C$DW$65, DW_AT_high_pc($C$DW$L$_vBlockingQueueProducer$2$E)
+     772              $C$DW$66        .dwtag  DW_TAG_TI_loop_range
+     773                      .dwattr $C$DW$66, DW_AT_low_pc($C$DW$L$_vBlockingQueueProducer$3$B)
+     774                      .dwattr $C$DW$66, DW_AT_high_pc($C$DW$L$_vBlockingQueueProducer$3$E)
+     775              $C$DW$67        .dwtag  DW_TAG_TI_loop_range
+     776                      .dwattr $C$DW$67, DW_AT_low_pc($C$DW$L$_vBlockingQueueProducer$6$B)
+     777                      .dwattr $C$DW$67, DW_AT_high_pc($C$DW$L$_vBlockingQueueProducer$6$E)
+     778              $C$DW$68        .dwtag  DW_TAG_TI_loop_range
+     779                      .dwattr $C$DW$68, DW_AT_low_pc($C$DW$L$_vBlockingQueueProducer$4$B)
+     780                      .dwattr $C$DW$68, DW_AT_high_pc($C$DW$L$_vBlockingQueueProducer$4$E)
+     781                      .dwendtag $C$DW$63
+     782              
+     783                      .dwattr $C$DW$56, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+     784                      .dwattr $C$DW$56, DW_AT_TI_end_line(0xec)
+     785                      .dwattr $C$DW$56, DW_AT_TI_end_column(0x01)
+     786                      .dwendentry
+     787                      .dwendtag $C$DW$56
+     788              
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   18
+
+     789 000228               .sect   ".text"
+     790              
+     791              $C$DW$69        .dwtag  DW_TAG_subprogram, DW_AT_name("vBlockingQueueConsumer")
+     792                      .dwattr $C$DW$69, DW_AT_low_pc(_vBlockingQueueConsumer)
+     793                      .dwattr $C$DW$69, DW_AT_high_pc(0x00)
+     794                      .dwattr $C$DW$69, DW_AT_TI_symbol_name("_vBlockingQueueConsumer")
+     795                      .dwattr $C$DW$69, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+     796                      .dwattr $C$DW$69, DW_AT_TI_begin_line(0xef)
+     797                      .dwattr $C$DW$69, DW_AT_TI_begin_column(0x08)
+     798                      .dwattr $C$DW$69, DW_AT_decl_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+     799                      .dwattr $C$DW$69, DW_AT_decl_line(0xef)
+     800                      .dwattr $C$DW$69, DW_AT_decl_column(0x08)
+     801                      .dwattr $C$DW$69, DW_AT_TI_max_frame_size(0x06)
+     802                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 240,column 1,is_stmt,address _vBlockingQ
+     803              
+     804                      .dwfde $C$DW$CIE, _vBlockingQueueConsumer
+     805              $C$DW$70        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
+     806                      .dwattr $C$DW$70, DW_AT_TI_symbol_name("_pvParameters")
+     807                      .dwattr $C$DW$70, DW_AT_type(*$C$DW$T$3)
+     808                      .dwattr $C$DW$70, DW_AT_location[DW_OP_reg17]
+     809              ;*******************************************************************************
+     810              ;* FUNCTION NAME: vBlockingQueueConsumer                                       *
+     811              ;*                                                                             *
+     812              ;*   Function Uses Regs : AC0,AC0,T0,T2,T3,AR0,XAR0,AR1,XAR1,AR3,XAR3,AR5,XAR5,*
+     813              ;*                        AR6,SP,CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL         *
+     814              ;*   Save On Entry Regs : T2,T3,AR5,AR6                                        *
+     815              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     816              ;*   Total Frame Size   : 6 words                                              *
+     817              ;*                        (1 return address/alignment)                         *
+     818              ;*                        (1 local values)                                     *
+     819              ;*                        (4 register save area)                               *
+     820              ;*   Min System Stack   : 3 words                                              *
+     821              ;*******************************************************************************
+     822              
+     823              ;*******************************************************************************
+     824              ;*                                                                             *
+     825              ;* Using -g (debug) with optimization (-o0) may disable key optimizations!     *
+     826              ;*                                                                             *
+     827              ;*******************************************************************************
+     828 000228       _vBlockingQueueConsumer:
+     829              ;** 241 -----------------------    usExpectedValue = 0u;
+     830              ;** 243 -----------------------    sErrorEverOccurred = 0;
+     831              ;** 245 -----------------------    pxQueueParameters = (struct _BLOCKING_QUEUE_PARAMETERS *)pvParameters;
+     832              ;**     -----------------------    goto g5;
+     833                      .dwcfi  cfa_offset, 1
+     834                      .dwcfi  save_reg_to_mem, 91, -1
+     835 000228 5066          push(T2)
+     836                      .dwcfi  cfa_offset, 2
+     837                      .dwcfi  save_reg_to_mem, 14, -2
+     838 00022a 5076          push(T3)
+     839                      .dwcfi  cfa_offset, 3
+     840                      .dwcfi  save_reg_to_mem, 15, -3
+     841 00022c 50D5          pshboth(XAR5)
+     842                      .dwcfi  cfa_offset, 4
+     843                      .dwcfi  save_reg_to_mem, 26, -4
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   19
+
+     844 00022e 50E5          pshboth(XAR6)
+     845                      .dwcfi  cfa_offset, 5
+     846                      .dwcfi  save_reg_to_mem, 28, -5
+     847 000230 4EFF          SP = SP + #-1
+     848                      .dwcfi  cfa_offset, 6
+     849              ;* T3    assigned to _sErrorEverOccurred
+     850              $C$DW$71        .dwtag  DW_TAG_variable, DW_AT_name("sErrorEverOccurred")
+     851                      .dwattr $C$DW$71, DW_AT_TI_symbol_name("_sErrorEverOccurred")
+     852                      .dwattr $C$DW$71, DW_AT_type(*$C$DW$T$8)
+     853                      .dwattr $C$DW$71, DW_AT_location[DW_OP_reg15]
+     854              ;* AR5   assigned to _pxQueueParameters
+     855              $C$DW$72        .dwtag  DW_TAG_variable, DW_AT_name("pxQueueParameters")
+     856                      .dwattr $C$DW$72, DW_AT_TI_symbol_name("_pxQueueParameters")
+     857                      .dwattr $C$DW$72, DW_AT_type(*$C$DW$T$94)
+     858                      .dwattr $C$DW$72, DW_AT_location[DW_OP_reg27]
+     859              ;* T2    assigned to _usExpectedValue
+     860              $C$DW$73        .dwtag  DW_TAG_variable, DW_AT_name("usExpectedValue")
+     861                      .dwattr $C$DW$73, DW_AT_TI_symbol_name("_usExpectedValue")
+     862                      .dwattr $C$DW$73, DW_AT_type(*$C$DW$T$9)
+     863                      .dwattr $C$DW$73, DW_AT_location[DW_OP_reg14]
+     864              $C$DW$74        .dwtag  DW_TAG_variable, DW_AT_name("usData")
+     865                      .dwattr $C$DW$74, DW_AT_TI_symbol_name("_usData")
+     866                      .dwattr $C$DW$74, DW_AT_type(*$C$DW$T$9)
+     867                      .dwattr $C$DW$74, DW_AT_location[DW_OP_bregx 0x24 0]
+     868              ;* AR0   assigned to _pvParameters
+     869              $C$DW$75        .dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
+     870                      .dwattr $C$DW$75, DW_AT_TI_symbol_name("_pvParameters")
+     871                      .dwattr $C$DW$75, DW_AT_type(*$C$DW$T$3)
+     872                      .dwattr $C$DW$75, DW_AT_location[DW_OP_reg17]
+     873                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 241,column 24,is_stmt
+     874 000232 3C06          T2 = #0
+     875                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 243,column 7,is_stmt
+     876 000234 3C07          T3 = #0
+     877                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 245,column 2,is_stmt
+     878 000236 EC01          XAR5 = mar(*AR0)
+         000238 DE   
+     879              
+     880 000239 4A0B          goto $C$L6
+     881 00023b 3D1E  ||      AR6 = #1
+     882              
+     883                                                      ; branch occurs
+     884 00023d       $C$L4:    
+     885 00023d       $C$DW$L$_vBlockingQueueConsumer$2$B:
+     886              ;**     -----------------------g2:
+     887              ;** 262 -----------------------    if ( sErrorEverOccurred ) goto g4;
+     888                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 262,column 5,is_stmt
+     889 00023d 6397          if (T3 != #0) goto $C$L5 ; |262| 
+     890                                                      ; branchcc occurs ; |262| 
+     891 00023f       $C$DW$L$_vBlockingQueueConsumer$2$E:
+     892 00023f       $C$DW$L$_vBlockingQueueConsumer$3$B:
+     893              ;** 264 -----------------------    ++(*(*pxQueueParameters).psCheckVariable);
+     894                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 264,column 6,is_stmt
+     895 00023f EDB9          XAR3 = dbl(*AR5(short(#4)))
+         000241 BF   
+     896 000242 F761          *AR3 = *AR3 + #1 ; |264| 
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   20
+
+         000244 0001 
+     897 000246       $C$DW$L$_vBlockingQueueConsumer$3$E:
+     898 000246       $C$L5:    
+     899 000246       $C$DW$L$_vBlockingQueueConsumer$4$B:
+     900              ;**     -----------------------g4:
+     901              ;** 269 -----------------------    ++usExpectedValue;
+     902                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 269,column 5,is_stmt
+     903 000246 4016          T2 = T2 + #1 ; |269| 
+     904 000248       $C$DW$L$_vBlockingQueueConsumer$4$E:
+     905 000248       $C$L6:    
+     906 000248       $C$DW$L$_vBlockingQueueConsumer$5$B:
+     907              ;**     -----------------------g5:
+     908              ;**     -----------------------g5:
+     909              ;** 249 -----------------------    if ( xQueueGenericReceive((*pxQueueParameters).xQueue, &usData, (*pxQueueP
+     910                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 249,column 3,is_stmt
+     911 000248 EDA1          XAR0 = dbl(*AR5)
+         00024a 8F   
+     912 00024b EDB5          AC0 = dbl(*AR5(short(#2))) ; |249| 
+         00024d 08   
+     913 00024e EC00          XAR1 = mar(*SP(#0))
+         000250 9E   
+     914              $C$DW$76        .dwtag  DW_TAG_TI_branch
+     915                      .dwattr $C$DW$76, DW_AT_low_pc(0x00)
+     916                      .dwattr $C$DW$76, DW_AT_name("_xQueueGenericReceive")
+     917                      .dwattr $C$DW$76, DW_AT_TI_call
+     918              
+     919 000251 6C00          call #_xQueueGenericReceive ; |249| 
+         000253 0000!
+     920 000255 3D04  ||      T0 = #0
+     921              
+     922                                                      ; call occurs [#_xQueueGenericReceive] ; |249| 
+     923 000257 124C          TC1 = (T0 != AR6) ; |249| 
+         000259 E0   
+     924 00025a 0464          if (TC1) goto $C$L6 ; |249| 
+         00025c EB   
+     925                                                      ; branchcc occurs ; |249| 
+     926 00025d       $C$DW$L$_vBlockingQueueConsumer$5$E:
+     927 00025d       $C$DW$L$_vBlockingQueueConsumer$6$B:
+     928              ;** 251 -----------------------    if ( usData == usExpectedValue ) goto g2;
+     929                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 251,column 4,is_stmt
+     930 00025d A900          AR1 = *SP(#0) ; |251| 
+     931 00025f 1290          TC1 = uns(AR1 == T2) ; |251| 
+         000261 64   
+     932 000262 0464          if (TC1) goto $C$L4 ; |251| 
+         000264 D8   
+     933                                                      ; branchcc occurs ; |251| 
+     934 000265       $C$DW$L$_vBlockingQueueConsumer$6$E:
+     935 000265       $C$DW$L$_vBlockingQueueConsumer$7$B:
+     936              ;** 254 -----------------------    usExpectedValue = usData;
+     937              ;** 256 -----------------------    sErrorEverOccurred = 1;
+     938              ;** 257 -----------------------    goto g5;
+     939                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 254,column 5,is_stmt
+     940 000265 2296          T2 = AR1
+     941                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 256,column 5,is_stmt
+     942 000267 3C17          T3 = #1
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   21
+
+     943                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 257,column 4,is_stmt
+     944 000269 4A5D          goto $C$L6 ; |257| 
+     945                                                      ; branch occurs ; |257| 
+     946 00026b       $C$DW$L$_vBlockingQueueConsumer$7$E:
+     947                      .dwcfi  cfa_offset, 5
+     948                      .dwcfi  restore_reg, 28
+     949                      .dwcfi  cfa_offset, 4
+     950                      .dwcfi  restore_reg, 26
+     951                      .dwcfi  cfa_offset, 3
+     952                      .dwcfi  restore_reg, 15
+     953                      .dwcfi  cfa_offset, 2
+     954                      .dwcfi  restore_reg, 14
+     955                      .dwcfi  cfa_offset, 1
+     956              
+     957              $C$DW$77        .dwtag  DW_TAG_TI_loop
+     958                      .dwattr $C$DW$77, DW_AT_name("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\Debug\BlockQ.asm:$C$L6:1
+     959                      .dwattr $C$DW$77, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+     960                      .dwattr $C$DW$77, DW_AT_TI_begin_line(0xf9)
+     961                      .dwattr $C$DW$77, DW_AT_TI_end_line(0x10d)
+     962              $C$DW$78        .dwtag  DW_TAG_TI_loop_range
+     963                      .dwattr $C$DW$78, DW_AT_low_pc($C$DW$L$_vBlockingQueueConsumer$5$B)
+     964                      .dwattr $C$DW$78, DW_AT_high_pc($C$DW$L$_vBlockingQueueConsumer$5$E)
+     965              $C$DW$79        .dwtag  DW_TAG_TI_loop_range
+     966                      .dwattr $C$DW$79, DW_AT_low_pc($C$DW$L$_vBlockingQueueConsumer$6$B)
+     967                      .dwattr $C$DW$79, DW_AT_high_pc($C$DW$L$_vBlockingQueueConsumer$6$E)
+     968              $C$DW$80        .dwtag  DW_TAG_TI_loop_range
+     969                      .dwattr $C$DW$80, DW_AT_low_pc($C$DW$L$_vBlockingQueueConsumer$2$B)
+     970                      .dwattr $C$DW$80, DW_AT_high_pc($C$DW$L$_vBlockingQueueConsumer$2$E)
+     971              $C$DW$81        .dwtag  DW_TAG_TI_loop_range
+     972                      .dwattr $C$DW$81, DW_AT_low_pc($C$DW$L$_vBlockingQueueConsumer$3$B)
+     973                      .dwattr $C$DW$81, DW_AT_high_pc($C$DW$L$_vBlockingQueueConsumer$3$E)
+     974              $C$DW$82        .dwtag  DW_TAG_TI_loop_range
+     975                      .dwattr $C$DW$82, DW_AT_low_pc($C$DW$L$_vBlockingQueueConsumer$7$B)
+     976                      .dwattr $C$DW$82, DW_AT_high_pc($C$DW$L$_vBlockingQueueConsumer$7$E)
+     977              $C$DW$83        .dwtag  DW_TAG_TI_loop_range
+     978                      .dwattr $C$DW$83, DW_AT_low_pc($C$DW$L$_vBlockingQueueConsumer$4$B)
+     979                      .dwattr $C$DW$83, DW_AT_high_pc($C$DW$L$_vBlockingQueueConsumer$4$E)
+     980                      .dwendtag $C$DW$77
+     981              
+     982                      .dwattr $C$DW$69, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+     983                      .dwattr $C$DW$69, DW_AT_TI_end_line(0x111)
+     984                      .dwattr $C$DW$69, DW_AT_TI_end_column(0x01)
+     985                      .dwendentry
+     986                      .dwendtag $C$DW$69
+     987              
+     988 00026b               .sect   ".text"
+     989                      .global _xAreBlockingQueuesStillRunning
+     990              
+     991              $C$DW$84        .dwtag  DW_TAG_subprogram, DW_AT_name("xAreBlockingQueuesStillRunning")
+     992                      .dwattr $C$DW$84, DW_AT_low_pc(_xAreBlockingQueuesStillRunning)
+     993                      .dwattr $C$DW$84, DW_AT_high_pc(0x00)
+     994                      .dwattr $C$DW$84, DW_AT_TI_symbol_name("_xAreBlockingQueuesStillRunning")
+     995                      .dwattr $C$DW$84, DW_AT_external
+     996                      .dwattr $C$DW$84, DW_AT_type(*$C$DW$T$10)
+     997                      .dwattr $C$DW$84, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   22
+
+     998                      .dwattr $C$DW$84, DW_AT_TI_begin_line(0x115)
+     999                      .dwattr $C$DW$84, DW_AT_TI_begin_column(0x0f)
+    1000                      .dwattr $C$DW$84, DW_AT_decl_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+    1001                      .dwattr $C$DW$84, DW_AT_decl_line(0x115)
+    1002                      .dwattr $C$DW$84, DW_AT_decl_column(0x0f)
+    1003                      .dwattr $C$DW$84, DW_AT_TI_max_frame_size(0x01)
+    1004                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 278,column 1,is_stmt,address _xAreBlocki
+    1005              
+    1006                      .dwfde $C$DW$CIE, _xAreBlockingQueuesStillRunning
+    1007              $C$DW$85        .dwtag  DW_TAG_variable, DW_AT_name("sLastBlockingConsumerCount")
+    1008                      .dwattr $C$DW$85, DW_AT_TI_symbol_name("_sLastBlockingConsumerCount$1")
+    1009                      .dwattr $C$DW$85, DW_AT_type(*$C$DW$T$65)
+    1010                      .dwattr $C$DW$85, DW_AT_location[DW_OP_addr _sLastBlockingConsumerCount$1]
+    1011              $C$DW$86        .dwtag  DW_TAG_variable, DW_AT_name("sLastBlockingProducerCount")
+    1012                      .dwattr $C$DW$86, DW_AT_TI_symbol_name("_sLastBlockingProducerCount$2")
+    1013                      .dwattr $C$DW$86, DW_AT_type(*$C$DW$T$65)
+    1014                      .dwattr $C$DW$86, DW_AT_location[DW_OP_addr _sLastBlockingProducerCount$2]
+    1015              ;*******************************************************************************
+    1016              ;* FUNCTION NAME: xAreBlockingQueuesStillRunning                               *
+    1017              ;*                                                                             *
+    1018              ;*   Function Uses Regs : T0,AR1,AR2,XAR2,AR3,XAR3,SP,CARRY,TC1,M40,SATA,SATD, *
+    1019              ;*                        RDM,FRCT,SMUL                                        *
+    1020              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+    1021              ;*   Total Frame Size   : 1 word                                               *
+    1022              ;*                        (1 return address/alignment)                         *
+    1023              ;*   Min System Stack   : 1 word                                               *
+    1024              ;*******************************************************************************
+    1025              
+    1026              ;*******************************************************************************
+    1027              ;*                                                                             *
+    1028              ;* Using -g (debug) with optimization (-o0) may disable key optimizations!     *
+    1029              ;*                                                                             *
+    1030              ;*******************************************************************************
+    1031 00026b       _xAreBlockingQueuesStillRunning:
+    1032              ;** 281 -----------------------    xReturn = 1;
+    1033              ;** 290 -----------------------    if ( (xTasks = 0) >= 3 ) goto g7;
+    1034                      .dwcfi  cfa_offset, 1
+    1035                      .dwcfi  save_reg_to_mem, 91, -1
+    1036              ;* T0    assigned to _xTasks
+    1037              $C$DW$87        .dwtag  DW_TAG_variable, DW_AT_name("xTasks")
+    1038                      .dwattr $C$DW$87, DW_AT_TI_symbol_name("_xTasks")
+    1039                      .dwattr $C$DW$87, DW_AT_type(*$C$DW$T$10)
+    1040                      .dwattr $C$DW$87, DW_AT_location[DW_OP_reg12]
+    1041              ;* AR1   assigned to _xReturn
+    1042              $C$DW$88        .dwtag  DW_TAG_variable, DW_AT_name("xReturn")
+    1043                      .dwattr $C$DW$88, DW_AT_TI_symbol_name("_xReturn")
+    1044                      .dwattr $C$DW$88, DW_AT_type(*$C$DW$T$10)
+    1045                      .dwattr $C$DW$88, DW_AT_location[DW_OP_reg18]
+    1046                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 281,column 15,is_stmt
+    1047 00026b 3C19          AR1 = #1
+    1048                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 290,column 19,is_stmt
+    1049 00026d 3C04          T0 = #0
+    1050 00026f 3C3A          AR2 = #3
+    1051 000271 1248          TC1 = (T0 >= AR2) ; |290| 
+         000273 A0   
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   23
+
+    1052 000274 0464          if (TC1) goto $C$L10 ; |290| 
+         000276 56   
+    1053                                                      ; branchcc occurs ; |290| 
+    1054 000277       $C$L7:    
+    1055 000277       $C$DW$L$_xAreBlockingQueuesStillRunning$2$B:
+    1056              ;**     -----------------------g2:
+    1057              ;** 292 -----------------------    if ( sBlockingConsumerCount[xTasks] != sLastBlockingConsumerCount[xTasks] 
+    1058                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 292,column 3,is_stmt
+    1059 000277 EC31          XAR3 = #_sLastBlockingConsumerCount$1 ; |292| 
+         000279 BE00 
+         00027b 0006-
+    1060 00027d AA6B          AR2 = *AR3(T0) ; |292| 
+    1061 00027f EC31          XAR3 = #_sBlockingConsumerCount ; |292| 
+         000281 BE00 
+         000283 0000-
+    1062 000285 AB6B          AR3 = *AR3(T0) ; |292| 
+    1063 000287 12BC          TC1 = (AR3 != AR2) ; |292| 
+         000289 A0   
+    1064 00028a 6164          if (TC1) goto $C$L8 ; |292| 
+    1065                                                      ; branchcc occurs ; |292| 
+    1066 00028c       $C$DW$L$_xAreBlockingQueuesStillRunning$2$E:
+    1067 00028c       $C$DW$L$_xAreBlockingQueuesStillRunning$3$B:
+    1068              ;** 294 -----------------------    xReturn = 0;
+    1069                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 294,column 4,is_stmt
+    1070 00028c 3C09          AR1 = #0
+    1071 00028e       $C$DW$L$_xAreBlockingQueuesStillRunning$3$E:
+    1072 00028e       $C$L8:    
+    1073 00028e       $C$DW$L$_xAreBlockingQueuesStillRunning$4$B:
+    1074              ;**     -----------------------g4:
+    1075              ;** 296 -----------------------    sLastBlockingConsumerCount[xTasks] = sBlockingConsumerCount[xTasks];
+    1076              ;** 299 -----------------------    if ( sBlockingProducerCount[xTasks] != sLastBlockingProducerCount[xTasks] 
+    1077                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 296,column 3,is_stmt
+    1078 00028e EC31          XAR3 = #_sBlockingConsumerCount ; |296| 
+         000290 BE00 
+         000292 0000-
+    1079 000294 EC31          XAR2 = #_sLastBlockingConsumerCount$1 ; |296| 
+         000296 AE00 
+         000298 0006-
+    1080 00029a 807D          *AR2(T0) = *AR3(T0) ; |296| 
+         00029c 74   
+    1081                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 299,column 3,is_stmt
+    1082 00029d EC31          XAR3 = #_sLastBlockingProducerCount$2 ; |299| 
+         00029f BE00 
+         0002a1 0009-
+    1083 0002a3 AA6B          AR2 = *AR3(T0) ; |299| 
+    1084 0002a5 EC31          XAR3 = #_sBlockingProducerCount ; |299| 
+         0002a7 BE00 
+         0002a9 0003-
+    1085 0002ab AB6B          AR3 = *AR3(T0) ; |299| 
+    1086 0002ad 12BC          TC1 = (AR3 != AR2) ; |299| 
+         0002af A0   
+    1087 0002b0 6164          if (TC1) goto $C$L9 ; |299| 
+    1088                                                      ; branchcc occurs ; |299| 
+    1089 0002b2       $C$DW$L$_xAreBlockingQueuesStillRunning$4$E:
+    1090 0002b2       $C$DW$L$_xAreBlockingQueuesStillRunning$5$B:
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   24
+
+    1091              ;** 301 -----------------------    xReturn = 0;
+    1092                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 301,column 4,is_stmt
+    1093 0002b2 3C09          AR1 = #0
+    1094 0002b4       $C$DW$L$_xAreBlockingQueuesStillRunning$5$E:
+    1095 0002b4       $C$L9:    
+    1096 0002b4       $C$DW$L$_xAreBlockingQueuesStillRunning$6$B:
+    1097              ;**     -----------------------g6:
+    1098              ;** 303 -----------------------    sLastBlockingProducerCount[xTasks] = sBlockingProducerCount[xTasks];
+    1099              ;** 290 -----------------------    if ( (++xTasks) < 3 ) goto g2;
+    1100                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 303,column 3,is_stmt
+    1101 0002b4 EC31          XAR3 = #_sBlockingProducerCount ; |303| 
+         0002b6 BE00 
+         0002b8 0003-
+    1102 0002ba EC31          XAR2 = #_sLastBlockingProducerCount$2 ; |303| 
+         0002bc AE00 
+         0002be 0009-
+    1103 0002c0 807D          *AR2(T0) = *AR3(T0) ; |303| 
+         0002c2 74   
+    1104                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 290,column 48,is_stmt
+    1105 0002c3 4014          T0 = T0 + #1 ; |290| 
+    1106 0002c5 3C3A          AR2 = #3
+    1107 0002c7 1244          TC1 = (T0 < AR2) ; |290| 
+         0002c9 A0   
+    1108 0002ca 0464          if (TC1) goto $C$L7 ; |290| 
+         0002cc AA   
+    1109                                                      ; branchcc occurs ; |290| 
+    1110 0002cd       $C$DW$L$_xAreBlockingQueuesStillRunning$6$E:
+    1111 0002cd       $C$L10:    
+    1112              ;**     -----------------------g7:
+    1113              ;** 306 -----------------------    return xReturn;
+    1114                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 306,column 2,is_stmt
+    1115 0002cd 2294          T0 = AR1  ; |306| 
+    1116                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/BlockQ.c",line 307,column 1,is_stmt
+    1117              $C$DW$89        .dwtag  DW_TAG_TI_branch
+    1118                      .dwattr $C$DW$89, DW_AT_low_pc(0x00)
+    1119                      .dwattr $C$DW$89, DW_AT_TI_return
+    1120 0002cf 4804          return
+    1121                                                      ; return occurs
+    1122              
+    1123              $C$DW$90        .dwtag  DW_TAG_TI_loop
+    1124                      .dwattr $C$DW$90, DW_AT_name("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\Debug\BlockQ.asm:$C$L7:1
+    1125                      .dwattr $C$DW$90, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+    1126                      .dwattr $C$DW$90, DW_AT_TI_begin_line(0x122)
+    1127                      .dwattr $C$DW$90, DW_AT_TI_end_line(0x130)
+    1128              $C$DW$91        .dwtag  DW_TAG_TI_loop_range
+    1129                      .dwattr $C$DW$91, DW_AT_low_pc($C$DW$L$_xAreBlockingQueuesStillRunning$2$B)
+    1130                      .dwattr $C$DW$91, DW_AT_high_pc($C$DW$L$_xAreBlockingQueuesStillRunning$2$E)
+    1131              $C$DW$92        .dwtag  DW_TAG_TI_loop_range
+    1132                      .dwattr $C$DW$92, DW_AT_low_pc($C$DW$L$_xAreBlockingQueuesStillRunning$3$B)
+    1133                      .dwattr $C$DW$92, DW_AT_high_pc($C$DW$L$_xAreBlockingQueuesStillRunning$3$E)
+    1134              $C$DW$93        .dwtag  DW_TAG_TI_loop_range
+    1135                      .dwattr $C$DW$93, DW_AT_low_pc($C$DW$L$_xAreBlockingQueuesStillRunning$4$B)
+    1136                      .dwattr $C$DW$93, DW_AT_high_pc($C$DW$L$_xAreBlockingQueuesStillRunning$4$E)
+    1137              $C$DW$94        .dwtag  DW_TAG_TI_loop_range
+    1138                      .dwattr $C$DW$94, DW_AT_low_pc($C$DW$L$_xAreBlockingQueuesStillRunning$5$B)
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   25
+
+    1139                      .dwattr $C$DW$94, DW_AT_high_pc($C$DW$L$_xAreBlockingQueuesStillRunning$5$E)
+    1140              $C$DW$95        .dwtag  DW_TAG_TI_loop_range
+    1141                      .dwattr $C$DW$95, DW_AT_low_pc($C$DW$L$_xAreBlockingQueuesStillRunning$6$B)
+    1142                      .dwattr $C$DW$95, DW_AT_high_pc($C$DW$L$_xAreBlockingQueuesStillRunning$6$E)
+    1143                      .dwendtag $C$DW$90
+    1144              
+    1145                      .dwattr $C$DW$84, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+    1146                      .dwattr $C$DW$84, DW_AT_TI_end_line(0x133)
+    1147                      .dwattr $C$DW$84, DW_AT_TI_end_column(0x01)
+    1148                      .dwendentry
+    1149                      .dwendtag $C$DW$84
+    1150              
+    1151              ;*******************************************************************************
+    1152              ;* FAR STRINGS                                                                 *
+    1153              ;*******************************************************************************
+    1154 000000               .sect   ".const:.string"
+    1155                      .align  2
+    1156 000000 0051  $C$FSL1:        .string "QConsB1",0
+         000001 0043 
+         000002 006F 
+         000003 006E 
+         000004 0073 
+         000005 0042 
+         000006 0031 
+         000007 0000 
+    1157                      .align  2
+    1158 000008 0051  $C$FSL2:        .string "QProdB2",0
+         000009 0050 
+         00000a 0072 
+         00000b 006F 
+         00000c 0064 
+         00000d 0042 
+         00000e 0032 
+         00000f 0000 
+    1159                      .align  2
+    1160 000010 0051  $C$FSL3:        .string "QProdB3",0
+         000011 0050 
+         000012 0072 
+         000013 006F 
+         000014 0064 
+         000015 0042 
+         000016 0033 
+         000017 0000 
+    1161                      .align  2
+    1162 000018 0051  $C$FSL4:        .string "QConsB4",0
+         000019 0043 
+         00001a 006F 
+         00001b 006E 
+         00001c 0073 
+         00001d 0042 
+         00001e 0034 
+         00001f 0000 
+    1163                      .align  2
+    1164 000020 0051  $C$FSL5:        .string "QProdB5",0
+         000021 0050 
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   26
+
+         000022 0072 
+         000023 006F 
+         000024 0064 
+         000025 0042 
+         000026 0035 
+         000027 0000 
+    1165                      .align  2
+    1166 000028 0051  $C$FSL6:        .string "QConsB6",0
+         000029 0043 
+         00002a 006F 
+         00002b 006E 
+         00002c 0073 
+         00002d 0042 
+         00002e 0036 
+         00002f 0000 
+    1167              ;******************************************************************************
+    1168              ;* UNDEFINED EXTERNAL REFERENCES                                              *
+    1169              ;******************************************************************************
+    1170                      .global _pvPortMalloc
+    1171                      .global _xTaskGenericCreate
+    1172                      .global _xQueueCreate
+    1173                      .global _xQueueGenericSend
+    1174                      .global _xQueueGenericReceive
+    1175              
+    1176              ;*******************************************************************************
+    1177              ;* TYPE INFORMATION                                                            *
+    1178              ;*******************************************************************************
+    1179              $C$DW$T$3       .dwtag  DW_TAG_pointer_type
+    1180                      .dwattr $C$DW$T$3, DW_AT_address_class(0x17)
+    1181              $C$DW$T$20      .dwtag  DW_TAG_typedef, DW_AT_name("xQueueHandle")
+    1182                      .dwattr $C$DW$T$20, DW_AT_type(*$C$DW$T$3)
+    1183                      .dwattr $C$DW$T$20, DW_AT_language(DW_LANG_C)
+    1184                      .dwattr $C$DW$T$20, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/i
+    1185                      .dwattr $C$DW$T$20, DW_AT_decl_line(0x48)
+    1186                      .dwattr $C$DW$T$20, DW_AT_decl_column(0x10)
+    1187              $C$DW$T$54      .dwtag  DW_TAG_typedef, DW_AT_name("xTaskHandle")
+    1188                      .dwattr $C$DW$T$54, DW_AT_type(*$C$DW$T$3)
+    1189                      .dwattr $C$DW$T$54, DW_AT_language(DW_LANG_C)
+    1190                      .dwattr $C$DW$T$54, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/i
+    1191                      .dwattr $C$DW$T$54, DW_AT_decl_line(0x57)
+    1192                      .dwattr $C$DW$T$54, DW_AT_decl_column(0x10)
+    1193              $C$DW$T$55      .dwtag  DW_TAG_pointer_type
+    1194                      .dwattr $C$DW$T$55, DW_AT_type(*$C$DW$T$54)
+    1195                      .dwattr $C$DW$T$55, DW_AT_address_class(0x17)
+    1196              $C$DW$96        .dwtag  DW_TAG_TI_far_type
+    1197                      .dwattr $C$DW$96, DW_AT_type(*$C$DW$T$3)
+    1198              $C$DW$T$56      .dwtag  DW_TAG_const_type
+    1199                      .dwattr $C$DW$T$56, DW_AT_type(*$C$DW$96)
+    1200              
+    1201              $C$DW$T$40      .dwtag  DW_TAG_subroutine_type
+    1202                      .dwattr $C$DW$T$40, DW_AT_language(DW_LANG_C)
+    1203              $C$DW$97        .dwtag  DW_TAG_formal_parameter
+    1204                      .dwattr $C$DW$97, DW_AT_type(*$C$DW$T$3)
+    1205                      .dwendtag $C$DW$T$40
+    1206              
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   27
+
+    1207              $C$DW$T$41      .dwtag  DW_TAG_pointer_type
+    1208                      .dwattr $C$DW$T$41, DW_AT_type(*$C$DW$T$40)
+    1209                      .dwattr $C$DW$T$41, DW_AT_address_class(0x20)
+    1210              $C$DW$T$42      .dwtag  DW_TAG_typedef, DW_AT_name("pdTASK_CODE")
+    1211                      .dwattr $C$DW$T$42, DW_AT_type(*$C$DW$T$41)
+    1212                      .dwattr $C$DW$T$42, DW_AT_language(DW_LANG_C)
+    1213                      .dwattr $C$DW$T$42, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\i
+    1214                      .dwattr $C$DW$T$42, DW_AT_decl_line(0x3a)
+    1215                      .dwattr $C$DW$T$42, DW_AT_decl_column(0x10)
+    1216              $C$DW$98        .dwtag  DW_TAG_TI_far_type
+    1217              $C$DW$T$60      .dwtag  DW_TAG_const_type
+    1218                      .dwattr $C$DW$T$60, DW_AT_type(*$C$DW$98)
+    1219              $C$DW$T$61      .dwtag  DW_TAG_pointer_type
+    1220                      .dwattr $C$DW$T$61, DW_AT_type(*$C$DW$T$60)
+    1221                      .dwattr $C$DW$T$61, DW_AT_address_class(0x17)
+    1222              $C$DW$99        .dwtag  DW_TAG_TI_far_type
+    1223                      .dwattr $C$DW$99, DW_AT_type(*$C$DW$T$61)
+    1224              $C$DW$T$62      .dwtag  DW_TAG_const_type
+    1225                      .dwattr $C$DW$T$62, DW_AT_type(*$C$DW$99)
+    1226              $C$DW$T$4       .dwtag  DW_TAG_base_type
+    1227                      .dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
+    1228                      .dwattr $C$DW$T$4, DW_AT_name("bool")
+    1229                      .dwattr $C$DW$T$4, DW_AT_byte_size(0x01)
+    1230              $C$DW$T$5       .dwtag  DW_TAG_base_type
+    1231                      .dwattr $C$DW$T$5, DW_AT_encoding(DW_ATE_signed_char)
+    1232                      .dwattr $C$DW$T$5, DW_AT_name("signed char")
+    1233                      .dwattr $C$DW$T$5, DW_AT_byte_size(0x01)
+    1234              $C$DW$100       .dwtag  DW_TAG_TI_far_type
+    1235                      .dwattr $C$DW$100, DW_AT_type(*$C$DW$T$5)
+    1236              $C$DW$T$43      .dwtag  DW_TAG_const_type
+    1237                      .dwattr $C$DW$T$43, DW_AT_type(*$C$DW$100)
+    1238              $C$DW$T$44      .dwtag  DW_TAG_pointer_type
+    1239                      .dwattr $C$DW$T$44, DW_AT_type(*$C$DW$T$43)
+    1240                      .dwattr $C$DW$T$44, DW_AT_address_class(0x17)
+    1241              $C$DW$101       .dwtag  DW_TAG_TI_far_type
+    1242                      .dwattr $C$DW$101, DW_AT_type(*$C$DW$T$44)
+    1243              $C$DW$T$45      .dwtag  DW_TAG_const_type
+    1244                      .dwattr $C$DW$T$45, DW_AT_type(*$C$DW$101)
+    1245              $C$DW$T$6       .dwtag  DW_TAG_base_type
+    1246                      .dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
+    1247                      .dwattr $C$DW$T$6, DW_AT_name("unsigned char")
+    1248                      .dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
+    1249              $C$DW$T$7       .dwtag  DW_TAG_base_type
+    1250                      .dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
+    1251                      .dwattr $C$DW$T$7, DW_AT_name("wchar_t")
+    1252                      .dwattr $C$DW$T$7, DW_AT_byte_size(0x01)
+    1253              $C$DW$T$8       .dwtag  DW_TAG_base_type
+    1254                      .dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
+    1255                      .dwattr $C$DW$T$8, DW_AT_name("short")
+    1256                      .dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
+    1257              $C$DW$102       .dwtag  DW_TAG_TI_far_type
+    1258                      .dwattr $C$DW$102, DW_AT_type(*$C$DW$T$8)
+    1259              $C$DW$T$22      .dwtag  DW_TAG_volatile_type
+    1260                      .dwattr $C$DW$T$22, DW_AT_type(*$C$DW$102)
+    1261              $C$DW$T$23      .dwtag  DW_TAG_pointer_type
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   28
+
+    1262                      .dwattr $C$DW$T$23, DW_AT_type(*$C$DW$T$22)
+    1263                      .dwattr $C$DW$T$23, DW_AT_address_class(0x17)
+    1264              
+    1265              $C$DW$T$64      .dwtag  DW_TAG_array_type
+    1266                      .dwattr $C$DW$T$64, DW_AT_type(*$C$DW$T$22)
+    1267                      .dwattr $C$DW$T$64, DW_AT_language(DW_LANG_C)
+    1268                      .dwattr $C$DW$T$64, DW_AT_byte_size(0x03)
+    1269              $C$DW$103       .dwtag  DW_TAG_subrange_type
+    1270                      .dwattr $C$DW$103, DW_AT_upper_bound(0x02)
+    1271                      .dwendtag $C$DW$T$64
+    1272              
+    1273              
+    1274              $C$DW$T$65      .dwtag  DW_TAG_array_type
+    1275                      .dwattr $C$DW$T$65, DW_AT_type(*$C$DW$T$8)
+    1276                      .dwattr $C$DW$T$65, DW_AT_language(DW_LANG_C)
+    1277                      .dwattr $C$DW$T$65, DW_AT_byte_size(0x03)
+    1278              $C$DW$104       .dwtag  DW_TAG_subrange_type
+    1279                      .dwattr $C$DW$104, DW_AT_upper_bound(0x02)
+    1280                      .dwendtag $C$DW$T$65
+    1281              
+    1282              $C$DW$T$9       .dwtag  DW_TAG_base_type
+    1283                      .dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
+    1284                      .dwattr $C$DW$T$9, DW_AT_name("unsigned short")
+    1285                      .dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
+    1286              $C$DW$T$10      .dwtag  DW_TAG_base_type
+    1287                      .dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
+    1288                      .dwattr $C$DW$T$10, DW_AT_name("int")
+    1289                      .dwattr $C$DW$T$10, DW_AT_byte_size(0x01)
+    1290              
+    1291              $C$DW$T$77      .dwtag  DW_TAG_subroutine_type
+    1292                      .dwattr $C$DW$T$77, DW_AT_type(*$C$DW$T$10)
+    1293                      .dwattr $C$DW$T$77, DW_AT_language(DW_LANG_C)
+    1294              $C$DW$105       .dwtag  DW_TAG_formal_parameter
+    1295                      .dwattr $C$DW$105, DW_AT_type(*$C$DW$T$3)
+    1296                      .dwendtag $C$DW$T$77
+    1297              
+    1298              $C$DW$T$78      .dwtag  DW_TAG_pointer_type
+    1299                      .dwattr $C$DW$T$78, DW_AT_type(*$C$DW$T$77)
+    1300                      .dwattr $C$DW$T$78, DW_AT_address_class(0x20)
+    1301              $C$DW$T$79      .dwtag  DW_TAG_typedef, DW_AT_name("pdTASK_HOOK_CODE")
+    1302                      .dwattr $C$DW$T$79, DW_AT_type(*$C$DW$T$78)
+    1303                      .dwattr $C$DW$T$79, DW_AT_language(DW_LANG_C)
+    1304                      .dwattr $C$DW$T$79, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/i
+    1305                      .dwattr $C$DW$T$79, DW_AT_decl_line(0x4b)
+    1306                      .dwattr $C$DW$T$79, DW_AT_decl_column(0x19)
+    1307              $C$DW$T$11      .dwtag  DW_TAG_base_type
+    1308                      .dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
+    1309                      .dwattr $C$DW$T$11, DW_AT_name("unsigned int")
+    1310                      .dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
+    1311              $C$DW$106       .dwtag  DW_TAG_TI_far_type
+    1312                      .dwattr $C$DW$106, DW_AT_type(*$C$DW$T$11)
+    1313              $C$DW$T$32      .dwtag  DW_TAG_volatile_type
+    1314                      .dwattr $C$DW$T$32, DW_AT_type(*$C$DW$106)
+    1315              $C$DW$T$46      .dwtag  DW_TAG_pointer_type
+    1316                      .dwattr $C$DW$T$46, DW_AT_type(*$C$DW$T$11)
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   29
+
+    1317                      .dwattr $C$DW$T$46, DW_AT_address_class(0x17)
+    1318              $C$DW$107       .dwtag  DW_TAG_TI_far_type
+    1319                      .dwattr $C$DW$107, DW_AT_type(*$C$DW$T$11)
+    1320              $C$DW$T$86      .dwtag  DW_TAG_const_type
+    1321                      .dwattr $C$DW$T$86, DW_AT_type(*$C$DW$107)
+    1322              $C$DW$T$87      .dwtag  DW_TAG_typedef, DW_AT_name("wchar_t")
+    1323                      .dwattr $C$DW$T$87, DW_AT_type(*$C$DW$T$11)
+    1324                      .dwattr $C$DW$T$87, DW_AT_language(DW_LANG_C)
+    1325                      .dwattr $C$DW$T$87, DW_AT_decl_file("C:/Texas Instruments Tools/ccsv4/tools/compiler/C5500 Code Gener
+    1326                      .dwattr $C$DW$T$87, DW_AT_decl_line(0x27)
+    1327                      .dwattr $C$DW$T$87, DW_AT_decl_column(0x1a)
+    1328              $C$DW$T$12      .dwtag  DW_TAG_base_type
+    1329                      .dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
+    1330                      .dwattr $C$DW$T$12, DW_AT_name("long")
+    1331                      .dwattr $C$DW$T$12, DW_AT_byte_size(0x02)
+    1332              $C$DW$T$88      .dwtag  DW_TAG_typedef, DW_AT_name("ptrdiff_t")
+    1333                      .dwattr $C$DW$T$88, DW_AT_type(*$C$DW$T$12)
+    1334                      .dwattr $C$DW$T$88, DW_AT_language(DW_LANG_C)
+    1335                      .dwattr $C$DW$T$88, DW_AT_decl_file("C:/Texas Instruments Tools/ccsv4/tools/compiler/C5500 Code Gener
+    1336                      .dwattr $C$DW$T$88, DW_AT_decl_line(0x11)
+    1337                      .dwattr $C$DW$T$88, DW_AT_decl_column(0x1c)
+    1338              $C$DW$T$13      .dwtag  DW_TAG_base_type
+    1339                      .dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
+    1340                      .dwattr $C$DW$T$13, DW_AT_name("unsigned long")
+    1341                      .dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+    1342              $C$DW$T$21      .dwtag  DW_TAG_typedef, DW_AT_name("portTickType")
+    1343                      .dwattr $C$DW$T$21, DW_AT_type(*$C$DW$T$13)
+    1344                      .dwattr $C$DW$T$21, DW_AT_language(DW_LANG_C)
+    1345                      .dwattr $C$DW$T$21, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\i
+    1346                      .dwattr $C$DW$T$21, DW_AT_decl_line(0x55)
+    1347                      .dwattr $C$DW$T$21, DW_AT_decl_column(0x1c)
+    1348              $C$DW$108       .dwtag  DW_TAG_TI_far_type
+    1349                      .dwattr $C$DW$108, DW_AT_type(*$C$DW$T$21)
+    1350              $C$DW$T$89      .dwtag  DW_TAG_const_type
+    1351                      .dwattr $C$DW$T$89, DW_AT_type(*$C$DW$108)
+    1352              $C$DW$T$51      .dwtag  DW_TAG_typedef, DW_AT_name("size_t")
+    1353                      .dwattr $C$DW$T$51, DW_AT_type(*$C$DW$T$13)
+    1354                      .dwattr $C$DW$T$51, DW_AT_language(DW_LANG_C)
+    1355                      .dwattr $C$DW$T$51, DW_AT_decl_file("C:/Texas Instruments Tools/ccsv4/tools/compiler/C5500 Code Gener
+    1356                      .dwattr $C$DW$T$51, DW_AT_decl_line(0x21)
+    1357                      .dwattr $C$DW$T$51, DW_AT_decl_column(0x19)
+    1358              $C$DW$T$14      .dwtag  DW_TAG_base_type
+    1359                      .dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
+    1360                      .dwattr $C$DW$T$14, DW_AT_name("long long")
+    1361                      .dwattr $C$DW$T$14, DW_AT_byte_size(0x04)
+    1362                      .dwattr $C$DW$T$14, DW_AT_bit_size(0x28)
+    1363                      .dwattr $C$DW$T$14, DW_AT_bit_offset(0x18)
+    1364              $C$DW$T$15      .dwtag  DW_TAG_base_type
+    1365                      .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
+    1366                      .dwattr $C$DW$T$15, DW_AT_name("unsigned long long")
+    1367                      .dwattr $C$DW$T$15, DW_AT_byte_size(0x04)
+    1368                      .dwattr $C$DW$T$15, DW_AT_bit_size(0x28)
+    1369                      .dwattr $C$DW$T$15, DW_AT_bit_offset(0x18)
+    1370              $C$DW$T$16      .dwtag  DW_TAG_base_type
+    1371                      .dwattr $C$DW$T$16, DW_AT_encoding(DW_ATE_float)
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   30
+
+    1372                      .dwattr $C$DW$T$16, DW_AT_name("float")
+    1373                      .dwattr $C$DW$T$16, DW_AT_byte_size(0x02)
+    1374              $C$DW$T$17      .dwtag  DW_TAG_base_type
+    1375                      .dwattr $C$DW$T$17, DW_AT_encoding(DW_ATE_float)
+    1376                      .dwattr $C$DW$T$17, DW_AT_name("double")
+    1377                      .dwattr $C$DW$T$17, DW_AT_byte_size(0x02)
+    1378              $C$DW$T$18      .dwtag  DW_TAG_base_type
+    1379                      .dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
+    1380                      .dwattr $C$DW$T$18, DW_AT_name("long double")
+    1381                      .dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
+    1382              
+    1383              $C$DW$T$19      .dwtag  DW_TAG_structure_type
+    1384                      .dwattr $C$DW$T$19, DW_AT_name("xMEMORY_REGION")
+    1385                      .dwattr $C$DW$T$19, DW_AT_byte_size(0x06)
+    1386              $C$DW$109       .dwtag  DW_TAG_member
+    1387                      .dwattr $C$DW$109, DW_AT_type(*$C$DW$T$3)
+    1388                      .dwattr $C$DW$109, DW_AT_name("pvBaseAddress")
+    1389                      .dwattr $C$DW$109, DW_AT_TI_symbol_name("_pvBaseAddress")
+    1390                      .dwattr $C$DW$109, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+    1391                      .dwattr $C$DW$109, DW_AT_accessibility(DW_ACCESS_public)
+    1392                      .dwattr $C$DW$109, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/in
+    1393                      .dwattr $C$DW$109, DW_AT_decl_line(0x67)
+    1394                      .dwattr $C$DW$109, DW_AT_decl_column(0x08)
+    1395              $C$DW$110       .dwtag  DW_TAG_member
+    1396                      .dwattr $C$DW$110, DW_AT_type(*$C$DW$T$13)
+    1397                      .dwattr $C$DW$110, DW_AT_name("ulLengthInBytes")
+    1398                      .dwattr $C$DW$110, DW_AT_TI_symbol_name("_ulLengthInBytes")
+    1399                      .dwattr $C$DW$110, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+    1400                      .dwattr $C$DW$110, DW_AT_accessibility(DW_ACCESS_public)
+    1401                      .dwattr $C$DW$110, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/in
+    1402                      .dwattr $C$DW$110, DW_AT_decl_line(0x68)
+    1403                      .dwattr $C$DW$110, DW_AT_decl_column(0x10)
+    1404              $C$DW$111       .dwtag  DW_TAG_member
+    1405                      .dwattr $C$DW$111, DW_AT_type(*$C$DW$T$13)
+    1406                      .dwattr $C$DW$111, DW_AT_name("ulParameters")
+    1407                      .dwattr $C$DW$111, DW_AT_TI_symbol_name("_ulParameters")
+    1408                      .dwattr $C$DW$111, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+    1409                      .dwattr $C$DW$111, DW_AT_accessibility(DW_ACCESS_public)
+    1410                      .dwattr $C$DW$111, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/in
+    1411                      .dwattr $C$DW$111, DW_AT_decl_line(0x69)
+    1412                      .dwattr $C$DW$111, DW_AT_decl_column(0x10)
+    1413                      .dwendtag $C$DW$T$19
+    1414              
+    1415                      .dwattr $C$DW$T$19, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/i
+    1416                      .dwattr $C$DW$T$19, DW_AT_decl_line(0x65)
+    1417                      .dwattr $C$DW$T$19, DW_AT_decl_column(0x10)
+    1418              $C$DW$T$47      .dwtag  DW_TAG_typedef, DW_AT_name("xMemoryRegion")
+    1419                      .dwattr $C$DW$T$47, DW_AT_type(*$C$DW$T$19)
+    1420                      .dwattr $C$DW$T$47, DW_AT_language(DW_LANG_C)
+    1421                      .dwattr $C$DW$T$47, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/i
+    1422                      .dwattr $C$DW$T$47, DW_AT_decl_line(0x6a)
+    1423                      .dwattr $C$DW$T$47, DW_AT_decl_column(0x03)
+    1424              
+    1425              $C$DW$T$48      .dwtag  DW_TAG_array_type
+    1426                      .dwattr $C$DW$T$48, DW_AT_type(*$C$DW$T$47)
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   31
+
+    1427                      .dwattr $C$DW$T$48, DW_AT_language(DW_LANG_C)
+    1428                      .dwattr $C$DW$T$48, DW_AT_byte_size(0x06)
+    1429              $C$DW$112       .dwtag  DW_TAG_subrange_type
+    1430                      .dwattr $C$DW$112, DW_AT_upper_bound(0x00)
+    1431                      .dwendtag $C$DW$T$48
+    1432              
+    1433              $C$DW$113       .dwtag  DW_TAG_TI_far_type
+    1434                      .dwattr $C$DW$113, DW_AT_type(*$C$DW$T$47)
+    1435              $C$DW$T$67      .dwtag  DW_TAG_const_type
+    1436                      .dwattr $C$DW$T$67, DW_AT_type(*$C$DW$113)
+    1437              $C$DW$T$68      .dwtag  DW_TAG_pointer_type
+    1438                      .dwattr $C$DW$T$68, DW_AT_type(*$C$DW$T$67)
+    1439                      .dwattr $C$DW$T$68, DW_AT_address_class(0x17)
+    1440              $C$DW$114       .dwtag  DW_TAG_TI_far_type
+    1441                      .dwattr $C$DW$114, DW_AT_type(*$C$DW$T$68)
+    1442              $C$DW$T$69      .dwtag  DW_TAG_const_type
+    1443                      .dwattr $C$DW$T$69, DW_AT_type(*$C$DW$114)
+    1444              
+    1445              $C$DW$T$24      .dwtag  DW_TAG_structure_type
+    1446                      .dwattr $C$DW$T$24, DW_AT_name("BLOCKING_QUEUE_PARAMETERS")
+    1447                      .dwattr $C$DW$T$24, DW_AT_byte_size(0x06)
+    1448              $C$DW$115       .dwtag  DW_TAG_member
+    1449                      .dwattr $C$DW$115, DW_AT_type(*$C$DW$T$20)
+    1450                      .dwattr $C$DW$115, DW_AT_name("xQueue")
+    1451                      .dwattr $C$DW$115, DW_AT_TI_symbol_name("_xQueue")
+    1452                      .dwattr $C$DW$115, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+    1453                      .dwattr $C$DW$115, DW_AT_accessibility(DW_ACCESS_public)
+    1454                      .dwattr $C$DW$115, DW_AT_decl_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+    1455                      .dwattr $C$DW$115, DW_AT_decl_line(0x67)
+    1456                      .dwattr $C$DW$115, DW_AT_decl_column(0x0f)
+    1457              $C$DW$116       .dwtag  DW_TAG_member
+    1458                      .dwattr $C$DW$116, DW_AT_type(*$C$DW$T$21)
+    1459                      .dwattr $C$DW$116, DW_AT_name("xBlockTime")
+    1460                      .dwattr $C$DW$116, DW_AT_TI_symbol_name("_xBlockTime")
+    1461                      .dwattr $C$DW$116, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+    1462                      .dwattr $C$DW$116, DW_AT_accessibility(DW_ACCESS_public)
+    1463                      .dwattr $C$DW$116, DW_AT_decl_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+    1464                      .dwattr $C$DW$116, DW_AT_decl_line(0x68)
+    1465                      .dwattr $C$DW$116, DW_AT_decl_column(0x0f)
+    1466              $C$DW$117       .dwtag  DW_TAG_member
+    1467                      .dwattr $C$DW$117, DW_AT_type(*$C$DW$T$23)
+    1468                      .dwattr $C$DW$117, DW_AT_name("psCheckVariable")
+    1469                      .dwattr $C$DW$117, DW_AT_TI_symbol_name("_psCheckVariable")
+    1470                      .dwattr $C$DW$117, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+    1471                      .dwattr $C$DW$117, DW_AT_accessibility(DW_ACCESS_public)
+    1472                      .dwattr $C$DW$117, DW_AT_decl_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+    1473                      .dwattr $C$DW$117, DW_AT_decl_line(0x69)
+    1474                      .dwattr $C$DW$117, DW_AT_decl_column(0x12)
+    1475                      .dwendtag $C$DW$T$24
+    1476              
+    1477                      .dwattr $C$DW$T$24, DW_AT_decl_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+    1478                      .dwattr $C$DW$T$24, DW_AT_decl_line(0x65)
+    1479                      .dwattr $C$DW$T$24, DW_AT_decl_column(0x10)
+    1480              $C$DW$T$93      .dwtag  DW_TAG_typedef, DW_AT_name("xBlockingQueueParameters")
+    1481                      .dwattr $C$DW$T$93, DW_AT_type(*$C$DW$T$24)
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   32
+
+    1482                      .dwattr $C$DW$T$93, DW_AT_language(DW_LANG_C)
+    1483                      .dwattr $C$DW$T$93, DW_AT_decl_file("../FreeRTOS/Demo/Common/Minimal/BlockQ.c")
+    1484                      .dwattr $C$DW$T$93, DW_AT_decl_line(0x6a)
+    1485                      .dwattr $C$DW$T$93, DW_AT_decl_column(0x03)
+    1486              $C$DW$T$94      .dwtag  DW_TAG_pointer_type
+    1487                      .dwattr $C$DW$T$94, DW_AT_type(*$C$DW$T$93)
+    1488                      .dwattr $C$DW$T$94, DW_AT_address_class(0x17)
+    1489              
+    1490              $C$DW$T$25      .dwtag  DW_TAG_structure_type
+    1491                      .dwattr $C$DW$T$25, DW_AT_byte_size(0x02)
+    1492              $C$DW$118       .dwtag  DW_TAG_member
+    1493                      .dwattr $C$DW$118, DW_AT_type(*$C$DW$T$10)
+    1494                      .dwattr $C$DW$118, DW_AT_name("quot")
+    1495                      .dwattr $C$DW$118, DW_AT_TI_symbol_name("_quot")
+    1496                      .dwattr $C$DW$118, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+    1497                      .dwattr $C$DW$118, DW_AT_accessibility(DW_ACCESS_public)
+    1498                      .dwattr $C$DW$118, DW_AT_decl_file("C:/Texas Instruments Tools/ccsv4/tools/compiler/C5500 Code Genera
+    1499                      .dwattr $C$DW$118, DW_AT_decl_line(0x12)
+    1500                      .dwattr $C$DW$118, DW_AT_decl_column(0x16)
+    1501              $C$DW$119       .dwtag  DW_TAG_member
+    1502                      .dwattr $C$DW$119, DW_AT_type(*$C$DW$T$10)
+    1503                      .dwattr $C$DW$119, DW_AT_name("rem")
+    1504                      .dwattr $C$DW$119, DW_AT_TI_symbol_name("_rem")
+    1505                      .dwattr $C$DW$119, DW_AT_data_member_location[DW_OP_plus_uconst 0x1]
+    1506                      .dwattr $C$DW$119, DW_AT_accessibility(DW_ACCESS_public)
+    1507                      .dwattr $C$DW$119, DW_AT_decl_file("C:/Texas Instruments Tools/ccsv4/tools/compiler/C5500 Code Genera
+    1508                      .dwattr $C$DW$119, DW_AT_decl_line(0x12)
+    1509                      .dwattr $C$DW$119, DW_AT_decl_column(0x1c)
+    1510                      .dwendtag $C$DW$T$25
+    1511              
+    1512                      .dwattr $C$DW$T$25, DW_AT_decl_file("C:/Texas Instruments Tools/ccsv4/tools/compiler/C5500 Code Gener
+    1513                      .dwattr $C$DW$T$25, DW_AT_decl_line(0x12)
+    1514                      .dwattr $C$DW$T$25, DW_AT_decl_column(0x10)
+    1515              $C$DW$T$96      .dwtag  DW_TAG_typedef, DW_AT_name("div_t")
+    1516                      .dwattr $C$DW$T$96, DW_AT_type(*$C$DW$T$25)
+    1517                      .dwattr $C$DW$T$96, DW_AT_language(DW_LANG_C)
+    1518                      .dwattr $C$DW$T$96, DW_AT_decl_file("C:/Texas Instruments Tools/ccsv4/tools/compiler/C5500 Code Gener
+    1519                      .dwattr $C$DW$T$96, DW_AT_decl_line(0x12)
+    1520                      .dwattr $C$DW$T$96, DW_AT_decl_column(0x23)
+    1521              
+    1522              $C$DW$T$26      .dwtag  DW_TAG_structure_type
+    1523                      .dwattr $C$DW$T$26, DW_AT_byte_size(0x04)
+    1524              $C$DW$120       .dwtag  DW_TAG_member
+    1525                      .dwattr $C$DW$120, DW_AT_type(*$C$DW$T$12)
+    1526                      .dwattr $C$DW$120, DW_AT_name("quot")
+    1527                      .dwattr $C$DW$120, DW_AT_TI_symbol_name("_quot")
+    1528                      .dwattr $C$DW$120, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+    1529                      .dwattr $C$DW$120, DW_AT_accessibility(DW_ACCESS_public)
+    1530                      .dwattr $C$DW$120, DW_AT_decl_file("C:/Texas Instruments Tools/ccsv4/tools/compiler/C5500 Code Genera
+    1531                      .dwattr $C$DW$120, DW_AT_decl_line(0x14)
+    1532                      .dwattr $C$DW$120, DW_AT_decl_column(0x17)
+    1533              $C$DW$121       .dwtag  DW_TAG_member
+    1534                      .dwattr $C$DW$121, DW_AT_type(*$C$DW$T$12)
+    1535                      .dwattr $C$DW$121, DW_AT_name("rem")
+    1536                      .dwattr $C$DW$121, DW_AT_TI_symbol_name("_rem")
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   33
+
+    1537                      .dwattr $C$DW$121, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+    1538                      .dwattr $C$DW$121, DW_AT_accessibility(DW_ACCESS_public)
+    1539                      .dwattr $C$DW$121, DW_AT_decl_file("C:/Texas Instruments Tools/ccsv4/tools/compiler/C5500 Code Genera
+    1540                      .dwattr $C$DW$121, DW_AT_decl_line(0x14)
+    1541                      .dwattr $C$DW$121, DW_AT_decl_column(0x1d)
+    1542                      .dwendtag $C$DW$T$26
+    1543              
+    1544                      .dwattr $C$DW$T$26, DW_AT_decl_file("C:/Texas Instruments Tools/ccsv4/tools/compiler/C5500 Code Gener
+    1545                      .dwattr $C$DW$T$26, DW_AT_decl_line(0x14)
+    1546                      .dwattr $C$DW$T$26, DW_AT_decl_column(0x10)
+    1547              $C$DW$T$97      .dwtag  DW_TAG_typedef, DW_AT_name("ldiv_t")
+    1548                      .dwattr $C$DW$T$97, DW_AT_type(*$C$DW$T$26)
+    1549                      .dwattr $C$DW$T$97, DW_AT_language(DW_LANG_C)
+    1550                      .dwattr $C$DW$T$97, DW_AT_decl_file("C:/Texas Instruments Tools/ccsv4/tools/compiler/C5500 Code Gener
+    1551                      .dwattr $C$DW$T$97, DW_AT_decl_line(0x14)
+    1552                      .dwattr $C$DW$T$97, DW_AT_decl_column(0x24)
+    1553              
+    1554              $C$DW$T$27      .dwtag  DW_TAG_structure_type
+    1555                      .dwattr $C$DW$T$27, DW_AT_byte_size(0x08)
+    1556              $C$DW$122       .dwtag  DW_TAG_member
+    1557                      .dwattr $C$DW$122, DW_AT_type(*$C$DW$T$14)
+    1558                      .dwattr $C$DW$122, DW_AT_name("quot")
+    1559                      .dwattr $C$DW$122, DW_AT_TI_symbol_name("_quot")
+    1560                      .dwattr $C$DW$122, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+    1561                      .dwattr $C$DW$122, DW_AT_accessibility(DW_ACCESS_public)
+    1562                      .dwattr $C$DW$122, DW_AT_decl_file("C:/Texas Instruments Tools/ccsv4/tools/compiler/C5500 Code Genera
+    1563                      .dwattr $C$DW$122, DW_AT_decl_line(0x17)
+    1564                      .dwattr $C$DW$122, DW_AT_decl_column(0x1c)
+    1565              $C$DW$123       .dwtag  DW_TAG_member
+    1566                      .dwattr $C$DW$123, DW_AT_type(*$C$DW$T$14)
+    1567                      .dwattr $C$DW$123, DW_AT_name("rem")
+    1568                      .dwattr $C$DW$123, DW_AT_TI_symbol_name("_rem")
+    1569                      .dwattr $C$DW$123, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+    1570                      .dwattr $C$DW$123, DW_AT_accessibility(DW_ACCESS_public)
+    1571                      .dwattr $C$DW$123, DW_AT_decl_file("C:/Texas Instruments Tools/ccsv4/tools/compiler/C5500 Code Genera
+    1572                      .dwattr $C$DW$123, DW_AT_decl_line(0x17)
+    1573                      .dwattr $C$DW$123, DW_AT_decl_column(0x22)
+    1574                      .dwendtag $C$DW$T$27
+    1575              
+    1576                      .dwattr $C$DW$T$27, DW_AT_decl_file("C:/Texas Instruments Tools/ccsv4/tools/compiler/C5500 Code Gener
+    1577                      .dwattr $C$DW$T$27, DW_AT_decl_line(0x17)
+    1578                      .dwattr $C$DW$T$27, DW_AT_decl_column(0x10)
+    1579              $C$DW$T$98      .dwtag  DW_TAG_typedef, DW_AT_name("lldiv_t")
+    1580                      .dwattr $C$DW$T$98, DW_AT_type(*$C$DW$T$27)
+    1581                      .dwattr $C$DW$T$98, DW_AT_language(DW_LANG_C)
+    1582                      .dwattr $C$DW$T$98, DW_AT_decl_file("C:/Texas Instruments Tools/ccsv4/tools/compiler/C5500 Code Gener
+    1583                      .dwattr $C$DW$T$98, DW_AT_decl_line(0x17)
+    1584                      .dwattr $C$DW$T$98, DW_AT_decl_column(0x29)
+    1585              
+    1586              $C$DW$T$30      .dwtag  DW_TAG_structure_type
+    1587                      .dwattr $C$DW$T$30, DW_AT_name("xLIST_ITEM")
+    1588                      .dwattr $C$DW$T$30, DW_AT_byte_size(0x0a)
+    1589              $C$DW$124       .dwtag  DW_TAG_member
+    1590                      .dwattr $C$DW$124, DW_AT_type(*$C$DW$T$21)
+    1591                      .dwattr $C$DW$124, DW_AT_name("xItemValue")
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   34
+
+    1592                      .dwattr $C$DW$124, DW_AT_TI_symbol_name("_xItemValue")
+    1593                      .dwattr $C$DW$124, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+    1594                      .dwattr $C$DW$124, DW_AT_accessibility(DW_ACCESS_public)
+    1595                      .dwattr $C$DW$124, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\in
+    1596                      .dwattr $C$DW$124, DW_AT_decl_line(0x64)
+    1597                      .dwattr $C$DW$124, DW_AT_decl_column(0x0f)
+    1598              $C$DW$125       .dwtag  DW_TAG_member
+    1599                      .dwattr $C$DW$125, DW_AT_type(*$C$DW$T$29)
+    1600                      .dwattr $C$DW$125, DW_AT_name("pxNext")
+    1601                      .dwattr $C$DW$125, DW_AT_TI_symbol_name("_pxNext")
+    1602                      .dwattr $C$DW$125, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+    1603                      .dwattr $C$DW$125, DW_AT_accessibility(DW_ACCESS_public)
+    1604                      .dwattr $C$DW$125, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\in
+    1605                      .dwattr $C$DW$125, DW_AT_decl_line(0x65)
+    1606                      .dwattr $C$DW$125, DW_AT_decl_column(0x1f)
+    1607              $C$DW$126       .dwtag  DW_TAG_member
+    1608                      .dwattr $C$DW$126, DW_AT_type(*$C$DW$T$29)
+    1609                      .dwattr $C$DW$126, DW_AT_name("pxPrevious")
+    1610                      .dwattr $C$DW$126, DW_AT_TI_symbol_name("_pxPrevious")
+    1611                      .dwattr $C$DW$126, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+    1612                      .dwattr $C$DW$126, DW_AT_accessibility(DW_ACCESS_public)
+    1613                      .dwattr $C$DW$126, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\in
+    1614                      .dwattr $C$DW$126, DW_AT_decl_line(0x66)
+    1615                      .dwattr $C$DW$126, DW_AT_decl_column(0x1f)
+    1616              $C$DW$127       .dwtag  DW_TAG_member
+    1617                      .dwattr $C$DW$127, DW_AT_type(*$C$DW$T$3)
+    1618                      .dwattr $C$DW$127, DW_AT_name("pvOwner")
+    1619                      .dwattr $C$DW$127, DW_AT_TI_symbol_name("_pvOwner")
+    1620                      .dwattr $C$DW$127, DW_AT_data_member_location[DW_OP_plus_uconst 0x6]
+    1621                      .dwattr $C$DW$127, DW_AT_accessibility(DW_ACCESS_public)
+    1622                      .dwattr $C$DW$127, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\in
+    1623                      .dwattr $C$DW$127, DW_AT_decl_line(0x67)
+    1624                      .dwattr $C$DW$127, DW_AT_decl_column(0x09)
+    1625              $C$DW$128       .dwtag  DW_TAG_member
+    1626                      .dwattr $C$DW$128, DW_AT_type(*$C$DW$T$3)
+    1627                      .dwattr $C$DW$128, DW_AT_name("pvContainer")
+    1628                      .dwattr $C$DW$128, DW_AT_TI_symbol_name("_pvContainer")
+    1629                      .dwattr $C$DW$128, DW_AT_data_member_location[DW_OP_plus_uconst 0x8]
+    1630                      .dwattr $C$DW$128, DW_AT_accessibility(DW_ACCESS_public)
+    1631                      .dwattr $C$DW$128, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\in
+    1632                      .dwattr $C$DW$128, DW_AT_decl_line(0x68)
+    1633                      .dwattr $C$DW$128, DW_AT_decl_column(0x09)
+    1634                      .dwendtag $C$DW$T$30
+    1635              
+    1636                      .dwattr $C$DW$T$30, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\i
+    1637                      .dwattr $C$DW$T$30, DW_AT_decl_line(0x62)
+    1638                      .dwattr $C$DW$T$30, DW_AT_decl_column(0x08)
+    1639              $C$DW$129       .dwtag  DW_TAG_TI_far_type
+    1640                      .dwattr $C$DW$129, DW_AT_type(*$C$DW$T$30)
+    1641              $C$DW$T$28      .dwtag  DW_TAG_volatile_type
+    1642                      .dwattr $C$DW$T$28, DW_AT_type(*$C$DW$129)
+    1643              $C$DW$T$29      .dwtag  DW_TAG_pointer_type
+    1644                      .dwattr $C$DW$T$29, DW_AT_type(*$C$DW$T$28)
+    1645                      .dwattr $C$DW$T$29, DW_AT_address_class(0x17)
+    1646              $C$DW$T$33      .dwtag  DW_TAG_typedef, DW_AT_name("xListItem")
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   35
+
+    1647                      .dwattr $C$DW$T$33, DW_AT_type(*$C$DW$T$30)
+    1648                      .dwattr $C$DW$T$33, DW_AT_language(DW_LANG_C)
+    1649                      .dwattr $C$DW$T$33, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\i
+    1650                      .dwattr $C$DW$T$33, DW_AT_decl_line(0x6a)
+    1651                      .dwattr $C$DW$T$33, DW_AT_decl_column(0x1b)
+    1652              $C$DW$130       .dwtag  DW_TAG_TI_far_type
+    1653                      .dwattr $C$DW$130, DW_AT_type(*$C$DW$T$33)
+    1654              $C$DW$T$34      .dwtag  DW_TAG_volatile_type
+    1655                      .dwattr $C$DW$T$34, DW_AT_type(*$C$DW$130)
+    1656              $C$DW$T$35      .dwtag  DW_TAG_pointer_type
+    1657                      .dwattr $C$DW$T$35, DW_AT_type(*$C$DW$T$34)
+    1658                      .dwattr $C$DW$T$35, DW_AT_address_class(0x17)
+    1659              
+    1660              $C$DW$T$31      .dwtag  DW_TAG_structure_type
+    1661                      .dwattr $C$DW$T$31, DW_AT_name("xMINI_LIST_ITEM")
+    1662                      .dwattr $C$DW$T$31, DW_AT_byte_size(0x06)
+    1663              $C$DW$131       .dwtag  DW_TAG_member
+    1664                      .dwattr $C$DW$131, DW_AT_type(*$C$DW$T$21)
+    1665                      .dwattr $C$DW$131, DW_AT_name("xItemValue")
+    1666                      .dwattr $C$DW$131, DW_AT_TI_symbol_name("_xItemValue")
+    1667                      .dwattr $C$DW$131, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+    1668                      .dwattr $C$DW$131, DW_AT_accessibility(DW_ACCESS_public)
+    1669                      .dwattr $C$DW$131, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\in
+    1670                      .dwattr $C$DW$131, DW_AT_decl_line(0x6e)
+    1671                      .dwattr $C$DW$131, DW_AT_decl_column(0x0f)
+    1672              $C$DW$132       .dwtag  DW_TAG_member
+    1673                      .dwattr $C$DW$132, DW_AT_type(*$C$DW$T$29)
+    1674                      .dwattr $C$DW$132, DW_AT_name("pxNext")
+    1675                      .dwattr $C$DW$132, DW_AT_TI_symbol_name("_pxNext")
+    1676                      .dwattr $C$DW$132, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+    1677                      .dwattr $C$DW$132, DW_AT_accessibility(DW_ACCESS_public)
+    1678                      .dwattr $C$DW$132, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\in
+    1679                      .dwattr $C$DW$132, DW_AT_decl_line(0x6f)
+    1680                      .dwattr $C$DW$132, DW_AT_decl_column(0x1e)
+    1681              $C$DW$133       .dwtag  DW_TAG_member
+    1682                      .dwattr $C$DW$133, DW_AT_type(*$C$DW$T$29)
+    1683                      .dwattr $C$DW$133, DW_AT_name("pxPrevious")
+    1684                      .dwattr $C$DW$133, DW_AT_TI_symbol_name("_pxPrevious")
+    1685                      .dwattr $C$DW$133, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+    1686                      .dwattr $C$DW$133, DW_AT_accessibility(DW_ACCESS_public)
+    1687                      .dwattr $C$DW$133, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\in
+    1688                      .dwattr $C$DW$133, DW_AT_decl_line(0x70)
+    1689                      .dwattr $C$DW$133, DW_AT_decl_column(0x1e)
+    1690                      .dwendtag $C$DW$T$31
+    1691              
+    1692                      .dwattr $C$DW$T$31, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\i
+    1693                      .dwattr $C$DW$T$31, DW_AT_decl_line(0x6c)
+    1694                      .dwattr $C$DW$T$31, DW_AT_decl_column(0x08)
+    1695              $C$DW$T$36      .dwtag  DW_TAG_typedef, DW_AT_name("xMiniListItem")
+    1696                      .dwattr $C$DW$T$36, DW_AT_type(*$C$DW$T$31)
+    1697                      .dwattr $C$DW$T$36, DW_AT_language(DW_LANG_C)
+    1698                      .dwattr $C$DW$T$36, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\i
+    1699                      .dwattr $C$DW$T$36, DW_AT_decl_line(0x72)
+    1700                      .dwattr $C$DW$T$36, DW_AT_decl_column(0x20)
+    1701              $C$DW$134       .dwtag  DW_TAG_TI_far_type
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   36
+
+    1702                      .dwattr $C$DW$134, DW_AT_type(*$C$DW$T$36)
+    1703              $C$DW$T$37      .dwtag  DW_TAG_volatile_type
+    1704                      .dwattr $C$DW$T$37, DW_AT_type(*$C$DW$134)
+    1705              
+    1706              $C$DW$T$38      .dwtag  DW_TAG_structure_type
+    1707                      .dwattr $C$DW$T$38, DW_AT_name("xLIST")
+    1708                      .dwattr $C$DW$T$38, DW_AT_byte_size(0x0a)
+    1709              $C$DW$135       .dwtag  DW_TAG_member
+    1710                      .dwattr $C$DW$135, DW_AT_type(*$C$DW$T$32)
+    1711                      .dwattr $C$DW$135, DW_AT_name("uxNumberOfItems")
+    1712                      .dwattr $C$DW$135, DW_AT_TI_symbol_name("_uxNumberOfItems")
+    1713                      .dwattr $C$DW$135, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+    1714                      .dwattr $C$DW$135, DW_AT_accessibility(DW_ACCESS_public)
+    1715                      .dwattr $C$DW$135, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\in
+    1716                      .dwattr $C$DW$135, DW_AT_decl_line(0x79)
+    1717                      .dwattr $C$DW$135, DW_AT_decl_column(0x22)
+    1718              $C$DW$136       .dwtag  DW_TAG_member
+    1719                      .dwattr $C$DW$136, DW_AT_type(*$C$DW$T$35)
+    1720                      .dwattr $C$DW$136, DW_AT_name("pxIndex")
+    1721                      .dwattr $C$DW$136, DW_AT_TI_symbol_name("_pxIndex")
+    1722                      .dwattr $C$DW$136, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+    1723                      .dwattr $C$DW$136, DW_AT_accessibility(DW_ACCESS_public)
+    1724                      .dwattr $C$DW$136, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\in
+    1725                      .dwattr $C$DW$136, DW_AT_decl_line(0x7a)
+    1726                      .dwattr $C$DW$136, DW_AT_decl_column(0x17)
+    1727              $C$DW$137       .dwtag  DW_TAG_member
+    1728                      .dwattr $C$DW$137, DW_AT_type(*$C$DW$T$37)
+    1729                      .dwattr $C$DW$137, DW_AT_name("xListEnd")
+    1730                      .dwattr $C$DW$137, DW_AT_TI_symbol_name("_xListEnd")
+    1731                      .dwattr $C$DW$137, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+    1732                      .dwattr $C$DW$137, DW_AT_accessibility(DW_ACCESS_public)
+    1733                      .dwattr $C$DW$137, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\in
+    1734                      .dwattr $C$DW$137, DW_AT_decl_line(0x7b)
+    1735                      .dwattr $C$DW$137, DW_AT_decl_column(0x19)
+    1736                      .dwendtag $C$DW$T$38
+    1737              
+    1738                      .dwattr $C$DW$T$38, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\i
+    1739                      .dwattr $C$DW$T$38, DW_AT_decl_line(0x77)
+    1740                      .dwattr $C$DW$T$38, DW_AT_decl_column(0x10)
+    1741              $C$DW$T$99      .dwtag  DW_TAG_typedef, DW_AT_name("xList")
+    1742                      .dwattr $C$DW$T$99, DW_AT_type(*$C$DW$T$38)
+    1743                      .dwattr $C$DW$T$99, DW_AT_language(DW_LANG_C)
+    1744                      .dwattr $C$DW$T$99, DW_AT_decl_file("E:\temp\c5515_eZdsp_FreeRTOS_Demo\EZDSP_Sample\FreeRTOS\Source\i
+    1745                      .dwattr $C$DW$T$99, DW_AT_decl_line(0x7c)
+    1746                      .dwattr $C$DW$T$99, DW_AT_decl_column(0x03)
+    1747              
+    1748              $C$DW$T$39      .dwtag  DW_TAG_structure_type
+    1749                      .dwattr $C$DW$T$39, DW_AT_name("xTIME_OUT")
+    1750                      .dwattr $C$DW$T$39, DW_AT_byte_size(0x04)
+    1751              $C$DW$138       .dwtag  DW_TAG_member
+    1752                      .dwattr $C$DW$138, DW_AT_type(*$C$DW$T$10)
+    1753                      .dwattr $C$DW$138, DW_AT_name("xOverflowCount")
+    1754                      .dwattr $C$DW$138, DW_AT_TI_symbol_name("_xOverflowCount")
+    1755                      .dwattr $C$DW$138, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+    1756                      .dwattr $C$DW$138, DW_AT_accessibility(DW_ACCESS_public)
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   37
+
+    1757                      .dwattr $C$DW$138, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/in
+    1758                      .dwattr $C$DW$138, DW_AT_decl_line(0x5e)
+    1759                      .dwattr $C$DW$138, DW_AT_decl_column(0x10)
+    1760              $C$DW$139       .dwtag  DW_TAG_member
+    1761                      .dwattr $C$DW$139, DW_AT_type(*$C$DW$T$21)
+    1762                      .dwattr $C$DW$139, DW_AT_name("xTimeOnEntering")
+    1763                      .dwattr $C$DW$139, DW_AT_TI_symbol_name("_xTimeOnEntering")
+    1764                      .dwattr $C$DW$139, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+    1765                      .dwattr $C$DW$139, DW_AT_accessibility(DW_ACCESS_public)
+    1766                      .dwattr $C$DW$139, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/in
+    1767                      .dwattr $C$DW$139, DW_AT_decl_line(0x5f)
+    1768                      .dwattr $C$DW$139, DW_AT_decl_column(0x10)
+    1769                      .dwendtag $C$DW$T$39
+    1770              
+    1771                      .dwattr $C$DW$T$39, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/i
+    1772                      .dwattr $C$DW$T$39, DW_AT_decl_line(0x5c)
+    1773                      .dwattr $C$DW$T$39, DW_AT_decl_column(0x10)
+    1774              $C$DW$T$100     .dwtag  DW_TAG_typedef, DW_AT_name("xTimeOutType")
+    1775                      .dwattr $C$DW$T$100, DW_AT_type(*$C$DW$T$39)
+    1776                      .dwattr $C$DW$T$100, DW_AT_language(DW_LANG_C)
+    1777                      .dwattr $C$DW$T$100, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/
+    1778                      .dwattr $C$DW$T$100, DW_AT_decl_line(0x60)
+    1779                      .dwattr $C$DW$T$100, DW_AT_decl_column(0x03)
+    1780              
+    1781              $C$DW$T$49      .dwtag  DW_TAG_structure_type
+    1782                      .dwattr $C$DW$T$49, DW_AT_name("xTASK_PARAMTERS")
+    1783                      .dwattr $C$DW$T$49, DW_AT_byte_size(0x12)
+    1784              $C$DW$140       .dwtag  DW_TAG_member
+    1785                      .dwattr $C$DW$140, DW_AT_type(*$C$DW$T$42)
+    1786                      .dwattr $C$DW$140, DW_AT_name("pvTaskCode")
+    1787                      .dwattr $C$DW$140, DW_AT_TI_symbol_name("_pvTaskCode")
+    1788                      .dwattr $C$DW$140, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+    1789                      .dwattr $C$DW$140, DW_AT_accessibility(DW_ACCESS_public)
+    1790                      .dwattr $C$DW$140, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/in
+    1791                      .dwattr $C$DW$140, DW_AT_decl_line(0x71)
+    1792                      .dwattr $C$DW$140, DW_AT_decl_column(0x0e)
+    1793              $C$DW$141       .dwtag  DW_TAG_member
+    1794                      .dwattr $C$DW$141, DW_AT_type(*$C$DW$T$45)
+    1795                      .dwattr $C$DW$141, DW_AT_name("pcName")
+    1796                      .dwattr $C$DW$141, DW_AT_TI_symbol_name("_pcName")
+    1797                      .dwattr $C$DW$141, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+    1798                      .dwattr $C$DW$141, DW_AT_accessibility(DW_ACCESS_public)
+    1799                      .dwattr $C$DW$141, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/in
+    1800                      .dwattr $C$DW$141, DW_AT_decl_line(0x72)
+    1801                      .dwattr $C$DW$141, DW_AT_decl_column(0x1c)
+    1802              $C$DW$142       .dwtag  DW_TAG_member
+    1803                      .dwattr $C$DW$142, DW_AT_type(*$C$DW$T$9)
+    1804                      .dwattr $C$DW$142, DW_AT_name("usStackDepth")
+    1805                      .dwattr $C$DW$142, DW_AT_TI_symbol_name("_usStackDepth")
+    1806                      .dwattr $C$DW$142, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+    1807                      .dwattr $C$DW$142, DW_AT_accessibility(DW_ACCESS_public)
+    1808                      .dwattr $C$DW$142, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/in
+    1809                      .dwattr $C$DW$142, DW_AT_decl_line(0x73)
+    1810                      .dwattr $C$DW$142, DW_AT_decl_column(0x11)
+    1811              $C$DW$143       .dwtag  DW_TAG_member
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   38
+
+    1812                      .dwattr $C$DW$143, DW_AT_type(*$C$DW$T$3)
+    1813                      .dwattr $C$DW$143, DW_AT_name("pvParameters")
+    1814                      .dwattr $C$DW$143, DW_AT_TI_symbol_name("_pvParameters")
+    1815                      .dwattr $C$DW$143, DW_AT_data_member_location[DW_OP_plus_uconst 0x6]
+    1816                      .dwattr $C$DW$143, DW_AT_accessibility(DW_ACCESS_public)
+    1817                      .dwattr $C$DW$143, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/in
+    1818                      .dwattr $C$DW$143, DW_AT_decl_line(0x74)
+    1819                      .dwattr $C$DW$143, DW_AT_decl_column(0x08)
+    1820              $C$DW$144       .dwtag  DW_TAG_member
+    1821                      .dwattr $C$DW$144, DW_AT_type(*$C$DW$T$11)
+    1822                      .dwattr $C$DW$144, DW_AT_name("uxPriority")
+    1823                      .dwattr $C$DW$144, DW_AT_TI_symbol_name("_uxPriority")
+    1824                      .dwattr $C$DW$144, DW_AT_data_member_location[DW_OP_plus_uconst 0x8]
+    1825                      .dwattr $C$DW$144, DW_AT_accessibility(DW_ACCESS_public)
+    1826                      .dwattr $C$DW$144, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/in
+    1827                      .dwattr $C$DW$144, DW_AT_decl_line(0x75)
+    1828                      .dwattr $C$DW$144, DW_AT_decl_column(0x19)
+    1829              $C$DW$145       .dwtag  DW_TAG_member
+    1830                      .dwattr $C$DW$145, DW_AT_type(*$C$DW$T$46)
+    1831                      .dwattr $C$DW$145, DW_AT_name("puxStackBuffer")
+    1832                      .dwattr $C$DW$145, DW_AT_TI_symbol_name("_puxStackBuffer")
+    1833                      .dwattr $C$DW$145, DW_AT_data_member_location[DW_OP_plus_uconst 0xa]
+    1834                      .dwattr $C$DW$145, DW_AT_accessibility(DW_ACCESS_public)
+    1835                      .dwattr $C$DW$145, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/in
+    1836                      .dwattr $C$DW$145, DW_AT_decl_line(0x76)
+    1837                      .dwattr $C$DW$145, DW_AT_decl_column(0x12)
+    1838              $C$DW$146       .dwtag  DW_TAG_member
+    1839                      .dwattr $C$DW$146, DW_AT_type(*$C$DW$T$48)
+    1840                      .dwattr $C$DW$146, DW_AT_name("xRegions")
+    1841                      .dwattr $C$DW$146, DW_AT_TI_symbol_name("_xRegions")
+    1842                      .dwattr $C$DW$146, DW_AT_data_member_location[DW_OP_plus_uconst 0xc]
+    1843                      .dwattr $C$DW$146, DW_AT_accessibility(DW_ACCESS_public)
+    1844                      .dwattr $C$DW$146, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/in
+    1845                      .dwattr $C$DW$146, DW_AT_decl_line(0x77)
+    1846                      .dwattr $C$DW$146, DW_AT_decl_column(0x10)
+    1847                      .dwendtag $C$DW$T$49
+    1848              
+    1849                      .dwattr $C$DW$T$49, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/i
+    1850                      .dwattr $C$DW$T$49, DW_AT_decl_line(0x6f)
+    1851                      .dwattr $C$DW$T$49, DW_AT_decl_column(0x10)
+    1852              $C$DW$T$101     .dwtag  DW_TAG_typedef, DW_AT_name("xTaskParameters")
+    1853                      .dwattr $C$DW$T$101, DW_AT_type(*$C$DW$T$49)
+    1854                      .dwattr $C$DW$T$101, DW_AT_language(DW_LANG_C)
+    1855                      .dwattr $C$DW$T$101, DW_AT_decl_file("E:/temp/c5515_eZdsp_FreeRTOS_Demo/EZDSP_Sample/FreeRTOS/Source/
+    1856                      .dwattr $C$DW$T$101, DW_AT_decl_line(0x78)
+    1857                      .dwattr $C$DW$T$101, DW_AT_decl_column(0x03)
+    1858                      .dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
+    1859              
+    1860              ;***************************************************************
+    1861              ;* DWARF CIE ENTRIES                                           *
+    1862              ;***************************************************************
+    1863              
+    1864              $C$DW$CIE       .dwcie 91
+    1865                      .dwcfi  cfa_register, 36
+    1866                      .dwcfi  cfa_offset, 0
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   39
+
+    1867                      .dwcfi  undefined, 0
+    1868                      .dwcfi  undefined, 1
+    1869                      .dwcfi  undefined, 2
+    1870                      .dwcfi  undefined, 3
+    1871                      .dwcfi  undefined, 4
+    1872                      .dwcfi  undefined, 5
+    1873                      .dwcfi  undefined, 6
+    1874                      .dwcfi  undefined, 7
+    1875                      .dwcfi  undefined, 8
+    1876                      .dwcfi  undefined, 9
+    1877                      .dwcfi  undefined, 10
+    1878                      .dwcfi  undefined, 11
+    1879                      .dwcfi  undefined, 12
+    1880                      .dwcfi  undefined, 13
+    1881                      .dwcfi  same_value, 14
+    1882                      .dwcfi  same_value, 15
+    1883                      .dwcfi  undefined, 16
+    1884                      .dwcfi  undefined, 17
+    1885                      .dwcfi  undefined, 18
+    1886                      .dwcfi  undefined, 19
+    1887                      .dwcfi  undefined, 20
+    1888                      .dwcfi  undefined, 21
+    1889                      .dwcfi  undefined, 22
+    1890                      .dwcfi  undefined, 23
+    1891                      .dwcfi  undefined, 24
+    1892                      .dwcfi  undefined, 25
+    1893                      .dwcfi  same_value, 26
+    1894                      .dwcfi  same_value, 27
+    1895                      .dwcfi  same_value, 28
+    1896                      .dwcfi  same_value, 29
+    1897                      .dwcfi  same_value, 30
+    1898                      .dwcfi  same_value, 31
+    1899                      .dwcfi  undefined, 32
+    1900                      .dwcfi  undefined, 33
+    1901                      .dwcfi  undefined, 34
+    1902                      .dwcfi  undefined, 35
+    1903                      .dwcfi  undefined, 36
+    1904                      .dwcfi  undefined, 37
+    1905                      .dwcfi  undefined, 38
+    1906                      .dwcfi  undefined, 39
+    1907                      .dwcfi  undefined, 40
+    1908                      .dwcfi  undefined, 41
+    1909                      .dwcfi  undefined, 42
+    1910                      .dwcfi  undefined, 43
+    1911                      .dwcfi  undefined, 44
+    1912                      .dwcfi  undefined, 45
+    1913                      .dwcfi  undefined, 46
+    1914                      .dwcfi  undefined, 47
+    1915                      .dwcfi  undefined, 48
+    1916                      .dwcfi  undefined, 49
+    1917                      .dwcfi  undefined, 50
+    1918                      .dwcfi  undefined, 51
+    1919                      .dwcfi  undefined, 52
+    1920                      .dwcfi  undefined, 53
+    1921                      .dwcfi  undefined, 54
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   40
+
+    1922                      .dwcfi  undefined, 55
+    1923                      .dwcfi  undefined, 56
+    1924                      .dwcfi  undefined, 57
+    1925                      .dwcfi  undefined, 58
+    1926                      .dwcfi  undefined, 59
+    1927                      .dwcfi  undefined, 60
+    1928                      .dwcfi  undefined, 61
+    1929                      .dwcfi  undefined, 62
+    1930                      .dwcfi  undefined, 63
+    1931                      .dwcfi  undefined, 64
+    1932                      .dwcfi  undefined, 65
+    1933                      .dwcfi  undefined, 66
+    1934                      .dwcfi  undefined, 67
+    1935                      .dwcfi  undefined, 68
+    1936                      .dwcfi  undefined, 69
+    1937                      .dwcfi  undefined, 70
+    1938                      .dwcfi  undefined, 71
+    1939                      .dwcfi  undefined, 72
+    1940                      .dwcfi  undefined, 73
+    1941                      .dwcfi  undefined, 74
+    1942                      .dwcfi  undefined, 75
+    1943                      .dwcfi  undefined, 76
+    1944                      .dwcfi  undefined, 77
+    1945                      .dwcfi  undefined, 78
+    1946                      .dwcfi  undefined, 79
+    1947                      .dwcfi  undefined, 80
+    1948                      .dwcfi  undefined, 81
+    1949                      .dwcfi  undefined, 82
+    1950                      .dwcfi  undefined, 83
+    1951                      .dwcfi  undefined, 84
+    1952                      .dwcfi  undefined, 85
+    1953                      .dwcfi  undefined, 86
+    1954                      .dwcfi  undefined, 87
+    1955                      .dwcfi  undefined, 88
+    1956                      .dwcfi  undefined, 89
+    1957                      .dwcfi  undefined, 90
+    1958                      .dwcfi  undefined, 91
+    1959                      .dwendentry
+    1960              
+    1961              ;***************************************************************
+    1962              ;* DWARF REGISTER MAP                                          *
+    1963              ;***************************************************************
+    1964              
+    1965              $C$DW$147       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    1966                      .dwattr $C$DW$147, DW_AT_location[DW_OP_reg0]
+    1967              $C$DW$148       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    1968                      .dwattr $C$DW$148, DW_AT_location[DW_OP_reg1]
+    1969              $C$DW$149       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0_G")
+    1970                      .dwattr $C$DW$149, DW_AT_location[DW_OP_reg2]
+    1971              $C$DW$150       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    1972                      .dwattr $C$DW$150, DW_AT_location[DW_OP_reg3]
+    1973              $C$DW$151       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    1974                      .dwattr $C$DW$151, DW_AT_location[DW_OP_reg4]
+    1975              $C$DW$152       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1_G")
+    1976                      .dwattr $C$DW$152, DW_AT_location[DW_OP_reg5]
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   41
+
+    1977              $C$DW$153       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    1978                      .dwattr $C$DW$153, DW_AT_location[DW_OP_reg6]
+    1979              $C$DW$154       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    1980                      .dwattr $C$DW$154, DW_AT_location[DW_OP_reg7]
+    1981              $C$DW$155       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2_G")
+    1982                      .dwattr $C$DW$155, DW_AT_location[DW_OP_reg8]
+    1983              $C$DW$156       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    1984                      .dwattr $C$DW$156, DW_AT_location[DW_OP_reg9]
+    1985              $C$DW$157       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    1986                      .dwattr $C$DW$157, DW_AT_location[DW_OP_reg10]
+    1987              $C$DW$158       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3_G")
+    1988                      .dwattr $C$DW$158, DW_AT_location[DW_OP_reg11]
+    1989              $C$DW$159       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T0")
+    1990                      .dwattr $C$DW$159, DW_AT_location[DW_OP_reg12]
+    1991              $C$DW$160       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T1")
+    1992                      .dwattr $C$DW$160, DW_AT_location[DW_OP_reg13]
+    1993              $C$DW$161       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T2")
+    1994                      .dwattr $C$DW$161, DW_AT_location[DW_OP_reg14]
+    1995              $C$DW$162       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T3")
+    1996                      .dwattr $C$DW$162, DW_AT_location[DW_OP_reg15]
+    1997              $C$DW$163       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0")
+    1998                      .dwattr $C$DW$163, DW_AT_location[DW_OP_reg16]
+    1999              $C$DW$164       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR0")
+    2000                      .dwattr $C$DW$164, DW_AT_location[DW_OP_reg17]
+    2001              $C$DW$165       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1")
+    2002                      .dwattr $C$DW$165, DW_AT_location[DW_OP_reg18]
+    2003              $C$DW$166       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR1")
+    2004                      .dwattr $C$DW$166, DW_AT_location[DW_OP_reg19]
+    2005              $C$DW$167       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
+    2006                      .dwattr $C$DW$167, DW_AT_location[DW_OP_reg20]
+    2007              $C$DW$168       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR2")
+    2008                      .dwattr $C$DW$168, DW_AT_location[DW_OP_reg21]
+    2009              $C$DW$169       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3")
+    2010                      .dwattr $C$DW$169, DW_AT_location[DW_OP_reg22]
+    2011              $C$DW$170       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR3")
+    2012                      .dwattr $C$DW$170, DW_AT_location[DW_OP_reg23]
+    2013              $C$DW$171       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4")
+    2014                      .dwattr $C$DW$171, DW_AT_location[DW_OP_reg24]
+    2015              $C$DW$172       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR4")
+    2016                      .dwattr $C$DW$172, DW_AT_location[DW_OP_reg25]
+    2017              $C$DW$173       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5")
+    2018                      .dwattr $C$DW$173, DW_AT_location[DW_OP_reg26]
+    2019              $C$DW$174       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR5")
+    2020                      .dwattr $C$DW$174, DW_AT_location[DW_OP_reg27]
+    2021              $C$DW$175       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6")
+    2022                      .dwattr $C$DW$175, DW_AT_location[DW_OP_reg28]
+    2023              $C$DW$176       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR6")
+    2024                      .dwattr $C$DW$176, DW_AT_location[DW_OP_reg29]
+    2025              $C$DW$177       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7")
+    2026                      .dwattr $C$DW$177, DW_AT_location[DW_OP_reg30]
+    2027              $C$DW$178       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR7")
+    2028                      .dwattr $C$DW$178, DW_AT_location[DW_OP_reg31]
+    2029              $C$DW$179       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FP")
+    2030                      .dwattr $C$DW$179, DW_AT_location[DW_OP_regx 0x20]
+    2031              $C$DW$180       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XFP")
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   42
+
+    2032                      .dwattr $C$DW$180, DW_AT_location[DW_OP_regx 0x21]
+    2033              $C$DW$181       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
+    2034                      .dwattr $C$DW$181, DW_AT_location[DW_OP_regx 0x22]
+    2035              $C$DW$182       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
+    2036                      .dwattr $C$DW$182, DW_AT_location[DW_OP_regx 0x23]
+    2037              $C$DW$183       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XSP")
+    2038                      .dwattr $C$DW$183, DW_AT_location[DW_OP_regx 0x24]
+    2039              $C$DW$184       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BKC")
+    2040                      .dwattr $C$DW$184, DW_AT_location[DW_OP_regx 0x25]
+    2041              $C$DW$185       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK03")
+    2042                      .dwattr $C$DW$185, DW_AT_location[DW_OP_regx 0x26]
+    2043              $C$DW$186       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK47")
+    2044                      .dwattr $C$DW$186, DW_AT_location[DW_OP_regx 0x27]
+    2045              $C$DW$187       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST0")
+    2046                      .dwattr $C$DW$187, DW_AT_location[DW_OP_regx 0x28]
+    2047              $C$DW$188       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST1")
+    2048                      .dwattr $C$DW$188, DW_AT_location[DW_OP_regx 0x29]
+    2049              $C$DW$189       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST2")
+    2050                      .dwattr $C$DW$189, DW_AT_location[DW_OP_regx 0x2a]
+    2051              $C$DW$190       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST3")
+    2052                      .dwattr $C$DW$190, DW_AT_location[DW_OP_regx 0x2b]
+    2053              $C$DW$191       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP")
+    2054                      .dwattr $C$DW$191, DW_AT_location[DW_OP_regx 0x2c]
+    2055              $C$DW$192       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP05")
+    2056                      .dwattr $C$DW$192, DW_AT_location[DW_OP_regx 0x2d]
+    2057              $C$DW$193       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP67")
+    2058                      .dwattr $C$DW$193, DW_AT_location[DW_OP_regx 0x2e]
+    2059              $C$DW$194       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
+    2060                      .dwattr $C$DW$194, DW_AT_location[DW_OP_regx 0x2f]
+    2061              $C$DW$195       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
+    2062                      .dwattr $C$DW$195, DW_AT_location[DW_OP_regx 0x30]
+    2063              $C$DW$196       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0_H")
+    2064                      .dwattr $C$DW$196, DW_AT_location[DW_OP_regx 0x31]
+    2065              $C$DW$197       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0")
+    2066                      .dwattr $C$DW$197, DW_AT_location[DW_OP_regx 0x32]
+    2067              $C$DW$198       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0_H")
+    2068                      .dwattr $C$DW$198, DW_AT_location[DW_OP_regx 0x33]
+    2069              $C$DW$199       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRS1")
+    2070                      .dwattr $C$DW$199, DW_AT_location[DW_OP_regx 0x34]
+    2071              $C$DW$200       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC1")
+    2072                      .dwattr $C$DW$200, DW_AT_location[DW_OP_regx 0x35]
+    2073              $C$DW$201       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1")
+    2074                      .dwattr $C$DW$201, DW_AT_location[DW_OP_regx 0x36]
+    2075              $C$DW$202       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1_H")
+    2076                      .dwattr $C$DW$202, DW_AT_location[DW_OP_regx 0x37]
+    2077              $C$DW$203       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1")
+    2078                      .dwattr $C$DW$203, DW_AT_location[DW_OP_regx 0x38]
+    2079              $C$DW$204       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1_H")
+    2080                      .dwattr $C$DW$204, DW_AT_location[DW_OP_regx 0x39]
+    2081              $C$DW$205       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CSR")
+    2082                      .dwattr $C$DW$205, DW_AT_location[DW_OP_regx 0x3a]
+    2083              $C$DW$206       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RPTC")
+    2084                      .dwattr $C$DW$206, DW_AT_location[DW_OP_regx 0x3b]
+    2085              $C$DW$207       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDP")
+    2086                      .dwattr $C$DW$207, DW_AT_location[DW_OP_regx 0x3c]
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   43
+
+    2087              $C$DW$208       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XCDP")
+    2088                      .dwattr $C$DW$208, DW_AT_location[DW_OP_regx 0x3d]
+    2089              $C$DW$209       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN0")
+    2090                      .dwattr $C$DW$209, DW_AT_location[DW_OP_regx 0x3e]
+    2091              $C$DW$210       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN1")
+    2092                      .dwattr $C$DW$210, DW_AT_location[DW_OP_regx 0x3f]
+    2093              $C$DW$211       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA01")
+    2094                      .dwattr $C$DW$211, DW_AT_location[DW_OP_regx 0x40]
+    2095              $C$DW$212       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA23")
+    2096                      .dwattr $C$DW$212, DW_AT_location[DW_OP_regx 0x41]
+    2097              $C$DW$213       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA45")
+    2098                      .dwattr $C$DW$213, DW_AT_location[DW_OP_regx 0x42]
+    2099              $C$DW$214       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA67")
+    2100                      .dwattr $C$DW$214, DW_AT_location[DW_OP_regx 0x43]
+    2101              $C$DW$215       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSAC")
+    2102                      .dwattr $C$DW$215, DW_AT_location[DW_OP_regx 0x44]
+    2103              $C$DW$216       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CARRY")
+    2104                      .dwattr $C$DW$216, DW_AT_location[DW_OP_regx 0x45]
+    2105              $C$DW$217       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC1")
+    2106                      .dwattr $C$DW$217, DW_AT_location[DW_OP_regx 0x46]
+    2107              $C$DW$218       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC2")
+    2108                      .dwattr $C$DW$218, DW_AT_location[DW_OP_regx 0x47]
+    2109              $C$DW$219       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("M40")
+    2110                      .dwattr $C$DW$219, DW_AT_location[DW_OP_regx 0x48]
+    2111              $C$DW$220       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SXMD")
+    2112                      .dwattr $C$DW$220, DW_AT_location[DW_OP_regx 0x49]
+    2113              $C$DW$221       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ARMS")
+    2114                      .dwattr $C$DW$221, DW_AT_location[DW_OP_regx 0x4a]
+    2115              $C$DW$222       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
+    2116                      .dwattr $C$DW$222, DW_AT_location[DW_OP_regx 0x4b]
+    2117              $C$DW$223       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATA")
+    2118                      .dwattr $C$DW$223, DW_AT_location[DW_OP_regx 0x4c]
+    2119              $C$DW$224       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATD")
+    2120                      .dwattr $C$DW$224, DW_AT_location[DW_OP_regx 0x4d]
+    2121              $C$DW$225       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RDM")
+    2122                      .dwattr $C$DW$225, DW_AT_location[DW_OP_regx 0x4e]
+    2123              $C$DW$226       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FRCT")
+    2124                      .dwattr $C$DW$226, DW_AT_location[DW_OP_regx 0x4f]
+    2125              $C$DW$227       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SMUL")
+    2126                      .dwattr $C$DW$227, DW_AT_location[DW_OP_regx 0x50]
+    2127              $C$DW$228       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("INTM")
+    2128                      .dwattr $C$DW$228, DW_AT_location[DW_OP_regx 0x51]
+    2129              $C$DW$229       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0LC")
+    2130                      .dwattr $C$DW$229, DW_AT_location[DW_OP_regx 0x52]
+    2131              $C$DW$230       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1LC")
+    2132                      .dwattr $C$DW$230, DW_AT_location[DW_OP_regx 0x53]
+    2133              $C$DW$231       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2LC")
+    2134                      .dwattr $C$DW$231, DW_AT_location[DW_OP_regx 0x54]
+    2135              $C$DW$232       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3LC")
+    2136                      .dwattr $C$DW$232, DW_AT_location[DW_OP_regx 0x55]
+    2137              $C$DW$233       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4LC")
+    2138                      .dwattr $C$DW$233, DW_AT_location[DW_OP_regx 0x56]
+    2139              $C$DW$234       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5LC")
+    2140                      .dwattr $C$DW$234, DW_AT_location[DW_OP_regx 0x57]
+    2141              $C$DW$235       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6LC")
+TMS320C55x Assembler PC v4.3.8 Fri Jan 21 01:13:32 2011
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+BlockQ.asm                                                           PAGE   44
+
+    2142                      .dwattr $C$DW$235, DW_AT_location[DW_OP_regx 0x58]
+    2143              $C$DW$236       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7LC")
+    2144                      .dwattr $C$DW$236, DW_AT_location[DW_OP_regx 0x59]
+    2145              $C$DW$237       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDPLC")
+    2146                      .dwattr $C$DW$237, DW_AT_location[DW_OP_regx 0x5a]
+    2147              $C$DW$238       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
+    2148                      .dwattr $C$DW$238, DW_AT_location[DW_OP_regx 0x5b]
+    2149                      .dwendtag $C$DW$CU
+    2150              
+
+No Assembly Errors, No Assembly Warnings
