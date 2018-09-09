@@ -1,0 +1,1710 @@
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE    1
+
+    1436              ; Temporary Registers Used: None
+       1              ;*******************************************************************************
+       2              ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
+       3              ;* Date/Time created: Sun Sep 09 04:48:23 2018                                 *
+       4              ;*******************************************************************************
+       5                      .compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --si
+       6                      .mmregs
+       7                      .cpl_on
+       8                      .arms_on
+       9                      .c54cm_off
+      10                      .asg AR6, FP
+      11                      .asg XAR6, XFP
+      12                      .asg DPH, MDP
+      13                      .model call=c55_std
+      14                      .model mem=large
+      15                      .noremark 5002  ; code respects overwrite rules
+      16              ;*******************************************************************************
+      17              ;* GLOBAL FILE PARAMETERS                                                      *
+      18              ;*                                                                             *
+      19              ;*   Architecture       : TMS320C55x                                           *
+      20              ;*   Optimizing for     : Speed                                                *
+      21              ;*   Memory             : Large Model (23-Bit Data Pointers)                   *
+      22              ;*   Calls              : Normal Library ASM calls                             *
+      23              ;*   Debug Info         : Standard TI Debug Information                        *
+      24              ;*******************************************************************************
+      25              
+      26              $C$DW$CU        .dwtag  DW_TAG_compile_unit
+      27                      .dwattr $C$DW$CU, DW_AT_name("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+      28                      .dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas In
+      29                      .dwattr $C$DW$CU, DW_AT_TI_version(0x01)
+      30                      .dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug")
+      31              ;******************************************************************************
+      32              ;* CINIT RECORDS                                                              *
+      33              ;******************************************************************************
+      34 000000               .sect   ".cinit"
+      35                      .align  1
+      36 000000 0030          .field          $C$IR_1,16
+      37 000001 0000-         .field          _XmitL_Sine_1K+0,24
+         000002 0000 
+      38 000002 0000          .field          0,8
+      39 000003 0000          .field  0,16                    ; _XmitL_Sine_1K[0] @ 0
+      40 000004 0B6C          .field  2924,16                 ; _XmitL_Sine_1K[1] @ 16
+      41 000005 16A6          .field  5798,16                 ; _XmitL_Sine_1K[2] @ 32
+      42 000006 217C          .field  8572,16                 ; _XmitL_Sine_1K[3] @ 48
+      43 000007 2BC0          .field  11200,16                        ; _XmitL_Sine_1K[4] @ 64
+      44 000008 3544          .field  13636,16                        ; _XmitL_Sine_1K[5] @ 80
+      45 000009 3DDF          .field  15839,16                        ; _XmitL_Sine_1K[6] @ 96
+      46 00000a 456B          .field  17771,16                        ; _XmitL_Sine_1K[7] @ 112
+      47 00000b 4BC7          .field  19399,16                        ; _XmitL_Sine_1K[8] @ 128
+      48 00000c 50D7          .field  20695,16                        ; _XmitL_Sine_1K[9] @ 144
+      49 00000d 5485          .field  21637,16                        ; _XmitL_Sine_1K[10] @ 160
+      50 00000e 56C0          .field  22208,16                        ; _XmitL_Sine_1K[11] @ 176
+      51 00000f 5780          .field  22400,16                        ; _XmitL_Sine_1K[12] @ 192
+      52 000010 56C0          .field  22208,16                        ; _XmitL_Sine_1K[13] @ 208
+      53 000011 5485          .field  21637,16                        ; _XmitL_Sine_1K[14] @ 224
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE    2
+
+      54 000012 50D7          .field  20695,16                        ; _XmitL_Sine_1K[15] @ 240
+      55 000013 4BC7          .field  19399,16                        ; _XmitL_Sine_1K[16] @ 256
+      56 000014 456B          .field  17771,16                        ; _XmitL_Sine_1K[17] @ 272
+      57 000015 3DDF          .field  15839,16                        ; _XmitL_Sine_1K[18] @ 288
+      58 000016 3544          .field  13636,16                        ; _XmitL_Sine_1K[19] @ 304
+      59 000017 2BC0          .field  11200,16                        ; _XmitL_Sine_1K[20] @ 320
+      60 000018 217C          .field  8572,16                 ; _XmitL_Sine_1K[21] @ 336
+      61 000019 16A6          .field  5798,16                 ; _XmitL_Sine_1K[22] @ 352
+      62 00001a 0B6C          .field  2924,16                 ; _XmitL_Sine_1K[23] @ 368
+      63 00001b 0000          .field  0,16                    ; _XmitL_Sine_1K[24] @ 384
+      64 00001c F494          .field  -2924,16                        ; _XmitL_Sine_1K[25] @ 400
+      65 00001d E95A          .field  -5798,16                        ; _XmitL_Sine_1K[26] @ 416
+      66 00001e DE84          .field  -8572,16                        ; _XmitL_Sine_1K[27] @ 432
+      67 00001f D440          .field  -11200,16                       ; _XmitL_Sine_1K[28] @ 448
+      68 000020 CABC          .field  -13636,16                       ; _XmitL_Sine_1K[29] @ 464
+      69 000021 C221          .field  -15839,16                       ; _XmitL_Sine_1K[30] @ 480
+      70 000022 BA95          .field  -17771,16                       ; _XmitL_Sine_1K[31] @ 496
+      71 000023 B439          .field  -19399,16                       ; _XmitL_Sine_1K[32] @ 512
+      72 000024 AF29          .field  -20695,16                       ; _XmitL_Sine_1K[33] @ 528
+      73 000025 AB7B          .field  -21637,16                       ; _XmitL_Sine_1K[34] @ 544
+      74 000026 A940          .field  -22208,16                       ; _XmitL_Sine_1K[35] @ 560
+      75 000027 A880          .field  -22400,16                       ; _XmitL_Sine_1K[36] @ 576
+      76 000028 A940          .field  -22208,16                       ; _XmitL_Sine_1K[37] @ 592
+      77 000029 AB7B          .field  -21637,16                       ; _XmitL_Sine_1K[38] @ 608
+      78 00002a AF29          .field  -20695,16                       ; _XmitL_Sine_1K[39] @ 624
+      79 00002b B439          .field  -19399,16                       ; _XmitL_Sine_1K[40] @ 640
+      80 00002c BA95          .field  -17771,16                       ; _XmitL_Sine_1K[41] @ 656
+      81 00002d C221          .field  -15839,16                       ; _XmitL_Sine_1K[42] @ 672
+      82 00002e CABC          .field  -13636,16                       ; _XmitL_Sine_1K[43] @ 688
+      83 00002f D440          .field  -11200,16                       ; _XmitL_Sine_1K[44] @ 704
+      84 000030 DE84          .field  -8572,16                        ; _XmitL_Sine_1K[45] @ 720
+      85 000031 E95A          .field  -5798,16                        ; _XmitL_Sine_1K[46] @ 736
+      86 000032 F494          .field  -2924,16                        ; _XmitL_Sine_1K[47] @ 752
+      87              $C$IR_1:        .set    48
+      88              
+      89 000033               .sect   ".cinit"
+      90                      .align  1
+      91 000033 0030          .field          $C$IR_2,16
+      92 000034 0000-         .field          _XmitL_Sine_2K+0,24
+         000035 3000 
+      93 000035 3000          .field          0,8
+      94 000036 0000          .field  0,16                    ; _XmitL_Sine_2K[0] @ 0
+      95 000037 16A6          .field  5798,16                 ; _XmitL_Sine_2K[1] @ 16
+      96 000038 2BC0          .field  11200,16                        ; _XmitL_Sine_2K[2] @ 32
+      97 000039 3DDF          .field  15839,16                        ; _XmitL_Sine_2K[3] @ 48
+      98 00003a 4BC7          .field  19399,16                        ; _XmitL_Sine_2K[4] @ 64
+      99 00003b 5485          .field  21637,16                        ; _XmitL_Sine_2K[5] @ 80
+     100 00003c 5780          .field  22400,16                        ; _XmitL_Sine_2K[6] @ 96
+     101 00003d 5485          .field  21637,16                        ; _XmitL_Sine_2K[7] @ 112
+     102 00003e 4BC7          .field  19399,16                        ; _XmitL_Sine_2K[8] @ 128
+     103 00003f 3DDF          .field  15839,16                        ; _XmitL_Sine_2K[9] @ 144
+     104 000040 2BC0          .field  11200,16                        ; _XmitL_Sine_2K[10] @ 160
+     105 000041 16A6          .field  5798,16                 ; _XmitL_Sine_2K[11] @ 176
+     106 000042 0000          .field  0,16                    ; _XmitL_Sine_2K[12] @ 192
+     107 000043 E95A          .field  -5798,16                        ; _XmitL_Sine_2K[13] @ 208
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE    3
+
+     108 000044 D440          .field  -11200,16                       ; _XmitL_Sine_2K[14] @ 224
+     109 000045 C221          .field  -15839,16                       ; _XmitL_Sine_2K[15] @ 240
+     110 000046 B439          .field  -19399,16                       ; _XmitL_Sine_2K[16] @ 256
+     111 000047 AB7B          .field  -21637,16                       ; _XmitL_Sine_2K[17] @ 272
+     112 000048 A880          .field  -22400,16                       ; _XmitL_Sine_2K[18] @ 288
+     113 000049 AB7B          .field  -21637,16                       ; _XmitL_Sine_2K[19] @ 304
+     114 00004a B439          .field  -19399,16                       ; _XmitL_Sine_2K[20] @ 320
+     115 00004b C221          .field  -15839,16                       ; _XmitL_Sine_2K[21] @ 336
+     116 00004c D440          .field  -11200,16                       ; _XmitL_Sine_2K[22] @ 352
+     117 00004d E95A          .field  -5798,16                        ; _XmitL_Sine_2K[23] @ 368
+     118 00004e 0000          .field  0,16                    ; _XmitL_Sine_2K[24] @ 384
+     119 00004f 16A6          .field  5798,16                 ; _XmitL_Sine_2K[25] @ 400
+     120 000050 2BC0          .field  11200,16                        ; _XmitL_Sine_2K[26] @ 416
+     121 000051 3DDF          .field  15839,16                        ; _XmitL_Sine_2K[27] @ 432
+     122 000052 4BC7          .field  19399,16                        ; _XmitL_Sine_2K[28] @ 448
+     123 000053 5485          .field  21637,16                        ; _XmitL_Sine_2K[29] @ 464
+     124 000054 5780          .field  22400,16                        ; _XmitL_Sine_2K[30] @ 480
+     125 000055 5485          .field  21637,16                        ; _XmitL_Sine_2K[31] @ 496
+     126 000056 4BC7          .field  19399,16                        ; _XmitL_Sine_2K[32] @ 512
+     127 000057 3DDF          .field  15839,16                        ; _XmitL_Sine_2K[33] @ 528
+     128 000058 2BC0          .field  11200,16                        ; _XmitL_Sine_2K[34] @ 544
+     129 000059 16A6          .field  5798,16                 ; _XmitL_Sine_2K[35] @ 560
+     130 00005a 0000          .field  0,16                    ; _XmitL_Sine_2K[36] @ 576
+     131 00005b E95A          .field  -5798,16                        ; _XmitL_Sine_2K[37] @ 592
+     132 00005c D440          .field  -11200,16                       ; _XmitL_Sine_2K[38] @ 608
+     133 00005d C221          .field  -15839,16                       ; _XmitL_Sine_2K[39] @ 624
+     134 00005e B439          .field  -19399,16                       ; _XmitL_Sine_2K[40] @ 640
+     135 00005f AB7B          .field  -21637,16                       ; _XmitL_Sine_2K[41] @ 656
+     136 000060 A880          .field  -22400,16                       ; _XmitL_Sine_2K[42] @ 672
+     137 000061 AB7B          .field  -21637,16                       ; _XmitL_Sine_2K[43] @ 688
+     138 000062 B439          .field  -19399,16                       ; _XmitL_Sine_2K[44] @ 704
+     139 000063 C221          .field  -15839,16                       ; _XmitL_Sine_2K[45] @ 720
+     140 000064 D440          .field  -11200,16                       ; _XmitL_Sine_2K[46] @ 736
+     141 000065 E95A          .field  -5798,16                        ; _XmitL_Sine_2K[47] @ 752
+     142              $C$IR_2:        .set    48
+     143              
+     144 000066               .sect   ".cinit"
+     145                      .align  1
+     146 000066 0030          .field          $C$IR_3,16
+     147 000067 0000-         .field          _XmitR_Sine_1K+0,24
+         000068 6000 
+     148 000068 6000          .field          0,8
+     149 000069 0000          .field  0,16                    ; _XmitR_Sine_1K[0] @ 0
+     150 00006a 0B6C          .field  2924,16                 ; _XmitR_Sine_1K[1] @ 16
+     151 00006b 16A6          .field  5798,16                 ; _XmitR_Sine_1K[2] @ 32
+     152 00006c 217C          .field  8572,16                 ; _XmitR_Sine_1K[3] @ 48
+     153 00006d 2BC0          .field  11200,16                        ; _XmitR_Sine_1K[4] @ 64
+     154 00006e 3544          .field  13636,16                        ; _XmitR_Sine_1K[5] @ 80
+     155 00006f 3DDF          .field  15839,16                        ; _XmitR_Sine_1K[6] @ 96
+     156 000070 456B          .field  17771,16                        ; _XmitR_Sine_1K[7] @ 112
+     157 000071 4BC7          .field  19399,16                        ; _XmitR_Sine_1K[8] @ 128
+     158 000072 50D7          .field  20695,16                        ; _XmitR_Sine_1K[9] @ 144
+     159 000073 5485          .field  21637,16                        ; _XmitR_Sine_1K[10] @ 160
+     160 000074 56C0          .field  22208,16                        ; _XmitR_Sine_1K[11] @ 176
+     161 000075 5780          .field  22400,16                        ; _XmitR_Sine_1K[12] @ 192
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE    4
+
+     162 000076 56C0          .field  22208,16                        ; _XmitR_Sine_1K[13] @ 208
+     163 000077 5485          .field  21637,16                        ; _XmitR_Sine_1K[14] @ 224
+     164 000078 50D7          .field  20695,16                        ; _XmitR_Sine_1K[15] @ 240
+     165 000079 4BC7          .field  19399,16                        ; _XmitR_Sine_1K[16] @ 256
+     166 00007a 456B          .field  17771,16                        ; _XmitR_Sine_1K[17] @ 272
+     167 00007b 3DDF          .field  15839,16                        ; _XmitR_Sine_1K[18] @ 288
+     168 00007c 3544          .field  13636,16                        ; _XmitR_Sine_1K[19] @ 304
+     169 00007d 2BC0          .field  11200,16                        ; _XmitR_Sine_1K[20] @ 320
+     170 00007e 217C          .field  8572,16                 ; _XmitR_Sine_1K[21] @ 336
+     171 00007f 16A6          .field  5798,16                 ; _XmitR_Sine_1K[22] @ 352
+     172 000080 0B6C          .field  2924,16                 ; _XmitR_Sine_1K[23] @ 368
+     173 000081 0000          .field  0,16                    ; _XmitR_Sine_1K[24] @ 384
+     174 000082 F494          .field  -2924,16                        ; _XmitR_Sine_1K[25] @ 400
+     175 000083 E95A          .field  -5798,16                        ; _XmitR_Sine_1K[26] @ 416
+     176 000084 DE84          .field  -8572,16                        ; _XmitR_Sine_1K[27] @ 432
+     177 000085 D440          .field  -11200,16                       ; _XmitR_Sine_1K[28] @ 448
+     178 000086 CABC          .field  -13636,16                       ; _XmitR_Sine_1K[29] @ 464
+     179 000087 C221          .field  -15839,16                       ; _XmitR_Sine_1K[30] @ 480
+     180 000088 BA95          .field  -17771,16                       ; _XmitR_Sine_1K[31] @ 496
+     181 000089 B439          .field  -19399,16                       ; _XmitR_Sine_1K[32] @ 512
+     182 00008a AF29          .field  -20695,16                       ; _XmitR_Sine_1K[33] @ 528
+     183 00008b AB7B          .field  -21637,16                       ; _XmitR_Sine_1K[34] @ 544
+     184 00008c A940          .field  -22208,16                       ; _XmitR_Sine_1K[35] @ 560
+     185 00008d A880          .field  -22400,16                       ; _XmitR_Sine_1K[36] @ 576
+     186 00008e A940          .field  -22208,16                       ; _XmitR_Sine_1K[37] @ 592
+     187 00008f AB7B          .field  -21637,16                       ; _XmitR_Sine_1K[38] @ 608
+     188 000090 AF29          .field  -20695,16                       ; _XmitR_Sine_1K[39] @ 624
+     189 000091 B439          .field  -19399,16                       ; _XmitR_Sine_1K[40] @ 640
+     190 000092 BA95          .field  -17771,16                       ; _XmitR_Sine_1K[41] @ 656
+     191 000093 C221          .field  -15839,16                       ; _XmitR_Sine_1K[42] @ 672
+     192 000094 CABC          .field  -13636,16                       ; _XmitR_Sine_1K[43] @ 688
+     193 000095 D440          .field  -11200,16                       ; _XmitR_Sine_1K[44] @ 704
+     194 000096 DE84          .field  -8572,16                        ; _XmitR_Sine_1K[45] @ 720
+     195 000097 E95A          .field  -5798,16                        ; _XmitR_Sine_1K[46] @ 736
+     196 000098 F494          .field  -2924,16                        ; _XmitR_Sine_1K[47] @ 752
+     197              $C$IR_3:        .set    48
+     198              
+     199 000099               .sect   ".cinit"
+     200                      .align  1
+     201 000099 0030          .field          $C$IR_4,16
+     202 00009a 0000-         .field          _XmitR_Sine_2K+0,24
+         00009b 9000 
+     203 00009b 9000          .field          0,8
+     204 00009c 0000          .field  0,16                    ; _XmitR_Sine_2K[0] @ 0
+     205 00009d 16A6          .field  5798,16                 ; _XmitR_Sine_2K[1] @ 16
+     206 00009e 2BC0          .field  11200,16                        ; _XmitR_Sine_2K[2] @ 32
+     207 00009f 3DDF          .field  15839,16                        ; _XmitR_Sine_2K[3] @ 48
+     208 0000a0 4BC7          .field  19399,16                        ; _XmitR_Sine_2K[4] @ 64
+     209 0000a1 5485          .field  21637,16                        ; _XmitR_Sine_2K[5] @ 80
+     210 0000a2 5780          .field  22400,16                        ; _XmitR_Sine_2K[6] @ 96
+     211 0000a3 5485          .field  21637,16                        ; _XmitR_Sine_2K[7] @ 112
+     212 0000a4 4BC7          .field  19399,16                        ; _XmitR_Sine_2K[8] @ 128
+     213 0000a5 3DDF          .field  15839,16                        ; _XmitR_Sine_2K[9] @ 144
+     214 0000a6 2BC0          .field  11200,16                        ; _XmitR_Sine_2K[10] @ 160
+     215 0000a7 16A6          .field  5798,16                 ; _XmitR_Sine_2K[11] @ 176
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE    5
+
+     216 0000a8 0000          .field  0,16                    ; _XmitR_Sine_2K[12] @ 192
+     217 0000a9 E95A          .field  -5798,16                        ; _XmitR_Sine_2K[13] @ 208
+     218 0000aa D440          .field  -11200,16                       ; _XmitR_Sine_2K[14] @ 224
+     219 0000ab C221          .field  -15839,16                       ; _XmitR_Sine_2K[15] @ 240
+     220 0000ac B439          .field  -19399,16                       ; _XmitR_Sine_2K[16] @ 256
+     221 0000ad AB7B          .field  -21637,16                       ; _XmitR_Sine_2K[17] @ 272
+     222 0000ae A880          .field  -22400,16                       ; _XmitR_Sine_2K[18] @ 288
+     223 0000af AB7B          .field  -21637,16                       ; _XmitR_Sine_2K[19] @ 304
+     224 0000b0 B439          .field  -19399,16                       ; _XmitR_Sine_2K[20] @ 320
+     225 0000b1 C221          .field  -15839,16                       ; _XmitR_Sine_2K[21] @ 336
+     226 0000b2 D440          .field  -11200,16                       ; _XmitR_Sine_2K[22] @ 352
+     227 0000b3 E95A          .field  -5798,16                        ; _XmitR_Sine_2K[23] @ 368
+     228 0000b4 0000          .field  0,16                    ; _XmitR_Sine_2K[24] @ 384
+     229 0000b5 16A6          .field  5798,16                 ; _XmitR_Sine_2K[25] @ 400
+     230 0000b6 2BC0          .field  11200,16                        ; _XmitR_Sine_2K[26] @ 416
+     231 0000b7 3DDF          .field  15839,16                        ; _XmitR_Sine_2K[27] @ 432
+     232 0000b8 4BC7          .field  19399,16                        ; _XmitR_Sine_2K[28] @ 448
+     233 0000b9 5485          .field  21637,16                        ; _XmitR_Sine_2K[29] @ 464
+     234 0000ba 5780          .field  22400,16                        ; _XmitR_Sine_2K[30] @ 480
+     235 0000bb 5485          .field  21637,16                        ; _XmitR_Sine_2K[31] @ 496
+     236 0000bc 4BC7          .field  19399,16                        ; _XmitR_Sine_2K[32] @ 512
+     237 0000bd 3DDF          .field  15839,16                        ; _XmitR_Sine_2K[33] @ 528
+     238 0000be 2BC0          .field  11200,16                        ; _XmitR_Sine_2K[34] @ 544
+     239 0000bf 16A6          .field  5798,16                 ; _XmitR_Sine_2K[35] @ 560
+     240 0000c0 0000          .field  0,16                    ; _XmitR_Sine_2K[36] @ 576
+     241 0000c1 E95A          .field  -5798,16                        ; _XmitR_Sine_2K[37] @ 592
+     242 0000c2 D440          .field  -11200,16                       ; _XmitR_Sine_2K[38] @ 608
+     243 0000c3 C221          .field  -15839,16                       ; _XmitR_Sine_2K[39] @ 624
+     244 0000c4 B439          .field  -19399,16                       ; _XmitR_Sine_2K[40] @ 640
+     245 0000c5 AB7B          .field  -21637,16                       ; _XmitR_Sine_2K[41] @ 656
+     246 0000c6 A880          .field  -22400,16                       ; _XmitR_Sine_2K[42] @ 672
+     247 0000c7 AB7B          .field  -21637,16                       ; _XmitR_Sine_2K[43] @ 688
+     248 0000c8 B439          .field  -19399,16                       ; _XmitR_Sine_2K[44] @ 704
+     249 0000c9 C221          .field  -15839,16                       ; _XmitR_Sine_2K[45] @ 720
+     250 0000ca D440          .field  -11200,16                       ; _XmitR_Sine_2K[46] @ 736
+     251 0000cb E95A          .field  -5798,16                        ; _XmitR_Sine_2K[47] @ 752
+     252              $C$IR_4:        .set    48
+     253              
+     254 0000cc               .sect   ".cinit"
+     255                      .align  1
+     256 0000cc 0001          .field          1,16
+     257 0000cd 0001-         .field          _DMA_Count+0,24
+         0000ce 2000 
+     258 0000ce 2000          .field          0,8
+     259 0000cf 0000          .field  0,16                    ; _DMA_Count @ 0
+     260              
+     261 0000d0               .sect   ".cinit"
+     262                      .align  1
+     263 0000d0 0001          .field          1,16
+     264 0000d1 0001-         .field          _Error_Count_L+0,24
+         0000d2 2100 
+     265 0000d2 2100          .field          0,8
+     266 0000d3 0000          .field  0,16                    ; _Error_Count_L @ 0
+     267              
+     268 0000d4               .sect   ".cinit"
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE    6
+
+     269                      .align  1
+     270 0000d4 0001          .field          1,16
+     271 0000d5 0001-         .field          _Error_Count_R+0,24
+         0000d6 2200 
+     272 0000d6 2200          .field          0,8
+     273 0000d7 0000          .field  0,16                    ; _Error_Count_R @ 0
+     274              
+     275 0000d8               .sect   ".cinit"
+     276                      .align  1
+     277 0000d8 0001          .field          1,16
+     278 0000d9 0001-         .field          _DMA_Done+0,24
+         0000da 2300 
+     279 0000da 2300          .field          0,8
+     280 0000db 0000          .field  0,16                    ; _DMA_Done @ 0
+     281              
+     282                      .global _XmitL_Sine_1K
+     283 000000               .bss    _XmitL_Sine_1K,48,0,0
+     284              $C$DW$1 .dwtag  DW_TAG_variable, DW_AT_name("XmitL_Sine_1K")
+     285                      .dwattr $C$DW$1, DW_AT_TI_symbol_name("_XmitL_Sine_1K")
+     286                      .dwattr $C$DW$1, DW_AT_location[DW_OP_addr _XmitL_Sine_1K]
+     287                      .dwattr $C$DW$1, DW_AT_type(*$C$DW$T$21)
+     288                      .dwattr $C$DW$1, DW_AT_external
+     289                      .global _XmitL_Sine_2K
+     290 000030               .bss    _XmitL_Sine_2K,48,0,0
+     291              $C$DW$2 .dwtag  DW_TAG_variable, DW_AT_name("XmitL_Sine_2K")
+     292                      .dwattr $C$DW$2, DW_AT_TI_symbol_name("_XmitL_Sine_2K")
+     293                      .dwattr $C$DW$2, DW_AT_location[DW_OP_addr _XmitL_Sine_2K]
+     294                      .dwattr $C$DW$2, DW_AT_type(*$C$DW$T$21)
+     295                      .dwattr $C$DW$2, DW_AT_external
+     296                      .global _XmitR_Sine_1K
+     297 000060               .bss    _XmitR_Sine_1K,48,0,0
+     298              $C$DW$3 .dwtag  DW_TAG_variable, DW_AT_name("XmitR_Sine_1K")
+     299                      .dwattr $C$DW$3, DW_AT_TI_symbol_name("_XmitR_Sine_1K")
+     300                      .dwattr $C$DW$3, DW_AT_location[DW_OP_addr _XmitR_Sine_1K]
+     301                      .dwattr $C$DW$3, DW_AT_type(*$C$DW$T$21)
+     302                      .dwattr $C$DW$3, DW_AT_external
+     303                      .global _XmitR_Sine_2K
+     304 000090               .bss    _XmitR_Sine_2K,48,0,0
+     305              $C$DW$4 .dwtag  DW_TAG_variable, DW_AT_name("XmitR_Sine_2K")
+     306                      .dwattr $C$DW$4, DW_AT_TI_symbol_name("_XmitR_Sine_2K")
+     307                      .dwattr $C$DW$4, DW_AT_location[DW_OP_addr _XmitR_Sine_2K]
+     308                      .dwattr $C$DW$4, DW_AT_type(*$C$DW$T$21)
+     309                      .dwattr $C$DW$4, DW_AT_external
+     310                      .global _RcvL_Sine
+     311 0000c0               .bss    _RcvL_Sine,48,0,0
+     312              $C$DW$5 .dwtag  DW_TAG_variable, DW_AT_name("RcvL_Sine")
+     313                      .dwattr $C$DW$5, DW_AT_TI_symbol_name("_RcvL_Sine")
+     314                      .dwattr $C$DW$5, DW_AT_location[DW_OP_addr _RcvL_Sine]
+     315                      .dwattr $C$DW$5, DW_AT_type(*$C$DW$T$21)
+     316                      .dwattr $C$DW$5, DW_AT_external
+     317                      .global _RcvR_Sine
+     318 0000f0               .bss    _RcvR_Sine,48,0,0
+     319              $C$DW$6 .dwtag  DW_TAG_variable, DW_AT_name("RcvR_Sine")
+     320                      .dwattr $C$DW$6, DW_AT_TI_symbol_name("_RcvR_Sine")
+     321                      .dwattr $C$DW$6, DW_AT_location[DW_OP_addr _RcvR_Sine]
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE    7
+
+     322                      .dwattr $C$DW$6, DW_AT_type(*$C$DW$T$21)
+     323                      .dwattr $C$DW$6, DW_AT_external
+     324                      .global _DMA_Count
+     325 000120               .bss    _DMA_Count,1,0,0
+     326              $C$DW$7 .dwtag  DW_TAG_variable, DW_AT_name("DMA_Count")
+     327                      .dwattr $C$DW$7, DW_AT_TI_symbol_name("_DMA_Count")
+     328                      .dwattr $C$DW$7, DW_AT_location[DW_OP_addr _DMA_Count]
+     329                      .dwattr $C$DW$7, DW_AT_type(*$C$DW$T$23)
+     330                      .dwattr $C$DW$7, DW_AT_external
+     331                      .global _Error_Count_L
+     332 000121               .bss    _Error_Count_L,1,0,0
+     333              $C$DW$8 .dwtag  DW_TAG_variable, DW_AT_name("Error_Count_L")
+     334                      .dwattr $C$DW$8, DW_AT_TI_symbol_name("_Error_Count_L")
+     335                      .dwattr $C$DW$8, DW_AT_location[DW_OP_addr _Error_Count_L]
+     336                      .dwattr $C$DW$8, DW_AT_type(*$C$DW$T$23)
+     337                      .dwattr $C$DW$8, DW_AT_external
+     338                      .global _Error_Count_R
+     339 000122               .bss    _Error_Count_R,1,0,0
+     340              $C$DW$9 .dwtag  DW_TAG_variable, DW_AT_name("Error_Count_R")
+     341                      .dwattr $C$DW$9, DW_AT_TI_symbol_name("_Error_Count_R")
+     342                      .dwattr $C$DW$9, DW_AT_location[DW_OP_addr _Error_Count_R]
+     343                      .dwattr $C$DW$9, DW_AT_type(*$C$DW$T$23)
+     344                      .dwattr $C$DW$9, DW_AT_external
+     345                      .global _DMA_Done
+     346 000123               .bss    _DMA_Done,1,0,0
+     347              $C$DW$10        .dwtag  DW_TAG_variable, DW_AT_name("DMA_Done")
+     348                      .dwattr $C$DW$10, DW_AT_TI_symbol_name("_DMA_Done")
+     349                      .dwattr $C$DW$10, DW_AT_location[DW_OP_addr _DMA_Done]
+     350                      .dwattr $C$DW$10, DW_AT_type(*$C$DW$T$23)
+     351                      .dwattr $C$DW$10, DW_AT_external
+     352              $C$DW$11        .dwtag  DW_TAG_variable, DW_AT_name("fSineWave")
+     353                      .dwattr $C$DW$11, DW_AT_TI_symbol_name("_fSineWave")
+     354                      .dwattr $C$DW$11, DW_AT_type(*$C$DW$T$23)
+     355                      .dwattr $C$DW$11, DW_AT_declaration
+     356                      .dwattr $C$DW$11, DW_AT_external
+     357              ;       F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\T
+     358 000000               .sect   ".text"
+     359                      .align 4
+     360                      .global _set_dma1_ch0_stop
+     361              
+     362              $C$DW$12        .dwtag  DW_TAG_subprogram, DW_AT_name("set_dma1_ch0_stop")
+     363                      .dwattr $C$DW$12, DW_AT_low_pc(_set_dma1_ch0_stop)
+     364                      .dwattr $C$DW$12, DW_AT_high_pc(0x00)
+     365                      .dwattr $C$DW$12, DW_AT_TI_symbol_name("_set_dma1_ch0_stop")
+     366                      .dwattr $C$DW$12, DW_AT_external
+     367                      .dwattr $C$DW$12, DW_AT_TI_begin_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+     368                      .dwattr $C$DW$12, DW_AT_TI_begin_line(0x59)
+     369                      .dwattr $C$DW$12, DW_AT_TI_begin_column(0x06)
+     370                      .dwattr $C$DW$12, DW_AT_TI_max_frame_size(0x02)
+     371                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 90,column 1,is_stmt,address _
+     372              
+     373                      .dwfde $C$DW$CIE, _set_dma1_ch0_stop
+     374              ;*******************************************************************************
+     375              ;* FUNCTION NAME: set_dma1_ch0_stop                                            *
+     376              ;*                                                                             *
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE    8
+
+     377              ;*   Function Uses Regs : AR1,SP,M40,SATA,SATD,RDM,FRCT,SMUL                   *
+     378              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     379              ;*   Total Frame Size   : 2 words                                              *
+     380              ;*                        (1 return address/alignment)                         *
+     381              ;*                        (1 local values)                                     *
+     382              ;*   Min System Stack   : 1 word                                               *
+     383              ;*******************************************************************************
+     384 000000       _set_dma1_ch0_stop:
+     385                      .dwcfi  cfa_offset, 1
+     386                      .dwcfi  save_reg_to_mem, 91, -1
+     387 000000 4EFF          AADD #-1, SP
+     388                      .dwcfi  cfa_offset, 2
+     389              $C$DW$13        .dwtag  DW_TAG_variable, DW_AT_name("temp")
+     390                      .dwattr $C$DW$13, DW_AT_TI_symbol_name("_temp")
+     391                      .dwattr $C$DW$13, DW_AT_type(*$C$DW$T$23)
+     392                      .dwattr $C$DW$13, DW_AT_location[DW_OP_bregx 0x24 0]
+     393                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 93,column 5,is_stmt
+     394 000002 A951          MOV *port(#3333), AR1 ; |93| 
+         000004 0D05 
+     395 000006 C900          MOV AR1, *SP(#0) ; |93| 
+     396                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 94,column 2,is_stmt
+     397 000008 F400          AND #0x7fff, *SP(#0) ; |94| 
+         00000a 7FFF 
+     398                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 95,column 2,is_stmt
+     399 00000c A900          MOV *SP(#0), AR1 ; |95| 
+     400 00000e C951          MOV AR1, *port(#3333) ; |95| 
+         000010 0D05 
+     401                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 96,column 1,is_stmt
+     402 000012 4E01          AADD #1, SP
+     403                      .dwcfi  cfa_offset, 1
+     404              $C$DW$14        .dwtag  DW_TAG_TI_branch
+     405                      .dwattr $C$DW$14, DW_AT_low_pc(0x00)
+     406                      .dwattr $C$DW$14, DW_AT_TI_return
+     407 000014 4804          RET
+     408                                                      ; return occurs
+     409                      .dwattr $C$DW$12, DW_AT_TI_end_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+     410                      .dwattr $C$DW$12, DW_AT_TI_end_line(0x60)
+     411                      .dwattr $C$DW$12, DW_AT_TI_end_column(0x01)
+     412                      .dwendentry
+     413                      .dwendtag $C$DW$12
+     414              
+     415 000016               .sect   ".text"
+     416                      .align 4
+     417                      .global _set_dma0_ch0_stop
+     418              
+     419              $C$DW$15        .dwtag  DW_TAG_subprogram, DW_AT_name("set_dma0_ch0_stop")
+     420                      .dwattr $C$DW$15, DW_AT_low_pc(_set_dma0_ch0_stop)
+     421                      .dwattr $C$DW$15, DW_AT_high_pc(0x00)
+     422                      .dwattr $C$DW$15, DW_AT_TI_symbol_name("_set_dma0_ch0_stop")
+     423                      .dwattr $C$DW$15, DW_AT_external
+     424                      .dwattr $C$DW$15, DW_AT_TI_begin_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+     425                      .dwattr $C$DW$15, DW_AT_TI_begin_line(0x62)
+     426                      .dwattr $C$DW$15, DW_AT_TI_begin_column(0x06)
+     427                      .dwattr $C$DW$15, DW_AT_TI_max_frame_size(0x02)
+     428                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 99,column 1,is_stmt,address _
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE    9
+
+     429              
+     430                      .dwfde $C$DW$CIE, _set_dma0_ch0_stop
+     431              ;*******************************************************************************
+     432              ;* FUNCTION NAME: set_dma0_ch0_stop                                            *
+     433              ;*                                                                             *
+     434              ;*   Function Uses Regs : AR1,SP,M40,SATA,SATD,RDM,FRCT,SMUL                   *
+     435              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     436              ;*   Total Frame Size   : 2 words                                              *
+     437              ;*                        (1 return address/alignment)                         *
+     438              ;*                        (1 local values)                                     *
+     439              ;*   Min System Stack   : 1 word                                               *
+     440              ;*******************************************************************************
+     441 000018       _set_dma0_ch0_stop:
+     442                      .dwcfi  cfa_offset, 1
+     443                      .dwcfi  save_reg_to_mem, 91, -1
+     444 000018 4EFF          AADD #-1, SP
+     445                      .dwcfi  cfa_offset, 2
+     446              $C$DW$16        .dwtag  DW_TAG_variable, DW_AT_name("temp")
+     447                      .dwattr $C$DW$16, DW_AT_TI_symbol_name("_temp")
+     448                      .dwattr $C$DW$16, DW_AT_type(*$C$DW$T$23)
+     449                      .dwattr $C$DW$16, DW_AT_location[DW_OP_bregx 0x24 0]
+     450                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 102,column 5,is_stmt
+     451 00001a A951          MOV *port(#3077), AR1 ; |102| 
+         00001c 0C05 
+     452 00001e C900          MOV AR1, *SP(#0) ; |102| 
+     453                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 103,column 2,is_stmt
+     454 000020 F400          AND #0x7fff, *SP(#0) ; |103| 
+         000022 7FFF 
+     455                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 104,column 2,is_stmt
+     456 000024 A900          MOV *SP(#0), AR1 ; |104| 
+     457 000026 C951          MOV AR1, *port(#3077) ; |104| 
+         000028 0C05 
+     458                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 105,column 1,is_stmt
+     459 00002a 4E01          AADD #1, SP
+     460                      .dwcfi  cfa_offset, 1
+     461              $C$DW$17        .dwtag  DW_TAG_TI_branch
+     462                      .dwattr $C$DW$17, DW_AT_low_pc(0x00)
+     463                      .dwattr $C$DW$17, DW_AT_TI_return
+     464 00002c 4804          RET
+     465                                                      ; return occurs
+     466                      .dwattr $C$DW$15, DW_AT_TI_end_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+     467                      .dwattr $C$DW$15, DW_AT_TI_end_line(0x69)
+     468                      .dwattr $C$DW$15, DW_AT_TI_end_column(0x01)
+     469                      .dwendentry
+     470                      .dwendtag $C$DW$15
+     471              
+     472 00002e               .sect   ".text"
+     473                      .align 4
+     474                      .global _set_dma1_ch1_stop
+     475              
+     476              $C$DW$18        .dwtag  DW_TAG_subprogram, DW_AT_name("set_dma1_ch1_stop")
+     477                      .dwattr $C$DW$18, DW_AT_low_pc(_set_dma1_ch1_stop)
+     478                      .dwattr $C$DW$18, DW_AT_high_pc(0x00)
+     479                      .dwattr $C$DW$18, DW_AT_TI_symbol_name("_set_dma1_ch1_stop")
+     480                      .dwattr $C$DW$18, DW_AT_external
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   10
+
+     481                      .dwattr $C$DW$18, DW_AT_TI_begin_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+     482                      .dwattr $C$DW$18, DW_AT_TI_begin_line(0x6c)
+     483                      .dwattr $C$DW$18, DW_AT_TI_begin_column(0x06)
+     484                      .dwattr $C$DW$18, DW_AT_TI_max_frame_size(0x02)
+     485                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 109,column 1,is_stmt,address 
+     486              
+     487                      .dwfde $C$DW$CIE, _set_dma1_ch1_stop
+     488              ;*******************************************************************************
+     489              ;* FUNCTION NAME: set_dma1_ch1_stop                                            *
+     490              ;*                                                                             *
+     491              ;*   Function Uses Regs : AR1,SP,M40,SATA,SATD,RDM,FRCT,SMUL                   *
+     492              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     493              ;*   Total Frame Size   : 2 words                                              *
+     494              ;*                        (1 return address/alignment)                         *
+     495              ;*                        (1 local values)                                     *
+     496              ;*   Min System Stack   : 1 word                                               *
+     497              ;*******************************************************************************
+     498 000030       _set_dma1_ch1_stop:
+     499                      .dwcfi  cfa_offset, 1
+     500                      .dwcfi  save_reg_to_mem, 91, -1
+     501 000030 4EFF          AADD #-1, SP
+     502                      .dwcfi  cfa_offset, 2
+     503              $C$DW$19        .dwtag  DW_TAG_variable, DW_AT_name("temp")
+     504                      .dwattr $C$DW$19, DW_AT_TI_symbol_name("_temp")
+     505                      .dwattr $C$DW$19, DW_AT_type(*$C$DW$T$23)
+     506                      .dwattr $C$DW$19, DW_AT_location[DW_OP_bregx 0x24 0]
+     507                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 112,column 5,is_stmt
+     508 000032 A951          MOV *port(#3365), AR1 ; |112| 
+         000034 0D25 
+     509 000036 C900          MOV AR1, *SP(#0) ; |112| 
+     510                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 113,column 2,is_stmt
+     511 000038 F400          AND #0x7fff, *SP(#0) ; |113| 
+         00003a 7FFF 
+     512                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 114,column 2,is_stmt
+     513 00003c A900          MOV *SP(#0), AR1 ; |114| 
+     514 00003e C951          MOV AR1, *port(#3365) ; |114| 
+         000040 0D25 
+     515                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 115,column 1,is_stmt
+     516 000042 4E01          AADD #1, SP
+     517                      .dwcfi  cfa_offset, 1
+     518              $C$DW$20        .dwtag  DW_TAG_TI_branch
+     519                      .dwattr $C$DW$20, DW_AT_low_pc(0x00)
+     520                      .dwattr $C$DW$20, DW_AT_TI_return
+     521 000044 4804          RET
+     522                                                      ; return occurs
+     523                      .dwattr $C$DW$18, DW_AT_TI_end_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+     524                      .dwattr $C$DW$18, DW_AT_TI_end_line(0x73)
+     525                      .dwattr $C$DW$18, DW_AT_TI_end_column(0x01)
+     526                      .dwendentry
+     527                      .dwendtag $C$DW$18
+     528              
+     529 000046               .sect   ".text"
+     530                      .align 4
+     531                      .global _set_dma0_ch1_stop
+     532              
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   11
+
+     533              $C$DW$21        .dwtag  DW_TAG_subprogram, DW_AT_name("set_dma0_ch1_stop")
+     534                      .dwattr $C$DW$21, DW_AT_low_pc(_set_dma0_ch1_stop)
+     535                      .dwattr $C$DW$21, DW_AT_high_pc(0x00)
+     536                      .dwattr $C$DW$21, DW_AT_TI_symbol_name("_set_dma0_ch1_stop")
+     537                      .dwattr $C$DW$21, DW_AT_external
+     538                      .dwattr $C$DW$21, DW_AT_TI_begin_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+     539                      .dwattr $C$DW$21, DW_AT_TI_begin_line(0x75)
+     540                      .dwattr $C$DW$21, DW_AT_TI_begin_column(0x06)
+     541                      .dwattr $C$DW$21, DW_AT_TI_max_frame_size(0x02)
+     542                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 118,column 1,is_stmt,address 
+     543              
+     544                      .dwfde $C$DW$CIE, _set_dma0_ch1_stop
+     545              ;*******************************************************************************
+     546              ;* FUNCTION NAME: set_dma0_ch1_stop                                            *
+     547              ;*                                                                             *
+     548              ;*   Function Uses Regs : AR1,SP,M40,SATA,SATD,RDM,FRCT,SMUL                   *
+     549              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     550              ;*   Total Frame Size   : 2 words                                              *
+     551              ;*                        (1 return address/alignment)                         *
+     552              ;*                        (1 local values)                                     *
+     553              ;*   Min System Stack   : 1 word                                               *
+     554              ;*******************************************************************************
+     555 000048       _set_dma0_ch1_stop:
+     556                      .dwcfi  cfa_offset, 1
+     557                      .dwcfi  save_reg_to_mem, 91, -1
+     558 000048 4EFF          AADD #-1, SP
+     559                      .dwcfi  cfa_offset, 2
+     560              $C$DW$22        .dwtag  DW_TAG_variable, DW_AT_name("temp")
+     561                      .dwattr $C$DW$22, DW_AT_TI_symbol_name("_temp")
+     562                      .dwattr $C$DW$22, DW_AT_type(*$C$DW$T$23)
+     563                      .dwattr $C$DW$22, DW_AT_location[DW_OP_bregx 0x24 0]
+     564                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 121,column 5,is_stmt
+     565 00004a A951          MOV *port(#3109), AR1 ; |121| 
+         00004c 0C25 
+     566 00004e C900          MOV AR1, *SP(#0) ; |121| 
+     567                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 122,column 2,is_stmt
+     568 000050 F400          AND #0x7fff, *SP(#0) ; |122| 
+         000052 7FFF 
+     569                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 123,column 2,is_stmt
+     570 000054 A900          MOV *SP(#0), AR1 ; |123| 
+     571 000056 C951          MOV AR1, *port(#3109) ; |123| 
+         000058 0C25 
+     572                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 124,column 1,is_stmt
+     573 00005a 4E01          AADD #1, SP
+     574                      .dwcfi  cfa_offset, 1
+     575              $C$DW$23        .dwtag  DW_TAG_TI_branch
+     576                      .dwattr $C$DW$23, DW_AT_low_pc(0x00)
+     577                      .dwattr $C$DW$23, DW_AT_TI_return
+     578 00005c 4804          RET
+     579                                                      ; return occurs
+     580                      .dwattr $C$DW$21, DW_AT_TI_end_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+     581                      .dwattr $C$DW$21, DW_AT_TI_end_line(0x7c)
+     582                      .dwattr $C$DW$21, DW_AT_TI_end_column(0x01)
+     583                      .dwendentry
+     584                      .dwendtag $C$DW$21
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   12
+
+     585              
+     586 00005e               .sect   ".text"
+     587                      .align 4
+     588                      .global _set_dma1_ch0_i2s2_Lout
+     589              
+     590              $C$DW$24        .dwtag  DW_TAG_subprogram, DW_AT_name("set_dma1_ch0_i2s2_Lout")
+     591                      .dwattr $C$DW$24, DW_AT_low_pc(_set_dma1_ch0_i2s2_Lout)
+     592                      .dwattr $C$DW$24, DW_AT_high_pc(0x00)
+     593                      .dwattr $C$DW$24, DW_AT_TI_symbol_name("_set_dma1_ch0_i2s2_Lout")
+     594                      .dwattr $C$DW$24, DW_AT_external
+     595                      .dwattr $C$DW$24, DW_AT_type(*$C$DW$T$23)
+     596                      .dwattr $C$DW$24, DW_AT_TI_begin_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+     597                      .dwattr $C$DW$24, DW_AT_TI_begin_line(0x7e)
+     598                      .dwattr $C$DW$24, DW_AT_TI_begin_column(0x08)
+     599                      .dwattr $C$DW$24, DW_AT_TI_max_frame_size(0x04)
+     600                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 127,column 1,is_stmt,address 
+     601              
+     602                      .dwfde $C$DW$CIE, _set_dma1_ch0_i2s2_Lout
+     603              ;*******************************************************************************
+     604              ;* FUNCTION NAME: set_dma1_ch0_i2s2_Lout                                       *
+     605              ;*                                                                             *
+     606              ;*   Function Uses Regs : AC0,AC0,T0,AR1,AR2,XAR2,AR3,XAR3,SP,CARRY,TC1,M40,   *
+     607              ;*                        SATA,SATD,RDM,FRCT,SMUL                              *
+     608              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     609              ;*   Total Frame Size   : 4 words                                              *
+     610              ;*                        (2 return address/alignment)                         *
+     611              ;*                        (2 local values)                                     *
+     612              ;*   Min System Stack   : 1 word                                               *
+     613              ;*******************************************************************************
+     614 000060       _set_dma1_ch0_i2s2_Lout:
+     615                      .dwcfi  cfa_offset, 1
+     616                      .dwcfi  save_reg_to_mem, 91, -1
+     617 000060 4EFD          AADD #-3, SP
+     618                      .dwcfi  cfa_offset, 4
+     619              $C$DW$25        .dwtag  DW_TAG_variable, DW_AT_name("temp")
+     620                      .dwattr $C$DW$25, DW_AT_TI_symbol_name("_temp")
+     621                      .dwattr $C$DW$25, DW_AT_type(*$C$DW$T$23)
+     622                      .dwattr $C$DW$25, DW_AT_location[DW_OP_bregx 0x24 0]
+     623              $C$DW$26        .dwtag  DW_TAG_variable, DW_AT_name("add")
+     624                      .dwattr $C$DW$26, DW_AT_TI_symbol_name("_add")
+     625                      .dwattr $C$DW$26, DW_AT_type(*$C$DW$T$25)
+     626                      .dwattr $C$DW$26, DW_AT_location[DW_OP_bregx 0x24 1]
+     627                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 131,column 5,is_stmt
+     628 000062 E651          MOV #96, *port(#3332) ; |131| 
+         000064 600D 
+         000066 04   
+     629                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 134,column 5,is_stmt
+     630 000067 FB51          MOV #12804, *port(#3333) ; |134| 
+         000069 3204 
+         00006b 0D05 
+     631                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 139,column 2,is_stmt
+     632 00006d A951          MOV *port(#7196), AR1 ; |139| 
+         00006f 1C1C 
+     633 000071 C900          MOV AR1, *SP(#0) ; |139| 
+     634                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 140,column 5,is_stmt
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   13
+
+     635 000073 EC00          BSET @#0, AR1 ; |140| 
+         000075 90   
+     636 000076 C951          MOV AR1, *port(#7196) ; |140| 
+         000078 1C1C 
+     637                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 142,column 5,is_stmt
+     638 00007a F031          CMP *(#_fSineWave) == #1, TC1 ; |142| 
+         00007c 0001 
+         00007e 0000 
+         000080 00!  
+     639 000081 6374          BCC $C$L1,!TC1 ; |142| 
+     640                                                      ; branchcc occurs ; |142| 
+     641                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 144,column 9,is_stmt
+     642 000083 FB02          MOV #_XmitL_Sine_1K, *SP(#1) ; |144| 
+         000085 0000-
+     643                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 145,column 5,is_stmt
+     644 000087 4A04          B $C$L2   ; |145| 
+     645                                                      ; branch occurs ; |145| 
+     646 000089       $C$L1:    
+     647                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 148,column 9,is_stmt
+     648 000089 FB02          MOV #_XmitL_Sine_2K, *SP(#1) ; |148| 
+         00008b 0030-
+     649 00008d       $C$L2:    
+     650                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 151,column 5,is_stmt
+     651 00008d A902          MOV *SP(#1), AR1 ; |151| 
+     652 00008f 5090          SFTL AR1, #1 ; |151| 
+     653 000091 7DFF          AND #0xffff, AR1, AC0 ; |151| 
+         000093 FF09 
+     654 000095 900A          MOV AC0, XAR2
+     655 000097 EC31          AMOV #65536, XAR3 ; |151| 
+         000099 BE01 
+         00009b 0000 
+     656              
+     657 00009d 8C02          MOV AR3, *SP(#1) ; |151| 
+         00009f BB10 
+         0000a1 A1   
+     658              ||      AADD XAR2, XAR3 ; |151| 
+     659              
+     660                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 152,column 5,is_stmt
+     661 0000a2 22B9          MOV AR3, AR1
+     662 0000a4 C951          MOV AR1, *port(#3328) ; |152| 
+         0000a6 0D00 
+     663                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 154,column 5,is_stmt
+     664 0000a8 7DFF          AND #0xffff, AR1, AC0 ; |154| 
+         0000aa FF09 
+     665 0000ac C051          MOV AC0, *port(#3329) ; |154| 
+         0000ae 0D01 
+     666                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 156,column 5,is_stmt
+     667 0000b0 FB51          MOV #10248, *port(#3330) ; |156| 
+         0000b2 2808 
+         0000b4 0D02 
+     668                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 159,column 5,is_stmt
+     669 0000b6 A951          MOV *port(#3333), AR1 ; |159| 
+         0000b8 0D05 
+     670 0000ba C900          MOV AR1, *SP(#0) ; |159| 
+     671                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 160,column 2,is_stmt
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   14
+
+     672 0000bc F500          OR #0x8000, *SP(#0) ; |160| 
+         0000be 8000 
+     673                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 161,column 2,is_stmt
+     674 0000c0 A900          MOV *SP(#0), AR1 ; |161| 
+     675 0000c2 C951          MOV AR1, *port(#3333) ; |161| 
+         0000c4 0D05 
+     676                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 163,column 5,is_stmt
+     677 0000c6 3C04          MOV #0, T0
+     678                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 164,column 1,is_stmt
+     679 0000c8 4E03          AADD #3, SP
+     680                      .dwcfi  cfa_offset, 1
+     681              $C$DW$27        .dwtag  DW_TAG_TI_branch
+     682                      .dwattr $C$DW$27, DW_AT_low_pc(0x00)
+     683                      .dwattr $C$DW$27, DW_AT_TI_return
+     684 0000ca 4804          RET
+     685                                                      ; return occurs
+     686                      .dwattr $C$DW$24, DW_AT_TI_end_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+     687                      .dwattr $C$DW$24, DW_AT_TI_end_line(0xa4)
+     688                      .dwattr $C$DW$24, DW_AT_TI_end_column(0x01)
+     689                      .dwendentry
+     690                      .dwendtag $C$DW$24
+     691              
+     692 0000cc               .sect   ".text"
+     693                      .align 4
+     694                      .global _set_dma0_ch0_i2s0_Lout
+     695              
+     696              $C$DW$28        .dwtag  DW_TAG_subprogram, DW_AT_name("set_dma0_ch0_i2s0_Lout")
+     697                      .dwattr $C$DW$28, DW_AT_low_pc(_set_dma0_ch0_i2s0_Lout)
+     698                      .dwattr $C$DW$28, DW_AT_high_pc(0x00)
+     699                      .dwattr $C$DW$28, DW_AT_TI_symbol_name("_set_dma0_ch0_i2s0_Lout")
+     700                      .dwattr $C$DW$28, DW_AT_external
+     701                      .dwattr $C$DW$28, DW_AT_type(*$C$DW$T$23)
+     702                      .dwattr $C$DW$28, DW_AT_TI_begin_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+     703                      .dwattr $C$DW$28, DW_AT_TI_begin_line(0xa6)
+     704                      .dwattr $C$DW$28, DW_AT_TI_begin_column(0x08)
+     705                      .dwattr $C$DW$28, DW_AT_TI_max_frame_size(0x04)
+     706                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 167,column 1,is_stmt,address 
+     707              
+     708                      .dwfde $C$DW$CIE, _set_dma0_ch0_i2s0_Lout
+     709              ;*******************************************************************************
+     710              ;* FUNCTION NAME: set_dma0_ch0_i2s0_Lout                                       *
+     711              ;*                                                                             *
+     712              ;*   Function Uses Regs : AC0,AC0,T0,AR1,AR2,XAR2,AR3,XAR3,SP,CARRY,TC1,M40,   *
+     713              ;*                        SATA,SATD,RDM,FRCT,SMUL                              *
+     714              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     715              ;*   Total Frame Size   : 4 words                                              *
+     716              ;*                        (2 return address/alignment)                         *
+     717              ;*                        (2 local values)                                     *
+     718              ;*   Min System Stack   : 1 word                                               *
+     719              ;*******************************************************************************
+     720 0000cc       _set_dma0_ch0_i2s0_Lout:
+     721                      .dwcfi  cfa_offset, 1
+     722                      .dwcfi  save_reg_to_mem, 91, -1
+     723 0000cc 4EFD          AADD #-3, SP
+     724                      .dwcfi  cfa_offset, 4
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   15
+
+     725              $C$DW$29        .dwtag  DW_TAG_variable, DW_AT_name("temp")
+     726                      .dwattr $C$DW$29, DW_AT_TI_symbol_name("_temp")
+     727                      .dwattr $C$DW$29, DW_AT_type(*$C$DW$T$23)
+     728                      .dwattr $C$DW$29, DW_AT_location[DW_OP_bregx 0x24 0]
+     729              $C$DW$30        .dwtag  DW_TAG_variable, DW_AT_name("add")
+     730                      .dwattr $C$DW$30, DW_AT_TI_symbol_name("_add")
+     731                      .dwattr $C$DW$30, DW_AT_type(*$C$DW$T$25)
+     732                      .dwattr $C$DW$30, DW_AT_location[DW_OP_bregx 0x24 1]
+     733                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 171,column 5,is_stmt
+     734 0000ce E651          MOV #96, *port(#3076) ; |171| 
+         0000d0 600C 
+         0000d2 04   
+     735                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 174,column 5,is_stmt
+     736 0000d3 FB51          MOV #12804, *port(#3077) ; |174| 
+         0000d5 3204 
+         0000d7 0C05 
+     737                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 179,column 2,is_stmt
+     738 0000d9 A951          MOV *port(#7194), AR1 ; |179| 
+         0000db 1C1A 
+     739 0000dd C900          MOV AR1, *SP(#0) ; |179| 
+     740                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 180,column 5,is_stmt
+     741 0000df EC00          BSET @#0, AR1 ; |180| 
+         0000e1 90   
+     742 0000e2 C951          MOV AR1, *port(#7194) ; |180| 
+         0000e4 1C1A 
+     743                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 182,column 5,is_stmt
+     744 0000e6 F031          CMP *(#_fSineWave) == #1, TC1 ; |182| 
+         0000e8 0001 
+         0000ea 0000 
+         0000ec 00!  
+     745 0000ed 6374          BCC $C$L3,!TC1 ; |182| 
+     746                                                      ; branchcc occurs ; |182| 
+     747                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 184,column 9,is_stmt
+     748 0000ef FB02          MOV #_XmitL_Sine_1K, *SP(#1) ; |184| 
+         0000f1 0000-
+     749                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 185,column 5,is_stmt
+     750 0000f3 4A04          B $C$L4   ; |185| 
+     751                                                      ; branch occurs ; |185| 
+     752 0000f5       $C$L3:    
+     753                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 188,column 9,is_stmt
+     754 0000f5 FB02          MOV #_XmitL_Sine_2K, *SP(#1) ; |188| 
+         0000f7 0030-
+     755 0000f9       $C$L4:    
+     756                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 191,column 5,is_stmt
+     757 0000f9 A902          MOV *SP(#1), AR1 ; |191| 
+     758 0000fb 5090          SFTL AR1, #1 ; |191| 
+     759 0000fd 7DFF          AND #0xffff, AR1, AC0 ; |191| 
+         0000ff FF09 
+     760 000101 900A          MOV AC0, XAR2
+     761 000103 EC31          AMOV #65536, XAR3 ; |191| 
+         000105 BE01 
+         000107 0000 
+     762              
+     763 000109 8C02          MOV AR3, *SP(#1) ; |191| 
+         00010b BB10 
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   16
+
+         00010d A1   
+     764              ||      AADD XAR2, XAR3 ; |191| 
+     765              
+     766                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 192,column 5,is_stmt
+     767 00010e 22B9          MOV AR3, AR1
+     768 000110 C951          MOV AR1, *port(#3072) ; |192| 
+         000112 0C00 
+     769                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 194,column 5,is_stmt
+     770 000114 7DFF          AND #0xffff, AR1, AC0 ; |194| 
+         000116 FF09 
+     771 000118 C051          MOV AC0, *port(#3073) ; |194| 
+         00011a 0C01 
+     772                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 196,column 5,is_stmt
+     773 00011c FB51          MOV #10248, *port(#3074) ; |196| 
+         00011e 2808 
+         000120 0C02 
+     774                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 199,column 5,is_stmt
+     775 000122 A951          MOV *port(#3077), AR1 ; |199| 
+         000124 0C05 
+     776 000126 C900          MOV AR1, *SP(#0) ; |199| 
+     777                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 200,column 2,is_stmt
+     778 000128 F500          OR #0x8000, *SP(#0) ; |200| 
+         00012a 8000 
+     779                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 201,column 2,is_stmt
+     780 00012c A900          MOV *SP(#0), AR1 ; |201| 
+     781 00012e C951          MOV AR1, *port(#3077) ; |201| 
+         000130 0C05 
+     782                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 203,column 5,is_stmt
+     783 000132 3C04          MOV #0, T0
+     784                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 204,column 1,is_stmt
+     785 000134 4E03          AADD #3, SP
+     786                      .dwcfi  cfa_offset, 1
+     787              $C$DW$31        .dwtag  DW_TAG_TI_branch
+     788                      .dwattr $C$DW$31, DW_AT_low_pc(0x00)
+     789                      .dwattr $C$DW$31, DW_AT_TI_return
+     790 000136 4804          RET
+     791                                                      ; return occurs
+     792                      .dwattr $C$DW$28, DW_AT_TI_end_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+     793                      .dwattr $C$DW$28, DW_AT_TI_end_line(0xcc)
+     794                      .dwattr $C$DW$28, DW_AT_TI_end_column(0x01)
+     795                      .dwendentry
+     796                      .dwendtag $C$DW$28
+     797              
+     798 000138               .sect   ".text"
+     799                      .align 4
+     800                      .global _set_dma1_ch1_i2s2_Rout
+     801              
+     802              $C$DW$32        .dwtag  DW_TAG_subprogram, DW_AT_name("set_dma1_ch1_i2s2_Rout")
+     803                      .dwattr $C$DW$32, DW_AT_low_pc(_set_dma1_ch1_i2s2_Rout)
+     804                      .dwattr $C$DW$32, DW_AT_high_pc(0x00)
+     805                      .dwattr $C$DW$32, DW_AT_TI_symbol_name("_set_dma1_ch1_i2s2_Rout")
+     806                      .dwattr $C$DW$32, DW_AT_external
+     807                      .dwattr $C$DW$32, DW_AT_type(*$C$DW$T$23)
+     808                      .dwattr $C$DW$32, DW_AT_TI_begin_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+     809                      .dwattr $C$DW$32, DW_AT_TI_begin_line(0xcf)
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   17
+
+     810                      .dwattr $C$DW$32, DW_AT_TI_begin_column(0x08)
+     811                      .dwattr $C$DW$32, DW_AT_TI_max_frame_size(0x04)
+     812                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 208,column 1,is_stmt,address 
+     813              
+     814                      .dwfde $C$DW$CIE, _set_dma1_ch1_i2s2_Rout
+     815              ;*******************************************************************************
+     816              ;* FUNCTION NAME: set_dma1_ch1_i2s2_Rout                                       *
+     817              ;*                                                                             *
+     818              ;*   Function Uses Regs : AC0,AC0,T0,AR1,AR2,XAR2,AR3,XAR3,SP,CARRY,TC1,M40,   *
+     819              ;*                        SATA,SATD,RDM,FRCT,SMUL                              *
+     820              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     821              ;*   Total Frame Size   : 4 words                                              *
+     822              ;*                        (2 return address/alignment)                         *
+     823              ;*                        (2 local values)                                     *
+     824              ;*   Min System Stack   : 1 word                                               *
+     825              ;*******************************************************************************
+     826 000138       _set_dma1_ch1_i2s2_Rout:
+     827                      .dwcfi  cfa_offset, 1
+     828                      .dwcfi  save_reg_to_mem, 91, -1
+     829 000138 4EFD          AADD #-3, SP
+     830                      .dwcfi  cfa_offset, 4
+     831              $C$DW$33        .dwtag  DW_TAG_variable, DW_AT_name("temp")
+     832                      .dwattr $C$DW$33, DW_AT_TI_symbol_name("_temp")
+     833                      .dwattr $C$DW$33, DW_AT_type(*$C$DW$T$23)
+     834                      .dwattr $C$DW$33, DW_AT_location[DW_OP_bregx 0x24 0]
+     835              $C$DW$34        .dwtag  DW_TAG_variable, DW_AT_name("add")
+     836                      .dwattr $C$DW$34, DW_AT_TI_symbol_name("_add")
+     837                      .dwattr $C$DW$34, DW_AT_type(*$C$DW$T$25)
+     838                      .dwattr $C$DW$34, DW_AT_location[DW_OP_bregx 0x24 1]
+     839                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 212,column 5,is_stmt
+     840 00013a E651          MOV #96, *port(#3364) ; |212| 
+         00013c 600D 
+         00013e 24   
+     841                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 216,column 5,is_stmt
+     842 00013f FB51          MOV #12804, *port(#3365) ; |216| 
+         000141 3204 
+         000143 0D25 
+     843                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 221,column 2,is_stmt
+     844 000145 A951          MOV *port(#7196), AR1 ; |221| 
+         000147 1C1C 
+     845 000149 C900          MOV AR1, *SP(#0) ; |221| 
+     846                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 222,column 5,is_stmt
+     847 00014b EC10          BSET @#8, AR1 ; |222| 
+         00014d 90   
+     848 00014e C951          MOV AR1, *port(#7196) ; |222| 
+         000150 1C1C 
+     849                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 224,column 5,is_stmt
+     850 000152 F031          CMP *(#_fSineWave) == #1, TC1 ; |224| 
+         000154 0001 
+         000156 0000 
+         000158 00!  
+     851 000159 6374          BCC $C$L5,!TC1 ; |224| 
+     852                                                      ; branchcc occurs ; |224| 
+     853                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 226,column 9,is_stmt
+     854 00015b FB02          MOV #_XmitR_Sine_1K, *SP(#1) ; |226| 
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   18
+
+         00015d 0060-
+     855                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 227,column 5,is_stmt
+     856 00015f 4A04          B $C$L6   ; |227| 
+     857                                                      ; branch occurs ; |227| 
+     858 000161       $C$L5:    
+     859                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 230,column 9,is_stmt
+     860 000161 FB02          MOV #_XmitR_Sine_2K, *SP(#1) ; |230| 
+         000163 0090-
+     861 000165       $C$L6:    
+     862                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 232,column 5,is_stmt
+     863 000165 A902          MOV *SP(#1), AR1 ; |232| 
+     864 000167 5090          SFTL AR1, #1 ; |232| 
+     865 000169 7DFF          AND #0xffff, AR1, AC0 ; |232| 
+         00016b FF09 
+     866 00016d 900A          MOV AC0, XAR2
+     867 00016f EC31          AMOV #65536, XAR3 ; |232| 
+         000171 BE01 
+         000173 0000 
+     868              
+     869 000175 8C02          MOV AR3, *SP(#1) ; |232| 
+         000177 BB10 
+         000179 A1   
+     870              ||      AADD XAR2, XAR3 ; |232| 
+     871              
+     872                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 233,column 5,is_stmt
+     873 00017a 22B9          MOV AR3, AR1
+     874 00017c C951          MOV AR1, *port(#3360) ; |233| 
+         00017e 0D20 
+     875                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 235,column 5,is_stmt
+     876 000180 7DFF          AND #0xffff, AR1, AC0 ; |235| 
+         000182 FF09 
+     877 000184 C051          MOV AC0, *port(#3361) ; |235| 
+         000186 0D21 
+     878                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 237,column 5,is_stmt
+     879 000188 FB51          MOV #10252, *port(#3362) ; |237| 
+         00018a 280C 
+         00018c 0D22 
+     880                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 240,column 5,is_stmt
+     881 00018e A951          MOV *port(#3365), AR1 ; |240| 
+         000190 0D25 
+     882 000192 C900          MOV AR1, *SP(#0) ; |240| 
+     883                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 241,column 2,is_stmt
+     884 000194 F500          OR #0x8000, *SP(#0) ; |241| 
+         000196 8000 
+     885                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 242,column 2,is_stmt
+     886 000198 A900          MOV *SP(#0), AR1 ; |242| 
+     887 00019a C951          MOV AR1, *port(#3365) ; |242| 
+         00019c 0D25 
+     888                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 245,column 5,is_stmt
+     889 00019e 3C04          MOV #0, T0
+     890                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 246,column 1,is_stmt
+     891 0001a0 4E03          AADD #3, SP
+     892                      .dwcfi  cfa_offset, 1
+     893              $C$DW$35        .dwtag  DW_TAG_TI_branch
+     894                      .dwattr $C$DW$35, DW_AT_low_pc(0x00)
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   19
+
+     895                      .dwattr $C$DW$35, DW_AT_TI_return
+     896 0001a2 4804          RET
+     897                                                      ; return occurs
+     898                      .dwattr $C$DW$32, DW_AT_TI_end_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+     899                      .dwattr $C$DW$32, DW_AT_TI_end_line(0xf6)
+     900                      .dwattr $C$DW$32, DW_AT_TI_end_column(0x01)
+     901                      .dwendentry
+     902                      .dwendtag $C$DW$32
+     903              
+     904 0001a4               .sect   ".text"
+     905                      .align 4
+     906                      .global _set_dma0_ch1_i2s0_Rout
+     907              
+     908              $C$DW$36        .dwtag  DW_TAG_subprogram, DW_AT_name("set_dma0_ch1_i2s0_Rout")
+     909                      .dwattr $C$DW$36, DW_AT_low_pc(_set_dma0_ch1_i2s0_Rout)
+     910                      .dwattr $C$DW$36, DW_AT_high_pc(0x00)
+     911                      .dwattr $C$DW$36, DW_AT_TI_symbol_name("_set_dma0_ch1_i2s0_Rout")
+     912                      .dwattr $C$DW$36, DW_AT_external
+     913                      .dwattr $C$DW$36, DW_AT_type(*$C$DW$T$23)
+     914                      .dwattr $C$DW$36, DW_AT_TI_begin_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+     915                      .dwattr $C$DW$36, DW_AT_TI_begin_line(0xf8)
+     916                      .dwattr $C$DW$36, DW_AT_TI_begin_column(0x08)
+     917                      .dwattr $C$DW$36, DW_AT_TI_max_frame_size(0x04)
+     918                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 249,column 1,is_stmt,address 
+     919              
+     920                      .dwfde $C$DW$CIE, _set_dma0_ch1_i2s0_Rout
+     921              ;*******************************************************************************
+     922              ;* FUNCTION NAME: set_dma0_ch1_i2s0_Rout                                       *
+     923              ;*                                                                             *
+     924              ;*   Function Uses Regs : AC0,AC0,T0,AR1,AR2,XAR2,AR3,XAR3,SP,CARRY,TC1,M40,   *
+     925              ;*                        SATA,SATD,RDM,FRCT,SMUL                              *
+     926              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     927              ;*   Total Frame Size   : 4 words                                              *
+     928              ;*                        (2 return address/alignment)                         *
+     929              ;*                        (2 local values)                                     *
+     930              ;*   Min System Stack   : 1 word                                               *
+     931              ;*******************************************************************************
+     932 0001a4       _set_dma0_ch1_i2s0_Rout:
+     933                      .dwcfi  cfa_offset, 1
+     934                      .dwcfi  save_reg_to_mem, 91, -1
+     935 0001a4 4EFD          AADD #-3, SP
+     936                      .dwcfi  cfa_offset, 4
+     937              $C$DW$37        .dwtag  DW_TAG_variable, DW_AT_name("temp")
+     938                      .dwattr $C$DW$37, DW_AT_TI_symbol_name("_temp")
+     939                      .dwattr $C$DW$37, DW_AT_type(*$C$DW$T$23)
+     940                      .dwattr $C$DW$37, DW_AT_location[DW_OP_bregx 0x24 0]
+     941              $C$DW$38        .dwtag  DW_TAG_variable, DW_AT_name("add")
+     942                      .dwattr $C$DW$38, DW_AT_TI_symbol_name("_add")
+     943                      .dwattr $C$DW$38, DW_AT_type(*$C$DW$T$25)
+     944                      .dwattr $C$DW$38, DW_AT_location[DW_OP_bregx 0x24 1]
+     945                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 253,column 5,is_stmt
+     946 0001a6 E651          MOV #96, *port(#3108) ; |253| 
+         0001a8 600C 
+         0001aa 24   
+     947                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 257,column 5,is_stmt
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   20
+
+     948 0001ab FB51          MOV #12804, *port(#3109) ; |257| 
+         0001ad 3204 
+         0001af 0C25 
+     949                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 262,column 2,is_stmt
+     950 0001b1 A951          MOV *port(#7196), AR1 ; |262| 
+         0001b3 1C1C 
+     951 0001b5 C900          MOV AR1, *SP(#0) ; |262| 
+     952                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 263,column 5,is_stmt
+     953 0001b7 EC10          BSET @#8, AR1 ; |263| 
+         0001b9 90   
+     954 0001ba C951          MOV AR1, *port(#7194) ; |263| 
+         0001bc 1C1A 
+     955                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 265,column 5,is_stmt
+     956 0001be F031          CMP *(#_fSineWave) == #1, TC1 ; |265| 
+         0001c0 0001 
+         0001c2 0000 
+         0001c4 00!  
+     957 0001c5 6374          BCC $C$L7,!TC1 ; |265| 
+     958                                                      ; branchcc occurs ; |265| 
+     959                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 267,column 9,is_stmt
+     960 0001c7 FB02          MOV #_XmitR_Sine_1K, *SP(#1) ; |267| 
+         0001c9 0060-
+     961                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 268,column 5,is_stmt
+     962 0001cb 4A04          B $C$L8   ; |268| 
+     963                                                      ; branch occurs ; |268| 
+     964 0001cd       $C$L7:    
+     965                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 271,column 9,is_stmt
+     966 0001cd FB02          MOV #_XmitR_Sine_2K, *SP(#1) ; |271| 
+         0001cf 0090-
+     967 0001d1       $C$L8:    
+     968                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 273,column 5,is_stmt
+     969 0001d1 A902          MOV *SP(#1), AR1 ; |273| 
+     970 0001d3 5090          SFTL AR1, #1 ; |273| 
+     971 0001d5 7DFF          AND #0xffff, AR1, AC0 ; |273| 
+         0001d7 FF09 
+     972 0001d9 900A          MOV AC0, XAR2
+     973 0001db EC31          AMOV #65536, XAR3 ; |273| 
+         0001dd BE01 
+         0001df 0000 
+     974              
+     975 0001e1 8C02          MOV AR3, *SP(#1) ; |273| 
+         0001e3 BB10 
+         0001e5 A1   
+     976              ||      AADD XAR2, XAR3 ; |273| 
+     977              
+     978                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 274,column 5,is_stmt
+     979 0001e6 22B9          MOV AR3, AR1
+     980 0001e8 C951          MOV AR1, *port(#3104) ; |274| 
+         0001ea 0C20 
+     981                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 276,column 5,is_stmt
+     982 0001ec 7DFF          AND #0xffff, AR1, AC0 ; |276| 
+         0001ee FF09 
+     983 0001f0 C051          MOV AC0, *port(#3105) ; |276| 
+         0001f2 0C21 
+     984                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 278,column 5,is_stmt
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   21
+
+     985 0001f4 FB51          MOV #10252, *port(#3106) ; |278| 
+         0001f6 280C 
+         0001f8 0C22 
+     986                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 281,column 5,is_stmt
+     987 0001fa A951          MOV *port(#3109), AR1 ; |281| 
+         0001fc 0C25 
+     988 0001fe C900          MOV AR1, *SP(#0) ; |281| 
+     989                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 282,column 2,is_stmt
+     990 000200 F500          OR #0x8000, *SP(#0) ; |282| 
+         000202 8000 
+     991                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 283,column 2,is_stmt
+     992 000204 A900          MOV *SP(#0), AR1 ; |283| 
+     993 000206 C951          MOV AR1, *port(#3109) ; |283| 
+         000208 0C25 
+     994                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 286,column 5,is_stmt
+     995 00020a 3C04          MOV #0, T0
+     996                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 287,column 1,is_stmt
+     997 00020c 4E03          AADD #3, SP
+     998                      .dwcfi  cfa_offset, 1
+     999              $C$DW$39        .dwtag  DW_TAG_TI_branch
+    1000                      .dwattr $C$DW$39, DW_AT_low_pc(0x00)
+    1001                      .dwattr $C$DW$39, DW_AT_TI_return
+    1002 00020e 4804          RET
+    1003                                                      ; return occurs
+    1004                      .dwattr $C$DW$36, DW_AT_TI_end_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+    1005                      .dwattr $C$DW$36, DW_AT_TI_end_line(0x11f)
+    1006                      .dwattr $C$DW$36, DW_AT_TI_end_column(0x01)
+    1007                      .dwendentry
+    1008                      .dwendtag $C$DW$36
+    1009              
+    1010 000210               .sect   ".text"
+    1011                      .align 4
+    1012                      .global _enable_dma_int
+    1013              
+    1014              $C$DW$40        .dwtag  DW_TAG_subprogram, DW_AT_name("enable_dma_int")
+    1015                      .dwattr $C$DW$40, DW_AT_low_pc(_enable_dma_int)
+    1016                      .dwattr $C$DW$40, DW_AT_high_pc(0x00)
+    1017                      .dwattr $C$DW$40, DW_AT_TI_symbol_name("_enable_dma_int")
+    1018                      .dwattr $C$DW$40, DW_AT_external
+    1019                      .dwattr $C$DW$40, DW_AT_TI_begin_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+    1020                      .dwattr $C$DW$40, DW_AT_TI_begin_line(0x122)
+    1021                      .dwattr $C$DW$40, DW_AT_TI_begin_column(0x06)
+    1022                      .dwattr $C$DW$40, DW_AT_TI_max_frame_size(0x01)
+    1023                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 291,column 1,is_stmt,address 
+    1024              
+    1025                      .dwfde $C$DW$CIE, _enable_dma_int
+    1026              ;*******************************************************************************
+    1027              ;* FUNCTION NAME: enable_dma_int                                               *
+    1028              ;*                                                                             *
+    1029              ;*   Function Uses Regs : SP,M40,SATA,SATD,RDM,FRCT,SMUL                       *
+    1030              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+    1031              ;*   Total Frame Size   : 1 word                                               *
+    1032              ;*                        (1 return address/alignment)                         *
+    1033              ;*   Min System Stack   : 1 word                                               *
+    1034              ;*******************************************************************************
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   22
+
+    1035 000210       _enable_dma_int:
+    1036                      .dwcfi  cfa_offset, 1
+    1037                      .dwcfi  save_reg_to_mem, 91, -1
+    1038                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 292,column 5,is_stmt
+    1039 000210 FB51          MOV #65535, *port(#7217) ; |292| 
+         000212 FFFF 
+         000214 1C31 
+    1040                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 293,column 5,is_stmt
+    1041 000216 FB51          MOV #65535, *port(#7216) ; |293| 
+         000218 FFFF 
+         00021a 1C30 
+    1042                      .dwpsn  file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c",line 294,column 1,is_stmt
+    1043              $C$DW$41        .dwtag  DW_TAG_TI_branch
+    1044                      .dwattr $C$DW$41, DW_AT_low_pc(0x00)
+    1045                      .dwattr $C$DW$41, DW_AT_TI_return
+    1046 00021c 4804          RET
+    1047                                                      ; return occurs
+    1048                      .dwattr $C$DW$40, DW_AT_TI_end_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/dma.c")
+    1049                      .dwattr $C$DW$40, DW_AT_TI_end_line(0x126)
+    1050                      .dwattr $C$DW$40, DW_AT_TI_end_column(0x01)
+    1051                      .dwendentry
+    1052                      .dwendtag $C$DW$40
+    1053              
+    1054              ;******************************************************************************
+    1055              ;* UNDEFINED EXTERNAL REFERENCES                                              *
+    1056              ;******************************************************************************
+    1057                      .global _fSineWave
+    1058              
+    1059              ;*******************************************************************************
+    1060              ;* TYPE INFORMATION                                                            *
+    1061              ;*******************************************************************************
+    1062              $C$DW$T$4       .dwtag  DW_TAG_base_type
+    1063                      .dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
+    1064                      .dwattr $C$DW$T$4, DW_AT_name("bool")
+    1065                      .dwattr $C$DW$T$4, DW_AT_byte_size(0x01)
+    1066              $C$DW$T$5       .dwtag  DW_TAG_base_type
+    1067                      .dwattr $C$DW$T$5, DW_AT_encoding(DW_ATE_signed_char)
+    1068                      .dwattr $C$DW$T$5, DW_AT_name("signed char")
+    1069                      .dwattr $C$DW$T$5, DW_AT_byte_size(0x01)
+    1070              $C$DW$T$6       .dwtag  DW_TAG_base_type
+    1071                      .dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
+    1072                      .dwattr $C$DW$T$6, DW_AT_name("unsigned char")
+    1073                      .dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
+    1074              $C$DW$T$7       .dwtag  DW_TAG_base_type
+    1075                      .dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
+    1076                      .dwattr $C$DW$T$7, DW_AT_name("wchar_t")
+    1077                      .dwattr $C$DW$T$7, DW_AT_byte_size(0x01)
+    1078              $C$DW$T$8       .dwtag  DW_TAG_base_type
+    1079                      .dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
+    1080                      .dwattr $C$DW$T$8, DW_AT_name("short")
+    1081                      .dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
+    1082              $C$DW$T$20      .dwtag  DW_TAG_typedef, DW_AT_name("Int16")
+    1083                      .dwattr $C$DW$T$20, DW_AT_type(*$C$DW$T$8)
+    1084                      .dwattr $C$DW$T$20, DW_AT_language(DW_LANG_C)
+    1085              
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   23
+
+    1086              $C$DW$T$21      .dwtag  DW_TAG_array_type
+    1087                      .dwattr $C$DW$T$21, DW_AT_type(*$C$DW$T$20)
+    1088                      .dwattr $C$DW$T$21, DW_AT_language(DW_LANG_C)
+    1089                      .dwattr $C$DW$T$21, DW_AT_byte_size(0x30)
+    1090              $C$DW$42        .dwtag  DW_TAG_subrange_type
+    1091                      .dwattr $C$DW$42, DW_AT_upper_bound(0x2f)
+    1092                      .dwendtag $C$DW$T$21
+    1093              
+    1094              $C$DW$T$9       .dwtag  DW_TAG_base_type
+    1095                      .dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
+    1096                      .dwattr $C$DW$T$9, DW_AT_name("unsigned short")
+    1097                      .dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
+    1098              $C$DW$T$23      .dwtag  DW_TAG_typedef, DW_AT_name("Uint16")
+    1099                      .dwattr $C$DW$T$23, DW_AT_type(*$C$DW$T$9)
+    1100                      .dwattr $C$DW$T$23, DW_AT_language(DW_LANG_C)
+    1101              $C$DW$T$10      .dwtag  DW_TAG_base_type
+    1102                      .dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
+    1103                      .dwattr $C$DW$T$10, DW_AT_name("int")
+    1104                      .dwattr $C$DW$T$10, DW_AT_byte_size(0x01)
+    1105              $C$DW$T$11      .dwtag  DW_TAG_base_type
+    1106                      .dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
+    1107                      .dwattr $C$DW$T$11, DW_AT_name("unsigned int")
+    1108                      .dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
+    1109              $C$DW$T$25      .dwtag  DW_TAG_typedef, DW_AT_name("Uint32")
+    1110                      .dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$11)
+    1111                      .dwattr $C$DW$T$25, DW_AT_language(DW_LANG_C)
+    1112              $C$DW$T$12      .dwtag  DW_TAG_base_type
+    1113                      .dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
+    1114                      .dwattr $C$DW$T$12, DW_AT_name("long")
+    1115                      .dwattr $C$DW$T$12, DW_AT_byte_size(0x02)
+    1116              $C$DW$T$13      .dwtag  DW_TAG_base_type
+    1117                      .dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
+    1118                      .dwattr $C$DW$T$13, DW_AT_name("unsigned long")
+    1119                      .dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+    1120              $C$DW$T$14      .dwtag  DW_TAG_base_type
+    1121                      .dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
+    1122                      .dwattr $C$DW$T$14, DW_AT_name("long long")
+    1123                      .dwattr $C$DW$T$14, DW_AT_byte_size(0x04)
+    1124                      .dwattr $C$DW$T$14, DW_AT_bit_size(0x28)
+    1125                      .dwattr $C$DW$T$14, DW_AT_bit_offset(0x18)
+    1126              $C$DW$T$15      .dwtag  DW_TAG_base_type
+    1127                      .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
+    1128                      .dwattr $C$DW$T$15, DW_AT_name("unsigned long long")
+    1129                      .dwattr $C$DW$T$15, DW_AT_byte_size(0x04)
+    1130                      .dwattr $C$DW$T$15, DW_AT_bit_size(0x28)
+    1131                      .dwattr $C$DW$T$15, DW_AT_bit_offset(0x18)
+    1132              $C$DW$T$16      .dwtag  DW_TAG_base_type
+    1133                      .dwattr $C$DW$T$16, DW_AT_encoding(DW_ATE_float)
+    1134                      .dwattr $C$DW$T$16, DW_AT_name("float")
+    1135                      .dwattr $C$DW$T$16, DW_AT_byte_size(0x02)
+    1136              $C$DW$T$17      .dwtag  DW_TAG_base_type
+    1137                      .dwattr $C$DW$T$17, DW_AT_encoding(DW_ATE_float)
+    1138                      .dwattr $C$DW$T$17, DW_AT_name("double")
+    1139                      .dwattr $C$DW$T$17, DW_AT_byte_size(0x02)
+    1140              $C$DW$T$18      .dwtag  DW_TAG_base_type
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   24
+
+    1141                      .dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
+    1142                      .dwattr $C$DW$T$18, DW_AT_name("long double")
+    1143                      .dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
+    1144                      .dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
+    1145              
+    1146              ;***************************************************************
+    1147              ;* DWARF CIE ENTRIES                                           *
+    1148              ;***************************************************************
+    1149              
+    1150              $C$DW$CIE       .dwcie 91
+    1151                      .dwcfi  cfa_register, 36
+    1152                      .dwcfi  cfa_offset, 0
+    1153                      .dwcfi  undefined, 0
+    1154                      .dwcfi  undefined, 1
+    1155                      .dwcfi  undefined, 2
+    1156                      .dwcfi  undefined, 3
+    1157                      .dwcfi  undefined, 4
+    1158                      .dwcfi  undefined, 5
+    1159                      .dwcfi  undefined, 6
+    1160                      .dwcfi  undefined, 7
+    1161                      .dwcfi  undefined, 8
+    1162                      .dwcfi  undefined, 9
+    1163                      .dwcfi  undefined, 10
+    1164                      .dwcfi  undefined, 11
+    1165                      .dwcfi  undefined, 12
+    1166                      .dwcfi  undefined, 13
+    1167                      .dwcfi  same_value, 14
+    1168                      .dwcfi  same_value, 15
+    1169                      .dwcfi  undefined, 16
+    1170                      .dwcfi  undefined, 17
+    1171                      .dwcfi  undefined, 18
+    1172                      .dwcfi  undefined, 19
+    1173                      .dwcfi  undefined, 20
+    1174                      .dwcfi  undefined, 21
+    1175                      .dwcfi  undefined, 22
+    1176                      .dwcfi  undefined, 23
+    1177                      .dwcfi  undefined, 24
+    1178                      .dwcfi  undefined, 25
+    1179                      .dwcfi  same_value, 26
+    1180                      .dwcfi  same_value, 27
+    1181                      .dwcfi  same_value, 28
+    1182                      .dwcfi  same_value, 29
+    1183                      .dwcfi  same_value, 30
+    1184                      .dwcfi  same_value, 31
+    1185                      .dwcfi  undefined, 32
+    1186                      .dwcfi  undefined, 33
+    1187                      .dwcfi  undefined, 34
+    1188                      .dwcfi  undefined, 35
+    1189                      .dwcfi  undefined, 36
+    1190                      .dwcfi  undefined, 37
+    1191                      .dwcfi  undefined, 38
+    1192                      .dwcfi  undefined, 39
+    1193                      .dwcfi  undefined, 40
+    1194                      .dwcfi  undefined, 41
+    1195                      .dwcfi  undefined, 42
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   25
+
+    1196                      .dwcfi  undefined, 43
+    1197                      .dwcfi  undefined, 44
+    1198                      .dwcfi  undefined, 45
+    1199                      .dwcfi  undefined, 46
+    1200                      .dwcfi  undefined, 47
+    1201                      .dwcfi  undefined, 48
+    1202                      .dwcfi  undefined, 49
+    1203                      .dwcfi  undefined, 50
+    1204                      .dwcfi  undefined, 51
+    1205                      .dwcfi  undefined, 52
+    1206                      .dwcfi  undefined, 53
+    1207                      .dwcfi  undefined, 54
+    1208                      .dwcfi  undefined, 55
+    1209                      .dwcfi  undefined, 56
+    1210                      .dwcfi  undefined, 57
+    1211                      .dwcfi  undefined, 58
+    1212                      .dwcfi  undefined, 59
+    1213                      .dwcfi  undefined, 60
+    1214                      .dwcfi  undefined, 61
+    1215                      .dwcfi  undefined, 62
+    1216                      .dwcfi  undefined, 63
+    1217                      .dwcfi  undefined, 64
+    1218                      .dwcfi  undefined, 65
+    1219                      .dwcfi  undefined, 66
+    1220                      .dwcfi  undefined, 67
+    1221                      .dwcfi  undefined, 68
+    1222                      .dwcfi  undefined, 69
+    1223                      .dwcfi  undefined, 70
+    1224                      .dwcfi  undefined, 71
+    1225                      .dwcfi  undefined, 72
+    1226                      .dwcfi  undefined, 73
+    1227                      .dwcfi  undefined, 74
+    1228                      .dwcfi  undefined, 75
+    1229                      .dwcfi  undefined, 76
+    1230                      .dwcfi  undefined, 77
+    1231                      .dwcfi  undefined, 78
+    1232                      .dwcfi  undefined, 79
+    1233                      .dwcfi  undefined, 80
+    1234                      .dwcfi  undefined, 81
+    1235                      .dwcfi  undefined, 82
+    1236                      .dwcfi  undefined, 83
+    1237                      .dwcfi  undefined, 84
+    1238                      .dwcfi  undefined, 85
+    1239                      .dwcfi  undefined, 86
+    1240                      .dwcfi  undefined, 87
+    1241                      .dwcfi  undefined, 88
+    1242                      .dwcfi  undefined, 89
+    1243                      .dwcfi  undefined, 90
+    1244                      .dwcfi  undefined, 91
+    1245                      .dwendentry
+    1246              
+    1247              ;***************************************************************
+    1248              ;* DWARF REGISTER MAP                                          *
+    1249              ;***************************************************************
+    1250              
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   26
+
+    1251              $C$DW$43        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    1252                      .dwattr $C$DW$43, DW_AT_location[DW_OP_reg0]
+    1253              $C$DW$44        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    1254                      .dwattr $C$DW$44, DW_AT_location[DW_OP_reg1]
+    1255              $C$DW$45        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0_G")
+    1256                      .dwattr $C$DW$45, DW_AT_location[DW_OP_reg2]
+    1257              $C$DW$46        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    1258                      .dwattr $C$DW$46, DW_AT_location[DW_OP_reg3]
+    1259              $C$DW$47        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    1260                      .dwattr $C$DW$47, DW_AT_location[DW_OP_reg4]
+    1261              $C$DW$48        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1_G")
+    1262                      .dwattr $C$DW$48, DW_AT_location[DW_OP_reg5]
+    1263              $C$DW$49        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    1264                      .dwattr $C$DW$49, DW_AT_location[DW_OP_reg6]
+    1265              $C$DW$50        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    1266                      .dwattr $C$DW$50, DW_AT_location[DW_OP_reg7]
+    1267              $C$DW$51        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2_G")
+    1268                      .dwattr $C$DW$51, DW_AT_location[DW_OP_reg8]
+    1269              $C$DW$52        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    1270                      .dwattr $C$DW$52, DW_AT_location[DW_OP_reg9]
+    1271              $C$DW$53        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    1272                      .dwattr $C$DW$53, DW_AT_location[DW_OP_reg10]
+    1273              $C$DW$54        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3_G")
+    1274                      .dwattr $C$DW$54, DW_AT_location[DW_OP_reg11]
+    1275              $C$DW$55        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T0")
+    1276                      .dwattr $C$DW$55, DW_AT_location[DW_OP_reg12]
+    1277              $C$DW$56        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T1")
+    1278                      .dwattr $C$DW$56, DW_AT_location[DW_OP_reg13]
+    1279              $C$DW$57        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T2")
+    1280                      .dwattr $C$DW$57, DW_AT_location[DW_OP_reg14]
+    1281              $C$DW$58        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T3")
+    1282                      .dwattr $C$DW$58, DW_AT_location[DW_OP_reg15]
+    1283              $C$DW$59        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0")
+    1284                      .dwattr $C$DW$59, DW_AT_location[DW_OP_reg16]
+    1285              $C$DW$60        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR0")
+    1286                      .dwattr $C$DW$60, DW_AT_location[DW_OP_reg17]
+    1287              $C$DW$61        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1")
+    1288                      .dwattr $C$DW$61, DW_AT_location[DW_OP_reg18]
+    1289              $C$DW$62        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR1")
+    1290                      .dwattr $C$DW$62, DW_AT_location[DW_OP_reg19]
+    1291              $C$DW$63        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
+    1292                      .dwattr $C$DW$63, DW_AT_location[DW_OP_reg20]
+    1293              $C$DW$64        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR2")
+    1294                      .dwattr $C$DW$64, DW_AT_location[DW_OP_reg21]
+    1295              $C$DW$65        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3")
+    1296                      .dwattr $C$DW$65, DW_AT_location[DW_OP_reg22]
+    1297              $C$DW$66        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR3")
+    1298                      .dwattr $C$DW$66, DW_AT_location[DW_OP_reg23]
+    1299              $C$DW$67        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4")
+    1300                      .dwattr $C$DW$67, DW_AT_location[DW_OP_reg24]
+    1301              $C$DW$68        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR4")
+    1302                      .dwattr $C$DW$68, DW_AT_location[DW_OP_reg25]
+    1303              $C$DW$69        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5")
+    1304                      .dwattr $C$DW$69, DW_AT_location[DW_OP_reg26]
+    1305              $C$DW$70        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR5")
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   27
+
+    1306                      .dwattr $C$DW$70, DW_AT_location[DW_OP_reg27]
+    1307              $C$DW$71        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6")
+    1308                      .dwattr $C$DW$71, DW_AT_location[DW_OP_reg28]
+    1309              $C$DW$72        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR6")
+    1310                      .dwattr $C$DW$72, DW_AT_location[DW_OP_reg29]
+    1311              $C$DW$73        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7")
+    1312                      .dwattr $C$DW$73, DW_AT_location[DW_OP_reg30]
+    1313              $C$DW$74        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR7")
+    1314                      .dwattr $C$DW$74, DW_AT_location[DW_OP_reg31]
+    1315              $C$DW$75        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FP")
+    1316                      .dwattr $C$DW$75, DW_AT_location[DW_OP_regx 0x20]
+    1317              $C$DW$76        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XFP")
+    1318                      .dwattr $C$DW$76, DW_AT_location[DW_OP_regx 0x21]
+    1319              $C$DW$77        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
+    1320                      .dwattr $C$DW$77, DW_AT_location[DW_OP_regx 0x22]
+    1321              $C$DW$78        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
+    1322                      .dwattr $C$DW$78, DW_AT_location[DW_OP_regx 0x23]
+    1323              $C$DW$79        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XSP")
+    1324                      .dwattr $C$DW$79, DW_AT_location[DW_OP_regx 0x24]
+    1325              $C$DW$80        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BKC")
+    1326                      .dwattr $C$DW$80, DW_AT_location[DW_OP_regx 0x25]
+    1327              $C$DW$81        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK03")
+    1328                      .dwattr $C$DW$81, DW_AT_location[DW_OP_regx 0x26]
+    1329              $C$DW$82        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK47")
+    1330                      .dwattr $C$DW$82, DW_AT_location[DW_OP_regx 0x27]
+    1331              $C$DW$83        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST0")
+    1332                      .dwattr $C$DW$83, DW_AT_location[DW_OP_regx 0x28]
+    1333              $C$DW$84        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST1")
+    1334                      .dwattr $C$DW$84, DW_AT_location[DW_OP_regx 0x29]
+    1335              $C$DW$85        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST2")
+    1336                      .dwattr $C$DW$85, DW_AT_location[DW_OP_regx 0x2a]
+    1337              $C$DW$86        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST3")
+    1338                      .dwattr $C$DW$86, DW_AT_location[DW_OP_regx 0x2b]
+    1339              $C$DW$87        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP")
+    1340                      .dwattr $C$DW$87, DW_AT_location[DW_OP_regx 0x2c]
+    1341              $C$DW$88        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP05")
+    1342                      .dwattr $C$DW$88, DW_AT_location[DW_OP_regx 0x2d]
+    1343              $C$DW$89        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP67")
+    1344                      .dwattr $C$DW$89, DW_AT_location[DW_OP_regx 0x2e]
+    1345              $C$DW$90        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
+    1346                      .dwattr $C$DW$90, DW_AT_location[DW_OP_regx 0x2f]
+    1347              $C$DW$91        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
+    1348                      .dwattr $C$DW$91, DW_AT_location[DW_OP_regx 0x30]
+    1349              $C$DW$92        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0_H")
+    1350                      .dwattr $C$DW$92, DW_AT_location[DW_OP_regx 0x31]
+    1351              $C$DW$93        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0")
+    1352                      .dwattr $C$DW$93, DW_AT_location[DW_OP_regx 0x32]
+    1353              $C$DW$94        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0_H")
+    1354                      .dwattr $C$DW$94, DW_AT_location[DW_OP_regx 0x33]
+    1355              $C$DW$95        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRS1")
+    1356                      .dwattr $C$DW$95, DW_AT_location[DW_OP_regx 0x34]
+    1357              $C$DW$96        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC1")
+    1358                      .dwattr $C$DW$96, DW_AT_location[DW_OP_regx 0x35]
+    1359              $C$DW$97        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1")
+    1360                      .dwattr $C$DW$97, DW_AT_location[DW_OP_regx 0x36]
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   28
+
+    1361              $C$DW$98        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1_H")
+    1362                      .dwattr $C$DW$98, DW_AT_location[DW_OP_regx 0x37]
+    1363              $C$DW$99        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1")
+    1364                      .dwattr $C$DW$99, DW_AT_location[DW_OP_regx 0x38]
+    1365              $C$DW$100       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1_H")
+    1366                      .dwattr $C$DW$100, DW_AT_location[DW_OP_regx 0x39]
+    1367              $C$DW$101       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CSR")
+    1368                      .dwattr $C$DW$101, DW_AT_location[DW_OP_regx 0x3a]
+    1369              $C$DW$102       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RPTC")
+    1370                      .dwattr $C$DW$102, DW_AT_location[DW_OP_regx 0x3b]
+    1371              $C$DW$103       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDP")
+    1372                      .dwattr $C$DW$103, DW_AT_location[DW_OP_regx 0x3c]
+    1373              $C$DW$104       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XCDP")
+    1374                      .dwattr $C$DW$104, DW_AT_location[DW_OP_regx 0x3d]
+    1375              $C$DW$105       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN0")
+    1376                      .dwattr $C$DW$105, DW_AT_location[DW_OP_regx 0x3e]
+    1377              $C$DW$106       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN1")
+    1378                      .dwattr $C$DW$106, DW_AT_location[DW_OP_regx 0x3f]
+    1379              $C$DW$107       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA01")
+    1380                      .dwattr $C$DW$107, DW_AT_location[DW_OP_regx 0x40]
+    1381              $C$DW$108       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA23")
+    1382                      .dwattr $C$DW$108, DW_AT_location[DW_OP_regx 0x41]
+    1383              $C$DW$109       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA45")
+    1384                      .dwattr $C$DW$109, DW_AT_location[DW_OP_regx 0x42]
+    1385              $C$DW$110       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA67")
+    1386                      .dwattr $C$DW$110, DW_AT_location[DW_OP_regx 0x43]
+    1387              $C$DW$111       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSAC")
+    1388                      .dwattr $C$DW$111, DW_AT_location[DW_OP_regx 0x44]
+    1389              $C$DW$112       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CARRY")
+    1390                      .dwattr $C$DW$112, DW_AT_location[DW_OP_regx 0x45]
+    1391              $C$DW$113       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC1")
+    1392                      .dwattr $C$DW$113, DW_AT_location[DW_OP_regx 0x46]
+    1393              $C$DW$114       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC2")
+    1394                      .dwattr $C$DW$114, DW_AT_location[DW_OP_regx 0x47]
+    1395              $C$DW$115       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("M40")
+    1396                      .dwattr $C$DW$115, DW_AT_location[DW_OP_regx 0x48]
+    1397              $C$DW$116       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SXMD")
+    1398                      .dwattr $C$DW$116, DW_AT_location[DW_OP_regx 0x49]
+    1399              $C$DW$117       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ARMS")
+    1400                      .dwattr $C$DW$117, DW_AT_location[DW_OP_regx 0x4a]
+    1401              $C$DW$118       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
+    1402                      .dwattr $C$DW$118, DW_AT_location[DW_OP_regx 0x4b]
+    1403              $C$DW$119       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATA")
+    1404                      .dwattr $C$DW$119, DW_AT_location[DW_OP_regx 0x4c]
+    1405              $C$DW$120       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATD")
+    1406                      .dwattr $C$DW$120, DW_AT_location[DW_OP_regx 0x4d]
+    1407              $C$DW$121       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RDM")
+    1408                      .dwattr $C$DW$121, DW_AT_location[DW_OP_regx 0x4e]
+    1409              $C$DW$122       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FRCT")
+    1410                      .dwattr $C$DW$122, DW_AT_location[DW_OP_regx 0x4f]
+    1411              $C$DW$123       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SMUL")
+    1412                      .dwattr $C$DW$123, DW_AT_location[DW_OP_regx 0x50]
+    1413              $C$DW$124       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("INTM")
+    1414                      .dwattr $C$DW$124, DW_AT_location[DW_OP_regx 0x51]
+    1415              $C$DW$125       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0LC")
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:23 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+dma.asm                                                              PAGE   29
+
+    1416                      .dwattr $C$DW$125, DW_AT_location[DW_OP_regx 0x52]
+    1417              $C$DW$126       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1LC")
+    1418                      .dwattr $C$DW$126, DW_AT_location[DW_OP_regx 0x53]
+    1419              $C$DW$127       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2LC")
+    1420                      .dwattr $C$DW$127, DW_AT_location[DW_OP_regx 0x54]
+    1421              $C$DW$128       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3LC")
+    1422                      .dwattr $C$DW$128, DW_AT_location[DW_OP_regx 0x55]
+    1423              $C$DW$129       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4LC")
+    1424                      .dwattr $C$DW$129, DW_AT_location[DW_OP_regx 0x56]
+    1425              $C$DW$130       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5LC")
+    1426                      .dwattr $C$DW$130, DW_AT_location[DW_OP_regx 0x57]
+    1427              $C$DW$131       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6LC")
+    1428                      .dwattr $C$DW$131, DW_AT_location[DW_OP_regx 0x58]
+    1429              $C$DW$132       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7LC")
+    1430                      .dwattr $C$DW$132, DW_AT_location[DW_OP_regx 0x59]
+    1431              $C$DW$133       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDPLC")
+    1432                      .dwattr $C$DW$133, DW_AT_location[DW_OP_regx 0x5a]
+    1433              $C$DW$134       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
+    1434                      .dwattr $C$DW$134, DW_AT_location[DW_OP_regx 0x5b]
+    1435                      .dwendtag $C$DW$CU
+    1436              
+    1436              
+    1436              
+
+No Assembly Errors, No Assembly Warnings

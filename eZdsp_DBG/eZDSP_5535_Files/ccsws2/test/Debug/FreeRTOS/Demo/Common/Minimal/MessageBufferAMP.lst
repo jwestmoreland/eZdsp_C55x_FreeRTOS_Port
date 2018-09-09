@@ -1,0 +1,1895 @@
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE    1
+
+    1574              ; Temporary Registers Used: None
+       1              ;*******************************************************************************
+       2              ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
+       3              ;* Date/Time created: Sun Sep 09 02:20:35 2018                                 *
+       4              ;*******************************************************************************
+       5                      .compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --si
+       6                      .mmregs
+       7                      .cpl_on
+       8                      .arms_on
+       9                      .c54cm_off
+      10                      .asg AR6, FP
+      11                      .asg XAR6, XFP
+      12                      .asg DPH, MDP
+      13                      .model call=c55_std
+      14                      .model mem=large
+      15                      .noremark 5002  ; code respects overwrite rules
+      16              ;*******************************************************************************
+      17              ;* GLOBAL FILE PARAMETERS                                                      *
+      18              ;*                                                                             *
+      19              ;*   Architecture       : TMS320C55x                                           *
+      20              ;*   Optimizing for     : Speed                                                *
+      21              ;*   Memory             : Large Model (23-Bit Data Pointers)                   *
+      22              ;*   Calls              : Normal Library ASM calls                             *
+      23              ;*   Debug Info         : Standard TI Debug Information                        *
+      24              ;*******************************************************************************
+      25              
+      26              $C$DW$CU        .dwtag  DW_TAG_compile_unit
+      27                      .dwattr $C$DW$CU, DW_AT_name("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+      28                      .dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas In
+      29                      .dwattr $C$DW$CU, DW_AT_TI_version(0x01)
+      30                      .dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug")
+      31              ;******************************************************************************
+      32              ;* CINIT RECORDS                                                              *
+      33              ;******************************************************************************
+      34 000000               .sect   ".cinit"
+      35                      .align  1
+      36 000000 0001          .field          1,16
+      37 000001 0000-         .field          _xDemoStatus+0,24
+         000002 0A00 
+      38 000002 0A00          .field          0,8
+      39 000003 0001          .field  1,16                    ; _xDemoStatus @ 0
+      40              
+      41 000004               .sect   ".cinit"
+      42                      .align  1
+      43 000004 0002          .field          $C$IR_1,16
+      44 000005 0000-         .field          _ulLastCycleCounters$1+0,24
+         000006 0C00 
+      45 000006 0C00          .field          0,8
+      46 000007 0000          .field  0,32                    ; _ulLastCycleCounters$1[0] @ 0
+         000008 0000 
+      47              $C$IR_1:        .set    2
+      48              
+      49              
+      50              $C$DW$1 .dwtag  DW_TAG_subprogram, DW_AT_name("sprintf")
+      51                      .dwattr $C$DW$1, DW_AT_TI_symbol_name("_sprintf")
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE    2
+
+      52                      .dwattr $C$DW$1, DW_AT_type(*$C$DW$T$10)
+      53                      .dwattr $C$DW$1, DW_AT_declaration
+      54                      .dwattr $C$DW$1, DW_AT_external
+      55              $C$DW$2 .dwtag  DW_TAG_formal_parameter
+      56                      .dwattr $C$DW$2, DW_AT_type(*$C$DW$T$62)
+      57              $C$DW$3 .dwtag  DW_TAG_formal_parameter
+      58                      .dwattr $C$DW$3, DW_AT_type(*$C$DW$T$48)
+      59              $C$DW$4 .dwtag  DW_TAG_unspecified_parameters
+      60                      .dwendtag $C$DW$1
+      61              
+      62              
+      63              $C$DW$5 .dwtag  DW_TAG_subprogram, DW_AT_name("strlen")
+      64                      .dwattr $C$DW$5, DW_AT_TI_symbol_name("_strlen")
+      65                      .dwattr $C$DW$5, DW_AT_type(*$C$DW$T$23)
+      66                      .dwattr $C$DW$5, DW_AT_declaration
+      67                      .dwattr $C$DW$5, DW_AT_external
+      68              $C$DW$6 .dwtag  DW_TAG_formal_parameter
+      69                      .dwattr $C$DW$6, DW_AT_type(*$C$DW$T$48)
+      70                      .dwendtag $C$DW$5
+      71              
+      72              
+      73              $C$DW$7 .dwtag  DW_TAG_subprogram, DW_AT_name("strcmp")
+      74                      .dwattr $C$DW$7, DW_AT_TI_symbol_name("_strcmp")
+      75                      .dwattr $C$DW$7, DW_AT_type(*$C$DW$T$10)
+      76                      .dwattr $C$DW$7, DW_AT_declaration
+      77                      .dwattr $C$DW$7, DW_AT_external
+      78              $C$DW$8 .dwtag  DW_TAG_formal_parameter
+      79                      .dwattr $C$DW$8, DW_AT_type(*$C$DW$T$48)
+      80              $C$DW$9 .dwtag  DW_TAG_formal_parameter
+      81                      .dwattr $C$DW$9, DW_AT_type(*$C$DW$T$48)
+      82                      .dwendtag $C$DW$7
+      83              
+      84              
+      85              $C$DW$10        .dwtag  DW_TAG_subprogram, DW_AT_name("memset")
+      86                      .dwattr $C$DW$10, DW_AT_TI_symbol_name("_memset")
+      87                      .dwattr $C$DW$10, DW_AT_type(*$C$DW$T$3)
+      88                      .dwattr $C$DW$10, DW_AT_declaration
+      89                      .dwattr $C$DW$10, DW_AT_external
+      90              $C$DW$11        .dwtag  DW_TAG_formal_parameter
+      91                      .dwattr $C$DW$11, DW_AT_type(*$C$DW$T$3)
+      92              $C$DW$12        .dwtag  DW_TAG_formal_parameter
+      93                      .dwattr $C$DW$12, DW_AT_type(*$C$DW$T$10)
+      94              $C$DW$13        .dwtag  DW_TAG_formal_parameter
+      95                      .dwattr $C$DW$13, DW_AT_type(*$C$DW$T$23)
+      96                      .dwendtag $C$DW$10
+      97              
+      98              
+      99              $C$DW$14        .dwtag  DW_TAG_subprogram, DW_AT_name("xTaskCreate")
+     100                      .dwattr $C$DW$14, DW_AT_TI_symbol_name("_xTaskCreate")
+     101                      .dwattr $C$DW$14, DW_AT_type(*$C$DW$T$24)
+     102                      .dwattr $C$DW$14, DW_AT_declaration
+     103                      .dwattr $C$DW$14, DW_AT_external
+     104              $C$DW$15        .dwtag  DW_TAG_formal_parameter
+     105                      .dwattr $C$DW$15, DW_AT_type(*$C$DW$T$35)
+     106              $C$DW$16        .dwtag  DW_TAG_formal_parameter
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE    3
+
+     107                      .dwattr $C$DW$16, DW_AT_type(*$C$DW$T$49)
+     108              $C$DW$17        .dwtag  DW_TAG_formal_parameter
+     109                      .dwattr $C$DW$17, DW_AT_type(*$C$DW$T$50)
+     110              $C$DW$18        .dwtag  DW_TAG_formal_parameter
+     111                      .dwattr $C$DW$18, DW_AT_type(*$C$DW$T$32)
+     112              $C$DW$19        .dwtag  DW_TAG_formal_parameter
+     113                      .dwattr $C$DW$19, DW_AT_type(*$C$DW$T$51)
+     114              $C$DW$20        .dwtag  DW_TAG_formal_parameter
+     115                      .dwattr $C$DW$20, DW_AT_type(*$C$DW$T$55)
+     116                      .dwendtag $C$DW$14
+     117              
+     118              
+     119              $C$DW$21        .dwtag  DW_TAG_subprogram, DW_AT_name("vTaskDelay")
+     120                      .dwattr $C$DW$21, DW_AT_TI_symbol_name("_vTaskDelay")
+     121                      .dwattr $C$DW$21, DW_AT_declaration
+     122                      .dwattr $C$DW$21, DW_AT_external
+     123              $C$DW$22        .dwtag  DW_TAG_formal_parameter
+     124                      .dwattr $C$DW$22, DW_AT_type(*$C$DW$T$37)
+     125                      .dwendtag $C$DW$21
+     126              
+     127              
+     128              $C$DW$23        .dwtag  DW_TAG_subprogram, DW_AT_name("xStreamBufferSend")
+     129                      .dwattr $C$DW$23, DW_AT_TI_symbol_name("_xStreamBufferSend")
+     130                      .dwattr $C$DW$23, DW_AT_type(*$C$DW$T$23)
+     131                      .dwattr $C$DW$23, DW_AT_declaration
+     132                      .dwattr $C$DW$23, DW_AT_external
+     133              $C$DW$24        .dwtag  DW_TAG_formal_parameter
+     134                      .dwattr $C$DW$24, DW_AT_type(*$C$DW$T$22)
+     135              $C$DW$25        .dwtag  DW_TAG_formal_parameter
+     136                      .dwattr $C$DW$25, DW_AT_type(*$C$DW$T$41)
+     137              $C$DW$26        .dwtag  DW_TAG_formal_parameter
+     138                      .dwattr $C$DW$26, DW_AT_type(*$C$DW$T$23)
+     139              $C$DW$27        .dwtag  DW_TAG_formal_parameter
+     140                      .dwattr $C$DW$27, DW_AT_type(*$C$DW$T$36)
+     141                      .dwendtag $C$DW$23
+     142              
+     143              
+     144              $C$DW$28        .dwtag  DW_TAG_subprogram, DW_AT_name("xStreamBufferReceive")
+     145                      .dwattr $C$DW$28, DW_AT_TI_symbol_name("_xStreamBufferReceive")
+     146                      .dwattr $C$DW$28, DW_AT_type(*$C$DW$T$23)
+     147                      .dwattr $C$DW$28, DW_AT_declaration
+     148                      .dwattr $C$DW$28, DW_AT_external
+     149              $C$DW$29        .dwtag  DW_TAG_formal_parameter
+     150                      .dwattr $C$DW$29, DW_AT_type(*$C$DW$T$22)
+     151              $C$DW$30        .dwtag  DW_TAG_formal_parameter
+     152                      .dwattr $C$DW$30, DW_AT_type(*$C$DW$T$3)
+     153              $C$DW$31        .dwtag  DW_TAG_formal_parameter
+     154                      .dwattr $C$DW$31, DW_AT_type(*$C$DW$T$23)
+     155              $C$DW$32        .dwtag  DW_TAG_formal_parameter
+     156                      .dwattr $C$DW$32, DW_AT_type(*$C$DW$T$36)
+     157                      .dwendtag $C$DW$28
+     158              
+     159              
+     160              $C$DW$33        .dwtag  DW_TAG_subprogram, DW_AT_name("xStreamBufferSendCompletedFromISR")
+     161                      .dwattr $C$DW$33, DW_AT_TI_symbol_name("_xStreamBufferSendCompletedFromISR")
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE    4
+
+     162                      .dwattr $C$DW$33, DW_AT_type(*$C$DW$T$24)
+     163                      .dwattr $C$DW$33, DW_AT_declaration
+     164                      .dwattr $C$DW$33, DW_AT_external
+     165              $C$DW$34        .dwtag  DW_TAG_formal_parameter
+     166                      .dwattr $C$DW$34, DW_AT_type(*$C$DW$T$22)
+     167              $C$DW$35        .dwtag  DW_TAG_formal_parameter
+     168                      .dwattr $C$DW$35, DW_AT_type(*$C$DW$T$58)
+     169                      .dwendtag $C$DW$33
+     170              
+     171              
+     172              $C$DW$36        .dwtag  DW_TAG_subprogram, DW_AT_name("xStreamBufferGenericCreate")
+     173                      .dwattr $C$DW$36, DW_AT_TI_symbol_name("_xStreamBufferGenericCreate")
+     174                      .dwattr $C$DW$36, DW_AT_type(*$C$DW$T$22)
+     175                      .dwattr $C$DW$36, DW_AT_declaration
+     176                      .dwattr $C$DW$36, DW_AT_external
+     177              $C$DW$37        .dwtag  DW_TAG_formal_parameter
+     178                      .dwattr $C$DW$37, DW_AT_type(*$C$DW$T$23)
+     179              $C$DW$38        .dwtag  DW_TAG_formal_parameter
+     180                      .dwattr $C$DW$38, DW_AT_type(*$C$DW$T$23)
+     181              $C$DW$39        .dwtag  DW_TAG_formal_parameter
+     182                      .dwattr $C$DW$39, DW_AT_type(*$C$DW$T$24)
+     183                      .dwendtag $C$DW$36
+     184              
+     185              
+     186              $C$DW$40        .dwtag  DW_TAG_subprogram, DW_AT_name("portYIELD_FROM_ISR")
+     187                      .dwattr $C$DW$40, DW_AT_TI_symbol_name("_portYIELD_FROM_ISR")
+     188                      .dwattr $C$DW$40, DW_AT_type(*$C$DW$T$10)
+     189                      .dwattr $C$DW$40, DW_AT_declaration
+     190                      .dwattr $C$DW$40, DW_AT_external
+     191 000000               .bss    _xCoreBMessageBuffers,4,0,2
+     192              $C$DW$41        .dwtag  DW_TAG_variable, DW_AT_name("xCoreBMessageBuffers")
+     193                      .dwattr $C$DW$41, DW_AT_TI_symbol_name("_xCoreBMessageBuffers")
+     194                      .dwattr $C$DW$41, DW_AT_type(*$C$DW$T$28)
+     195                      .dwattr $C$DW$41, DW_AT_location[DW_OP_addr _xCoreBMessageBuffers]
+     196 000004               .bss    _xControlMessageBuffer,2,0,2
+     197              $C$DW$42        .dwtag  DW_TAG_variable, DW_AT_name("xControlMessageBuffer")
+     198                      .dwattr $C$DW$42, DW_AT_TI_symbol_name("_xControlMessageBuffer")
+     199                      .dwattr $C$DW$42, DW_AT_type(*$C$DW$T$27)
+     200                      .dwattr $C$DW$42, DW_AT_location[DW_OP_addr _xControlMessageBuffer]
+     201 000006               .bss    _ulCycleCounters,4,0,2
+     202              $C$DW$43        .dwtag  DW_TAG_variable, DW_AT_name("ulCycleCounters")
+     203                      .dwattr $C$DW$43, DW_AT_TI_symbol_name("_ulCycleCounters")
+     204                      .dwattr $C$DW$43, DW_AT_type(*$C$DW$T$76)
+     205                      .dwattr $C$DW$43, DW_AT_location[DW_OP_addr _ulCycleCounters]
+     206                      .global _xDemoStatus
+     207 00000a               .bss    _xDemoStatus,1,0,0
+     208              $C$DW$44        .dwtag  DW_TAG_variable, DW_AT_name("xDemoStatus")
+     209                      .dwattr $C$DW$44, DW_AT_TI_symbol_name("_xDemoStatus")
+     210                      .dwattr $C$DW$44, DW_AT_location[DW_OP_addr _xDemoStatus]
+     211                      .dwattr $C$DW$44, DW_AT_type(*$C$DW$T$24)
+     212                      .dwattr $C$DW$44, DW_AT_external
+     213 00000c               .bss    _ulLastCycleCounters$1,4,0,2
+     214              ;       F:\TI_CCS_7P4\ccsv7\tools\compiler\c5500_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\0529612 
+     215 000000               .sect   ".text"
+     216                      .align 4
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE    5
+
+     217                      .global _vStartMessageBufferAMPTasks
+     218              
+     219              $C$DW$45        .dwtag  DW_TAG_subprogram, DW_AT_name("vStartMessageBufferAMPTasks")
+     220                      .dwattr $C$DW$45, DW_AT_low_pc(_vStartMessageBufferAMPTasks)
+     221                      .dwattr $C$DW$45, DW_AT_high_pc(0x00)
+     222                      .dwattr $C$DW$45, DW_AT_TI_symbol_name("_vStartMessageBufferAMPTasks")
+     223                      .dwattr $C$DW$45, DW_AT_external
+     224                      .dwattr $C$DW$45, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+     225                      .dwattr $C$DW$45, DW_AT_TI_begin_line(0x81)
+     226                      .dwattr $C$DW$45, DW_AT_TI_begin_column(0x06)
+     227                      .dwattr $C$DW$45, DW_AT_TI_max_frame_size(0x04)
+     228                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 130,column 1,is_stmt,address _
+     229              
+     230                      .dwfde $C$DW$CIE, _vStartMessageBufferAMPTasks
+     231              $C$DW$46        .dwtag  DW_TAG_formal_parameter, DW_AT_name("xStackSize")
+     232                      .dwattr $C$DW$46, DW_AT_TI_symbol_name("_xStackSize")
+     233                      .dwattr $C$DW$46, DW_AT_type(*$C$DW$T$42)
+     234                      .dwattr $C$DW$46, DW_AT_location[DW_OP_reg12]
+     235              ;*******************************************************************************
+     236              ;* FUNCTION NAME: vStartMessageBufferAMPTasks                                  *
+     237              ;*                                                                             *
+     238              ;*   Function Uses Regs : AC0,AC0,T0,T1,AR0,XAR0,AR1,XAR1,AR2,XAR2,AR3,XAR3,SP,*
+     239              ;*                        CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL                *
+     240              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     241              ;*   Total Frame Size   : 4 words                                              *
+     242              ;*                        (2 return address/alignment)                         *
+     243              ;*                        (2 local values)                                     *
+     244              ;*   Min System Stack   : 1 word                                               *
+     245              ;*******************************************************************************
+     246 000000       _vStartMessageBufferAMPTasks:
+     247                      .dwcfi  cfa_offset, 1
+     248                      .dwcfi  save_reg_to_mem, 91, -1
+     249 000000 4EFD          AADD #-3, SP
+     250                      .dwcfi  cfa_offset, 4
+     251              $C$DW$47        .dwtag  DW_TAG_variable, DW_AT_name("xStackSize")
+     252                      .dwattr $C$DW$47, DW_AT_TI_symbol_name("_xStackSize")
+     253                      .dwattr $C$DW$47, DW_AT_type(*$C$DW$T$42)
+     254                      .dwattr $C$DW$47, DW_AT_location[DW_OP_bregx 0x24 0]
+     255              $C$DW$48        .dwtag  DW_TAG_variable, DW_AT_name("x")
+     256                      .dwattr $C$DW$48, DW_AT_TI_symbol_name("_x")
+     257                      .dwattr $C$DW$48, DW_AT_type(*$C$DW$T$24)
+     258                      .dwattr $C$DW$48, DW_AT_location[DW_OP_bregx 0x24 1]
+     259 000002 C400          MOV T0, *SP(#0) ; |130| 
+     260                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 133,column 2,is_stmt
+     261              
+     262 000004 7600          MOV #24, T0 ; |133| 
+         000006 1848 
+     263 000008 3D05  ||      MOV #0, T1
+     264              
+     265              $C$DW$49        .dwtag  DW_TAG_TI_branch
+     266                      .dwattr $C$DW$49, DW_AT_low_pc(0x00)
+     267                      .dwattr $C$DW$49, DW_AT_name("_xStreamBufferGenericCreate")
+     268                      .dwattr $C$DW$49, DW_AT_TI_call
+     269              
+     270 00000a 6C00          CALL #_xStreamBufferGenericCreate ; |133| 
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE    6
+
+         00000c 0000!
+     271 00000e 3D18  ||      MOV #1, AR0
+     272              
+     273                                                      ; call occurs [#_xStreamBufferGenericCreate] ; |133| 
+     274 000010 EB31          MOV XAR0, dbl(*(#_xControlMessageBuffer))
+         000012 8500 
+         000014 0004-
+     275                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 135,column 2,is_stmt
+     276 000016 7A00          MOV #(_prvCoreATask >> 16) << #16, AC0 ; |135| 
+         000018 000A%
+     277 00001a EC31          AMOV #0, XAR2 ; |135| 
+         00001c AE00 
+         00001e 0000 
+     278 000020 EC31          AMOV #0, XAR1 ; |135| 
+         000022 9E00 
+         000024 0000 
+     279 000026 A400          MOV *SP(#0), T0 ; |135| 
+     280 000028 7E00          OR #(_prvCoreATask & 0xffff), AC0, AC0 ; |135| 
+         00002a 0000%
+     281 00002c EC31          AMOV #$C$FSL1, XAR0 ; |135| 
+         00002e 8E00 
+         000030 0000+
+     282              $C$DW$50        .dwtag  DW_TAG_TI_branch
+     283                      .dwattr $C$DW$50, DW_AT_low_pc(0x00)
+     284                      .dwattr $C$DW$50, DW_AT_name("_xTaskCreate")
+     285                      .dwattr $C$DW$50, DW_AT_TI_call
+     286              
+     287 000032 6C00          CALL #_xTaskCreate ; |135| 
+         000034 0000!
+     288 000036 3D05  ||      MOV #0, T1
+     289              
+     290                                                      ; call occurs [#_xTaskCreate] ; |135| 
+     291                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 142,column 7,is_stmt
+     292 000038 E602          MOV #0, *SP(#1) ; |142| 
+         00003a 00   
+     293                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 142,column 14,is_stmt
+     294              
+     295 00003b A902          MOV *SP(#1), AR1 ; |142| 
+     296 00003d 3D2A  ||      MOV #2, AR2
+     297              
+     298 00003f 1298          CMP AR1 >= AR2, TC1 ; |142| 
+         000041 A0   
+     299 000042 0464          BCC $C$L2,TC1 ; |142| 
+         000044 47   
+     300                                                      ; branchcc occurs ; |142| 
+     301 000045       $C$L1:    
+     302 000045       $C$DW$L$_vStartMessageBufferAMPTasks$2$B:
+     303                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 144,column 3,is_stmt
+     304              
+     305 000045 7600          MOV #60, T0 ; |144| 
+         000047 3C48 
+     306 000049 3D05  ||      MOV #0, T1
+     307              
+     308              $C$DW$51        .dwtag  DW_TAG_TI_branch
+     309                      .dwattr $C$DW$51, DW_AT_low_pc(0x00)
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE    7
+
+     310                      .dwattr $C$DW$51, DW_AT_name("_xStreamBufferGenericCreate")
+     311                      .dwattr $C$DW$51, DW_AT_TI_call
+     312              
+     313 00004b 6C00          CALL #_xStreamBufferGenericCreate ; |144| 
+         00004d 0000!
+     314 00004f 3D18  ||      MOV #1, AR0
+     315              
+     316                                                      ; call occurs [#_xStreamBufferGenericCreate] ; |144| 
+     317 000051 A402          MOV *SP(#1), T0 ; |144| 
+     318 000053 5040          SFTL T0, #1 ; |144| 
+     319 000055 EC31          AMOV #_xCoreBMessageBuffers, XAR3 ; |144| 
+         000057 BE00 
+         000059 0000-
+     320 00005b EB6B          MOV XAR0, dbl(*AR3(T0))
+         00005d 85   
+     321                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 150,column 3,is_stmt
+     322 00005e EC31          AMOV #0, XAR2 ; |150| 
+         000060 AE00 
+         000062 0000 
+     323 000064 A002          MOV *SP(#1), AC0 ; |150| 
+     324 000066 A400          MOV *SP(#0), T0 ; |150| 
+     325 000068 EC31          AMOV #$C$FSL2, XAR0 ; |150| 
+         00006a 8E00 
+         00006c 000A+
+     326 00006e 9009          MOV AC0, XAR1
+     327 000070 7A00          MOV #(_prvCoreBTasks >> 16) << #16, AC0 ; |150| 
+         000072 000A%
+     328 000074 7E00          OR #(_prvCoreBTasks & 0xffff), AC0, AC0 ; |150| 
+         000076 0000%
+     329              $C$DW$52        .dwtag  DW_TAG_TI_branch
+     330                      .dwattr $C$DW$52, DW_AT_low_pc(0x00)
+     331                      .dwattr $C$DW$52, DW_AT_name("_xTaskCreate")
+     332                      .dwattr $C$DW$52, DW_AT_TI_call
+     333              
+     334 000078 6C00          CALL #_xTaskCreate ; |150| 
+         00007a 0000!
+     335 00007c 3D15  ||      MOV #1, T1
+     336              
+     337                                                      ; call occurs [#_xTaskCreate] ; |150| 
+     338                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 142,column 45,is_stmt
+     339 00007e F702          ADD #1, *SP(#1) ; |142| 
+         000080 0001 
+     340                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 142,column 14,is_stmt
+     341              
+     342 000082 A902          MOV *SP(#1), AR1 ; |142| 
+     343 000084 3D2A  ||      MOV #2, AR2
+     344              
+     345 000086 1294          CMP AR1 < AR2, TC1 ; |142| 
+         000088 A0   
+     346 000089 0464          BCC $C$L1,TC1 ; |142| 
+         00008b B9   
+     347                                                      ; branchcc occurs ; |142| 
+     348 00008c       $C$DW$L$_vStartMessageBufferAMPTasks$2$E:
+     349                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 157,column 1,is_stmt
+     350 00008c       $C$L2:    
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE    8
+
+     351 00008c 4E03          AADD #3, SP
+     352                      .dwcfi  cfa_offset, 1
+     353              $C$DW$53        .dwtag  DW_TAG_TI_branch
+     354                      .dwattr $C$DW$53, DW_AT_low_pc(0x00)
+     355                      .dwattr $C$DW$53, DW_AT_TI_return
+     356 00008e 4804          RET
+     357                                                      ; return occurs
+     358              
+     359              $C$DW$54        .dwtag  DW_TAG_TI_loop
+     360                      .dwattr $C$DW$54, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\MessageBufferAMP.asm:$C
+     361                      .dwattr $C$DW$54, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+     362                      .dwattr $C$DW$54, DW_AT_TI_begin_line(0x8e)
+     363                      .dwattr $C$DW$54, DW_AT_TI_end_line(0x9c)
+     364              $C$DW$55        .dwtag  DW_TAG_TI_loop_range
+     365                      .dwattr $C$DW$55, DW_AT_low_pc($C$DW$L$_vStartMessageBufferAMPTasks$2$B)
+     366                      .dwattr $C$DW$55, DW_AT_high_pc($C$DW$L$_vStartMessageBufferAMPTasks$2$E)
+     367                      .dwendtag $C$DW$54
+     368              
+     369                      .dwattr $C$DW$45, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+     370                      .dwattr $C$DW$45, DW_AT_TI_end_line(0x9d)
+     371                      .dwattr $C$DW$45, DW_AT_TI_end_column(0x01)
+     372                      .dwendentry
+     373                      .dwendtag $C$DW$45
+     374              
+     375 000090               .sect   ".text"
+     376                      .align 4
+     377              
+     378              $C$DW$56        .dwtag  DW_TAG_subprogram, DW_AT_name("prvCoreATask")
+     379                      .dwattr $C$DW$56, DW_AT_low_pc(_prvCoreATask)
+     380                      .dwattr $C$DW$56, DW_AT_high_pc(0x00)
+     381                      .dwattr $C$DW$56, DW_AT_TI_symbol_name("_prvCoreATask")
+     382                      .dwattr $C$DW$56, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+     383                      .dwattr $C$DW$56, DW_AT_TI_begin_line(0xa0)
+     384                      .dwattr $C$DW$56, DW_AT_TI_begin_column(0x0d)
+     385                      .dwattr $C$DW$56, DW_AT_TI_max_frame_size(0x1c)
+     386                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 161,column 1,is_stmt,address _
+     387              
+     388                      .dwfde $C$DW$CIE, _prvCoreATask
+     389              $C$DW$57        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
+     390                      .dwattr $C$DW$57, DW_AT_TI_symbol_name("_pvParameters")
+     391                      .dwattr $C$DW$57, DW_AT_type(*$C$DW$T$3)
+     392                      .dwattr $C$DW$57, DW_AT_location[DW_OP_reg17]
+     393              ;*******************************************************************************
+     394              ;* FUNCTION NAME: prvCoreATask                                                 *
+     395              ;*                                                                             *
+     396              ;*   Function Uses Regs : AC0,AC0,T0,T1,T2,AR0,XAR0,AR1,XAR1,AR2,AR3,XAR3,SP,  *
+     397              ;*                        CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL                *
+     398              ;*   Save On Entry Regs : T2                                                   *
+     399              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     400              ;*   Total Frame Size   : 28 words                                             *
+     401              ;*                        (1 return address/alignment)                         *
+     402              ;*                        (4 function parameters)                              *
+     403              ;*                        (22 local values)                                    *
+     404              ;*                        (1 register save area)                               *
+     405              ;*   Min System Stack   : 1 word                                               *
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE    9
+
+     406              ;*******************************************************************************
+     407 000090       _prvCoreATask:
+     408                      .dwcfi  cfa_offset, 1
+     409                      .dwcfi  save_reg_to_mem, 91, -1
+     410 000090 5066          PSH T2
+     411                      .dwcfi  cfa_offset, 2
+     412                      .dwcfi  save_reg_to_mem, 14, -2
+     413 000092 4EE6          AADD #-26, SP
+     414                      .dwcfi  cfa_offset, 28
+     415              $C$DW$58        .dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
+     416                      .dwattr $C$DW$58, DW_AT_TI_symbol_name("_pvParameters")
+     417                      .dwattr $C$DW$58, DW_AT_type(*$C$DW$T$3)
+     418                      .dwattr $C$DW$58, DW_AT_location[DW_OP_bregx 0x24 4]
+     419              $C$DW$59        .dwtag  DW_TAG_variable, DW_AT_name("x")
+     420                      .dwattr $C$DW$59, DW_AT_TI_symbol_name("_x")
+     421                      .dwattr $C$DW$59, DW_AT_type(*$C$DW$T$24)
+     422                      .dwattr $C$DW$59, DW_AT_location[DW_OP_bregx 0x24 6]
+     423              $C$DW$60        .dwtag  DW_TAG_variable, DW_AT_name("ulNextValue")
+     424                      .dwattr $C$DW$60, DW_AT_TI_symbol_name("_ulNextValue")
+     425                      .dwattr $C$DW$60, DW_AT_type(*$C$DW$T$75)
+     426                      .dwattr $C$DW$60, DW_AT_location[DW_OP_bregx 0x24 8]
+     427              $C$DW$61        .dwtag  DW_TAG_variable, DW_AT_name("xDelay")
+     428                      .dwattr $C$DW$61, DW_AT_TI_symbol_name("_xDelay")
+     429                      .dwattr $C$DW$61, DW_AT_type(*$C$DW$T$37)
+     430                      .dwattr $C$DW$61, DW_AT_location[DW_OP_bregx 0x24 10]
+     431              $C$DW$62        .dwtag  DW_TAG_variable, DW_AT_name("cString")
+     432                      .dwattr $C$DW$62, DW_AT_TI_symbol_name("_cString")
+     433                      .dwattr $C$DW$62, DW_AT_type(*$C$DW$T$82)
+     434                      .dwattr $C$DW$62, DW_AT_location[DW_OP_bregx 0x24 11]
+     435 000094 EB08          MOV XAR0, dbl(*SP(#4))
+         000096 85   
+     436                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 163,column 10,is_stmt
+     437 000097 3C00          MOV #0, AC0 ; |163| 
+     438 000099 EB10          MOV AC0, dbl(*SP(#8)) ; |163| 
+         00009b 08   
+     439                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 164,column 18,is_stmt
+     440              
+     441 00009c E614          MOV #53, *SP(#10) ; |164| 
+         00009e 35   
+     442 00009f 3D26  ||      MOV #2, T2
+     443              
+     444                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 168,column 2,is_stmt
+     445 0000a1       $C$L3:    
+     446 0000a1       $C$DW$L$_prvCoreATask$2$B:
+     447                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 175,column 3,is_stmt
+     448 0000a1 EC31          AMOV #$C$FSL3, XAR3 ; |175| 
+         0000a3 BE00 
+         0000a5 0014+
+     449 0000a7 EB00          MOV XAR3, dbl(*SP(#0))
+         0000a9 B5   
+     450 0000aa EC16          AMAR *SP(#11), XAR0
+         0000ac 8E   
+     451 0000ad ED10          MOV dbl(*SP(#8)), AC0 ; |175| 
+         0000af 08   
+     452 0000b0 EB04          MOV AC0, dbl(*SP(#2)) ; |175| 
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   10
+
+         0000b2 08   
+     453              $C$DW$63        .dwtag  DW_TAG_TI_branch
+     454                      .dwattr $C$DW$63, DW_AT_low_pc(0x00)
+     455                      .dwattr $C$DW$63, DW_AT_name("_sprintf")
+     456                      .dwattr $C$DW$63, DW_AT_TI_call
+     457 0000b3 6C00          CALL #_sprintf ; |175| 
+         0000b5 0000!
+     458                                                      ; call occurs [#_sprintf] ; |175| 
+     459                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 182,column 8,is_stmt
+     460 0000b7 E60C          MOV #0, *SP(#6) ; |182| 
+         0000b9 00   
+     461                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 182,column 15,is_stmt
+     462 0000ba A90C          MOV *SP(#6), AR1 ; |182| 
+     463 0000bc 1298          CMP AR1 >= T2, TC1 ; |182| 
+         0000be 60   
+     464 0000bf 0464          BCC $C$L5,TC1 ; |182| 
+         0000c1 2F   
+     465                                                      ; branchcc occurs ; |182| 
+     466 0000c2       $C$DW$L$_prvCoreATask$2$E:
+     467 0000c2       $C$L4:    
+     468 0000c2       $C$DW$L$_prvCoreATask$3$B:
+     469                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 184,column 4,is_stmt
+     470 0000c2 EC16          AMAR *SP(#11), XAR0
+         0000c4 8E   
+     471              $C$DW$64        .dwtag  DW_TAG_TI_branch
+     472                      .dwattr $C$DW$64, DW_AT_low_pc(0x00)
+     473                      .dwattr $C$DW$64, DW_AT_name("_strlen")
+     474                      .dwattr $C$DW$64, DW_AT_TI_call
+     475 0000c5 6C00          CALL #_strlen ; |184| 
+         0000c7 0000!
+     476                                                      ; call occurs [#_strlen] ; |184| 
+     477              
+     478 0000c9 A40C          MOV *SP(#6), T0 ; |184| 
+     479 0000cb 234A  ||      MOV T0, AR2 ; |184| 
+     480              
+     481 0000cd 5040          SFTL T0, #1 ; |184| 
+     482 0000cf EC31          AMOV #_xCoreBMessageBuffers, XAR3 ; |184| 
+         0000d1 BE00 
+         0000d3 0000-
+     483              
+     484 0000d5 EC16          AMAR *SP(#11), XAR1
+         0000d7 9E   
+     485 0000d8 3D05  ||      MOV #0, T1
+     486              
+     487 0000da ED6B          MOV dbl(*AR3(T0)), XAR0
+         0000dc 8F   
+     488              $C$DW$65        .dwtag  DW_TAG_TI_branch
+     489                      .dwattr $C$DW$65, DW_AT_low_pc(0x00)
+     490                      .dwattr $C$DW$65, DW_AT_name("_xStreamBufferSend")
+     491                      .dwattr $C$DW$65, DW_AT_TI_call
+     492              
+     493 0000dd 6C00          CALL #_xStreamBufferSend ; |184| 
+         0000df 0000!
+     494 0000e1 23A4  ||      MOV AR2, T0 ; |184| 
+     495              
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   11
+
+     496                                                      ; call occurs [#_xStreamBufferSend] ; |184| 
+     497                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 182,column 46,is_stmt
+     498 0000e3 F70C          ADD #1, *SP(#6) ; |182| 
+         0000e5 0001 
+     499                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 182,column 15,is_stmt
+     500              
+     501 0000e7 A90C          MOV *SP(#6), AR1 ; |182| 
+     502 0000e9 3D2A  ||      MOV #2, AR2
+     503              
+     504 0000eb 1294          CMP AR1 < AR2, TC1 ; |182| 
+         0000ed A0   
+     505 0000ee 0464          BCC $C$L4,TC1 ; |182| 
+         0000f0 D1   
+     506                                                      ; branchcc occurs ; |182| 
+     507 0000f1       $C$DW$L$_prvCoreATask$3$E:
+     508 0000f1       $C$L5:    
+     509 0000f1       $C$DW$L$_prvCoreATask$4$B:
+     510                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 196,column 3,is_stmt
+     511 0000f1 A414          MOV *SP(#10), T0 ; |196| 
+     512              $C$DW$66        .dwtag  DW_TAG_TI_branch
+     513                      .dwattr $C$DW$66, DW_AT_low_pc(0x00)
+     514                      .dwattr $C$DW$66, DW_AT_name("_vTaskDelay")
+     515                      .dwattr $C$DW$66, DW_AT_TI_call
+     516 0000f3 6C00          CALL #_vTaskDelay ; |196| 
+         0000f5 0000!
+     517                                                      ; call occurs [#_vTaskDelay] ; |196| 
+     518                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 197,column 3,is_stmt
+     519 0000f7 ED10          MOV dbl(*SP(#8)), AC0 ; |197| 
+         0000f9 08   
+     520 0000fa 4010          ADD #1, AC0 ; |197| 
+     521 0000fc EB10          MOV AC0, dbl(*SP(#8)) ; |197| 
+         0000fe 08   
+     522                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 198,column 2,is_stmt
+     523 0000ff 06FF          B $C$L3   ; |198| 
+         000101 9F   
+     524                                                      ; branch occurs ; |198| 
+     525 000102       $C$DW$L$_prvCoreATask$4$E:
+     526                      .dwcfi  cfa_offset, 2
+     527                      .dwcfi  restore_reg, 14
+     528                      .dwcfi  cfa_offset, 1
+     529              
+     530              $C$DW$67        .dwtag  DW_TAG_TI_loop
+     531                      .dwattr $C$DW$67, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\MessageBufferAMP.asm:$C
+     532                      .dwattr $C$DW$67, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+     533                      .dwattr $C$DW$67, DW_AT_TI_begin_line(0xaa)
+     534                      .dwattr $C$DW$67, DW_AT_TI_end_line(0xc6)
+     535              $C$DW$68        .dwtag  DW_TAG_TI_loop_range
+     536                      .dwattr $C$DW$68, DW_AT_low_pc($C$DW$L$_prvCoreATask$2$B)
+     537                      .dwattr $C$DW$68, DW_AT_high_pc($C$DW$L$_prvCoreATask$2$E)
+     538              $C$DW$69        .dwtag  DW_TAG_TI_loop_range
+     539                      .dwattr $C$DW$69, DW_AT_low_pc($C$DW$L$_prvCoreATask$4$B)
+     540                      .dwattr $C$DW$69, DW_AT_high_pc($C$DW$L$_prvCoreATask$4$E)
+     541              
+     542              $C$DW$70        .dwtag  DW_TAG_TI_loop
+     543                      .dwattr $C$DW$70, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\MessageBufferAMP.asm:$C
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   12
+
+     544                      .dwattr $C$DW$70, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+     545                      .dwattr $C$DW$70, DW_AT_TI_begin_line(0xb6)
+     546                      .dwattr $C$DW$70, DW_AT_TI_end_line(0xc0)
+     547              $C$DW$71        .dwtag  DW_TAG_TI_loop_range
+     548                      .dwattr $C$DW$71, DW_AT_low_pc($C$DW$L$_prvCoreATask$3$B)
+     549                      .dwattr $C$DW$71, DW_AT_high_pc($C$DW$L$_prvCoreATask$3$E)
+     550                      .dwendtag $C$DW$70
+     551              
+     552                      .dwendtag $C$DW$67
+     553              
+     554                      .dwattr $C$DW$56, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+     555                      .dwattr $C$DW$56, DW_AT_TI_end_line(0xc7)
+     556                      .dwattr $C$DW$56, DW_AT_TI_end_column(0x01)
+     557                      .dwendentry
+     558                      .dwendtag $C$DW$56
+     559              
+     560 000102               .sect   ".text"
+     561                      .align 4
+     562              
+     563              $C$DW$72        .dwtag  DW_TAG_subprogram, DW_AT_name("prvCoreBTasks")
+     564                      .dwattr $C$DW$72, DW_AT_low_pc(_prvCoreBTasks)
+     565                      .dwattr $C$DW$72, DW_AT_high_pc(0x00)
+     566                      .dwattr $C$DW$72, DW_AT_TI_symbol_name("_prvCoreBTasks")
+     567                      .dwattr $C$DW$72, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+     568                      .dwattr $C$DW$72, DW_AT_TI_begin_line(0xca)
+     569                      .dwattr $C$DW$72, DW_AT_TI_begin_column(0x0d)
+     570                      .dwattr $C$DW$72, DW_AT_TI_max_frame_size(0x2a)
+     571                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 203,column 1,is_stmt,address _
+     572              
+     573                      .dwfde $C$DW$CIE, _prvCoreBTasks
+     574              $C$DW$73        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
+     575                      .dwattr $C$DW$73, DW_AT_TI_symbol_name("_pvParameters")
+     576                      .dwattr $C$DW$73, DW_AT_type(*$C$DW$T$3)
+     577                      .dwattr $C$DW$73, DW_AT_location[DW_OP_reg17]
+     578              ;*******************************************************************************
+     579              ;* FUNCTION NAME: prvCoreBTasks                                                *
+     580              ;*                                                                             *
+     581              ;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,T1,AR0,XAR0,AR1,XAR1,AR3,XAR3,SP, *
+     582              ;*                        CARRY,M40,SATA,SATD,RDM,FRCT,SMUL                    *
+     583              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     584              ;*   Total Frame Size   : 42 words                                             *
+     585              ;*                        (2 return address/alignment)                         *
+     586              ;*                        (4 function parameters)                              *
+     587              ;*                        (36 local values)                                    *
+     588              ;*   Min System Stack   : 1 word                                               *
+     589              ;*******************************************************************************
+     590 000104       _prvCoreBTasks:
+     591                      .dwcfi  cfa_offset, 1
+     592                      .dwcfi  save_reg_to_mem, 91, -1
+     593 000104 4ED7          AADD #-41, SP
+     594                      .dwcfi  cfa_offset, 42
+     595              $C$DW$74        .dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
+     596                      .dwattr $C$DW$74, DW_AT_TI_symbol_name("_pvParameters")
+     597                      .dwattr $C$DW$74, DW_AT_type(*$C$DW$T$3)
+     598                      .dwattr $C$DW$74, DW_AT_location[DW_OP_bregx 0x24 4]
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   13
+
+     599              $C$DW$75        .dwtag  DW_TAG_variable, DW_AT_name("x")
+     600                      .dwattr $C$DW$75, DW_AT_TI_symbol_name("_x")
+     601                      .dwattr $C$DW$75, DW_AT_type(*$C$DW$T$24)
+     602                      .dwattr $C$DW$75, DW_AT_location[DW_OP_bregx 0x24 6]
+     603              $C$DW$76        .dwtag  DW_TAG_variable, DW_AT_name("xReceivedBytes")
+     604                      .dwattr $C$DW$76, DW_AT_TI_symbol_name("_xReceivedBytes")
+     605                      .dwattr $C$DW$76, DW_AT_type(*$C$DW$T$23)
+     606                      .dwattr $C$DW$76, DW_AT_location[DW_OP_bregx 0x24 7]
+     607              $C$DW$77        .dwtag  DW_TAG_variable, DW_AT_name("ulNextValue")
+     608                      .dwattr $C$DW$77, DW_AT_TI_symbol_name("_ulNextValue")
+     609                      .dwattr $C$DW$77, DW_AT_type(*$C$DW$T$75)
+     610                      .dwattr $C$DW$77, DW_AT_location[DW_OP_bregx 0x24 8]
+     611              $C$DW$78        .dwtag  DW_TAG_variable, DW_AT_name("cExpectedString")
+     612                      .dwattr $C$DW$78, DW_AT_TI_symbol_name("_cExpectedString")
+     613                      .dwattr $C$DW$78, DW_AT_type(*$C$DW$T$82)
+     614                      .dwattr $C$DW$78, DW_AT_location[DW_OP_bregx 0x24 10]
+     615              $C$DW$79        .dwtag  DW_TAG_variable, DW_AT_name("cReceivedString")
+     616                      .dwattr $C$DW$79, DW_AT_TI_symbol_name("_cReceivedString")
+     617                      .dwattr $C$DW$79, DW_AT_type(*$C$DW$T$82)
+     618                      .dwattr $C$DW$79, DW_AT_location[DW_OP_bregx 0x24 25]
+     619 000106 EB08          MOV XAR0, dbl(*SP(#4))
+         000108 85   
+     620                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 206,column 10,is_stmt
+     621 000109 3C00          MOV #0, AC0 ; |206| 
+     622 00010b EB10          MOV AC0, dbl(*SP(#8)) ; |206| 
+         00010d 08   
+     623                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 212,column 2,is_stmt
+     624 00010e A90A          MOV *SP(#5), AR1 ; |212| 
+     625 000110 C90C          MOV AR1, *SP(#6) ; |212| 
+     626 000112       $C$L6:    
+     627 000112       $C$DW$L$_prvCoreBTasks$2$B:
+     628                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 218,column 3,is_stmt
+     629 000112 EC31          AMOV #$C$FSL3, XAR3 ; |218| 
+         000114 BE00 
+         000116 0014+
+     630 000118 EB00          MOV XAR3, dbl(*SP(#0))
+         00011a B5   
+     631 00011b EC14          AMAR *SP(#10), XAR0
+         00011d 8E   
+     632 00011e ED10          MOV dbl(*SP(#8)), AC0 ; |218| 
+         000120 08   
+     633 000121 EB04          MOV AC0, dbl(*SP(#2)) ; |218| 
+         000123 08   
+     634              $C$DW$80        .dwtag  DW_TAG_TI_branch
+     635                      .dwattr $C$DW$80, DW_AT_low_pc(0x00)
+     636                      .dwattr $C$DW$80, DW_AT_name("_sprintf")
+     637                      .dwattr $C$DW$80, DW_AT_TI_call
+     638 000124 6C00          CALL #_sprintf ; |218| 
+         000126 0000!
+     639                                                      ; call occurs [#_sprintf] ; |218| 
+     640                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 221,column 3,is_stmt
+     641              
+     642 000128 EC32          AMAR *SP(#25), XAR0
+         00012a 8E   
+     643 00012b 3D04  ||      MOV #0, T0
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   14
+
+     644              
+     645              $C$DW$81        .dwtag  DW_TAG_TI_branch
+     646                      .dwattr $C$DW$81, DW_AT_low_pc(0x00)
+     647                      .dwattr $C$DW$81, DW_AT_name("_memset")
+     648                      .dwattr $C$DW$81, DW_AT_TI_call
+     649              
+     650 00012d 6C00          CALL #_memset ; |221| 
+         00012f 0000!
+     651 000131 3DF5  ||      MOV #15, T1
+     652              
+     653                                                      ; call occurs [#_memset] ; |221| 
+     654                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 222,column 3,is_stmt
+     655 000133 A40C          MOV *SP(#6), T0 ; |222| 
+     656 000135 5040          SFTL T0, #1 ; |222| 
+     657 000137 76FF          MOV #65535, T1 ; |222| 
+         000139 FF58 
+     658 00013b EC32          AMAR *SP(#25), XAR1
+         00013d 9E   
+     659 00013e EC31          AMOV #_xCoreBMessageBuffers, XAR3 ; |222| 
+         000140 BE00 
+         000142 0000-
+     660 000144 ED6B          MOV dbl(*AR3(T0)), XAR0
+         000146 8F   
+     661              $C$DW$82        .dwtag  DW_TAG_TI_branch
+     662                      .dwattr $C$DW$82, DW_AT_low_pc(0x00)
+     663                      .dwattr $C$DW$82, DW_AT_name("_xStreamBufferReceive")
+     664                      .dwattr $C$DW$82, DW_AT_TI_call
+     665              
+     666 000147 6C00          CALL #_xStreamBufferReceive ; |222| 
+         000149 0000!
+     667 00014b 3DF4  ||      MOV #15, T0
+     668              
+     669                                                      ; call occurs [#_xStreamBufferReceive] ; |222| 
+     670 00014d C40E          MOV T0, *SP(#7) ; |222| 
+     671                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 233,column 3,is_stmt
+     672                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 237,column 3,is_stmt
+     673 00014f EC32          AMAR *SP(#25), XAR0
+         000151 8E   
+     674 000152 EC14          AMAR *SP(#10), XAR1
+         000154 9E   
+     675              $C$DW$83        .dwtag  DW_TAG_TI_branch
+     676                      .dwattr $C$DW$83, DW_AT_low_pc(0x00)
+     677                      .dwattr $C$DW$83, DW_AT_name("_strcmp")
+     678                      .dwattr $C$DW$83, DW_AT_TI_call
+     679 000155 6C00          CALL #_strcmp ; |237| 
+         000157 0000!
+     680                                                      ; call occurs [#_strcmp] ; |237| 
+     681 000159 0414          BCC $C$L7,T0 != #0 ; |237| 
+         00015b 16   
+     682                                                      ; branchcc occurs ; |237| 
+     683 00015c       $C$DW$L$_prvCoreBTasks$2$E:
+     684 00015c       $C$DW$L$_prvCoreBTasks$3$B:
+     685                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 239,column 4,is_stmt
+     686 00015c F90C          MOV *SP(#6) << #1, AC0 ; |239| 
+         00015e 0108 
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   15
+
+     687 000160 2204          MOV AC0, T0 ; |239| 
+     688 000162 EC31          AMOV #_ulCycleCounters, XAR3 ; |239| 
+         000164 BE00 
+         000166 0006-
+     689 000168 ED6B          MOV dbl(*AR3(T0)), AC1 ; |239| 
+         00016a 18   
+     690 00016b 4011          ADD #1, AC1 ; |239| 
+     691 00016d EB6B          MOV AC1, dbl(*AR3(T0)) ; |239| 
+         00016f 18   
+     692                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 240,column 3,is_stmt
+     693 000170 4A06          B $C$L8   ; |240| 
+     694                                                      ; branch occurs ; |240| 
+     695 000172       $C$DW$L$_prvCoreBTasks$3$E:
+     696 000172       $C$L7:    
+     697 000172       $C$DW$L$_prvCoreBTasks$4$B:
+     698                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 243,column 4,is_stmt
+     699 000172 E631          MOV #0, *(#_xDemoStatus) ; |243| 
+         000174 0000 
+         000176 000A-
+     700 000178       $C$DW$L$_prvCoreBTasks$4$E:
+     701 000178       $C$L8:    
+     702 000178       $C$DW$L$_prvCoreBTasks$5$B:
+     703                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 247,column 3,is_stmt
+     704 000178 ED10          MOV dbl(*SP(#8)), AC0 ; |247| 
+         00017a 08   
+     705 00017b 4010          ADD #1, AC0 ; |247| 
+     706 00017d EB10          MOV AC0, dbl(*SP(#8)) ; |247| 
+         00017f 08   
+     707                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 248,column 2,is_stmt
+     708 000180 06FF          B $C$L6   ; |248| 
+         000182 8F   
+     709                                                      ; branch occurs ; |248| 
+     710 000183       $C$DW$L$_prvCoreBTasks$5$E:
+     711                      .dwcfi  cfa_offset, 1
+     712              
+     713              $C$DW$84        .dwtag  DW_TAG_TI_loop
+     714                      .dwattr $C$DW$84, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\MessageBufferAMP.asm:$C
+     715                      .dwattr $C$DW$84, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+     716                      .dwattr $C$DW$84, DW_AT_TI_begin_line(0xd7)
+     717                      .dwattr $C$DW$84, DW_AT_TI_end_line(0xf8)
+     718              $C$DW$85        .dwtag  DW_TAG_TI_loop_range
+     719                      .dwattr $C$DW$85, DW_AT_low_pc($C$DW$L$_prvCoreBTasks$2$B)
+     720                      .dwattr $C$DW$85, DW_AT_high_pc($C$DW$L$_prvCoreBTasks$2$E)
+     721              $C$DW$86        .dwtag  DW_TAG_TI_loop_range
+     722                      .dwattr $C$DW$86, DW_AT_low_pc($C$DW$L$_prvCoreBTasks$3$B)
+     723                      .dwattr $C$DW$86, DW_AT_high_pc($C$DW$L$_prvCoreBTasks$3$E)
+     724              $C$DW$87        .dwtag  DW_TAG_TI_loop_range
+     725                      .dwattr $C$DW$87, DW_AT_low_pc($C$DW$L$_prvCoreBTasks$4$B)
+     726                      .dwattr $C$DW$87, DW_AT_high_pc($C$DW$L$_prvCoreBTasks$4$E)
+     727              $C$DW$88        .dwtag  DW_TAG_TI_loop_range
+     728                      .dwattr $C$DW$88, DW_AT_low_pc($C$DW$L$_prvCoreBTasks$5$B)
+     729                      .dwattr $C$DW$88, DW_AT_high_pc($C$DW$L$_prvCoreBTasks$5$E)
+     730                      .dwendtag $C$DW$84
+     731              
+     732                      .dwattr $C$DW$72, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   16
+
+     733                      .dwattr $C$DW$72, DW_AT_TI_end_line(0xf9)
+     734                      .dwattr $C$DW$72, DW_AT_TI_end_column(0x01)
+     735                      .dwendentry
+     736                      .dwendtag $C$DW$72
+     737              
+     738 000183               .sect   ".text"
+     739                      .align 4
+     740                      .global _vGenerateCoreBInterrupt
+     741              
+     742              $C$DW$89        .dwtag  DW_TAG_subprogram, DW_AT_name("vGenerateCoreBInterrupt")
+     743                      .dwattr $C$DW$89, DW_AT_low_pc(_vGenerateCoreBInterrupt)
+     744                      .dwattr $C$DW$89, DW_AT_high_pc(0x00)
+     745                      .dwattr $C$DW$89, DW_AT_TI_symbol_name("_vGenerateCoreBInterrupt")
+     746                      .dwattr $C$DW$89, DW_AT_external
+     747                      .dwattr $C$DW$89, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+     748                      .dwattr $C$DW$89, DW_AT_TI_begin_line(0x100)
+     749                      .dwattr $C$DW$89, DW_AT_TI_begin_column(0x06)
+     750                      .dwattr $C$DW$89, DW_AT_TI_max_frame_size(0x06)
+     751                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 257,column 1,is_stmt,address _
+     752              
+     753                      .dwfde $C$DW$CIE, _vGenerateCoreBInterrupt
+     754              $C$DW$90        .dwtag  DW_TAG_formal_parameter, DW_AT_name("xUpdatedMessageBuffer")
+     755                      .dwattr $C$DW$90, DW_AT_TI_symbol_name("_xUpdatedMessageBuffer")
+     756                      .dwattr $C$DW$90, DW_AT_type(*$C$DW$T$3)
+     757                      .dwattr $C$DW$90, DW_AT_location[DW_OP_reg17]
+     758              ;*******************************************************************************
+     759              ;* FUNCTION NAME: vGenerateCoreBInterrupt                                      *
+     760              ;*                                                                             *
+     761              ;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,T1,AR0,XAR0,AR1,XAR1,AR3,XAR3,SP, *
+     762              ;*                        TC1,M40,SATA,SATD,RDM,FRCT,SMUL                      *
+     763              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     764              ;*   Total Frame Size   : 6 words                                              *
+     765              ;*                        (2 return address/alignment)                         *
+     766              ;*                        (4 local values)                                     *
+     767              ;*   Min System Stack   : 1 word                                               *
+     768              ;*******************************************************************************
+     769 000184       _vGenerateCoreBInterrupt:
+     770                      .dwcfi  cfa_offset, 1
+     771                      .dwcfi  save_reg_to_mem, 91, -1
+     772 000184 4EFB          AADD #-5, SP
+     773                      .dwcfi  cfa_offset, 6
+     774              $C$DW$91        .dwtag  DW_TAG_variable, DW_AT_name("xUpdatedMessageBuffer")
+     775                      .dwattr $C$DW$91, DW_AT_TI_symbol_name("_xUpdatedMessageBuffer")
+     776                      .dwattr $C$DW$91, DW_AT_type(*$C$DW$T$3)
+     777                      .dwattr $C$DW$91, DW_AT_location[DW_OP_bregx 0x24 0]
+     778              $C$DW$92        .dwtag  DW_TAG_variable, DW_AT_name("xUpdatedBuffer")
+     779                      .dwattr $C$DW$92, DW_AT_TI_symbol_name("_xUpdatedBuffer")
+     780                      .dwattr $C$DW$92, DW_AT_type(*$C$DW$T$27)
+     781                      .dwattr $C$DW$92, DW_AT_location[DW_OP_bregx 0x24 2]
+     782 000186 EB00          MOV XAR0, dbl(*SP(#0))
+         000188 85   
+     783                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 258,column 23,is_stmt
+     784 000189 ED00          MOV dbl(*SP(#0)), XAR3
+         00018b BF   
+     785 00018c EB04          MOV XAR3, dbl(*SP(#2))
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   17
+
+         00018e B5   
+     786                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 266,column 2,is_stmt
+     787 00018f ED31          MOV dbl(*(#_xControlMessageBuffer)), XAR3
+         000191 BF00 
+         000193 0004-
+     788 000195 90B0          MOV XAR3, AC0
+     789 000197 ED04          MOV dbl(*SP(#2)), XAR3
+         000199 BF   
+     790 00019a 90B1          MOV XAR3, AC1
+     791 00019c 1210          CMPU AC1 == AC0, TC1 ; |266| 
+         00019e 04   
+     792 00019f 0464          BCC $C$L9,TC1 ; |266| 
+         0001a1 14   
+     793                                                      ; branchcc occurs ; |266| 
+     794                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 271,column 3,is_stmt
+     795 0001a2 ED31          MOV dbl(*(#_xControlMessageBuffer)), XAR0
+         0001a4 8F00 
+         0001a6 0004-
+     796              
+     797 0001ab 3D24          MOV #2, T0
+     798 0001a8 EC04  ||      AMAR *SP(#2), XAR1
+         0001aa 9E   
+     799              
+     800              $C$DW$93        .dwtag  DW_TAG_TI_branch
+     801                      .dwattr $C$DW$93, DW_AT_low_pc(0x00)
+     802                      .dwattr $C$DW$93, DW_AT_name("_xStreamBufferSend")
+     803                      .dwattr $C$DW$93, DW_AT_TI_call
+     804              
+     805 0001ad 6C00          CALL #_xStreamBufferSend ; |271| 
+         0001af 0000!
+     806 0001b1 3D05  ||      MOV #0, T1
+     807              
+     808                                                      ; call occurs [#_xStreamBufferSend] ; |271| 
+     809                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 276,column 3,is_stmt
+     810              $C$DW$94        .dwtag  DW_TAG_TI_branch
+     811                      .dwattr $C$DW$94, DW_AT_low_pc(0x00)
+     812                      .dwattr $C$DW$94, DW_AT_name("_prvCoreBInterruptHandler")
+     813                      .dwattr $C$DW$94, DW_AT_TI_call
+     814 0001b3 0800          CALL #_prvCoreBInterruptHandler ; |276| 
+         0001b5 06   
+     815                                                      ; call occurs [#_prvCoreBInterruptHandler] ; |276| 
+     816                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 278,column 1,is_stmt
+     817 0001b6       $C$L9:    
+     818 0001b6 4E05          AADD #5, SP
+     819                      .dwcfi  cfa_offset, 1
+     820              $C$DW$95        .dwtag  DW_TAG_TI_branch
+     821                      .dwattr $C$DW$95, DW_AT_low_pc(0x00)
+     822                      .dwattr $C$DW$95, DW_AT_TI_return
+     823 0001b8 4804          RET
+     824                                                      ; return occurs
+     825                      .dwattr $C$DW$89, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+     826                      .dwattr $C$DW$89, DW_AT_TI_end_line(0x116)
+     827                      .dwattr $C$DW$89, DW_AT_TI_end_column(0x01)
+     828                      .dwendentry
+     829                      .dwendtag $C$DW$89
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   18
+
+     830              
+     831 0001ba               .sect   ".text"
+     832                      .align 4
+     833              
+     834              $C$DW$96        .dwtag  DW_TAG_subprogram, DW_AT_name("prvCoreBInterruptHandler")
+     835                      .dwattr $C$DW$96, DW_AT_low_pc(_prvCoreBInterruptHandler)
+     836                      .dwattr $C$DW$96, DW_AT_high_pc(0x00)
+     837                      .dwattr $C$DW$96, DW_AT_TI_symbol_name("_prvCoreBInterruptHandler")
+     838                      .dwattr $C$DW$96, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+     839                      .dwattr $C$DW$96, DW_AT_TI_begin_line(0x11b)
+     840                      .dwattr $C$DW$96, DW_AT_TI_begin_column(0x0d)
+     841                      .dwattr $C$DW$96, DW_AT_TI_max_frame_size(0x04)
+     842                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 284,column 1,is_stmt,address _
+     843              
+     844                      .dwfde $C$DW$CIE, _prvCoreBInterruptHandler
+     845              ;*******************************************************************************
+     846              ;* FUNCTION NAME: prvCoreBInterruptHandler                                     *
+     847              ;*                                                                             *
+     848              ;*   Function Uses Regs : T0,T1,AR0,XAR0,AR1,XAR1,SP,TC1,M40,SATA,SATD,RDM,    *
+     849              ;*                        FRCT,SMUL                                            *
+     850              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     851              ;*   Total Frame Size   : 4 words                                              *
+     852              ;*                        (1 return address/alignment)                         *
+     853              ;*                        (3 local values)                                     *
+     854              ;*   Min System Stack   : 1 word                                               *
+     855              ;*******************************************************************************
+     856 0001bc       _prvCoreBInterruptHandler:
+     857                      .dwcfi  cfa_offset, 1
+     858                      .dwcfi  save_reg_to_mem, 91, -1
+     859 0001bc 4EFD          AADD #-3, SP
+     860                      .dwcfi  cfa_offset, 4
+     861              $C$DW$97        .dwtag  DW_TAG_variable, DW_AT_name("xUpdatedMessageBuffer")
+     862                      .dwattr $C$DW$97, DW_AT_TI_symbol_name("_xUpdatedMessageBuffer")
+     863                      .dwattr $C$DW$97, DW_AT_type(*$C$DW$T$27)
+     864                      .dwattr $C$DW$97, DW_AT_location[DW_OP_bregx 0x24 0]
+     865              $C$DW$98        .dwtag  DW_TAG_variable, DW_AT_name("xHigherPriorityTaskWoken")
+     866                      .dwattr $C$DW$98, DW_AT_TI_symbol_name("_xHigherPriorityTaskWoken")
+     867                      .dwattr $C$DW$98, DW_AT_type(*$C$DW$T$24)
+     868                      .dwattr $C$DW$98, DW_AT_location[DW_OP_bregx 0x24 2]
+     869                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 286,column 12,is_stmt
+     870 0001be E604          MOV #0, *SP(#2) ; |286| 
+         0001c0 00   
+     871                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 290,column 2,is_stmt
+     872 0001c1 ED31          MOV dbl(*(#_xControlMessageBuffer)), XAR0
+         0001c3 8F00 
+         0001c5 0004-
+     873              
+     874 0001c7 EC00          AMAR *SP(#0), XAR1
+         0001c9 9E   
+     875 0001ca 3D24  ||      MOV #2, T0
+     876              
+     877              $C$DW$99        .dwtag  DW_TAG_TI_branch
+     878                      .dwattr $C$DW$99, DW_AT_low_pc(0x00)
+     879                      .dwattr $C$DW$99, DW_AT_name("_xStreamBufferReceive")
+     880                      .dwattr $C$DW$99, DW_AT_TI_call
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   19
+
+     881              
+     882 0001cc 6C00          CALL #_xStreamBufferReceive ; |290| 
+         0001ce 0000!
+     883 0001d0 3D05  ||      MOV #0, T1
+     884              
+     885                                                      ; call occurs [#_xStreamBufferReceive] ; |290| 
+     886 0001d2 3C29          MOV #2, AR1
+     887 0001d4 124C          CMPU T0 != AR1, TC1 ; |290| 
+         0001d6 94   
+     888 0001d7 6564          BCC $C$L10,TC1 ; |290| 
+     889                                                      ; branchcc occurs ; |290| 
+     890                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 298,column 3,is_stmt
+     891 0001d9 ED00          MOV dbl(*SP(#0)), XAR0
+         0001db 8F   
+     892 0001dc EC04          AMAR *SP(#2), XAR1
+         0001de 9E   
+     893              $C$DW$100       .dwtag  DW_TAG_TI_branch
+     894                      .dwattr $C$DW$100, DW_AT_low_pc(0x00)
+     895                      .dwattr $C$DW$100, DW_AT_name("_xStreamBufferSendCompletedFromISR")
+     896                      .dwattr $C$DW$100, DW_AT_TI_call
+     897 0001df 6C00          CALL #_xStreamBufferSendCompletedFromISR ; |298| 
+         0001e1 0000!
+     898                                                      ; call occurs [#_xStreamBufferSendCompletedFromISR] ; |298| 
+     899 0001e3       $C$L10:    
+     900                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 305,column 2,is_stmt
+     901 0001e3 A404          MOV *SP(#2), T0 ; |305| 
+     902              $C$DW$101       .dwtag  DW_TAG_TI_branch
+     903                      .dwattr $C$DW$101, DW_AT_low_pc(0x00)
+     904                      .dwattr $C$DW$101, DW_AT_name("_portYIELD_FROM_ISR")
+     905                      .dwattr $C$DW$101, DW_AT_TI_call
+     906 0001e5 6C00          CALL #_portYIELD_FROM_ISR ; |305| 
+         0001e7 0000!
+     907                                                      ; call occurs [#_portYIELD_FROM_ISR] ; |305| 
+     908                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 306,column 1,is_stmt
+     909 0001e9 4E03          AADD #3, SP
+     910                      .dwcfi  cfa_offset, 1
+     911              $C$DW$102       .dwtag  DW_TAG_TI_branch
+     912                      .dwattr $C$DW$102, DW_AT_low_pc(0x00)
+     913                      .dwattr $C$DW$102, DW_AT_TI_return
+     914 0001eb 4804          RET
+     915                                                      ; return occurs
+     916                      .dwattr $C$DW$96, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+     917                      .dwattr $C$DW$96, DW_AT_TI_end_line(0x132)
+     918                      .dwattr $C$DW$96, DW_AT_TI_end_column(0x01)
+     919                      .dwendentry
+     920                      .dwendtag $C$DW$96
+     921              
+     922 0001ed               .sect   ".text"
+     923                      .align 4
+     924                      .global _xAreMessageBufferAMPTasksStillRunning
+     925              
+     926              $C$DW$103       .dwtag  DW_TAG_subprogram, DW_AT_name("xAreMessageBufferAMPTasksStillRunning")
+     927                      .dwattr $C$DW$103, DW_AT_low_pc(_xAreMessageBufferAMPTasksStillRunning)
+     928                      .dwattr $C$DW$103, DW_AT_high_pc(0x00)
+     929                      .dwattr $C$DW$103, DW_AT_TI_symbol_name("_xAreMessageBufferAMPTasksStillRunning")
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   20
+
+     930                      .dwattr $C$DW$103, DW_AT_external
+     931                      .dwattr $C$DW$103, DW_AT_type(*$C$DW$T$24)
+     932                      .dwattr $C$DW$103, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+     933                      .dwattr $C$DW$103, DW_AT_TI_begin_line(0x135)
+     934                      .dwattr $C$DW$103, DW_AT_TI_begin_column(0x0c)
+     935                      .dwattr $C$DW$103, DW_AT_TI_max_frame_size(0x02)
+     936                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 310,column 1,is_stmt,address _
+     937              
+     938                      .dwfde $C$DW$CIE, _xAreMessageBufferAMPTasksStillRunning
+     939              $C$DW$104       .dwtag  DW_TAG_variable, DW_AT_name("ulLastCycleCounters")
+     940                      .dwattr $C$DW$104, DW_AT_TI_symbol_name("_ulLastCycleCounters$1")
+     941                      .dwattr $C$DW$104, DW_AT_type(*$C$DW$T$76)
+     942                      .dwattr $C$DW$104, DW_AT_location[DW_OP_addr _ulLastCycleCounters$1]
+     943              ;*******************************************************************************
+     944              ;* FUNCTION NAME: xAreMessageBufferAMPTasksStillRunning                        *
+     945              ;*                                                                             *
+     946              ;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,AR1,AR2,XAR2,AR3,XAR3,SP,CARRY,   *
+     947              ;*                        TC1,M40,SATA,SATD,RDM,FRCT,SMUL                      *
+     948              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     949              ;*   Total Frame Size   : 2 words                                              *
+     950              ;*                        (1 return address/alignment)                         *
+     951              ;*                        (1 local values)                                     *
+     952              ;*   Min System Stack   : 1 word                                               *
+     953              ;*******************************************************************************
+     954 0001f0       _xAreMessageBufferAMPTasksStillRunning:
+     955                      .dwcfi  cfa_offset, 1
+     956                      .dwcfi  save_reg_to_mem, 91, -1
+     957 0001f0 4EFF          AADD #-1, SP
+     958                      .dwcfi  cfa_offset, 2
+     959              $C$DW$105       .dwtag  DW_TAG_variable, DW_AT_name("x")
+     960                      .dwattr $C$DW$105, DW_AT_TI_symbol_name("_x")
+     961                      .dwattr $C$DW$105, DW_AT_type(*$C$DW$T$24)
+     962                      .dwattr $C$DW$105, DW_AT_location[DW_OP_bregx 0x24 0]
+     963                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 316,column 7,is_stmt
+     964 0001f2 E600          MOV #0, *SP(#0) ; |316| 
+         0001f4 00   
+     965                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 316,column 14,is_stmt
+     966              
+     967 0001f5 A900          MOV *SP(#0), AR1 ; |316| 
+     968 0001f7 3D2A  ||      MOV #2, AR2
+     969              
+     970 0001f9 1298          CMP AR1 >= AR2, TC1 ; |316| 
+         0001fb A0   
+     971 0001fc 0464          BCC $C$L14,TC1 ; |316| 
+         0001fe 47   
+     972                                                      ; branchcc occurs ; |316| 
+     973 0001ff       $C$L11:    
+     974 0001ff       $C$DW$L$_xAreMessageBufferAMPTasksStillRunning$2$B:
+     975                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 318,column 3,is_stmt
+     976 0001ff 2294          MOV AR1, T0 ; |318| 
+     977 000201 5040          SFTL T0, #1 ; |318| 
+     978 000203 EC31          AMOV #_ulCycleCounters, XAR3 ; |318| 
+         000205 BE00 
+         000207 0006-
+     979              
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   21
+
+     980 00020c 2394          MOV AR1, T0 ; |318| 
+     981 000209 ED6B  ||      MOV dbl(*AR3(T0)), AC0 ; |318| 
+         00020b 08   
+     982              
+     983 00020e 5040          SFTL T0, #1 ; |318| 
+     984 000210 EC31          AMOV #_ulLastCycleCounters$1, XAR3 ; |318| 
+         000212 BE00 
+         000214 000C-
+     985 000216 ED6B          MOV dbl(*AR3(T0)), AC1 ; |318| 
+         000218 18   
+     986 000219 121C          CMPU AC1 != AC0, TC1 ; |318| 
+         00021b 04   
+     987 00021c 6464          BCC $C$L12,TC1 ; |318| 
+     988                                                      ; branchcc occurs ; |318| 
+     989 00021e       $C$DW$L$_xAreMessageBufferAMPTasksStillRunning$2$E:
+     990 00021e       $C$DW$L$_xAreMessageBufferAMPTasksStillRunning$3$B:
+     991                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 320,column 4,is_stmt
+     992 00021e E631          MOV #0, *(#_xDemoStatus) ; |320| 
+         000220 0000 
+         000222 000A-
+     993                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 321,column 3,is_stmt
+     994 000224 4A12          B $C$L13  ; |321| 
+     995                                                      ; branch occurs ; |321| 
+     996 000226       $C$DW$L$_xAreMessageBufferAMPTasksStillRunning$3$E:
+     997 000226       $C$L12:    
+     998 000226       $C$DW$L$_xAreMessageBufferAMPTasksStillRunning$4$B:
+     999                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 324,column 4,is_stmt
+    1000 000226 2294          MOV AR1, T0 ; |324| 
+    1001 000228 5040          SFTL T0, #1 ; |324| 
+    1002 00022a 5090          SFTL AR1, #1 ; |324| 
+    1003 00022c EC31          AMOV #_ulCycleCounters, XAR2 ; |324| 
+         00022e AE00 
+         000230 0006-
+    1004 000232 1490          AADD AR1, AR3 ; |324| 
+         000234 B0   
+    1005 000235 805D          MOV dbl(*AR2(T0)), dbl(*AR3) ; |324| 
+         000237 80   
+    1006 000238       $C$DW$L$_xAreMessageBufferAMPTasksStillRunning$4$E:
+    1007 000238       $C$L13:    
+    1008 000238       $C$DW$L$_xAreMessageBufferAMPTasksStillRunning$5$B:
+    1009                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 316,column 45,is_stmt
+    1010 000238 F700          ADD #1, *SP(#0) ; |316| 
+         00023a 0001 
+    1011                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 316,column 14,is_stmt
+    1012              
+    1013 00023c A900          MOV *SP(#0), AR1 ; |316| 
+    1014 00023e 3D2A  ||      MOV #2, AR2
+    1015              
+    1016 000240 1294          CMP AR1 < AR2, TC1 ; |316| 
+         000242 A0   
+    1017 000243 0464          BCC $C$L11,TC1 ; |316| 
+         000245 B9   
+    1018                                                      ; branchcc occurs ; |316| 
+    1019 000246       $C$DW$L$_xAreMessageBufferAMPTasksStillRunning$5$E:
+    1020 000246       $C$L14:    
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   22
+
+    1021                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 328,column 2,is_stmt
+    1022 000246 A431          MOV *(#_xDemoStatus), T0 ; |328| 
+         000248 0000 
+         00024a 0A-  
+    1023                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c",line 329,column 1,is_stmt
+    1024 00024b 4E01          AADD #1, SP
+    1025                      .dwcfi  cfa_offset, 1
+    1026              $C$DW$106       .dwtag  DW_TAG_TI_branch
+    1027                      .dwattr $C$DW$106, DW_AT_low_pc(0x00)
+    1028                      .dwattr $C$DW$106, DW_AT_TI_return
+    1029 00024d 4804          RET
+    1030                                                      ; return occurs
+    1031              
+    1032              $C$DW$107       .dwtag  DW_TAG_TI_loop
+    1033                      .dwattr $C$DW$107, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\MessageBufferAMP.asm:$
+    1034                      .dwattr $C$DW$107, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+    1035                      .dwattr $C$DW$107, DW_AT_TI_begin_line(0x13c)
+    1036                      .dwattr $C$DW$107, DW_AT_TI_end_line(0x146)
+    1037              $C$DW$108       .dwtag  DW_TAG_TI_loop_range
+    1038                      .dwattr $C$DW$108, DW_AT_low_pc($C$DW$L$_xAreMessageBufferAMPTasksStillRunning$2$B)
+    1039                      .dwattr $C$DW$108, DW_AT_high_pc($C$DW$L$_xAreMessageBufferAMPTasksStillRunning$2$E)
+    1040              $C$DW$109       .dwtag  DW_TAG_TI_loop_range
+    1041                      .dwattr $C$DW$109, DW_AT_low_pc($C$DW$L$_xAreMessageBufferAMPTasksStillRunning$3$B)
+    1042                      .dwattr $C$DW$109, DW_AT_high_pc($C$DW$L$_xAreMessageBufferAMPTasksStillRunning$3$E)
+    1043              $C$DW$110       .dwtag  DW_TAG_TI_loop_range
+    1044                      .dwattr $C$DW$110, DW_AT_low_pc($C$DW$L$_xAreMessageBufferAMPTasksStillRunning$4$B)
+    1045                      .dwattr $C$DW$110, DW_AT_high_pc($C$DW$L$_xAreMessageBufferAMPTasksStillRunning$4$E)
+    1046              $C$DW$111       .dwtag  DW_TAG_TI_loop_range
+    1047                      .dwattr $C$DW$111, DW_AT_low_pc($C$DW$L$_xAreMessageBufferAMPTasksStillRunning$5$B)
+    1048                      .dwattr $C$DW$111, DW_AT_high_pc($C$DW$L$_xAreMessageBufferAMPTasksStillRunning$5$E)
+    1049                      .dwendtag $C$DW$107
+    1050              
+    1051                      .dwattr $C$DW$103, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/MessageBufferAMP.c")
+    1052                      .dwattr $C$DW$103, DW_AT_TI_end_line(0x149)
+    1053                      .dwattr $C$DW$103, DW_AT_TI_end_column(0x01)
+    1054                      .dwendentry
+    1055                      .dwendtag $C$DW$103
+    1056              
+    1057              ;*******************************************************************************
+    1058              ;* FAR STRINGS                                                                 *
+    1059              ;*******************************************************************************
+    1060 000000               .sect   ".const:.string"
+    1061                      .align  2
+    1062 000000 0041  $C$FSL1:        .string "AMPCoreA",0
+         000001 004D 
+         000002 0050 
+         000003 0043 
+         000004 006F 
+         000005 0072 
+         000006 0065 
+         000007 0041 
+         000008 0000 
+    1063                      .align  2
+    1064 00000a 0041  $C$FSL2:        .string "AMPCoreB1",0
+         00000b 004D 
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   23
+
+         00000c 0050 
+         00000d 0043 
+         00000e 006F 
+         00000f 0072 
+         000010 0065 
+         000011 0042 
+         000012 0031 
+         000013 0000 
+    1065                      .align  2
+    1066 000014 0025  $C$FSL3:        .string "%lu",0
+         000015 006C 
+         000016 0075 
+         000017 0000 
+    1067              ;******************************************************************************
+    1068              ;* UNDEFINED EXTERNAL REFERENCES                                              *
+    1069              ;******************************************************************************
+    1070                      .global _sprintf
+    1071                      .global _strlen
+    1072                      .global _strcmp
+    1073                      .global _memset
+    1074                      .global _xTaskCreate
+    1075                      .global _vTaskDelay
+    1076                      .global _xStreamBufferSend
+    1077                      .global _xStreamBufferReceive
+    1078                      .global _xStreamBufferSendCompletedFromISR
+    1079                      .global _xStreamBufferGenericCreate
+    1080                      .global _portYIELD_FROM_ISR
+    1081              
+    1082              ;*******************************************************************************
+    1083              ;* TYPE INFORMATION                                                            *
+    1084              ;*******************************************************************************
+    1085              
+    1086              $C$DW$T$19      .dwtag  DW_TAG_structure_type
+    1087                      .dwattr $C$DW$T$19, DW_AT_name("StreamBufferDef_t")
+    1088                      .dwattr $C$DW$T$19, DW_AT_declaration
+    1089                      .dwendtag $C$DW$T$19
+    1090              
+    1091              $C$DW$T$21      .dwtag  DW_TAG_pointer_type
+    1092                      .dwattr $C$DW$T$21, DW_AT_type(*$C$DW$T$19)
+    1093                      .dwattr $C$DW$T$21, DW_AT_address_class(0x17)
+    1094              $C$DW$T$22      .dwtag  DW_TAG_typedef, DW_AT_name("StreamBufferHandle_t")
+    1095                      .dwattr $C$DW$T$22, DW_AT_type(*$C$DW$T$21)
+    1096                      .dwattr $C$DW$T$22, DW_AT_language(DW_LANG_C)
+    1097              $C$DW$T$3       .dwtag  DW_TAG_pointer_type
+    1098                      .dwattr $C$DW$T$3, DW_AT_address_class(0x17)
+    1099              $C$DW$T$27      .dwtag  DW_TAG_typedef, DW_AT_name("MessageBufferHandle_t")
+    1100                      .dwattr $C$DW$T$27, DW_AT_type(*$C$DW$T$3)
+    1101                      .dwattr $C$DW$T$27, DW_AT_language(DW_LANG_C)
+    1102              
+    1103              $C$DW$T$28      .dwtag  DW_TAG_array_type
+    1104                      .dwattr $C$DW$T$28, DW_AT_type(*$C$DW$T$27)
+    1105                      .dwattr $C$DW$T$28, DW_AT_language(DW_LANG_C)
+    1106                      .dwattr $C$DW$T$28, DW_AT_byte_size(0x04)
+    1107              $C$DW$112       .dwtag  DW_TAG_subrange_type
+    1108                      .dwattr $C$DW$112, DW_AT_upper_bound(0x01)
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   24
+
+    1109                      .dwendtag $C$DW$T$28
+    1110              
+    1111              $C$DW$113       .dwtag  DW_TAG_TI_far_type
+    1112                      .dwattr $C$DW$113, DW_AT_type(*$C$DW$T$3)
+    1113              $C$DW$T$32      .dwtag  DW_TAG_const_type
+    1114                      .dwattr $C$DW$T$32, DW_AT_type(*$C$DW$113)
+    1115              
+    1116              $C$DW$T$33      .dwtag  DW_TAG_subroutine_type
+    1117                      .dwattr $C$DW$T$33, DW_AT_language(DW_LANG_C)
+    1118              $C$DW$114       .dwtag  DW_TAG_formal_parameter
+    1119                      .dwattr $C$DW$114, DW_AT_type(*$C$DW$T$3)
+    1120                      .dwendtag $C$DW$T$33
+    1121              
+    1122              $C$DW$T$34      .dwtag  DW_TAG_pointer_type
+    1123                      .dwattr $C$DW$T$34, DW_AT_type(*$C$DW$T$33)
+    1124                      .dwattr $C$DW$T$34, DW_AT_address_class(0x20)
+    1125              $C$DW$T$35      .dwtag  DW_TAG_typedef, DW_AT_name("TaskFunction_t")
+    1126                      .dwattr $C$DW$T$35, DW_AT_type(*$C$DW$T$34)
+    1127                      .dwattr $C$DW$T$35, DW_AT_language(DW_LANG_C)
+    1128              $C$DW$115       .dwtag  DW_TAG_TI_far_type
+    1129              $C$DW$T$40      .dwtag  DW_TAG_const_type
+    1130                      .dwattr $C$DW$T$40, DW_AT_type(*$C$DW$115)
+    1131              $C$DW$T$41      .dwtag  DW_TAG_pointer_type
+    1132                      .dwattr $C$DW$T$41, DW_AT_type(*$C$DW$T$40)
+    1133                      .dwattr $C$DW$T$41, DW_AT_address_class(0x17)
+    1134              $C$DW$T$4       .dwtag  DW_TAG_base_type
+    1135                      .dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
+    1136                      .dwattr $C$DW$T$4, DW_AT_name("bool")
+    1137                      .dwattr $C$DW$T$4, DW_AT_byte_size(0x01)
+    1138              $C$DW$T$5       .dwtag  DW_TAG_base_type
+    1139                      .dwattr $C$DW$T$5, DW_AT_encoding(DW_ATE_signed_char)
+    1140                      .dwattr $C$DW$T$5, DW_AT_name("signed char")
+    1141                      .dwattr $C$DW$T$5, DW_AT_byte_size(0x01)
+    1142              $C$DW$T$6       .dwtag  DW_TAG_base_type
+    1143                      .dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
+    1144                      .dwattr $C$DW$T$6, DW_AT_name("unsigned char")
+    1145                      .dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
+    1146              $C$DW$T$7       .dwtag  DW_TAG_base_type
+    1147                      .dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
+    1148                      .dwattr $C$DW$T$7, DW_AT_name("wchar_t")
+    1149                      .dwattr $C$DW$T$7, DW_AT_byte_size(0x01)
+    1150              $C$DW$T$8       .dwtag  DW_TAG_base_type
+    1151                      .dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
+    1152                      .dwattr $C$DW$T$8, DW_AT_name("short")
+    1153                      .dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
+    1154              $C$DW$T$24      .dwtag  DW_TAG_typedef, DW_AT_name("BaseType_t")
+    1155                      .dwattr $C$DW$T$24, DW_AT_type(*$C$DW$T$8)
+    1156                      .dwattr $C$DW$T$24, DW_AT_language(DW_LANG_C)
+    1157              $C$DW$T$58      .dwtag  DW_TAG_pointer_type
+    1158                      .dwattr $C$DW$T$58, DW_AT_type(*$C$DW$T$24)
+    1159                      .dwattr $C$DW$T$58, DW_AT_address_class(0x17)
+    1160              $C$DW$T$9       .dwtag  DW_TAG_base_type
+    1161                      .dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
+    1162                      .dwattr $C$DW$T$9, DW_AT_name("unsigned short")
+    1163                      .dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   25
+
+    1164              $C$DW$T$51      .dwtag  DW_TAG_typedef, DW_AT_name("UBaseType_t")
+    1165                      .dwattr $C$DW$T$51, DW_AT_type(*$C$DW$T$9)
+    1166                      .dwattr $C$DW$T$51, DW_AT_language(DW_LANG_C)
+    1167              $C$DW$T$10      .dwtag  DW_TAG_base_type
+    1168                      .dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
+    1169                      .dwattr $C$DW$T$10, DW_AT_name("int")
+    1170                      .dwattr $C$DW$T$10, DW_AT_byte_size(0x01)
+    1171              $C$DW$T$11      .dwtag  DW_TAG_base_type
+    1172                      .dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
+    1173                      .dwattr $C$DW$T$11, DW_AT_name("unsigned int")
+    1174                      .dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
+    1175              $C$DW$T$36      .dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
+    1176                      .dwattr $C$DW$T$36, DW_AT_type(*$C$DW$T$11)
+    1177                      .dwattr $C$DW$T$36, DW_AT_language(DW_LANG_C)
+    1178              $C$DW$116       .dwtag  DW_TAG_TI_far_type
+    1179                      .dwattr $C$DW$116, DW_AT_type(*$C$DW$T$36)
+    1180              $C$DW$T$37      .dwtag  DW_TAG_const_type
+    1181                      .dwattr $C$DW$T$37, DW_AT_type(*$C$DW$116)
+    1182              $C$DW$T$23      .dwtag  DW_TAG_typedef, DW_AT_name("size_t")
+    1183                      .dwattr $C$DW$T$23, DW_AT_type(*$C$DW$T$11)
+    1184                      .dwattr $C$DW$T$23, DW_AT_language(DW_LANG_C)
+    1185              $C$DW$T$42      .dwtag  DW_TAG_typedef, DW_AT_name("uint16_t")
+    1186                      .dwattr $C$DW$T$42, DW_AT_type(*$C$DW$T$11)
+    1187                      .dwattr $C$DW$T$42, DW_AT_language(DW_LANG_C)
+    1188              $C$DW$117       .dwtag  DW_TAG_TI_far_type
+    1189                      .dwattr $C$DW$117, DW_AT_type(*$C$DW$T$42)
+    1190              $C$DW$T$50      .dwtag  DW_TAG_const_type
+    1191                      .dwattr $C$DW$T$50, DW_AT_type(*$C$DW$117)
+    1192              $C$DW$T$12      .dwtag  DW_TAG_base_type
+    1193                      .dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
+    1194                      .dwattr $C$DW$T$12, DW_AT_name("long")
+    1195                      .dwattr $C$DW$T$12, DW_AT_byte_size(0x02)
+    1196              $C$DW$T$13      .dwtag  DW_TAG_base_type
+    1197                      .dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
+    1198                      .dwattr $C$DW$T$13, DW_AT_name("unsigned long")
+    1199                      .dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+    1200              $C$DW$T$75      .dwtag  DW_TAG_typedef, DW_AT_name("uint32_t")
+    1201                      .dwattr $C$DW$T$75, DW_AT_type(*$C$DW$T$13)
+    1202                      .dwattr $C$DW$T$75, DW_AT_language(DW_LANG_C)
+    1203              
+    1204              $C$DW$T$76      .dwtag  DW_TAG_array_type
+    1205                      .dwattr $C$DW$T$76, DW_AT_type(*$C$DW$T$75)
+    1206                      .dwattr $C$DW$T$76, DW_AT_language(DW_LANG_C)
+    1207                      .dwattr $C$DW$T$76, DW_AT_byte_size(0x04)
+    1208              $C$DW$118       .dwtag  DW_TAG_subrange_type
+    1209                      .dwattr $C$DW$118, DW_AT_upper_bound(0x01)
+    1210                      .dwendtag $C$DW$T$76
+    1211              
+    1212              $C$DW$T$14      .dwtag  DW_TAG_base_type
+    1213                      .dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
+    1214                      .dwattr $C$DW$T$14, DW_AT_name("long long")
+    1215                      .dwattr $C$DW$T$14, DW_AT_byte_size(0x04)
+    1216                      .dwattr $C$DW$T$14, DW_AT_bit_size(0x28)
+    1217                      .dwattr $C$DW$T$14, DW_AT_bit_offset(0x18)
+    1218              $C$DW$T$15      .dwtag  DW_TAG_base_type
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   26
+
+    1219                      .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
+    1220                      .dwattr $C$DW$T$15, DW_AT_name("unsigned long long")
+    1221                      .dwattr $C$DW$T$15, DW_AT_byte_size(0x04)
+    1222                      .dwattr $C$DW$T$15, DW_AT_bit_size(0x28)
+    1223                      .dwattr $C$DW$T$15, DW_AT_bit_offset(0x18)
+    1224              $C$DW$T$16      .dwtag  DW_TAG_base_type
+    1225                      .dwattr $C$DW$T$16, DW_AT_encoding(DW_ATE_float)
+    1226                      .dwattr $C$DW$T$16, DW_AT_name("float")
+    1227                      .dwattr $C$DW$T$16, DW_AT_byte_size(0x02)
+    1228              $C$DW$T$17      .dwtag  DW_TAG_base_type
+    1229                      .dwattr $C$DW$T$17, DW_AT_encoding(DW_ATE_float)
+    1230                      .dwattr $C$DW$T$17, DW_AT_name("double")
+    1231                      .dwattr $C$DW$T$17, DW_AT_byte_size(0x02)
+    1232              $C$DW$T$18      .dwtag  DW_TAG_base_type
+    1233                      .dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
+    1234                      .dwattr $C$DW$T$18, DW_AT_name("long double")
+    1235                      .dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
+    1236              $C$DW$T$46      .dwtag  DW_TAG_base_type
+    1237                      .dwattr $C$DW$T$46, DW_AT_encoding(DW_ATE_signed_char)
+    1238                      .dwattr $C$DW$T$46, DW_AT_name("signed char")
+    1239                      .dwattr $C$DW$T$46, DW_AT_byte_size(0x01)
+    1240              $C$DW$119       .dwtag  DW_TAG_TI_far_type
+    1241                      .dwattr $C$DW$119, DW_AT_type(*$C$DW$T$46)
+    1242              $C$DW$T$47      .dwtag  DW_TAG_const_type
+    1243                      .dwattr $C$DW$T$47, DW_AT_type(*$C$DW$119)
+    1244              $C$DW$T$48      .dwtag  DW_TAG_pointer_type
+    1245                      .dwattr $C$DW$T$48, DW_AT_type(*$C$DW$T$47)
+    1246                      .dwattr $C$DW$T$48, DW_AT_address_class(0x17)
+    1247              $C$DW$120       .dwtag  DW_TAG_TI_far_type
+    1248                      .dwattr $C$DW$120, DW_AT_type(*$C$DW$T$48)
+    1249              $C$DW$T$49      .dwtag  DW_TAG_const_type
+    1250                      .dwattr $C$DW$T$49, DW_AT_type(*$C$DW$120)
+    1251              $C$DW$T$62      .dwtag  DW_TAG_pointer_type
+    1252                      .dwattr $C$DW$T$62, DW_AT_type(*$C$DW$T$46)
+    1253                      .dwattr $C$DW$T$62, DW_AT_address_class(0x17)
+    1254              
+    1255              $C$DW$T$82      .dwtag  DW_TAG_array_type
+    1256                      .dwattr $C$DW$T$82, DW_AT_type(*$C$DW$T$46)
+    1257                      .dwattr $C$DW$T$82, DW_AT_language(DW_LANG_C)
+    1258                      .dwattr $C$DW$T$82, DW_AT_byte_size(0x0f)
+    1259              $C$DW$121       .dwtag  DW_TAG_subrange_type
+    1260                      .dwattr $C$DW$121, DW_AT_upper_bound(0x0e)
+    1261                      .dwendtag $C$DW$T$82
+    1262              
+    1263              
+    1264              $C$DW$T$20      .dwtag  DW_TAG_structure_type
+    1265                      .dwattr $C$DW$T$20, DW_AT_name("tskTaskControlBlock")
+    1266                      .dwattr $C$DW$T$20, DW_AT_declaration
+    1267                      .dwendtag $C$DW$T$20
+    1268              
+    1269              $C$DW$T$52      .dwtag  DW_TAG_pointer_type
+    1270                      .dwattr $C$DW$T$52, DW_AT_type(*$C$DW$T$20)
+    1271                      .dwattr $C$DW$T$52, DW_AT_address_class(0x17)
+    1272              $C$DW$T$53      .dwtag  DW_TAG_typedef, DW_AT_name("TaskHandle_t")
+    1273                      .dwattr $C$DW$T$53, DW_AT_type(*$C$DW$T$52)
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   27
+
+    1274                      .dwattr $C$DW$T$53, DW_AT_language(DW_LANG_C)
+    1275              $C$DW$T$54      .dwtag  DW_TAG_pointer_type
+    1276                      .dwattr $C$DW$T$54, DW_AT_type(*$C$DW$T$53)
+    1277                      .dwattr $C$DW$T$54, DW_AT_address_class(0x17)
+    1278              $C$DW$122       .dwtag  DW_TAG_TI_far_type
+    1279                      .dwattr $C$DW$122, DW_AT_type(*$C$DW$T$54)
+    1280              $C$DW$T$55      .dwtag  DW_TAG_const_type
+    1281                      .dwattr $C$DW$T$55, DW_AT_type(*$C$DW$122)
+    1282                      .dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
+    1283              
+    1284              ;***************************************************************
+    1285              ;* DWARF CIE ENTRIES                                           *
+    1286              ;***************************************************************
+    1287              
+    1288              $C$DW$CIE       .dwcie 91
+    1289                      .dwcfi  cfa_register, 36
+    1290                      .dwcfi  cfa_offset, 0
+    1291                      .dwcfi  undefined, 0
+    1292                      .dwcfi  undefined, 1
+    1293                      .dwcfi  undefined, 2
+    1294                      .dwcfi  undefined, 3
+    1295                      .dwcfi  undefined, 4
+    1296                      .dwcfi  undefined, 5
+    1297                      .dwcfi  undefined, 6
+    1298                      .dwcfi  undefined, 7
+    1299                      .dwcfi  undefined, 8
+    1300                      .dwcfi  undefined, 9
+    1301                      .dwcfi  undefined, 10
+    1302                      .dwcfi  undefined, 11
+    1303                      .dwcfi  undefined, 12
+    1304                      .dwcfi  undefined, 13
+    1305                      .dwcfi  same_value, 14
+    1306                      .dwcfi  same_value, 15
+    1307                      .dwcfi  undefined, 16
+    1308                      .dwcfi  undefined, 17
+    1309                      .dwcfi  undefined, 18
+    1310                      .dwcfi  undefined, 19
+    1311                      .dwcfi  undefined, 20
+    1312                      .dwcfi  undefined, 21
+    1313                      .dwcfi  undefined, 22
+    1314                      .dwcfi  undefined, 23
+    1315                      .dwcfi  undefined, 24
+    1316                      .dwcfi  undefined, 25
+    1317                      .dwcfi  same_value, 26
+    1318                      .dwcfi  same_value, 27
+    1319                      .dwcfi  same_value, 28
+    1320                      .dwcfi  same_value, 29
+    1321                      .dwcfi  same_value, 30
+    1322                      .dwcfi  same_value, 31
+    1323                      .dwcfi  undefined, 32
+    1324                      .dwcfi  undefined, 33
+    1325                      .dwcfi  undefined, 34
+    1326                      .dwcfi  undefined, 35
+    1327                      .dwcfi  undefined, 36
+    1328                      .dwcfi  undefined, 37
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   28
+
+    1329                      .dwcfi  undefined, 38
+    1330                      .dwcfi  undefined, 39
+    1331                      .dwcfi  undefined, 40
+    1332                      .dwcfi  undefined, 41
+    1333                      .dwcfi  undefined, 42
+    1334                      .dwcfi  undefined, 43
+    1335                      .dwcfi  undefined, 44
+    1336                      .dwcfi  undefined, 45
+    1337                      .dwcfi  undefined, 46
+    1338                      .dwcfi  undefined, 47
+    1339                      .dwcfi  undefined, 48
+    1340                      .dwcfi  undefined, 49
+    1341                      .dwcfi  undefined, 50
+    1342                      .dwcfi  undefined, 51
+    1343                      .dwcfi  undefined, 52
+    1344                      .dwcfi  undefined, 53
+    1345                      .dwcfi  undefined, 54
+    1346                      .dwcfi  undefined, 55
+    1347                      .dwcfi  undefined, 56
+    1348                      .dwcfi  undefined, 57
+    1349                      .dwcfi  undefined, 58
+    1350                      .dwcfi  undefined, 59
+    1351                      .dwcfi  undefined, 60
+    1352                      .dwcfi  undefined, 61
+    1353                      .dwcfi  undefined, 62
+    1354                      .dwcfi  undefined, 63
+    1355                      .dwcfi  undefined, 64
+    1356                      .dwcfi  undefined, 65
+    1357                      .dwcfi  undefined, 66
+    1358                      .dwcfi  undefined, 67
+    1359                      .dwcfi  undefined, 68
+    1360                      .dwcfi  undefined, 69
+    1361                      .dwcfi  undefined, 70
+    1362                      .dwcfi  undefined, 71
+    1363                      .dwcfi  undefined, 72
+    1364                      .dwcfi  undefined, 73
+    1365                      .dwcfi  undefined, 74
+    1366                      .dwcfi  undefined, 75
+    1367                      .dwcfi  undefined, 76
+    1368                      .dwcfi  undefined, 77
+    1369                      .dwcfi  undefined, 78
+    1370                      .dwcfi  undefined, 79
+    1371                      .dwcfi  undefined, 80
+    1372                      .dwcfi  undefined, 81
+    1373                      .dwcfi  undefined, 82
+    1374                      .dwcfi  undefined, 83
+    1375                      .dwcfi  undefined, 84
+    1376                      .dwcfi  undefined, 85
+    1377                      .dwcfi  undefined, 86
+    1378                      .dwcfi  undefined, 87
+    1379                      .dwcfi  undefined, 88
+    1380                      .dwcfi  undefined, 89
+    1381                      .dwcfi  undefined, 90
+    1382                      .dwcfi  undefined, 91
+    1383                      .dwendentry
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   29
+
+    1384              
+    1385              ;***************************************************************
+    1386              ;* DWARF REGISTER MAP                                          *
+    1387              ;***************************************************************
+    1388              
+    1389              $C$DW$123       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    1390                      .dwattr $C$DW$123, DW_AT_location[DW_OP_reg0]
+    1391              $C$DW$124       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    1392                      .dwattr $C$DW$124, DW_AT_location[DW_OP_reg1]
+    1393              $C$DW$125       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0_G")
+    1394                      .dwattr $C$DW$125, DW_AT_location[DW_OP_reg2]
+    1395              $C$DW$126       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    1396                      .dwattr $C$DW$126, DW_AT_location[DW_OP_reg3]
+    1397              $C$DW$127       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    1398                      .dwattr $C$DW$127, DW_AT_location[DW_OP_reg4]
+    1399              $C$DW$128       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1_G")
+    1400                      .dwattr $C$DW$128, DW_AT_location[DW_OP_reg5]
+    1401              $C$DW$129       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    1402                      .dwattr $C$DW$129, DW_AT_location[DW_OP_reg6]
+    1403              $C$DW$130       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    1404                      .dwattr $C$DW$130, DW_AT_location[DW_OP_reg7]
+    1405              $C$DW$131       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2_G")
+    1406                      .dwattr $C$DW$131, DW_AT_location[DW_OP_reg8]
+    1407              $C$DW$132       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    1408                      .dwattr $C$DW$132, DW_AT_location[DW_OP_reg9]
+    1409              $C$DW$133       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    1410                      .dwattr $C$DW$133, DW_AT_location[DW_OP_reg10]
+    1411              $C$DW$134       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3_G")
+    1412                      .dwattr $C$DW$134, DW_AT_location[DW_OP_reg11]
+    1413              $C$DW$135       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T0")
+    1414                      .dwattr $C$DW$135, DW_AT_location[DW_OP_reg12]
+    1415              $C$DW$136       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T1")
+    1416                      .dwattr $C$DW$136, DW_AT_location[DW_OP_reg13]
+    1417              $C$DW$137       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T2")
+    1418                      .dwattr $C$DW$137, DW_AT_location[DW_OP_reg14]
+    1419              $C$DW$138       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T3")
+    1420                      .dwattr $C$DW$138, DW_AT_location[DW_OP_reg15]
+    1421              $C$DW$139       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0")
+    1422                      .dwattr $C$DW$139, DW_AT_location[DW_OP_reg16]
+    1423              $C$DW$140       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR0")
+    1424                      .dwattr $C$DW$140, DW_AT_location[DW_OP_reg17]
+    1425              $C$DW$141       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1")
+    1426                      .dwattr $C$DW$141, DW_AT_location[DW_OP_reg18]
+    1427              $C$DW$142       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR1")
+    1428                      .dwattr $C$DW$142, DW_AT_location[DW_OP_reg19]
+    1429              $C$DW$143       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
+    1430                      .dwattr $C$DW$143, DW_AT_location[DW_OP_reg20]
+    1431              $C$DW$144       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR2")
+    1432                      .dwattr $C$DW$144, DW_AT_location[DW_OP_reg21]
+    1433              $C$DW$145       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3")
+    1434                      .dwattr $C$DW$145, DW_AT_location[DW_OP_reg22]
+    1435              $C$DW$146       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR3")
+    1436                      .dwattr $C$DW$146, DW_AT_location[DW_OP_reg23]
+    1437              $C$DW$147       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4")
+    1438                      .dwattr $C$DW$147, DW_AT_location[DW_OP_reg24]
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   30
+
+    1439              $C$DW$148       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR4")
+    1440                      .dwattr $C$DW$148, DW_AT_location[DW_OP_reg25]
+    1441              $C$DW$149       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5")
+    1442                      .dwattr $C$DW$149, DW_AT_location[DW_OP_reg26]
+    1443              $C$DW$150       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR5")
+    1444                      .dwattr $C$DW$150, DW_AT_location[DW_OP_reg27]
+    1445              $C$DW$151       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6")
+    1446                      .dwattr $C$DW$151, DW_AT_location[DW_OP_reg28]
+    1447              $C$DW$152       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR6")
+    1448                      .dwattr $C$DW$152, DW_AT_location[DW_OP_reg29]
+    1449              $C$DW$153       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7")
+    1450                      .dwattr $C$DW$153, DW_AT_location[DW_OP_reg30]
+    1451              $C$DW$154       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR7")
+    1452                      .dwattr $C$DW$154, DW_AT_location[DW_OP_reg31]
+    1453              $C$DW$155       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FP")
+    1454                      .dwattr $C$DW$155, DW_AT_location[DW_OP_regx 0x20]
+    1455              $C$DW$156       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XFP")
+    1456                      .dwattr $C$DW$156, DW_AT_location[DW_OP_regx 0x21]
+    1457              $C$DW$157       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
+    1458                      .dwattr $C$DW$157, DW_AT_location[DW_OP_regx 0x22]
+    1459              $C$DW$158       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
+    1460                      .dwattr $C$DW$158, DW_AT_location[DW_OP_regx 0x23]
+    1461              $C$DW$159       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XSP")
+    1462                      .dwattr $C$DW$159, DW_AT_location[DW_OP_regx 0x24]
+    1463              $C$DW$160       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BKC")
+    1464                      .dwattr $C$DW$160, DW_AT_location[DW_OP_regx 0x25]
+    1465              $C$DW$161       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK03")
+    1466                      .dwattr $C$DW$161, DW_AT_location[DW_OP_regx 0x26]
+    1467              $C$DW$162       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK47")
+    1468                      .dwattr $C$DW$162, DW_AT_location[DW_OP_regx 0x27]
+    1469              $C$DW$163       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST0")
+    1470                      .dwattr $C$DW$163, DW_AT_location[DW_OP_regx 0x28]
+    1471              $C$DW$164       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST1")
+    1472                      .dwattr $C$DW$164, DW_AT_location[DW_OP_regx 0x29]
+    1473              $C$DW$165       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST2")
+    1474                      .dwattr $C$DW$165, DW_AT_location[DW_OP_regx 0x2a]
+    1475              $C$DW$166       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST3")
+    1476                      .dwattr $C$DW$166, DW_AT_location[DW_OP_regx 0x2b]
+    1477              $C$DW$167       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP")
+    1478                      .dwattr $C$DW$167, DW_AT_location[DW_OP_regx 0x2c]
+    1479              $C$DW$168       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP05")
+    1480                      .dwattr $C$DW$168, DW_AT_location[DW_OP_regx 0x2d]
+    1481              $C$DW$169       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP67")
+    1482                      .dwattr $C$DW$169, DW_AT_location[DW_OP_regx 0x2e]
+    1483              $C$DW$170       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
+    1484                      .dwattr $C$DW$170, DW_AT_location[DW_OP_regx 0x2f]
+    1485              $C$DW$171       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
+    1486                      .dwattr $C$DW$171, DW_AT_location[DW_OP_regx 0x30]
+    1487              $C$DW$172       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0_H")
+    1488                      .dwattr $C$DW$172, DW_AT_location[DW_OP_regx 0x31]
+    1489              $C$DW$173       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0")
+    1490                      .dwattr $C$DW$173, DW_AT_location[DW_OP_regx 0x32]
+    1491              $C$DW$174       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0_H")
+    1492                      .dwattr $C$DW$174, DW_AT_location[DW_OP_regx 0x33]
+    1493              $C$DW$175       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRS1")
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   31
+
+    1494                      .dwattr $C$DW$175, DW_AT_location[DW_OP_regx 0x34]
+    1495              $C$DW$176       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC1")
+    1496                      .dwattr $C$DW$176, DW_AT_location[DW_OP_regx 0x35]
+    1497              $C$DW$177       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1")
+    1498                      .dwattr $C$DW$177, DW_AT_location[DW_OP_regx 0x36]
+    1499              $C$DW$178       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1_H")
+    1500                      .dwattr $C$DW$178, DW_AT_location[DW_OP_regx 0x37]
+    1501              $C$DW$179       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1")
+    1502                      .dwattr $C$DW$179, DW_AT_location[DW_OP_regx 0x38]
+    1503              $C$DW$180       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1_H")
+    1504                      .dwattr $C$DW$180, DW_AT_location[DW_OP_regx 0x39]
+    1505              $C$DW$181       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CSR")
+    1506                      .dwattr $C$DW$181, DW_AT_location[DW_OP_regx 0x3a]
+    1507              $C$DW$182       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RPTC")
+    1508                      .dwattr $C$DW$182, DW_AT_location[DW_OP_regx 0x3b]
+    1509              $C$DW$183       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDP")
+    1510                      .dwattr $C$DW$183, DW_AT_location[DW_OP_regx 0x3c]
+    1511              $C$DW$184       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XCDP")
+    1512                      .dwattr $C$DW$184, DW_AT_location[DW_OP_regx 0x3d]
+    1513              $C$DW$185       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN0")
+    1514                      .dwattr $C$DW$185, DW_AT_location[DW_OP_regx 0x3e]
+    1515              $C$DW$186       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN1")
+    1516                      .dwattr $C$DW$186, DW_AT_location[DW_OP_regx 0x3f]
+    1517              $C$DW$187       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA01")
+    1518                      .dwattr $C$DW$187, DW_AT_location[DW_OP_regx 0x40]
+    1519              $C$DW$188       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA23")
+    1520                      .dwattr $C$DW$188, DW_AT_location[DW_OP_regx 0x41]
+    1521              $C$DW$189       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA45")
+    1522                      .dwattr $C$DW$189, DW_AT_location[DW_OP_regx 0x42]
+    1523              $C$DW$190       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA67")
+    1524                      .dwattr $C$DW$190, DW_AT_location[DW_OP_regx 0x43]
+    1525              $C$DW$191       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSAC")
+    1526                      .dwattr $C$DW$191, DW_AT_location[DW_OP_regx 0x44]
+    1527              $C$DW$192       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CARRY")
+    1528                      .dwattr $C$DW$192, DW_AT_location[DW_OP_regx 0x45]
+    1529              $C$DW$193       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC1")
+    1530                      .dwattr $C$DW$193, DW_AT_location[DW_OP_regx 0x46]
+    1531              $C$DW$194       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC2")
+    1532                      .dwattr $C$DW$194, DW_AT_location[DW_OP_regx 0x47]
+    1533              $C$DW$195       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("M40")
+    1534                      .dwattr $C$DW$195, DW_AT_location[DW_OP_regx 0x48]
+    1535              $C$DW$196       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SXMD")
+    1536                      .dwattr $C$DW$196, DW_AT_location[DW_OP_regx 0x49]
+    1537              $C$DW$197       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ARMS")
+    1538                      .dwattr $C$DW$197, DW_AT_location[DW_OP_regx 0x4a]
+    1539              $C$DW$198       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
+    1540                      .dwattr $C$DW$198, DW_AT_location[DW_OP_regx 0x4b]
+    1541              $C$DW$199       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATA")
+    1542                      .dwattr $C$DW$199, DW_AT_location[DW_OP_regx 0x4c]
+    1543              $C$DW$200       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATD")
+    1544                      .dwattr $C$DW$200, DW_AT_location[DW_OP_regx 0x4d]
+    1545              $C$DW$201       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RDM")
+    1546                      .dwattr $C$DW$201, DW_AT_location[DW_OP_regx 0x4e]
+    1547              $C$DW$202       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FRCT")
+    1548                      .dwattr $C$DW$202, DW_AT_location[DW_OP_regx 0x4f]
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 02:20:35 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+MessageBufferAMP.asm                                                 PAGE   32
+
+    1549              $C$DW$203       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SMUL")
+    1550                      .dwattr $C$DW$203, DW_AT_location[DW_OP_regx 0x50]
+    1551              $C$DW$204       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("INTM")
+    1552                      .dwattr $C$DW$204, DW_AT_location[DW_OP_regx 0x51]
+    1553              $C$DW$205       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0LC")
+    1554                      .dwattr $C$DW$205, DW_AT_location[DW_OP_regx 0x52]
+    1555              $C$DW$206       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1LC")
+    1556                      .dwattr $C$DW$206, DW_AT_location[DW_OP_regx 0x53]
+    1557              $C$DW$207       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2LC")
+    1558                      .dwattr $C$DW$207, DW_AT_location[DW_OP_regx 0x54]
+    1559              $C$DW$208       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3LC")
+    1560                      .dwattr $C$DW$208, DW_AT_location[DW_OP_regx 0x55]
+    1561              $C$DW$209       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4LC")
+    1562                      .dwattr $C$DW$209, DW_AT_location[DW_OP_regx 0x56]
+    1563              $C$DW$210       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5LC")
+    1564                      .dwattr $C$DW$210, DW_AT_location[DW_OP_regx 0x57]
+    1565              $C$DW$211       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6LC")
+    1566                      .dwattr $C$DW$211, DW_AT_location[DW_OP_regx 0x58]
+    1567              $C$DW$212       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7LC")
+    1568                      .dwattr $C$DW$212, DW_AT_location[DW_OP_regx 0x59]
+    1569              $C$DW$213       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDPLC")
+    1570                      .dwattr $C$DW$213, DW_AT_location[DW_OP_regx 0x5a]
+    1571              $C$DW$214       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
+    1572                      .dwattr $C$DW$214, DW_AT_location[DW_OP_regx 0x5b]
+    1573                      .dwendtag $C$DW$CU
+    1574              
+    1574              
+    1574              
+
+No Assembly Errors, No Assembly Warnings

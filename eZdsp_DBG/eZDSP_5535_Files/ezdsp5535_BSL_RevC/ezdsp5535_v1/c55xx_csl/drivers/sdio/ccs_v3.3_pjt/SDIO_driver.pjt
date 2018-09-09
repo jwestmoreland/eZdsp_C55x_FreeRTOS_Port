@@ -1,0 +1,36 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="D:\Projects_SVN\C5515_CSL\Project_Outputs\Software\Design\Source_Codes\c55xx_csl\drivers\sdio\ccs_v3.3_pjt\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Project Dependencies]
+Source="..\..\..\build\cslVC5505.pjt"
+
+["..\..\..\build\cslVC5505.pjt" Settings]
+MatchConfigName=true
+
+[Source Files]
+Source="..\example\sdio_drv_example.c"
+Source="..\src\sdio_driver.c"
+Source="VC5515_SDIO_DRV.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)\..\..\..\inc" -i"$(Proj_dir)\..\inc" -d"_DEBUG" -ml -vcore:3.3
+
+["Compiler" Settings: "Release"]
+Options=-o3 -fr"$(Proj_dir)\Release" -i"$(Proj_dir)\..\..\..\inc" -i"$(Proj_dir)\..\inc" -ml -vcore:3.3
+
+["Linker" Settings: "Debug"]
+Options=-c -m".\Debug\SDIO_driver.map" -o".\Debug\SDIO_driver.out" -w -x -l"rts55x.lib"
+
+["Linker" Settings: "Release"]
+Options=-c -m".\Release\SDIO_driver.map" -o".\Release\SDIO_driver.out" -w -x -l"rts55x.lib"
+

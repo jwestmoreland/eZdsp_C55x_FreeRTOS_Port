@@ -1,0 +1,41 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="D:\DA225_CSL\Design\SW\Source_Codes\VC5505_CSL\example\usb\example3\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Project Dependencies]
+Source="..\..\..\build\cslVC5505.pjt"
+
+["..\..\..\build\cslVC5505.pjt" Settings]
+MatchConfigName=true
+
+[Source Files]
+Source="csl_usb_dma_example.c"
+Source="VC5505_USB.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -al -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)\..\..\..\src" -i"$(Proj_dir)\..\..\..\inc" -d"_DEBUG" -d"VC5505_PG_1_4" -u"VC5505_PG_2_0" -ml -vcore:3.3
+
+["Compiler" Settings: "Release"]
+Options=-mg -o2 -fr"$(Proj_dir)\Release" -i"$(Proj_dir)\..\..\..\src" -i"$(Proj_dir)\..\..\..\inc" -d"_DEBUG" -d"VC5505_PG_1_4" -u"VC5505_PG_2_0" -ml -vcore:3.3
+
+["Linker" Settings: "Debug"]
+Options=-c -m".\Debug\CSL_USB_DmaExample_Out.map" -o".\Debug\CSL_USB_DmaExample_Out.out" -x -i"$(Install_dir)\C5500\cgtools\lib" -l"rts55x.lib"
+
+["Linker" Settings: "Release"]
+Options=-c -m".\Release\CSL_USB_DmaExample_Out.map" -o".\Release\CSL_USB_DmaExample_Out.out" -x -i"$(Install_dir)\C5500\cgtools\lib" -l"rts55x.lib"
+
+["VC5505_USB.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["VC5505_USB.cmd" Settings: "Release"]
+LinkOrder=1
+

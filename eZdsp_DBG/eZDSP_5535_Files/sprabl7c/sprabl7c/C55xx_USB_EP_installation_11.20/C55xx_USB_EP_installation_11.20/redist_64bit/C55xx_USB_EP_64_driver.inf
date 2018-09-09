@@ -1,0 +1,84 @@
+;
+; Jungo Confidential. Copyright (c) 2013 Jungo Ltd.  http://www.jungo.com
+;
+; Installs C55xx_USB_EP_64.sys as a driver for a pseudo-device
+;
+
+[Version]
+Signature=$CHICAGO$
+Class=Jungo
+ClassGuid={c671678c-82c1-43f3-d700-0049433e9a4b}
+Provider=%MFGNAME%
+; The catalog file below is digitally signed by Jungo.
+; For WHQL, you should obtain a catalog signed by Microsoft Hardware Compatibility Labs
+; CatalogFile=C55xx_USB_EP_64
+DriverVer=03/04/2013, 11.2.0
+
+[Manufacturer]
+%MFGNAME%=DeviceList,NTamd64
+
+[DestinationDirs]
+DefaultDestDir=10,System32\Drivers
+
+[SourceDisksFiles]
+C55xx_USB_EP_64.sys=1
+
+[SourceDisksNames]
+1=%INSTDISK%,,,.
+;Delete the above line and uncomment the next line for WHQL
+;1 = %INSTDISK%,C55xx_USB_EP_64.cat,,
+
+; x86 platform, Win9x, Windows 2000 and later
+[DeviceList]
+%DESCRIPTION%=DriverInstall,C55xx_USB_EP_64
+
+; x64 platform, Windows XP x64 edition and later
+[DeviceList.NTamd64]
+%DESCRIPTION%=DriverInstall,C55xx_USB_EP_64
+
+[ClassInstall32]  ; Register a new class in Windows 2000 and later
+AddReg=UpdateRegistry
+
+[UpdateRegistry]
+HKR,,,,Jungo
+HKR,,Icon,,-5
+
+;------------------------------------------------------------------------------
+;  Windows 2000 and later Sections (x86 and x64 platforms)
+;------------------------------------------------------------------------------
+
+[DriverInstall.NT]
+CopyFiles=DriverCopyFiles
+
+[DriverCopyFiles]
+C55xx_USB_EP_64.sys,,,0x22  ; COPYFLG_NOSKIP | COPYFLG_NO_VERSION_DIALOG
+
+[DriverInstall.NT.Services]
+AddService=C55xx_USB_EP_64,2,DriverService
+
+[DriverService]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary=%10%\system32\drivers\C55xx_USB_EP_64.sys
+AddReg = C55xx_USB_EP_64.AddReg
+
+[C55xx_USB_EP_64.AddReg]
+;Set the value below to 1 to enable legacy read/write of PCI configuration space
+HKR, Parameters, PciCfgRwCompat, 0x00010001, 0
+
+[DriverInstall.NT.hw]
+AddReg=DriverHwAddReg
+
+[DriverHwAddReg]
+HKR,,SampleInfo,,""
+
+;------------------------------------------------------------------------------
+;  String Definitions
+;------------------------------------------------------------------------------
+
+[Strings]
+MFGNAME="Jungo"
+INSTDISK="Jungo Installation Disc"
+DESCRIPTION="C55xx_USB_EP_64"
+

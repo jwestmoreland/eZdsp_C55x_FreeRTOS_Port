@@ -1,0 +1,741 @@
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+mem_test.asm                                                         PAGE    1
+
+     633              ; Temporary Registers Used: None
+       1              ;*******************************************************************************
+       2              ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
+       3              ;* Date/Time created: Sun Sep 09 04:48:41 2018                                 *
+       4              ;*******************************************************************************
+       5                      .compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --si
+       6                      .mmregs
+       7                      .cpl_on
+       8                      .arms_on
+       9                      .c54cm_off
+      10                      .asg AR6, FP
+      11                      .asg XAR6, XFP
+      12                      .asg DPH, MDP
+      13                      .model call=c55_std
+      14                      .model mem=large
+      15                      .noremark 5002  ; code respects overwrite rules
+      16              ;*******************************************************************************
+      17              ;* GLOBAL FILE PARAMETERS                                                      *
+      18              ;*                                                                             *
+      19              ;*   Architecture       : TMS320C55x                                           *
+      20              ;*   Optimizing for     : Speed                                                *
+      21              ;*   Memory             : Large Model (23-Bit Data Pointers)                   *
+      22              ;*   Calls              : Normal Library ASM calls                             *
+      23              ;*   Debug Info         : Standard TI Debug Information                        *
+      24              ;*******************************************************************************
+      25              
+      26              $C$DW$CU        .dwtag  DW_TAG_compile_unit
+      27                      .dwattr $C$DW$CU, DW_AT_name("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c")
+      28                      .dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas In
+      29                      .dwattr $C$DW$CU, DW_AT_TI_version(0x01)
+      30                      .dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug")
+      31                      .global _mem
+      32 000000               .bss    _mem,1024,0,0
+      33              $C$DW$1 .dwtag  DW_TAG_variable, DW_AT_name("mem")
+      34                      .dwattr $C$DW$1, DW_AT_TI_symbol_name("_mem")
+      35                      .dwattr $C$DW$1, DW_AT_location[DW_OP_addr _mem]
+      36                      .dwattr $C$DW$1, DW_AT_type(*$C$DW$T$22)
+      37                      .dwattr $C$DW$1, DW_AT_external
+      38              ;       F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\T
+      39 000000               .sect   ".text"
+      40                      .align 4
+      41                      .global _mem_test
+      42              
+      43              $C$DW$2 .dwtag  DW_TAG_subprogram, DW_AT_name("mem_test")
+      44                      .dwattr $C$DW$2, DW_AT_low_pc(_mem_test)
+      45                      .dwattr $C$DW$2, DW_AT_high_pc(0x00)
+      46                      .dwattr $C$DW$2, DW_AT_TI_symbol_name("_mem_test")
+      47                      .dwattr $C$DW$2, DW_AT_external
+      48                      .dwattr $C$DW$2, DW_AT_type(*$C$DW$T$19)
+      49                      .dwattr $C$DW$2, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_t
+      50                      .dwattr $C$DW$2, DW_AT_TI_begin_line(0x31)
+      51                      .dwattr $C$DW$2, DW_AT_TI_begin_column(0x07)
+      52                      .dwattr $C$DW$2, DW_AT_TI_max_frame_size(0x02)
+      53                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 50,column 1,
+      54              
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+mem_test.asm                                                         PAGE    2
+
+      55                      .dwfde $C$DW$CIE, _mem_test
+      56              ;*******************************************************************************
+      57              ;* FUNCTION NAME: mem_test                                                     *
+      58              ;*                                                                             *
+      59              ;*   Function Uses Regs : T0,AR1,AR2,AR3,XAR3,SP,CARRY,TC1,M40,SATA,SATD,RDM,  *
+      60              ;*                        FRCT,SMUL                                            *
+      61              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+      62              ;*   Total Frame Size   : 2 words                                              *
+      63              ;*                        (1 return address/alignment)                         *
+      64              ;*                        (1 local values)                                     *
+      65              ;*   Min System Stack   : 1 word                                               *
+      66              ;*******************************************************************************
+      67 000000       _mem_test:
+      68                      .dwcfi  cfa_offset, 1
+      69                      .dwcfi  save_reg_to_mem, 91, -1
+      70 000000 4EFF          AADD #-1, SP
+      71                      .dwcfi  cfa_offset, 2
+      72              $C$DW$3 .dwtag  DW_TAG_variable, DW_AT_name("i")
+      73                      .dwattr $C$DW$3, DW_AT_TI_symbol_name("_i")
+      74                      .dwattr $C$DW$3, DW_AT_type(*$C$DW$T$21)
+      75                      .dwattr $C$DW$3, DW_AT_location[DW_OP_bregx 0x24 0]
+      76                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 53,column 6,
+      77 000002 E600          MOV #0, *SP(#0) ; |53| 
+         000004 00   
+      78                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 53,column 10
+      79 000005 7604          MOV #1024, AR2 ; |53| 
+         000007 00A8 
+      80 000009 A900          MOV *SP(#0), AR1 ; |53| 
+      81 00000b 1298          CMPU AR1 >= AR2, TC1 ; |53| 
+         00000d A4   
+      82 00000e 0464          BCC $C$L2,TC1 ; |53| 
+         000010 16   
+      83                                                      ; branchcc occurs ; |53| 
+      84 000011       $C$L1:    
+      85 000011       $C$DW$L$_mem_test$2$B:
+      86                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 55,column 3,
+      87 000011 A400          MOV *SP(#0), T0 ; |55| 
+      88 000013 EC31          AMOV #_mem, XAR3 ; |55| 
+         000015 BE00 
+         000017 0000-
+      89 000019 C96B          MOV AR1, *AR3(T0) ; |55| 
+      90                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 53,column 17
+      91 00001b F700          ADD #1, *SP(#0) ; |53| 
+         00001d 0001 
+      92                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 53,column 10
+      93 00001f A900          MOV *SP(#0), AR1 ; |53| 
+      94 000021 1294          CMPU AR1 < AR2, TC1 ; |53| 
+         000023 A4   
+      95 000024 0464          BCC $C$L1,TC1 ; |53| 
+         000026 EA   
+      96                                                      ; branchcc occurs ; |53| 
+      97 000027       $C$DW$L$_mem_test$2$E:
+      98 000027       $C$L2:    
+      99                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 57,column 6,
+     100 000027 E600          MOV #0, *SP(#0) ; |57| 
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+mem_test.asm                                                         PAGE    3
+
+         000029 00   
+     101                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 57,column 10
+     102 00002a A900          MOV *SP(#0), AR1 ; |57| 
+     103 00002c 1298          CMPU AR1 >= AR2, TC1 ; |57| 
+         00002e A4   
+     104 00002f 0464          BCC $C$L5,TC1 ; |57| 
+         000031 24   
+     105                                                      ; branchcc occurs ; |57| 
+     106 000032       $C$L3:    
+     107 000032       $C$DW$L$_mem_test$4$B:
+     108                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 59,column 3,
+     109 000032 A400          MOV *SP(#0), T0 ; |59| 
+     110 000034 EC31          AMOV #_mem, XAR3 ; |59| 
+         000036 BE00 
+         000038 0000-
+     111 00003a AA6B          MOV *AR3(T0), AR2 ; |59| 
+     112 00003c 12A0          CMPU AR2 == AR1, TC1 ; |59| 
+         00003e 94   
+     113 00003f 62E4          BCC $C$L4,TC1 ; |59| 
+     114                                                      ; branchcc occurs ; |59| 
+     115 000041       $C$DW$L$_mem_test$4$E:
+     116                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 60,column 7,
+     117 000041 3C14          MOV #1, T0
+     118 000043 0600          B $C$L11  ; |60| 
+         000045 65   
+     119                                                      ; branch occurs ; |60| 
+     120 000046       $C$L4:    
+     121 000046       $C$DW$L$_mem_test$6$B:
+     122                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 57,column 17
+     123 000046 F700          ADD #1, *SP(#0) ; |57| 
+         000048 0001 
+     124                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 57,column 10
+     125 00004a 7604          MOV #1024, AR2 ; |57| 
+         00004c 00A8 
+     126 00004e A900          MOV *SP(#0), AR1 ; |57| 
+     127 000050 1294          CMPU AR1 < AR2, TC1 ; |57| 
+         000052 A4   
+     128 000053 0464          BCC $C$L3,TC1 ; |57| 
+         000055 DC   
+     129                                                      ; branchcc occurs ; |57| 
+     130 000056       $C$DW$L$_mem_test$6$E:
+     131 000056       $C$L5:    
+     132                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 63,column 6,
+     133 000056 E600          MOV #0, *SP(#0) ; |63| 
+         000058 00   
+     134                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 63,column 10
+     135 000059 A900          MOV *SP(#0), AR1 ; |63| 
+     136 00005b 1298          CMPU AR1 >= AR2, TC1 ; |63| 
+         00005d A4   
+     137 00005e 0464          BCC $C$L7,TC1 ; |63| 
+         000060 18   
+     138                                                      ; branchcc occurs ; |63| 
+     139 000061       $C$L6:    
+     140 000061       $C$DW$L$_mem_test$8$B:
+     141                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 65,column 3,
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+mem_test.asm                                                         PAGE    4
+
+     142 000061 A400          MOV *SP(#0), T0 ; |65| 
+     143 000063 3699          NOT AR1, AR1 ; |65| 
+     144 000065 EC31          AMOV #_mem, XAR3 ; |65| 
+         000067 BE00 
+         000069 0000-
+     145 00006b C96B          MOV AR1, *AR3(T0) ; |65| 
+     146                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 63,column 17
+     147 00006d F700          ADD #1, *SP(#0) ; |63| 
+         00006f 0001 
+     148                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 63,column 10
+     149 000071 A900          MOV *SP(#0), AR1 ; |63| 
+     150 000073 1294          CMPU AR1 < AR2, TC1 ; |63| 
+         000075 A4   
+     151 000076 0464          BCC $C$L6,TC1 ; |63| 
+         000078 E8   
+     152                                                      ; branchcc occurs ; |63| 
+     153 000079       $C$DW$L$_mem_test$8$E:
+     154 000079       $C$L7:    
+     155                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 67,column 6,
+     156 000079 E600          MOV #0, *SP(#0) ; |67| 
+         00007b 00   
+     157                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 67,column 10
+     158 00007c A900          MOV *SP(#0), AR1 ; |67| 
+     159 00007e 1298          CMPU AR1 >= AR2, TC1 ; |67| 
+         000080 A4   
+     160 000081 0464          BCC $C$L10,TC1 ; |67| 
+         000083 25   
+     161                                                      ; branchcc occurs ; |67| 
+     162 000084       $C$L8:    
+     163 000084       $C$DW$L$_mem_test$10$B:
+     164                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 69,column 3,
+     165 000084 A400          MOV *SP(#0), T0 ; |69| 
+     166 000086 EC31          AMOV #_mem, XAR3 ; |69| 
+         000088 BE00 
+         00008a 0000-
+     167              
+     168 00008c AA6B          MOV *AR3(T0), AR2 ; |69| 
+     169 00008e 3799  ||      NOT AR1, AR1 ; |69| 
+     170              
+     171 000090 12A0          CMPU AR2 == AR1, TC1 ; |69| 
+         000092 94   
+     172 000093 6264          BCC $C$L9,TC1 ; |69| 
+     173                                                      ; branchcc occurs ; |69| 
+     174 000095       $C$DW$L$_mem_test$10$E:
+     175                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 70,column 7,
+     176 000095 3C14          MOV #1, T0
+     177 000097 4A12          B $C$L11  ; |70| 
+     178                                                      ; branch occurs ; |70| 
+     179 000099       $C$L9:    
+     180 000099       $C$DW$L$_mem_test$12$B:
+     181                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 67,column 17
+     182 000099 F700          ADD #1, *SP(#0) ; |67| 
+         00009b 0001 
+     183                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 67,column 10
+     184 00009d 7604          MOV #1024, AR2 ; |67| 
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+mem_test.asm                                                         PAGE    5
+
+         00009f 00A8 
+     185 0000a1 A900          MOV *SP(#0), AR1 ; |67| 
+     186 0000a3 1294          CMPU AR1 < AR2, TC1 ; |67| 
+         0000a5 A4   
+     187 0000a6 0464          BCC $C$L8,TC1 ; |67| 
+         0000a8 DB   
+     188                                                      ; branchcc occurs ; |67| 
+     189 0000a9       $C$DW$L$_mem_test$12$E:
+     190 0000a9       $C$L10:    
+     191                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 74,column 2,
+     192 0000a9 3C04          MOV #0, T0
+     193 0000ab       $C$L11:    
+     194                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_test.c",line 75,column 1,
+     195 0000ab 4E01          AADD #1, SP
+     196                      .dwcfi  cfa_offset, 1
+     197              $C$DW$4 .dwtag  DW_TAG_TI_branch
+     198                      .dwattr $C$DW$4, DW_AT_low_pc(0x00)
+     199                      .dwattr $C$DW$4, DW_AT_TI_return
+     200 0000ad 4804          RET
+     201                                                      ; return occurs
+     202              
+     203              $C$DW$5 .dwtag  DW_TAG_TI_loop
+     204                      .dwattr $C$DW$5, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\mem_test.asm:$C$L8:1:153
+     205                      .dwattr $C$DW$5, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_t
+     206                      .dwattr $C$DW$5, DW_AT_TI_begin_line(0x43)
+     207                      .dwattr $C$DW$5, DW_AT_TI_end_line(0x47)
+     208              $C$DW$6 .dwtag  DW_TAG_TI_loop_range
+     209                      .dwattr $C$DW$6, DW_AT_low_pc($C$DW$L$_mem_test$10$B)
+     210                      .dwattr $C$DW$6, DW_AT_high_pc($C$DW$L$_mem_test$10$E)
+     211              $C$DW$7 .dwtag  DW_TAG_TI_loop_range
+     212                      .dwattr $C$DW$7, DW_AT_low_pc($C$DW$L$_mem_test$12$B)
+     213                      .dwattr $C$DW$7, DW_AT_high_pc($C$DW$L$_mem_test$12$E)
+     214                      .dwendtag $C$DW$5
+     215              
+     216              
+     217              $C$DW$8 .dwtag  DW_TAG_TI_loop
+     218                      .dwattr $C$DW$8, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\mem_test.asm:$C$L6:1:153
+     219                      .dwattr $C$DW$8, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_t
+     220                      .dwattr $C$DW$8, DW_AT_TI_begin_line(0x3f)
+     221                      .dwattr $C$DW$8, DW_AT_TI_end_line(0x42)
+     222              $C$DW$9 .dwtag  DW_TAG_TI_loop_range
+     223                      .dwattr $C$DW$9, DW_AT_low_pc($C$DW$L$_mem_test$8$B)
+     224                      .dwattr $C$DW$9, DW_AT_high_pc($C$DW$L$_mem_test$8$E)
+     225                      .dwendtag $C$DW$8
+     226              
+     227              
+     228              $C$DW$10        .dwtag  DW_TAG_TI_loop
+     229                      .dwattr $C$DW$10, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\mem_test.asm:$C$L3:1:15
+     230                      .dwattr $C$DW$10, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_
+     231                      .dwattr $C$DW$10, DW_AT_TI_begin_line(0x39)
+     232                      .dwattr $C$DW$10, DW_AT_TI_end_line(0x3d)
+     233              $C$DW$11        .dwtag  DW_TAG_TI_loop_range
+     234                      .dwattr $C$DW$11, DW_AT_low_pc($C$DW$L$_mem_test$4$B)
+     235                      .dwattr $C$DW$11, DW_AT_high_pc($C$DW$L$_mem_test$4$E)
+     236              $C$DW$12        .dwtag  DW_TAG_TI_loop_range
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+mem_test.asm                                                         PAGE    6
+
+     237                      .dwattr $C$DW$12, DW_AT_low_pc($C$DW$L$_mem_test$6$B)
+     238                      .dwattr $C$DW$12, DW_AT_high_pc($C$DW$L$_mem_test$6$E)
+     239                      .dwendtag $C$DW$10
+     240              
+     241              
+     242              $C$DW$13        .dwtag  DW_TAG_TI_loop
+     243                      .dwattr $C$DW$13, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\mem_test.asm:$C$L1:1:15
+     244                      .dwattr $C$DW$13, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_
+     245                      .dwattr $C$DW$13, DW_AT_TI_begin_line(0x35)
+     246                      .dwattr $C$DW$13, DW_AT_TI_end_line(0x38)
+     247              $C$DW$14        .dwtag  DW_TAG_TI_loop_range
+     248                      .dwattr $C$DW$14, DW_AT_low_pc($C$DW$L$_mem_test$2$B)
+     249                      .dwattr $C$DW$14, DW_AT_high_pc($C$DW$L$_mem_test$2$E)
+     250                      .dwendtag $C$DW$13
+     251              
+     252                      .dwattr $C$DW$2, DW_AT_TI_end_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/mem_tes
+     253                      .dwattr $C$DW$2, DW_AT_TI_end_line(0x4b)
+     254                      .dwattr $C$DW$2, DW_AT_TI_end_column(0x01)
+     255                      .dwendentry
+     256                      .dwendtag $C$DW$2
+     257              
+     258              
+     259              ;*******************************************************************************
+     260              ;* TYPE INFORMATION                                                            *
+     261              ;*******************************************************************************
+     262              $C$DW$T$4       .dwtag  DW_TAG_base_type
+     263                      .dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
+     264                      .dwattr $C$DW$T$4, DW_AT_name("bool")
+     265                      .dwattr $C$DW$T$4, DW_AT_byte_size(0x01)
+     266              $C$DW$T$5       .dwtag  DW_TAG_base_type
+     267                      .dwattr $C$DW$T$5, DW_AT_encoding(DW_ATE_signed_char)
+     268                      .dwattr $C$DW$T$5, DW_AT_name("signed char")
+     269                      .dwattr $C$DW$T$5, DW_AT_byte_size(0x01)
+     270              $C$DW$T$6       .dwtag  DW_TAG_base_type
+     271                      .dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
+     272                      .dwattr $C$DW$T$6, DW_AT_name("unsigned char")
+     273                      .dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
+     274              $C$DW$T$7       .dwtag  DW_TAG_base_type
+     275                      .dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
+     276                      .dwattr $C$DW$T$7, DW_AT_name("wchar_t")
+     277                      .dwattr $C$DW$T$7, DW_AT_byte_size(0x01)
+     278              $C$DW$T$8       .dwtag  DW_TAG_base_type
+     279                      .dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
+     280                      .dwattr $C$DW$T$8, DW_AT_name("short")
+     281                      .dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
+     282              $C$DW$T$19      .dwtag  DW_TAG_typedef, DW_AT_name("Int16")
+     283                      .dwattr $C$DW$T$19, DW_AT_type(*$C$DW$T$8)
+     284                      .dwattr $C$DW$T$19, DW_AT_language(DW_LANG_C)
+     285              $C$DW$T$9       .dwtag  DW_TAG_base_type
+     286                      .dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
+     287                      .dwattr $C$DW$T$9, DW_AT_name("unsigned short")
+     288                      .dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
+     289              $C$DW$T$21      .dwtag  DW_TAG_typedef, DW_AT_name("Uint16")
+     290                      .dwattr $C$DW$T$21, DW_AT_type(*$C$DW$T$9)
+     291                      .dwattr $C$DW$T$21, DW_AT_language(DW_LANG_C)
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+mem_test.asm                                                         PAGE    7
+
+     292              
+     293              $C$DW$T$22      .dwtag  DW_TAG_array_type
+     294                      .dwattr $C$DW$T$22, DW_AT_type(*$C$DW$T$21)
+     295                      .dwattr $C$DW$T$22, DW_AT_language(DW_LANG_C)
+     296                      .dwattr $C$DW$T$22, DW_AT_byte_size(0x400)
+     297              $C$DW$15        .dwtag  DW_TAG_subrange_type
+     298                      .dwattr $C$DW$15, DW_AT_upper_bound(0x3ff)
+     299                      .dwendtag $C$DW$T$22
+     300              
+     301              $C$DW$T$10      .dwtag  DW_TAG_base_type
+     302                      .dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
+     303                      .dwattr $C$DW$T$10, DW_AT_name("int")
+     304                      .dwattr $C$DW$T$10, DW_AT_byte_size(0x01)
+     305              $C$DW$T$11      .dwtag  DW_TAG_base_type
+     306                      .dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
+     307                      .dwattr $C$DW$T$11, DW_AT_name("unsigned int")
+     308                      .dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
+     309              $C$DW$T$12      .dwtag  DW_TAG_base_type
+     310                      .dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
+     311                      .dwattr $C$DW$T$12, DW_AT_name("long")
+     312                      .dwattr $C$DW$T$12, DW_AT_byte_size(0x02)
+     313              $C$DW$T$13      .dwtag  DW_TAG_base_type
+     314                      .dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
+     315                      .dwattr $C$DW$T$13, DW_AT_name("unsigned long")
+     316                      .dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+     317              $C$DW$T$14      .dwtag  DW_TAG_base_type
+     318                      .dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
+     319                      .dwattr $C$DW$T$14, DW_AT_name("long long")
+     320                      .dwattr $C$DW$T$14, DW_AT_byte_size(0x04)
+     321                      .dwattr $C$DW$T$14, DW_AT_bit_size(0x28)
+     322                      .dwattr $C$DW$T$14, DW_AT_bit_offset(0x18)
+     323              $C$DW$T$15      .dwtag  DW_TAG_base_type
+     324                      .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
+     325                      .dwattr $C$DW$T$15, DW_AT_name("unsigned long long")
+     326                      .dwattr $C$DW$T$15, DW_AT_byte_size(0x04)
+     327                      .dwattr $C$DW$T$15, DW_AT_bit_size(0x28)
+     328                      .dwattr $C$DW$T$15, DW_AT_bit_offset(0x18)
+     329              $C$DW$T$16      .dwtag  DW_TAG_base_type
+     330                      .dwattr $C$DW$T$16, DW_AT_encoding(DW_ATE_float)
+     331                      .dwattr $C$DW$T$16, DW_AT_name("float")
+     332                      .dwattr $C$DW$T$16, DW_AT_byte_size(0x02)
+     333              $C$DW$T$17      .dwtag  DW_TAG_base_type
+     334                      .dwattr $C$DW$T$17, DW_AT_encoding(DW_ATE_float)
+     335                      .dwattr $C$DW$T$17, DW_AT_name("double")
+     336                      .dwattr $C$DW$T$17, DW_AT_byte_size(0x02)
+     337              $C$DW$T$18      .dwtag  DW_TAG_base_type
+     338                      .dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
+     339                      .dwattr $C$DW$T$18, DW_AT_name("long double")
+     340                      .dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
+     341                      .dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
+     342              
+     343              ;***************************************************************
+     344              ;* DWARF CIE ENTRIES                                           *
+     345              ;***************************************************************
+     346              
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+mem_test.asm                                                         PAGE    8
+
+     347              $C$DW$CIE       .dwcie 91
+     348                      .dwcfi  cfa_register, 36
+     349                      .dwcfi  cfa_offset, 0
+     350                      .dwcfi  undefined, 0
+     351                      .dwcfi  undefined, 1
+     352                      .dwcfi  undefined, 2
+     353                      .dwcfi  undefined, 3
+     354                      .dwcfi  undefined, 4
+     355                      .dwcfi  undefined, 5
+     356                      .dwcfi  undefined, 6
+     357                      .dwcfi  undefined, 7
+     358                      .dwcfi  undefined, 8
+     359                      .dwcfi  undefined, 9
+     360                      .dwcfi  undefined, 10
+     361                      .dwcfi  undefined, 11
+     362                      .dwcfi  undefined, 12
+     363                      .dwcfi  undefined, 13
+     364                      .dwcfi  same_value, 14
+     365                      .dwcfi  same_value, 15
+     366                      .dwcfi  undefined, 16
+     367                      .dwcfi  undefined, 17
+     368                      .dwcfi  undefined, 18
+     369                      .dwcfi  undefined, 19
+     370                      .dwcfi  undefined, 20
+     371                      .dwcfi  undefined, 21
+     372                      .dwcfi  undefined, 22
+     373                      .dwcfi  undefined, 23
+     374                      .dwcfi  undefined, 24
+     375                      .dwcfi  undefined, 25
+     376                      .dwcfi  same_value, 26
+     377                      .dwcfi  same_value, 27
+     378                      .dwcfi  same_value, 28
+     379                      .dwcfi  same_value, 29
+     380                      .dwcfi  same_value, 30
+     381                      .dwcfi  same_value, 31
+     382                      .dwcfi  undefined, 32
+     383                      .dwcfi  undefined, 33
+     384                      .dwcfi  undefined, 34
+     385                      .dwcfi  undefined, 35
+     386                      .dwcfi  undefined, 36
+     387                      .dwcfi  undefined, 37
+     388                      .dwcfi  undefined, 38
+     389                      .dwcfi  undefined, 39
+     390                      .dwcfi  undefined, 40
+     391                      .dwcfi  undefined, 41
+     392                      .dwcfi  undefined, 42
+     393                      .dwcfi  undefined, 43
+     394                      .dwcfi  undefined, 44
+     395                      .dwcfi  undefined, 45
+     396                      .dwcfi  undefined, 46
+     397                      .dwcfi  undefined, 47
+     398                      .dwcfi  undefined, 48
+     399                      .dwcfi  undefined, 49
+     400                      .dwcfi  undefined, 50
+     401                      .dwcfi  undefined, 51
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+mem_test.asm                                                         PAGE    9
+
+     402                      .dwcfi  undefined, 52
+     403                      .dwcfi  undefined, 53
+     404                      .dwcfi  undefined, 54
+     405                      .dwcfi  undefined, 55
+     406                      .dwcfi  undefined, 56
+     407                      .dwcfi  undefined, 57
+     408                      .dwcfi  undefined, 58
+     409                      .dwcfi  undefined, 59
+     410                      .dwcfi  undefined, 60
+     411                      .dwcfi  undefined, 61
+     412                      .dwcfi  undefined, 62
+     413                      .dwcfi  undefined, 63
+     414                      .dwcfi  undefined, 64
+     415                      .dwcfi  undefined, 65
+     416                      .dwcfi  undefined, 66
+     417                      .dwcfi  undefined, 67
+     418                      .dwcfi  undefined, 68
+     419                      .dwcfi  undefined, 69
+     420                      .dwcfi  undefined, 70
+     421                      .dwcfi  undefined, 71
+     422                      .dwcfi  undefined, 72
+     423                      .dwcfi  undefined, 73
+     424                      .dwcfi  undefined, 74
+     425                      .dwcfi  undefined, 75
+     426                      .dwcfi  undefined, 76
+     427                      .dwcfi  undefined, 77
+     428                      .dwcfi  undefined, 78
+     429                      .dwcfi  undefined, 79
+     430                      .dwcfi  undefined, 80
+     431                      .dwcfi  undefined, 81
+     432                      .dwcfi  undefined, 82
+     433                      .dwcfi  undefined, 83
+     434                      .dwcfi  undefined, 84
+     435                      .dwcfi  undefined, 85
+     436                      .dwcfi  undefined, 86
+     437                      .dwcfi  undefined, 87
+     438                      .dwcfi  undefined, 88
+     439                      .dwcfi  undefined, 89
+     440                      .dwcfi  undefined, 90
+     441                      .dwcfi  undefined, 91
+     442                      .dwendentry
+     443              
+     444              ;***************************************************************
+     445              ;* DWARF REGISTER MAP                                          *
+     446              ;***************************************************************
+     447              
+     448              $C$DW$16        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+     449                      .dwattr $C$DW$16, DW_AT_location[DW_OP_reg0]
+     450              $C$DW$17        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+     451                      .dwattr $C$DW$17, DW_AT_location[DW_OP_reg1]
+     452              $C$DW$18        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0_G")
+     453                      .dwattr $C$DW$18, DW_AT_location[DW_OP_reg2]
+     454              $C$DW$19        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+     455                      .dwattr $C$DW$19, DW_AT_location[DW_OP_reg3]
+     456              $C$DW$20        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+mem_test.asm                                                         PAGE   10
+
+     457                      .dwattr $C$DW$20, DW_AT_location[DW_OP_reg4]
+     458              $C$DW$21        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1_G")
+     459                      .dwattr $C$DW$21, DW_AT_location[DW_OP_reg5]
+     460              $C$DW$22        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+     461                      .dwattr $C$DW$22, DW_AT_location[DW_OP_reg6]
+     462              $C$DW$23        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+     463                      .dwattr $C$DW$23, DW_AT_location[DW_OP_reg7]
+     464              $C$DW$24        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2_G")
+     465                      .dwattr $C$DW$24, DW_AT_location[DW_OP_reg8]
+     466              $C$DW$25        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+     467                      .dwattr $C$DW$25, DW_AT_location[DW_OP_reg9]
+     468              $C$DW$26        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+     469                      .dwattr $C$DW$26, DW_AT_location[DW_OP_reg10]
+     470              $C$DW$27        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3_G")
+     471                      .dwattr $C$DW$27, DW_AT_location[DW_OP_reg11]
+     472              $C$DW$28        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T0")
+     473                      .dwattr $C$DW$28, DW_AT_location[DW_OP_reg12]
+     474              $C$DW$29        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T1")
+     475                      .dwattr $C$DW$29, DW_AT_location[DW_OP_reg13]
+     476              $C$DW$30        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T2")
+     477                      .dwattr $C$DW$30, DW_AT_location[DW_OP_reg14]
+     478              $C$DW$31        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T3")
+     479                      .dwattr $C$DW$31, DW_AT_location[DW_OP_reg15]
+     480              $C$DW$32        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0")
+     481                      .dwattr $C$DW$32, DW_AT_location[DW_OP_reg16]
+     482              $C$DW$33        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR0")
+     483                      .dwattr $C$DW$33, DW_AT_location[DW_OP_reg17]
+     484              $C$DW$34        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1")
+     485                      .dwattr $C$DW$34, DW_AT_location[DW_OP_reg18]
+     486              $C$DW$35        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR1")
+     487                      .dwattr $C$DW$35, DW_AT_location[DW_OP_reg19]
+     488              $C$DW$36        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
+     489                      .dwattr $C$DW$36, DW_AT_location[DW_OP_reg20]
+     490              $C$DW$37        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR2")
+     491                      .dwattr $C$DW$37, DW_AT_location[DW_OP_reg21]
+     492              $C$DW$38        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3")
+     493                      .dwattr $C$DW$38, DW_AT_location[DW_OP_reg22]
+     494              $C$DW$39        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR3")
+     495                      .dwattr $C$DW$39, DW_AT_location[DW_OP_reg23]
+     496              $C$DW$40        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4")
+     497                      .dwattr $C$DW$40, DW_AT_location[DW_OP_reg24]
+     498              $C$DW$41        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR4")
+     499                      .dwattr $C$DW$41, DW_AT_location[DW_OP_reg25]
+     500              $C$DW$42        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5")
+     501                      .dwattr $C$DW$42, DW_AT_location[DW_OP_reg26]
+     502              $C$DW$43        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR5")
+     503                      .dwattr $C$DW$43, DW_AT_location[DW_OP_reg27]
+     504              $C$DW$44        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6")
+     505                      .dwattr $C$DW$44, DW_AT_location[DW_OP_reg28]
+     506              $C$DW$45        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR6")
+     507                      .dwattr $C$DW$45, DW_AT_location[DW_OP_reg29]
+     508              $C$DW$46        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7")
+     509                      .dwattr $C$DW$46, DW_AT_location[DW_OP_reg30]
+     510              $C$DW$47        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR7")
+     511                      .dwattr $C$DW$47, DW_AT_location[DW_OP_reg31]
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+mem_test.asm                                                         PAGE   11
+
+     512              $C$DW$48        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FP")
+     513                      .dwattr $C$DW$48, DW_AT_location[DW_OP_regx 0x20]
+     514              $C$DW$49        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XFP")
+     515                      .dwattr $C$DW$49, DW_AT_location[DW_OP_regx 0x21]
+     516              $C$DW$50        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
+     517                      .dwattr $C$DW$50, DW_AT_location[DW_OP_regx 0x22]
+     518              $C$DW$51        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
+     519                      .dwattr $C$DW$51, DW_AT_location[DW_OP_regx 0x23]
+     520              $C$DW$52        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XSP")
+     521                      .dwattr $C$DW$52, DW_AT_location[DW_OP_regx 0x24]
+     522              $C$DW$53        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BKC")
+     523                      .dwattr $C$DW$53, DW_AT_location[DW_OP_regx 0x25]
+     524              $C$DW$54        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK03")
+     525                      .dwattr $C$DW$54, DW_AT_location[DW_OP_regx 0x26]
+     526              $C$DW$55        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK47")
+     527                      .dwattr $C$DW$55, DW_AT_location[DW_OP_regx 0x27]
+     528              $C$DW$56        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST0")
+     529                      .dwattr $C$DW$56, DW_AT_location[DW_OP_regx 0x28]
+     530              $C$DW$57        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST1")
+     531                      .dwattr $C$DW$57, DW_AT_location[DW_OP_regx 0x29]
+     532              $C$DW$58        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST2")
+     533                      .dwattr $C$DW$58, DW_AT_location[DW_OP_regx 0x2a]
+     534              $C$DW$59        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST3")
+     535                      .dwattr $C$DW$59, DW_AT_location[DW_OP_regx 0x2b]
+     536              $C$DW$60        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP")
+     537                      .dwattr $C$DW$60, DW_AT_location[DW_OP_regx 0x2c]
+     538              $C$DW$61        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP05")
+     539                      .dwattr $C$DW$61, DW_AT_location[DW_OP_regx 0x2d]
+     540              $C$DW$62        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP67")
+     541                      .dwattr $C$DW$62, DW_AT_location[DW_OP_regx 0x2e]
+     542              $C$DW$63        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
+     543                      .dwattr $C$DW$63, DW_AT_location[DW_OP_regx 0x2f]
+     544              $C$DW$64        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
+     545                      .dwattr $C$DW$64, DW_AT_location[DW_OP_regx 0x30]
+     546              $C$DW$65        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0_H")
+     547                      .dwattr $C$DW$65, DW_AT_location[DW_OP_regx 0x31]
+     548              $C$DW$66        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0")
+     549                      .dwattr $C$DW$66, DW_AT_location[DW_OP_regx 0x32]
+     550              $C$DW$67        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0_H")
+     551                      .dwattr $C$DW$67, DW_AT_location[DW_OP_regx 0x33]
+     552              $C$DW$68        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRS1")
+     553                      .dwattr $C$DW$68, DW_AT_location[DW_OP_regx 0x34]
+     554              $C$DW$69        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC1")
+     555                      .dwattr $C$DW$69, DW_AT_location[DW_OP_regx 0x35]
+     556              $C$DW$70        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1")
+     557                      .dwattr $C$DW$70, DW_AT_location[DW_OP_regx 0x36]
+     558              $C$DW$71        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1_H")
+     559                      .dwattr $C$DW$71, DW_AT_location[DW_OP_regx 0x37]
+     560              $C$DW$72        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1")
+     561                      .dwattr $C$DW$72, DW_AT_location[DW_OP_regx 0x38]
+     562              $C$DW$73        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1_H")
+     563                      .dwattr $C$DW$73, DW_AT_location[DW_OP_regx 0x39]
+     564              $C$DW$74        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CSR")
+     565                      .dwattr $C$DW$74, DW_AT_location[DW_OP_regx 0x3a]
+     566              $C$DW$75        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RPTC")
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+mem_test.asm                                                         PAGE   12
+
+     567                      .dwattr $C$DW$75, DW_AT_location[DW_OP_regx 0x3b]
+     568              $C$DW$76        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDP")
+     569                      .dwattr $C$DW$76, DW_AT_location[DW_OP_regx 0x3c]
+     570              $C$DW$77        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XCDP")
+     571                      .dwattr $C$DW$77, DW_AT_location[DW_OP_regx 0x3d]
+     572              $C$DW$78        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN0")
+     573                      .dwattr $C$DW$78, DW_AT_location[DW_OP_regx 0x3e]
+     574              $C$DW$79        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN1")
+     575                      .dwattr $C$DW$79, DW_AT_location[DW_OP_regx 0x3f]
+     576              $C$DW$80        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA01")
+     577                      .dwattr $C$DW$80, DW_AT_location[DW_OP_regx 0x40]
+     578              $C$DW$81        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA23")
+     579                      .dwattr $C$DW$81, DW_AT_location[DW_OP_regx 0x41]
+     580              $C$DW$82        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA45")
+     581                      .dwattr $C$DW$82, DW_AT_location[DW_OP_regx 0x42]
+     582              $C$DW$83        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA67")
+     583                      .dwattr $C$DW$83, DW_AT_location[DW_OP_regx 0x43]
+     584              $C$DW$84        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSAC")
+     585                      .dwattr $C$DW$84, DW_AT_location[DW_OP_regx 0x44]
+     586              $C$DW$85        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CARRY")
+     587                      .dwattr $C$DW$85, DW_AT_location[DW_OP_regx 0x45]
+     588              $C$DW$86        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC1")
+     589                      .dwattr $C$DW$86, DW_AT_location[DW_OP_regx 0x46]
+     590              $C$DW$87        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC2")
+     591                      .dwattr $C$DW$87, DW_AT_location[DW_OP_regx 0x47]
+     592              $C$DW$88        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("M40")
+     593                      .dwattr $C$DW$88, DW_AT_location[DW_OP_regx 0x48]
+     594              $C$DW$89        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SXMD")
+     595                      .dwattr $C$DW$89, DW_AT_location[DW_OP_regx 0x49]
+     596              $C$DW$90        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ARMS")
+     597                      .dwattr $C$DW$90, DW_AT_location[DW_OP_regx 0x4a]
+     598              $C$DW$91        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
+     599                      .dwattr $C$DW$91, DW_AT_location[DW_OP_regx 0x4b]
+     600              $C$DW$92        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATA")
+     601                      .dwattr $C$DW$92, DW_AT_location[DW_OP_regx 0x4c]
+     602              $C$DW$93        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATD")
+     603                      .dwattr $C$DW$93, DW_AT_location[DW_OP_regx 0x4d]
+     604              $C$DW$94        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RDM")
+     605                      .dwattr $C$DW$94, DW_AT_location[DW_OP_regx 0x4e]
+     606              $C$DW$95        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FRCT")
+     607                      .dwattr $C$DW$95, DW_AT_location[DW_OP_regx 0x4f]
+     608              $C$DW$96        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SMUL")
+     609                      .dwattr $C$DW$96, DW_AT_location[DW_OP_regx 0x50]
+     610              $C$DW$97        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("INTM")
+     611                      .dwattr $C$DW$97, DW_AT_location[DW_OP_regx 0x51]
+     612              $C$DW$98        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0LC")
+     613                      .dwattr $C$DW$98, DW_AT_location[DW_OP_regx 0x52]
+     614              $C$DW$99        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1LC")
+     615                      .dwattr $C$DW$99, DW_AT_location[DW_OP_regx 0x53]
+     616              $C$DW$100       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2LC")
+     617                      .dwattr $C$DW$100, DW_AT_location[DW_OP_regx 0x54]
+     618              $C$DW$101       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3LC")
+     619                      .dwattr $C$DW$101, DW_AT_location[DW_OP_regx 0x55]
+     620              $C$DW$102       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4LC")
+     621                      .dwattr $C$DW$102, DW_AT_location[DW_OP_regx 0x56]
+TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+mem_test.asm                                                         PAGE   13
+
+     622              $C$DW$103       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5LC")
+     623                      .dwattr $C$DW$103, DW_AT_location[DW_OP_regx 0x57]
+     624              $C$DW$104       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6LC")
+     625                      .dwattr $C$DW$104, DW_AT_location[DW_OP_regx 0x58]
+     626              $C$DW$105       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7LC")
+     627                      .dwattr $C$DW$105, DW_AT_location[DW_OP_regx 0x59]
+     628              $C$DW$106       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDPLC")
+     629                      .dwattr $C$DW$106, DW_AT_location[DW_OP_regx 0x5a]
+     630              $C$DW$107       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
+     631                      .dwattr $C$DW$107, DW_AT_location[DW_OP_regx 0x5b]
+     632                      .dwendtag $C$DW$CU
+     633              
+     633              
+     633              
+
+No Assembly Errors, No Assembly Warnings

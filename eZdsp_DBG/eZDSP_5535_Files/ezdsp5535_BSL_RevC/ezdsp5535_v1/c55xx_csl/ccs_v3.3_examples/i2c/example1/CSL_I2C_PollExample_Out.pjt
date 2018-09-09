@@ -1,0 +1,41 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="D:\Projects_SVN\C5505_CSL\Design\SW\Source_Codes\VC5505_CSL\CCS_v3.3_Examples\i2c\example1\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Project Dependencies]
+Source="..\..\..\build\cslVC5505.pjt"
+
+["..\..\..\build\cslVC5505.pjt" Settings]
+MatchConfigName=true
+
+[Source Files]
+Source="csl_i2c_polled_example.c"
+Source="VC5505_I2C.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)\..\..\..\src" -i"$(Proj_dir)\..\..\..\inc" -d"_DEBUG" -ml -vcore:3.3
+
+["Compiler" Settings: "Release"]
+Options=-mg -o2 -fr"$(Proj_dir)\Release" -i"$(Proj_dir)\..\..\..\src" -i"$(Proj_dir)\..\..\..\inc" -ml -vcore:3.3
+
+["Linker" Settings: "Debug"]
+Options=-c -m".\Debug\CSL_I2C_PolledExample_Out.map" -o".\Debug\CSL_I2C_PolledExample_Out.out" -w -x -l"rts55x.lib"
+
+["Linker" Settings: "Release"]
+Options=-c -m".\Release\CSL_I2C_PolledExample_Out.map" -o".\Release\CSL_I2C_PolledExample_Out.out" -w -x -l"rts55x.lib"
+
+["VC5505_I2C.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["VC5505_I2C.cmd" Settings: "Release"]
+LinkOrder=1
+
