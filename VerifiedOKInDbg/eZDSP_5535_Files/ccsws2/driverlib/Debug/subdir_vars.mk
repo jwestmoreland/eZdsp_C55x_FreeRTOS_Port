@@ -56,9 +56,6 @@ O_SRCS += \
 ../ucs.o \
 ../wdt.o 
 
-LIB_SRCS += \
-../driverlib.lib 
-
 C_SRCS += \
 C:/Users/ti3/ccsv5/ccs_base/msp430/msp430ware_1_25_00_30/driverlib/5xx_6xx/adc10.c \
 C:/Users/ti3/ccsv5/ccs_base/msp430/msp430ware_1_25_00_30/driverlib/5xx_6xx/adc10b.c \

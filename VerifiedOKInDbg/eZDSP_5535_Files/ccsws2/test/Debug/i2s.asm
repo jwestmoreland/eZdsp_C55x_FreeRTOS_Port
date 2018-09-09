@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sat Sep 08 18:35:41 2018                                 *
+;* Date/Time created: Sat Sep 08 23:40:35 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -24,7 +24,7 @@
 ;*******************************************************************************
 
 $C$DW$CU	.dwtag  DW_TAG_compile_unit
-	.dwattr $C$DW$CU, DW_AT_name("F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c")
+	.dwattr $C$DW$CU, DW_AT_name("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c")
 	.dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
 	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug")
@@ -125,7 +125,7 @@ $C$DW$17	.dwtag  DW_TAG_variable, DW_AT_name("Buf_Address")
 	.dwattr $C$DW$17, DW_AT_location[DW_OP_addr _Buf_Address]
 	.dwattr $C$DW$17, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$17, DW_AT_external
-;	F:\TI_CCS_7P4\ccsv7\tools\compiler\c5500_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\2343212 
+;	F:\TI_CCS_7P4\ccsv7\tools\compiler\c5500_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1621212 
 	.sect	".text"
 	.align 4
 	.global	_set_i2s2_master
@@ -136,11 +136,11 @@ $C$DW$18	.dwtag  DW_TAG_subprogram, DW_AT_name("set_i2s2_master")
 	.dwattr $C$DW$18, DW_AT_TI_symbol_name("_set_i2s2_master")
 	.dwattr $C$DW$18, DW_AT_external
 	.dwattr $C$DW$18, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$18, DW_AT_TI_begin_file("F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c")
+	.dwattr $C$DW$18, DW_AT_TI_begin_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c")
 	.dwattr $C$DW$18, DW_AT_TI_begin_line(0x37)
 	.dwattr $C$DW$18, DW_AT_TI_begin_column(0x08)
 	.dwattr $C$DW$18, DW_AT_TI_max_frame_size(0x02)
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 56,column 1,is_stmt,address _set_i2s2_master
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 56,column 1,is_stmt,address _set_i2s2_master
 
 	.dwfde $C$DW$CIE, _set_i2s2_master
 ;*******************************************************************************
@@ -162,13 +162,13 @@ $C$DW$19	.dwtag  DW_TAG_variable, DW_AT_name("temp")
 	.dwattr $C$DW$19, DW_AT_TI_symbol_name("_temp")
 	.dwattr $C$DW$19, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$19, DW_AT_location[DW_OP_bregx 0x24 0]
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 57,column 12,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 57,column 12,is_stmt
         MOV #0, *SP(#0) ; |57| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 59,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 59,column 2,is_stmt
         MOV #16, *SP(#0) ; |59| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 60,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 60,column 2,is_stmt
         OR #0x0082, *SP(#0) ; |60| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 61,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 61,column 5,is_stmt
         MOV *SP(#0), T0 ; |61| 
 $C$DW$20	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$20, DW_AT_low_pc(0x00)
@@ -176,7 +176,7 @@ $C$DW$20	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$20, DW_AT_TI_call
         CALL #_i2s2_write_CR ; |61| 
                                         ; call occurs [#_i2s2_write_CR] ; |61| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 62,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 62,column 5,is_stmt
 $C$DW$21	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$21, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$21, DW_AT_name("_i2s2_read_CR")
@@ -184,11 +184,11 @@ $C$DW$21	.dwtag  DW_TAG_TI_branch
         CALL #_i2s2_read_CR ; |62| 
                                         ; call occurs [#_i2s2_read_CR] ; |62| 
         MOV T0, *SP(#0) ; |62| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 64,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 64,column 2,is_stmt
         MOV #16, *SP(#0) ; |64| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 65,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 65,column 2,is_stmt
         OR #0x0005, *SP(#0) ; |65| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 66,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 66,column 5,is_stmt
         MOV *SP(#0), T0 ; |66| 
 $C$DW$22	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$22, DW_AT_low_pc(0x00)
@@ -196,7 +196,7 @@ $C$DW$22	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$22, DW_AT_TI_call
         CALL #_i2s2_write_SRGR ; |66| 
                                         ; call occurs [#_i2s2_write_SRGR] ; |66| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 69,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 69,column 5,is_stmt
 $C$DW$23	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$23, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$23, DW_AT_name("_i2s2_write_INT_MASK")
@@ -206,9 +206,9 @@ $C$DW$23	.dwtag  DW_TAG_TI_branch
 ||      MOV #0, T0
 
                                         ; call occurs [#_i2s2_write_INT_MASK] ; |69| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 80,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 80,column 5,is_stmt
         MOV #0, T0
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 81,column 1,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 81,column 1,is_stmt
         AADD #1, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$24	.dwtag  DW_TAG_TI_branch
@@ -216,7 +216,7 @@ $C$DW$24	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$24, DW_AT_TI_return
         RET
                                         ; return occurs
-	.dwattr $C$DW$18, DW_AT_TI_end_file("F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c")
+	.dwattr $C$DW$18, DW_AT_TI_end_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c")
 	.dwattr $C$DW$18, DW_AT_TI_end_line(0x51)
 	.dwattr $C$DW$18, DW_AT_TI_end_column(0x01)
 	.dwendentry
@@ -232,11 +232,11 @@ $C$DW$25	.dwtag  DW_TAG_subprogram, DW_AT_name("set_i2s0_master")
 	.dwattr $C$DW$25, DW_AT_TI_symbol_name("_set_i2s0_master")
 	.dwattr $C$DW$25, DW_AT_external
 	.dwattr $C$DW$25, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$25, DW_AT_TI_begin_file("F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c")
+	.dwattr $C$DW$25, DW_AT_TI_begin_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c")
 	.dwattr $C$DW$25, DW_AT_TI_begin_line(0x56)
 	.dwattr $C$DW$25, DW_AT_TI_begin_column(0x08)
 	.dwattr $C$DW$25, DW_AT_TI_max_frame_size(0x02)
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 87,column 1,is_stmt,address _set_i2s0_master
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 87,column 1,is_stmt,address _set_i2s0_master
 
 	.dwfde $C$DW$CIE, _set_i2s0_master
 ;*******************************************************************************
@@ -258,13 +258,13 @@ $C$DW$26	.dwtag  DW_TAG_variable, DW_AT_name("temp")
 	.dwattr $C$DW$26, DW_AT_TI_symbol_name("_temp")
 	.dwattr $C$DW$26, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$26, DW_AT_location[DW_OP_bregx 0x24 0]
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 88,column 12,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 88,column 12,is_stmt
         MOV #0, *SP(#0) ; |88| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 90,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 90,column 2,is_stmt
         MOV #16, *SP(#0) ; |90| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 91,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 91,column 2,is_stmt
         OR #0x0082, *SP(#0) ; |91| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 92,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 92,column 5,is_stmt
         MOV *SP(#0), T0 ; |92| 
 $C$DW$27	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$27, DW_AT_low_pc(0x00)
@@ -272,7 +272,7 @@ $C$DW$27	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$27, DW_AT_TI_call
         CALL #_i2s0_write_CR ; |92| 
                                         ; call occurs [#_i2s0_write_CR] ; |92| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 93,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 93,column 5,is_stmt
 $C$DW$28	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$28, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$28, DW_AT_name("_i2s0_read_CR")
@@ -280,11 +280,11 @@ $C$DW$28	.dwtag  DW_TAG_TI_branch
         CALL #_i2s0_read_CR ; |93| 
                                         ; call occurs [#_i2s0_read_CR] ; |93| 
         MOV T0, *SP(#0) ; |93| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 95,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 95,column 2,is_stmt
         MOV #16, *SP(#0) ; |95| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 96,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 96,column 2,is_stmt
         OR #0x0005, *SP(#0) ; |96| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 97,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 97,column 5,is_stmt
         MOV *SP(#0), T0 ; |97| 
 $C$DW$29	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$29, DW_AT_low_pc(0x00)
@@ -292,7 +292,7 @@ $C$DW$29	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$29, DW_AT_TI_call
         CALL #_i2s0_write_SRGR ; |97| 
                                         ; call occurs [#_i2s0_write_SRGR] ; |97| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 100,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 100,column 5,is_stmt
 $C$DW$30	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$30, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$30, DW_AT_name("_i2s0_write_INT_MASK")
@@ -302,9 +302,9 @@ $C$DW$30	.dwtag  DW_TAG_TI_branch
 ||      MOV #0, T0
 
                                         ; call occurs [#_i2s0_write_INT_MASK] ; |100| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 111,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 111,column 5,is_stmt
         MOV #0, T0
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 112,column 1,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 112,column 1,is_stmt
         AADD #1, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$31	.dwtag  DW_TAG_TI_branch
@@ -312,7 +312,7 @@ $C$DW$31	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$31, DW_AT_TI_return
         RET
                                         ; return occurs
-	.dwattr $C$DW$25, DW_AT_TI_end_file("F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c")
+	.dwattr $C$DW$25, DW_AT_TI_end_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c")
 	.dwattr $C$DW$25, DW_AT_TI_end_line(0x70)
 	.dwattr $C$DW$25, DW_AT_TI_end_column(0x01)
 	.dwendentry
@@ -328,11 +328,11 @@ $C$DW$32	.dwtag  DW_TAG_subprogram, DW_AT_name("set_i2s0_slave")
 	.dwattr $C$DW$32, DW_AT_TI_symbol_name("_set_i2s0_slave")
 	.dwattr $C$DW$32, DW_AT_external
 	.dwattr $C$DW$32, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$32, DW_AT_TI_begin_file("F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c")
+	.dwattr $C$DW$32, DW_AT_TI_begin_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c")
 	.dwattr $C$DW$32, DW_AT_TI_begin_line(0x72)
 	.dwattr $C$DW$32, DW_AT_TI_begin_column(0x08)
 	.dwattr $C$DW$32, DW_AT_TI_max_frame_size(0x02)
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 115,column 1,is_stmt,address _set_i2s0_slave
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 115,column 1,is_stmt,address _set_i2s0_slave
 
 	.dwfde $C$DW$CIE, _set_i2s0_slave
 ;*******************************************************************************
@@ -354,13 +354,13 @@ $C$DW$33	.dwtag  DW_TAG_variable, DW_AT_name("temp")
 	.dwattr $C$DW$33, DW_AT_TI_symbol_name("_temp")
 	.dwattr $C$DW$33, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$33, DW_AT_location[DW_OP_bregx 0x24 0]
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 116,column 12,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 116,column 12,is_stmt
         MOV #0, *SP(#0) ; |116| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 118,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 118,column 2,is_stmt
         MOV #16, *SP(#0) ; |118| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 119,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 119,column 2,is_stmt
         OR #0x0080, *SP(#0) ; |119| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 120,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 120,column 5,is_stmt
         MOV *SP(#0), T0 ; |120| 
 $C$DW$34	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$34, DW_AT_low_pc(0x00)
@@ -368,7 +368,7 @@ $C$DW$34	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$34, DW_AT_TI_call
         CALL #_i2s0_write_CR ; |120| 
                                         ; call occurs [#_i2s0_write_CR] ; |120| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 121,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 121,column 5,is_stmt
 $C$DW$35	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$35, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$35, DW_AT_name("_i2s0_read_CR")
@@ -376,7 +376,7 @@ $C$DW$35	.dwtag  DW_TAG_TI_branch
         CALL #_i2s0_read_CR ; |121| 
                                         ; call occurs [#_i2s0_read_CR] ; |121| 
         MOV T0, *SP(#0) ; |121| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 124,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 124,column 5,is_stmt
 $C$DW$36	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$36, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$36, DW_AT_name("_i2s0_write_INT_MASK")
@@ -386,9 +386,9 @@ $C$DW$36	.dwtag  DW_TAG_TI_branch
 ||      MOV #0, T0
 
                                         ; call occurs [#_i2s0_write_INT_MASK] ; |124| 
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 135,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 135,column 5,is_stmt
         MOV #0, T0
-	.dwpsn	file "F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 136,column 1,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c",line 136,column 1,is_stmt
         AADD #1, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$37	.dwtag  DW_TAG_TI_branch
@@ -396,7 +396,7 @@ $C$DW$37	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$37, DW_AT_TI_return
         RET
                                         ; return occurs
-	.dwattr $C$DW$32, DW_AT_TI_end_file("F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c")
+	.dwattr $C$DW$32, DW_AT_TI_end_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/i2s.c")
 	.dwattr $C$DW$32, DW_AT_TI_end_line(0x88)
 	.dwattr $C$DW$32, DW_AT_TI_end_column(0x01)
 	.dwendentry

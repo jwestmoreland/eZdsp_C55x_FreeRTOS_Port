@@ -4,7 +4,7 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := F:/ti/ccs8p1/ccsv8/tools/compiler/ti-cgt-msp430_18.1.2.LTS
+CG_TOOL_ROOT := F:/TI_CCS_7P4/ccsv7/tools/compiler/ti-cgt-msp430_16.9.6.LTS
 
 GEN_OPTS__FLAG := 
 GEN_CMDS__FLAG := 
@@ -133,7 +133,7 @@ all: msp430f66xx_rtc_01.out
 msp430f66xx_rtc_01.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: MSP430 Linker'
-	"F:/ti/ccs8p1/ccsv8/tools/compiler/ti-cgt-msp430_18.1.2.LTS/bin/cl430" -vmspx --abi=eabi -g --advice:power=all --define=__MSP430F5635__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal -z --stack_size=160 -m"msp430f66xx_rtc_01.map" --heap_size=160 --use_hw_mpy=F5 -i"F:/ti/ccs8p1/ccsv8/ccs_base/msp430/include" -i"F:/ti/ccs8p1/ccsv8/tools/compiler/ti-cgt-msp430_18.1.2.LTS/lib" -i"F:/ti/ccs8p1/ccsv8/tools/compiler/ti-cgt-msp430_18.1.2.LTS/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="msp430f66xx_rtc_01_linkInfo.xml" --rom_model -o "msp430f66xx_rtc_01.out" $(ORDERED_OBJS)
+	"F:/TI_CCS_7P4/ccsv7/tools/compiler/ti-cgt-msp430_16.9.6.LTS/bin/cl430" -vmspx --abi=eabi -g --advice:power=all --define=__MSP430F5635__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal -z --stack_size=160 -m"msp430f66xx_rtc_01.map" --heap_size=160 --use_hw_mpy=F5 -i"F:/TI_CCS_7P4/ccsv7/ccs_base/msp430/include" -i"F:/TI_CCS_7P4/ccsv7/tools/compiler/ti-cgt-msp430_16.9.6.LTS/lib" -i"F:/TI_CCS_7P4/ccsv7/tools/compiler/ti-cgt-msp430_16.9.6.LTS/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="msp430f66xx_rtc_01_linkInfo.xml" --rom_model -o "msp430f66xx_rtc_01.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 

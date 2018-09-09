@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Fri Sep 07 02:27:20 2018                                 *
+;* Date/Time created: Sat Sep 08 23:28:15 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -27,7 +27,7 @@ $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../FreeRTOS/Demo/Common/Minimal/semtest.c")
 	.dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
-	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZDSP_5535_Files\ccsws2\test\Debug")
+	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug")
 ;******************************************************************************
 ;* CINIT RECORDS                                                              *
 ;******************************************************************************
@@ -162,7 +162,7 @@ $C$DW$30	.dwtag  DW_TAG_variable, DW_AT_name("usCriticalNesting")
 	.dwattr $C$DW$30, DW_AT_declaration
 	.dwattr $C$DW$30, DW_AT_external
 	.bss	_sLastCheckVariables$1,4,0,0
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\0391612 
+;	F:\TI_CCS_7P4\ccsv7\tools\compiler\c5500_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1058812 
 	.sect	".text"
 	.align 4
 	.global	_vStartSemaphoreTasks
@@ -731,7 +731,7 @@ $C$DW$L$_prvSemaphoreTest$21$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$63	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$63, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\semtest.asm:$C$L7:1:1536312440")
+	.dwattr $C$DW$63, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\semtest.asm:$C$L7:1:1536474495")
 	.dwattr $C$DW$63, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/semtest.c")
 	.dwattr $C$DW$63, DW_AT_TI_begin_line(0xcc)
 	.dwattr $C$DW$63, DW_AT_TI_end_line(0x105)
@@ -773,7 +773,7 @@ $C$DW$75	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$75, DW_AT_high_pc($C$DW$L$_prvSemaphoreTest$19$E)
 
 $C$DW$76	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$76, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\semtest.asm:$C$L9:2:1536312440")
+	.dwattr $C$DW$76, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\semtest.asm:$C$L9:2:1536474495")
 	.dwattr $C$DW$76, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/semtest.c")
 	.dwattr $C$DW$76, DW_AT_TI_begin_line(0xdc)
 	.dwattr $C$DW$76, DW_AT_TI_end_line(0xe3)
@@ -901,7 +901,7 @@ $C$DW$84	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$85	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$85, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\semtest.asm:$C$L15:1:1536312440")
+	.dwattr $C$DW$85, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\semtest.asm:$C$L15:1:1536474495")
 	.dwattr $C$DW$85, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/semtest.c")
 	.dwattr $C$DW$85, DW_AT_TI_begin_line(0x10f)
 	.dwattr $C$DW$85, DW_AT_TI_end_line(0x117)

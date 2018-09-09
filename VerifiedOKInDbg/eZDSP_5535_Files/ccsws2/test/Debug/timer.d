@@ -1,6 +1,6 @@
 # FIXED
 
-timer.obj: F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/timer.c
+timer.obj: F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/timer.c
 timer.obj: F:/eZdsp_C55x_FreeRTOS_Port/VerifiedOKInDbg/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/FreeRTOS.h
 timer.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stddef.h
 timer.obj: F:/eZdsp_C55x_FreeRTOS_Port/VerifiedOKInDbg/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/projdefs.h
@@ -33,7 +33,7 @@ timer.obj: F:/eZdsp_C55x_FreeRTOS_Port/VerifiedOKInDbg/eZDSP_5535_Files/ccsws2/t
 timer.obj: F:/scratch/c5515_eZdsp_FreeRTOS_Demo/inc/timer.h
 timer.obj: F:/scratch/c5515_eZdsp_FreeRTOS_Demo/inc/register_cpu.h
 
-F:/test/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/timer.c: 
+F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/src/timer.c: 
 F:/eZdsp_C55x_FreeRTOS_Port/VerifiedOKInDbg/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/FreeRTOS.h: 
 F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stddef.h: 
 F:/eZdsp_C55x_FreeRTOS_Port/VerifiedOKInDbg/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/projdefs.h: 

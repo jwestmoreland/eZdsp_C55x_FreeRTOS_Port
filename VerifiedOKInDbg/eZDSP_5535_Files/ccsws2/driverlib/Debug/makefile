@@ -4,7 +4,7 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := F:/ti/ccs8p1/ccsv8/tools/compiler/ti-cgt-msp430_18.1.2.LTS
+CG_TOOL_ROOT := F:/TI_CCS_7P4/ccsv7/tools/compiler/ti-cgt-msp430_16.9.6.LTS
 
 GEN_OPTS__FLAG := 
 GEN_CMDS__FLAG := 
@@ -108,7 +108,6 @@ ORDERED_OBJS += \
 "../ucs.o" \
 "./wdt.obj" \
 "../wdt.o" \
-"../driverlib.lib" \
 
 -include ../makefile.init
 
@@ -225,11 +224,11 @@ LIB_OUTPUTS__QUOTED += \
 all: C:/Users/ti3/ccsv5/ccs_base/msp430/msp430ware_1_25_00_30/driverlib/5xx_6xx/CCS/../../../driverlib/5xx_6xx/CCS/driverlib.lib
 
 # Tool invocations
-C:/Users/ti3/ccsv5/ccs_base/msp430/msp430ware_1_25_00_30/driverlib/5xx_6xx/CCS/../../../driverlib/5xx_6xx/CCS/driverlib.lib: $(OBJS) $(O_SRCS) $(LIB_SRCS)
+C:/Users/ti3/ccsv5/ccs_base/msp430/msp430ware_1_25_00_30/driverlib/5xx_6xx/CCS/../../../driverlib/5xx_6xx/CCS/driverlib.lib: $(OBJS) $(O_SRCS)
 ifneq ($(strip $(ORDERED_OBJS)),)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: MSP430 Archiver'
-	"F:/ti/ccs8p1/ccsv8/tools/compiler/ti-cgt-msp430_18.1.2.LTS/bin/ar430" r "C:/Users/ti3/ccsv5/ccs_base/msp430/msp430ware_1_25_00_30/driverlib/5xx_6xx/CCS/../../../driverlib/5xx_6xx/CCS/driverlib.lib" $(ORDERED_OBJS)
+	"F:/TI_CCS_7P4/ccsv7/tools/compiler/ti-cgt-msp430_16.9.6.LTS/bin/ar430" r "C:/Users/ti3/ccsv5/ccs_base/msp430/msp430ware_1_25_00_30/driverlib/5xx_6xx/CCS/../../../driverlib/5xx_6xx/CCS/driverlib.lib" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 endif

@@ -4,7 +4,7 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := F:/ti/ccs8p1/ccsv8/tools/compiler/ti-cgt-msp430_18.1.2.LTS
+CG_TOOL_ROOT := F:/TI_CCS_7P4/ccsv7/tools/compiler/ti-cgt-msp430_16.9.6.LTS
 
 GEN_OPTS__FLAG := 
 GEN_CMDS__FLAG := 
@@ -134,7 +134,7 @@ all: UCS_DCO_12MHz.out
 UCS_DCO_12MHz.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: MSP430 Linker'
-	"F:/ti/ccs8p1/ccsv8/tools/compiler/ti-cgt-msp430_18.1.2.LTS/bin/cl430" -vmspx --large_memory_model -g --define=__MSP430F5438A__ --diag_warning=225 --silicon_errata=CPU22 --silicon_errata=CPU21 --silicon_errata=CPU23 --silicon_errata=CPU40 --printf_support=minimal -z -m"UCS_DCO_12MHz.map" --stack_size=160 --heap_size=160 --use_hw_mpy=F5 --warn_sections -i"F:/ti/ccs8p1/ccsv8/ccs_base/msp430/include" -i"F:/ti/ccs8p1/ccsv8/tools/compiler/ti-cgt-msp430_18.1.2.LTS/lib" -i"F:/ti/ccs8p1/ccsv8/tools/compiler/ti-cgt-msp430_18.1.2.LTS/include" --reread_libs --xml_link_info="UCS_DCO_12MHz_linkInfo.xml" --rom_model -o "UCS_DCO_12MHz.out" $(ORDERED_OBJS)
+	"F:/TI_CCS_7P4/ccsv7/tools/compiler/ti-cgt-msp430_16.9.6.LTS/bin/cl430" -vmspx --large_memory_model -g --define=__MSP430F5438A__ --diag_warning=225 --silicon_errata=CPU22 --silicon_errata=CPU21 --silicon_errata=CPU23 --silicon_errata=CPU40 --printf_support=minimal -z -m"UCS_DCO_12MHz.map" --stack_size=160 --heap_size=160 --use_hw_mpy=F5 --warn_sections -i"F:/TI_CCS_7P4/ccsv7/ccs_base/msp430/include" -i"F:/TI_CCS_7P4/ccsv7/tools/compiler/ti-cgt-msp430_16.9.6.LTS/lib" -i"F:/TI_CCS_7P4/ccsv7/tools/compiler/ti-cgt-msp430_16.9.6.LTS/include" --reread_libs --xml_link_info="UCS_DCO_12MHz_linkInfo.xml" --rom_model -o "UCS_DCO_12MHz.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 

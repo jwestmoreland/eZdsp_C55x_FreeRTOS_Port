@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Fri Sep 07 02:28:02 2018                                 *
+;* Date/Time created: Sat Sep 08 23:29:06 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -27,7 +27,7 @@ $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_mmcsd_ataIf.c")
 	.dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
-	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZDSP_5535_Files\ccsws2\test\Debug")
+	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug")
 ;******************************************************************************
 ;* CINIT RECORDS                                                              *
 ;******************************************************************************
@@ -169,7 +169,7 @@ $C$DW$20	.dwtag  DW_TAG_variable, DW_AT_name("ATA_No_Swap")
 	.dwattr $C$DW$20, DW_AT_location[DW_OP_addr _ATA_No_Swap]
 	.dwattr $C$DW$20, DW_AT_type(*$C$DW$T$101)
 	.dwattr $C$DW$20, DW_AT_external
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\2248412 
+;	F:\TI_CCS_7P4\ccsv7\tools\compiler\c5500_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1974012 
 	.sect	".text"
 	.align 4
 	.global	_MMC_initState
@@ -874,7 +874,7 @@ $C$DW$48	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$49	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$49, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\csl_mmcsd_ataIf.asm:$C$L19:1:1536312482")
+	.dwattr $C$DW$49, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\csl_mmcsd_ataIf.asm:$C$L19:1:1536474546")
 	.dwattr $C$DW$49, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_mmcsd_ataIf.c")
 	.dwattr $C$DW$49, DW_AT_TI_begin_line(0x141)
 	.dwattr $C$DW$49, DW_AT_TI_end_line(0x141)
@@ -885,7 +885,7 @@ $C$DW$50	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$51	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$51, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\csl_mmcsd_ataIf.asm:$C$L14:1:1536312482")
+	.dwattr $C$DW$51, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\csl_mmcsd_ataIf.asm:$C$L14:1:1536474546")
 	.dwattr $C$DW$51, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_mmcsd_ataIf.c")
 	.dwattr $C$DW$51, DW_AT_TI_begin_line(0x11c)
 	.dwattr $C$DW$51, DW_AT_TI_end_line(0x11c)
@@ -896,7 +896,7 @@ $C$DW$52	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$53	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$53, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\csl_mmcsd_ataIf.asm:$C$L9:1:1536312482")
+	.dwattr $C$DW$53, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\csl_mmcsd_ataIf.asm:$C$L9:1:1536474546")
 	.dwattr $C$DW$53, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_mmcsd_ataIf.c")
 	.dwattr $C$DW$53, DW_AT_TI_begin_line(0xf6)
 	.dwattr $C$DW$53, DW_AT_TI_end_line(0xf6)
@@ -907,7 +907,7 @@ $C$DW$54	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$55	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$55, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\csl_mmcsd_ataIf.asm:$C$L5:1:1536312482")
+	.dwattr $C$DW$55, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\csl_mmcsd_ataIf.asm:$C$L5:1:1536474546")
 	.dwattr $C$DW$55, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_mmcsd_ataIf.c")
 	.dwattr $C$DW$55, DW_AT_TI_begin_line(0xdd)
 	.dwattr $C$DW$55, DW_AT_TI_end_line(0xdd)
@@ -1709,7 +1709,7 @@ $C$DW$109	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$110	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$110, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\csl_mmcsd_ataIf.asm:$C$L47:1:1536312482")
+	.dwattr $C$DW$110, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\csl_mmcsd_ataIf.asm:$C$L47:1:1536474546")
 	.dwattr $C$DW$110, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_mmcsd_ataIf.c")
 	.dwattr $C$DW$110, DW_AT_TI_begin_line(0x334)
 	.dwattr $C$DW$110, DW_AT_TI_end_line(0x33b)
@@ -2583,7 +2583,7 @@ $C$DW$176	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$177	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$177, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\csl_mmcsd_ataIf.asm:$C$L77:1:1536312482")
+	.dwattr $C$DW$177, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\csl_mmcsd_ataIf.asm:$C$L77:1:1536474546")
 	.dwattr $C$DW$177, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_mmcsd_ataIf.c")
 	.dwattr $C$DW$177, DW_AT_TI_begin_line(0x4fa)
 	.dwattr $C$DW$177, DW_AT_TI_end_line(0x4fd)
@@ -2736,7 +2736,7 @@ $C$DW$188	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$189	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$189, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\csl_mmcsd_ataIf.asm:$C$L82:1:1536312482")
+	.dwattr $C$DW$189, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\csl_mmcsd_ataIf.asm:$C$L82:1:1536474546")
 	.dwattr $C$DW$189, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_mmcsd_ataIf.c")
 	.dwattr $C$DW$189, DW_AT_TI_begin_line(0x550)
 	.dwattr $C$DW$189, DW_AT_TI_end_line(0x553)

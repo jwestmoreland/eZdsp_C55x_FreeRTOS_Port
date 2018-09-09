@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Fri Sep 07 02:28:24 2018                                 *
+;* Date/Time created: Sat Sep 08 23:29:35 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -27,13 +27,13 @@ $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_spi.c")
 	.dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
-	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZDSP_5535_Files\ccsws2\test\Debug")
+	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug")
 	.bss	_SPI_Instance,3,0,0
 $C$DW$1	.dwtag  DW_TAG_variable, DW_AT_name("SPI_Instance")
 	.dwattr $C$DW$1, DW_AT_TI_symbol_name("_SPI_Instance")
 	.dwattr $C$DW$1, DW_AT_type(*$C$DW$T$46)
 	.dwattr $C$DW$1, DW_AT_location[DW_OP_addr _SPI_Instance]
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\2518812 
+;	F:\TI_CCS_7P4\ccsv7\tools\compiler\c5500_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\2559212 
 	.sect	".text"
 	.align 4
 	.global	_SPI_init
@@ -136,7 +136,7 @@ $C$DW$5	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$6	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$6, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\csl_spi.asm:$C$L1:1:1536312505")
+	.dwattr $C$DW$6, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\csl_spi.asm:$C$L1:1:1536474575")
 	.dwattr $C$DW$6, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_spi.c")
 	.dwattr $C$DW$6, DW_AT_TI_begin_line(0x49)
 	.dwattr $C$DW$6, DW_AT_TI_end_line(0x49)
@@ -707,7 +707,7 @@ $C$DW$28	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$29	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$29, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\csl_spi.asm:$C$L12:1:1536312505")
+	.dwattr $C$DW$29, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\csl_spi.asm:$C$L12:1:1536474575")
 	.dwattr $C$DW$29, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_spi.c")
 	.dwattr $C$DW$29, DW_AT_TI_begin_line(0x11b)
 	.dwattr $C$DW$29, DW_AT_TI_end_line(0x11b)
@@ -1039,7 +1039,7 @@ $C$DW$47	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$48	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$48, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\csl_spi.asm:$C$L28:1:1536312505")
+	.dwattr $C$DW$48, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\csl_spi.asm:$C$L28:1:1536474575")
 	.dwattr $C$DW$48, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_spi.c")
 	.dwattr $C$DW$48, DW_AT_TI_begin_line(0x1d6)
 	.dwattr $C$DW$48, DW_AT_TI_end_line(0x1f0)
@@ -1063,7 +1063,7 @@ $C$DW$54	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$54, DW_AT_high_pc($C$DW$L$_SPI_read$15$E)
 
 $C$DW$55	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$55, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\csl_spi.asm:$C$L29:2:1536312505")
+	.dwattr $C$DW$55, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\csl_spi.asm:$C$L29:2:1536474575")
 	.dwattr $C$DW$55, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_spi.c")
 	.dwattr $C$DW$55, DW_AT_TI_begin_line(0x1dc)
 	.dwattr $C$DW$55, DW_AT_TI_end_line(0x1dc)
@@ -1074,7 +1074,7 @@ $C$DW$56	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$57	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$57, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\csl_spi.asm:$C$L30:2:1536312505")
+	.dwattr $C$DW$57, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\csl_spi.asm:$C$L30:2:1536474575")
 	.dwattr $C$DW$57, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_spi.c")
 	.dwattr $C$DW$57, DW_AT_TI_begin_line(0x1de)
 	.dwattr $C$DW$57, DW_AT_TI_end_line(0x1e3)
@@ -1346,7 +1346,7 @@ $C$DW$73	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$74	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$74, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\csl_spi.asm:$C$L39:1:1536312505")
+	.dwattr $C$DW$74, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\csl_spi.asm:$C$L39:1:1536474575")
 	.dwattr $C$DW$74, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_spi.c")
 	.dwattr $C$DW$74, DW_AT_TI_begin_line(0x234)
 	.dwattr $C$DW$74, DW_AT_TI_end_line(0x251)
@@ -1370,7 +1370,7 @@ $C$DW$80	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$80, DW_AT_high_pc($C$DW$L$_SPI_write$15$E)
 
 $C$DW$81	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$81, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\csl_spi.asm:$C$L42:2:1536312505")
+	.dwattr $C$DW$81, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\csl_spi.asm:$C$L42:2:1536474575")
 	.dwattr $C$DW$81, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_spi.c")
 	.dwattr $C$DW$81, DW_AT_TI_begin_line(0x248)
 	.dwattr $C$DW$81, DW_AT_TI_end_line(0x248)
@@ -1381,7 +1381,7 @@ $C$DW$82	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$83	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$83, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\csl_spi.asm:$C$L43:2:1536312505")
+	.dwattr $C$DW$83, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug\csl_spi.asm:$C$L43:2:1536474575")
 	.dwattr $C$DW$83, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_spi.c")
 	.dwattr $C$DW$83, DW_AT_TI_begin_line(0x24a)
 	.dwattr $C$DW$83, DW_AT_TI_end_line(0x24f)

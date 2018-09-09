@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Fri Sep 07 02:28:36 2018                                 *
+;* Date/Time created: Sat Sep 08 23:29:48 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -27,7 +27,7 @@ $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../c5535_bsl_revc/ezdsp5535_v1/lib/bsl/ezdsp5535_gpio.c")
 	.dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
-	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZDSP_5535_Files\ccsws2\test\Debug")
+	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_C55x_FreeRTOS_Port\VerifiedOKInDbg\eZDSP_5535_Files\ccsws2\test\Debug")
 
 $C$DW$1	.dwtag  DW_TAG_subprogram, DW_AT_name("GPIO_open")
 	.dwattr $C$DW$1, DW_AT_TI_symbol_name("_GPIO_open")
@@ -94,7 +94,7 @@ $C$DW$16	.dwtag  DW_TAG_variable, DW_AT_name("hGpio")
 	.dwattr $C$DW$16, DW_AT_location[DW_OP_addr _hGpio]
 	.dwattr $C$DW$16, DW_AT_type(*$C$DW$T$41)
 	.dwattr $C$DW$16, DW_AT_external
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\2475212 
+;	F:\TI_CCS_7P4\ccsv7\tools\compiler\c5500_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\0950813 
 	.sect	".text"
 	.align 4
 	.global	_EZDSP5535_GPIO_init
