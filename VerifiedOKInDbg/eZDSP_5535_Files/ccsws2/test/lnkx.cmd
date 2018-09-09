@@ -34,7 +34,7 @@ MEMORY
   DARAM0 (RWIX): origin = 0x0000c0, length = 0x00ff40  /*  64KB - MMRs */
   SARAM0 (RWIX): origin = 0x010000, length = 0x010000  /*  64KB */
   SARAM1 (RWIX): origin = 0x020000, length = 0x020000  /* 128KB */
-  SARAM2 (RWIX): origin = 0x040000, length = 0x00FE00  /*  64KB */
+  SARAM2 (RWIX): origin = 0x040000, length = 0x00DE00  /*  64KB */
   VECS   (RWIX): origin = 0x04FE00, length = 0x000200  /*  512B */
   PDROM   (RIX): origin = 0xff8000, length = 0x008000  /*  32KB */
 

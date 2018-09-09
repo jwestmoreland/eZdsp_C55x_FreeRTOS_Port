@@ -6,7 +6,7 @@ SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CMD_SRCS += \
-../lnkx.cmd 
+../lnkx-standalone.cmd 
 
 ASM_SRCS += \
 F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/src_from_old_demo/asm/aic_test_i2c.asm \
