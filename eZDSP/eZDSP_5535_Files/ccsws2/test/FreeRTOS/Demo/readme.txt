@@ -1,16 +1,14 @@
-Each RTOS port has a demo application to demonstrate it's use.
+Contains the files that are not specific to any one demo, but are instead used
+by all the demo applications.
 
-+ The Demo/Common directory contains the demo application files as described on 
-the http://www.FreeRTOS.org WEB site.  Each file creates one or more tasks.
-The files in the Demo/Common directory are used by every demo application for
-every port.
+Most of the directories are now obsolete, and only maintained for backward
+compatibility.  The directories in active use are:
 
-+ All the other directories contain a project or makefile for the demo
-application targeted at a particular microcontroller.  
++ Minimal - this contains the implementation of what are referred to as the
+"Standard Demo Tasks".  These are used by all the demo applications.  Their only
+purpose is to demonstrate the FreeRTOS API and test the FreeRTOS features.  The
+directory is called 'Minimal' as it contains a minimal implementation of files
+contained in the 'Full' directory - but the 'Full' directory is no longer used.
 
-
-For example, if you are interested in the ATMega323 demo application for
-the WinAVR tools then the AVR_ATMega323_WinAVR directory contains the 
-relevant makefile.  The makefile includes files from the Demo/ATMega323 
-and the Demo/Common directories.  If this is the only port you are 
-interested in then all the other directories can be ignored.
++ include - contains header files for the C source files located in the Minimal
+directory.

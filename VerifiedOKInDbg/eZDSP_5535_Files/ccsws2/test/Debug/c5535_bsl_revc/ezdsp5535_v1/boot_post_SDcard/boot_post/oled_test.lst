@@ -1,0 +1,3021 @@
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE    1
+
+    2309              ; Temporary Registers Used: None
+       1              ;*******************************************************************************
+       2              ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
+       3              ;* Date/Time created: Fri Sep 07 02:27:30 2018                                 *
+       4              ;*******************************************************************************
+       5                      .compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --si
+       6                      .mmregs
+       7                      .cpl_on
+       8                      .arms_on
+       9                      .c54cm_off
+      10                      .asg AR6, FP
+      11                      .asg XAR6, XFP
+      12                      .asg DPH, MDP
+      13                      .model call=c55_std
+      14                      .model mem=large
+      15                      .noremark 5002  ; code respects overwrite rules
+      16              ;*******************************************************************************
+      17              ;* GLOBAL FILE PARAMETERS                                                      *
+      18              ;*                                                                             *
+      19              ;*   Architecture       : TMS320C55x                                           *
+      20              ;*   Optimizing for     : Speed                                                *
+      21              ;*   Memory             : Large Model (23-Bit Data Pointers)                   *
+      22              ;*   Calls              : Normal Library ASM calls                             *
+      23              ;*   Debug Info         : Standard TI Debug Information                        *
+      24              ;*******************************************************************************
+      25              
+      26              $C$DW$CU        .dwtag  DW_TAG_compile_unit
+      27                      .dwattr $C$DW$CU, DW_AT_name("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c")
+      28                      .dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas In
+      29                      .dwattr $C$DW$CU, DW_AT_TI_version(0x01)
+      30                      .dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZDSP_5535_Files\ccsws2\test\Debug")
+      31              
+      32              $C$DW$1 .dwtag  DW_TAG_subprogram, DW_AT_name("EZDSP5535_OSD9616_send")
+      33                      .dwattr $C$DW$1, DW_AT_TI_symbol_name("_EZDSP5535_OSD9616_send")
+      34                      .dwattr $C$DW$1, DW_AT_type(*$C$DW$T$19)
+      35                      .dwattr $C$DW$1, DW_AT_declaration
+      36                      .dwattr $C$DW$1, DW_AT_external
+      37              $C$DW$2 .dwtag  DW_TAG_formal_parameter
+      38                      .dwattr $C$DW$2, DW_AT_type(*$C$DW$T$20)
+      39              $C$DW$3 .dwtag  DW_TAG_formal_parameter
+      40                      .dwattr $C$DW$3, DW_AT_type(*$C$DW$T$20)
+      41                      .dwendtag $C$DW$1
+      42              
+      43              
+      44              $C$DW$4 .dwtag  DW_TAG_subprogram, DW_AT_name("EZDSP5535_OSD9616_printLetter")
+      45                      .dwattr $C$DW$4, DW_AT_TI_symbol_name("_EZDSP5535_OSD9616_printLetter")
+      46                      .dwattr $C$DW$4, DW_AT_type(*$C$DW$T$19)
+      47                      .dwattr $C$DW$4, DW_AT_declaration
+      48                      .dwattr $C$DW$4, DW_AT_external
+      49              $C$DW$5 .dwtag  DW_TAG_formal_parameter
+      50                      .dwattr $C$DW$5, DW_AT_type(*$C$DW$T$20)
+      51              $C$DW$6 .dwtag  DW_TAG_formal_parameter
+      52                      .dwattr $C$DW$6, DW_AT_type(*$C$DW$T$20)
+      53              $C$DW$7 .dwtag  DW_TAG_formal_parameter
+      54                      .dwattr $C$DW$7, DW_AT_type(*$C$DW$T$20)
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE    2
+
+      55              $C$DW$8 .dwtag  DW_TAG_formal_parameter
+      56                      .dwattr $C$DW$8, DW_AT_type(*$C$DW$T$20)
+      57                      .dwendtag $C$DW$4
+      58              
+      59              
+      60              $C$DW$9 .dwtag  DW_TAG_subprogram, DW_AT_name("EZDSP5535_OSD9616_init")
+      61                      .dwattr $C$DW$9, DW_AT_TI_symbol_name("_EZDSP5535_OSD9616_init")
+      62                      .dwattr $C$DW$9, DW_AT_type(*$C$DW$T$19)
+      63                      .dwattr $C$DW$9, DW_AT_declaration
+      64                      .dwattr $C$DW$9, DW_AT_external
+      65              ;       F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\T
+      66 000000               .sect   ".text"
+      67                      .align 4
+      68                      .global _oled_test
+      69              
+      70              $C$DW$10        .dwtag  DW_TAG_subprogram, DW_AT_name("oled_test")
+      71                      .dwattr $C$DW$10, DW_AT_low_pc(_oled_test)
+      72                      .dwattr $C$DW$10, DW_AT_high_pc(0x00)
+      73                      .dwattr $C$DW$10, DW_AT_TI_symbol_name("_oled_test")
+      74                      .dwattr $C$DW$10, DW_AT_external
+      75                      .dwattr $C$DW$10, DW_AT_type(*$C$DW$T$19)
+      76                      .dwattr $C$DW$10, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled
+      77                      .dwattr $C$DW$10, DW_AT_TI_begin_line(0x30)
+      78                      .dwattr $C$DW$10, DW_AT_TI_begin_column(0x07)
+      79                      .dwattr $C$DW$10, DW_AT_TI_max_frame_size(0x04)
+      80                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 49,column 1
+      81              
+      82                      .dwfde $C$DW$CIE, _oled_test
+      83              $C$DW$11        .dwtag  DW_TAG_formal_parameter, DW_AT_name("testNum")
+      84                      .dwattr $C$DW$11, DW_AT_TI_symbol_name("_testNum")
+      85                      .dwattr $C$DW$11, DW_AT_type(*$C$DW$T$10)
+      86                      .dwattr $C$DW$11, DW_AT_location[DW_OP_reg12]
+      87              ;*******************************************************************************
+      88              ;* FUNCTION NAME: oled_test                                                    *
+      89              ;*                                                                             *
+      90              ;*   Function Uses Regs : T0,T1,AR0,AR1,AR2,SP,CARRY,TC1,M40,SATA,SATD,RDM,    *
+      91              ;*                        FRCT,SMUL                                            *
+      92              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+      93              ;*   Total Frame Size   : 4 words                                              *
+      94              ;*                        (2 return address/alignment)                         *
+      95              ;*                        (2 local values)                                     *
+      96              ;*   Min System Stack   : 1 word                                               *
+      97              ;*******************************************************************************
+      98 000000       _oled_test:
+      99                      .dwcfi  cfa_offset, 1
+     100                      .dwcfi  save_reg_to_mem, 91, -1
+     101 000000 4EFD          AADD #-3, SP
+     102                      .dwcfi  cfa_offset, 4
+     103              $C$DW$12        .dwtag  DW_TAG_variable, DW_AT_name("testNum")
+     104                      .dwattr $C$DW$12, DW_AT_TI_symbol_name("_testNum")
+     105                      .dwattr $C$DW$12, DW_AT_type(*$C$DW$T$10)
+     106                      .dwattr $C$DW$12, DW_AT_location[DW_OP_bregx 0x24 0]
+     107              $C$DW$13        .dwtag  DW_TAG_variable, DW_AT_name("i")
+     108                      .dwattr $C$DW$13, DW_AT_TI_symbol_name("_i")
+     109                      .dwattr $C$DW$13, DW_AT_type(*$C$DW$T$20)
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE    3
+
+     110                      .dwattr $C$DW$13, DW_AT_location[DW_OP_bregx 0x24 1]
+     111 000002 C400          MOV T0, *SP(#0) ; |49| 
+     112                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 53,column 2
+     113 000004 F000          CMP *SP(#0) == #4, TC1 ; |53| 
+         000006 0004 
+     114 000008 6D74          BCC $C$L3,!TC1 ; |53| 
+         00000a 0174 
+     115                                                      ; branchcc occurs ; |53| 
+     116                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 56,column 9
+     117 00000c 3C04          MOV #0, T0
+     118              $C$DW$14        .dwtag  DW_TAG_TI_branch
+     119                      .dwattr $C$DW$14, DW_AT_low_pc(0x00)
+     120                      .dwattr $C$DW$14, DW_AT_name("_EZDSP5535_OSD9616_send")
+     121                      .dwattr $C$DW$14, DW_AT_TI_call
+     122              
+     123 00000e 6C00          CALL #_EZDSP5535_OSD9616_send ; |56| 
+         000010 0000!
+     124 000012 3D05  ||      MOV #0, T1
+     125              
+     126                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |56| 
+     127                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 57,column 9
+     128 000014 7600          MOV #16, T1 ; |57| 
+         000016 1058 
+     129              $C$DW$15        .dwtag  DW_TAG_TI_branch
+     130                      .dwattr $C$DW$15, DW_AT_low_pc(0x00)
+     131                      .dwattr $C$DW$15, DW_AT_name("_EZDSP5535_OSD9616_send")
+     132                      .dwattr $C$DW$15, DW_AT_TI_call
+     133              
+     134 000018 6C00          CALL #_EZDSP5535_OSD9616_send ; |57| 
+         00001a 0000!
+     135 00001c 3D04  ||      MOV #0, T0
+     136              
+     137                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |57| 
+     138                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 58,column 9
+     139 00001e 7600          MOV #177, T1 ; |58| 
+         000020 B158 
+     140              $C$DW$16        .dwtag  DW_TAG_TI_branch
+     141                      .dwattr $C$DW$16, DW_AT_low_pc(0x00)
+     142                      .dwattr $C$DW$16, DW_AT_name("_EZDSP5535_OSD9616_send")
+     143                      .dwattr $C$DW$16, DW_AT_TI_call
+     144              
+     145 000022 6C00          CALL #_EZDSP5535_OSD9616_send ; |58| 
+         000024 0000!
+     146 000026 3D04  ||      MOV #0, T0
+     147              
+     148                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |58| 
+     149                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 60,column 6
+     150 000028 3C14          MOV #1, T0
+     151              
+     152 00002e 3D18          MOV #1, AR0
+     153 00002a 7600  ||      MOV #127, T1 ; |60| 
+         00002c 7F58 
+     154              
+     155              $C$DW$17        .dwtag  DW_TAG_TI_branch
+     156                      .dwattr $C$DW$17, DW_AT_low_pc(0x00)
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE    4
+
+     157                      .dwattr $C$DW$17, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     158                      .dwattr $C$DW$17, DW_AT_TI_call
+     159              
+     160 000030 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |60| 
+         000032 0000!
+     161 000034 3D19  ||      MOV #1, AR1
+     162              
+     163                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |60| 
+     164                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 61,column 9
+     165 000036 7600          MOV #99, AR1 ; |61| 
+         000038 6398 
+     166 00003a 7600          MOV #28, AR0 ; |61| 
+         00003c 1C88 
+     167 00003e 7600          MOV #28, T1 ; |61| 
+         000040 1C58 
+     168 000042 7600          MOV #99, T0 ; |61| 
+         000044 6348 
+     169              $C$DW$18        .dwtag  DW_TAG_TI_branch
+     170                      .dwattr $C$DW$18, DW_AT_low_pc(0x00)
+     171                      .dwattr $C$DW$18, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     172                      .dwattr $C$DW$18, DW_AT_TI_call
+     173 000046 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |61| 
+         000048 0000!
+     174                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |61| 
+     175                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 62,column 6
+     176 00004a 7600          MOV #127, AR1 ; |62| 
+         00004c 7F98 
+     177 00004e 7600          MOV #73, AR0 ; |62| 
+         000050 4988 
+     178 000052 7600          MOV #73, T1 ; |62| 
+         000054 4958 
+     179 000056 7600          MOV #65, T0 ; |62| 
+         000058 4148 
+     180              $C$DW$19        .dwtag  DW_TAG_TI_branch
+     181                      .dwattr $C$DW$19, DW_AT_low_pc(0x00)
+     182                      .dwattr $C$DW$19, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     183                      .dwattr $C$DW$19, DW_AT_TI_call
+     184 00005a 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |62| 
+         00005c 0000!
+     185                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |62| 
+     186                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 63,column 9
+     187 00005e 7600          MOV #127, AR1 ; |63| 
+         000060 7F98 
+     188 000062 7600          MOV #48, T1 ; |63| 
+         000064 3058 
+     189 000066 7600          MOV #127, T0 ; |63| 
+         000068 7F48 
+     190              $C$DW$20        .dwtag  DW_TAG_TI_branch
+     191                      .dwattr $C$DW$20, DW_AT_low_pc(0x00)
+     192                      .dwattr $C$DW$20, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     193                      .dwattr $C$DW$20, DW_AT_TI_call
+     194              
+     195 00006a 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |63| 
+         00006c 0000!
+     196 00006e 3DE8  ||      MOV #14, AR0
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE    5
+
+     197              
+     198                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |63| 
+     199                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 64,column 6
+     200 000070 7600          MOV #20, AR1 ; |64| 
+         000072 1498 
+     201 000074 7600          MOV #20, AR0 ; |64| 
+         000076 1488 
+     202 000078 7600          MOV #20, T1 ; |64| 
+         00007a 1458 
+     203 00007c 7600          MOV #20, T0 ; |64| 
+         00007e 1448 
+     204              $C$DW$21        .dwtag  DW_TAG_TI_branch
+     205                      .dwattr $C$DW$21, DW_AT_low_pc(0x00)
+     206                      .dwattr $C$DW$21, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     207                      .dwattr $C$DW$21, DW_AT_TI_call
+     208 000080 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |64| 
+         000082 0000!
+     209                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |64| 
+     210                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 65,column 6
+     211 000084 7600          MOV #98, AR1 ; |65| 
+         000086 6298 
+     212 000088 7600          MOV #81, AR0 ; |65| 
+         00008a 5188 
+     213 00008c 7600          MOV #73, T1 ; |65| 
+         00008e 4958 
+     214 000090 7600          MOV #71, T0 ; |65| 
+         000092 4748 
+     215              $C$DW$22        .dwtag  DW_TAG_TI_branch
+     216                      .dwattr $C$DW$22, DW_AT_low_pc(0x00)
+     217                      .dwattr $C$DW$22, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     218                      .dwattr $C$DW$22, DW_AT_TI_call
+     219 000094 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |65| 
+         000096 0000!
+     220                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |65| 
+     221                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 66,column 9
+     222 000098 7600          MOV #127, AR1 ; |66| 
+         00009a 7F98 
+     223 00009c 7600          MOV #48, AR0 ; |66| 
+         00009e 3088 
+     224 0000a0 7600          MOV #48, T1 ; |66| 
+         0000a2 3058 
+     225 0000a4 7600          MOV #127, T0 ; |66| 
+         0000a6 7F48 
+     226              $C$DW$23        .dwtag  DW_TAG_TI_branch
+     227                      .dwattr $C$DW$23, DW_AT_low_pc(0x00)
+     228                      .dwattr $C$DW$23, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     229                      .dwattr $C$DW$23, DW_AT_TI_call
+     230 0000a8 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |66| 
+         0000aa 0000!
+     231                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |66| 
+     232                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 67,column 9
+     233 0000ac 7600          MOV #38, AR1 ; |67| 
+         0000ae 2698 
+     234 0000b0 7600          MOV #73, AR0 ; |67| 
+         0000b2 4988 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE    6
+
+     235 0000b4 7600          MOV #73, T1 ; |67| 
+         0000b6 4958 
+     236 0000b8 7600          MOV #50, T0 ; |67| 
+         0000ba 3248 
+     237              $C$DW$24        .dwtag  DW_TAG_TI_branch
+     238                      .dwattr $C$DW$24, DW_AT_low_pc(0x00)
+     239                      .dwattr $C$DW$24, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     240                      .dwattr $C$DW$24, DW_AT_TI_call
+     241 0000bc 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |67| 
+         0000be 0000!
+     242                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |67| 
+     243                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 68,column 9
+     244 0000c0 7600          MOV #28, T1 ; |68| 
+         0000c2 1C58 
+     245              
+     246 0000c4 3C84          MOV #8, T0
+     247 0000c6 3D88  ||      MOV #8, AR0
+     248              
+     249              $C$DW$25        .dwtag  DW_TAG_TI_branch
+     250                      .dwattr $C$DW$25, DW_AT_low_pc(0x00)
+     251                      .dwattr $C$DW$25, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     252                      .dwattr $C$DW$25, DW_AT_TI_call
+     253              
+     254 0000c8 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |68| 
+         0000ca 0000!
+     255 0000cc 3D89  ||      MOV #8, AR1
+     256              
+     257                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |68| 
+     258                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 69,column 9
+     259 0000ce 7600          MOV #66, AR0 ; |69| 
+         0000d0 4288 
+     260 0000d2 7600          MOV #127, T1 ; |69| 
+         0000d4 7F58 
+     261 0000d6 7600          MOV #64, T0 ; |69| 
+         0000d8 4048 
+     262              $C$DW$26        .dwtag  DW_TAG_TI_branch
+     263                      .dwattr $C$DW$26, DW_AT_low_pc(0x00)
+     264                      .dwattr $C$DW$26, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     265                      .dwattr $C$DW$26, DW_AT_TI_call
+     266              
+     267 0000da 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |69| 
+         0000dc 0000!
+     268 0000de 3D09  ||      MOV #0, AR1
+     269              
+     270                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |69| 
+     271                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 70,column 9
+     272 0000e0 7600          MOV #127, AR1 ; |70| 
+         0000e2 7F98 
+     273 0000e4 7600          MOV #48, AR0 ; |70| 
+         0000e6 3088 
+     274 0000e8 7600          MOV #48, T1 ; |70| 
+         0000ea 3058 
+     275 0000ec 7600          MOV #127, T0 ; |70| 
+         0000ee 7F48 
+     276              $C$DW$27        .dwtag  DW_TAG_TI_branch
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE    7
+
+     277                      .dwattr $C$DW$27, DW_AT_low_pc(0x00)
+     278                      .dwattr $C$DW$27, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     279                      .dwattr $C$DW$27, DW_AT_TI_call
+     280 0000f0 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |70| 
+         0000f2 0000!
+     281                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |70| 
+     282                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 71,column 9
+     283 0000f4 7600          MOV #38, AR1 ; |71| 
+         0000f6 2698 
+     284 0000f8 7600          MOV #73, AR0 ; |71| 
+         0000fa 4988 
+     285 0000fc 7600          MOV #73, T1 ; |71| 
+         0000fe 4958 
+     286 000100 7600          MOV #50, T0 ; |71| 
+         000102 3248 
+     287              $C$DW$28        .dwtag  DW_TAG_TI_branch
+     288                      .dwattr $C$DW$28, DW_AT_low_pc(0x00)
+     289                      .dwattr $C$DW$28, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     290                      .dwattr $C$DW$28, DW_AT_TI_call
+     291 000104 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |71| 
+         000106 0000!
+     292                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |71| 
+     293                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 73,column 1
+     294 000108 E602          MOV #0, *SP(#1) ; |73| 
+         00010a 00   
+     295                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 73,column 1
+     296              
+     297 00010b A902          MOV *SP(#1), AR1 ; |73| 
+     298 00010d 3D5A  ||      MOV #5, AR2
+     299              
+     300 00010f 1298          CMPU AR1 >= AR2, TC1 ; |73| 
+         000111 A4   
+     301 000112 0464          BCC $C$L2,TC1 ; |73| 
+         000114 18   
+     302                                                      ; branchcc occurs ; |73| 
+     303 000115       $C$L1:    
+     304 000115       $C$DW$L$_oled_test$4$B:
+     305                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 75,column 1
+     306 000115 7600          MOV #64, T0 ; |75| 
+         000117 4048 
+     307              $C$DW$29        .dwtag  DW_TAG_TI_branch
+     308                      .dwattr $C$DW$29, DW_AT_low_pc(0x00)
+     309                      .dwattr $C$DW$29, DW_AT_name("_EZDSP5535_OSD9616_send")
+     310                      .dwattr $C$DW$29, DW_AT_TI_call
+     311              
+     312 000119 6C00          CALL #_EZDSP5535_OSD9616_send ; |75| 
+         00011b 0000!
+     313 00011d 3D05  ||      MOV #0, T1
+     314              
+     315                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |75| 
+     316                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 73,column 1
+     317 00011f F702          ADD #1, *SP(#1) ; |73| 
+         000121 0001 
+     318                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 73,column 1
+     319              
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE    8
+
+     320 000123 A902          MOV *SP(#1), AR1 ; |73| 
+     321 000125 3D5A  ||      MOV #5, AR2
+     322              
+     323 000127 1294          CMPU AR1 < AR2, TC1 ; |73| 
+         000129 A4   
+     324 00012a 0464          BCC $C$L1,TC1 ; |73| 
+         00012c E8   
+     325                                                      ; branchcc occurs ; |73| 
+     326 00012d       $C$DW$L$_oled_test$4$E:
+     327 00012d       $C$L2:    
+     328                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 78,column 9
+     329 00012d 7600          MOV #127, AR1 ; |78| 
+         00012f 7F98 
+     330 000131 7600          MOV #73, AR0 ; |78| 
+         000133 4988 
+     331 000135 7600          MOV #73, T1 ; |78| 
+         000137 4958 
+     332 000139 7600          MOV #65, T0 ; |78| 
+         00013b 4148 
+     333              $C$DW$30        .dwtag  DW_TAG_TI_branch
+     334                      .dwattr $C$DW$30, DW_AT_low_pc(0x00)
+     335                      .dwattr $C$DW$30, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     336                      .dwattr $C$DW$30, DW_AT_TI_call
+     337 00013d 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |78| 
+         00013f 0000!
+     338                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |78| 
+     339                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 79,column 9
+     340 000141 7600          MOV #127, AR1 ; |79| 
+         000143 7F98 
+     341 000145 7600          MOV #48, T1 ; |79| 
+         000147 3058 
+     342 000149 7600          MOV #127, T0 ; |79| 
+         00014b 7F48 
+     343              $C$DW$31        .dwtag  DW_TAG_TI_branch
+     344                      .dwattr $C$DW$31, DW_AT_low_pc(0x00)
+     345                      .dwattr $C$DW$31, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     346                      .dwattr $C$DW$31, DW_AT_TI_call
+     347              
+     348 00014d 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |79| 
+         00014f 0000!
+     349 000151 3DE8  ||      MOV #14, AR0
+     350              
+     351                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |79| 
+     352                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 80,column 6
+     353 000153 7600          MOV #62, AR1 ; |80| 
+         000155 3E98 
+     354 000157 7600          MOV #65, AR0 ; |80| 
+         000159 4188 
+     355 00015b 7600          MOV #65, T1 ; |80| 
+         00015d 4158 
+     356 00015f 7600          MOV #62, T0 ; |80| 
+         000161 3E48 
+     357              $C$DW$32        .dwtag  DW_TAG_TI_branch
+     358                      .dwattr $C$DW$32, DW_AT_low_pc(0x00)
+     359                      .dwattr $C$DW$32, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE    9
+
+     360                      .dwattr $C$DW$32, DW_AT_TI_call
+     361 000163 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |80| 
+         000165 0000!
+     362                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |80| 
+     363                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 81,column 6
+     364 000167 7600          MOV #127, AR1 ; |81| 
+         000169 7F98 
+     365 00016b 7600          MOV #65, AR0 ; |81| 
+         00016d 4188 
+     366 00016f 7600          MOV #65, T1 ; |81| 
+         000171 4158 
+     367 000173 7600          MOV #62, T0 ; |81| 
+         000175 3E48 
+     368              $C$DW$33        .dwtag  DW_TAG_TI_branch
+     369                      .dwattr $C$DW$33, DW_AT_low_pc(0x00)
+     370                      .dwattr $C$DW$33, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     371                      .dwattr $C$DW$33, DW_AT_TI_call
+     372 000177 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |81| 
+         000179 0000!
+     373                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |81| 
+     374                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 82,column 6
+     375 00017b 3C04          MOV #0, T0
+     376 00017d 0606          B $C$L41  ; |82| 
+         00017f 99   
+     377                                                      ; branch occurs ; |82| 
+     378 000180       $C$L3:    
+     379                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 87,column 5
+     380              $C$DW$34        .dwtag  DW_TAG_TI_branch
+     381                      .dwattr $C$DW$34, DW_AT_low_pc(0x00)
+     382                      .dwattr $C$DW$34, DW_AT_name("_EZDSP5535_OSD9616_init")
+     383                      .dwattr $C$DW$34, DW_AT_TI_call
+     384 000180 6C00          CALL #_EZDSP5535_OSD9616_init ; |87| 
+         000182 0000!
+     385                                                      ; call occurs [#_EZDSP5535_OSD9616_init] ; |87| 
+     386                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 89,column 5
+     387 000184 7600          MOV #46, T1 ; |89| 
+         000186 2E58 
+     388              $C$DW$35        .dwtag  DW_TAG_TI_branch
+     389                      .dwattr $C$DW$35, DW_AT_low_pc(0x00)
+     390                      .dwattr $C$DW$35, DW_AT_name("_EZDSP5535_OSD9616_send")
+     391                      .dwattr $C$DW$35, DW_AT_TI_call
+     392              
+     393 000188 6C00          CALL #_EZDSP5535_OSD9616_send ; |89| 
+         00018a 0000!
+     394 00018c 3D04  ||      MOV #0, T0
+     395              
+     396                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |89| 
+     397                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 92,column 5
+     398 00018e 3C04          MOV #0, T0
+     399              $C$DW$36        .dwtag  DW_TAG_TI_branch
+     400                      .dwattr $C$DW$36, DW_AT_low_pc(0x00)
+     401                      .dwattr $C$DW$36, DW_AT_name("_EZDSP5535_OSD9616_send")
+     402                      .dwattr $C$DW$36, DW_AT_TI_call
+     403              
+     404 000190 6C00          CALL #_EZDSP5535_OSD9616_send ; |92| 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   10
+
+         000192 0000!
+     405 000194 3D05  ||      MOV #0, T1
+     406              
+     407                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |92| 
+     408                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 93,column 5
+     409 000196 7600          MOV #16, T1 ; |93| 
+         000198 1058 
+     410              $C$DW$37        .dwtag  DW_TAG_TI_branch
+     411                      .dwattr $C$DW$37, DW_AT_low_pc(0x00)
+     412                      .dwattr $C$DW$37, DW_AT_name("_EZDSP5535_OSD9616_send")
+     413                      .dwattr $C$DW$37, DW_AT_TI_call
+     414              
+     415 00019a 6C00          CALL #_EZDSP5535_OSD9616_send ; |93| 
+         00019c 0000!
+     416 00019e 3D04  ||      MOV #0, T0
+     417              
+     418                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |93| 
+     419                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 94,column 5
+     420 0001a0 7600          MOV #176, T1 ; |94| 
+         0001a2 B058 
+     421              $C$DW$38        .dwtag  DW_TAG_TI_branch
+     422                      .dwattr $C$DW$38, DW_AT_low_pc(0x00)
+     423                      .dwattr $C$DW$38, DW_AT_name("_EZDSP5535_OSD9616_send")
+     424                      .dwattr $C$DW$38, DW_AT_TI_call
+     425              
+     426 0001a4 6C00          CALL #_EZDSP5535_OSD9616_send ; |94| 
+         0001a6 0000!
+     427 0001a8 3D04  ||      MOV #0, T0
+     428              
+     429                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |94| 
+     430                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 95,column 9
+     431 0001aa E602          MOV #0, *SP(#1) ; |95| 
+         0001ac 00   
+     432                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 95,column 1
+     433 0001ad 7600          MOV #128, AR2 ; |95| 
+         0001af 80A8 
+     434 0001b1 A902          MOV *SP(#1), AR1 ; |95| 
+     435 0001b3 1298          CMPU AR1 >= AR2, TC1 ; |95| 
+         0001b5 A4   
+     436 0001b6 0464          BCC $C$L5,TC1 ; |95| 
+         0001b8 1A   
+     437                                                      ; branchcc occurs ; |95| 
+     438 0001b9       $C$L4:    
+     439 0001b9       $C$DW$L$_oled_test$7$B:
+     440                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 97,column 6
+     441 0001b9 7600          MOV #64, T0 ; |97| 
+         0001bb 4048 
+     442              $C$DW$39        .dwtag  DW_TAG_TI_branch
+     443                      .dwattr $C$DW$39, DW_AT_low_pc(0x00)
+     444                      .dwattr $C$DW$39, DW_AT_name("_EZDSP5535_OSD9616_send")
+     445                      .dwattr $C$DW$39, DW_AT_TI_call
+     446              
+     447 0001bd 6C00          CALL #_EZDSP5535_OSD9616_send ; |97| 
+         0001bf 0000!
+     448 0001c1 3D05  ||      MOV #0, T1
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   11
+
+     449              
+     450                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |97| 
+     451                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 95,column 1
+     452 0001c3 F702          ADD #1, *SP(#1) ; |95| 
+         0001c5 0001 
+     453                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 95,column 1
+     454 0001c7 7600          MOV #128, AR2 ; |95| 
+         0001c9 80A8 
+     455 0001cb A902          MOV *SP(#1), AR1 ; |95| 
+     456 0001cd 1294          CMPU AR1 < AR2, TC1 ; |95| 
+         0001cf A4   
+     457 0001d0 0464          BCC $C$L4,TC1 ; |95| 
+         0001d2 E6   
+     458                                                      ; branchcc occurs ; |95| 
+     459 0001d3       $C$DW$L$_oled_test$7$E:
+     460 0001d3       $C$L5:    
+     461                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 100,column 
+     462 0001d3 3C04          MOV #0, T0
+     463              $C$DW$40        .dwtag  DW_TAG_TI_branch
+     464                      .dwattr $C$DW$40, DW_AT_low_pc(0x00)
+     465                      .dwattr $C$DW$40, DW_AT_name("_EZDSP5535_OSD9616_send")
+     466                      .dwattr $C$DW$40, DW_AT_TI_call
+     467              
+     468 0001d5 6C00          CALL #_EZDSP5535_OSD9616_send ; |100| 
+         0001d7 0000!
+     469 0001d9 3D05  ||      MOV #0, T1
+     470              
+     471                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |100| 
+     472                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 101,column 
+     473 0001db 7600          MOV #16, T1 ; |101| 
+         0001dd 1058 
+     474              $C$DW$41        .dwtag  DW_TAG_TI_branch
+     475                      .dwattr $C$DW$41, DW_AT_low_pc(0x00)
+     476                      .dwattr $C$DW$41, DW_AT_name("_EZDSP5535_OSD9616_send")
+     477                      .dwattr $C$DW$41, DW_AT_TI_call
+     478              
+     479 0001df 6C00          CALL #_EZDSP5535_OSD9616_send ; |101| 
+         0001e1 0000!
+     480 0001e3 3D04  ||      MOV #0, T0
+     481              
+     482                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |101| 
+     483                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 102,column 
+     484 0001e5 7600          MOV #177, T1 ; |102| 
+         0001e7 B158 
+     485              $C$DW$42        .dwtag  DW_TAG_TI_branch
+     486                      .dwattr $C$DW$42, DW_AT_low_pc(0x00)
+     487                      .dwattr $C$DW$42, DW_AT_name("_EZDSP5535_OSD9616_send")
+     488                      .dwattr $C$DW$42, DW_AT_TI_call
+     489              
+     490 0001e9 6C00          CALL #_EZDSP5535_OSD9616_send ; |102| 
+         0001eb 0000!
+     491 0001ed 3D04  ||      MOV #0, T0
+     492              
+     493                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |102| 
+     494                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 103,column 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   12
+
+     495 0001ef E602          MOV #0, *SP(#1) ; |103| 
+         0001f1 00   
+     496                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 103,column 
+     497 0001f2 7600          MOV #128, AR2 ; |103| 
+         0001f4 80A8 
+     498 0001f6 A902          MOV *SP(#1), AR1 ; |103| 
+     499 0001f8 1298          CMPU AR1 >= AR2, TC1 ; |103| 
+         0001fa A4   
+     500 0001fb 0464          BCC $C$L7,TC1 ; |103| 
+         0001fd 1A   
+     501                                                      ; branchcc occurs ; |103| 
+     502 0001fe       $C$L6:    
+     503 0001fe       $C$DW$L$_oled_test$9$B:
+     504                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 105,column 
+     505 0001fe 7600          MOV #64, T0 ; |105| 
+         000200 4048 
+     506              $C$DW$43        .dwtag  DW_TAG_TI_branch
+     507                      .dwattr $C$DW$43, DW_AT_low_pc(0x00)
+     508                      .dwattr $C$DW$43, DW_AT_name("_EZDSP5535_OSD9616_send")
+     509                      .dwattr $C$DW$43, DW_AT_TI_call
+     510              
+     511 000202 6C00          CALL #_EZDSP5535_OSD9616_send ; |105| 
+         000204 0000!
+     512 000206 3D05  ||      MOV #0, T1
+     513              
+     514                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |105| 
+     515                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 103,column 
+     516 000208 F702          ADD #1, *SP(#1) ; |103| 
+         00020a 0001 
+     517                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 103,column 
+     518 00020c 7600          MOV #128, AR2 ; |103| 
+         00020e 80A8 
+     519 000210 A902          MOV *SP(#1), AR1 ; |103| 
+     520 000212 1294          CMPU AR1 < AR2, TC1 ; |103| 
+         000214 A4   
+     521 000215 0464          BCC $C$L6,TC1 ; |103| 
+         000217 E6   
+     522                                                      ; branchcc occurs ; |103| 
+     523 000218       $C$DW$L$_oled_test$9$E:
+     524 000218       $C$L7:    
+     525                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 108,column 
+     526 000218 3C04          MOV #0, T0
+     527              $C$DW$44        .dwtag  DW_TAG_TI_branch
+     528                      .dwattr $C$DW$44, DW_AT_low_pc(0x00)
+     529                      .dwattr $C$DW$44, DW_AT_name("_EZDSP5535_OSD9616_send")
+     530                      .dwattr $C$DW$44, DW_AT_TI_call
+     531              
+     532 00021a 6C00          CALL #_EZDSP5535_OSD9616_send ; |108| 
+         00021c 0000!
+     533 00021e 3D05  ||      MOV #0, T1
+     534              
+     535                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |108| 
+     536                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 109,column 
+     537 000220 7600          MOV #16, T1 ; |109| 
+         000222 1058 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   13
+
+     538              $C$DW$45        .dwtag  DW_TAG_TI_branch
+     539                      .dwattr $C$DW$45, DW_AT_low_pc(0x00)
+     540                      .dwattr $C$DW$45, DW_AT_name("_EZDSP5535_OSD9616_send")
+     541                      .dwattr $C$DW$45, DW_AT_TI_call
+     542              
+     543 000224 6C00          CALL #_EZDSP5535_OSD9616_send ; |109| 
+         000226 0000!
+     544 000228 3D04  ||      MOV #0, T0
+     545              
+     546                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |109| 
+     547                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 110,column 
+     548 00022a 7600          MOV #176, T1 ; |110| 
+         00022c B058 
+     549              $C$DW$46        .dwtag  DW_TAG_TI_branch
+     550                      .dwattr $C$DW$46, DW_AT_low_pc(0x00)
+     551                      .dwattr $C$DW$46, DW_AT_name("_EZDSP5535_OSD9616_send")
+     552                      .dwattr $C$DW$46, DW_AT_TI_call
+     553              
+     554 00022e 6C00          CALL #_EZDSP5535_OSD9616_send ; |110| 
+         000230 0000!
+     555 000232 3D04  ||      MOV #0, T0
+     556              
+     557                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |110| 
+     558                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 112,column 
+     559 000234 0605          B $C$L38  ; |112| 
+         000236 A5   
+     560                                                      ; branch occurs ; |112| 
+     561 000237       $C$L8:    
+     562                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 115,column 
+     563 000237 E602          MOV #0, *SP(#1) ; |115| 
+         000239 00   
+     564                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 115,column 
+     565              
+     566 00023a A902          MOV *SP(#1), AR1 ; |115| 
+     567 00023c 3DFA  ||      MOV #15, AR2
+     568              
+     569 00023e 1298          CMPU AR1 >= AR2, TC1 ; |115| 
+         000240 A4   
+     570 000241 0464          BCC $C$L10,TC1 ; |115| 
+         000243 18   
+     571                                                      ; branchcc occurs ; |115| 
+     572 000244       $C$L9:    
+     573 000244       $C$DW$L$_oled_test$13$B:
+     574                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 117,column 
+     575 000244 7600          MOV #64, T0 ; |117| 
+         000246 4048 
+     576              $C$DW$47        .dwtag  DW_TAG_TI_branch
+     577                      .dwattr $C$DW$47, DW_AT_low_pc(0x00)
+     578                      .dwattr $C$DW$47, DW_AT_name("_EZDSP5535_OSD9616_send")
+     579                      .dwattr $C$DW$47, DW_AT_TI_call
+     580              
+     581 000248 6C00          CALL #_EZDSP5535_OSD9616_send ; |117| 
+         00024a 0000!
+     582 00024c 3D05  ||      MOV #0, T1
+     583              
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   14
+
+     584                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |117| 
+     585                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 115,column 
+     586 00024e F702          ADD #1, *SP(#1) ; |115| 
+         000250 0001 
+     587                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 115,column 
+     588              
+     589 000252 A902          MOV *SP(#1), AR1 ; |115| 
+     590 000254 3DFA  ||      MOV #15, AR2
+     591              
+     592 000256 1294          CMPU AR1 < AR2, TC1 ; |115| 
+         000258 A4   
+     593 000259 0464          BCC $C$L9,TC1 ; |115| 
+         00025b E8   
+     594                                                      ; branchcc occurs ; |115| 
+     595 00025c       $C$DW$L$_oled_test$13$E:
+     596 00025c       $C$L10:    
+     597                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 119,column 
+     598 00025c 7600          MOV #127, T1 ; |119| 
+         00025e 7F58 
+     599              
+     600 000260 3C14          MOV #1, T0
+     601 000262 3D18  ||      MOV #1, AR0
+     602              
+     603              $C$DW$48        .dwtag  DW_TAG_TI_branch
+     604                      .dwattr $C$DW$48, DW_AT_low_pc(0x00)
+     605                      .dwattr $C$DW$48, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     606                      .dwattr $C$DW$48, DW_AT_TI_call
+     607              
+     608 000264 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |119| 
+         000266 0000!
+     609 000268 3D19  ||      MOV #1, AR1
+     610              
+     611                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |119| 
+     612                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 120,column 
+     613 00026a 7600          MOV #38, AR1 ; |120| 
+         00026c 2698 
+     614 00026e 7600          MOV #73, AR0 ; |120| 
+         000270 4988 
+     615 000272 7600          MOV #73, T1 ; |120| 
+         000274 4958 
+     616 000276 7600          MOV #50, T0 ; |120| 
+         000278 3248 
+     617              $C$DW$49        .dwtag  DW_TAG_TI_branch
+     618                      .dwattr $C$DW$49, DW_AT_low_pc(0x00)
+     619                      .dwattr $C$DW$49, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     620                      .dwattr $C$DW$49, DW_AT_TI_call
+     621 00027a 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |120| 
+         00027c 0000!
+     622                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |120| 
+     623                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 121,column 
+     624 00027e 7600          MOV #127, AR1 ; |121| 
+         000280 7F98 
+     625 000282 7600          MOV #73, AR0 ; |121| 
+         000284 4988 
+     626 000286 7600          MOV #73, T1 ; |121| 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   15
+
+         000288 4958 
+     627 00028a 7600          MOV #65, T0 ; |121| 
+         00028c 4148 
+     628              $C$DW$50        .dwtag  DW_TAG_TI_branch
+     629                      .dwattr $C$DW$50, DW_AT_low_pc(0x00)
+     630                      .dwattr $C$DW$50, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     631                      .dwattr $C$DW$50, DW_AT_TI_call
+     632 00028e 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |121| 
+         000290 0000!
+     633                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |121| 
+     634                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 122,column 
+     635 000292 7600          MOV #127, T1 ; |122| 
+         000294 7F58 
+     636              
+     637 000296 3C14          MOV #1, T0
+     638 000298 3D18  ||      MOV #1, AR0
+     639              
+     640              $C$DW$51        .dwtag  DW_TAG_TI_branch
+     641                      .dwattr $C$DW$51, DW_AT_low_pc(0x00)
+     642                      .dwattr $C$DW$51, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     643                      .dwattr $C$DW$51, DW_AT_TI_call
+     644              
+     645 00029a 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |122| 
+         00029c 0000!
+     646 00029e 3D19  ||      MOV #1, AR1
+     647              
+     648                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |122| 
+     649                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 123,column 
+     650 0002a0 E602          MOV #0, *SP(#1) ; |123| 
+         0002a2 00   
+     651                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 123,column 
+     652              
+     653 0002a3 A902          MOV *SP(#1), AR1 ; |123| 
+     654 0002a5 3D5A  ||      MOV #5, AR2
+     655              
+     656 0002a7 1298          CMPU AR1 >= AR2, TC1 ; |123| 
+         0002a9 A4   
+     657 0002aa 0464          BCC $C$L12,TC1 ; |123| 
+         0002ac 18   
+     658                                                      ; branchcc occurs ; |123| 
+     659 0002ad       $C$L11:    
+     660 0002ad       $C$DW$L$_oled_test$15$B:
+     661                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 125,column 
+     662 0002ad 7600          MOV #64, T0 ; |125| 
+         0002af 4048 
+     663              $C$DW$52        .dwtag  DW_TAG_TI_branch
+     664                      .dwattr $C$DW$52, DW_AT_low_pc(0x00)
+     665                      .dwattr $C$DW$52, DW_AT_name("_EZDSP5535_OSD9616_send")
+     666                      .dwattr $C$DW$52, DW_AT_TI_call
+     667              
+     668 0002b1 6C00          CALL #_EZDSP5535_OSD9616_send ; |125| 
+         0002b3 0000!
+     669 0002b5 3D05  ||      MOV #0, T1
+     670              
+     671                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |125| 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   16
+
+     672                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 123,column 
+     673 0002b7 F702          ADD #1, *SP(#1) ; |123| 
+         0002b9 0001 
+     674                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 123,column 
+     675              
+     676 0002bb A902          MOV *SP(#1), AR1 ; |123| 
+     677 0002bd 3D5A  ||      MOV #5, AR2
+     678              
+     679 0002bf 1294          CMPU AR1 < AR2, TC1 ; |123| 
+         0002c1 A4   
+     680 0002c2 0464          BCC $C$L11,TC1 ; |123| 
+         0002c4 E8   
+     681                                                      ; branchcc occurs ; |123| 
+     682 0002c5       $C$DW$L$_oled_test$15$E:
+     683 0002c5       $C$L12:    
+     684                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 127,column 
+     685 0002c5 7600          MOV #124, T1 ; |127| 
+         0002c7 7C58 
+     686              
+     687 0002c9 3C14          MOV #1, T0
+     688 0002cb 3D48  ||      MOV #4, AR0
+     689              
+     690              $C$DW$53        .dwtag  DW_TAG_TI_branch
+     691                      .dwattr $C$DW$53, DW_AT_low_pc(0x00)
+     692                      .dwattr $C$DW$53, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     693                      .dwattr $C$DW$53, DW_AT_TI_call
+     694              
+     695 0002cd 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |127| 
+         0002cf 0000!
+     696 0002d1 3D19  ||      MOV #1, AR1
+     697              
+     698                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |127| 
+     699                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 128,column 
+     700 0002d3 7600          MOV #127, AR1 ; |128| 
+         0002d5 7F98 
+     701 0002d7 7600          MOV #25, AR0 ; |128| 
+         0002d9 1988 
+     702 0002db 7600          MOV #41, T1 ; |128| 
+         0002dd 2958 
+     703 0002df 7600          MOV #70, T0 ; |128| 
+         0002e1 4648 
+     704              $C$DW$54        .dwtag  DW_TAG_TI_branch
+     705                      .dwattr $C$DW$54, DW_AT_low_pc(0x00)
+     706                      .dwattr $C$DW$54, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     707                      .dwattr $C$DW$54, DW_AT_TI_call
+     708 0002e3 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |128| 
+         0002e5 0000!
+     709                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |128| 
+     710                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 129,column 
+     711 0002e7 7600          MOV #62, AR1 ; |129| 
+         0002e9 3E98 
+     712 0002eb 7600          MOV #65, AR0 ; |129| 
+         0002ed 4188 
+     713 0002ef 7600          MOV #65, T1 ; |129| 
+         0002f1 4158 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   17
+
+     714 0002f3 7600          MOV #62, T0 ; |129| 
+         0002f5 3E48 
+     715              $C$DW$55        .dwtag  DW_TAG_TI_branch
+     716                      .dwattr $C$DW$55, DW_AT_low_pc(0x00)
+     717                      .dwattr $C$DW$55, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     718                      .dwattr $C$DW$55, DW_AT_TI_call
+     719 0002f7 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |129| 
+         0002f9 0000!
+     720                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |129| 
+     721                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 130,column 
+     722 0002fb 7600          MOV #127, AR1 ; |130| 
+         0002fd 7F98 
+     723              
+     724 0002ff 7600          MOV #127, T0 ; |130| 
+         000301 7F48 
+     725 000303 3D65  ||      MOV #6, T1
+     726              
+     727              $C$DW$56        .dwtag  DW_TAG_TI_branch
+     728                      .dwattr $C$DW$56, DW_AT_low_pc(0x00)
+     729                      .dwattr $C$DW$56, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     730                      .dwattr $C$DW$56, DW_AT_TI_call
+     731              
+     732 000305 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |130| 
+         000307 0000!
+     733 000309 3D68  ||      MOV #6, AR0
+     734              
+     735                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |130| 
+     736                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 131,column 
+     737 00030b 7600          MOV #127, AR1 ; |131| 
+         00030d 7F98 
+     738 00030f 7600          MOV #73, AR0 ; |131| 
+         000311 4988 
+     739 000313 7600          MOV #73, T1 ; |131| 
+         000315 4958 
+     740 000317 7600          MOV #65, T0 ; |131| 
+         000319 4148 
+     741              $C$DW$57        .dwtag  DW_TAG_TI_branch
+     742                      .dwattr $C$DW$57, DW_AT_low_pc(0x00)
+     743                      .dwattr $C$DW$57, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     744                      .dwattr $C$DW$57, DW_AT_TI_call
+     745 00031b 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |131| 
+         00031d 0000!
+     746                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |131| 
+     747                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 132,column 
+     748 00031f 7600          MOV #127, AR1 ; |132| 
+         000321 7F98 
+     749              
+     750 000323 7600          MOV #127, T0 ; |132| 
+         000325 7F48 
+     751 000327 3D65  ||      MOV #6, T1
+     752              
+     753              $C$DW$58        .dwtag  DW_TAG_TI_branch
+     754                      .dwattr $C$DW$58, DW_AT_low_pc(0x00)
+     755                      .dwattr $C$DW$58, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     756                      .dwattr $C$DW$58, DW_AT_TI_call
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   18
+
+     757              
+     758 000329 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |132| 
+         00032b 0000!
+     759 00032d 3D68  ||      MOV #6, AR0
+     760              
+     761                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |132| 
+     762                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 133,column 
+     763 00032f 0604          B $C$L40  ; |133| 
+         000331 E5   
+     764                                                      ; branch occurs ; |133| 
+     765 000332       $C$L13:    
+     766                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 135,column 
+     767 000332 E602          MOV #0, *SP(#1) ; |135| 
+         000334 00   
+     768                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 135,column 
+     769              
+     770 000335 A902          MOV *SP(#1), AR1 ; |135| 
+     771 000337 3DFA  ||      MOV #15, AR2
+     772              
+     773 000339 1298          CMPU AR1 >= AR2, TC1 ; |135| 
+         00033b A4   
+     774 00033c 0464          BCC $C$L15,TC1 ; |135| 
+         00033e 18   
+     775                                                      ; branchcc occurs ; |135| 
+     776 00033f       $C$L14:    
+     777 00033f       $C$DW$L$_oled_test$18$B:
+     778                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 137,column 
+     779 00033f 7600          MOV #64, T0 ; |137| 
+         000341 4048 
+     780              $C$DW$59        .dwtag  DW_TAG_TI_branch
+     781                      .dwattr $C$DW$59, DW_AT_low_pc(0x00)
+     782                      .dwattr $C$DW$59, DW_AT_name("_EZDSP5535_OSD9616_send")
+     783                      .dwattr $C$DW$59, DW_AT_TI_call
+     784              
+     785 000343 6C00          CALL #_EZDSP5535_OSD9616_send ; |137| 
+         000345 0000!
+     786 000347 3D05  ||      MOV #0, T1
+     787              
+     788                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |137| 
+     789                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 135,column 
+     790 000349 F702          ADD #1, *SP(#1) ; |135| 
+         00034b 0001 
+     791                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 135,column 
+     792              
+     793 00034d A902          MOV *SP(#1), AR1 ; |135| 
+     794 00034f 3DFA  ||      MOV #15, AR2
+     795              
+     796 000351 1294          CMPU AR1 < AR2, TC1 ; |135| 
+         000353 A4   
+     797 000354 0464          BCC $C$L14,TC1 ; |135| 
+         000356 E8   
+     798                                                      ; branchcc occurs ; |135| 
+     799 000357       $C$DW$L$_oled_test$18$E:
+     800 000357       $C$L15:    
+     801                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 139,column 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   19
+
+     802 000357 7600          MOV #127, T1 ; |139| 
+         000359 7F58 
+     803              
+     804 00035b 3C14          MOV #1, T0
+     805 00035d 3D18  ||      MOV #1, AR0
+     806              
+     807              $C$DW$60        .dwtag  DW_TAG_TI_branch
+     808                      .dwattr $C$DW$60, DW_AT_low_pc(0x00)
+     809                      .dwattr $C$DW$60, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     810                      .dwattr $C$DW$60, DW_AT_TI_call
+     811              
+     812 00035f 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |139| 
+         000361 0000!
+     813 000363 3D19  ||      MOV #1, AR1
+     814              
+     815                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |139| 
+     816                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 140,column 
+     817 000365 7600          MOV #38, AR1 ; |140| 
+         000367 2698 
+     818 000369 7600          MOV #73, AR0 ; |140| 
+         00036b 4988 
+     819 00036d 7600          MOV #73, T1 ; |140| 
+         00036f 4958 
+     820 000371 7600          MOV #50, T0 ; |140| 
+         000373 3248 
+     821              $C$DW$61        .dwtag  DW_TAG_TI_branch
+     822                      .dwattr $C$DW$61, DW_AT_low_pc(0x00)
+     823                      .dwattr $C$DW$61, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     824                      .dwattr $C$DW$61, DW_AT_TI_call
+     825 000375 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |140| 
+         000377 0000!
+     826                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |140| 
+     827                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 141,column 
+     828 000379 7600          MOV #127, AR1 ; |141| 
+         00037b 7F98 
+     829 00037d 7600          MOV #73, AR0 ; |141| 
+         00037f 4988 
+     830 000381 7600          MOV #73, T1 ; |141| 
+         000383 4958 
+     831 000385 7600          MOV #65, T0 ; |141| 
+         000387 4148 
+     832              $C$DW$62        .dwtag  DW_TAG_TI_branch
+     833                      .dwattr $C$DW$62, DW_AT_low_pc(0x00)
+     834                      .dwattr $C$DW$62, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     835                      .dwattr $C$DW$62, DW_AT_TI_call
+     836 000389 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |141| 
+         00038b 0000!
+     837                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |141| 
+     838                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 142,column 
+     839 00038d 7600          MOV #127, T1 ; |142| 
+         00038f 7F58 
+     840              
+     841 000391 3C14          MOV #1, T0
+     842 000393 3D18  ||      MOV #1, AR0
+     843              
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   20
+
+     844              $C$DW$63        .dwtag  DW_TAG_TI_branch
+     845                      .dwattr $C$DW$63, DW_AT_low_pc(0x00)
+     846                      .dwattr $C$DW$63, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     847                      .dwattr $C$DW$63, DW_AT_TI_call
+     848              
+     849 000395 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |142| 
+         000397 0000!
+     850 000399 3D19  ||      MOV #1, AR1
+     851              
+     852                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |142| 
+     853                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 143,column 
+     854 00039b E602          MOV #0, *SP(#1) ; |143| 
+         00039d 00   
+     855                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 143,column 
+     856              
+     857 00039e A902          MOV *SP(#1), AR1 ; |143| 
+     858 0003a0 3D5A  ||      MOV #5, AR2
+     859              
+     860 0003a2 1298          CMPU AR1 >= AR2, TC1 ; |143| 
+         0003a4 A4   
+     861 0003a5 0464          BCC $C$L17,TC1 ; |143| 
+         0003a7 18   
+     862                                                      ; branchcc occurs ; |143| 
+     863 0003a8       $C$L16:    
+     864 0003a8       $C$DW$L$_oled_test$20$B:
+     865                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 145,column 
+     866 0003a8 7600          MOV #64, T0 ; |145| 
+         0003aa 4048 
+     867              $C$DW$64        .dwtag  DW_TAG_TI_branch
+     868                      .dwattr $C$DW$64, DW_AT_low_pc(0x00)
+     869                      .dwattr $C$DW$64, DW_AT_name("_EZDSP5535_OSD9616_send")
+     870                      .dwattr $C$DW$64, DW_AT_TI_call
+     871              
+     872 0003ac 6C00          CALL #_EZDSP5535_OSD9616_send ; |145| 
+         0003ae 0000!
+     873 0003b0 3D05  ||      MOV #0, T1
+     874              
+     875                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |145| 
+     876                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 143,column 
+     877 0003b2 F702          ADD #1, *SP(#1) ; |143| 
+         0003b4 0001 
+     878                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 143,column 
+     879              
+     880 0003b6 A902          MOV *SP(#1), AR1 ; |143| 
+     881 0003b8 3D5A  ||      MOV #5, AR2
+     882              
+     883 0003ba 1294          CMPU AR1 < AR2, TC1 ; |143| 
+         0003bc A4   
+     884 0003bd 0464          BCC $C$L16,TC1 ; |143| 
+         0003bf E8   
+     885                                                      ; branchcc occurs ; |143| 
+     886 0003c0       $C$DW$L$_oled_test$20$E:
+     887 0003c0       $C$L17:    
+     888                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 147,column 
+     889 0003c0 7600          MOV #127, AR1 ; |147| 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   21
+
+         0003c2 7F98 
+     890              
+     891 0003c4 7600          MOV #127, T0 ; |147| 
+         0003c6 7F48 
+     892 0003c8 3D65  ||      MOV #6, T1
+     893              
+     894              $C$DW$65        .dwtag  DW_TAG_TI_branch
+     895                      .dwattr $C$DW$65, DW_AT_low_pc(0x00)
+     896                      .dwattr $C$DW$65, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     897                      .dwattr $C$DW$65, DW_AT_TI_call
+     898              
+     899 0003ca 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |147| 
+         0003cc 0000!
+     900 0003ce 3D68  ||      MOV #6, AR0
+     901              
+     902                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |147| 
+     903                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 148,column 
+     904 0003d0 7600          MOV #127, AR1 ; |148| 
+         0003d2 7F98 
+     905 0003d4 7600          MOV #73, AR0 ; |148| 
+         0003d6 4988 
+     906 0003d8 7600          MOV #73, T1 ; |148| 
+         0003da 4958 
+     907 0003dc 7600          MOV #65, T0 ; |148| 
+         0003de 4148 
+     908              $C$DW$66        .dwtag  DW_TAG_TI_branch
+     909                      .dwattr $C$DW$66, DW_AT_low_pc(0x00)
+     910                      .dwattr $C$DW$66, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     911                      .dwattr $C$DW$66, DW_AT_TI_call
+     912 0003e0 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |148| 
+         0003e2 0000!
+     913                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |148| 
+     914                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 149,column 
+     915 0003e4 7600          MOV #127, AR1 ; |149| 
+         0003e6 7F98 
+     916              
+     917 0003e8 7600          MOV #127, T0 ; |149| 
+         0003ea 7F48 
+     918 0003ec 3D65  ||      MOV #6, T1
+     919              
+     920              $C$DW$67        .dwtag  DW_TAG_TI_branch
+     921                      .dwattr $C$DW$67, DW_AT_low_pc(0x00)
+     922                      .dwattr $C$DW$67, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     923                      .dwattr $C$DW$67, DW_AT_TI_call
+     924              
+     925 0003ee 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |149| 
+         0003f0 0000!
+     926 0003f2 3D68  ||      MOV #6, AR0
+     927              
+     928                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |149| 
+     929                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 150,column 
+     930 0003f4 7600          MOV #127, T1 ; |150| 
+         0003f6 7F58 
+     931              
+     932 0003f8 3C04          MOV #0, T0
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   22
+
+     933 0003fa 3D08  ||      MOV #0, AR0
+     934              
+     935              $C$DW$68        .dwtag  DW_TAG_TI_branch
+     936                      .dwattr $C$DW$68, DW_AT_low_pc(0x00)
+     937                      .dwattr $C$DW$68, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     938                      .dwattr $C$DW$68, DW_AT_TI_call
+     939              
+     940 0003fc 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |150| 
+         0003fe 0000!
+     941 000400 3D09  ||      MOV #0, AR1
+     942              
+     943                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |150| 
+     944                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 151,column 
+     945 000402 3C95          MOV #9, T1
+     946              
+     947 000408 3D64          MOV #6, T0
+     948 000404 7600  ||      MOV #127, AR1 ; |151| 
+         000406 7F98 
+     949              
+     950              $C$DW$69        .dwtag  DW_TAG_TI_branch
+     951                      .dwattr $C$DW$69, DW_AT_low_pc(0x00)
+     952                      .dwattr $C$DW$69, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     953                      .dwattr $C$DW$69, DW_AT_TI_call
+     954              
+     955 00040a 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |151| 
+         00040c 0000!
+     956 00040e 3D98  ||      MOV #9, AR0
+     957              
+     958                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |151| 
+     959                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 152,column 
+     960 000410 7600          MOV #38, AR1 ; |152| 
+         000412 2698 
+     961 000414 7600          MOV #73, AR0 ; |152| 
+         000416 4988 
+     962 000418 7600          MOV #73, T1 ; |152| 
+         00041a 4958 
+     963 00041c 7600          MOV #50, T0 ; |152| 
+         00041e 3248 
+     964              $C$DW$70        .dwtag  DW_TAG_TI_branch
+     965                      .dwattr $C$DW$70, DW_AT_low_pc(0x00)
+     966                      .dwattr $C$DW$70, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+     967                      .dwattr $C$DW$70, DW_AT_TI_call
+     968 000420 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |152| 
+         000422 0000!
+     969                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |152| 
+     970                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 153,column 
+     971 000424 0603          B $C$L40  ; |153| 
+         000426 F0   
+     972                                                      ; branch occurs ; |153| 
+     973 000427       $C$L18:    
+     974                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 155,column 
+     975 000427 E602          MOV #0, *SP(#1) ; |155| 
+         000429 00   
+     976                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 155,column 
+     977              
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   23
+
+     978 00042a A902          MOV *SP(#1), AR1 ; |155| 
+     979 00042c 3DFA  ||      MOV #15, AR2
+     980              
+     981 00042e 1298          CMPU AR1 >= AR2, TC1 ; |155| 
+         000430 A4   
+     982 000431 0464          BCC $C$L20,TC1 ; |155| 
+         000433 18   
+     983                                                      ; branchcc occurs ; |155| 
+     984 000434       $C$L19:    
+     985 000434       $C$DW$L$_oled_test$23$B:
+     986                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 157,column 
+     987 000434 7600          MOV #64, T0 ; |157| 
+         000436 4048 
+     988              $C$DW$71        .dwtag  DW_TAG_TI_branch
+     989                      .dwattr $C$DW$71, DW_AT_low_pc(0x00)
+     990                      .dwattr $C$DW$71, DW_AT_name("_EZDSP5535_OSD9616_send")
+     991                      .dwattr $C$DW$71, DW_AT_TI_call
+     992              
+     993 000438 6C00          CALL #_EZDSP5535_OSD9616_send ; |157| 
+         00043a 0000!
+     994 00043c 3D05  ||      MOV #0, T1
+     995              
+     996                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |157| 
+     997                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 155,column 
+     998 00043e F702          ADD #1, *SP(#1) ; |155| 
+         000440 0001 
+     999                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 155,column 
+    1000              
+    1001 000442 A902          MOV *SP(#1), AR1 ; |155| 
+    1002 000444 3DFA  ||      MOV #15, AR2
+    1003              
+    1004 000446 1294          CMPU AR1 < AR2, TC1 ; |155| 
+         000448 A4   
+    1005 000449 0464          BCC $C$L19,TC1 ; |155| 
+         00044b E8   
+    1006                                                      ; branchcc occurs ; |155| 
+    1007 00044c       $C$DW$L$_oled_test$23$E:
+    1008 00044c       $C$L20:    
+    1009                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 159,column 
+    1010 00044c 7600          MOV #127, T1 ; |159| 
+         00044e 7F58 
+    1011              
+    1012 000450 3C14          MOV #1, T0
+    1013 000452 3D18  ||      MOV #1, AR0
+    1014              
+    1015              $C$DW$72        .dwtag  DW_TAG_TI_branch
+    1016                      .dwattr $C$DW$72, DW_AT_low_pc(0x00)
+    1017                      .dwattr $C$DW$72, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1018                      .dwattr $C$DW$72, DW_AT_TI_call
+    1019              
+    1020 000454 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |159| 
+         000456 0000!
+    1021 000458 3D19  ||      MOV #1, AR1
+    1022              
+    1023                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |159| 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   24
+
+    1024                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 160,column 
+    1025 00045a 7600          MOV #38, AR1 ; |160| 
+         00045c 2698 
+    1026 00045e 7600          MOV #73, AR0 ; |160| 
+         000460 4988 
+    1027 000462 7600          MOV #73, T1 ; |160| 
+         000464 4958 
+    1028 000466 7600          MOV #50, T0 ; |160| 
+         000468 3248 
+    1029              $C$DW$73        .dwtag  DW_TAG_TI_branch
+    1030                      .dwattr $C$DW$73, DW_AT_low_pc(0x00)
+    1031                      .dwattr $C$DW$73, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1032                      .dwattr $C$DW$73, DW_AT_TI_call
+    1033 00046a 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |160| 
+         00046c 0000!
+    1034                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |160| 
+    1035                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 161,column 
+    1036 00046e 7600          MOV #127, AR1 ; |161| 
+         000470 7F98 
+    1037 000472 7600          MOV #73, AR0 ; |161| 
+         000474 4988 
+    1038 000476 7600          MOV #73, T1 ; |161| 
+         000478 4958 
+    1039 00047a 7600          MOV #65, T0 ; |161| 
+         00047c 4148 
+    1040              $C$DW$74        .dwtag  DW_TAG_TI_branch
+    1041                      .dwattr $C$DW$74, DW_AT_low_pc(0x00)
+    1042                      .dwattr $C$DW$74, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1043                      .dwattr $C$DW$74, DW_AT_TI_call
+    1044 00047e 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |161| 
+         000480 0000!
+    1045                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |161| 
+    1046                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 162,column 
+    1047 000482 7600          MOV #127, T1 ; |162| 
+         000484 7F58 
+    1048              
+    1049 000486 3C14          MOV #1, T0
+    1050 000488 3D18  ||      MOV #1, AR0
+    1051              
+    1052              $C$DW$75        .dwtag  DW_TAG_TI_branch
+    1053                      .dwattr $C$DW$75, DW_AT_low_pc(0x00)
+    1054                      .dwattr $C$DW$75, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1055                      .dwattr $C$DW$75, DW_AT_TI_call
+    1056              
+    1057 00048a 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |162| 
+         00048c 0000!
+    1058 00048e 3D19  ||      MOV #1, AR1
+    1059              
+    1060                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |162| 
+    1061                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 163,column 
+    1062 000490 E602          MOV #0, *SP(#1) ; |163| 
+         000492 00   
+    1063                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 163,column 
+    1064              
+    1065 000493 A902          MOV *SP(#1), AR1 ; |163| 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   25
+
+    1066 000495 3D5A  ||      MOV #5, AR2
+    1067              
+    1068 000497 1298          CMPU AR1 >= AR2, TC1 ; |163| 
+         000499 A4   
+    1069 00049a 0464          BCC $C$L22,TC1 ; |163| 
+         00049c 18   
+    1070                                                      ; branchcc occurs ; |163| 
+    1071 00049d       $C$L21:    
+    1072 00049d       $C$DW$L$_oled_test$25$B:
+    1073                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 165,column 
+    1074 00049d 7600          MOV #64, T0 ; |165| 
+         00049f 4048 
+    1075              $C$DW$76        .dwtag  DW_TAG_TI_branch
+    1076                      .dwattr $C$DW$76, DW_AT_low_pc(0x00)
+    1077                      .dwattr $C$DW$76, DW_AT_name("_EZDSP5535_OSD9616_send")
+    1078                      .dwattr $C$DW$76, DW_AT_TI_call
+    1079              
+    1080 0004a1 6C00          CALL #_EZDSP5535_OSD9616_send ; |165| 
+         0004a3 0000!
+    1081 0004a5 3D05  ||      MOV #0, T1
+    1082              
+    1083                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |165| 
+    1084                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 163,column 
+    1085 0004a7 F702          ADD #1, *SP(#1) ; |163| 
+         0004a9 0001 
+    1086                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 163,column 
+    1087              
+    1088 0004ab A902          MOV *SP(#1), AR1 ; |163| 
+    1089 0004ad 3D5A  ||      MOV #5, AR2
+    1090              
+    1091 0004af 1294          CMPU AR1 < AR2, TC1 ; |163| 
+         0004b1 A4   
+    1092 0004b2 0464          BCC $C$L21,TC1 ; |163| 
+         0004b4 E8   
+    1093                                                      ; branchcc occurs ; |163| 
+    1094 0004b5       $C$DW$L$_oled_test$25$E:
+    1095 0004b5       $C$L22:    
+    1096                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 167,column 
+    1097 0004b5 7600          MOV #62, AR1 ; |167| 
+         0004b7 3E98 
+    1098 0004b9 7600          MOV #65, AR0 ; |167| 
+         0004bb 4188 
+    1099 0004bd 7600          MOV #65, T1 ; |167| 
+         0004bf 4158 
+    1100 0004c1 7600          MOV #62, T0 ; |167| 
+         0004c3 3E48 
+    1101              $C$DW$77        .dwtag  DW_TAG_TI_branch
+    1102                      .dwattr $C$DW$77, DW_AT_low_pc(0x00)
+    1103                      .dwattr $C$DW$77, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1104                      .dwattr $C$DW$77, DW_AT_TI_call
+    1105 0004c5 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |167| 
+         0004c7 0000!
+    1106                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |167| 
+    1107                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 168,column 
+    1108 0004c9 7600          MOV #127, T1 ; |168| 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   26
+
+         0004cb 7F58 
+    1109              
+    1110 0004cd 3C04          MOV #0, T0
+    1111 0004cf 3D08  ||      MOV #0, AR0
+    1112              
+    1113              $C$DW$78        .dwtag  DW_TAG_TI_branch
+    1114                      .dwattr $C$DW$78, DW_AT_low_pc(0x00)
+    1115                      .dwattr $C$DW$78, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1116                      .dwattr $C$DW$78, DW_AT_TI_call
+    1117              
+    1118 0004d1 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |168| 
+         0004d3 0000!
+    1119 0004d5 3D09  ||      MOV #0, AR1
+    1120              
+    1121                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |168| 
+    1122                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 169,column 
+    1123 0004d7 7600          MOV #127, AR1 ; |169| 
+         0004d9 7F98 
+    1124 0004db 7600          MOV #65, AR0 ; |169| 
+         0004dd 4188 
+    1125 0004df 7600          MOV #65, T1 ; |169| 
+         0004e1 4158 
+    1126 0004e3 7600          MOV #62, T0 ; |169| 
+         0004e5 3E48 
+    1127              $C$DW$79        .dwtag  DW_TAG_TI_branch
+    1128                      .dwattr $C$DW$79, DW_AT_low_pc(0x00)
+    1129                      .dwattr $C$DW$79, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1130                      .dwattr $C$DW$79, DW_AT_TI_call
+    1131 0004e7 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |169| 
+         0004e9 0000!
+    1132                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |169| 
+    1133                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 170,column 
+    1134 0004eb 7600          MOV #63, AR1 ; |170| 
+         0004ed 3F98 
+    1135 0004ef 7600          MOV #64, AR0 ; |170| 
+         0004f1 4088 
+    1136 0004f3 7600          MOV #64, T1 ; |170| 
+         0004f5 4058 
+    1137 0004f7 7600          MOV #63, T0 ; |170| 
+         0004f9 3F48 
+    1138              $C$DW$80        .dwtag  DW_TAG_TI_branch
+    1139                      .dwattr $C$DW$80, DW_AT_low_pc(0x00)
+    1140                      .dwattr $C$DW$80, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1141                      .dwattr $C$DW$80, DW_AT_TI_call
+    1142 0004fb 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |170| 
+         0004fd 0000!
+    1143                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |170| 
+    1144                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 171,column 
+    1145 0004ff 7600          MOV #124, AR1 ; |171| 
+         000501 7C98 
+    1146              
+    1147 000503 7600          MOV #124, T0 ; |171| 
+         000505 7C48 
+    1148 000507 3D95  ||      MOV #9, T1
+    1149              
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   27
+
+    1150              $C$DW$81        .dwtag  DW_TAG_TI_branch
+    1151                      .dwattr $C$DW$81, DW_AT_low_pc(0x00)
+    1152                      .dwattr $C$DW$81, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1153                      .dwattr $C$DW$81, DW_AT_TI_call
+    1154              
+    1155 000509 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |171| 
+         00050b 0000!
+    1156 00050d 3DA8  ||      MOV #10, AR0
+    1157              
+    1158                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |171| 
+    1159                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 172,column 
+    1160 00050f 0603          B $C$L40  ; |172| 
+         000511 05   
+    1161                                                      ; branch occurs ; |172| 
+    1162 000512       $C$L23:    
+    1163                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 174,column 
+    1164 000512 E602          MOV #0, *SP(#1) ; |174| 
+         000514 00   
+    1165                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 174,column 
+    1166              
+    1167 000515 A902          MOV *SP(#1), AR1 ; |174| 
+    1168 000517 3DFA  ||      MOV #15, AR2
+    1169              
+    1170 000519 1298          CMPU AR1 >= AR2, TC1 ; |174| 
+         00051b A4   
+    1171 00051c 0464          BCC $C$L25,TC1 ; |174| 
+         00051e 18   
+    1172                                                      ; branchcc occurs ; |174| 
+    1173 00051f       $C$L24:    
+    1174 00051f       $C$DW$L$_oled_test$28$B:
+    1175                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 176,column 
+    1176 00051f 7600          MOV #64, T0 ; |176| 
+         000521 4048 
+    1177              $C$DW$82        .dwtag  DW_TAG_TI_branch
+    1178                      .dwattr $C$DW$82, DW_AT_low_pc(0x00)
+    1179                      .dwattr $C$DW$82, DW_AT_name("_EZDSP5535_OSD9616_send")
+    1180                      .dwattr $C$DW$82, DW_AT_TI_call
+    1181              
+    1182 000523 6C00          CALL #_EZDSP5535_OSD9616_send ; |176| 
+         000525 0000!
+    1183 000527 3D05  ||      MOV #0, T1
+    1184              
+    1185                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |176| 
+    1186                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 174,column 
+    1187 000529 F702          ADD #1, *SP(#1) ; |174| 
+         00052b 0001 
+    1188                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 174,column 
+    1189              
+    1190 00052d A902          MOV *SP(#1), AR1 ; |174| 
+    1191 00052f 3DFA  ||      MOV #15, AR2
+    1192              
+    1193 000531 1294          CMPU AR1 < AR2, TC1 ; |174| 
+         000533 A4   
+    1194 000534 0464          BCC $C$L24,TC1 ; |174| 
+         000536 E8   
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   28
+
+    1195                                                      ; branchcc occurs ; |174| 
+    1196 000537       $C$DW$L$_oled_test$28$E:
+    1197 000537       $C$L25:    
+    1198                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 178,column 
+    1199 000537 7600          MOV #127, AR1 ; |178| 
+         000539 7F98 
+    1200 00053b 7600          MOV #73, AR0 ; |178| 
+         00053d 4988 
+    1201 00053f 7600          MOV #73, T1 ; |178| 
+         000541 4958 
+    1202 000543 7600          MOV #65, T0 ; |178| 
+         000545 4148 
+    1203              $C$DW$83        .dwtag  DW_TAG_TI_branch
+    1204                      .dwattr $C$DW$83, DW_AT_low_pc(0x00)
+    1205                      .dwattr $C$DW$83, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1206                      .dwattr $C$DW$83, DW_AT_TI_call
+    1207 000547 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |178| 
+         000549 0000!
+    1208                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |178| 
+    1209                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 179,column 
+    1210 00054b 7600          MOV #127, AR1 ; |179| 
+         00054d 7F98 
+    1211 00054f 7600          MOV #48, T1 ; |179| 
+         000551 3058 
+    1212 000553 7600          MOV #127, T0 ; |179| 
+         000555 7F48 
+    1213              $C$DW$84        .dwtag  DW_TAG_TI_branch
+    1214                      .dwattr $C$DW$84, DW_AT_low_pc(0x00)
+    1215                      .dwattr $C$DW$84, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1216                      .dwattr $C$DW$84, DW_AT_TI_call
+    1217              
+    1218 000557 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |179| 
+         000559 0000!
+    1219 00055b 3DE8  ||      MOV #14, AR0
+    1220              
+    1221                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |179| 
+    1222                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 180,column 
+    1223 00055d 7600          MOV #62, AR1 ; |180| 
+         00055f 3E98 
+    1224 000561 7600          MOV #65, AR0 ; |180| 
+         000563 4188 
+    1225 000565 7600          MOV #65, T1 ; |180| 
+         000567 4158 
+    1226 000569 7600          MOV #62, T0 ; |180| 
+         00056b 3E48 
+    1227              $C$DW$85        .dwtag  DW_TAG_TI_branch
+    1228                      .dwattr $C$DW$85, DW_AT_low_pc(0x00)
+    1229                      .dwattr $C$DW$85, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1230                      .dwattr $C$DW$85, DW_AT_TI_call
+    1231 00056d 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |180| 
+         00056f 0000!
+    1232                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |180| 
+    1233                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 181,column 
+    1234 000571 7600          MOV #127, AR1 ; |181| 
+         000573 7F98 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   29
+
+    1235 000575 7600          MOV #65, AR0 ; |181| 
+         000577 4188 
+    1236 000579 7600          MOV #65, T1 ; |181| 
+         00057b 4158 
+    1237 00057d 7600          MOV #62, T0 ; |181| 
+         00057f 3E48 
+    1238              $C$DW$86        .dwtag  DW_TAG_TI_branch
+    1239                      .dwattr $C$DW$86, DW_AT_low_pc(0x00)
+    1240                      .dwattr $C$DW$86, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1241                      .dwattr $C$DW$86, DW_AT_TI_call
+    1242 000581 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |181| 
+         000583 0000!
+    1243                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |181| 
+    1244                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 182,column 
+    1245 000585 E602          MOV #0, *SP(#1) ; |182| 
+         000587 00   
+    1246                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 182,column 
+    1247              
+    1248 000588 A902          MOV *SP(#1), AR1 ; |182| 
+    1249 00058a 3D5A  ||      MOV #5, AR2
+    1250              
+    1251 00058c 1298          CMPU AR1 >= AR2, TC1 ; |182| 
+         00058e A4   
+    1252 00058f 0464          BCC $C$L27,TC1 ; |182| 
+         000591 18   
+    1253                                                      ; branchcc occurs ; |182| 
+    1254 000592       $C$L26:    
+    1255 000592       $C$DW$L$_oled_test$30$B:
+    1256                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 184,column 
+    1257 000592 7600          MOV #64, T0 ; |184| 
+         000594 4048 
+    1258              $C$DW$87        .dwtag  DW_TAG_TI_branch
+    1259                      .dwattr $C$DW$87, DW_AT_low_pc(0x00)
+    1260                      .dwattr $C$DW$87, DW_AT_name("_EZDSP5535_OSD9616_send")
+    1261                      .dwattr $C$DW$87, DW_AT_TI_call
+    1262              
+    1263 000596 6C00          CALL #_EZDSP5535_OSD9616_send ; |184| 
+         000598 0000!
+    1264 00059a 3D05  ||      MOV #0, T1
+    1265              
+    1266                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |184| 
+    1267                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 182,column 
+    1268 00059c F702          ADD #1, *SP(#1) ; |182| 
+         00059e 0001 
+    1269                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 182,column 
+    1270              
+    1271 0005a0 A902          MOV *SP(#1), AR1 ; |182| 
+    1272 0005a2 3D5A  ||      MOV #5, AR2
+    1273              
+    1274 0005a4 1294          CMPU AR1 < AR2, TC1 ; |182| 
+         0005a6 A4   
+    1275 0005a7 0464          BCC $C$L26,TC1 ; |182| 
+         0005a9 E8   
+    1276                                                      ; branchcc occurs ; |182| 
+    1277 0005aa       $C$DW$L$_oled_test$30$E:
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   30
+
+    1278 0005aa       $C$L27:    
+    1279                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 186,column 
+    1280 0005aa 7600          MOV #38, AR1 ; |186| 
+         0005ac 2698 
+    1281 0005ae 7600          MOV #73, AR0 ; |186| 
+         0005b0 4988 
+    1282 0005b2 7600          MOV #73, T1 ; |186| 
+         0005b4 4958 
+    1283 0005b6 7600          MOV #50, T0 ; |186| 
+         0005b8 3248 
+    1284              $C$DW$88        .dwtag  DW_TAG_TI_branch
+    1285                      .dwattr $C$DW$88, DW_AT_low_pc(0x00)
+    1286                      .dwattr $C$DW$88, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1287                      .dwattr $C$DW$88, DW_AT_TI_call
+    1288 0005ba 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |186| 
+         0005bc 0000!
+    1289                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |186| 
+    1290                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 187,column 
+    1291 0005be 7600          MOV #127, T1 ; |187| 
+         0005c0 7F58 
+    1292              
+    1293 0005c2 3C14          MOV #1, T0
+    1294 0005c4 3D18  ||      MOV #1, AR0
+    1295              
+    1296              $C$DW$89        .dwtag  DW_TAG_TI_branch
+    1297                      .dwattr $C$DW$89, DW_AT_low_pc(0x00)
+    1298                      .dwattr $C$DW$89, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1299                      .dwattr $C$DW$89, DW_AT_TI_call
+    1300              
+    1301 0005c6 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |187| 
+         0005c8 0000!
+    1302 0005ca 3D19  ||      MOV #1, AR1
+    1303              
+    1304                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |187| 
+    1305                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 188,column 
+    1306 0005cc 7600          MOV #38, AR1 ; |188| 
+         0005ce 2698 
+    1307 0005d0 7600          MOV #73, AR0 ; |188| 
+         0005d2 4988 
+    1308 0005d4 7600          MOV #73, T1 ; |188| 
+         0005d6 4958 
+    1309 0005d8 7600          MOV #50, T0 ; |188| 
+         0005da 3248 
+    1310              $C$DW$90        .dwtag  DW_TAG_TI_branch
+    1311                      .dwattr $C$DW$90, DW_AT_low_pc(0x00)
+    1312                      .dwattr $C$DW$90, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1313                      .dwattr $C$DW$90, DW_AT_TI_call
+    1314 0005dc 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |188| 
+         0005de 0000!
+    1315                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |188| 
+    1316                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 189,column 
+    1317 0005e0 7600          MOV #127, AR1 ; |189| 
+         0005e2 7F98 
+    1318 0005e4 7600          MOV #73, AR0 ; |189| 
+         0005e6 4988 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   31
+
+    1319 0005e8 7600          MOV #73, T1 ; |189| 
+         0005ea 4958 
+    1320 0005ec 7600          MOV #65, T0 ; |189| 
+         0005ee 4148 
+    1321              $C$DW$91        .dwtag  DW_TAG_TI_branch
+    1322                      .dwattr $C$DW$91, DW_AT_low_pc(0x00)
+    1323                      .dwattr $C$DW$91, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1324                      .dwattr $C$DW$91, DW_AT_TI_call
+    1325 0005f0 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |189| 
+         0005f2 0000!
+    1326                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |189| 
+    1327                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 190,column 
+    1328 0005f4 7600          MOV #127, T1 ; |190| 
+         0005f6 7F58 
+    1329              
+    1330 0005f8 3C14          MOV #1, T0
+    1331 0005fa 3D18  ||      MOV #1, AR0
+    1332              
+    1333              $C$DW$92        .dwtag  DW_TAG_TI_branch
+    1334                      .dwattr $C$DW$92, DW_AT_low_pc(0x00)
+    1335                      .dwattr $C$DW$92, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1336                      .dwattr $C$DW$92, DW_AT_TI_call
+    1337              
+    1338 0005fc 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |190| 
+         0005fe 0000!
+    1339 000600 3D19  ||      MOV #1, AR1
+    1340              
+    1341                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |190| 
+    1342                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 191,column 
+    1343 000602 0602          B $C$L40  ; |191| 
+         000604 12   
+    1344                                                      ; branch occurs ; |191| 
+    1345 000605       $C$L28:    
+    1346                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 193,column 
+    1347 000605 E602          MOV #0, *SP(#1) ; |193| 
+         000607 00   
+    1348                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 193,column 
+    1349              
+    1350 000608 A902          MOV *SP(#1), AR1 ; |193| 
+    1351 00060a 3DFA  ||      MOV #15, AR2
+    1352              
+    1353 00060c 1298          CMPU AR1 >= AR2, TC1 ; |193| 
+         00060e A4   
+    1354 00060f 0464          BCC $C$L30,TC1 ; |193| 
+         000611 18   
+    1355                                                      ; branchcc occurs ; |193| 
+    1356 000612       $C$L29:    
+    1357 000612       $C$DW$L$_oled_test$33$B:
+    1358                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 195,column 
+    1359 000612 7600          MOV #64, T0 ; |195| 
+         000614 4048 
+    1360              $C$DW$93        .dwtag  DW_TAG_TI_branch
+    1361                      .dwattr $C$DW$93, DW_AT_low_pc(0x00)
+    1362                      .dwattr $C$DW$93, DW_AT_name("_EZDSP5535_OSD9616_send")
+    1363                      .dwattr $C$DW$93, DW_AT_TI_call
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   32
+
+    1364              
+    1365 000616 6C00          CALL #_EZDSP5535_OSD9616_send ; |195| 
+         000618 0000!
+    1366 00061a 3D05  ||      MOV #0, T1
+    1367              
+    1368                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |195| 
+    1369                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 193,column 
+    1370 00061c F702          ADD #1, *SP(#1) ; |193| 
+         00061e 0001 
+    1371                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 193,column 
+    1372              
+    1373 000620 A902          MOV *SP(#1), AR1 ; |193| 
+    1374 000622 3DFA  ||      MOV #15, AR2
+    1375              
+    1376 000624 1294          CMPU AR1 < AR2, TC1 ; |193| 
+         000626 A4   
+    1377 000627 0464          BCC $C$L29,TC1 ; |193| 
+         000629 E8   
+    1378                                                      ; branchcc occurs ; |193| 
+    1379 00062a       $C$DW$L$_oled_test$33$E:
+    1380 00062a       $C$L30:    
+    1381                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 201,column 
+    1382 00062a 7600          MOV #66, AR0 ; |201| 
+         00062c 4288 
+    1383 00062e 7600          MOV #127, T1 ; |201| 
+         000630 7F58 
+    1384 000632 7600          MOV #64, T0 ; |201| 
+         000634 4048 
+    1385              $C$DW$94        .dwtag  DW_TAG_TI_branch
+    1386                      .dwattr $C$DW$94, DW_AT_low_pc(0x00)
+    1387                      .dwattr $C$DW$94, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1388                      .dwattr $C$DW$94, DW_AT_TI_call
+    1389              
+    1390 000636 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |201| 
+         000638 0000!
+    1391 00063a 3D09  ||      MOV #0, AR1
+    1392              
+    1393                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |201| 
+    1394                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 202,column 
+    1395 00063c 7600          MOV #28, T1 ; |202| 
+         00063e 1C58 
+    1396              
+    1397 000640 3C84          MOV #8, T0
+    1398 000642 3D88  ||      MOV #8, AR0
+    1399              
+    1400              $C$DW$95        .dwtag  DW_TAG_TI_branch
+    1401                      .dwattr $C$DW$95, DW_AT_low_pc(0x00)
+    1402                      .dwattr $C$DW$95, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1403                      .dwattr $C$DW$95, DW_AT_TI_call
+    1404              
+    1405 000644 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |202| 
+         000646 0000!
+    1406 000648 3D89  ||      MOV #8, AR1
+    1407              
+    1408                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |202| 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   33
+
+    1409                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 203,column 
+    1410 00064a 7600          MOV #127, AR1 ; |203| 
+         00064c 7F98 
+    1411 00064e 7600          MOV #48, T1 ; |203| 
+         000650 3058 
+    1412 000652 7600          MOV #127, T0 ; |203| 
+         000654 7F48 
+    1413              $C$DW$96        .dwtag  DW_TAG_TI_branch
+    1414                      .dwattr $C$DW$96, DW_AT_low_pc(0x00)
+    1415                      .dwattr $C$DW$96, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1416                      .dwattr $C$DW$96, DW_AT_TI_call
+    1417              
+    1418 000656 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |203| 
+         000658 0000!
+    1419 00065a 3DE8  ||      MOV #14, AR0
+    1420              
+    1421                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |203| 
+    1422                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 204,column 
+    1423 00065c 7600          MOV #63, AR1 ; |204| 
+         00065e 3F98 
+    1424 000660 7600          MOV #64, AR0 ; |204| 
+         000662 4088 
+    1425 000664 7600          MOV #64, T1 ; |204| 
+         000666 4058 
+    1426 000668 7600          MOV #63, T0 ; |204| 
+         00066a 3F48 
+    1427              $C$DW$97        .dwtag  DW_TAG_TI_branch
+    1428                      .dwattr $C$DW$97, DW_AT_low_pc(0x00)
+    1429                      .dwattr $C$DW$97, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1430                      .dwattr $C$DW$97, DW_AT_TI_call
+    1431 00066c 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |204| 
+         00066e 0000!
+    1432                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |204| 
+    1433                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 205,column 
+    1434 000670 7600          MOV #127, AR1 ; |205| 
+         000672 7F98 
+    1435 000674 7600          MOV #25, AR0 ; |205| 
+         000676 1988 
+    1436 000678 7600          MOV #41, T1 ; |205| 
+         00067a 2958 
+    1437 00067c 7600          MOV #70, T0 ; |205| 
+         00067e 4648 
+    1438              $C$DW$98        .dwtag  DW_TAG_TI_branch
+    1439                      .dwattr $C$DW$98, DW_AT_low_pc(0x00)
+    1440                      .dwattr $C$DW$98, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1441                      .dwattr $C$DW$98, DW_AT_TI_call
+    1442 000680 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |205| 
+         000682 0000!
+    1443                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |205| 
+    1444                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 206,column 
+    1445 000684 E602          MOV #0, *SP(#1) ; |206| 
+         000686 00   
+    1446                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 206,column 
+    1447              
+    1448 000687 A902          MOV *SP(#1), AR1 ; |206| 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   34
+
+    1449 000689 3D5A  ||      MOV #5, AR2
+    1450              
+    1451 00068b 1298          CMPU AR1 >= AR2, TC1 ; |206| 
+         00068d A4   
+    1452 00068e 0464          BCC $C$L32,TC1 ; |206| 
+         000690 18   
+    1453                                                      ; branchcc occurs ; |206| 
+    1454 000691       $C$L31:    
+    1455 000691       $C$DW$L$_oled_test$35$B:
+    1456                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 208,column 
+    1457 000691 7600          MOV #64, T0 ; |208| 
+         000693 4048 
+    1458              $C$DW$99        .dwtag  DW_TAG_TI_branch
+    1459                      .dwattr $C$DW$99, DW_AT_low_pc(0x00)
+    1460                      .dwattr $C$DW$99, DW_AT_name("_EZDSP5535_OSD9616_send")
+    1461                      .dwattr $C$DW$99, DW_AT_TI_call
+    1462              
+    1463 000695 6C00          CALL #_EZDSP5535_OSD9616_send ; |208| 
+         000697 0000!
+    1464 000699 3D05  ||      MOV #0, T1
+    1465              
+    1466                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |208| 
+    1467                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 206,column 
+    1468 00069b F702          ADD #1, *SP(#1) ; |206| 
+         00069d 0001 
+    1469                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 206,column 
+    1470              
+    1471 00069f A902          MOV *SP(#1), AR1 ; |206| 
+    1472 0006a1 3D5A  ||      MOV #5, AR2
+    1473              
+    1474 0006a3 1294          CMPU AR1 < AR2, TC1 ; |206| 
+         0006a5 A4   
+    1475 0006a6 0464          BCC $C$L31,TC1 ; |206| 
+         0006a8 E8   
+    1476                                                      ; branchcc occurs ; |206| 
+    1477 0006a9       $C$DW$L$_oled_test$35$E:
+    1478 0006a9       $C$L32:    
+    1479                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 211,column 
+    1480 0006a9 7600          MOV #127, T1 ; |211| 
+         0006ab 7F58 
+    1481              
+    1482 0006ad 3C14          MOV #1, T0
+    1483 0006af 3D18  ||      MOV #1, AR0
+    1484              
+    1485              $C$DW$100       .dwtag  DW_TAG_TI_branch
+    1486                      .dwattr $C$DW$100, DW_AT_low_pc(0x00)
+    1487                      .dwattr $C$DW$100, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1488                      .dwattr $C$DW$100, DW_AT_TI_call
+    1489              
+    1490 0006b1 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |211| 
+         0006b3 0000!
+    1491 0006b5 3D19  ||      MOV #1, AR1
+    1492              
+    1493                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |211| 
+    1494                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 212,column 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   35
+
+    1495 0006b7 7600          MOV #38, AR1 ; |212| 
+         0006b9 2698 
+    1496 0006bb 7600          MOV #73, AR0 ; |212| 
+         0006bd 4988 
+    1497 0006bf 7600          MOV #73, T1 ; |212| 
+         0006c1 4958 
+    1498 0006c3 7600          MOV #50, T0 ; |212| 
+         0006c5 3248 
+    1499              $C$DW$101       .dwtag  DW_TAG_TI_branch
+    1500                      .dwattr $C$DW$101, DW_AT_low_pc(0x00)
+    1501                      .dwattr $C$DW$101, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1502                      .dwattr $C$DW$101, DW_AT_TI_call
+    1503 0006c7 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |212| 
+         0006c9 0000!
+    1504                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |212| 
+    1505                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 213,column 
+    1506 0006cb 7600          MOV #127, AR1 ; |213| 
+         0006cd 7F98 
+    1507 0006cf 7600          MOV #73, AR0 ; |213| 
+         0006d1 4988 
+    1508 0006d3 7600          MOV #73, T1 ; |213| 
+         0006d5 4958 
+    1509 0006d7 7600          MOV #65, T0 ; |213| 
+         0006d9 4148 
+    1510              $C$DW$102       .dwtag  DW_TAG_TI_branch
+    1511                      .dwattr $C$DW$102, DW_AT_low_pc(0x00)
+    1512                      .dwattr $C$DW$102, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1513                      .dwattr $C$DW$102, DW_AT_TI_call
+    1514 0006db 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |213| 
+         0006dd 0000!
+    1515                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |213| 
+    1516                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 214,column 
+    1517 0006df 7600          MOV #127, T1 ; |214| 
+         0006e1 7F58 
+    1518              
+    1519 0006e3 3C14          MOV #1, T0
+    1520 0006e5 3D18  ||      MOV #1, AR0
+    1521              
+    1522              $C$DW$103       .dwtag  DW_TAG_TI_branch
+    1523                      .dwattr $C$DW$103, DW_AT_low_pc(0x00)
+    1524                      .dwattr $C$DW$103, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1525                      .dwattr $C$DW$103, DW_AT_TI_call
+    1526              
+    1527 0006e7 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |214| 
+         0006e9 0000!
+    1528 0006eb 3D19  ||      MOV #1, AR1
+    1529              
+    1530                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |214| 
+    1531                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 215,column 
+    1532 0006ed 0601          B $C$L40  ; |215| 
+         0006ef 27   
+    1533                                                      ; branch occurs ; |215| 
+    1534 0006f0       $C$L33:    
+    1535                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 217,column 
+    1536 0006f0 E602          MOV #0, *SP(#1) ; |217| 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   36
+
+         0006f2 00   
+    1537                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 217,column 
+    1538              
+    1539 0006f3 A902          MOV *SP(#1), AR1 ; |217| 
+    1540 0006f5 3DFA  ||      MOV #15, AR2
+    1541              
+    1542 0006f7 1298          CMPU AR1 >= AR2, TC1 ; |217| 
+         0006f9 A4   
+    1543 0006fa 0464          BCC $C$L35,TC1 ; |217| 
+         0006fc 18   
+    1544                                                      ; branchcc occurs ; |217| 
+    1545 0006fd       $C$L34:    
+    1546 0006fd       $C$DW$L$_oled_test$38$B:
+    1547                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 219,column 
+    1548 0006fd 7600          MOV #64, T0 ; |219| 
+         0006ff 4048 
+    1549              $C$DW$104       .dwtag  DW_TAG_TI_branch
+    1550                      .dwattr $C$DW$104, DW_AT_low_pc(0x00)
+    1551                      .dwattr $C$DW$104, DW_AT_name("_EZDSP5535_OSD9616_send")
+    1552                      .dwattr $C$DW$104, DW_AT_TI_call
+    1553              
+    1554 000701 6C00          CALL #_EZDSP5535_OSD9616_send ; |219| 
+         000703 0000!
+    1555 000705 3D05  ||      MOV #0, T1
+    1556              
+    1557                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |219| 
+    1558                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 217,column 
+    1559 000707 F702          ADD #1, *SP(#1) ; |217| 
+         000709 0001 
+    1560                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 217,column 
+    1561              
+    1562 00070b A902          MOV *SP(#1), AR1 ; |217| 
+    1563 00070d 3DFA  ||      MOV #15, AR2
+    1564              
+    1565 00070f 1294          CMPU AR1 < AR2, TC1 ; |217| 
+         000711 A4   
+    1566 000712 0464          BCC $C$L34,TC1 ; |217| 
+         000714 E8   
+    1567                                                      ; branchcc occurs ; |217| 
+    1568 000715       $C$DW$L$_oled_test$38$E:
+    1569 000715       $C$L35:    
+    1570                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 225,column 
+    1571 000715 7600          MOV #98, AR1 ; |225| 
+         000717 6298 
+    1572 000719 7600          MOV #81, AR0 ; |225| 
+         00071b 5188 
+    1573 00071d 7600          MOV #73, T1 ; |225| 
+         00071f 4958 
+    1574 000721 7600          MOV #71, T0 ; |225| 
+         000723 4748 
+    1575              $C$DW$105       .dwtag  DW_TAG_TI_branch
+    1576                      .dwattr $C$DW$105, DW_AT_low_pc(0x00)
+    1577                      .dwattr $C$DW$105, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1578                      .dwattr $C$DW$105, DW_AT_TI_call
+    1579 000725 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |225| 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   37
+
+         000727 0000!
+    1580                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |225| 
+    1581                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 226,column 
+    1582 000729 7600          MOV #28, T1 ; |226| 
+         00072b 1C58 
+    1583              
+    1584 00072d 3C84          MOV #8, T0
+    1585 00072f 3D88  ||      MOV #8, AR0
+    1586              
+    1587              $C$DW$106       .dwtag  DW_TAG_TI_branch
+    1588                      .dwattr $C$DW$106, DW_AT_low_pc(0x00)
+    1589                      .dwattr $C$DW$106, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1590                      .dwattr $C$DW$106, DW_AT_TI_call
+    1591              
+    1592 000731 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |226| 
+         000733 0000!
+    1593 000735 3D89  ||      MOV #8, AR1
+    1594              
+    1595                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |226| 
+    1596                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 227,column 
+    1597 000737 7600          MOV #127, AR1 ; |227| 
+         000739 7F98 
+    1598 00073b 7600          MOV #48, T1 ; |227| 
+         00073d 3058 
+    1599 00073f 7600          MOV #127, T0 ; |227| 
+         000741 7F48 
+    1600              $C$DW$107       .dwtag  DW_TAG_TI_branch
+    1601                      .dwattr $C$DW$107, DW_AT_low_pc(0x00)
+    1602                      .dwattr $C$DW$107, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1603                      .dwattr $C$DW$107, DW_AT_TI_call
+    1604              
+    1605 000743 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |227| 
+         000745 0000!
+    1606 000747 3DE8  ||      MOV #14, AR0
+    1607              
+    1608                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |227| 
+    1609                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 228,column 
+    1610 000749 7600          MOV #63, AR1 ; |228| 
+         00074b 3F98 
+    1611 00074d 7600          MOV #64, AR0 ; |228| 
+         00074f 4088 
+    1612 000751 7600          MOV #64, T1 ; |228| 
+         000753 4058 
+    1613 000755 7600          MOV #63, T0 ; |228| 
+         000757 3F48 
+    1614              $C$DW$108       .dwtag  DW_TAG_TI_branch
+    1615                      .dwattr $C$DW$108, DW_AT_low_pc(0x00)
+    1616                      .dwattr $C$DW$108, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1617                      .dwattr $C$DW$108, DW_AT_TI_call
+    1618 000759 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |228| 
+         00075b 0000!
+    1619                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |228| 
+    1620                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 229,column 
+    1621 00075d 7600          MOV #127, AR1 ; |229| 
+         00075f 7F98 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   38
+
+    1622 000761 7600          MOV #25, AR0 ; |229| 
+         000763 1988 
+    1623 000765 7600          MOV #41, T1 ; |229| 
+         000767 2958 
+    1624 000769 7600          MOV #70, T0 ; |229| 
+         00076b 4648 
+    1625              $C$DW$109       .dwtag  DW_TAG_TI_branch
+    1626                      .dwattr $C$DW$109, DW_AT_low_pc(0x00)
+    1627                      .dwattr $C$DW$109, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1628                      .dwattr $C$DW$109, DW_AT_TI_call
+    1629 00076d 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |229| 
+         00076f 0000!
+    1630                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |229| 
+    1631                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 230,column 
+    1632 000771 E602          MOV #0, *SP(#1) ; |230| 
+         000773 00   
+    1633                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 230,column 
+    1634              
+    1635 000774 A902          MOV *SP(#1), AR1 ; |230| 
+    1636 000776 3D5A  ||      MOV #5, AR2
+    1637              
+    1638 000778 1298          CMPU AR1 >= AR2, TC1 ; |230| 
+         00077a A4   
+    1639 00077b 0464          BCC $C$L37,TC1 ; |230| 
+         00077d 18   
+    1640                                                      ; branchcc occurs ; |230| 
+    1641 00077e       $C$L36:    
+    1642 00077e       $C$DW$L$_oled_test$40$B:
+    1643                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 232,column 
+    1644 00077e 7600          MOV #64, T0 ; |232| 
+         000780 4048 
+    1645              $C$DW$110       .dwtag  DW_TAG_TI_branch
+    1646                      .dwattr $C$DW$110, DW_AT_low_pc(0x00)
+    1647                      .dwattr $C$DW$110, DW_AT_name("_EZDSP5535_OSD9616_send")
+    1648                      .dwattr $C$DW$110, DW_AT_TI_call
+    1649              
+    1650 000782 6C00          CALL #_EZDSP5535_OSD9616_send ; |232| 
+         000784 0000!
+    1651 000786 3D05  ||      MOV #0, T1
+    1652              
+    1653                                                      ; call occurs [#_EZDSP5535_OSD9616_send] ; |232| 
+    1654                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 230,column 
+    1655 000788 F702          ADD #1, *SP(#1) ; |230| 
+         00078a 0001 
+    1656                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 230,column 
+    1657              
+    1658 00078c A902          MOV *SP(#1), AR1 ; |230| 
+    1659 00078e 3D5A  ||      MOV #5, AR2
+    1660              
+    1661 000790 1294          CMPU AR1 < AR2, TC1 ; |230| 
+         000792 A4   
+    1662 000793 0464          BCC $C$L36,TC1 ; |230| 
+         000795 E8   
+    1663                                                      ; branchcc occurs ; |230| 
+    1664 000796       $C$DW$L$_oled_test$40$E:
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   39
+
+    1665 000796       $C$L37:    
+    1666                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 235,column 
+    1667 000796 7600          MOV #127, T1 ; |235| 
+         000798 7F58 
+    1668              
+    1669 00079a 3C14          MOV #1, T0
+    1670 00079c 3D18  ||      MOV #1, AR0
+    1671              
+    1672              $C$DW$111       .dwtag  DW_TAG_TI_branch
+    1673                      .dwattr $C$DW$111, DW_AT_low_pc(0x00)
+    1674                      .dwattr $C$DW$111, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1675                      .dwattr $C$DW$111, DW_AT_TI_call
+    1676              
+    1677 00079e 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |235| 
+         0007a0 0000!
+    1678 0007a2 3D19  ||      MOV #1, AR1
+    1679              
+    1680                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |235| 
+    1681                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 236,column 
+    1682 0007a4 7600          MOV #38, AR1 ; |236| 
+         0007a6 2698 
+    1683 0007a8 7600          MOV #73, AR0 ; |236| 
+         0007aa 4988 
+    1684 0007ac 7600          MOV #73, T1 ; |236| 
+         0007ae 4958 
+    1685 0007b0 7600          MOV #50, T0 ; |236| 
+         0007b2 3248 
+    1686              $C$DW$112       .dwtag  DW_TAG_TI_branch
+    1687                      .dwattr $C$DW$112, DW_AT_low_pc(0x00)
+    1688                      .dwattr $C$DW$112, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1689                      .dwattr $C$DW$112, DW_AT_TI_call
+    1690 0007b4 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |236| 
+         0007b6 0000!
+    1691                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |236| 
+    1692                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 237,column 
+    1693 0007b8 7600          MOV #127, AR1 ; |237| 
+         0007ba 7F98 
+    1694 0007bc 7600          MOV #73, AR0 ; |237| 
+         0007be 4988 
+    1695 0007c0 7600          MOV #73, T1 ; |237| 
+         0007c2 4958 
+    1696 0007c4 7600          MOV #65, T0 ; |237| 
+         0007c6 4148 
+    1697              $C$DW$113       .dwtag  DW_TAG_TI_branch
+    1698                      .dwattr $C$DW$113, DW_AT_low_pc(0x00)
+    1699                      .dwattr $C$DW$113, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1700                      .dwattr $C$DW$113, DW_AT_TI_call
+    1701 0007c8 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |237| 
+         0007ca 0000!
+    1702                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |237| 
+    1703                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 238,column 
+    1704 0007cc 7600          MOV #127, T1 ; |238| 
+         0007ce 7F58 
+    1705              
+    1706 0007d0 3C14          MOV #1, T0
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   40
+
+    1707 0007d2 3D18  ||      MOV #1, AR0
+    1708              
+    1709              $C$DW$114       .dwtag  DW_TAG_TI_branch
+    1710                      .dwattr $C$DW$114, DW_AT_low_pc(0x00)
+    1711                      .dwattr $C$DW$114, DW_AT_name("_EZDSP5535_OSD9616_printLetter")
+    1712                      .dwattr $C$DW$114, DW_AT_TI_call
+    1713              
+    1714 0007d4 6C00          CALL #_EZDSP5535_OSD9616_printLetter ; |238| 
+         0007d6 0000!
+    1715 0007d8 3D19  ||      MOV #1, AR1
+    1716              
+    1717                                                      ; call occurs [#_EZDSP5535_OSD9616_printLetter] ; |238| 
+    1718                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 239,column 
+    1719 0007da 4A3B          B $C$L40  ; |239| 
+    1720                                                      ; branch occurs ; |239| 
+    1721 0007dc       $C$L38:    
+    1722                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 112,column 
+    1723              
+    1724 0007dc A900          MOV *SP(#0), AR1 ; |112| 
+    1725 0007de 3D3A  ||      MOV #3, AR2
+    1726              
+    1727 0007e0 12A4          CMP AR1 > AR2, TC1 ; |112| 
+         0007e2 90   
+    1728 0007e3 0464          BCC $C$L39,TC1 ; |112| 
+         0007e5 1F   
+    1729                                                      ; branchcc occurs ; |112| 
+    1730 0007e6 1290          CMP AR1 == AR2, TC1 ; |112| 
+         0007e8 A0   
+    1731 0007e9 6D64          BCC $C$L23,TC1 ; |112| 
+         0007eb FD25 
+    1732                                                      ; branchcc occurs ; |112| 
+    1733 0007ed 6D09          BCC $C$L8,AR1 == #0 ; |112| 
+         0007ef FA46 
+    1734                                                      ; branchcc occurs ; |112| 
+    1735 0007f1 3C1A          MOV #1, AR2
+    1736 0007f3 1290          CMP AR1 == AR2, TC1 ; |112| 
+         0007f5 A0   
+    1737 0007f6 6D64          BCC $C$L13,TC1 ; |112| 
+         0007f8 FB38 
+    1738                                                      ; branchcc occurs ; |112| 
+    1739 0007fa 3C2A          MOV #2, AR2
+    1740 0007fc 1290          CMP AR1 == AR2, TC1 ; |112| 
+         0007fe A0   
+    1741 0007ff 6D64          BCC $C$L18,TC1 ; |112| 
+         000801 FC24 
+    1742                                                      ; branchcc occurs ; |112| 
+    1743 000803 4A12          B $C$L40  ; |112| 
+    1744                                                      ; branch occurs ; |112| 
+    1745 000805       $C$L39:    
+    1746 000805 3C5A          MOV #5, AR2
+    1747 000807 1290          CMP AR1 == AR2, TC1 ; |112| 
+         000809 A0   
+    1748 00080a 6D64          BCC $C$L28,TC1 ; |112| 
+         00080c FDF7 
+    1749                                                      ; branchcc occurs ; |112| 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   41
+
+    1750 00080e 3C6A          MOV #6, AR2
+    1751 000810 1290          CMP AR1 == AR2, TC1 ; |112| 
+         000812 A0   
+    1752 000813 6D64          BCC $C$L33,TC1 ; |112| 
+         000815 FED9 
+    1753                                                      ; branchcc occurs ; |112| 
+    1754 000817       $C$L40:    
+    1755                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 242,column 
+    1756 000817 3C04          MOV #0, T0
+    1757 000819       $C$L41:    
+    1758                      .dwpsn  file "../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_test.c",line 243,column 
+    1759 000819 4E03          AADD #3, SP
+    1760                      .dwcfi  cfa_offset, 1
+    1761              $C$DW$115       .dwtag  DW_TAG_TI_branch
+    1762                      .dwattr $C$DW$115, DW_AT_low_pc(0x00)
+    1763                      .dwattr $C$DW$115, DW_AT_TI_return
+    1764 00081b 4804          RET
+    1765                                                      ; return occurs
+    1766              
+    1767              $C$DW$116       .dwtag  DW_TAG_TI_loop
+    1768                      .dwattr $C$DW$116, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\oled_test.asm:$C$L36:1:153631245
+    1769                      .dwattr $C$DW$116, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/ole
+    1770                      .dwattr $C$DW$116, DW_AT_TI_begin_line(0xe6)
+    1771                      .dwattr $C$DW$116, DW_AT_TI_end_line(0xe9)
+    1772              $C$DW$117       .dwtag  DW_TAG_TI_loop_range
+    1773                      .dwattr $C$DW$117, DW_AT_low_pc($C$DW$L$_oled_test$40$B)
+    1774                      .dwattr $C$DW$117, DW_AT_high_pc($C$DW$L$_oled_test$40$E)
+    1775                      .dwendtag $C$DW$116
+    1776              
+    1777              
+    1778              $C$DW$118       .dwtag  DW_TAG_TI_loop
+    1779                      .dwattr $C$DW$118, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\oled_test.asm:$C$L34:1:153631245
+    1780                      .dwattr $C$DW$118, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/ole
+    1781                      .dwattr $C$DW$118, DW_AT_TI_begin_line(0xd9)
+    1782                      .dwattr $C$DW$118, DW_AT_TI_end_line(0xdc)
+    1783              $C$DW$119       .dwtag  DW_TAG_TI_loop_range
+    1784                      .dwattr $C$DW$119, DW_AT_low_pc($C$DW$L$_oled_test$38$B)
+    1785                      .dwattr $C$DW$119, DW_AT_high_pc($C$DW$L$_oled_test$38$E)
+    1786                      .dwendtag $C$DW$118
+    1787              
+    1788              
+    1789              $C$DW$120       .dwtag  DW_TAG_TI_loop
+    1790                      .dwattr $C$DW$120, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\oled_test.asm:$C$L31:1:153631245
+    1791                      .dwattr $C$DW$120, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/ole
+    1792                      .dwattr $C$DW$120, DW_AT_TI_begin_line(0xce)
+    1793                      .dwattr $C$DW$120, DW_AT_TI_end_line(0xd1)
+    1794              $C$DW$121       .dwtag  DW_TAG_TI_loop_range
+    1795                      .dwattr $C$DW$121, DW_AT_low_pc($C$DW$L$_oled_test$35$B)
+    1796                      .dwattr $C$DW$121, DW_AT_high_pc($C$DW$L$_oled_test$35$E)
+    1797                      .dwendtag $C$DW$120
+    1798              
+    1799              
+    1800              $C$DW$122       .dwtag  DW_TAG_TI_loop
+    1801                      .dwattr $C$DW$122, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\oled_test.asm:$C$L29:1:153631245
+    1802                      .dwattr $C$DW$122, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/ole
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   42
+
+    1803                      .dwattr $C$DW$122, DW_AT_TI_begin_line(0xc1)
+    1804                      .dwattr $C$DW$122, DW_AT_TI_end_line(0xc4)
+    1805              $C$DW$123       .dwtag  DW_TAG_TI_loop_range
+    1806                      .dwattr $C$DW$123, DW_AT_low_pc($C$DW$L$_oled_test$33$B)
+    1807                      .dwattr $C$DW$123, DW_AT_high_pc($C$DW$L$_oled_test$33$E)
+    1808                      .dwendtag $C$DW$122
+    1809              
+    1810              
+    1811              $C$DW$124       .dwtag  DW_TAG_TI_loop
+    1812                      .dwattr $C$DW$124, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\oled_test.asm:$C$L26:1:153631245
+    1813                      .dwattr $C$DW$124, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/ole
+    1814                      .dwattr $C$DW$124, DW_AT_TI_begin_line(0xb6)
+    1815                      .dwattr $C$DW$124, DW_AT_TI_end_line(0xb9)
+    1816              $C$DW$125       .dwtag  DW_TAG_TI_loop_range
+    1817                      .dwattr $C$DW$125, DW_AT_low_pc($C$DW$L$_oled_test$30$B)
+    1818                      .dwattr $C$DW$125, DW_AT_high_pc($C$DW$L$_oled_test$30$E)
+    1819                      .dwendtag $C$DW$124
+    1820              
+    1821              
+    1822              $C$DW$126       .dwtag  DW_TAG_TI_loop
+    1823                      .dwattr $C$DW$126, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\oled_test.asm:$C$L24:1:153631245
+    1824                      .dwattr $C$DW$126, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/ole
+    1825                      .dwattr $C$DW$126, DW_AT_TI_begin_line(0xae)
+    1826                      .dwattr $C$DW$126, DW_AT_TI_end_line(0xb1)
+    1827              $C$DW$127       .dwtag  DW_TAG_TI_loop_range
+    1828                      .dwattr $C$DW$127, DW_AT_low_pc($C$DW$L$_oled_test$28$B)
+    1829                      .dwattr $C$DW$127, DW_AT_high_pc($C$DW$L$_oled_test$28$E)
+    1830                      .dwendtag $C$DW$126
+    1831              
+    1832              
+    1833              $C$DW$128       .dwtag  DW_TAG_TI_loop
+    1834                      .dwattr $C$DW$128, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\oled_test.asm:$C$L21:1:153631245
+    1835                      .dwattr $C$DW$128, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/ole
+    1836                      .dwattr $C$DW$128, DW_AT_TI_begin_line(0xa3)
+    1837                      .dwattr $C$DW$128, DW_AT_TI_end_line(0xa6)
+    1838              $C$DW$129       .dwtag  DW_TAG_TI_loop_range
+    1839                      .dwattr $C$DW$129, DW_AT_low_pc($C$DW$L$_oled_test$25$B)
+    1840                      .dwattr $C$DW$129, DW_AT_high_pc($C$DW$L$_oled_test$25$E)
+    1841                      .dwendtag $C$DW$128
+    1842              
+    1843              
+    1844              $C$DW$130       .dwtag  DW_TAG_TI_loop
+    1845                      .dwattr $C$DW$130, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\oled_test.asm:$C$L19:1:153631245
+    1846                      .dwattr $C$DW$130, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/ole
+    1847                      .dwattr $C$DW$130, DW_AT_TI_begin_line(0x9b)
+    1848                      .dwattr $C$DW$130, DW_AT_TI_end_line(0x9e)
+    1849              $C$DW$131       .dwtag  DW_TAG_TI_loop_range
+    1850                      .dwattr $C$DW$131, DW_AT_low_pc($C$DW$L$_oled_test$23$B)
+    1851                      .dwattr $C$DW$131, DW_AT_high_pc($C$DW$L$_oled_test$23$E)
+    1852                      .dwendtag $C$DW$130
+    1853              
+    1854              
+    1855              $C$DW$132       .dwtag  DW_TAG_TI_loop
+    1856                      .dwattr $C$DW$132, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\oled_test.asm:$C$L16:1:153631245
+    1857                      .dwattr $C$DW$132, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/ole
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   43
+
+    1858                      .dwattr $C$DW$132, DW_AT_TI_begin_line(0x8f)
+    1859                      .dwattr $C$DW$132, DW_AT_TI_end_line(0x92)
+    1860              $C$DW$133       .dwtag  DW_TAG_TI_loop_range
+    1861                      .dwattr $C$DW$133, DW_AT_low_pc($C$DW$L$_oled_test$20$B)
+    1862                      .dwattr $C$DW$133, DW_AT_high_pc($C$DW$L$_oled_test$20$E)
+    1863                      .dwendtag $C$DW$132
+    1864              
+    1865              
+    1866              $C$DW$134       .dwtag  DW_TAG_TI_loop
+    1867                      .dwattr $C$DW$134, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\oled_test.asm:$C$L14:1:153631245
+    1868                      .dwattr $C$DW$134, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/ole
+    1869                      .dwattr $C$DW$134, DW_AT_TI_begin_line(0x87)
+    1870                      .dwattr $C$DW$134, DW_AT_TI_end_line(0x8a)
+    1871              $C$DW$135       .dwtag  DW_TAG_TI_loop_range
+    1872                      .dwattr $C$DW$135, DW_AT_low_pc($C$DW$L$_oled_test$18$B)
+    1873                      .dwattr $C$DW$135, DW_AT_high_pc($C$DW$L$_oled_test$18$E)
+    1874                      .dwendtag $C$DW$134
+    1875              
+    1876              
+    1877              $C$DW$136       .dwtag  DW_TAG_TI_loop
+    1878                      .dwattr $C$DW$136, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\oled_test.asm:$C$L11:1:153631245
+    1879                      .dwattr $C$DW$136, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/ole
+    1880                      .dwattr $C$DW$136, DW_AT_TI_begin_line(0x7b)
+    1881                      .dwattr $C$DW$136, DW_AT_TI_end_line(0x7e)
+    1882              $C$DW$137       .dwtag  DW_TAG_TI_loop_range
+    1883                      .dwattr $C$DW$137, DW_AT_low_pc($C$DW$L$_oled_test$15$B)
+    1884                      .dwattr $C$DW$137, DW_AT_high_pc($C$DW$L$_oled_test$15$E)
+    1885                      .dwendtag $C$DW$136
+    1886              
+    1887              
+    1888              $C$DW$138       .dwtag  DW_TAG_TI_loop
+    1889                      .dwattr $C$DW$138, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\oled_test.asm:$C$L9:1:1536312450
+    1890                      .dwattr $C$DW$138, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/ole
+    1891                      .dwattr $C$DW$138, DW_AT_TI_begin_line(0x73)
+    1892                      .dwattr $C$DW$138, DW_AT_TI_end_line(0x76)
+    1893              $C$DW$139       .dwtag  DW_TAG_TI_loop_range
+    1894                      .dwattr $C$DW$139, DW_AT_low_pc($C$DW$L$_oled_test$13$B)
+    1895                      .dwattr $C$DW$139, DW_AT_high_pc($C$DW$L$_oled_test$13$E)
+    1896                      .dwendtag $C$DW$138
+    1897              
+    1898              
+    1899              $C$DW$140       .dwtag  DW_TAG_TI_loop
+    1900                      .dwattr $C$DW$140, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\oled_test.asm:$C$L6:1:1536312450
+    1901                      .dwattr $C$DW$140, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/ole
+    1902                      .dwattr $C$DW$140, DW_AT_TI_begin_line(0x67)
+    1903                      .dwattr $C$DW$140, DW_AT_TI_end_line(0x6a)
+    1904              $C$DW$141       .dwtag  DW_TAG_TI_loop_range
+    1905                      .dwattr $C$DW$141, DW_AT_low_pc($C$DW$L$_oled_test$9$B)
+    1906                      .dwattr $C$DW$141, DW_AT_high_pc($C$DW$L$_oled_test$9$E)
+    1907                      .dwendtag $C$DW$140
+    1908              
+    1909              
+    1910              $C$DW$142       .dwtag  DW_TAG_TI_loop
+    1911                      .dwattr $C$DW$142, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\oled_test.asm:$C$L4:1:1536312450
+    1912                      .dwattr $C$DW$142, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/ole
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   44
+
+    1913                      .dwattr $C$DW$142, DW_AT_TI_begin_line(0x5f)
+    1914                      .dwattr $C$DW$142, DW_AT_TI_end_line(0x62)
+    1915              $C$DW$143       .dwtag  DW_TAG_TI_loop_range
+    1916                      .dwattr $C$DW$143, DW_AT_low_pc($C$DW$L$_oled_test$7$B)
+    1917                      .dwattr $C$DW$143, DW_AT_high_pc($C$DW$L$_oled_test$7$E)
+    1918                      .dwendtag $C$DW$142
+    1919              
+    1920              
+    1921              $C$DW$144       .dwtag  DW_TAG_TI_loop
+    1922                      .dwattr $C$DW$144, DW_AT_name("F:\eZDSP_5535_Files\ccsws2\test\Debug\oled_test.asm:$C$L1:1:1536312450
+    1923                      .dwattr $C$DW$144, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/ole
+    1924                      .dwattr $C$DW$144, DW_AT_TI_begin_line(0x49)
+    1925                      .dwattr $C$DW$144, DW_AT_TI_end_line(0x4c)
+    1926              $C$DW$145       .dwtag  DW_TAG_TI_loop_range
+    1927                      .dwattr $C$DW$145, DW_AT_low_pc($C$DW$L$_oled_test$4$B)
+    1928                      .dwattr $C$DW$145, DW_AT_high_pc($C$DW$L$_oled_test$4$E)
+    1929                      .dwendtag $C$DW$144
+    1930              
+    1931                      .dwattr $C$DW$10, DW_AT_TI_end_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/oled_t
+    1932                      .dwattr $C$DW$10, DW_AT_TI_end_line(0xf3)
+    1933                      .dwattr $C$DW$10, DW_AT_TI_end_column(0x01)
+    1934                      .dwendentry
+    1935                      .dwendtag $C$DW$10
+    1936              
+    1937              ;******************************************************************************
+    1938              ;* UNDEFINED EXTERNAL REFERENCES                                              *
+    1939              ;******************************************************************************
+    1940                      .global _EZDSP5535_OSD9616_send
+    1941                      .global _EZDSP5535_OSD9616_printLetter
+    1942                      .global _EZDSP5535_OSD9616_init
+    1943              
+    1944              ;*******************************************************************************
+    1945              ;* TYPE INFORMATION                                                            *
+    1946              ;*******************************************************************************
+    1947              $C$DW$T$4       .dwtag  DW_TAG_base_type
+    1948                      .dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
+    1949                      .dwattr $C$DW$T$4, DW_AT_name("bool")
+    1950                      .dwattr $C$DW$T$4, DW_AT_byte_size(0x01)
+    1951              $C$DW$T$5       .dwtag  DW_TAG_base_type
+    1952                      .dwattr $C$DW$T$5, DW_AT_encoding(DW_ATE_signed_char)
+    1953                      .dwattr $C$DW$T$5, DW_AT_name("signed char")
+    1954                      .dwattr $C$DW$T$5, DW_AT_byte_size(0x01)
+    1955              $C$DW$T$6       .dwtag  DW_TAG_base_type
+    1956                      .dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
+    1957                      .dwattr $C$DW$T$6, DW_AT_name("unsigned char")
+    1958                      .dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
+    1959              $C$DW$T$7       .dwtag  DW_TAG_base_type
+    1960                      .dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
+    1961                      .dwattr $C$DW$T$7, DW_AT_name("wchar_t")
+    1962                      .dwattr $C$DW$T$7, DW_AT_byte_size(0x01)
+    1963              $C$DW$T$8       .dwtag  DW_TAG_base_type
+    1964                      .dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
+    1965                      .dwattr $C$DW$T$8, DW_AT_name("short")
+    1966                      .dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
+    1967              $C$DW$T$19      .dwtag  DW_TAG_typedef, DW_AT_name("Int16")
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   45
+
+    1968                      .dwattr $C$DW$T$19, DW_AT_type(*$C$DW$T$8)
+    1969                      .dwattr $C$DW$T$19, DW_AT_language(DW_LANG_C)
+    1970              $C$DW$T$9       .dwtag  DW_TAG_base_type
+    1971                      .dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
+    1972                      .dwattr $C$DW$T$9, DW_AT_name("unsigned short")
+    1973                      .dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
+    1974              $C$DW$T$20      .dwtag  DW_TAG_typedef, DW_AT_name("Uint16")
+    1975                      .dwattr $C$DW$T$20, DW_AT_type(*$C$DW$T$9)
+    1976                      .dwattr $C$DW$T$20, DW_AT_language(DW_LANG_C)
+    1977              $C$DW$T$10      .dwtag  DW_TAG_base_type
+    1978                      .dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
+    1979                      .dwattr $C$DW$T$10, DW_AT_name("int")
+    1980                      .dwattr $C$DW$T$10, DW_AT_byte_size(0x01)
+    1981              $C$DW$T$11      .dwtag  DW_TAG_base_type
+    1982                      .dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
+    1983                      .dwattr $C$DW$T$11, DW_AT_name("unsigned int")
+    1984                      .dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
+    1985              $C$DW$T$12      .dwtag  DW_TAG_base_type
+    1986                      .dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
+    1987                      .dwattr $C$DW$T$12, DW_AT_name("long")
+    1988                      .dwattr $C$DW$T$12, DW_AT_byte_size(0x02)
+    1989              $C$DW$T$13      .dwtag  DW_TAG_base_type
+    1990                      .dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
+    1991                      .dwattr $C$DW$T$13, DW_AT_name("unsigned long")
+    1992                      .dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+    1993              $C$DW$T$14      .dwtag  DW_TAG_base_type
+    1994                      .dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
+    1995                      .dwattr $C$DW$T$14, DW_AT_name("long long")
+    1996                      .dwattr $C$DW$T$14, DW_AT_byte_size(0x04)
+    1997                      .dwattr $C$DW$T$14, DW_AT_bit_size(0x28)
+    1998                      .dwattr $C$DW$T$14, DW_AT_bit_offset(0x18)
+    1999              $C$DW$T$15      .dwtag  DW_TAG_base_type
+    2000                      .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
+    2001                      .dwattr $C$DW$T$15, DW_AT_name("unsigned long long")
+    2002                      .dwattr $C$DW$T$15, DW_AT_byte_size(0x04)
+    2003                      .dwattr $C$DW$T$15, DW_AT_bit_size(0x28)
+    2004                      .dwattr $C$DW$T$15, DW_AT_bit_offset(0x18)
+    2005              $C$DW$T$16      .dwtag  DW_TAG_base_type
+    2006                      .dwattr $C$DW$T$16, DW_AT_encoding(DW_ATE_float)
+    2007                      .dwattr $C$DW$T$16, DW_AT_name("float")
+    2008                      .dwattr $C$DW$T$16, DW_AT_byte_size(0x02)
+    2009              $C$DW$T$17      .dwtag  DW_TAG_base_type
+    2010                      .dwattr $C$DW$T$17, DW_AT_encoding(DW_ATE_float)
+    2011                      .dwattr $C$DW$T$17, DW_AT_name("double")
+    2012                      .dwattr $C$DW$T$17, DW_AT_byte_size(0x02)
+    2013              $C$DW$T$18      .dwtag  DW_TAG_base_type
+    2014                      .dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
+    2015                      .dwattr $C$DW$T$18, DW_AT_name("long double")
+    2016                      .dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
+    2017                      .dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
+    2018              
+    2019              ;***************************************************************
+    2020              ;* DWARF CIE ENTRIES                                           *
+    2021              ;***************************************************************
+    2022              
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   46
+
+    2023              $C$DW$CIE       .dwcie 91
+    2024                      .dwcfi  cfa_register, 36
+    2025                      .dwcfi  cfa_offset, 0
+    2026                      .dwcfi  undefined, 0
+    2027                      .dwcfi  undefined, 1
+    2028                      .dwcfi  undefined, 2
+    2029                      .dwcfi  undefined, 3
+    2030                      .dwcfi  undefined, 4
+    2031                      .dwcfi  undefined, 5
+    2032                      .dwcfi  undefined, 6
+    2033                      .dwcfi  undefined, 7
+    2034                      .dwcfi  undefined, 8
+    2035                      .dwcfi  undefined, 9
+    2036                      .dwcfi  undefined, 10
+    2037                      .dwcfi  undefined, 11
+    2038                      .dwcfi  undefined, 12
+    2039                      .dwcfi  undefined, 13
+    2040                      .dwcfi  same_value, 14
+    2041                      .dwcfi  same_value, 15
+    2042                      .dwcfi  undefined, 16
+    2043                      .dwcfi  undefined, 17
+    2044                      .dwcfi  undefined, 18
+    2045                      .dwcfi  undefined, 19
+    2046                      .dwcfi  undefined, 20
+    2047                      .dwcfi  undefined, 21
+    2048                      .dwcfi  undefined, 22
+    2049                      .dwcfi  undefined, 23
+    2050                      .dwcfi  undefined, 24
+    2051                      .dwcfi  undefined, 25
+    2052                      .dwcfi  same_value, 26
+    2053                      .dwcfi  same_value, 27
+    2054                      .dwcfi  same_value, 28
+    2055                      .dwcfi  same_value, 29
+    2056                      .dwcfi  same_value, 30
+    2057                      .dwcfi  same_value, 31
+    2058                      .dwcfi  undefined, 32
+    2059                      .dwcfi  undefined, 33
+    2060                      .dwcfi  undefined, 34
+    2061                      .dwcfi  undefined, 35
+    2062                      .dwcfi  undefined, 36
+    2063                      .dwcfi  undefined, 37
+    2064                      .dwcfi  undefined, 38
+    2065                      .dwcfi  undefined, 39
+    2066                      .dwcfi  undefined, 40
+    2067                      .dwcfi  undefined, 41
+    2068                      .dwcfi  undefined, 42
+    2069                      .dwcfi  undefined, 43
+    2070                      .dwcfi  undefined, 44
+    2071                      .dwcfi  undefined, 45
+    2072                      .dwcfi  undefined, 46
+    2073                      .dwcfi  undefined, 47
+    2074                      .dwcfi  undefined, 48
+    2075                      .dwcfi  undefined, 49
+    2076                      .dwcfi  undefined, 50
+    2077                      .dwcfi  undefined, 51
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   47
+
+    2078                      .dwcfi  undefined, 52
+    2079                      .dwcfi  undefined, 53
+    2080                      .dwcfi  undefined, 54
+    2081                      .dwcfi  undefined, 55
+    2082                      .dwcfi  undefined, 56
+    2083                      .dwcfi  undefined, 57
+    2084                      .dwcfi  undefined, 58
+    2085                      .dwcfi  undefined, 59
+    2086                      .dwcfi  undefined, 60
+    2087                      .dwcfi  undefined, 61
+    2088                      .dwcfi  undefined, 62
+    2089                      .dwcfi  undefined, 63
+    2090                      .dwcfi  undefined, 64
+    2091                      .dwcfi  undefined, 65
+    2092                      .dwcfi  undefined, 66
+    2093                      .dwcfi  undefined, 67
+    2094                      .dwcfi  undefined, 68
+    2095                      .dwcfi  undefined, 69
+    2096                      .dwcfi  undefined, 70
+    2097                      .dwcfi  undefined, 71
+    2098                      .dwcfi  undefined, 72
+    2099                      .dwcfi  undefined, 73
+    2100                      .dwcfi  undefined, 74
+    2101                      .dwcfi  undefined, 75
+    2102                      .dwcfi  undefined, 76
+    2103                      .dwcfi  undefined, 77
+    2104                      .dwcfi  undefined, 78
+    2105                      .dwcfi  undefined, 79
+    2106                      .dwcfi  undefined, 80
+    2107                      .dwcfi  undefined, 81
+    2108                      .dwcfi  undefined, 82
+    2109                      .dwcfi  undefined, 83
+    2110                      .dwcfi  undefined, 84
+    2111                      .dwcfi  undefined, 85
+    2112                      .dwcfi  undefined, 86
+    2113                      .dwcfi  undefined, 87
+    2114                      .dwcfi  undefined, 88
+    2115                      .dwcfi  undefined, 89
+    2116                      .dwcfi  undefined, 90
+    2117                      .dwcfi  undefined, 91
+    2118                      .dwendentry
+    2119              
+    2120              ;***************************************************************
+    2121              ;* DWARF REGISTER MAP                                          *
+    2122              ;***************************************************************
+    2123              
+    2124              $C$DW$146       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    2125                      .dwattr $C$DW$146, DW_AT_location[DW_OP_reg0]
+    2126              $C$DW$147       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    2127                      .dwattr $C$DW$147, DW_AT_location[DW_OP_reg1]
+    2128              $C$DW$148       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0_G")
+    2129                      .dwattr $C$DW$148, DW_AT_location[DW_OP_reg2]
+    2130              $C$DW$149       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    2131                      .dwattr $C$DW$149, DW_AT_location[DW_OP_reg3]
+    2132              $C$DW$150       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   48
+
+    2133                      .dwattr $C$DW$150, DW_AT_location[DW_OP_reg4]
+    2134              $C$DW$151       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1_G")
+    2135                      .dwattr $C$DW$151, DW_AT_location[DW_OP_reg5]
+    2136              $C$DW$152       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    2137                      .dwattr $C$DW$152, DW_AT_location[DW_OP_reg6]
+    2138              $C$DW$153       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    2139                      .dwattr $C$DW$153, DW_AT_location[DW_OP_reg7]
+    2140              $C$DW$154       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2_G")
+    2141                      .dwattr $C$DW$154, DW_AT_location[DW_OP_reg8]
+    2142              $C$DW$155       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    2143                      .dwattr $C$DW$155, DW_AT_location[DW_OP_reg9]
+    2144              $C$DW$156       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    2145                      .dwattr $C$DW$156, DW_AT_location[DW_OP_reg10]
+    2146              $C$DW$157       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3_G")
+    2147                      .dwattr $C$DW$157, DW_AT_location[DW_OP_reg11]
+    2148              $C$DW$158       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T0")
+    2149                      .dwattr $C$DW$158, DW_AT_location[DW_OP_reg12]
+    2150              $C$DW$159       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T1")
+    2151                      .dwattr $C$DW$159, DW_AT_location[DW_OP_reg13]
+    2152              $C$DW$160       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T2")
+    2153                      .dwattr $C$DW$160, DW_AT_location[DW_OP_reg14]
+    2154              $C$DW$161       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T3")
+    2155                      .dwattr $C$DW$161, DW_AT_location[DW_OP_reg15]
+    2156              $C$DW$162       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0")
+    2157                      .dwattr $C$DW$162, DW_AT_location[DW_OP_reg16]
+    2158              $C$DW$163       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR0")
+    2159                      .dwattr $C$DW$163, DW_AT_location[DW_OP_reg17]
+    2160              $C$DW$164       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1")
+    2161                      .dwattr $C$DW$164, DW_AT_location[DW_OP_reg18]
+    2162              $C$DW$165       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR1")
+    2163                      .dwattr $C$DW$165, DW_AT_location[DW_OP_reg19]
+    2164              $C$DW$166       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
+    2165                      .dwattr $C$DW$166, DW_AT_location[DW_OP_reg20]
+    2166              $C$DW$167       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR2")
+    2167                      .dwattr $C$DW$167, DW_AT_location[DW_OP_reg21]
+    2168              $C$DW$168       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3")
+    2169                      .dwattr $C$DW$168, DW_AT_location[DW_OP_reg22]
+    2170              $C$DW$169       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR3")
+    2171                      .dwattr $C$DW$169, DW_AT_location[DW_OP_reg23]
+    2172              $C$DW$170       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4")
+    2173                      .dwattr $C$DW$170, DW_AT_location[DW_OP_reg24]
+    2174              $C$DW$171       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR4")
+    2175                      .dwattr $C$DW$171, DW_AT_location[DW_OP_reg25]
+    2176              $C$DW$172       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5")
+    2177                      .dwattr $C$DW$172, DW_AT_location[DW_OP_reg26]
+    2178              $C$DW$173       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR5")
+    2179                      .dwattr $C$DW$173, DW_AT_location[DW_OP_reg27]
+    2180              $C$DW$174       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6")
+    2181                      .dwattr $C$DW$174, DW_AT_location[DW_OP_reg28]
+    2182              $C$DW$175       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR6")
+    2183                      .dwattr $C$DW$175, DW_AT_location[DW_OP_reg29]
+    2184              $C$DW$176       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7")
+    2185                      .dwattr $C$DW$176, DW_AT_location[DW_OP_reg30]
+    2186              $C$DW$177       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR7")
+    2187                      .dwattr $C$DW$177, DW_AT_location[DW_OP_reg31]
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   49
+
+    2188              $C$DW$178       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FP")
+    2189                      .dwattr $C$DW$178, DW_AT_location[DW_OP_regx 0x20]
+    2190              $C$DW$179       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XFP")
+    2191                      .dwattr $C$DW$179, DW_AT_location[DW_OP_regx 0x21]
+    2192              $C$DW$180       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
+    2193                      .dwattr $C$DW$180, DW_AT_location[DW_OP_regx 0x22]
+    2194              $C$DW$181       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
+    2195                      .dwattr $C$DW$181, DW_AT_location[DW_OP_regx 0x23]
+    2196              $C$DW$182       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XSP")
+    2197                      .dwattr $C$DW$182, DW_AT_location[DW_OP_regx 0x24]
+    2198              $C$DW$183       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BKC")
+    2199                      .dwattr $C$DW$183, DW_AT_location[DW_OP_regx 0x25]
+    2200              $C$DW$184       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK03")
+    2201                      .dwattr $C$DW$184, DW_AT_location[DW_OP_regx 0x26]
+    2202              $C$DW$185       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK47")
+    2203                      .dwattr $C$DW$185, DW_AT_location[DW_OP_regx 0x27]
+    2204              $C$DW$186       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST0")
+    2205                      .dwattr $C$DW$186, DW_AT_location[DW_OP_regx 0x28]
+    2206              $C$DW$187       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST1")
+    2207                      .dwattr $C$DW$187, DW_AT_location[DW_OP_regx 0x29]
+    2208              $C$DW$188       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST2")
+    2209                      .dwattr $C$DW$188, DW_AT_location[DW_OP_regx 0x2a]
+    2210              $C$DW$189       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST3")
+    2211                      .dwattr $C$DW$189, DW_AT_location[DW_OP_regx 0x2b]
+    2212              $C$DW$190       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP")
+    2213                      .dwattr $C$DW$190, DW_AT_location[DW_OP_regx 0x2c]
+    2214              $C$DW$191       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP05")
+    2215                      .dwattr $C$DW$191, DW_AT_location[DW_OP_regx 0x2d]
+    2216              $C$DW$192       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP67")
+    2217                      .dwattr $C$DW$192, DW_AT_location[DW_OP_regx 0x2e]
+    2218              $C$DW$193       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
+    2219                      .dwattr $C$DW$193, DW_AT_location[DW_OP_regx 0x2f]
+    2220              $C$DW$194       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
+    2221                      .dwattr $C$DW$194, DW_AT_location[DW_OP_regx 0x30]
+    2222              $C$DW$195       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0_H")
+    2223                      .dwattr $C$DW$195, DW_AT_location[DW_OP_regx 0x31]
+    2224              $C$DW$196       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0")
+    2225                      .dwattr $C$DW$196, DW_AT_location[DW_OP_regx 0x32]
+    2226              $C$DW$197       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0_H")
+    2227                      .dwattr $C$DW$197, DW_AT_location[DW_OP_regx 0x33]
+    2228              $C$DW$198       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRS1")
+    2229                      .dwattr $C$DW$198, DW_AT_location[DW_OP_regx 0x34]
+    2230              $C$DW$199       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC1")
+    2231                      .dwattr $C$DW$199, DW_AT_location[DW_OP_regx 0x35]
+    2232              $C$DW$200       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1")
+    2233                      .dwattr $C$DW$200, DW_AT_location[DW_OP_regx 0x36]
+    2234              $C$DW$201       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1_H")
+    2235                      .dwattr $C$DW$201, DW_AT_location[DW_OP_regx 0x37]
+    2236              $C$DW$202       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1")
+    2237                      .dwattr $C$DW$202, DW_AT_location[DW_OP_regx 0x38]
+    2238              $C$DW$203       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1_H")
+    2239                      .dwattr $C$DW$203, DW_AT_location[DW_OP_regx 0x39]
+    2240              $C$DW$204       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CSR")
+    2241                      .dwattr $C$DW$204, DW_AT_location[DW_OP_regx 0x3a]
+    2242              $C$DW$205       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RPTC")
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   50
+
+    2243                      .dwattr $C$DW$205, DW_AT_location[DW_OP_regx 0x3b]
+    2244              $C$DW$206       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDP")
+    2245                      .dwattr $C$DW$206, DW_AT_location[DW_OP_regx 0x3c]
+    2246              $C$DW$207       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XCDP")
+    2247                      .dwattr $C$DW$207, DW_AT_location[DW_OP_regx 0x3d]
+    2248              $C$DW$208       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN0")
+    2249                      .dwattr $C$DW$208, DW_AT_location[DW_OP_regx 0x3e]
+    2250              $C$DW$209       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN1")
+    2251                      .dwattr $C$DW$209, DW_AT_location[DW_OP_regx 0x3f]
+    2252              $C$DW$210       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA01")
+    2253                      .dwattr $C$DW$210, DW_AT_location[DW_OP_regx 0x40]
+    2254              $C$DW$211       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA23")
+    2255                      .dwattr $C$DW$211, DW_AT_location[DW_OP_regx 0x41]
+    2256              $C$DW$212       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA45")
+    2257                      .dwattr $C$DW$212, DW_AT_location[DW_OP_regx 0x42]
+    2258              $C$DW$213       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA67")
+    2259                      .dwattr $C$DW$213, DW_AT_location[DW_OP_regx 0x43]
+    2260              $C$DW$214       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSAC")
+    2261                      .dwattr $C$DW$214, DW_AT_location[DW_OP_regx 0x44]
+    2262              $C$DW$215       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CARRY")
+    2263                      .dwattr $C$DW$215, DW_AT_location[DW_OP_regx 0x45]
+    2264              $C$DW$216       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC1")
+    2265                      .dwattr $C$DW$216, DW_AT_location[DW_OP_regx 0x46]
+    2266              $C$DW$217       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC2")
+    2267                      .dwattr $C$DW$217, DW_AT_location[DW_OP_regx 0x47]
+    2268              $C$DW$218       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("M40")
+    2269                      .dwattr $C$DW$218, DW_AT_location[DW_OP_regx 0x48]
+    2270              $C$DW$219       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SXMD")
+    2271                      .dwattr $C$DW$219, DW_AT_location[DW_OP_regx 0x49]
+    2272              $C$DW$220       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ARMS")
+    2273                      .dwattr $C$DW$220, DW_AT_location[DW_OP_regx 0x4a]
+    2274              $C$DW$221       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
+    2275                      .dwattr $C$DW$221, DW_AT_location[DW_OP_regx 0x4b]
+    2276              $C$DW$222       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATA")
+    2277                      .dwattr $C$DW$222, DW_AT_location[DW_OP_regx 0x4c]
+    2278              $C$DW$223       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATD")
+    2279                      .dwattr $C$DW$223, DW_AT_location[DW_OP_regx 0x4d]
+    2280              $C$DW$224       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RDM")
+    2281                      .dwattr $C$DW$224, DW_AT_location[DW_OP_regx 0x4e]
+    2282              $C$DW$225       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FRCT")
+    2283                      .dwattr $C$DW$225, DW_AT_location[DW_OP_regx 0x4f]
+    2284              $C$DW$226       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SMUL")
+    2285                      .dwattr $C$DW$226, DW_AT_location[DW_OP_regx 0x50]
+    2286              $C$DW$227       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("INTM")
+    2287                      .dwattr $C$DW$227, DW_AT_location[DW_OP_regx 0x51]
+    2288              $C$DW$228       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0LC")
+    2289                      .dwattr $C$DW$228, DW_AT_location[DW_OP_regx 0x52]
+    2290              $C$DW$229       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1LC")
+    2291                      .dwattr $C$DW$229, DW_AT_location[DW_OP_regx 0x53]
+    2292              $C$DW$230       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2LC")
+    2293                      .dwattr $C$DW$230, DW_AT_location[DW_OP_regx 0x54]
+    2294              $C$DW$231       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3LC")
+    2295                      .dwattr $C$DW$231, DW_AT_location[DW_OP_regx 0x55]
+    2296              $C$DW$232       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4LC")
+    2297                      .dwattr $C$DW$232, DW_AT_location[DW_OP_regx 0x56]
+TMS320C55x Assembler PC v4.4.1 Fri Sep 07 02:27:30 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+oled_test.asm                                                        PAGE   51
+
+    2298              $C$DW$233       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5LC")
+    2299                      .dwattr $C$DW$233, DW_AT_location[DW_OP_regx 0x57]
+    2300              $C$DW$234       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6LC")
+    2301                      .dwattr $C$DW$234, DW_AT_location[DW_OP_regx 0x58]
+    2302              $C$DW$235       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7LC")
+    2303                      .dwattr $C$DW$235, DW_AT_location[DW_OP_regx 0x59]
+    2304              $C$DW$236       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDPLC")
+    2305                      .dwattr $C$DW$236, DW_AT_location[DW_OP_regx 0x5a]
+    2306              $C$DW$237       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
+    2307                      .dwattr $C$DW$237, DW_AT_location[DW_OP_regx 0x5b]
+    2308                      .dwendtag $C$DW$CU
+    2309              
+    2309              
+    2309              
+
+No Assembly Errors, No Assembly Warnings

@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Fri Aug 19 02:57:28 2016                                 *
+;* Date/Time created: Sat Sep 08 17:42:25 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -27,8 +27,8 @@ $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
-	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug")
-;	F:\ti\ccsv6\tools\compiler\c5500_4.4.1\bin\acp55.exe -@e:\\users\\john\\AppData\\Local\\Temp\\0716012 
+	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug")
+;	F:\TI_CCS_7P4\ccsv7\tools\compiler\c5500_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\0647612 
 	.sect	".text"
 	.align 4
 
@@ -37,11 +37,11 @@ $C$DW$1	.dwtag  DW_TAG_subprogram, DW_AT_name("UART_getDataReadyStatus")
 	.dwattr $C$DW$1, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$1, DW_AT_TI_symbol_name("_UART_getDataReadyStatus")
 	.dwattr $C$DW$1, DW_AT_type(*$C$DW$T$81)
-	.dwattr $C$DW$1, DW_AT_TI_begin_file("F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h")
+	.dwattr $C$DW$1, DW_AT_TI_begin_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h")
 	.dwattr $C$DW$1, DW_AT_TI_begin_line(0x4f)
 	.dwattr $C$DW$1, DW_AT_TI_begin_column(0x07)
 	.dwattr $C$DW$1, DW_AT_TI_max_frame_size(0x04)
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 80,column 1,is_stmt,address _UART_getDataReadyStatus
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 80,column 1,is_stmt,address _UART_getDataReadyStatus
 
 	.dwfde $C$DW$CIE, _UART_getDataReadyStatus
 $C$DW$2	.dwtag  DW_TAG_formal_parameter, DW_AT_name("hUart")
@@ -73,28 +73,28 @@ $C$DW$4	.dwtag  DW_TAG_variable, DW_AT_name("DatRdy")
 	.dwattr $C$DW$4, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$4, DW_AT_location[DW_OP_bregx 0x24 2]
         MOV XAR0, dbl(*SP(#0))
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 81,column 12,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 81,column 12,is_stmt
         MOV #0, *SP(#2) ; |81| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 83,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 83,column 5,is_stmt
         MOV dbl(*SP(#0)), XAR3
         MOV *AR3(short(#1)), AR3 ; |83| 
         AMOV #10, T0
         MOV port(*AR3(T0)), AR1 ; |83| 
         AND #0x0001, AR1, AC0 ; |83| 
         MOV AC0, *SP(#2) ; |83| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 84,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 84,column 5,is_stmt
         MOV AC0, AR1
         BCC $C$L1,AR1 == #0 ; |84| 
                                         ; branchcc occurs ; |84| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 85,column 9,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 85,column 9,is_stmt
         MOV #1, T0
         B $C$L2   ; |85| 
                                         ; branch occurs ; |85| 
 $C$L1:    
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 86,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 86,column 5,is_stmt
         MOV #0, T0
 $C$L2:    
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 87,column 1,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 87,column 1,is_stmt
         AADD #3, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$5	.dwtag  DW_TAG_TI_branch
@@ -102,7 +102,7 @@ $C$DW$5	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$5, DW_AT_TI_return
         RET
                                         ; return occurs
-	.dwattr $C$DW$1, DW_AT_TI_end_file("F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h")
+	.dwattr $C$DW$1, DW_AT_TI_end_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h")
 	.dwattr $C$DW$1, DW_AT_TI_end_line(0x57)
 	.dwattr $C$DW$1, DW_AT_TI_end_column(0x01)
 	.dwendentry
@@ -116,11 +116,11 @@ $C$DW$6	.dwtag  DW_TAG_subprogram, DW_AT_name("UART_getXmitHoldRegEmptyStatus")
 	.dwattr $C$DW$6, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$6, DW_AT_TI_symbol_name("_UART_getXmitHoldRegEmptyStatus")
 	.dwattr $C$DW$6, DW_AT_type(*$C$DW$T$81)
-	.dwattr $C$DW$6, DW_AT_TI_begin_file("F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h")
+	.dwattr $C$DW$6, DW_AT_TI_begin_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h")
 	.dwattr $C$DW$6, DW_AT_TI_begin_line(0x84)
 	.dwattr $C$DW$6, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$6, DW_AT_TI_max_frame_size(0x04)
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 133,column 1,is_stmt,address _UART_getXmitHoldRegEmptyStatus
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 133,column 1,is_stmt,address _UART_getXmitHoldRegEmptyStatus
 
 	.dwfde $C$DW$CIE, _UART_getXmitHoldRegEmptyStatus
 $C$DW$7	.dwtag  DW_TAG_formal_parameter, DW_AT_name("hUart")
@@ -152,9 +152,9 @@ $C$DW$9	.dwtag  DW_TAG_variable, DW_AT_name("XmitRdy")
 	.dwattr $C$DW$9, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$9, DW_AT_location[DW_OP_bregx 0x24 2]
         MOV XAR0, dbl(*SP(#0))
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 134,column 12,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 134,column 12,is_stmt
         MOV #0, *SP(#2) ; |134| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 136,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 136,column 5,is_stmt
         MOV dbl(*SP(#0)), XAR3
         MOV *AR3(short(#1)), AR3 ; |136| 
         AMOV #10, T0
@@ -162,19 +162,19 @@ $C$DW$9	.dwtag  DW_TAG_variable, DW_AT_name("XmitRdy")
         AND #0x0020, AR1, AC0 ; |136| 
         SFTS AC0, #-5, AC0 ; |136| 
         MOV AC0, *SP(#2) ; |136| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 138,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 138,column 5,is_stmt
         MOV AC0, AR1
         BCC $C$L3,AR1 == #0 ; |138| 
                                         ; branchcc occurs ; |138| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 139,column 9,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 139,column 9,is_stmt
         MOV #1, T0
         B $C$L4   ; |139| 
                                         ; branch occurs ; |139| 
 $C$L3:    
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 140,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 140,column 5,is_stmt
         MOV #0, T0
 $C$L4:    
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 141,column 1,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 141,column 1,is_stmt
         AADD #3, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$10	.dwtag  DW_TAG_TI_branch
@@ -182,7 +182,7 @@ $C$DW$10	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$10, DW_AT_TI_return
         RET
                                         ; return occurs
-	.dwattr $C$DW$6, DW_AT_TI_end_file("F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h")
+	.dwattr $C$DW$6, DW_AT_TI_end_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h")
 	.dwattr $C$DW$6, DW_AT_TI_end_line(0x8d)
 	.dwattr $C$DW$6, DW_AT_TI_end_column(0x01)
 	.dwendentry
@@ -196,11 +196,11 @@ $C$DW$11	.dwtag  DW_TAG_subprogram, DW_AT_name("UART_getModeOfTransfer")
 	.dwattr $C$DW$11, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$11, DW_AT_TI_symbol_name("_UART_getModeOfTransfer")
 	.dwattr $C$DW$11, DW_AT_type(*$C$DW$T$46)
-	.dwattr $C$DW$11, DW_AT_TI_begin_file("F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h")
+	.dwattr $C$DW$11, DW_AT_TI_begin_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h")
 	.dwattr $C$DW$11, DW_AT_TI_begin_line(0x128)
 	.dwattr $C$DW$11, DW_AT_TI_begin_column(0x12)
 	.dwattr $C$DW$11, DW_AT_TI_max_frame_size(0x04)
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 297,column 1,is_stmt,address _UART_getModeOfTransfer
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 297,column 1,is_stmt,address _UART_getModeOfTransfer
 
 	.dwfde $C$DW$CIE, _UART_getModeOfTransfer
 $C$DW$12	.dwtag  DW_TAG_formal_parameter, DW_AT_name("hUart")
@@ -232,16 +232,16 @@ $C$DW$14	.dwtag  DW_TAG_variable, DW_AT_name("UtRst")
 	.dwattr $C$DW$14, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$14, DW_AT_location[DW_OP_bregx 0x24 2]
         MOV XAR0, dbl(*SP(#0))
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 298,column 12,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 298,column 12,is_stmt
         MOV #0, *SP(#2) ; |298| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 300,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 300,column 2,is_stmt
         MOV dbl(*SP(#0)), XAR3
         MOV *AR3(short(#1)), AR3 ; |300| 
         MOV port(*AR3(short(#4))), AR1 ; |300| 
         AND #0x00c0, AR1, AC0 ; |300| 
         SFTS AC0, #-6, AC0 ; |300| 
         MOV AC0, *SP(#2) ; |300| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 302,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 302,column 5,is_stmt
 
         MOV AC0, AR1
 ||      MOV #0, AR2
@@ -249,25 +249,25 @@ $C$DW$14	.dwtag  DW_TAG_variable, DW_AT_name("UtRst")
         CMPU AR2 != AR1, TC1 ; |302| 
         BCC $C$L5,TC1 ; |302| 
                                         ; branchcc occurs ; |302| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 304,column 9,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 304,column 9,is_stmt
         MOV #1, T0
         B $C$L7   ; |304| 
                                         ; branch occurs ; |304| 
 $C$L5:    
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 306,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 306,column 5,is_stmt
         MOV #3, AR2
         CMPU AR2 != AR1, TC1 ; |306| 
         BCC $C$L6,TC1 ; |306| 
                                         ; branchcc occurs ; |306| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 308,column 9,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 308,column 9,is_stmt
         MOV #0, T0
         B $C$L7   ; |308| 
                                         ; branch occurs ; |308| 
 $C$L6:    
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 310,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 310,column 5,is_stmt
         MOV #2, T0
 $C$L7:    
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 312,column 1,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h",line 312,column 1,is_stmt
         AADD #3, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$15	.dwtag  DW_TAG_TI_branch
@@ -275,7 +275,7 @@ $C$DW$15	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$15, DW_AT_TI_return
         RET
                                         ; return occurs
-	.dwattr $C$DW$11, DW_AT_TI_end_file("F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h")
+	.dwattr $C$DW$11, DW_AT_TI_end_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_uartAux.h")
 	.dwattr $C$DW$11, DW_AT_TI_end_line(0x138)
 	.dwattr $C$DW$11, DW_AT_TI_end_column(0x01)
 	.dwendentry
@@ -2322,7 +2322,7 @@ $C$DW$94	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$95	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$95, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L77:1:1471600648")
+	.dwattr $C$DW$95, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L77:1:1536453746")
 	.dwattr $C$DW$95, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$95, DW_AT_TI_begin_line(0x38f)
 	.dwattr $C$DW$95, DW_AT_TI_end_line(0x393)
@@ -2334,7 +2334,7 @@ $C$DW$97	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$97, DW_AT_high_pc($C$DW$L$_UART_read$18$E)
 
 $C$DW$98	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$98, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L78:2:1471600648")
+	.dwattr $C$DW$98, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L78:2:1536453746")
 	.dwattr $C$DW$98, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$98, DW_AT_TI_begin_line(0x391)
 	.dwattr $C$DW$98, DW_AT_TI_end_line(0x391)
@@ -2347,7 +2347,7 @@ $C$DW$99	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$100	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$100, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L73:1:1471600648")
+	.dwattr $C$DW$100, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L73:1:1536453746")
 	.dwattr $C$DW$100, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$100, DW_AT_TI_begin_line(0x384)
 	.dwattr $C$DW$100, DW_AT_TI_end_line(0x38a)
@@ -2732,7 +2732,7 @@ $C$DW$122	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$123	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$123, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L96:1:1471600648")
+	.dwattr $C$DW$123, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L96:1:1536453746")
 	.dwattr $C$DW$123, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$123, DW_AT_TI_begin_line(0x40e)
 	.dwattr $C$DW$123, DW_AT_TI_end_line(0x412)
@@ -2743,7 +2743,7 @@ $C$DW$124	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$125	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$125, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L89:1:1471600648")
+	.dwattr $C$DW$125, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L89:1:1536453746")
 	.dwattr $C$DW$125, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$125, DW_AT_TI_begin_line(0x3fa)
 	.dwattr $C$DW$125, DW_AT_TI_end_line(0x400)
@@ -2755,7 +2755,7 @@ $C$DW$127	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$127, DW_AT_high_pc($C$DW$L$_UART_write$18$E)
 
 $C$DW$128	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$128, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L90:2:1471600648")
+	.dwattr $C$DW$128, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L90:2:1536453746")
 	.dwattr $C$DW$128, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$128, DW_AT_TI_begin_line(0x3fc)
 	.dwattr $C$DW$128, DW_AT_TI_end_line(0x3fc)
@@ -2768,7 +2768,7 @@ $C$DW$129	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$130	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$130, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L85:1:1471600648")
+	.dwattr $C$DW$130, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L85:1:1536453746")
 	.dwattr $C$DW$130, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$130, DW_AT_TI_begin_line(0x3ee)
 	.dwattr $C$DW$130, DW_AT_TI_end_line(0x3f5)
@@ -2981,7 +2981,7 @@ $C$DW$146	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$147	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$147, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L105:1:1471600648")
+	.dwattr $C$DW$147, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L105:1:1536453746")
 	.dwattr $C$DW$147, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$147, DW_AT_TI_begin_line(0x467)
 	.dwattr $C$DW$147, DW_AT_TI_end_line(0x467)
@@ -2992,7 +2992,7 @@ $C$DW$148	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$149	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$149, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L101:1:1471600648")
+	.dwattr $C$DW$149, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L101:1:1536453746")
 	.dwattr $C$DW$149, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$149, DW_AT_TI_begin_line(0x460)
 	.dwattr $C$DW$149, DW_AT_TI_end_line(0x460)
@@ -3185,7 +3185,7 @@ $C$DW$163	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$164	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$164, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L114:1:1471600648")
+	.dwattr $C$DW$164, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L114:1:1536453746")
 	.dwattr $C$DW$164, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$164, DW_AT_TI_begin_line(0x4b8)
 	.dwattr $C$DW$164, DW_AT_TI_end_line(0x4b8)
@@ -3196,7 +3196,7 @@ $C$DW$165	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$166	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$166, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L110:1:1471600648")
+	.dwattr $C$DW$166, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L110:1:1536453746")
 	.dwattr $C$DW$166, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$166, DW_AT_TI_begin_line(0x4b1)
 	.dwattr $C$DW$166, DW_AT_TI_end_line(0x4b1)
@@ -3530,7 +3530,7 @@ $C$DW$184	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$185	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$185, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L127:1:1471600648")
+	.dwattr $C$DW$185, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L127:1:1536453746")
 	.dwattr $C$DW$185, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$185, DW_AT_TI_begin_line(0x526)
 	.dwattr $C$DW$185, DW_AT_TI_end_line(0x530)
@@ -3545,7 +3545,7 @@ $C$DW$188	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$188, DW_AT_high_pc($C$DW$L$_UART_fgets$23$E)
 
 $C$DW$189	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$189, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L128:2:1471600648")
+	.dwattr $C$DW$189, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L128:2:1536453746")
 	.dwattr $C$DW$189, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$189, DW_AT_TI_begin_line(0x528)
 	.dwattr $C$DW$189, DW_AT_TI_end_line(0x528)
@@ -3558,7 +3558,7 @@ $C$DW$190	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$191	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$191, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L121:1:1471600648")
+	.dwattr $C$DW$191, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L121:1:1536453746")
 	.dwattr $C$DW$191, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$191, DW_AT_TI_begin_line(0x516)
 	.dwattr $C$DW$191, DW_AT_TI_end_line(0x521)
@@ -3833,7 +3833,7 @@ $C$DW$209	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$210	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$210, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L140:1:1471600648")
+	.dwattr $C$DW$210, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L140:1:1536453746")
 	.dwattr $C$DW$210, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$210, DW_AT_TI_begin_line(0x58e)
 	.dwattr $C$DW$210, DW_AT_TI_end_line(0x593)
@@ -3845,7 +3845,7 @@ $C$DW$212	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$212, DW_AT_high_pc($C$DW$L$_UART_fputs$17$E)
 
 $C$DW$213	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$213, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L141:2:1471600648")
+	.dwattr $C$DW$213, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L141:2:1536453746")
 	.dwattr $C$DW$213, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$213, DW_AT_TI_begin_line(0x590)
 	.dwattr $C$DW$213, DW_AT_TI_end_line(0x590)
@@ -3858,7 +3858,7 @@ $C$DW$214	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$215	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$215, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L136:1:1471600648")
+	.dwattr $C$DW$215, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_uart.asm:$C$L136:1:1536453746")
 	.dwattr $C$DW$215, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_uart.c")
 	.dwattr $C$DW$215, DW_AT_TI_begin_line(0x582)
 	.dwattr $C$DW$215, DW_AT_TI_end_line(0x589)

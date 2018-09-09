@@ -1,58 +1,32 @@
 /*
-    FreeRTOS V6.0.5 - Copyright (C) 2010 Real Time Engineers Ltd.
-
-    ***************************************************************************
-    *                                                                         *
-    * If you are:                                                             *
-    *                                                                         *
-    *    + New to FreeRTOS,                                                   *
-    *    + Wanting to learn FreeRTOS or multitasking in general quickly       *
-    *    + Looking for basic training,                                        *
-    *    + Wanting to improve your FreeRTOS skills and productivity           *
-    *                                                                         *
-    * then take a look at the FreeRTOS eBook                                  *
-    *                                                                         *
-    *        "Using the FreeRTOS Real Time Kernel - a Practical Guide"        *
-    *                  http://www.FreeRTOS.org/Documentation                  *
-    *                                                                         *
-    * A pdf reference manual is also available.  Both are usually delivered   *
-    * to your inbox within 20 minutes to two hours when purchased between 8am *
-    * and 8pm GMT (although please allow up to 24 hours in case of            *
-    * exceptional circumstances).  Thank you for your support!                *
-    *                                                                         *
-    ***************************************************************************
-
-    This file is part of the FreeRTOS distribution.
-
-    FreeRTOS is free software; you can redistribute it and/or modify it under
-    the terms of the GNU General Public License (version 2) as published by the
-    Free Software Foundation AND MODIFIED BY the FreeRTOS exception.
-    ***NOTE*** The exception to the GPL is included to allow you to distribute
-    a combined work that includes FreeRTOS without being obliged to provide the
-    source code for proprietary components outside of the FreeRTOS kernel.
-    FreeRTOS is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-    more details. You should have received a copy of the GNU General Public 
-    License and the FreeRTOS license exception along with FreeRTOS; if not it 
-    can be viewed here: http://www.freertos.org/a00114.html and also obtained 
-    by writing to Richard Barry, contact details for whom are available on the
-    FreeRTOS WEB site.
-
-    1 tab == 4 spaces!
-
-    http://www.FreeRTOS.org - Documentation, latest information, license and
-    contact details.
-
-    http://www.SafeRTOS.com - A version that is certified for use in safety
-    critical systems.
-
-    http://www.OpenRTOS.com - Commercial support, development, porting,
-    licensing and training services.
-*/
+ * FreeRTOS Kernel V10.1.1
+ * Copyright (C) 2018 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * http://www.FreeRTOS.org
+ * http://aws.amazon.com/freertos
+ *
+ * 1 tab == 4 spaces!
+ */
 
 /*
- * This demo file demonstrates how to send data between an ISR and a 
+ * This demo file demonstrates how to send data between an ISR and a
  * co-routine.  A tick hook function is used to periodically pass data between
  * the RTOS tick and a set of 'hook' co-routines.
  *
@@ -60,17 +34,17 @@
  * to wait for a character to be received on a queue from the tick ISR, checks
  * to ensure the character received was that expected, then sends the number
  * back to the tick ISR on a different queue.
- * 
- * The tick ISR checks the numbers received back from the 'hook' co-routines 
+ *
+ * The tick ISR checks the numbers received back from the 'hook' co-routines
  * matches the number previously sent.
  *
  * If at any time a queue function returns unexpectedly, or an incorrect value
- * is received either by the tick hook or a co-routine then an error is 
+ * is received either by the tick hook or a co-routine then an error is
  * latched.
  *
- * This demo relies on each 'hook' co-routine to execute between each 
- * hookTICK_CALLS_BEFORE_POST tick interrupts.  This and the heavy use of 
- * queues from within an interrupt may result in an error being detected on 
+ * This demo relies on each 'hook' co-routine to execute between each
+ * hookTICK_CALLS_BEFORE_POST tick interrupts.  This and the heavy use of
+ * queues from within an interrupt may result in an error being detected on
  * slower targets simply due to timing.
  */
 
@@ -85,7 +59,7 @@
 /* The number of 'hook' co-routines that are to be created. */
 #define hookNUM_HOOK_CO_ROUTINES        ( 4 )
 
-/* The number of times the tick hook should be called before a character is 
+/* The number of times the tick hook should be called before a character is
 posted to the 'hook' co-routines. */
 #define hookTICK_CALLS_BEFORE_POST      ( 500 )
 
@@ -103,12 +77,12 @@ posted to the 'hook' co-routines. */
 /*
  * The co-routine function itself.
  */
-static void prvHookCoRoutine( xCoRoutineHandle xHandle, unsigned portBASE_TYPE uxIndex );
+static void prvHookCoRoutine( CoRoutineHandle_t xHandle, UBaseType_t uxIndex );
 
 
 /*
  * The tick hook function.  This receives a number from each 'hook' co-routine
- * then sends a number to each co-routine.  An error is flagged if a send or 
+ * then sends a number to each co-routine.  An error is flagged if a send or
  * receive fails, or an unexpected number is received.
  */
 void vApplicationTickHook( void );
@@ -118,30 +92,30 @@ void vApplicationTickHook( void );
 /* Queues used to send data FROM a co-routine TO the tick hook function.
 The hook functions received (Rx's) on these queues.  One queue per
 'hook' co-routine. */
-static xQueueHandle xHookRxQueues[ hookNUM_HOOK_CO_ROUTINES ];
+static QueueHandle_t xHookRxQueues[ hookNUM_HOOK_CO_ROUTINES ];
 
 /* Queues used to send data FROM the tick hook TO a co-routine function.
 The hood function transmits (Tx's) on these queues.  One queue per
 'hook' co-routine. */
-static xQueueHandle xHookTxQueues[ hookNUM_HOOK_CO_ROUTINES ];
+static QueueHandle_t xHookTxQueues[ hookNUM_HOOK_CO_ROUTINES ];
 
 /* Set to true if an error is detected at any time. */
-static portBASE_TYPE xCoRoutineErrorDetected = pdFALSE;
+static BaseType_t xCoRoutineErrorDetected = pdFALSE;
 
 /*-----------------------------------------------------------*/
 
 void vStartHookCoRoutines( void )
 {
-unsigned portBASE_TYPE uxIndex, uxValueToPost = 0;
+UBaseType_t uxIndex, uxValueToPost = 0;
 
 	for( uxIndex = 0; uxIndex < hookNUM_HOOK_CO_ROUTINES; uxIndex++ )
 	{
-		/* Create a queue to transmit to and receive from each 'hook' 
+		/* Create a queue to transmit to and receive from each 'hook'
 		co-routine. */
-		xHookRxQueues[ uxIndex ] = xQueueCreate( hookHOOK_QUEUE_LENGTH, sizeof( unsigned portBASE_TYPE ) );
-		xHookTxQueues[ uxIndex ] = xQueueCreate( hookHOOK_QUEUE_LENGTH, sizeof( unsigned portBASE_TYPE ) );
+		xHookRxQueues[ uxIndex ] = xQueueCreate( hookHOOK_QUEUE_LENGTH, sizeof( UBaseType_t ) );
+		xHookTxQueues[ uxIndex ] = xQueueCreate( hookHOOK_QUEUE_LENGTH, sizeof( UBaseType_t ) );
 
-		/* To start things off the tick hook function expects the queue it 
+		/* To start things off the tick hook function expects the queue it
 		uses to receive data to contain a value.  */
 		xQueueSend( xHookRxQueues[ uxIndex ], &uxValueToPost, hookNO_BLOCK_TIME );
 
@@ -151,11 +125,11 @@ unsigned portBASE_TYPE uxIndex, uxValueToPost = 0;
 }
 /*-----------------------------------------------------------*/
 
-static unsigned portBASE_TYPE uxCallCounter = 0, uxNumberToPost = 0;
+static UBaseType_t uxCallCounter = 0, uxNumberToPost = 0;
 void vApplicationTickHook( void )
 {
-unsigned portBASE_TYPE uxReceivedNumber;
-signed portBASE_TYPE xIndex, xCoRoutineWoken;
+UBaseType_t uxReceivedNumber;
+BaseType_t xIndex, xCoRoutineWoken;
 
 	/* Is it time to talk to the 'hook' co-routines again? */
 	uxCallCounter++;
@@ -168,13 +142,13 @@ signed portBASE_TYPE xIndex, xCoRoutineWoken;
 			xCoRoutineWoken = pdFALSE;
 			if( crQUEUE_RECEIVE_FROM_ISR( xHookRxQueues[ xIndex ], &uxReceivedNumber, &xCoRoutineWoken ) != pdPASS )
 			{
-				/* There is no reason why we would not expect the queue to 
+				/* There is no reason why we would not expect the queue to
 				contain a value. */
 				xCoRoutineErrorDetected = pdTRUE;
 			}
 			else
 			{
-				/* Each queue used to receive data from the 'hook' co-routines 
+				/* Each queue used to receive data from the 'hook' co-routines
 				should contain the number we last posted to the same co-routine. */
 				if( uxReceivedNumber != uxNumberToPost )
 				{
@@ -196,7 +170,7 @@ signed portBASE_TYPE xIndex, xCoRoutineWoken;
 		{
 			if( crQUEUE_SEND_FROM_ISR( xHookTxQueues[ xIndex ], &uxNumberToPost, pdFALSE ) != pdTRUE )
 			{
-				/* Posting to the queue should have woken the co-routine that 
+				/* Posting to the queue should have woken the co-routine that
 				was blocked on the queue. */
 				xCoRoutineErrorDetected = pdTRUE;
 			}
@@ -205,10 +179,10 @@ signed portBASE_TYPE xIndex, xCoRoutineWoken;
 }
 /*-----------------------------------------------------------*/
 
-static void prvHookCoRoutine( xCoRoutineHandle xHandle, unsigned portBASE_TYPE uxIndex )
+static void prvHookCoRoutine( CoRoutineHandle_t xHandle, UBaseType_t uxIndex )
 {
-static unsigned portBASE_TYPE uxReceivedValue[ hookNUM_HOOK_CO_ROUTINES ];
-portBASE_TYPE xResult;
+static UBaseType_t uxReceivedValue[ hookNUM_HOOK_CO_ROUTINES ];
+BaseType_t xResult;
 
 	/* Each co-routine MUST start with a call to crSTART(); */
 	crSTART( xHandle );
@@ -231,7 +205,7 @@ portBASE_TYPE xResult;
 		crQUEUE_SEND( xHandle, xHookRxQueues[ uxIndex ], &( uxReceivedValue[ uxIndex ] ), hookNO_BLOCK_TIME, &xResult );
 		if( xResult != pdPASS )
 		{
-			/* There is no reason why we should not have been able to post to 
+			/* There is no reason why we should not have been able to post to
 			the queue. */
 			xCoRoutineErrorDetected = pdTRUE;
 		}
@@ -242,7 +216,7 @@ portBASE_TYPE xResult;
 }
 /*-----------------------------------------------------------*/
 
-portBASE_TYPE xAreHookCoRoutinesStillRunning( void )
+BaseType_t xAreHookCoRoutinesStillRunning( void )
 {
 	if( xCoRoutineErrorDetected )
 	{

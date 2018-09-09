@@ -1,0 +1,41 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="D:\CSL_SVN\Design\SW\Source_Codes\VC5505_CSL\example\gpio\example1\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Project Dependencies]
+Source="..\..\..\build\cslVC5505.pjt"
+
+["..\..\..\build\cslVC5505.pjt" Settings]
+MatchConfigName=true
+
+[Source Files]
+Source="gpio_example.c"
+Source="VC5505.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)\..\..\inc" -i"$(Proj_dir)\..\..\..\inc" -d"_DEBUG" -ml -vcore:3.3
+
+["Compiler" Settings: "Release"]
+Options=-mg -fr"$(Proj_dir)\Release" -i"$(Proj_dir)\..\..\inc" -i"$(Proj_dir)\..\..\..\inc" -ml -vcore:3.3
+
+["Linker" Settings: "Debug"]
+Options=-c -m".\Debug\CSL_GPIO_OutputPinExample.map" -o".\Debug\CSL_GPIO_OutputPinExample.out" -w -x -l"rts55x.lib"
+
+["Linker" Settings: "Release"]
+Options=-c -m".\Release\CSL_GPIO_OutputPinExample.map" -o".\Release\CSL_GPIO_OutputPinExample.out" -w -x -l"rts55x.lib"
+
+["VC5505.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["VC5505.cmd" Settings: "Release"]
+LinkOrder=1
+

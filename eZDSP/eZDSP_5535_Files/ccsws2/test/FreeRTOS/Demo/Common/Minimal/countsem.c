@@ -1,58 +1,32 @@
 /*
-    FreeRTOS V6.0.5 - Copyright (C) 2010 Real Time Engineers Ltd.
-
-    ***************************************************************************
-    *                                                                         *
-    * If you are:                                                             *
-    *                                                                         *
-    *    + New to FreeRTOS,                                                   *
-    *    + Wanting to learn FreeRTOS or multitasking in general quickly       *
-    *    + Looking for basic training,                                        *
-    *    + Wanting to improve your FreeRTOS skills and productivity           *
-    *                                                                         *
-    * then take a look at the FreeRTOS eBook                                  *
-    *                                                                         *
-    *        "Using the FreeRTOS Real Time Kernel - a Practical Guide"        *
-    *                  http://www.FreeRTOS.org/Documentation                  *
-    *                                                                         *
-    * A pdf reference manual is also available.  Both are usually delivered   *
-    * to your inbox within 20 minutes to two hours when purchased between 8am *
-    * and 8pm GMT (although please allow up to 24 hours in case of            *
-    * exceptional circumstances).  Thank you for your support!                *
-    *                                                                         *
-    ***************************************************************************
-
-    This file is part of the FreeRTOS distribution.
-
-    FreeRTOS is free software; you can redistribute it and/or modify it under
-    the terms of the GNU General Public License (version 2) as published by the
-    Free Software Foundation AND MODIFIED BY the FreeRTOS exception.
-    ***NOTE*** The exception to the GPL is included to allow you to distribute
-    a combined work that includes FreeRTOS without being obliged to provide the
-    source code for proprietary components outside of the FreeRTOS kernel.
-    FreeRTOS is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-    more details. You should have received a copy of the GNU General Public 
-    License and the FreeRTOS license exception along with FreeRTOS; if not it 
-    can be viewed here: http://www.freertos.org/a00114.html and also obtained 
-    by writing to Richard Barry, contact details for whom are available on the
-    FreeRTOS WEB site.
-
-    1 tab == 4 spaces!
-
-    http://www.FreeRTOS.org - Documentation, latest information, license and
-    contact details.
-
-    http://www.SafeRTOS.com - A version that is certified for use in safety
-    critical systems.
-
-    http://www.OpenRTOS.com - Commercial support, development, porting,
-    licensing and training services.
-*/
+ * FreeRTOS Kernel V10.1.1
+ * Copyright (C) 2018 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * http://www.FreeRTOS.org
+ * http://aws.amazon.com/freertos
+ *
+ * 1 tab == 4 spaces!
+ */
 
 
-/* 
+/*
  * Simple demonstration of the usage of counting semaphore.
  */
 
@@ -68,7 +42,7 @@
 #define countMAX_COUNT_VALUE	( 200 )
 
 /* Constants used to indicate whether or not the semaphore should have been
-created with its maximum count value, or its minimum count value.  These 
+created with its maximum count value, or its minimum count value.  These
 numbers are used to ensure that the pointers passed in as the task parameters
 are valid. */
 #define countSTART_AT_MAX_COUNT	( 0xaa )
@@ -83,7 +57,7 @@ count value set to the maximum, and one with the count value set to zero. */
 
 /* Flag that will be latched to pdTRUE should any unexpected behaviour be
 detected in any of the tasks. */
-static volatile portBASE_TYPE xErrorDetected = pdFALSE;
+static volatile BaseType_t xErrorDetected = pdFALSE;
 
 /*-----------------------------------------------------------*/
 
@@ -99,13 +73,13 @@ static void prvCountingSemaphoreTask( void *pvParameters );
  * Utility function to increment the semaphore count value up from zero to
  * countMAX_COUNT_VALUE.
  */
-static void prvIncrementSemaphoreCount( xSemaphoreHandle xSemaphore, unsigned portBASE_TYPE *puxLoopCounter );
+static void prvIncrementSemaphoreCount( SemaphoreHandle_t xSemaphore, volatile UBaseType_t *puxLoopCounter );
 
 /*
- * Utility function to decrement the semaphore count value up from 
+ * Utility function to decrement the semaphore count value up from
  * countMAX_COUNT_VALUE to zero.
  */
-static void prvDecrementSemaphoreCount( xSemaphoreHandle xSemaphore, unsigned portBASE_TYPE *puxLoopCounter );
+static void prvDecrementSemaphoreCount( SemaphoreHandle_t xSemaphore, volatile UBaseType_t *puxLoopCounter );
 
 /*-----------------------------------------------------------*/
 
@@ -113,20 +87,20 @@ static void prvDecrementSemaphoreCount( xSemaphoreHandle xSemaphore, unsigned po
 typedef struct COUNT_SEM_STRUCT
 {
 	/* The semaphore to be used for the demo. */
-	xSemaphoreHandle xSemaphore;
+	SemaphoreHandle_t xSemaphore;
 
 	/* Set to countSTART_AT_MAX_COUNT if the semaphore should be created with
 	its count value set to its max count value, or countSTART_AT_ZERO if it
 	should have been created with its count value set to 0. */
-	unsigned portBASE_TYPE uxExpectedStartCount;	
+	UBaseType_t uxExpectedStartCount;
 
 	/* Incremented on each cycle of the demo task.  Used to detect a stalled
 	task. */
-	unsigned portBASE_TYPE uxLoopCounter;			
+	volatile UBaseType_t uxLoopCounter;
 } xCountSemStruct;
 
 /* Two structures are defined, one is passed to each test task. */
-static volatile xCountSemStruct xParameters[ countNUM_TEST_TASKS ];
+static xCountSemStruct xParameters[ countNUM_TEST_TASKS ];
 
 /*-----------------------------------------------------------*/
 
@@ -143,29 +117,28 @@ void vStartCountingSemaphoreTasks( void )
 	xParameters[ 1 ].uxExpectedStartCount = 0;
 	xParameters[ 1 ].uxLoopCounter = 0;
 
-	/* vQueueAddToRegistry() adds the semaphore to the registry, if one is
-	in use.  The registry is provided as a means for kernel aware 
-	debuggers to locate semaphores and has no purpose if a kernel aware debugger
-	is not being used.  The call to vQueueAddToRegistry() will be removed
-	by the pre-processor if configQUEUE_REGISTRY_SIZE is not defined or is 
-	defined to be less than 1. */
-	vQueueAddToRegistry( ( xQueueHandle ) xParameters[ 0 ].xSemaphore, ( signed portCHAR * ) "Counting_Sem_1" );
-	vQueueAddToRegistry( ( xQueueHandle ) xParameters[ 1 ].xSemaphore, ( signed portCHAR * ) "Counting_Sem_2" );
-
-
 	/* Were the semaphores created? */
 	if( ( xParameters[ 0 ].xSemaphore != NULL ) || ( xParameters[ 1 ].xSemaphore != NULL ) )
 	{
+		/* vQueueAddToRegistry() adds the semaphore to the registry, if one is
+		in use.  The registry is provided as a means for kernel aware
+		debuggers to locate semaphores and has no purpose if a kernel aware
+		debugger is not being used.  The call to vQueueAddToRegistry() will be
+		removed by the pre-processor if configQUEUE_REGISTRY_SIZE is not
+		defined or is defined to be less than 1. */
+		vQueueAddToRegistry( ( QueueHandle_t ) xParameters[ 0 ].xSemaphore, "Counting_Sem_1" );
+		vQueueAddToRegistry( ( QueueHandle_t ) xParameters[ 1 ].xSemaphore, "Counting_Sem_2" );
+
 		/* Create the demo tasks, passing in the semaphore to use as the parameter. */
-		xTaskCreate( prvCountingSemaphoreTask, ( signed portCHAR * ) "CNT1", configMINIMAL_STACK_SIZE, ( void * ) &( xParameters[ 0 ] ), tskIDLE_PRIORITY, NULL );
-		xTaskCreate( prvCountingSemaphoreTask, ( signed portCHAR * ) "CNT2", configMINIMAL_STACK_SIZE, ( void * ) &( xParameters[ 1 ] ), tskIDLE_PRIORITY, NULL );		
+		xTaskCreate( prvCountingSemaphoreTask, "CNT1", configMINIMAL_STACK_SIZE, ( void * ) &( xParameters[ 0 ] ), tskIDLE_PRIORITY, NULL );
+		xTaskCreate( prvCountingSemaphoreTask, "CNT2", configMINIMAL_STACK_SIZE, ( void * ) &( xParameters[ 1 ] ), tskIDLE_PRIORITY, NULL );
 	}
 }
 /*-----------------------------------------------------------*/
 
-static void prvDecrementSemaphoreCount( xSemaphoreHandle xSemaphore, unsigned portBASE_TYPE *puxLoopCounter )
+static void prvDecrementSemaphoreCount( SemaphoreHandle_t xSemaphore, volatile UBaseType_t *puxLoopCounter )
 {
-unsigned portBASE_TYPE ux;
+UBaseType_t ux;
 
 	/* If the semaphore count is at its maximum then we should not be able to
 	'give' the semaphore. */
@@ -177,6 +150,8 @@ unsigned portBASE_TYPE ux;
 	/* We should be able to 'take' the semaphore countMAX_COUNT_VALUE times. */
 	for( ux = 0; ux < countMAX_COUNT_VALUE; ux++ )
 	{
+		configASSERT( uxSemaphoreGetCount( xSemaphore ) == ( countMAX_COUNT_VALUE - ux ) );
+
 		if( xSemaphoreTake( xSemaphore, countDONT_BLOCK ) != pdPASS )
 		{
 			/* We expected to be able to take the semaphore. */
@@ -190,8 +165,9 @@ unsigned portBASE_TYPE ux;
 		taskYIELD();
 	#endif
 
-	/* If the semaphore count is zero then we should not be able to	'take' 
+	/* If the semaphore count is zero then we should not be able to	'take'
 	the semaphore. */
+	configASSERT( uxSemaphoreGetCount( xSemaphore ) == 0 );
 	if( xSemaphoreTake( xSemaphore, countDONT_BLOCK ) == pdPASS )
 	{
 		xErrorDetected = pdTRUE;
@@ -199,11 +175,11 @@ unsigned portBASE_TYPE ux;
 }
 /*-----------------------------------------------------------*/
 
-static void prvIncrementSemaphoreCount( xSemaphoreHandle xSemaphore, unsigned portBASE_TYPE *puxLoopCounter )
+static void prvIncrementSemaphoreCount( SemaphoreHandle_t xSemaphore, volatile UBaseType_t *puxLoopCounter )
 {
-unsigned portBASE_TYPE ux;
+UBaseType_t ux;
 
-	/* If the semaphore count is zero then we should not be able to	'take' 
+	/* If the semaphore count is zero then we should not be able to	'take'
 	the semaphore. */
 	if( xSemaphoreTake( xSemaphore, countDONT_BLOCK ) == pdPASS )
 	{
@@ -213,6 +189,8 @@ unsigned portBASE_TYPE ux;
 	/* We should be able to 'give' the semaphore countMAX_COUNT_VALUE times. */
 	for( ux = 0; ux < countMAX_COUNT_VALUE; ux++ )
 	{
+		configASSERT( uxSemaphoreGetCount( xSemaphore ) == ux );
+
 		if( xSemaphoreGive( xSemaphore ) != pdPASS )
 		{
 			/* We expected to be able to take the semaphore. */
@@ -240,9 +218,9 @@ static void prvCountingSemaphoreTask( void *pvParameters )
 xCountSemStruct *pxParameter;
 
 	#ifdef USE_STDIO
-	void vPrintDisplayMessage( const portCHAR * const * ppcMessageToSend );
-	
-		const portCHAR * const pcTaskStartMsg = "Counting semaphore demo started.\r\n";
+	void vPrintDisplayMessage( const char * const * ppcMessageToSend );
+
+		const char * const pcTaskStartMsg = "Counting semaphore demo started.\r\n";
 
 		/* Queue a message for printing to say the task has started. */
 		vPrintDisplayMessage( &pcTaskStartMsg );
@@ -273,10 +251,10 @@ xCountSemStruct *pxParameter;
 }
 /*-----------------------------------------------------------*/
 
-portBASE_TYPE xAreCountingSemaphoreTasksStillRunning( void )
+BaseType_t xAreCountingSemaphoreTasksStillRunning( void )
 {
-static unsigned portBASE_TYPE uxLastCount0 = 0, uxLastCount1 = 0;
-portBASE_TYPE xReturn = pdPASS;
+static UBaseType_t uxLastCount0 = 0, uxLastCount1 = 0;
+BaseType_t xReturn = pdPASS;
 
 	/* Return fail if any 'give' or 'take' did not result in the expected
 	behaviour. */

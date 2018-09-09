@@ -1,55 +1,29 @@
 /*
-    FreeRTOS V6.0.5 - Copyright (C) 2010 Real Time Engineers Ltd.
-
-    ***************************************************************************
-    *                                                                         *
-    * If you are:                                                             *
-    *                                                                         *
-    *    + New to FreeRTOS,                                                   *
-    *    + Wanting to learn FreeRTOS or multitasking in general quickly       *
-    *    + Looking for basic training,                                        *
-    *    + Wanting to improve your FreeRTOS skills and productivity           *
-    *                                                                         *
-    * then take a look at the FreeRTOS eBook                                  *
-    *                                                                         *
-    *        "Using the FreeRTOS Real Time Kernel - a Practical Guide"        *
-    *                  http://www.FreeRTOS.org/Documentation                  *
-    *                                                                         *
-    * A pdf reference manual is also available.  Both are usually delivered   *
-    * to your inbox within 20 minutes to two hours when purchased between 8am *
-    * and 8pm GMT (although please allow up to 24 hours in case of            *
-    * exceptional circumstances).  Thank you for your support!                *
-    *                                                                         *
-    ***************************************************************************
-
-    This file is part of the FreeRTOS distribution.
-
-    FreeRTOS is free software; you can redistribute it and/or modify it under
-    the terms of the GNU General Public License (version 2) as published by the
-    Free Software Foundation AND MODIFIED BY the FreeRTOS exception.
-    ***NOTE*** The exception to the GPL is included to allow you to distribute
-    a combined work that includes FreeRTOS without being obliged to provide the
-    source code for proprietary components outside of the FreeRTOS kernel.
-    FreeRTOS is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-    more details. You should have received a copy of the GNU General Public 
-    License and the FreeRTOS license exception along with FreeRTOS; if not it 
-    can be viewed here: http://www.freertos.org/a00114.html and also obtained 
-    by writing to Richard Barry, contact details for whom are available on the
-    FreeRTOS WEB site.
-
-    1 tab == 4 spaces!
-
-    http://www.FreeRTOS.org - Documentation, latest information, license and
-    contact details.
-
-    http://www.SafeRTOS.com - A version that is certified for use in safety
-    critical systems.
-
-    http://www.OpenRTOS.com - Commercial support, development, porting,
-    licensing and training services.
-*/
+ * FreeRTOS Kernel V10.1.1
+ * Copyright (C) 2018 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * http://www.FreeRTOS.org
+ * http://aws.amazon.com/freertos
+ *
+ * 1 tab == 4 spaces!
+ */
 
 /**
  * Creates two tasks that operate on an interrupt driven serial port.  A loopback 
@@ -108,7 +82,7 @@ Changed from V1.2.5
 Changes from V2.0.0
 
 	+ Delay periods are now specified using variables and constants of
-	  portTickType rather than unsigned long.
+	  TickType_t rather than unsigned long.
 	+ Slight modification to task priorities.
 
 */
@@ -127,8 +101,8 @@ Changes from V2.0.0
 
 /* The Tx task will transmit the sequence of characters at a pseudo random
 interval.  This is the maximum and minimum block time between sends. */
-#define comTX_MAX_BLOCK_TIME		( ( portTickType ) 0x15e )
-#define comTX_MIN_BLOCK_TIME		( ( portTickType ) 0xc8 )
+#define comTX_MAX_BLOCK_TIME		( ( TickType_t ) 0x15e )
+#define comTX_MIN_BLOCK_TIME		( ( TickType_t ) 0xc8 )
 
 #define comMAX_CONSECUTIVE_ERRORS	( 2 )
 
@@ -157,7 +131,7 @@ check that both tasks are still executing. */
 volatile short sTxCount = 0, sRxCount = 0, sSemCount = 0;
 
 /* The handle to the semaphore test task. */
-static xTaskHandle xSemTestTaskHandle = NULL;
+static TaskHandle_t xSemTestTaskHandle = NULL;
 
 /*-----------------------------------------------------------*/
 
@@ -176,7 +150,7 @@ const unsigned portBASE_TYPE uxBufferLength = 255;
 static void vComTxTask( void *pvParameters )
 {
 const char * const pcTaskStartMsg = "COM Tx task started.\r\n";
-portTickType xTimeToWait;
+TickType_t xTimeToWait;
 
 	/* Stop warnings. */
 	( void ) pvParameters;
@@ -216,7 +190,7 @@ const char * const pcTaskStartMsg = "COM Rx task started.\r\n";
 const char * const pcTaskErrorMsg = "COM read error\r\n";
 const char * const pcTaskRestartMsg = "COM resynced\r\n";
 const char * const pcTaskTimeoutMsg = "COM Rx timed out\r\n";
-const portTickType xBlockTime = ( portTickType ) 0xffff / portTICK_RATE_MS;
+const TickType_t xBlockTime = ( TickType_t ) 0xffff / portTICK_PERIOD_MS;
 const char *pcExpectedChar;
 portBASE_TYPE xGotChar;
 char cRxedChar;

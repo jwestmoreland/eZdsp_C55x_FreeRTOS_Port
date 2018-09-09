@@ -73,11 +73,11 @@
 
 /* Constants required for hardware setup.  The tick ISR runs off the ACLK, 
 not the MCLK. */
-#define portACLK_FREQUENCY_HZ			( ( portTickType ) 32768 )
+#define portACLK_FREQUENCY_HZ			( ( TickType_t  ) 32768 )
 #define portINITIAL_CRITICAL_NESTING	( ( unsigned short ) 10 )
-// #define portFLAGS_INT_ENABLED	( ( portSTACK_TYPE ) 0x08 )
-portSTACK_TYPE portFLAGS_INT_ENABLED =	( ( portSTACK_TYPE ) 0xab );
-portSTACK_TYPE portFLAGS_INT_ENABLED_POPPED = ( ( portSTACK_TYPE ) 0xcd ) ;
+// #define portFLAGS_INT_ENABLED	( ( StackType_t ) 0x08 )
+StackType_t portFLAGS_INT_ENABLED =	( ( StackType_t ) 0xab );
+StackType_t portFLAGS_INT_ENABLED_POPPED = ( ( StackType_t ) 0xcd ) ;
 
 unsigned long save_xsp = 0x00000000;
 unsigned long save_xssp = 0x00000000;
@@ -203,8 +203,9 @@ void prvSetupTimerInterrupt( void );
 		asm ( " .align 4" );
 //		asm ( "  psh t0" );
 //		asm ( " .global _DBSTAT_LOW" );
-//		portSTACK_TYPE *pxPortInitialiseStack( portSTACK_TYPE *pxTopOfStack, portSTACK_TYPE *pxTopOfSysStack, pdTASK_CODE pxCode, void *pvParameters )
-void pxPortInitialiseStack( portSTACK_TYPE *pxTopOfStack, portSTACK_TYPE *pxTopOfSysStack, pdTASK_CODE pxCode, void *pvParameters )
+//		StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, StackType_t *pxTopOfSysStack, pdTASK_CODE pxCode, void *pvParameters )
+//		StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t pxCode, void *pvParameters ) PRIVILEGED_FUNCTION;
+void pxPortInitialiseStack( StackType_t *pxTopOfStack, StackType_t *pxTopOfSysStack, TaskFunction_t pxCode, void *pvParameters )
 {
 //	STACKSTRUCT *stackStruct;
 	
@@ -280,64 +281,64 @@ void pxPortInitialiseStack( portSTACK_TYPE *pxTopOfStack, portSTACK_TYPE *pxTopO
 //	need to save off temp (T0-T3) registers
 
 // #if 0
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x0000;
+	*pxTopOfStack = ( StackType_t ) 0x0000;
 	pxTopOfStack--;						// T0
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x1111;
+	*pxTopOfStack = ( StackType_t ) 0x1111;
 	pxTopOfStack--;						// T1
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x2222;
+	*pxTopOfStack = ( StackType_t ) 0x2222;
 	pxTopOfStack--;						// T2
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x3333;
+	*pxTopOfStack = ( StackType_t ) 0x3333;
 	pxTopOfStack--;						// T3
 // #endif
 	
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x0000;
+	*pxTopOfStack = ( StackType_t ) 0x0000;
 	pxTopOfStack--;						// 7
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x0000;
+	*pxTopOfStack = ( StackType_t ) 0x0000;
 	pxTopOfStack--;						// 8
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x1111;
+	*pxTopOfStack = ( StackType_t ) 0x1111;
 	pxTopOfStack--;						// 9
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x1111;
+	*pxTopOfStack = ( StackType_t ) 0x1111;
 	pxTopOfStack--;						// 10
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x2222;
+	*pxTopOfStack = ( StackType_t ) 0x2222;
 	*pxTopOfStack--;					// 11
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x2222;
+	*pxTopOfStack = ( StackType_t ) 0x2222;
 	*pxTopOfStack--;					// 12
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x3333;
+	*pxTopOfStack = ( StackType_t ) 0x3333;
 	pxTopOfStack--;						// 13
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x3333;
+	*pxTopOfStack = ( StackType_t ) 0x3333;
 	pxTopOfStack--;						// 14
-//	*pxTopOfStack = ( portSTACK_TYPE ) 0x4444;
+//	*pxTopOfStack = ( StackType_t ) 0x4444;
 //	pxTopOfStack++;
 //	*pxTopOfStack = ( portSTACK_TYPE ) 0x4444;
 //	pxTopOfStack++;
-	*pxTopOfStack = (portSTACK_TYPE) (((unsigned long)(pvParameters))>>16); 
+	*pxTopOfStack = (StackType_t) (((unsigned long)(pvParameters))>>16);
 	pxTopOfStack--;						// 15
-	*pxTopOfStack = ( portSTACK_TYPE ) (unsigned long) pvParameters;
+	*pxTopOfStack = ( StackType_t ) (unsigned long) pvParameters;
 //	*pxTopOfStack = pvParameters;
 	pxTopOfStack--;						// 16
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x5555;
+	*pxTopOfStack = ( StackType_t ) 0x5555;
 	pxTopOfStack--;						// 17
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x5555;
+	*pxTopOfStack = ( StackType_t ) 0x5555;
 	pxTopOfStack--;						// 18
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x6666;
+	*pxTopOfStack = ( StackType_t ) 0x6666;
 	pxTopOfStack--;						// 19
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x6666;
+	*pxTopOfStack = ( StackType_t ) 0x6666;
 	pxTopOfStack--;						// 20
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x7777;
+	*pxTopOfStack = ( StackType_t ) 0x7777;
 	pxTopOfStack--;						// 21
-	*pxTopOfStack = ( portSTACK_TYPE ) 0x7777;
+	*pxTopOfStack = ( StackType_t ) 0x7777;
 	pxTopOfStack--;						// 22
-//	*pxTopOfStack = ( portSTACK_TYPE ) 0x8888;
+//	*pxTopOfStack = ( StackType_t ) 0x8888;
 //	pxTopOfStack++;
-//	*pxTopOfStack = ( portSTACK_TYPE ) 0x8888;
+//	*pxTopOfStack = ( StackType_t ) 0x8888;
 //	pxTopOfStack++;
-	*pxTopOfStack = ( portSTACK_TYPE) (((unsigned long)(portFLAGS_INT_ENABLED))>>16);
+	*pxTopOfStack = ( StackType_t) (((unsigned long)(portFLAGS_INT_ENABLED))>>16);
 	pxTopOfStack--;						// 23
-	*pxTopOfStack = ( portSTACK_TYPE ) (unsigned long) portFLAGS_INT_ENABLED;
+	*pxTopOfStack = ( StackType_t ) (unsigned long) portFLAGS_INT_ENABLED;
 	pxTopOfStack--;						// 24
-	*pxTopOfStack = ( portSTACK_TYPE ) (((unsigned long) (portNO_CRITICAL_SECTION_NESTING))>> 16);	
+	*pxTopOfStack = ( StackType_t ) (((unsigned long) (portNO_CRITICAL_SECTION_NESTING))>> 16);
 	pxTopOfStack--;						// 25
-	*pxTopOfStack = ( portSTACK_TYPE ) (unsigned long) portNO_CRITICAL_SECTION_NESTING;
+	*pxTopOfStack = ( StackType_t ) (unsigned long) portNO_CRITICAL_SECTION_NESTING;
 	pxTopOfStack--;						// 26
 //	*pxTopOfStack = ( portSTACK_TYPE ) 0xabcd;		// for debug, stack alignment check
 //	pxTopOfStack--;						// 28 - integers
@@ -378,35 +379,35 @@ void pxPortInitialiseStack( portSTACK_TYPE *pxTopOfStack, portSTACK_TYPE *pxTopO
 //	asm ( " mov mmap(ST0_55), t0" );
 //	asm ( " mov t0, *(#_STATUS0_LOW)" );
 //	This needs to be DBSTAT
-	*pxTopOfSysStack = ( portSTACK_TYPE ) ST0_55;
+	*pxTopOfSysStack = ( StackType_t ) ST0_55;
 	pxTopOfSysStack--;						// 2
 //	*pxTopOfStack = ( portSTACK_TYPE ) STATUS0_HIGH;
 //	pxTopOfStack--;
 //	asm ( " mov mmap(ST1_55), t0" );
 //	asm ( " mov t0, *(#_STATUS1_LOW)" );
-	*pxTopOfStack = ( portSTACK_TYPE ) ST2_55;
+	*pxTopOfStack = ( StackType_t ) ST2_55;
 	pxTopOfStack--;						// 3
 //	*pxTopOfStack = ( portSTACK_TYPE ) STATUS2_HIGH;
 //	pxTopOfStack--;
 //	asm ( " mov mmap(ST2_55), t0" );
 //	asm ( " mov t0, *(#_STATUS2_LOW)" );
-	*pxTopOfStack = ( portSTACK_TYPE ) ST1_55;
+	*pxTopOfStack = ( StackType_t ) ST1_55;
 	pxTopOfStack--;						// 4
 //	*pxTopOfStack = ( portSTACK_TYPE ) STATUS1_HIGH;
 //	pxTopOfStack--;
 
-	*pxTopOfSysStack = ( portSTACK_TYPE ) (((unsigned long)(pxCode))>>16);
+	*pxTopOfSysStack = ( StackType_t ) (((unsigned long)(pxCode))>>16);
 //	pxTopOfSysStack--;			// 5
 
 //	asm ( " mov (*(#_pxCode)), *xssp" );
-	*pxTopOfStack = ( portSTACK_TYPE ) ((unsigned long)(pxCode));
+	*pxTopOfStack = ( StackType_t ) ((unsigned long)(pxCode));
 //	pxTopOfStack--;						// 6
-
 	
 	stackStruct->pxTopOfStack = pxTopOfStack;
 	stackStruct->pxTopOfSysStack = pxTopOfSysStack;
 	
-//	return;
+//	return pxTopOfStack;			// to follow current port conventions.
+//	return;							// Note - this doesn't follow current port conventions --- jcw
 }
 /*-----------------------------------------------------------*/
 

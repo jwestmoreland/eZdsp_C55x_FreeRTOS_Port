@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Fri Sep 07 01:41:57 2018                                 *
+;* Date/Time created: Sat Sep 08 17:55:43 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -27,7 +27,7 @@ $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../FreeRTOS/Source/portable/CCS/c55x/port.c")
 	.dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
-	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\site\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug")
+	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug")
 ;******************************************************************************
 ;* CINIT RECORDS                                                              *
 ;******************************************************************************
@@ -187,14 +187,14 @@ $C$DW$2	.dwtag  DW_TAG_subprogram, DW_AT_name("Timer0Init")
 $C$DW$3	.dwtag  DW_TAG_variable, DW_AT_name("portFLAGS_INT_ENABLED")
 	.dwattr $C$DW$3, DW_AT_TI_symbol_name("_portFLAGS_INT_ENABLED")
 	.dwattr $C$DW$3, DW_AT_location[DW_OP_addr _portFLAGS_INT_ENABLED]
-	.dwattr $C$DW$3, DW_AT_type(*$C$DW$T$11)
+	.dwattr $C$DW$3, DW_AT_type(*$C$DW$T$26)
 	.dwattr $C$DW$3, DW_AT_external
 	.global	_portFLAGS_INT_ENABLED_POPPED
 	.bss	_portFLAGS_INT_ENABLED_POPPED,1,0,0
 $C$DW$4	.dwtag  DW_TAG_variable, DW_AT_name("portFLAGS_INT_ENABLED_POPPED")
 	.dwattr $C$DW$4, DW_AT_TI_symbol_name("_portFLAGS_INT_ENABLED_POPPED")
 	.dwattr $C$DW$4, DW_AT_location[DW_OP_addr _portFLAGS_INT_ENABLED_POPPED]
-	.dwattr $C$DW$4, DW_AT_type(*$C$DW$T$11)
+	.dwattr $C$DW$4, DW_AT_type(*$C$DW$T$26)
 	.dwattr $C$DW$4, DW_AT_external
 	.global	_save_xsp
 	.bss	_save_xsp,2,0,2
@@ -229,11 +229,11 @@ $C$DW$8	.dwtag  DW_TAG_variable, DW_AT_name("save_xar6")
 $C$DW$9	.dwtag  DW_TAG_variable, DW_AT_name("tickIRQctr")
 	.dwattr $C$DW$9, DW_AT_TI_symbol_name("_tickIRQctr")
 	.dwattr $C$DW$9, DW_AT_location[DW_OP_addr _tickIRQctr]
-	.dwattr $C$DW$9, DW_AT_type(*$C$DW$T$32)
+	.dwattr $C$DW$9, DW_AT_type(*$C$DW$T$34)
 	.dwattr $C$DW$9, DW_AT_external
 $C$DW$10	.dwtag  DW_TAG_variable, DW_AT_name("stackStruct")
 	.dwattr $C$DW$10, DW_AT_TI_symbol_name("_stackStruct")
-	.dwattr $C$DW$10, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$10, DW_AT_type(*$C$DW$T$35)
 	.dwattr $C$DW$10, DW_AT_declaration
 	.dwattr $C$DW$10, DW_AT_external
 	.global	_DBSTAT_LOW
@@ -325,9 +325,9 @@ $C$DW$22	.dwtag  DW_TAG_variable, DW_AT_name("tThree")
 $C$DW$23	.dwtag  DW_TAG_variable, DW_AT_name("usCriticalNesting")
 	.dwattr $C$DW$23, DW_AT_TI_symbol_name("_usCriticalNesting")
 	.dwattr $C$DW$23, DW_AT_location[DW_OP_addr _usCriticalNesting]
-	.dwattr $C$DW$23, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$23, DW_AT_type(*$C$DW$T$29)
 	.dwattr $C$DW$23, DW_AT_external
-;	F:\TI_CCS_7P4\ccsv7\tools\compiler\c5500_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1952812 
+;	F:\TI_CCS_7P4\ccsv7\tools\compiler\c5500_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1455212 
 	.sect	".text"
  .align 4
 	.sect	".text"
@@ -340,19 +340,19 @@ $C$DW$24	.dwtag  DW_TAG_subprogram, DW_AT_name("pxPortInitialiseStack")
 	.dwattr $C$DW$24, DW_AT_TI_symbol_name("_pxPortInitialiseStack")
 	.dwattr $C$DW$24, DW_AT_external
 	.dwattr $C$DW$24, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/CCS/c55x/port.c")
-	.dwattr $C$DW$24, DW_AT_TI_begin_line(0xcf)
+	.dwattr $C$DW$24, DW_AT_TI_begin_line(0xd0)
 	.dwattr $C$DW$24, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$24, DW_AT_TI_max_frame_size(0x0a)
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 208,column 1,is_stmt,address _pxPortInitialiseStack
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 209,column 1,is_stmt,address _pxPortInitialiseStack
 
 	.dwfde $C$DW$CIE, _pxPortInitialiseStack
 $C$DW$25	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxTopOfStack")
 	.dwattr $C$DW$25, DW_AT_TI_symbol_name("_pxTopOfStack")
-	.dwattr $C$DW$25, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$25, DW_AT_type(*$C$DW$T$27)
 	.dwattr $C$DW$25, DW_AT_location[DW_OP_reg17]
 $C$DW$26	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxTopOfSysStack")
 	.dwattr $C$DW$26, DW_AT_TI_symbol_name("_pxTopOfSysStack")
-	.dwattr $C$DW$26, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$26, DW_AT_type(*$C$DW$T$27)
 	.dwattr $C$DW$26, DW_AT_location[DW_OP_reg19]
 $C$DW$27	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxCode")
 	.dwattr $C$DW$27, DW_AT_TI_symbol_name("_pxCode")
@@ -380,11 +380,11 @@ _pxPortInitialiseStack:
 	.dwcfi	cfa_offset, 10
 $C$DW$29	.dwtag  DW_TAG_variable, DW_AT_name("pxTopOfStack")
 	.dwattr $C$DW$29, DW_AT_TI_symbol_name("_pxTopOfStack")
-	.dwattr $C$DW$29, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$29, DW_AT_type(*$C$DW$T$27)
 	.dwattr $C$DW$29, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$30	.dwtag  DW_TAG_variable, DW_AT_name("pxTopOfSysStack")
 	.dwattr $C$DW$30, DW_AT_TI_symbol_name("_pxTopOfSysStack")
-	.dwattr $C$DW$30, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$30, DW_AT_type(*$C$DW$T$27)
 	.dwattr $C$DW$30, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$31	.dwtag  DW_TAG_variable, DW_AT_name("pxCode")
 	.dwattr $C$DW$31, DW_AT_TI_symbol_name("_pxCode")
@@ -395,198 +395,198 @@ $C$DW$32	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
 	.dwattr $C$DW$32, DW_AT_type(*$C$DW$T$3)
 	.dwattr $C$DW$32, DW_AT_location[DW_OP_bregx 0x24 6]
         MOV XAR2, dbl(*SP(#6))
-        MOV AC0, dbl(*SP(#4)) ; |208| 
+        MOV AC0, dbl(*SP(#4)) ; |209| 
         MOV XAR1, dbl(*SP(#2))
         MOV XAR0, dbl(*SP(#0))
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 283,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        MOV #0, *AR3 ; |283| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 284,column 2,is_stmt
         MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV #0, *AR3 ; |284| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 285,column 2,is_stmt
-        MOV #4369, *AR3 ; |285| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 286,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV #4369, *AR3 ; |286| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 287,column 2,is_stmt
-        MOV #8738, *AR3 ; |287| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 288,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV #8738, *AR3 ; |288| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 289,column 2,is_stmt
-        MOV #13107, *AR3 ; |289| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 290,column 2,is_stmt
+        MOV #13107, *AR3 ; |290| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 291,column 2,is_stmt
         MOV dbl(*SP(#0)), XAR3
         AMAR *AR3-
         MOV XAR3, dbl(*SP(#0))
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 293,column 2,is_stmt
-        MOV #0, *AR3 ; |293| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 294,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV #0, *AR3 ; |294| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 295,column 2,is_stmt
-        MOV #0, *AR3 ; |295| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 296,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV #0, *AR3 ; |296| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 297,column 2,is_stmt
-        MOV #4369, *AR3 ; |297| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 298,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV #4369, *AR3 ; |298| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 299,column 2,is_stmt
-        MOV #4369, *AR3 ; |299| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 300,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV #4369, *AR3 ; |300| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 301,column 2,is_stmt
-        MOV #8738, *AR3 ; |301| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 302,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV #8738, *AR3 ; |302| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 303,column 2,is_stmt
-        MOV #8738, *AR3 ; |303| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 304,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV #8738, *AR3 ; |304| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 305,column 2,is_stmt
-        MOV #13107, *AR3 ; |305| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 306,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV #13107, *AR3 ; |306| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 307,column 2,is_stmt
-        MOV #13107, *AR3 ; |307| 
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 308,column 2,is_stmt
         MOV dbl(*SP(#0)), XAR3
         AMAR *AR3-
         MOV XAR3, dbl(*SP(#0))
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 313,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 308,column 2,is_stmt
+        MOV #13107, *AR3 ; |308| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 309,column 2,is_stmt
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 314,column 2,is_stmt
         MOV dbl(*SP(#6)), XAR3
         MOV XAR3, AC0
         MOV dbl(*SP(#0)), XAR3
-        MOV HI(AC0), *AR3 ; |313| 
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 314,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV HI(AC0), *AR3 ; |314| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 315,column 2,is_stmt
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 316,column 2,is_stmt
         MOV dbl(*SP(#6)), XAR2
-        MOV AR2, *AR3 ; |315| 
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 317,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV AR2, *AR3 ; |316| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 318,column 2,is_stmt
-        MOV #21845, *AR3 ; |318| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 319,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV #21845, *AR3 ; |319| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 320,column 2,is_stmt
-        MOV #21845, *AR3 ; |320| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 321,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV #21845, *AR3 ; |321| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 322,column 2,is_stmt
-        MOV #26214, *AR3 ; |322| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 323,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV #26214, *AR3 ; |323| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 324,column 2,is_stmt
-        MOV #26214, *AR3 ; |324| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 325,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV #26214, *AR3 ; |325| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 326,column 2,is_stmt
-        MOV #30583, *AR3 ; |326| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 327,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV #30583, *AR3 ; |327| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 328,column 2,is_stmt
-        MOV #30583, *AR3 ; |328| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 329,column 2,is_stmt
+        MOV #30583, *AR3 ; |329| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 330,column 2,is_stmt
         MOV dbl(*SP(#0)), XAR3
         AMAR *AR3-
         MOV XAR3, dbl(*SP(#0))
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 334,column 2,is_stmt
-        MOV uns(*(#_portFLAGS_INT_ENABLED)), AC0 ; |334| 
-        MOV HI(AC0), *AR3 ; |334| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 335,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV uns(*(#_portFLAGS_INT_ENABLED)), AC0 ; |335| 
+        MOV HI(AC0), *AR3 ; |335| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 336,column 2,is_stmt
-        MOV *(#_portFLAGS_INT_ENABLED), AR1 ; |336| 
-        MOV AR1, *AR3 ; |336| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 337,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV *(#_portFLAGS_INT_ENABLED), AR1 ; |337| 
+        MOV AR1, *AR3 ; |337| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 338,column 2,is_stmt
-        MOV #0, *AR3 ; |338| 
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 339,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#0))
+        MOV #0, *AR3 ; |339| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 340,column 2,is_stmt
-        MOV #0, *AR3 ; |340| 
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 341,column 2,is_stmt
         MOV dbl(*SP(#0)), XAR3
         AMAR *AR3-
         MOV XAR3, dbl(*SP(#0))
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 374,column 2,is_stmt
-        MOV dbl(*SP(#2)), XAR3
-        MOV *(#2), AR1 ; |374| 
-        MOV AR1, *AR3 ; |374| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 341,column 2,is_stmt
+        MOV #0, *AR3 ; |341| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 342,column 2,is_stmt
+        MOV dbl(*SP(#0)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 375,column 2,is_stmt
         MOV dbl(*SP(#2)), XAR3
-        AMAR *AR3-
-        MOV XAR3, dbl(*SP(#2))
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 381,column 2,is_stmt
-        MOV *(#2), AR1 ; |381| 
-        MOV AR1, *AR3 ; |381| 
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 382,column 2,is_stmt
+        MOV *(#2), AR1 ; |375| 
+        MOV AR1, *AR3 ; |375| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 376,column 2,is_stmt
         MOV dbl(*SP(#2)), XAR3
         AMAR *AR3-
         MOV XAR3, dbl(*SP(#2))
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 387,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        MOV *(#75), AR1 ; |387| 
-        MOV AR1, *AR3 ; |387| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 382,column 2,is_stmt
+        MOV *(#2), AR1 ; |382| 
+        MOV AR1, *AR3 ; |382| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 383,column 2,is_stmt
+        MOV dbl(*SP(#2)), XAR3
+        AMAR *AR3-
+        MOV XAR3, dbl(*SP(#2))
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 388,column 2,is_stmt
         MOV dbl(*SP(#0)), XAR3
+        MOV *(#75), AR1 ; |388| 
+        MOV AR1, *AR3 ; |388| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 389,column 2,is_stmt
+        MOV dbl(*SP(#0)), XAR3
         AMAR *AR3-
         MOV XAR3, dbl(*SP(#0))
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 393,column 2,is_stmt
-        MOV *(#3), AR1 ; |393| 
-        MOV AR1, *AR3 ; |393| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 394,column 2,is_stmt
+        MOV *(#3), AR1 ; |394| 
+        MOV AR1, *AR3 ; |394| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 395,column 2,is_stmt
         MOV dbl(*SP(#0)), XAR3
         AMAR *AR3-
         MOV XAR3, dbl(*SP(#0))
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 398,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 399,column 2,is_stmt
         MOV dbl(*SP(#2)), XAR3
-        MOV dbl(*SP(#4)), AC0 ; |398| 
-        MOV HI(AC0), *AR3 ; |398| 
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 402,column 2,is_stmt
+        MOV dbl(*SP(#4)), AC0 ; |399| 
+        MOV HI(AC0), *AR3 ; |399| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 403,column 2,is_stmt
         MOV dbl(*SP(#0)), XAR3
-        MOV *SP(#5), AR1 ; |402| 
-        MOV AR1, *AR3 ; |402| 
+        MOV *SP(#5), AR1 ; |403| 
+        MOV AR1, *AR3 ; |403| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 406,column 2,is_stmt
         MOV dbl(*(#_stackStruct)), XAR2
         MOV dbl(*SP(#0)), XAR3
@@ -595,7 +595,7 @@ $C$DW$32	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
         MOV dbl(*(#_stackStruct)), XAR3
         MOV dbl(*SP(#2)), XAR2
         MOV XAR2, dbl(*AR3(short(#2)))
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 410,column 1,is_stmt
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 411,column 1,is_stmt
         AADD #9, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$33	.dwtag  DW_TAG_TI_branch
@@ -604,7 +604,7 @@ $C$DW$33	.dwtag  DW_TAG_TI_branch
         RET
                                         ; return occurs
 	.dwattr $C$DW$24, DW_AT_TI_end_file("../FreeRTOS/Source/portable/CCS/c55x/port.c")
-	.dwattr $C$DW$24, DW_AT_TI_end_line(0x19a)
+	.dwattr $C$DW$24, DW_AT_TI_end_line(0x19b)
 	.dwattr $C$DW$24, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$24
@@ -619,10 +619,10 @@ $C$DW$34	.dwtag  DW_TAG_subprogram, DW_AT_name("vPortEndScheduler")
 	.dwattr $C$DW$34, DW_AT_TI_symbol_name("_vPortEndScheduler")
 	.dwattr $C$DW$34, DW_AT_external
 	.dwattr $C$DW$34, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/CCS/c55x/port.c")
-	.dwattr $C$DW$34, DW_AT_TI_begin_line(0x1ab)
+	.dwattr $C$DW$34, DW_AT_TI_begin_line(0x1ac)
 	.dwattr $C$DW$34, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$34, DW_AT_TI_max_frame_size(0x01)
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 428,column 1,is_stmt,address _vPortEndScheduler
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 429,column 1,is_stmt,address _vPortEndScheduler
 
 	.dwfde $C$DW$CIE, _vPortEndScheduler
 ;*******************************************************************************
@@ -637,25 +637,25 @@ $C$DW$34	.dwtag  DW_TAG_subprogram, DW_AT_name("vPortEndScheduler")
 _vPortEndScheduler:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 431,column 9,is_stmt
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 432,column 9,is_stmt
 $C$L1:    
 $C$DW$L$_vPortEndScheduler$2$B:
-        B $C$L1   ; |431| 
-                                        ; branch occurs ; |431| 
+        B $C$L1   ; |432| 
+                                        ; branch occurs ; |432| 
 $C$DW$L$_vPortEndScheduler$2$E:
 
 $C$DW$35	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$35, DW_AT_name("F:\site\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\port.asm:$C$L1:1:1536309717")
+	.dwattr $C$DW$35, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\port.asm:$C$L1:1:1536454543")
 	.dwattr $C$DW$35, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/CCS/c55x/port.c")
-	.dwattr $C$DW$35, DW_AT_TI_begin_line(0x1af)
-	.dwattr $C$DW$35, DW_AT_TI_end_line(0x1af)
+	.dwattr $C$DW$35, DW_AT_TI_begin_line(0x1b0)
+	.dwattr $C$DW$35, DW_AT_TI_end_line(0x1b0)
 $C$DW$36	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$36, DW_AT_low_pc($C$DW$L$_vPortEndScheduler$2$B)
 	.dwattr $C$DW$36, DW_AT_high_pc($C$DW$L$_vPortEndScheduler$2$E)
 	.dwendtag $C$DW$35
 
 	.dwattr $C$DW$34, DW_AT_TI_end_file("../FreeRTOS/Source/portable/CCS/c55x/port.c")
-	.dwattr $C$DW$34, DW_AT_TI_end_line(0x1b0)
+	.dwattr $C$DW$34, DW_AT_TI_end_line(0x1b1)
 	.dwattr $C$DW$34, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$34
@@ -670,10 +670,10 @@ $C$DW$37	.dwtag  DW_TAG_subprogram, DW_AT_name("prvSetupTimerInterrupt")
 	.dwattr $C$DW$37, DW_AT_TI_symbol_name("_prvSetupTimerInterrupt")
 	.dwattr $C$DW$37, DW_AT_external
 	.dwattr $C$DW$37, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/CCS/c55x/port.c")
-	.dwattr $C$DW$37, DW_AT_TI_begin_line(0x1d8)
+	.dwattr $C$DW$37, DW_AT_TI_begin_line(0x1d9)
 	.dwattr $C$DW$37, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$37, DW_AT_TI_max_frame_size(0x02)
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 473,column 1,is_stmt,address _prvSetupTimerInterrupt
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 474,column 1,is_stmt,address _prvSetupTimerInterrupt
 
 	.dwfde $C$DW$CIE, _prvSetupTimerInterrupt
 ;*******************************************************************************
@@ -690,23 +690,23 @@ _prvSetupTimerInterrupt:
 	.dwcfi	save_reg_to_mem, 91, -1
         AADD #-1, SP
 	.dwcfi	cfa_offset, 2
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 495,column 3,is_stmt
-        MOV #16, *(#0) ; |495| 
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 498,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 496,column 3,is_stmt
+        MOV #16, *(#0) ; |496| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 499,column 2,is_stmt
 $C$DW$38	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$38, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$38, DW_AT_name("_Timer0Init")
 	.dwattr $C$DW$38, DW_AT_TI_call
-        CALL #_Timer0Init ; |498| 
-                                        ; call occurs [#_Timer0Init] ; |498| 
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 499,column 2,is_stmt
+        CALL #_Timer0Init ; |499| 
+                                        ; call occurs [#_Timer0Init] ; |499| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 500,column 2,is_stmt
 $C$DW$39	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$39, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$39, DW_AT_name("_StartTimer0")
 	.dwattr $C$DW$39, DW_AT_TI_call
-        CALL #_StartTimer0 ; |499| 
-                                        ; call occurs [#_StartTimer0] ; |499| 
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 506,column 1,is_stmt
+        CALL #_StartTimer0 ; |500| 
+                                        ; call occurs [#_StartTimer0] ; |500| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 507,column 1,is_stmt
         AADD #1, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$40	.dwtag  DW_TAG_TI_branch
@@ -715,7 +715,7 @@ $C$DW$40	.dwtag  DW_TAG_TI_branch
         RET
                                         ; return occurs
 	.dwattr $C$DW$37, DW_AT_TI_end_file("../FreeRTOS/Source/portable/CCS/c55x/port.c")
-	.dwattr $C$DW$37, DW_AT_TI_end_line(0x1fa)
+	.dwattr $C$DW$37, DW_AT_TI_end_line(0x1fb)
 	.dwattr $C$DW$37, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$37
@@ -742,7 +742,7 @@ $C$DW$41	.dwtag  DW_TAG_formal_parameter
 $C$DW$T$24	.dwtag  DW_TAG_pointer_type
 	.dwattr $C$DW$T$24, DW_AT_type(*$C$DW$T$23)
 	.dwattr $C$DW$T$24, DW_AT_address_class(0x20)
-$C$DW$T$25	.dwtag  DW_TAG_typedef, DW_AT_name("pdTASK_CODE")
+$C$DW$T$25	.dwtag  DW_TAG_typedef, DW_AT_name("TaskFunction_t")
 	.dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$24)
 	.dwattr $C$DW$T$25, DW_AT_language(DW_LANG_C)
 $C$DW$T$4	.dwtag  DW_TAG_base_type
@@ -771,8 +771,8 @@ $C$DW$T$9	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
 $C$DW$42	.dwtag  DW_TAG_TI_far_type
 	.dwattr $C$DW$42, DW_AT_type(*$C$DW$T$9)
-$C$DW$T$27	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$27, DW_AT_type(*$C$DW$42)
+$C$DW$T$29	.dwtag  DW_TAG_volatile_type
+	.dwattr $C$DW$T$29, DW_AT_type(*$C$DW$42)
 $C$DW$T$10	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$10, DW_AT_name("int")
@@ -781,6 +781,12 @@ $C$DW$T$11	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$11, DW_AT_name("unsigned int")
 	.dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
+$C$DW$T$26	.dwtag  DW_TAG_typedef, DW_AT_name("StackType_t")
+	.dwattr $C$DW$T$26, DW_AT_type(*$C$DW$T$11)
+	.dwattr $C$DW$T$26, DW_AT_language(DW_LANG_C)
+$C$DW$T$27	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$27, DW_AT_type(*$C$DW$T$26)
+	.dwattr $C$DW$T$27, DW_AT_address_class(0x17)
 $C$DW$T$19	.dwtag  DW_TAG_pointer_type
 	.dwattr $C$DW$T$19, DW_AT_type(*$C$DW$T$11)
 	.dwattr $C$DW$T$19, DW_AT_address_class(0x17)
@@ -794,8 +800,8 @@ $C$DW$T$13	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
 $C$DW$43	.dwtag  DW_TAG_TI_far_type
 	.dwattr $C$DW$43, DW_AT_type(*$C$DW$T$13)
-$C$DW$T$32	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$32, DW_AT_type(*$C$DW$43)
+$C$DW$T$34	.dwtag  DW_TAG_volatile_type
+	.dwattr $C$DW$T$34, DW_AT_type(*$C$DW$43)
 $C$DW$T$14	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$14, DW_AT_name("long long")
@@ -838,9 +844,9 @@ $C$DW$45	.dwtag  DW_TAG_member
 	.dwattr $C$DW$45, DW_AT_accessibility(DW_ACCESS_public)
 	.dwendtag $C$DW$T$20
 
-$C$DW$T$33	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$33, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$T$33, DW_AT_address_class(0x17)
+$C$DW$T$35	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$35, DW_AT_type(*$C$DW$T$20)
+	.dwattr $C$DW$T$35, DW_AT_address_class(0x17)
 	.dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
 
 ;***************************************************************

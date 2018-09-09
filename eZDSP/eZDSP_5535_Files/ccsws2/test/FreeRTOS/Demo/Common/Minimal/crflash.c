@@ -1,55 +1,29 @@
 /*
-    FreeRTOS V6.0.5 - Copyright (C) 2010 Real Time Engineers Ltd.
-
-    ***************************************************************************
-    *                                                                         *
-    * If you are:                                                             *
-    *                                                                         *
-    *    + New to FreeRTOS,                                                   *
-    *    + Wanting to learn FreeRTOS or multitasking in general quickly       *
-    *    + Looking for basic training,                                        *
-    *    + Wanting to improve your FreeRTOS skills and productivity           *
-    *                                                                         *
-    * then take a look at the FreeRTOS eBook                                  *
-    *                                                                         *
-    *        "Using the FreeRTOS Real Time Kernel - a Practical Guide"        *
-    *                  http://www.FreeRTOS.org/Documentation                  *
-    *                                                                         *
-    * A pdf reference manual is also available.  Both are usually delivered   *
-    * to your inbox within 20 minutes to two hours when purchased between 8am *
-    * and 8pm GMT (although please allow up to 24 hours in case of            *
-    * exceptional circumstances).  Thank you for your support!                *
-    *                                                                         *
-    ***************************************************************************
-
-    This file is part of the FreeRTOS distribution.
-
-    FreeRTOS is free software; you can redistribute it and/or modify it under
-    the terms of the GNU General Public License (version 2) as published by the
-    Free Software Foundation AND MODIFIED BY the FreeRTOS exception.
-    ***NOTE*** The exception to the GPL is included to allow you to distribute
-    a combined work that includes FreeRTOS without being obliged to provide the
-    source code for proprietary components outside of the FreeRTOS kernel.
-    FreeRTOS is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-    more details. You should have received a copy of the GNU General Public 
-    License and the FreeRTOS license exception along with FreeRTOS; if not it 
-    can be viewed here: http://www.freertos.org/a00114.html and also obtained 
-    by writing to Richard Barry, contact details for whom are available on the
-    FreeRTOS WEB site.
-
-    1 tab == 4 spaces!
-
-    http://www.FreeRTOS.org - Documentation, latest information, license and
-    contact details.
-
-    http://www.SafeRTOS.com - A version that is certified for use in safety
-    critical systems.
-
-    http://www.OpenRTOS.com - Commercial support, development, porting,
-    licensing and training services.
-*/
+ * FreeRTOS Kernel V10.1.1
+ * Copyright (C) 2018 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * http://www.FreeRTOS.org
+ * http://aws.amazon.com/freertos
+ *
+ * 1 tab == 4 spaces!
+ */
 
 /*
  * This demo application file demonstrates the use of queues to pass data
@@ -106,28 +80,28 @@ created. */
 /*
  * The 'fixed delay' co-routine as described at the top of the file.
  */
-static void prvFixedDelayCoRoutine( xCoRoutineHandle xHandle, unsigned portBASE_TYPE uxIndex );
+static void prvFixedDelayCoRoutine( CoRoutineHandle_t xHandle, UBaseType_t uxIndex );
 
 /*
  * The 'flash' co-routine as described at the top of the file.
  */
-static void prvFlashCoRoutine( xCoRoutineHandle xHandle, unsigned portBASE_TYPE uxIndex );
+static void prvFlashCoRoutine( CoRoutineHandle_t xHandle, UBaseType_t uxIndex );
 
 /* The queue used to pass data between the 'fixed delay' co-routines and the
 'flash' co-routine. */
-static xQueueHandle xFlashQueue;
+static QueueHandle_t xFlashQueue;
 
 /* This will be set to pdFALSE if we detect an error. */
-static portBASE_TYPE xCoRoutineFlashStatus = pdPASS;
+static BaseType_t xCoRoutineFlashStatus = pdPASS;
 
 /*-----------------------------------------------------------*/
 
 /*
  * See the header file for details.
  */
-void vStartFlashCoRoutines( unsigned portBASE_TYPE uxNumberToCreate )
+void vStartFlashCoRoutines( UBaseType_t uxNumberToCreate )
 {
-unsigned portBASE_TYPE uxIndex;
+UBaseType_t uxIndex;
 
 	if( uxNumberToCreate > crfMAX_FLASH_TASKS )
 	{
@@ -135,7 +109,7 @@ unsigned portBASE_TYPE uxIndex;
 	}
 
 	/* Create the queue used to pass data between the co-routines. */
-	xFlashQueue = xQueueCreate( crfQUEUE_LENGTH, sizeof( unsigned portBASE_TYPE ) );
+	xFlashQueue = xQueueCreate( crfQUEUE_LENGTH, sizeof( UBaseType_t ) );
 
 	if( xFlashQueue )
 	{
@@ -151,21 +125,21 @@ unsigned portBASE_TYPE uxIndex;
 }
 /*-----------------------------------------------------------*/
 
-static void prvFixedDelayCoRoutine( xCoRoutineHandle xHandle, unsigned portBASE_TYPE uxIndex )
+static void prvFixedDelayCoRoutine( CoRoutineHandle_t xHandle, UBaseType_t uxIndex )
 {
 /* Even though this is a co-routine the xResult variable does not need to be
 static as we do not need it to maintain its state between blocks. */
-signed portBASE_TYPE xResult;
+BaseType_t xResult;
 /* The uxIndex parameter of the co-routine function is used as an index into
 the xFlashRates array to obtain the delay period to use. */
-static const portTickType xFlashRates[ crfMAX_FLASH_TASKS ] = { 150 / portTICK_RATE_MS,
-																200 / portTICK_RATE_MS,
-																250 / portTICK_RATE_MS,
-																300 / portTICK_RATE_MS,
-																350 / portTICK_RATE_MS,
-																400 / portTICK_RATE_MS,
-																450 / portTICK_RATE_MS,
-																500  / portTICK_RATE_MS };
+static const TickType_t xFlashRates[ crfMAX_FLASH_TASKS ] = { 150 / portTICK_PERIOD_MS,
+																200 / portTICK_PERIOD_MS,
+																250 / portTICK_PERIOD_MS,
+																300 / portTICK_PERIOD_MS,
+																350 / portTICK_PERIOD_MS,
+																400 / portTICK_PERIOD_MS,
+																450 / portTICK_PERIOD_MS,
+																500  / portTICK_PERIOD_MS };
 
 	/* Co-routines MUST start with a call to crSTART. */
 	crSTART( xHandle );
@@ -192,21 +166,21 @@ static const portTickType xFlashRates[ crfMAX_FLASH_TASKS ] = { 150 / portTICK_R
 }
 /*-----------------------------------------------------------*/
 
-static void prvFlashCoRoutine( xCoRoutineHandle xHandle, unsigned portBASE_TYPE uxIndex )
+static void prvFlashCoRoutine( CoRoutineHandle_t xHandle, UBaseType_t uxIndex )
 {
 /* Even though this is a co-routine the variable do not need to be
 static as we do not need it to maintain their state between blocks. */
-signed portBASE_TYPE xResult;
-unsigned portBASE_TYPE uxLEDToFlash;
+BaseType_t xResult;
+UBaseType_t uxLEDToFlash;
 
 	/* Co-routines MUST start with a call to crSTART. */
 	crSTART( xHandle );
 	( void ) uxIndex;
-	
+
 	for( ;; )
 	{
 		/* Block to wait for the number of the LED to flash. */
-		crQUEUE_RECEIVE( xHandle, xFlashQueue, &uxLEDToFlash, portMAX_DELAY, &xResult );		
+		crQUEUE_RECEIVE( xHandle, xFlashQueue, &uxLEDToFlash, portMAX_DELAY, &xResult );
 
 		if( xResult != pdPASS )
 		{
@@ -225,7 +199,7 @@ unsigned portBASE_TYPE uxLEDToFlash;
 }
 /*-----------------------------------------------------------*/
 
-portBASE_TYPE xAreFlashCoRoutinesStillRunning( void )
+BaseType_t xAreFlashCoRoutinesStillRunning( void )
 {
 	/* Return pdPASS or pdFAIL depending on whether an error has been detected
 	or not. */

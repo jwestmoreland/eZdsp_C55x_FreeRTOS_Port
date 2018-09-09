@@ -36,7 +36,7 @@
 Uint16 fTimer =0;
 Uint16 fTimer02 =0;
 Uint16 Timer0_Int_CTR =0;
- extern void vTaskIncrementTick();
+ extern void xTaskIncrementTick();
  extern void vTaskSwitchContext();
 
 extern void vTickISR();
@@ -166,7 +166,7 @@ interrupt void Timer02_isr(void)
     // clear timer02 int flag
     IFR0 = IFR0&0x0010; 
     
-    vTaskIncrementTick();
+    xTaskIncrementTick();					// was vTaskIncrementTick();
 
     if ( configUSE_PREEMPTION == 1 )
 	    vTaskSwitchContext();

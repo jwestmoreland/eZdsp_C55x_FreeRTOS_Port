@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Fri Aug 19 02:56:52 2016                                 *
+;* Date/Time created: Sat Sep 08 17:41:47 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -27,7 +27,7 @@ $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_i2s.c")
 	.dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
-	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug")
+	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug")
 ;******************************************************************************
 ;* CINIT RECORDS                                                              *
 ;******************************************************************************
@@ -64,7 +64,7 @@ $C$DW$3	.dwtag  DW_TAG_variable, DW_AT_name("ouError")
 	.dwattr $C$DW$3, DW_AT_location[DW_OP_addr _ouError]
 	.dwattr $C$DW$3, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$3, DW_AT_external
-;	F:\ti\ccsv6\tools\compiler\c5500_4.4.1\bin\acp55.exe -@e:\\users\\john\\AppData\\Local\\Temp\\0606812 
+;	F:\TI_CCS_7P4\ccsv7\tools\compiler\c5500_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1185212 
 	.sect	".text"
 	.align 4
 	.global	_I2S_open
@@ -1394,7 +1394,7 @@ $C$DW$38	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$39	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$39, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2s.asm:$C$L55:1:1471600612")
+	.dwattr $C$DW$39, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2s.asm:$C$L55:1:1536453707")
 	.dwattr $C$DW$39, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_i2s.c")
 	.dwattr $C$DW$39, DW_AT_TI_begin_line(0x237)
 	.dwattr $C$DW$39, DW_AT_TI_end_line(0x255)
@@ -1438,7 +1438,7 @@ $C$DW$51	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$52	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$52, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2s.asm:$C$L47:1:1471600612")
+	.dwattr $C$DW$52, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2s.asm:$C$L47:1:1536453707")
 	.dwattr $C$DW$52, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_i2s.c")
 	.dwattr $C$DW$52, DW_AT_TI_begin_line(0x224)
 	.dwattr $C$DW$52, DW_AT_TI_end_line(0x22f)
@@ -1455,7 +1455,7 @@ $C$DW$55	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$56	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$56, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2s.asm:$C$L39:1:1471600612")
+	.dwattr $C$DW$56, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2s.asm:$C$L39:1:1536453707")
 	.dwattr $C$DW$56, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_i2s.c")
 	.dwattr $C$DW$56, DW_AT_TI_begin_line(0x1fc)
 	.dwattr $C$DW$56, DW_AT_TI_end_line(0x215)
@@ -1781,7 +1781,7 @@ $C$DW$72	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$73	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$73, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2s.asm:$C$L70:1:1471600612")
+	.dwattr $C$DW$73, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2s.asm:$C$L70:1:1536453707")
 	.dwattr $C$DW$73, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_i2s.c")
 	.dwattr $C$DW$73, DW_AT_TI_begin_line(0x2b1)
 	.dwattr $C$DW$73, DW_AT_TI_end_line(0x2d0)
@@ -1825,7 +1825,7 @@ $C$DW$85	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$86	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$86, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2s.asm:$C$L63:1:1471600612")
+	.dwattr $C$DW$86, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2s.asm:$C$L63:1:1536453707")
 	.dwattr $C$DW$86, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_i2s.c")
 	.dwattr $C$DW$86, DW_AT_TI_begin_line(0x2a1)
 	.dwattr $C$DW$86, DW_AT_TI_end_line(0x2ad)

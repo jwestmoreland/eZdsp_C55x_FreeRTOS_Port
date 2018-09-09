@@ -1,55 +1,29 @@
 /*
-    FreeRTOS V6.0.5 - Copyright (C) 2010 Real Time Engineers Ltd.
-
-    ***************************************************************************
-    *                                                                         *
-    * If you are:                                                             *
-    *                                                                         *
-    *    + New to FreeRTOS,                                                   *
-    *    + Wanting to learn FreeRTOS or multitasking in general quickly       *
-    *    + Looking for basic training,                                        *
-    *    + Wanting to improve your FreeRTOS skills and productivity           *
-    *                                                                         *
-    * then take a look at the FreeRTOS eBook                                  *
-    *                                                                         *
-    *        "Using the FreeRTOS Real Time Kernel - a Practical Guide"        *
-    *                  http://www.FreeRTOS.org/Documentation                  *
-    *                                                                         *
-    * A pdf reference manual is also available.  Both are usually delivered   *
-    * to your inbox within 20 minutes to two hours when purchased between 8am *
-    * and 8pm GMT (although please allow up to 24 hours in case of            *
-    * exceptional circumstances).  Thank you for your support!                *
-    *                                                                         *
-    ***************************************************************************
-
-    This file is part of the FreeRTOS distribution.
-
-    FreeRTOS is free software; you can redistribute it and/or modify it under
-    the terms of the GNU General Public License (version 2) as published by the
-    Free Software Foundation AND MODIFIED BY the FreeRTOS exception.
-    ***NOTE*** The exception to the GPL is included to allow you to distribute
-    a combined work that includes FreeRTOS without being obliged to provide the
-    source code for proprietary components outside of the FreeRTOS kernel.
-    FreeRTOS is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-    more details. You should have received a copy of the GNU General Public 
-    License and the FreeRTOS license exception along with FreeRTOS; if not it 
-    can be viewed here: http://www.freertos.org/a00114.html and also obtained 
-    by writing to Richard Barry, contact details for whom are available on the
-    FreeRTOS WEB site.
-
-    1 tab == 4 spaces!
-
-    http://www.FreeRTOS.org - Documentation, latest information, license and
-    contact details.
-
-    http://www.SafeRTOS.com - A version that is certified for use in safety
-    critical systems.
-
-    http://www.OpenRTOS.com - Commercial support, development, porting,
-    licensing and training services.
-*/
+ * FreeRTOS Kernel V10.1.1
+ * Copyright (C) 2018 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * http://www.FreeRTOS.org
+ * http://aws.amazon.com/freertos
+ *
+ * 1 tab == 4 spaces!
+ */
 
 
 /*
@@ -100,22 +74,22 @@
 
 /* The Tx task will transmit the sequence of characters at a pseudo random
 interval.  This is the maximum and minimum block time between sends. */
-#define comTX_MAX_BLOCK_TIME		( ( portTickType ) 0x96 )
-#define comTX_MIN_BLOCK_TIME		( ( portTickType ) 0x32 )
-#define comOFFSET_TIME				( ( portTickType ) 3 )
+#define comTX_MAX_BLOCK_TIME		( ( TickType_t ) 0x96 )
+#define comTX_MIN_BLOCK_TIME		( ( TickType_t ) 0x32 )
+#define comOFFSET_TIME				( ( TickType_t ) 3 )
 
 /* We should find that each character can be queued for Tx immediately and we
 don't have to block to send. */
-#define comNO_BLOCK					( ( portTickType ) 0 )
+#define comNO_BLOCK					( ( TickType_t ) 0 )
 
 /* The Rx task will block on the Rx queue for a long period. */
-#define comRX_BLOCK_TIME			( ( portTickType ) 0xffff )
+#define comRX_BLOCK_TIME			( ( TickType_t ) 0xffff )
 
 /* The sequence transmitted is from comFIRST_BYTE to and including comLAST_BYTE. */
 #define comFIRST_BYTE				( 'A' )
 #define comLAST_BYTE				( 'X' )
 
-#define comBUFFER_LEN				( ( unsigned portBASE_TYPE ) ( comLAST_BYTE - comFIRST_BYTE ) + ( unsigned portBASE_TYPE ) 1 )
+#define comBUFFER_LEN				( ( UBaseType_t ) ( comLAST_BYTE - comFIRST_BYTE ) + ( UBaseType_t ) 1 )
 #define comINITIAL_RX_COUNT_VALUE	( 0 )
 
 /* Handle to the com port used by both tasks. */
@@ -130,31 +104,31 @@ static portTASK_FUNCTION_PROTO( vComRxTask, pvParameters );
 /* The LED that should be toggled by the Rx and Tx tasks.  The Rx task will
 toggle LED ( uxBaseLED + comRX_LED_OFFSET).  The Tx task will toggle LED
 ( uxBaseLED + comTX_LED_OFFSET ). */
-static unsigned portBASE_TYPE uxBaseLED = 0;
+static UBaseType_t uxBaseLED = 0;
 
 /* Check variable used to ensure no error have occurred.  The Rx task will
 increment this variable after every successfully received sequence.  If at any
 time the sequence is incorrect the the variable will stop being incremented. */
-static volatile unsigned portBASE_TYPE uxRxLoops = comINITIAL_RX_COUNT_VALUE;
+static volatile UBaseType_t uxRxLoops = comINITIAL_RX_COUNT_VALUE;
 
 /*-----------------------------------------------------------*/
 
-void vAltStartComTestTasks( unsigned portBASE_TYPE uxPriority, unsigned long ulBaudRate, unsigned portBASE_TYPE uxLED )
+void vAltStartComTestTasks( UBaseType_t uxPriority, uint32_t ulBaudRate, UBaseType_t uxLED )
 {
 	/* Initialise the com port then spawn the Rx and Tx tasks. */
 	uxBaseLED = uxLED;
 	xSerialPortInitMinimal( ulBaudRate, comBUFFER_LEN );
 
 	/* The Tx task is spawned with a lower priority than the Rx task. */
-	xTaskCreate( vComTxTask, ( signed char * ) "COMTx", comSTACK_SIZE, NULL, uxPriority - 1, ( xTaskHandle * ) NULL );
-	xTaskCreate( vComRxTask, ( signed char * ) "COMRx", comSTACK_SIZE, NULL, uxPriority, ( xTaskHandle * ) NULL );
+	xTaskCreate( vComTxTask, "COMTx", comSTACK_SIZE, NULL, uxPriority - 1, ( TaskHandle_t * ) NULL );
+	xTaskCreate( vComRxTask, "COMRx", comSTACK_SIZE, NULL, uxPriority, ( TaskHandle_t * ) NULL );
 }
 /*-----------------------------------------------------------*/
 
 static portTASK_FUNCTION( vComTxTask, pvParameters )
 {
-signed char cByteToSend;
-portTickType xTimeToWait;
+char cByteToSend;
+TickType_t xTimeToWait;
 
 	/* Just to stop compiler warnings. */
 	( void ) pvParameters;
@@ -196,7 +170,7 @@ portTickType xTimeToWait;
 static portTASK_FUNCTION( vComRxTask, pvParameters )
 {
 signed char cExpectedByte, cByteRxed;
-portBASE_TYPE xResyncRequired = pdFALSE, xErrorOccurred = pdFALSE;
+BaseType_t xResyncRequired = pdFALSE, xErrorOccurred = pdFALSE;
 
 	/* Just to stop compiler warnings. */
 	( void ) pvParameters;
@@ -266,9 +240,9 @@ portBASE_TYPE xResyncRequired = pdFALSE, xErrorOccurred = pdFALSE;
 } /*lint !e715 !e818 pvParameters is required for a task function even if it is not referenced. */
 /*-----------------------------------------------------------*/
 
-portBASE_TYPE xAreComTestTasksStillRunning( void )
+BaseType_t xAreComTestTasksStillRunning( void )
 {
-portBASE_TYPE xReturn;
+BaseType_t xReturn;
 
 	/* If the count of successful reception loops has not changed than at
 	some time an error occurred (i.e. a character was received out of sequence)

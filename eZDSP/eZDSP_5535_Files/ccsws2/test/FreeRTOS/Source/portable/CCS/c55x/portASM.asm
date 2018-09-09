@@ -15,8 +15,8 @@
 	     .global _tZero
 	     .global _save_xar6
              .global _pxCurrentTCB
-             .global _vTaskIncrementTick
-             .ref    _vTaskIncrementTick
+             .global _xTaskIncrementTick
+             .ref    _xTaskIncrementTick
              .global _vTaskSwitchContext
              .global _prvSetupTimerInterrupt
 			 .global _tickIRQctr
@@ -524,7 +524,7 @@ _vTickISR:
 		AND #0x0010, mmap(@IFR0)
                 portSAVE_CONTEXT
 
-                call     #_vTaskIncrementTick
+                call     #_xTaskIncrementTick
 
                 .if configUSE_PREEMPTION == 1
                 call    #_vTaskSwitchContext

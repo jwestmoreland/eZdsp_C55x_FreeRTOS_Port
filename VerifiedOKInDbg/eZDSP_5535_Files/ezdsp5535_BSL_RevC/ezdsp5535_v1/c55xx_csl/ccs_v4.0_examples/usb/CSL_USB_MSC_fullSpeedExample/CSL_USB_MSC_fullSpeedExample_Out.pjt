@@ -1,0 +1,54 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="D:\Projects_SVN\C5505_CSL\Design\SW\Source_Codes\VC5505_CSL\CCS_v3.3_Examples\usb\example4\csl_usb_msc_poll_example\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Project Dependencies]
+Source="..\..\..\..\build\cslVC5505.pjt"
+Source="..\atafs\build\atafs_bios_drv_lib.pjt"
+
+["..\..\..\..\build\cslVC5505.pjt" Settings]
+MatchConfigName=true
+
+["..\atafs\build\atafs_bios_drv_lib.pjt" Settings]
+MatchConfigName=true
+
+[Source Files]
+Source="..\chk_mmc.c"
+Source="csl_usb_msc_fullspeed_example.c"
+Source="VC5505_CSL_BIOS_cfg.tcf"
+Source="VC5505_CSL_BIOS_cfg.cmd"
+
+[Generated Files]
+Source="VC5505_CSL_BIOS_cfg.s55"
+Source="VC5505_CSL_BIOS_cfg_c.c"
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -pdv -pden -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)\..\..\..\..\src" -i"$(Proj_dir)\..\..\..\..\inc" -i"$(Proj_dir)\..\atafs\src" -i"$(Proj_dir)\..\inc" -d"_DEBUG" -d"CSL_MSC_TEST" -ml -vcore:3.3
+
+["Compiler" Settings: "Release"]
+Options=-mg -o3 -fr"$(Proj_dir)\Release" -i"$(Proj_dir)\..\..\..\..\src" -i"$(Proj_dir)\..\..\..\..\inc" -i"$(Proj_dir)\..\atafs\src" -i"$(Proj_dir)\..\inc" -d"CSL_MSC_TEST" -ml -vcore:3.3
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-Dconfig.importPath="%BIOS_INSTALL_DIR%/packages;"
+
+["Linker" Settings: "Debug"]
+Options=-c -m".\Debug\CSL_USB_MSC_fullSpeedExample_Out.map" -o".\Debug\CSL_USB_MSC_fullSpeedExample_Out.out" -w -x -i"%BIOS_INSTALL_DIR%\packages\ti\rtdx\lib\c5000"
+
+["Linker" Settings: "Release"]
+Options=-c -m".\Release\CSL_USB_MSC_fullSpeedExample_Out.map" -o".\Release\CSL_USB_MSC_fullSpeedExample_Out.out" -w -i"%BIOS_INSTALL_DIR%\packages\ti\rtdx\lib\c5000"
+
+["VC5505_CSL_BIOS_cfg.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["VC5505_CSL_BIOS_cfg.cmd" Settings: "Release"]
+LinkOrder=1
+

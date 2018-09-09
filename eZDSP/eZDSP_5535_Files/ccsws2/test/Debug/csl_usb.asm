@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Fri Aug 19 02:57:31 2016                                 *
+;* Date/Time created: Sat Sep 08 17:42:29 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -27,7 +27,7 @@ $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_usb.c")
 	.dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
-	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug")
+	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug")
 	.global	_usbRegisters
 	.bss	_usbRegisters,1,0,0
 $C$DW$1	.dwtag  DW_TAG_variable, DW_AT_name("usbRegisters")
@@ -105,7 +105,7 @@ $C$DW$11	.dwtag  DW_TAG_variable, DW_AT_name("gUsbEpHandle")
 	.dwattr $C$DW$11, DW_AT_location[DW_OP_addr _gUsbEpHandle]
 	.dwattr $C$DW$11, DW_AT_type(*$C$DW$T$103)
 	.dwattr $C$DW$11, DW_AT_external
-;	F:\ti\ccsv6\tools\compiler\c5500_4.4.1\bin\acp55.exe -@e:\\users\\john\\AppData\\Local\\Temp\\1657212 
+;	F:\TI_CCS_7P4\ccsv7\tools\compiler\c5500_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1219212 
 	.sect	".text"
 	.align 4
 
@@ -114,11 +114,11 @@ $C$DW$12	.dwtag  DW_TAG_subprogram, DW_AT_name("USB_checkSpeed")
 	.dwattr $C$DW$12, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$12, DW_AT_TI_symbol_name("_USB_checkSpeed")
 	.dwattr $C$DW$12, DW_AT_type(*$C$DW$T$81)
-	.dwattr $C$DW$12, DW_AT_TI_begin_file("F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h")
+	.dwattr $C$DW$12, DW_AT_TI_begin_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h")
 	.dwattr $C$DW$12, DW_AT_TI_begin_line(0x6b6)
 	.dwattr $C$DW$12, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$12, DW_AT_TI_max_frame_size(0x06)
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1720,column 1,is_stmt,address _USB_checkSpeed
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1720,column 1,is_stmt,address _USB_checkSpeed
 
 	.dwfde $C$DW$CIE, _USB_checkSpeed
 $C$DW$13	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pContext")
@@ -159,12 +159,12 @@ $C$DW$17	.dwtag  DW_TAG_variable, DW_AT_name("wPower")
 	.dwattr $C$DW$17, DW_AT_location[DW_OP_bregx 0x24 4]
         MOV XAR1, dbl(*SP(#2))
         MOV XAR0, dbl(*SP(#0))
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1723,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1723,column 2,is_stmt
         MOV #1025, T0 ; |1723| 
         MOV *(#_usbRegisters), AR3 ; |1723| 
         MOV port(*AR3(T0)), AR1 ; |1723| 
         MOV AR1, *SP(#4) ; |1723| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1725,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1725,column 2,is_stmt
         BCC $C$L1,AR1 == #0 ; |1725| 
                                         ; branchcc occurs ; |1725| 
         MOV dbl(*SP(#2)), XAR3
@@ -172,31 +172,31 @@ $C$DW$17	.dwtag  DW_TAG_variable, DW_AT_name("wPower")
         BCC $C$L2,AC0 != #0 ; |1725| 
                                         ; branchcc occurs ; |1725| 
 $C$L1:    
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1727,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1727,column 3,is_stmt
         MOV #0, T0
         B $C$L5   ; |1727| 
                                         ; branch occurs ; |1727| 
 $C$L2:    
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1734,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1734,column 5,is_stmt
         MOV *(#_usbRegisters), AR3 ; |1734| 
         BTST #12, port(*AR3(T0)), TC1 ; |1734| 
         BCC $C$L3,!TC1 ; |1734| 
                                         ; branchcc occurs ; |1734| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1736,column 9,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1736,column 9,is_stmt
         MOV dbl(*SP(#2)), XAR3
         MOV #4, *AR3 ; |1736| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1737,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1737,column 2,is_stmt
         B $C$L4   ; |1737| 
                                         ; branch occurs ; |1737| 
 $C$L3:    
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1740,column 9,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1740,column 9,is_stmt
         MOV dbl(*SP(#2)), XAR3
         MOV #2, *AR3 ; |1740| 
 $C$L4:    
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1743,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1743,column 5,is_stmt
         MOV #1, T0
 $C$L5:    
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1744,column 1,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1744,column 1,is_stmt
         AADD #5, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$18	.dwtag  DW_TAG_TI_branch
@@ -204,7 +204,7 @@ $C$DW$18	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$18, DW_AT_TI_return
         RET
                                         ; return occurs
-	.dwattr $C$DW$12, DW_AT_TI_end_file("F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h")
+	.dwattr $C$DW$12, DW_AT_TI_end_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h")
 	.dwattr $C$DW$12, DW_AT_TI_end_line(0x6d0)
 	.dwattr $C$DW$12, DW_AT_TI_end_column(0x01)
 	.dwendentry
@@ -217,11 +217,11 @@ $C$DW$19	.dwtag  DW_TAG_subprogram, DW_AT_name("USB_setConfiguration")
 	.dwattr $C$DW$19, DW_AT_low_pc(_USB_setConfiguration)
 	.dwattr $C$DW$19, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$19, DW_AT_TI_symbol_name("_USB_setConfiguration")
-	.dwattr $C$DW$19, DW_AT_TI_begin_file("F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h")
+	.dwattr $C$DW$19, DW_AT_TI_begin_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h")
 	.dwattr $C$DW$19, DW_AT_TI_begin_line(0x76e)
 	.dwattr $C$DW$19, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$19, DW_AT_TI_max_frame_size(0x06)
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1904,column 1,is_stmt,address _USB_setConfiguration
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1904,column 1,is_stmt,address _USB_setConfiguration
 
 	.dwfde $C$DW$CIE, _USB_setConfiguration
 $C$DW$20	.dwtag  DW_TAG_formal_parameter, DW_AT_name("devNum")
@@ -265,27 +265,27 @@ $C$DW$25	.dwtag  DW_TAG_variable, DW_AT_name("tempVal")
 	.dwattr $C$DW$25, DW_AT_location[DW_OP_bregx 0x24 3]
         MOV T1, *SP(#1) ; |1904| 
         MOV T0, *SP(#0) ; |1904| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1908,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1908,column 2,is_stmt
         MOV #0, *SP(#2) ; |1908| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1911,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1911,column 2,is_stmt
         MOV *(#_usbRegisters), AR3 ; |1911| 
         MOV #1038, T0 ; |1911| 
         MOV port(*AR3(T0)), AR1 ; |1911| 
         MOV AR1, *SP(#2) ; |1911| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1915,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1915,column 2,is_stmt
         AND #0xfff0, port(*AR3(T0)) ; |1915| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1916,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1916,column 5,is_stmt
         MOV *(#_usbRegisters), AR3 ; |1916| 
         OR #0x0001, port(*AR3(T0)) ; |1916| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1919,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1919,column 5,is_stmt
         MOV #1042, T0 ; |1919| 
         MOV *(#_usbRegisters), AR3 ; |1919| 
         OR #0x0040, port(*AR3(T0)) ; |1919| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1921,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1921,column 5,is_stmt
         MOV #1046, T0 ; |1921| 
         MOV *(#_usbRegisters), AR3 ; |1921| 
         OR #0x0080, port(*AR3(T0)) ; |1921| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1924,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1924,column 5,is_stmt
         MOV #1042, T0 ; |1924| 
         MOV *(#_usbRegisters), AR3 ; |1924| 
         MOV port(*AR3(T0)), AR1 ; |1924| 
@@ -296,33 +296,33 @@ $C$DW$25	.dwtag  DW_TAG_variable, DW_AT_name("tempVal")
         CMPU AR1 != AR2, TC1 ; |1924| 
         BCC $C$L6,TC1 ; |1924| 
                                         ; branchcc occurs ; |1924| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1929,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1929,column 3,is_stmt
         MOV port(*AR3(T0)), AR1 ; |1929| 
         MOV AR1, *SP(#3) ; |1929| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1931,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1931,column 3,is_stmt
         OR #0x0008, *SP(#3) ; |1931| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1932,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1932,column 3,is_stmt
         AND #0xfffc, *SP(#3) ; |1932| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1934,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1934,column 3,is_stmt
         MOV *SP(#3), AR1 ; |1934| 
         MOV AR1, port(*AR3(T0)) ; |1934| 
 $C$L6:    
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1939,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1939,column 2,is_stmt
         MOV #1038, T0 ; |1939| 
         MOV *(#_usbRegisters), AR3 ; |1939| 
         AND #0xfff0, port(*AR3(T0)) ; |1939| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1940,column 4,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1940,column 4,is_stmt
         MOV *(#_usbRegisters), AR3 ; |1940| 
         OR #0x0002, port(*AR3(T0)) ; |1940| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1943,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1943,column 5,is_stmt
         MOV #1042, T0 ; |1943| 
         MOV *(#_usbRegisters), AR3 ; |1943| 
         OR #0x0040, port(*AR3(T0)) ; |1943| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1945,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1945,column 5,is_stmt
         MOV #1046, T0 ; |1945| 
         MOV *(#_usbRegisters), AR3 ; |1945| 
         OR #0x0080, port(*AR3(T0)) ; |1945| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1948,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1948,column 5,is_stmt
         MOV #1042, T0 ; |1948| 
         MOV *(#_usbRegisters), AR3 ; |1948| 
         MOV port(*AR3(T0)), AR1 ; |1948| 
@@ -330,33 +330,33 @@ $C$L6:
         CMPU AR1 != AR2, TC1 ; |1948| 
         BCC $C$L7,TC1 ; |1948| 
                                         ; branchcc occurs ; |1948| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1953,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1953,column 3,is_stmt
         MOV port(*AR3(T0)), AR1 ; |1953| 
         MOV AR1, *SP(#3) ; |1953| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1955,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1955,column 3,is_stmt
         OR #0x0008, *SP(#3) ; |1955| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1956,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1956,column 3,is_stmt
         AND #0xfffc, *SP(#3) ; |1956| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1958,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1958,column 3,is_stmt
         MOV *SP(#3), AR1 ; |1958| 
         MOV AR1, port(*AR3(T0)) ; |1958| 
 $C$L7:    
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1963,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1963,column 2,is_stmt
         MOV #1038, T0 ; |1963| 
         MOV *(#_usbRegisters), AR3 ; |1963| 
         AND #0xfff0, port(*AR3(T0)) ; |1963| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1964,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1964,column 5,is_stmt
         MOV *(#_usbRegisters), AR3 ; |1964| 
         OR #0x0003, port(*AR3(T0)) ; |1964| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1967,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1967,column 5,is_stmt
         MOV #1042, T0 ; |1967| 
         MOV *(#_usbRegisters), AR3 ; |1967| 
         OR #0x0040, port(*AR3(T0)) ; |1967| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1969,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1969,column 5,is_stmt
         MOV #1046, T0 ; |1969| 
         MOV *(#_usbRegisters), AR3 ; |1969| 
         OR #0x0080, port(*AR3(T0)) ; |1969| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1972,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1972,column 5,is_stmt
         MOV #1042, T0 ; |1972| 
         MOV *(#_usbRegisters), AR3 ; |1972| 
         MOV port(*AR3(T0)), AR1 ; |1972| 
@@ -364,33 +364,33 @@ $C$L7:
         CMPU AR1 != AR2, TC1 ; |1972| 
         BCC $C$L8,TC1 ; |1972| 
                                         ; branchcc occurs ; |1972| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1977,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1977,column 3,is_stmt
         MOV port(*AR3(T0)), AR1 ; |1977| 
         MOV AR1, *SP(#3) ; |1977| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1979,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1979,column 3,is_stmt
         OR #0x0008, *SP(#3) ; |1979| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1980,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1980,column 3,is_stmt
         AND #0xfffc, *SP(#3) ; |1980| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1982,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1982,column 3,is_stmt
         MOV *SP(#3), AR1 ; |1982| 
         MOV AR1, port(*AR3(T0)) ; |1982| 
 $C$L8:    
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1987,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1987,column 2,is_stmt
         MOV #1038, T0 ; |1987| 
         MOV *(#_usbRegisters), AR3 ; |1987| 
         AND #0xfff0, port(*AR3(T0)) ; |1987| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1988,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1988,column 5,is_stmt
         MOV *(#_usbRegisters), AR3 ; |1988| 
         OR #0x0004, port(*AR3(T0)) ; |1988| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1991,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1991,column 5,is_stmt
         MOV #1042, T0 ; |1991| 
         MOV *(#_usbRegisters), AR3 ; |1991| 
         OR #0x0040, port(*AR3(T0)) ; |1991| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1993,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1993,column 5,is_stmt
         MOV #1046, T0 ; |1993| 
         MOV *(#_usbRegisters), AR3 ; |1993| 
         OR #0x0080, port(*AR3(T0)) ; |1993| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1996,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 1996,column 5,is_stmt
         MOV #1042, T0 ; |1996| 
         MOV *(#_usbRegisters), AR3 ; |1996| 
         MOV port(*AR3(T0)), AR1 ; |1996| 
@@ -398,23 +398,23 @@ $C$L8:
         CMPU AR1 != AR2, TC1 ; |1996| 
         BCC $C$L9,TC1 ; |1996| 
                                         ; branchcc occurs ; |1996| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2001,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2001,column 3,is_stmt
         MOV port(*AR3(T0)), AR1 ; |2001| 
         MOV AR1, *SP(#3) ; |2001| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2003,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2003,column 3,is_stmt
         OR #0x0008, *SP(#3) ; |2003| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2004,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2004,column 3,is_stmt
         AND #0xfffc, *SP(#3) ; |2004| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2006,column 3,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2006,column 3,is_stmt
         MOV *SP(#3), AR1 ; |2006| 
         MOV AR1, port(*AR3(T0)) ; |2006| 
 $C$L9:    
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2010,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2010,column 2,is_stmt
         MOV *(#_usbRegisters), AR3 ; |2010| 
         MOV #1038, T0 ; |2010| 
         MOV *SP(#2), AR1 ; |2010| 
         MOV AR1, port(*AR3(T0)) ; |2010| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2011,column 1,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2011,column 1,is_stmt
         AADD #5, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$26	.dwtag  DW_TAG_TI_branch
@@ -422,7 +422,7 @@ $C$DW$26	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$26, DW_AT_TI_return
         RET
                                         ; return occurs
-	.dwattr $C$DW$19, DW_AT_TI_end_file("F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h")
+	.dwattr $C$DW$19, DW_AT_TI_end_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h")
 	.dwattr $C$DW$19, DW_AT_TI_end_line(0x7db)
 	.dwattr $C$DW$19, DW_AT_TI_end_column(0x01)
 	.dwendentry
@@ -435,11 +435,11 @@ $C$DW$27	.dwtag  DW_TAG_subprogram, DW_AT_name("USB_sendEpZLP")
 	.dwattr $C$DW$27, DW_AT_low_pc(_USB_sendEpZLP)
 	.dwattr $C$DW$27, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$27, DW_AT_TI_symbol_name("_USB_sendEpZLP")
-	.dwattr $C$DW$27, DW_AT_TI_begin_file("F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h")
+	.dwattr $C$DW$27, DW_AT_TI_begin_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h")
 	.dwattr $C$DW$27, DW_AT_TI_begin_line(0x8b2)
 	.dwattr $C$DW$27, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$27, DW_AT_TI_max_frame_size(0x04)
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2227,column 1,is_stmt,address _USB_sendEpZLP
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2227,column 1,is_stmt,address _USB_sendEpZLP
 
 	.dwfde $C$DW$CIE, _USB_sendEpZLP
 $C$DW$28	.dwtag  DW_TAG_formal_parameter, DW_AT_name("dwEndpoint")
@@ -470,37 +470,37 @@ $C$DW$30	.dwtag  DW_TAG_variable, DW_AT_name("saveIndex")
 	.dwattr $C$DW$30, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$30, DW_AT_location[DW_OP_bregx 0x24 2]
         MOV AC0, dbl(*SP(#0)) ; |2227| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2231,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2231,column 2,is_stmt
         MOV #1038, T0 ; |2231| 
         MOV *(#_usbRegisters), AR3 ; |2231| 
         MOV port(*AR3(T0)), AR1 ; |2231| 
         MOV AR1, *SP(#2) ; |2231| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2234,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2234,column 2,is_stmt
         AND #0xfff0, port(*AR3(T0)) ; |2234| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2235,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2235,column 5,is_stmt
         MOV *(#_usbRegisters), AR3 ; |2235| 
         MOV dbl(*SP(#0)), AC0 ; |2235| 
         OR port(*AR3(T0)), AC0, AC0 ; |2235| 
         MOV AC0, port(*AR3(T0)) ; |2235| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2238,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2238,column 2,is_stmt
         MOV #1042, T0 ; |2238| 
         MOV *(#_usbRegisters), AR3 ; |2238| 
         MOV port(*AR3(T0)), AR1 ; |2238| 
         BCLR @#1, AR1 ; |2238| 
         BSET @#1, AR1 ; |2238| 
         MOV AR1, port(*AR3(T0)) ; |2238| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2240,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2240,column 2,is_stmt
         MOV *(#_usbRegisters), AR3 ; |2240| 
         MOV port(*AR3(T0)), AR1 ; |2240| 
         BCLR @#3, AR1 ; |2240| 
         BSET @#3, AR1 ; |2240| 
         MOV AR1, port(*AR3(T0)) ; |2240| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2244,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2244,column 2,is_stmt
         MOV #1038, T0 ; |2244| 
         MOV *(#_usbRegisters), AR3 ; |2244| 
         MOV *SP(#2), AR1 ; |2244| 
         MOV AR1, port(*AR3(T0)) ; |2244| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2245,column 1,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2245,column 1,is_stmt
         AADD #3, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$31	.dwtag  DW_TAG_TI_branch
@@ -508,7 +508,7 @@ $C$DW$31	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$31, DW_AT_TI_return
         RET
                                         ; return occurs
-	.dwattr $C$DW$27, DW_AT_TI_end_file("F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h")
+	.dwattr $C$DW$27, DW_AT_TI_end_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h")
 	.dwattr $C$DW$27, DW_AT_TI_end_line(0x8c5)
 	.dwattr $C$DW$27, DW_AT_TI_end_column(0x01)
 	.dwendentry
@@ -521,11 +521,11 @@ $C$DW$32	.dwtag  DW_TAG_subprogram, DW_AT_name("USB_clearEpRxPktRdy")
 	.dwattr $C$DW$32, DW_AT_low_pc(_USB_clearEpRxPktRdy)
 	.dwattr $C$DW$32, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$32, DW_AT_TI_symbol_name("_USB_clearEpRxPktRdy")
-	.dwattr $C$DW$32, DW_AT_TI_begin_file("F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h")
+	.dwattr $C$DW$32, DW_AT_TI_begin_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h")
 	.dwattr $C$DW$32, DW_AT_TI_begin_line(0x8c8)
 	.dwattr $C$DW$32, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$32, DW_AT_TI_max_frame_size(0x04)
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2249,column 1,is_stmt,address _USB_clearEpRxPktRdy
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2249,column 1,is_stmt,address _USB_clearEpRxPktRdy
 
 	.dwfde $C$DW$CIE, _USB_clearEpRxPktRdy
 $C$DW$33	.dwtag  DW_TAG_formal_parameter, DW_AT_name("dwEndpoint")
@@ -556,37 +556,37 @@ $C$DW$35	.dwtag  DW_TAG_variable, DW_AT_name("saveIndex")
 	.dwattr $C$DW$35, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$35, DW_AT_location[DW_OP_bregx 0x24 2]
         MOV AC0, dbl(*SP(#0)) ; |2249| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2253,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2253,column 2,is_stmt
         MOV #1038, T0 ; |2253| 
         MOV *(#_usbRegisters), AR3 ; |2253| 
         MOV port(*AR3(T0)), AR1 ; |2253| 
         MOV AR1, *SP(#2) ; |2253| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2256,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2256,column 2,is_stmt
         AND #0xfff0, port(*AR3(T0)) ; |2256| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2257,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2257,column 5,is_stmt
         MOV *(#_usbRegisters), AR3 ; |2257| 
         MOV dbl(*SP(#0)), AC0 ; |2257| 
         OR port(*AR3(T0)), AC0, AC0 ; |2257| 
         MOV AC0, port(*AR3(T0)) ; |2257| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2260,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2260,column 2,is_stmt
         MOV #1042, T0 ; |2260| 
         MOV *(#_usbRegisters), AR3 ; |2260| 
         MOV port(*AR3(T0)), AR1 ; |2260| 
         BCLR @#6, AR1 ; |2260| 
         BSET @#6, AR1 ; |2260| 
         MOV AR1, port(*AR3(T0)) ; |2260| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2262,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2262,column 2,is_stmt
         MOV *(#_usbRegisters), AR3 ; |2262| 
         MOV port(*AR3(T0)), AR1 ; |2262| 
         BCLR @#3, AR1 ; |2262| 
         BSET @#3, AR1 ; |2262| 
         MOV AR1, port(*AR3(T0)) ; |2262| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2266,column 2,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2266,column 2,is_stmt
         MOV #1038, T0 ; |2266| 
         MOV *(#_usbRegisters), AR3 ; |2266| 
         MOV *SP(#2), AR1 ; |2266| 
         MOV AR1, port(*AR3(T0)) ; |2266| 
-	.dwpsn	file "F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2267,column 1,is_stmt
+	.dwpsn	file "F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h",line 2267,column 1,is_stmt
         AADD #3, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$36	.dwtag  DW_TAG_TI_branch
@@ -594,7 +594,7 @@ $C$DW$36	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$36, DW_AT_TI_return
         RET
                                         ; return occurs
-	.dwattr $C$DW$32, DW_AT_TI_end_file("F:/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h")
+	.dwattr $C$DW$32, DW_AT_TI_end_file("F:/eZdsp_C55x_FreeRTOS_Port/eZDSP/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_usbAux.h")
 	.dwattr $C$DW$32, DW_AT_TI_end_line(0x8db)
 	.dwattr $C$DW$32, DW_AT_TI_end_column(0x01)
 	.dwendentry
@@ -1212,7 +1212,7 @@ $C$DW$46	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$47	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$47, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L16:1:1471600652")
+	.dwattr $C$DW$47, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L16:1:1536453749")
 	.dwattr $C$DW$47, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_usb.c")
 	.dwattr $C$DW$47, DW_AT_TI_begin_line(0xc0)
 	.dwattr $C$DW$47, DW_AT_TI_end_line(0x105)
@@ -1286,7 +1286,7 @@ $C$DW$69	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$70	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$70, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L14:1:1471600652")
+	.dwattr $C$DW$70, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L14:1:1536453749")
 	.dwattr $C$DW$70, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_usb.c")
 	.dwattr $C$DW$70, DW_AT_TI_begin_line(0x7f)
 	.dwattr $C$DW$70, DW_AT_TI_end_line(0x7f)
@@ -1297,7 +1297,7 @@ $C$DW$71	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$72	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$72, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L12:1:1471600652")
+	.dwattr $C$DW$72, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L12:1:1536453749")
 	.dwattr $C$DW$72, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_usb.c")
 	.dwattr $C$DW$72, DW_AT_TI_begin_line(0x6d)
 	.dwattr $C$DW$72, DW_AT_TI_end_line(0x6d)
@@ -2637,7 +2637,7 @@ $C$DW$132	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$133	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$133, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L61:1:1471600652")
+	.dwattr $C$DW$133, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L61:1:1536453749")
 	.dwattr $C$DW$133, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_usb.c")
 	.dwattr $C$DW$133, DW_AT_TI_begin_line(0x3cb)
 	.dwattr $C$DW$133, DW_AT_TI_end_line(0x3cb)
@@ -4257,7 +4257,7 @@ $C$DW$203	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$204	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$204, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L123:1:1471600652")
+	.dwattr $C$DW$204, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L123:1:1536453749")
 	.dwattr $C$DW$204, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_usb.c")
 	.dwattr $C$DW$204, DW_AT_TI_begin_line(0x735)
 	.dwattr $C$DW$204, DW_AT_TI_end_line(0x73c)
@@ -4645,7 +4645,7 @@ $C$DW$223	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$224	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$224, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L135:1:1471600652")
+	.dwattr $C$DW$224, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L135:1:1536453749")
 	.dwattr $C$DW$224, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_usb.c")
 	.dwattr $C$DW$224, DW_AT_TI_begin_line(0x7f4)
 	.dwattr $C$DW$224, DW_AT_TI_end_line(0x7ff)
@@ -5552,7 +5552,7 @@ $C$DW$287	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$288	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$288, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L163:1:1471600652")
+	.dwattr $C$DW$288, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L163:1:1536453749")
 	.dwattr $C$DW$288, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_usb.c")
 	.dwattr $C$DW$288, DW_AT_TI_begin_line(0xa3e)
 	.dwattr $C$DW$288, DW_AT_TI_end_line(0xa3e)
@@ -5665,7 +5665,7 @@ $C$DW$292	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$293	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$293, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L168:1:1471600652")
+	.dwattr $C$DW$293, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L168:1:1536453749")
 	.dwattr $C$DW$293, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_usb.c")
 	.dwattr $C$DW$293, DW_AT_TI_begin_line(0xa7e)
 	.dwattr $C$DW$293, DW_AT_TI_end_line(0xa85)
@@ -5819,7 +5819,7 @@ $C$DW$305	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$306	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$306, DW_AT_name("F:\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L171:1:1471600652")
+	.dwattr $C$DW$306, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\csl_usb.asm:$C$L171:1:1536453749")
 	.dwattr $C$DW$306, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_usb.c")
 	.dwattr $C$DW$306, DW_AT_TI_begin_line(0xabe)
 	.dwattr $C$DW$306, DW_AT_TI_end_line(0xac6)

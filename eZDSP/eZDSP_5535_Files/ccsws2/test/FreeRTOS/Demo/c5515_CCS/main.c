@@ -139,7 +139,7 @@ extern Uint16 Conunt_RTC;
 extern Uint16 halfSecCnt;
 extern void AIC3254_init(void);
 // extern Int16 oled_test();
-
+extern struct tagSTACKSTRUCT *stackStruct;
 #define IOOUTDATA1        *(volatile unsigned *)0x01C0A		// leds here 
 
 
@@ -176,7 +176,7 @@ rate is increased to 500 milliseconds.  [in this case the '*' characters on the
 LCD represent LED's]*/
 #define mainNO_ERROR_CHECK_DELAY		( ( portTickType ) 3000 / portTICK_RATE_MS  )
 #define mainERROR_CHECK_DELAY			( ( portTickType ) 500 / portTICK_RATE_MS  )
-
+void vApplicationIdleHook( void );
 // void DeviceInit(void);
 // void InitFlash();
 // void PieCntlInit(void);
@@ -391,6 +391,17 @@ int main( void )
 // IRQ's shouldn't be enabled before the scheduler
 //	StartTimer0();
 //	StartTimer02();
+
+#if 0   // for debug...
+	stackStruct = ( struct tagSTACKSTRUCT * ) pvPortMalloc( sizeof( struct tagSTACKSTRUCT ) );
+
+	if ( stackStruct != NULL ) {
+		;				// decide what to do
+	}  else {
+	  	while(1);
+	}
+#endif
+
 	EZDSP5535_waitusec( 50000 );
 	oled_test ( 5 );
 	vTaskStartScheduler();
@@ -531,7 +542,6 @@ static void prvSetupHardware( void )
 }
 /*-----------------------------------------------------------*/
 
-void vApplicationIdleHook( void );
 void vApplicationIdleHook( void )
 {
 	static unsigned short i = 0;
@@ -810,3 +820,29 @@ void systemInit(void)
 
     status = PLL_config (hPll, pConfigInfo);
 }
+
+void vApplicationMallocFailedHook( void )
+{
+	/* Called if a call to pvPortMalloc() fails because there is insufficient
+	free memory available in the FreeRTOS heap.  pvPortMalloc() is called
+	internally by FreeRTOS API functions that create tasks, queues or
+	semaphores. */
+	taskDISABLE_INTERRUPTS();
+	for( ;; );
+}
+/*-----------------------------------------------------------*/
+
+void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
+{
+	( void ) pxTask;
+	( void ) pcTaskName;
+
+	/* Run time stack overflow checking is performed if
+	configconfigCHECK_FOR_STACK_OVERFLOW is defined to 1 or 2.  This hook
+	function is called if a stack overflow is detected. */
+	taskDISABLE_INTERRUPTS();
+	for( ;; );
+}
+
+
+

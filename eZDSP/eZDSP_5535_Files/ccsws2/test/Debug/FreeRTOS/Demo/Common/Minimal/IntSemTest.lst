@@ -1,0 +1,2797 @@
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE    1
+
+    2185              ; Temporary Registers Used: None
+       1              ;*******************************************************************************
+       2              ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
+       3              ;* Date/Time created: Sat Sep 08 06:04:48 2018                                 *
+       4              ;*******************************************************************************
+       5                      .compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --si
+       6                      .mmregs
+       7                      .cpl_on
+       8                      .arms_on
+       9                      .c54cm_off
+      10                      .asg AR6, FP
+      11                      .asg XAR6, XFP
+      12                      .asg DPH, MDP
+      13                      .model call=c55_std
+      14                      .model mem=large
+      15                      .noremark 5002  ; code respects overwrite rules
+      16              ;*******************************************************************************
+      17              ;* GLOBAL FILE PARAMETERS                                                      *
+      18              ;*                                                                             *
+      19              ;*   Architecture       : TMS320C55x                                           *
+      20              ;*   Optimizing for     : Speed                                                *
+      21              ;*   Memory             : Large Model (23-Bit Data Pointers)                   *
+      22              ;*   Calls              : Normal Library ASM calls                             *
+      23              ;*   Debug Info         : Standard TI Debug Information                        *
+      24              ;*******************************************************************************
+      25              
+      26              $C$DW$CU        .dwtag  DW_TAG_compile_unit
+      27                      .dwattr $C$DW$CU, DW_AT_name("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+      28                      .dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas In
+      29                      .dwattr $C$DW$CU, DW_AT_TI_version(0x01)
+      30                      .dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debu
+      31              ;******************************************************************************
+      32              ;* CINIT RECORDS                                                              *
+      33              ;******************************************************************************
+      34 000000               .sect   ".cinit"
+      35                      .align  1
+      36 000000 0001          .field          1,16
+      37 000001 0000-         .field          _xErrorDetected+0,24
+         000002 0000 
+      38 000002 0000          .field          0,8
+      39 000003 0000          .field  0,16                    ; _xErrorDetected @ 0
+      40              
+      41 000004               .sect   ".cinit"
+      42                      .align  1
+      43 000004 0002          .field          2,16
+      44 000005 0000-         .field          _ulMasterLoops+0,24
+         000006 0200 
+      45 000006 0200          .field          0,8
+      46 000007 0000          .field  0,32                    ; _ulMasterLoops @ 0
+         000008 0000 
+      47              
+      48 000009               .sect   ".cinit"
+      49                      .align  1
+      50 000009 0002          .field          2,16
+      51 00000a 0000-         .field          _ulCountingSemaphoreLoops+0,24
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE    2
+
+         00000b 0400 
+      52 00000b 0400          .field          0,8
+      53 00000c 0000          .field  0,32                    ; _ulCountingSemaphoreLoops @ 0
+         00000d 0000 
+      54              
+      55 00000e               .sect   ".cinit"
+      56                      .align  1
+      57 00000e 0002          .field          2,16
+      58 00000f 0000-         .field          _xISRMutex+0,24
+         000010 0800 
+      59 000010 0800          .field          0,8
+      60 000011 0000          .field  0,32                    ; _xISRMutex @ 0
+         000012 0000 
+      61              
+      62 000013               .sect   ".cinit"
+      63                      .align  1
+      64 000013 0002          .field          2,16
+      65 000014 0000-         .field          _xISRCountingSemaphore+0,24
+         000015 0A00 
+      66 000015 0A00          .field          0,8
+      67 000016 0000          .field  0,32                    ; _xISRCountingSemaphore @ 0
+         000017 0000 
+      68              
+      69 000018               .sect   ".cinit"
+      70                      .align  1
+      71 000018 0002          .field          2,16
+      72 000019 0000-         .field          _xMasterSlaveMutex+0,24
+         00001a 0C00 
+      73 00001a 0C00          .field          0,8
+      74 00001b 0000          .field  0,32                    ; _xMasterSlaveMutex @ 0
+         00001c 0000 
+      75              
+      76 00001d               .sect   ".cinit"
+      77                      .align  1
+      78 00001d 0001          .field          1,16
+      79 00001e 0000-         .field          _xOkToGiveMutex+0,24
+         00001f 0100 
+      80 00001f 0100          .field          0,8
+      81 000020 0000          .field  0,16                    ; _xOkToGiveMutex @ 0
+      82              
+      83 000021               .sect   ".cinit"
+      84                      .align  1
+      85 000021 0001          .field          1,16
+      86 000022 0000-         .field          _xOkToGiveCountingSemaphore+0,24
+         000023 0E00 
+      87 000023 0E00          .field          0,8
+      88 000024 0000          .field  0,16                    ; _xOkToGiveCountingSemaphore @ 0
+      89              
+      90 000025               .sect   ".cinit"
+      91                      .align  1
+      92 000025 0001          .field          1,16
+      93 000026 0000-         .field          _xLastGiveTime$1+0,24
+         000027 0F00 
+      94 000027 0F00          .field          0,8
+      95 000028 0000          .field  0,16                    ; _xLastGiveTime$1 @ 0
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE    3
+
+      96              
+      97 000029               .sect   ".cinit"
+      98                      .align  1
+      99 000029 0002          .field          2,16
+     100 00002a 0000-         .field          _ulLastMasterLoopCounter$2+0,24
+         00002b 1000 
+     101 00002b 1000          .field          0,8
+     102 00002c 0000          .field  0,32                    ; _ulLastMasterLoopCounter$2 @ 0
+         00002d 0000 
+     103              
+     104 00002e               .sect   ".cinit"
+     105                      .align  1
+     106 00002e 0002          .field          2,16
+     107 00002f 0000-         .field          _ulLastCountingSemaphoreLoops$3+0,24
+         000030 1200 
+     108 000030 1200          .field          0,8
+     109 000031 0000          .field  0,32                    ; _ulLastCountingSemaphoreLoops$3 @ 0
+         000032 0000 
+     110              
+     111              
+     112              $C$DW$1 .dwtag  DW_TAG_subprogram, DW_AT_name("xTaskCreate")
+     113                      .dwattr $C$DW$1, DW_AT_TI_symbol_name("_xTaskCreate")
+     114                      .dwattr $C$DW$1, DW_AT_type(*$C$DW$T$52)
+     115                      .dwattr $C$DW$1, DW_AT_declaration
+     116                      .dwattr $C$DW$1, DW_AT_external
+     117              $C$DW$2 .dwtag  DW_TAG_formal_parameter
+     118                      .dwattr $C$DW$2, DW_AT_type(*$C$DW$T$36)
+     119              $C$DW$3 .dwtag  DW_TAG_formal_parameter
+     120                      .dwattr $C$DW$3, DW_AT_type(*$C$DW$T$58)
+     121              $C$DW$4 .dwtag  DW_TAG_formal_parameter
+     122                      .dwattr $C$DW$4, DW_AT_type(*$C$DW$T$60)
+     123              $C$DW$5 .dwtag  DW_TAG_formal_parameter
+     124                      .dwattr $C$DW$5, DW_AT_type(*$C$DW$T$33)
+     125              $C$DW$6 .dwtag  DW_TAG_formal_parameter
+     126                      .dwattr $C$DW$6, DW_AT_type(*$C$DW$T$29)
+     127              $C$DW$7 .dwtag  DW_TAG_formal_parameter
+     128                      .dwattr $C$DW$7, DW_AT_type(*$C$DW$T$62)
+     129                      .dwendtag $C$DW$1
+     130              
+     131              
+     132              $C$DW$8 .dwtag  DW_TAG_subprogram, DW_AT_name("vTaskDelay")
+     133                      .dwattr $C$DW$8, DW_AT_TI_symbol_name("_vTaskDelay")
+     134                      .dwattr $C$DW$8, DW_AT_declaration
+     135                      .dwattr $C$DW$8, DW_AT_external
+     136              $C$DW$9 .dwtag  DW_TAG_formal_parameter
+     137                      .dwattr $C$DW$9, DW_AT_type(*$C$DW$T$38)
+     138                      .dwendtag $C$DW$8
+     139              
+     140              
+     141              $C$DW$10        .dwtag  DW_TAG_subprogram, DW_AT_name("uxTaskPriorityGet")
+     142                      .dwattr $C$DW$10, DW_AT_TI_symbol_name("_uxTaskPriorityGet")
+     143                      .dwattr $C$DW$10, DW_AT_type(*$C$DW$T$29)
+     144                      .dwattr $C$DW$10, DW_AT_declaration
+     145                      .dwattr $C$DW$10, DW_AT_external
+     146              $C$DW$11        .dwtag  DW_TAG_formal_parameter
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE    4
+
+     147                      .dwattr $C$DW$11, DW_AT_type(*$C$DW$T$76)
+     148                      .dwendtag $C$DW$10
+     149              
+     150              
+     151              $C$DW$12        .dwtag  DW_TAG_subprogram, DW_AT_name("vTaskPrioritySet")
+     152                      .dwattr $C$DW$12, DW_AT_TI_symbol_name("_vTaskPrioritySet")
+     153                      .dwattr $C$DW$12, DW_AT_declaration
+     154                      .dwattr $C$DW$12, DW_AT_external
+     155              $C$DW$13        .dwtag  DW_TAG_formal_parameter
+     156                      .dwattr $C$DW$13, DW_AT_type(*$C$DW$T$42)
+     157              $C$DW$14        .dwtag  DW_TAG_formal_parameter
+     158                      .dwattr $C$DW$14, DW_AT_type(*$C$DW$T$29)
+     159                      .dwendtag $C$DW$12
+     160              
+     161              
+     162              $C$DW$15        .dwtag  DW_TAG_subprogram, DW_AT_name("vTaskSuspend")
+     163                      .dwattr $C$DW$15, DW_AT_TI_symbol_name("_vTaskSuspend")
+     164                      .dwattr $C$DW$15, DW_AT_declaration
+     165                      .dwattr $C$DW$15, DW_AT_external
+     166              $C$DW$16        .dwtag  DW_TAG_formal_parameter
+     167                      .dwattr $C$DW$16, DW_AT_type(*$C$DW$T$42)
+     168                      .dwendtag $C$DW$15
+     169              
+     170              
+     171              $C$DW$17        .dwtag  DW_TAG_subprogram, DW_AT_name("vTaskResume")
+     172                      .dwattr $C$DW$17, DW_AT_TI_symbol_name("_vTaskResume")
+     173                      .dwattr $C$DW$17, DW_AT_declaration
+     174                      .dwattr $C$DW$17, DW_AT_external
+     175              $C$DW$18        .dwtag  DW_TAG_formal_parameter
+     176                      .dwattr $C$DW$18, DW_AT_type(*$C$DW$T$42)
+     177                      .dwendtag $C$DW$17
+     178              
+     179              
+     180              $C$DW$19        .dwtag  DW_TAG_subprogram, DW_AT_name("xTaskGetTickCountFromISR")
+     181                      .dwattr $C$DW$19, DW_AT_TI_symbol_name("_xTaskGetTickCountFromISR")
+     182                      .dwattr $C$DW$19, DW_AT_type(*$C$DW$T$37)
+     183                      .dwattr $C$DW$19, DW_AT_declaration
+     184                      .dwattr $C$DW$19, DW_AT_external
+     185              
+     186              $C$DW$20        .dwtag  DW_TAG_subprogram, DW_AT_name("xQueueGenericSend")
+     187                      .dwattr $C$DW$20, DW_AT_TI_symbol_name("_xQueueGenericSend")
+     188                      .dwattr $C$DW$20, DW_AT_type(*$C$DW$T$52)
+     189                      .dwattr $C$DW$20, DW_AT_declaration
+     190                      .dwattr $C$DW$20, DW_AT_external
+     191              $C$DW$21        .dwtag  DW_TAG_formal_parameter
+     192                      .dwattr $C$DW$21, DW_AT_type(*$C$DW$T$22)
+     193              $C$DW$22        .dwtag  DW_TAG_formal_parameter
+     194                      .dwattr $C$DW$22, DW_AT_type(*$C$DW$T$49)
+     195              $C$DW$23        .dwtag  DW_TAG_formal_parameter
+     196                      .dwattr $C$DW$23, DW_AT_type(*$C$DW$T$37)
+     197              $C$DW$24        .dwtag  DW_TAG_formal_parameter
+     198                      .dwattr $C$DW$24, DW_AT_type(*$C$DW$T$53)
+     199                      .dwendtag $C$DW$20
+     200              
+     201              
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE    5
+
+     202              $C$DW$25        .dwtag  DW_TAG_subprogram, DW_AT_name("uxQueueMessagesWaiting")
+     203                      .dwattr $C$DW$25, DW_AT_TI_symbol_name("_uxQueueMessagesWaiting")
+     204                      .dwattr $C$DW$25, DW_AT_type(*$C$DW$T$29)
+     205                      .dwattr $C$DW$25, DW_AT_declaration
+     206                      .dwattr $C$DW$25, DW_AT_external
+     207              $C$DW$26        .dwtag  DW_TAG_formal_parameter
+     208                      .dwattr $C$DW$26, DW_AT_type(*$C$DW$T$23)
+     209                      .dwendtag $C$DW$25
+     210              
+     211              
+     212              $C$DW$27        .dwtag  DW_TAG_subprogram, DW_AT_name("uxQueueSpacesAvailable")
+     213                      .dwattr $C$DW$27, DW_AT_TI_symbol_name("_uxQueueSpacesAvailable")
+     214                      .dwattr $C$DW$27, DW_AT_type(*$C$DW$T$29)
+     215                      .dwattr $C$DW$27, DW_AT_declaration
+     216                      .dwattr $C$DW$27, DW_AT_external
+     217              $C$DW$28        .dwtag  DW_TAG_formal_parameter
+     218                      .dwattr $C$DW$28, DW_AT_type(*$C$DW$T$23)
+     219                      .dwendtag $C$DW$27
+     220              
+     221              
+     222              $C$DW$29        .dwtag  DW_TAG_subprogram, DW_AT_name("xQueueGiveFromISR")
+     223                      .dwattr $C$DW$29, DW_AT_TI_symbol_name("_xQueueGiveFromISR")
+     224                      .dwattr $C$DW$29, DW_AT_type(*$C$DW$T$52)
+     225                      .dwattr $C$DW$29, DW_AT_declaration
+     226                      .dwattr $C$DW$29, DW_AT_external
+     227              $C$DW$30        .dwtag  DW_TAG_formal_parameter
+     228                      .dwattr $C$DW$30, DW_AT_type(*$C$DW$T$22)
+     229              $C$DW$31        .dwtag  DW_TAG_formal_parameter
+     230                      .dwattr $C$DW$31, DW_AT_type(*$C$DW$T$68)
+     231                      .dwendtag $C$DW$29
+     232              
+     233              
+     234              $C$DW$32        .dwtag  DW_TAG_subprogram, DW_AT_name("xQueueCreateMutex")
+     235                      .dwattr $C$DW$32, DW_AT_TI_symbol_name("_xQueueCreateMutex")
+     236                      .dwattr $C$DW$32, DW_AT_type(*$C$DW$T$22)
+     237                      .dwattr $C$DW$32, DW_AT_declaration
+     238                      .dwattr $C$DW$32, DW_AT_external
+     239              $C$DW$33        .dwtag  DW_TAG_formal_parameter
+     240                      .dwattr $C$DW$33, DW_AT_type(*$C$DW$T$26)
+     241                      .dwendtag $C$DW$32
+     242              
+     243              
+     244              $C$DW$34        .dwtag  DW_TAG_subprogram, DW_AT_name("xQueueCreateCountingSemaphore")
+     245                      .dwattr $C$DW$34, DW_AT_TI_symbol_name("_xQueueCreateCountingSemaphore")
+     246                      .dwattr $C$DW$34, DW_AT_type(*$C$DW$T$22)
+     247                      .dwattr $C$DW$34, DW_AT_declaration
+     248                      .dwattr $C$DW$34, DW_AT_external
+     249              $C$DW$35        .dwtag  DW_TAG_formal_parameter
+     250                      .dwattr $C$DW$35, DW_AT_type(*$C$DW$T$30)
+     251              $C$DW$36        .dwtag  DW_TAG_formal_parameter
+     252                      .dwattr $C$DW$36, DW_AT_type(*$C$DW$T$30)
+     253                      .dwendtag $C$DW$34
+     254              
+     255              
+     256              $C$DW$37        .dwtag  DW_TAG_subprogram, DW_AT_name("xQueueSemaphoreTake")
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE    6
+
+     257                      .dwattr $C$DW$37, DW_AT_TI_symbol_name("_xQueueSemaphoreTake")
+     258                      .dwattr $C$DW$37, DW_AT_type(*$C$DW$T$52)
+     259                      .dwattr $C$DW$37, DW_AT_declaration
+     260                      .dwattr $C$DW$37, DW_AT_external
+     261              $C$DW$38        .dwtag  DW_TAG_formal_parameter
+     262                      .dwattr $C$DW$38, DW_AT_type(*$C$DW$T$22)
+     263              $C$DW$39        .dwtag  DW_TAG_formal_parameter
+     264                      .dwattr $C$DW$39, DW_AT_type(*$C$DW$T$37)
+     265                      .dwendtag $C$DW$37
+     266              
+     267              
+     268              $C$DW$40        .dwtag  DW_TAG_subprogram, DW_AT_name("xQueueGenericReset")
+     269                      .dwattr $C$DW$40, DW_AT_TI_symbol_name("_xQueueGenericReset")
+     270                      .dwattr $C$DW$40, DW_AT_type(*$C$DW$T$52)
+     271                      .dwattr $C$DW$40, DW_AT_declaration
+     272                      .dwattr $C$DW$40, DW_AT_external
+     273              $C$DW$41        .dwtag  DW_TAG_formal_parameter
+     274                      .dwattr $C$DW$41, DW_AT_type(*$C$DW$T$22)
+     275              $C$DW$42        .dwtag  DW_TAG_formal_parameter
+     276                      .dwattr $C$DW$42, DW_AT_type(*$C$DW$T$52)
+     277                      .dwendtag $C$DW$40
+     278              
+     279 000000               .bss    _xErrorDetected,1,0,0
+     280              $C$DW$43        .dwtag  DW_TAG_variable, DW_AT_name("xErrorDetected")
+     281                      .dwattr $C$DW$43, DW_AT_TI_symbol_name("_xErrorDetected")
+     282                      .dwattr $C$DW$43, DW_AT_type(*$C$DW$T$54)
+     283                      .dwattr $C$DW$43, DW_AT_location[DW_OP_addr _xErrorDetected]
+     284 000002               .bss    _ulMasterLoops,2,0,2
+     285              $C$DW$44        .dwtag  DW_TAG_variable, DW_AT_name("ulMasterLoops")
+     286                      .dwattr $C$DW$44, DW_AT_TI_symbol_name("_ulMasterLoops")
+     287                      .dwattr $C$DW$44, DW_AT_type(*$C$DW$T$84)
+     288                      .dwattr $C$DW$44, DW_AT_location[DW_OP_addr _ulMasterLoops]
+     289 000004               .bss    _ulCountingSemaphoreLoops,2,0,2
+     290              $C$DW$45        .dwtag  DW_TAG_variable, DW_AT_name("ulCountingSemaphoreLoops")
+     291                      .dwattr $C$DW$45, DW_AT_TI_symbol_name("_ulCountingSemaphoreLoops")
+     292                      .dwattr $C$DW$45, DW_AT_type(*$C$DW$T$84)
+     293                      .dwattr $C$DW$45, DW_AT_location[DW_OP_addr _ulCountingSemaphoreLoops]
+     294 000006               .bss    _xSlaveHandle,2,0,2
+     295              $C$DW$46        .dwtag  DW_TAG_variable, DW_AT_name("xSlaveHandle")
+     296                      .dwattr $C$DW$46, DW_AT_TI_symbol_name("_xSlaveHandle")
+     297                      .dwattr $C$DW$46, DW_AT_type(*$C$DW$T$42)
+     298                      .dwattr $C$DW$46, DW_AT_location[DW_OP_addr _xSlaveHandle]
+     299 000008               .bss    _xISRMutex,2,0,2
+     300              $C$DW$47        .dwtag  DW_TAG_variable, DW_AT_name("xISRMutex")
+     301                      .dwattr $C$DW$47, DW_AT_TI_symbol_name("_xISRMutex")
+     302                      .dwattr $C$DW$47, DW_AT_type(*$C$DW$T$24)
+     303                      .dwattr $C$DW$47, DW_AT_location[DW_OP_addr _xISRMutex]
+     304 00000a               .bss    _xISRCountingSemaphore,2,0,2
+     305              $C$DW$48        .dwtag  DW_TAG_variable, DW_AT_name("xISRCountingSemaphore")
+     306                      .dwattr $C$DW$48, DW_AT_TI_symbol_name("_xISRCountingSemaphore")
+     307                      .dwattr $C$DW$48, DW_AT_type(*$C$DW$T$24)
+     308                      .dwattr $C$DW$48, DW_AT_location[DW_OP_addr _xISRCountingSemaphore]
+     309 00000c               .bss    _xMasterSlaveMutex,2,0,2
+     310              $C$DW$49        .dwtag  DW_TAG_variable, DW_AT_name("xMasterSlaveMutex")
+     311                      .dwattr $C$DW$49, DW_AT_TI_symbol_name("_xMasterSlaveMutex")
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE    7
+
+     312                      .dwattr $C$DW$49, DW_AT_type(*$C$DW$T$24)
+     313                      .dwattr $C$DW$49, DW_AT_location[DW_OP_addr _xMasterSlaveMutex]
+     314 000001               .bss    _xOkToGiveMutex,1,0,0
+     315              $C$DW$50        .dwtag  DW_TAG_variable, DW_AT_name("xOkToGiveMutex")
+     316                      .dwattr $C$DW$50, DW_AT_TI_symbol_name("_xOkToGiveMutex")
+     317                      .dwattr $C$DW$50, DW_AT_type(*$C$DW$T$52)
+     318                      .dwattr $C$DW$50, DW_AT_location[DW_OP_addr _xOkToGiveMutex]
+     319 00000e               .bss    _xOkToGiveCountingSemaphore,1,0,0
+     320              $C$DW$51        .dwtag  DW_TAG_variable, DW_AT_name("xOkToGiveCountingSemaphore")
+     321                      .dwattr $C$DW$51, DW_AT_TI_symbol_name("_xOkToGiveCountingSemaphore")
+     322                      .dwattr $C$DW$51, DW_AT_type(*$C$DW$T$52)
+     323                      .dwattr $C$DW$51, DW_AT_location[DW_OP_addr _xOkToGiveCountingSemaphore]
+     324                      .global _xInterruptGivePeriod
+     325 000000               .sect   ".const"
+     326                      .align  1
+     327 000000       _xInterruptGivePeriod:
+     328 000000 0022          .field  34,16                   ; _xInterruptGivePeriod @ 0
+     329              
+     330              $C$DW$52        .dwtag  DW_TAG_variable, DW_AT_name("xInterruptGivePeriod")
+     331                      .dwattr $C$DW$52, DW_AT_TI_symbol_name("_xInterruptGivePeriod")
+     332                      .dwattr $C$DW$52, DW_AT_location[DW_OP_addr _xInterruptGivePeriod]
+     333                      .dwattr $C$DW$52, DW_AT_type(*$C$DW$T$38)
+     334                      .dwattr $C$DW$52, DW_AT_external
+     335 00000f               .bss    _xLastGiveTime$1,1,0,0
+     336 000010               .bss    _ulLastMasterLoopCounter$2,2,0,2
+     337 000012               .bss    _ulLastCountingSemaphoreLoops$3,2,0,2
+     338              ;       F:\TI_CCS_7P4\ccsv7\tools\compiler\c5500_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\0917212 
+     339 000000               .sect   ".text"
+     340                      .align 4
+     341                      .global _vStartInterruptSemaphoreTasks
+     342              
+     343              $C$DW$53        .dwtag  DW_TAG_subprogram, DW_AT_name("vStartInterruptSemaphoreTasks")
+     344                      .dwattr $C$DW$53, DW_AT_low_pc(_vStartInterruptSemaphoreTasks)
+     345                      .dwattr $C$DW$53, DW_AT_high_pc(0x00)
+     346                      .dwattr $C$DW$53, DW_AT_TI_symbol_name("_vStartInterruptSemaphoreTasks")
+     347                      .dwattr $C$DW$53, DW_AT_external
+     348                      .dwattr $C$DW$53, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+     349                      .dwattr $C$DW$53, DW_AT_TI_begin_line(0x83)
+     350                      .dwattr $C$DW$53, DW_AT_TI_begin_column(0x06)
+     351                      .dwattr $C$DW$53, DW_AT_TI_max_frame_size(0x02)
+     352                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 132,column 1,is_stmt,address _vStart
+     353              
+     354                      .dwfde $C$DW$CIE, _vStartInterruptSemaphoreTasks
+     355              ;*******************************************************************************
+     356              ;* FUNCTION NAME: vStartInterruptSemaphoreTasks                                *
+     357              ;*                                                                             *
+     358              ;*   Function Uses Regs : AC0,AC0,T0,T1,AR0,XAR0,AR1,XAR1,AR2,XAR2,SP,M40,SATA,*
+     359              ;*                        SATD,RDM,FRCT,SMUL                                   *
+     360              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     361              ;*   Total Frame Size   : 2 words                                              *
+     362              ;*                        (2 return address/alignment)                         *
+     363              ;*   Min System Stack   : 1 word                                               *
+     364              ;*******************************************************************************
+     365 000000       _vStartInterruptSemaphoreTasks:
+     366                      .dwcfi  cfa_offset, 1
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE    8
+
+     367                      .dwcfi  save_reg_to_mem, 91, -1
+     368 000000 4EFF          AADD #-1, SP
+     369                      .dwcfi  cfa_offset, 2
+     370                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 134,column 2,is_stmt
+     371              $C$DW$54        .dwtag  DW_TAG_TI_branch
+     372                      .dwattr $C$DW$54, DW_AT_low_pc(0x00)
+     373                      .dwattr $C$DW$54, DW_AT_name("_xQueueCreateMutex")
+     374                      .dwattr $C$DW$54, DW_AT_TI_call
+     375              
+     376 000002 6C00          CALL #_xQueueCreateMutex ; |134| 
+         000004 0000!
+     377 000006 3D14  ||      MOV #1, T0
+     378              
+     379                                                      ; call occurs [#_xQueueCreateMutex] ; |134| 
+     380 000008 EB31          MOV XAR0, dbl(*(#_xISRMutex))
+         00000a 8500 
+         00000c 0008-
+     381                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 136,column 2,is_stmt
+     382 00000e 3C05          MOV #0, T1
+     383              $C$DW$55        .dwtag  DW_TAG_TI_branch
+     384                      .dwattr $C$DW$55, DW_AT_low_pc(0x00)
+     385                      .dwattr $C$DW$55, DW_AT_name("_xQueueCreateCountingSemaphore")
+     386                      .dwattr $C$DW$55, DW_AT_TI_call
+     387              
+     388 000010 6C00          CALL #_xQueueCreateCountingSemaphore ; |136| 
+         000012 0000!
+     389 000014 3D34  ||      MOV #3, T0
+     390              
+     391                                                      ; call occurs [#_xQueueCreateCountingSemaphore] ; |136| 
+     392 000016 EB31          MOV XAR0, dbl(*(#_xISRCountingSemaphore))
+         000018 8500 
+         00001a 000A-
+     393                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 142,column 2,is_stmt
+     394              $C$DW$56        .dwtag  DW_TAG_TI_branch
+     395                      .dwattr $C$DW$56, DW_AT_low_pc(0x00)
+     396                      .dwattr $C$DW$56, DW_AT_name("_xQueueCreateMutex")
+     397                      .dwattr $C$DW$56, DW_AT_TI_call
+     398              
+     399 00001c 6C00          CALL #_xQueueCreateMutex ; |142| 
+         00001e 0000!
+     400 000020 3D14  ||      MOV #1, T0
+     401              
+     402                                                      ; call occurs [#_xQueueCreateMutex] ; |142| 
+     403 000022 EB31          MOV XAR0, dbl(*(#_xMasterSlaveMutex))
+         000024 8500 
+         000026 000C-
+     404                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 146,column 2,is_stmt
+     405 000028 7600          MOV #128, T0 ; |146| 
+         00002a 8048 
+     406 00002c 7A00          MOV #(_vInterruptMutexSlaveTask >> 16) << #16, AC0 ; |146| 
+         00002e 000A%
+     407 000030 EC31          AMOV #_xSlaveHandle, XAR2 ; |146| 
+         000032 AE00 
+         000034 0006-
+     408 000036 EC31          AMOV #0, XAR1 ; |146| 
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE    9
+
+         000038 9E00 
+         00003a 0000 
+     409 00003c EC31          AMOV #$C$FSL1, XAR0 ; |146| 
+         00003e 8E00 
+         000040 0000+
+     410 000042 7E00          OR #(_vInterruptMutexSlaveTask & 0xffff), AC0, AC0 ; |146| 
+         000044 0000%
+     411              $C$DW$57        .dwtag  DW_TAG_TI_branch
+     412                      .dwattr $C$DW$57, DW_AT_low_pc(0x00)
+     413                      .dwattr $C$DW$57, DW_AT_name("_xTaskCreate")
+     414                      .dwattr $C$DW$57, DW_AT_TI_call
+     415              
+     416 000046 6C00          CALL #_xTaskCreate ; |146| 
+         000048 0000!
+     417 00004a 3D15  ||      MOV #1, T1
+     418              
+     419                                                      ; call occurs [#_xTaskCreate] ; |146| 
+     420                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 147,column 2,is_stmt
+     421 00004c 7600          MOV #128, T0 ; |147| 
+         00004e 8048 
+     422 000050 EC31          AMOV #0, XAR2 ; |147| 
+         000052 AE00 
+         000054 0000 
+     423 000056 EC31          AMOV #0, XAR1 ; |147| 
+         000058 9E00 
+         00005a 0000 
+     424 00005c EC31          AMOV #$C$FSL2, XAR0 ; |147| 
+         00005e 8E00 
+         000060 0008+
+     425 000062 7A00          MOV #(_vInterruptMutexMasterTask >> 16) << #16, AC0 ; |147| 
+         000064 000A%
+     426 000066 7E00          OR #(_vInterruptMutexMasterTask & 0xffff), AC0, AC0 ; |147| 
+         000068 0000%
+     427              $C$DW$58        .dwtag  DW_TAG_TI_branch
+     428                      .dwattr $C$DW$58, DW_AT_low_pc(0x00)
+     429                      .dwattr $C$DW$58, DW_AT_name("_xTaskCreate")
+     430                      .dwattr $C$DW$58, DW_AT_TI_call
+     431              
+     432 00006a 6C00          CALL #_xTaskCreate ; |147| 
+         00006c 0000!
+     433 00006e 3D05  ||      MOV #0, T1
+     434              
+     435                                                      ; call occurs [#_xTaskCreate] ; |147| 
+     436                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 150,column 2,is_stmt
+     437 000070 7600          MOV #128, T0 ; |150| 
+         000072 8048 
+     438 000074 EC31          AMOV #0, XAR2 ; |150| 
+         000076 AE00 
+         000078 0000 
+     439 00007a EC31          AMOV #0, XAR1 ; |150| 
+         00007c 9E00 
+         00007e 0000 
+     440 000080 EC31          AMOV #$C$FSL3, XAR0 ; |150| 
+         000082 8E00 
+         000084 0010+
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   10
+
+     441 000086 7A00          MOV #(_vInterruptCountingSemaphoreTask >> 16) << #16, AC0 ; |150| 
+         000088 000A%
+     442              
+     443 00008a 7E00          OR #(_vInterruptCountingSemaphoreTask & 0xffff), AC0, AC0 ; |150| 
+         00008c 0000%
+     444 00008e 3D05  ||      MOV #0, T1
+     445              
+     446              $C$DW$59        .dwtag  DW_TAG_TI_branch
+     447                      .dwattr $C$DW$59, DW_AT_low_pc(0x00)
+     448                      .dwattr $C$DW$59, DW_AT_name("_xTaskCreate")
+     449                      .dwattr $C$DW$59, DW_AT_TI_call
+     450 000090 6C00          CALL #_xTaskCreate ; |150| 
+         000092 0000!
+     451                                                      ; call occurs [#_xTaskCreate] ; |150| 
+     452                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 151,column 1,is_stmt
+     453 000094 4E01          AADD #1, SP
+     454                      .dwcfi  cfa_offset, 1
+     455              $C$DW$60        .dwtag  DW_TAG_TI_branch
+     456                      .dwattr $C$DW$60, DW_AT_low_pc(0x00)
+     457                      .dwattr $C$DW$60, DW_AT_TI_return
+     458 000096 4804          RET
+     459                                                      ; return occurs
+     460                      .dwattr $C$DW$53, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+     461                      .dwattr $C$DW$53, DW_AT_TI_end_line(0x97)
+     462                      .dwattr $C$DW$53, DW_AT_TI_end_column(0x01)
+     463                      .dwendentry
+     464                      .dwendtag $C$DW$53
+     465              
+     466 000098               .sect   ".text"
+     467                      .align 4
+     468              
+     469              $C$DW$61        .dwtag  DW_TAG_subprogram, DW_AT_name("vInterruptMutexMasterTask")
+     470                      .dwattr $C$DW$61, DW_AT_low_pc(_vInterruptMutexMasterTask)
+     471                      .dwattr $C$DW$61, DW_AT_high_pc(0x00)
+     472                      .dwattr $C$DW$61, DW_AT_TI_symbol_name("_vInterruptMutexMasterTask")
+     473                      .dwattr $C$DW$61, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+     474                      .dwattr $C$DW$61, DW_AT_TI_begin_line(0x9a)
+     475                      .dwattr $C$DW$61, DW_AT_TI_begin_column(0x0d)
+     476                      .dwattr $C$DW$61, DW_AT_TI_max_frame_size(0x04)
+     477                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 155,column 1,is_stmt,address _vInter
+     478              
+     479                      .dwfde $C$DW$CIE, _vInterruptMutexMasterTask
+     480              $C$DW$62        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
+     481                      .dwattr $C$DW$62, DW_AT_TI_symbol_name("_pvParameters")
+     482                      .dwattr $C$DW$62, DW_AT_type(*$C$DW$T$3)
+     483                      .dwattr $C$DW$62, DW_AT_location[DW_OP_reg17]
+     484              ;*******************************************************************************
+     485              ;* FUNCTION NAME: vInterruptMutexMasterTask                                    *
+     486              ;*                                                                             *
+     487              ;*   Function Uses Regs : AC0,AC0,T0,AR0,XAR0,SP,CARRY,M40,SATA,SATD,RDM,FRCT, *
+     488              ;*                        SMUL                                                 *
+     489              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     490              ;*   Total Frame Size   : 4 words                                              *
+     491              ;*                        (2 return address/alignment)                         *
+     492              ;*                        (2 local values)                                     *
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   11
+
+     493              ;*   Min System Stack   : 1 word                                               *
+     494              ;*******************************************************************************
+     495 000098       _vInterruptMutexMasterTask:
+     496                      .dwcfi  cfa_offset, 1
+     497                      .dwcfi  save_reg_to_mem, 91, -1
+     498 000098 4EFD          AADD #-3, SP
+     499                      .dwcfi  cfa_offset, 4
+     500              $C$DW$63        .dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
+     501                      .dwattr $C$DW$63, DW_AT_TI_symbol_name("_pvParameters")
+     502                      .dwattr $C$DW$63, DW_AT_type(*$C$DW$T$3)
+     503                      .dwattr $C$DW$63, DW_AT_location[DW_OP_bregx 0x24 0]
+     504 00009a EB00          MOV XAR0, dbl(*SP(#0))
+         00009c 85   
+     505                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 157,column 2,is_stmt
+     506 00009d       $C$L1:    
+     507 00009d       $C$DW$L$_vInterruptMutexMasterTask$2$B:
+     508                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 161,column 3,is_stmt
+     509              $C$DW$64        .dwtag  DW_TAG_TI_branch
+     510                      .dwattr $C$DW$64, DW_AT_low_pc(0x00)
+     511                      .dwattr $C$DW$64, DW_AT_name("_prvTakeAndGiveInTheSameOrder")
+     512                      .dwattr $C$DW$64, DW_AT_TI_call
+     513 00009d 0800          CALL #_prvTakeAndGiveInTheSameOrder ; |161| 
+         00009f 34   
+     514                                                      ; call occurs [#_prvTakeAndGiveInTheSameOrder] ; |161| 
+     515                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 164,column 3,is_stmt
+     516 0000a0 ED31          MOV dbl(*(#_ulMasterLoops)), AC0 ; |164| 
+         0000a2 0800 
+         0000a4 0002-
+     517 0000a6 4010          ADD #1, AC0 ; |164| 
+     518 0000a8 EB31          MOV AC0, dbl(*(#_ulMasterLoops)) ; |164| 
+         0000aa 0800 
+         0000ac 0002-
+     519                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 165,column 3,is_stmt
+     520 0000ae 7600          MOV #100, T0 ; |165| 
+         0000b0 6448 
+     521              $C$DW$65        .dwtag  DW_TAG_TI_branch
+     522                      .dwattr $C$DW$65, DW_AT_low_pc(0x00)
+     523                      .dwattr $C$DW$65, DW_AT_name("_vTaskDelay")
+     524                      .dwattr $C$DW$65, DW_AT_TI_call
+     525 0000b2 6C00          CALL #_vTaskDelay ; |165| 
+         0000b4 0000!
+     526                                                      ; call occurs [#_vTaskDelay] ; |165| 
+     527                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 167,column 3,is_stmt
+     528              $C$DW$66        .dwtag  DW_TAG_TI_branch
+     529                      .dwattr $C$DW$66, DW_AT_low_pc(0x00)
+     530                      .dwattr $C$DW$66, DW_AT_name("_prvTakeAndGiveInTheOppositeOrder")
+     531                      .dwattr $C$DW$66, DW_AT_TI_call
+     532 0000b6 0801          CALL #_prvTakeAndGiveInTheOppositeOrder ; |167| 
+         0000b8 3B   
+     533                                                      ; call occurs [#_prvTakeAndGiveInTheOppositeOrder] ; |167| 
+     534                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 170,column 3,is_stmt
+     535 0000b9 ED31          MOV dbl(*(#_ulMasterLoops)), AC0 ; |170| 
+         0000bb 0800 
+         0000bd 0002-
+     536 0000bf 4010          ADD #1, AC0 ; |170| 
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   12
+
+     537 0000c1 EB31          MOV AC0, dbl(*(#_ulMasterLoops)) ; |170| 
+         0000c3 0800 
+         0000c5 0002-
+     538                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 171,column 3,is_stmt
+     539 0000c7 7600          MOV #100, T0 ; |171| 
+         0000c9 6448 
+     540              $C$DW$67        .dwtag  DW_TAG_TI_branch
+     541                      .dwattr $C$DW$67, DW_AT_low_pc(0x00)
+     542                      .dwattr $C$DW$67, DW_AT_name("_vTaskDelay")
+     543                      .dwattr $C$DW$67, DW_AT_TI_call
+     544 0000cb 6C00          CALL #_vTaskDelay ; |171| 
+         0000cd 0000!
+     545                                                      ; call occurs [#_vTaskDelay] ; |171| 
+     546                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 172,column 2,is_stmt
+     547 0000cf 4A4C          B $C$L1   ; |172| 
+     548                                                      ; branch occurs ; |172| 
+     549 0000d1       $C$DW$L$_vInterruptMutexMasterTask$2$E:
+     550                      .dwcfi  cfa_offset, 1
+     551              
+     552              $C$DW$68        .dwtag  DW_TAG_TI_loop
+     553                      .dwattr $C$DW$68, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\In
+     554                      .dwattr $C$DW$68, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+     555                      .dwattr $C$DW$68, DW_AT_TI_begin_line(0x9f)
+     556                      .dwattr $C$DW$68, DW_AT_TI_end_line(0xac)
+     557              $C$DW$69        .dwtag  DW_TAG_TI_loop_range
+     558                      .dwattr $C$DW$69, DW_AT_low_pc($C$DW$L$_vInterruptMutexMasterTask$2$B)
+     559                      .dwattr $C$DW$69, DW_AT_high_pc($C$DW$L$_vInterruptMutexMasterTask$2$E)
+     560                      .dwendtag $C$DW$68
+     561              
+     562                      .dwattr $C$DW$61, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+     563                      .dwattr $C$DW$61, DW_AT_TI_end_line(0xad)
+     564                      .dwattr $C$DW$61, DW_AT_TI_end_column(0x01)
+     565                      .dwendentry
+     566                      .dwendtag $C$DW$61
+     567              
+     568 0000d1               .sect   ".text"
+     569                      .align 4
+     570              
+     571              $C$DW$70        .dwtag  DW_TAG_subprogram, DW_AT_name("prvTakeAndGiveInTheSameOrder")
+     572                      .dwattr $C$DW$70, DW_AT_low_pc(_prvTakeAndGiveInTheSameOrder)
+     573                      .dwattr $C$DW$70, DW_AT_high_pc(0x00)
+     574                      .dwattr $C$DW$70, DW_AT_TI_symbol_name("_prvTakeAndGiveInTheSameOrder")
+     575                      .dwattr $C$DW$70, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+     576                      .dwattr $C$DW$70, DW_AT_TI_begin_line(0xb0)
+     577                      .dwattr $C$DW$70, DW_AT_TI_begin_column(0x0d)
+     578                      .dwattr $C$DW$70, DW_AT_TI_max_frame_size(0x02)
+     579                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 177,column 1,is_stmt,address _prvTak
+     580              
+     581                      .dwfde $C$DW$CIE, _prvTakeAndGiveInTheSameOrder
+     582              ;*******************************************************************************
+     583              ;* FUNCTION NAME: prvTakeAndGiveInTheSameOrder                                 *
+     584              ;*                                                                             *
+     585              ;*   Function Uses Regs : AC0,T0,T1,AR0,XAR0,AR1,XAR1,SP,CARRY,TC1,M40,SATA,   *
+     586              ;*                        SATD,RDM,FRCT,SMUL                                   *
+     587              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   13
+
+     588              ;*   Total Frame Size   : 2 words                                              *
+     589              ;*                        (2 return address/alignment)                         *
+     590              ;*   Min System Stack   : 1 word                                               *
+     591              ;*******************************************************************************
+     592 0000d4       _prvTakeAndGiveInTheSameOrder:
+     593                      .dwcfi  cfa_offset, 1
+     594                      .dwcfi  save_reg_to_mem, 91, -1
+     595 0000d4 4EFF          AADD #-1, SP
+     596                      .dwcfi  cfa_offset, 2
+     597                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 186,column 2,is_stmt
+     598 0000d6 EC31          AMOV #0, XAR0 ; |186| 
+         0000d8 8E00 
+         0000da 0000 
+     599              $C$DW$71        .dwtag  DW_TAG_TI_branch
+     600                      .dwattr $C$DW$71, DW_AT_low_pc(0x00)
+     601                      .dwattr $C$DW$71, DW_AT_name("_uxTaskPriorityGet")
+     602                      .dwattr $C$DW$71, DW_AT_TI_call
+     603 0000dc 6C00          CALL #_uxTaskPriorityGet ; |186| 
+         0000de 0000!
+     604                                                      ; call occurs [#_uxTaskPriorityGet] ; |186| 
+     605 0000e0 6304          BCC $C$L2,T0 == #0 ; |186| 
+     606                                                      ; branchcc occurs ; |186| 
+     607                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 188,column 3,is_stmt
+     608 0000e2 E631          MOV #1, *(#_xErrorDetected) ; |188| 
+         0000e4 0100 
+         0000e6 0000-
+     609 0000e8       $C$L2:    
+     610                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 192,column 2,is_stmt
+     611 0000e8 ED31          MOV dbl(*(#_xMasterSlaveMutex)), XAR0
+         0000ea 8F00 
+         0000ec 000C-
+     612              $C$DW$72        .dwtag  DW_TAG_TI_branch
+     613                      .dwattr $C$DW$72, DW_AT_low_pc(0x00)
+     614                      .dwattr $C$DW$72, DW_AT_name("_xQueueSemaphoreTake")
+     615                      .dwattr $C$DW$72, DW_AT_TI_call
+     616              
+     617 0000ee 6C00          CALL #_xQueueSemaphoreTake ; |192| 
+         0000f0 0000!
+     618 0000f2 3D04  ||      MOV #0, T0
+     619              
+     620                                                      ; call occurs [#_xQueueSemaphoreTake] ; |192| 
+     621 0000f4 3C19          MOV #1, AR1
+     622 0000f6 1240          CMP T0 == AR1, TC1 ; |192| 
+         0000f8 90   
+     623 0000f9 6364          BCC $C$L3,TC1 ; |192| 
+     624                                                      ; branchcc occurs ; |192| 
+     625                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 194,column 3,is_stmt
+     626 0000fb E631          MOV #1, *(#_xErrorDetected) ; |194| 
+         0000fd 0100 
+         0000ff 0000-
+     627 000101       $C$L3:    
+     628                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 199,column 2,is_stmt
+     629 000101 ED31          MOV dbl(*(#_xSlaveHandle)), XAR0
+         000103 8F00 
+         000105 0006-
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   14
+
+     630              $C$DW$73        .dwtag  DW_TAG_TI_branch
+     631                      .dwattr $C$DW$73, DW_AT_low_pc(0x00)
+     632                      .dwattr $C$DW$73, DW_AT_name("_vTaskResume")
+     633                      .dwattr $C$DW$73, DW_AT_TI_call
+     634 000107 6C00          CALL #_vTaskResume ; |199| 
+         000109 0000!
+     635                                                      ; call occurs [#_vTaskResume] ; |199| 
+     636                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 211,column 2,is_stmt
+     637 00010b EC31          AMOV #0, XAR0 ; |211| 
+         00010d 8E00 
+         00010f 0000 
+     638              $C$DW$74        .dwtag  DW_TAG_TI_branch
+     639                      .dwattr $C$DW$74, DW_AT_low_pc(0x00)
+     640                      .dwattr $C$DW$74, DW_AT_name("_uxTaskPriorityGet")
+     641                      .dwattr $C$DW$74, DW_AT_TI_call
+     642 000111 6C00          CALL #_uxTaskPriorityGet ; |211| 
+         000113 0000!
+     643                                                      ; call occurs [#_uxTaskPriorityGet] ; |211| 
+     644 000115 3C19          MOV #1, AR1
+     645 000117 1240          CMPU T0 == AR1, TC1 ; |211| 
+         000119 94   
+     646 00011a 6364          BCC $C$L4,TC1 ; |211| 
+     647                                                      ; branchcc occurs ; |211| 
+     648                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 213,column 3,is_stmt
+     649 00011c E631          MOV #1, *(#_xErrorDetected) ; |213| 
+         00011e 0100 
+         000120 0000-
+     650 000122       $C$L4:    
+     651                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 218,column 2,is_stmt
+     652 000122 E631          MOV #1, *(#_xOkToGiveMutex) ; |218| 
+         000124 0100 
+         000126 0001-
+     653                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 219,column 2,is_stmt
+     654 000128 A031          MOV *(#_xInterruptGivePeriod), AC0 ; |219| 
+         00012a 0000 
+         00012c 00+  
+     655 00012d ED31          MOV dbl(*(#_xISRMutex)), XAR0
+         00012f 8F00 
+         000131 0008-
+     656 000133 5000          SFTL AC0, #1, AC0 ; |219| 
+     657              $C$DW$75        .dwtag  DW_TAG_TI_branch
+     658                      .dwattr $C$DW$75, DW_AT_low_pc(0x00)
+     659                      .dwattr $C$DW$75, DW_AT_name("_xQueueSemaphoreTake")
+     660                      .dwattr $C$DW$75, DW_AT_TI_call
+     661              
+     662 000135 6C00          CALL #_xQueueSemaphoreTake ; |219| 
+         000137 0000!
+     663 000139 2304  ||      MOV AC0, T0 ; |219| 
+     664              
+     665                                                      ; call occurs [#_xQueueSemaphoreTake] ; |219| 
+     666 00013b 3C19          MOV #1, AR1
+     667 00013d 1240          CMP T0 == AR1, TC1 ; |219| 
+         00013f 90   
+     668 000140 6364          BCC $C$L5,TC1 ; |219| 
+     669                                                      ; branchcc occurs ; |219| 
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   15
+
+     670                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 221,column 3,is_stmt
+     671 000142 E631          MOV #1, *(#_xErrorDetected) ; |221| 
+         000144 0100 
+         000146 0000-
+     672 000148       $C$L5:    
+     673                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 223,column 2,is_stmt
+     674 000148 E631          MOV #0, *(#_xOkToGiveMutex) ; |223| 
+         00014a 0000 
+         00014c 0001-
+     675                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 227,column 2,is_stmt
+     676 00014e ED31          MOV dbl(*(#_xISRMutex)), XAR0
+         000150 8F00 
+         000152 0008-
+     677              $C$DW$76        .dwtag  DW_TAG_TI_branch
+     678                      .dwattr $C$DW$76, DW_AT_low_pc(0x00)
+     679                      .dwattr $C$DW$76, DW_AT_name("_xQueueSemaphoreTake")
+     680                      .dwattr $C$DW$76, DW_AT_TI_call
+     681              
+     682 000154 6C00          CALL #_xQueueSemaphoreTake ; |227| 
+         000156 0000!
+     683 000158 3D04  ||      MOV #0, T0
+     684              
+     685                                                      ; call occurs [#_xQueueSemaphoreTake] ; |227| 
+     686 00015a 6304          BCC $C$L6,T0 == #0 ; |227| 
+     687                                                      ; branchcc occurs ; |227| 
+     688                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 229,column 3,is_stmt
+     689 00015c E631          MOV #1, *(#_xErrorDetected) ; |229| 
+         00015e 0100 
+         000160 0000-
+     690 000162       $C$L6:    
+     691                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 233,column 2,is_stmt
+     692 000162 EC31          AMOV #0, XAR0 ; |233| 
+         000164 8E00 
+         000166 0000 
+     693              $C$DW$77        .dwtag  DW_TAG_TI_branch
+     694                      .dwattr $C$DW$77, DW_AT_low_pc(0x00)
+     695                      .dwattr $C$DW$77, DW_AT_name("_uxTaskPriorityGet")
+     696                      .dwattr $C$DW$77, DW_AT_TI_call
+     697 000168 6C00          CALL #_uxTaskPriorityGet ; |233| 
+         00016a 0000!
+     698                                                      ; call occurs [#_uxTaskPriorityGet] ; |233| 
+     699 00016c 3C19          MOV #1, AR1
+     700 00016e 1240          CMPU T0 == AR1, TC1 ; |233| 
+         000170 94   
+     701 000171 6364          BCC $C$L7,TC1 ; |233| 
+     702                                                      ; branchcc occurs ; |233| 
+     703                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 235,column 3,is_stmt
+     704 000173 E631          MOV #1, *(#_xErrorDetected) ; |235| 
+         000175 0100 
+         000177 0000-
+     705 000179       $C$L7:    
+     706                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 241,column 2,is_stmt
+     707 000179 ED31          MOV dbl(*(#_xISRMutex)), XAR0
+         00017b 8F00 
+         00017d 0008-
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   16
+
+     708 00017f EC31          AMOV #0, XAR1 ; |241| 
+         000181 9E00 
+         000183 0000 
+     709 000185 3C04          MOV #0, T0
+     710              $C$DW$78        .dwtag  DW_TAG_TI_branch
+     711                      .dwattr $C$DW$78, DW_AT_low_pc(0x00)
+     712                      .dwattr $C$DW$78, DW_AT_name("_xQueueGenericSend")
+     713                      .dwattr $C$DW$78, DW_AT_TI_call
+     714              
+     715 000187 6C00          CALL #_xQueueGenericSend ; |241| 
+         000189 0000!
+     716 00018b 3D05  ||      MOV #0, T1
+     717              
+     718                                                      ; call occurs [#_xQueueGenericSend] ; |241| 
+     719 00018d 3C19          MOV #1, AR1
+     720 00018f 1240          CMP T0 == AR1, TC1 ; |241| 
+         000191 90   
+     721 000192 6364          BCC $C$L8,TC1 ; |241| 
+     722                                                      ; branchcc occurs ; |241| 
+     723                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 243,column 3,is_stmt
+     724 000194 E631          MOV #1, *(#_xErrorDetected) ; |243| 
+         000196 0100 
+         000198 0000-
+     725 00019a       $C$L8:    
+     726                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 246,column 2,is_stmt
+     727 00019a EC31          AMOV #0, XAR0 ; |246| 
+         00019c 8E00 
+         00019e 0000 
+     728              $C$DW$79        .dwtag  DW_TAG_TI_branch
+     729                      .dwattr $C$DW$79, DW_AT_low_pc(0x00)
+     730                      .dwattr $C$DW$79, DW_AT_name("_uxTaskPriorityGet")
+     731                      .dwattr $C$DW$79, DW_AT_TI_call
+     732 0001a0 6C00          CALL #_uxTaskPriorityGet ; |246| 
+         0001a2 0000!
+     733                                                      ; call occurs [#_uxTaskPriorityGet] ; |246| 
+     734 0001a4 3C19          MOV #1, AR1
+     735 0001a6 1240          CMPU T0 == AR1, TC1 ; |246| 
+         0001a8 94   
+     736 0001a9 6364          BCC $C$L9,TC1 ; |246| 
+     737                                                      ; branchcc occurs ; |246| 
+     738                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 248,column 3,is_stmt
+     739 0001ab E631          MOV #1, *(#_xErrorDetected) ; |248| 
+         0001ad 0100 
+         0001af 0000-
+     740 0001b1       $C$L9:    
+     741                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 255,column 2,is_stmt
+     742 0001b1 ED31          MOV dbl(*(#_xMasterSlaveMutex)), XAR0
+         0001b3 8F00 
+         0001b5 000C-
+     743 0001b7 EC31          AMOV #0, XAR1 ; |255| 
+         0001b9 9E00 
+         0001bb 0000 
+     744 0001bd 3C04          MOV #0, T0
+     745              $C$DW$80        .dwtag  DW_TAG_TI_branch
+     746                      .dwattr $C$DW$80, DW_AT_low_pc(0x00)
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   17
+
+     747                      .dwattr $C$DW$80, DW_AT_name("_xQueueGenericSend")
+     748                      .dwattr $C$DW$80, DW_AT_TI_call
+     749              
+     750 0001bf 6C00          CALL #_xQueueGenericSend ; |255| 
+         0001c1 0000!
+     751 0001c3 3D05  ||      MOV #0, T1
+     752              
+     753                                                      ; call occurs [#_xQueueGenericSend] ; |255| 
+     754 0001c5 3C19          MOV #1, AR1
+     755 0001c7 1240          CMP T0 == AR1, TC1 ; |255| 
+         0001c9 90   
+     756 0001ca 6364          BCC $C$L10,TC1 ; |255| 
+     757                                                      ; branchcc occurs ; |255| 
+     758                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 257,column 3,is_stmt
+     759 0001cc E631          MOV #1, *(#_xErrorDetected) ; |257| 
+         0001ce 0100 
+         0001d0 0000-
+     760 0001d2       $C$L10:    
+     761                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 260,column 2,is_stmt
+     762 0001d2 EC31          AMOV #0, XAR0 ; |260| 
+         0001d4 8E00 
+         0001d6 0000 
+     763              $C$DW$81        .dwtag  DW_TAG_TI_branch
+     764                      .dwattr $C$DW$81, DW_AT_low_pc(0x00)
+     765                      .dwattr $C$DW$81, DW_AT_name("_uxTaskPriorityGet")
+     766                      .dwattr $C$DW$81, DW_AT_TI_call
+     767 0001d8 6C00          CALL #_uxTaskPriorityGet ; |260| 
+         0001da 0000!
+     768                                                      ; call occurs [#_uxTaskPriorityGet] ; |260| 
+     769 0001dc 6304          BCC $C$L11,T0 == #0 ; |260| 
+     770                                                      ; branchcc occurs ; |260| 
+     771                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 262,column 3,is_stmt
+     772 0001de E631          MOV #1, *(#_xErrorDetected) ; |262| 
+         0001e0 0100 
+         0001e2 0000-
+     773 0001e4       $C$L11:    
+     774                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 272,column 2,is_stmt
+     775 0001e4 ED31          MOV dbl(*(#_xISRMutex)), XAR0
+         0001e6 8F00 
+         0001e8 0008-
+     776 0001ea 3C04          MOV #0, T0
+     777              $C$DW$82        .dwtag  DW_TAG_TI_branch
+     778                      .dwattr $C$DW$82, DW_AT_low_pc(0x00)
+     779                      .dwattr $C$DW$82, DW_AT_name("_xQueueGenericReset")
+     780                      .dwattr $C$DW$82, DW_AT_TI_call
+     781 0001ec 6C00          CALL #_xQueueGenericReset ; |272| 
+         0001ee 0000!
+     782                                                      ; call occurs [#_xQueueGenericReset] ; |272| 
+     783                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 273,column 1,is_stmt
+     784 0001f0 4E01          AADD #1, SP
+     785                      .dwcfi  cfa_offset, 1
+     786              $C$DW$83        .dwtag  DW_TAG_TI_branch
+     787                      .dwattr $C$DW$83, DW_AT_low_pc(0x00)
+     788                      .dwattr $C$DW$83, DW_AT_TI_return
+     789 0001f2 4804          RET
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   18
+
+     790                                                      ; return occurs
+     791                      .dwattr $C$DW$70, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+     792                      .dwattr $C$DW$70, DW_AT_TI_end_line(0x111)
+     793                      .dwattr $C$DW$70, DW_AT_TI_end_column(0x01)
+     794                      .dwendentry
+     795                      .dwendtag $C$DW$70
+     796              
+     797 0001f4               .sect   ".text"
+     798                      .align 4
+     799              
+     800              $C$DW$84        .dwtag  DW_TAG_subprogram, DW_AT_name("prvTakeAndGiveInTheOppositeOrder")
+     801                      .dwattr $C$DW$84, DW_AT_low_pc(_prvTakeAndGiveInTheOppositeOrder)
+     802                      .dwattr $C$DW$84, DW_AT_high_pc(0x00)
+     803                      .dwattr $C$DW$84, DW_AT_TI_symbol_name("_prvTakeAndGiveInTheOppositeOrder")
+     804                      .dwattr $C$DW$84, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+     805                      .dwattr $C$DW$84, DW_AT_TI_begin_line(0x114)
+     806                      .dwattr $C$DW$84, DW_AT_TI_begin_column(0x0d)
+     807                      .dwattr $C$DW$84, DW_AT_TI_max_frame_size(0x02)
+     808                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 277,column 1,is_stmt,address _prvTak
+     809              
+     810                      .dwfde $C$DW$CIE, _prvTakeAndGiveInTheOppositeOrder
+     811              ;*******************************************************************************
+     812              ;* FUNCTION NAME: prvTakeAndGiveInTheOppositeOrder                             *
+     813              ;*                                                                             *
+     814              ;*   Function Uses Regs : AC0,T0,T1,AR0,XAR0,AR1,XAR1,SP,CARRY,TC1,M40,SATA,   *
+     815              ;*                        SATD,RDM,FRCT,SMUL                                   *
+     816              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     817              ;*   Total Frame Size   : 2 words                                              *
+     818              ;*                        (2 return address/alignment)                         *
+     819              ;*   Min System Stack   : 1 word                                               *
+     820              ;*******************************************************************************
+     821 0001f4       _prvTakeAndGiveInTheOppositeOrder:
+     822                      .dwcfi  cfa_offset, 1
+     823                      .dwcfi  save_reg_to_mem, 91, -1
+     824 0001f4 4EFF          AADD #-1, SP
+     825                      .dwcfi  cfa_offset, 2
+     826                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 286,column 2,is_stmt
+     827 0001f6 EC31          AMOV #0, XAR0 ; |286| 
+         0001f8 8E00 
+         0001fa 0000 
+     828              $C$DW$85        .dwtag  DW_TAG_TI_branch
+     829                      .dwattr $C$DW$85, DW_AT_low_pc(0x00)
+     830                      .dwattr $C$DW$85, DW_AT_name("_uxTaskPriorityGet")
+     831                      .dwattr $C$DW$85, DW_AT_TI_call
+     832 0001fc 6C00          CALL #_uxTaskPriorityGet ; |286| 
+         0001fe 0000!
+     833                                                      ; call occurs [#_uxTaskPriorityGet] ; |286| 
+     834 000200 6304          BCC $C$L12,T0 == #0 ; |286| 
+     835                                                      ; branchcc occurs ; |286| 
+     836                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 288,column 3,is_stmt
+     837 000202 E631          MOV #1, *(#_xErrorDetected) ; |288| 
+         000204 0100 
+         000206 0000-
+     838 000208       $C$L12:    
+     839                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 292,column 2,is_stmt
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   19
+
+     840 000208 ED31          MOV dbl(*(#_xMasterSlaveMutex)), XAR0
+         00020a 8F00 
+         00020c 000C-
+     841              $C$DW$86        .dwtag  DW_TAG_TI_branch
+     842                      .dwattr $C$DW$86, DW_AT_low_pc(0x00)
+     843                      .dwattr $C$DW$86, DW_AT_name("_xQueueSemaphoreTake")
+     844                      .dwattr $C$DW$86, DW_AT_TI_call
+     845              
+     846 00020e 6C00          CALL #_xQueueSemaphoreTake ; |292| 
+         000210 0000!
+     847 000212 3D04  ||      MOV #0, T0
+     848              
+     849                                                      ; call occurs [#_xQueueSemaphoreTake] ; |292| 
+     850 000214 3C19          MOV #1, AR1
+     851 000216 1240          CMP T0 == AR1, TC1 ; |292| 
+         000218 90   
+     852 000219 6364          BCC $C$L13,TC1 ; |292| 
+     853                                                      ; branchcc occurs ; |292| 
+     854                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 294,column 3,is_stmt
+     855 00021b E631          MOV #1, *(#_xErrorDetected) ; |294| 
+         00021d 0100 
+         00021f 0000-
+     856 000221       $C$L13:    
+     857                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 299,column 2,is_stmt
+     858 000221 ED31          MOV dbl(*(#_xSlaveHandle)), XAR0
+         000223 8F00 
+         000225 0006-
+     859              $C$DW$87        .dwtag  DW_TAG_TI_branch
+     860                      .dwattr $C$DW$87, DW_AT_low_pc(0x00)
+     861                      .dwattr $C$DW$87, DW_AT_name("_vTaskResume")
+     862                      .dwattr $C$DW$87, DW_AT_TI_call
+     863 000227 6C00          CALL #_vTaskResume ; |299| 
+         000229 0000!
+     864                                                      ; call occurs [#_vTaskResume] ; |299| 
+     865                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 311,column 2,is_stmt
+     866 00022b EC31          AMOV #0, XAR0 ; |311| 
+         00022d 8E00 
+         00022f 0000 
+     867              $C$DW$88        .dwtag  DW_TAG_TI_branch
+     868                      .dwattr $C$DW$88, DW_AT_low_pc(0x00)
+     869                      .dwattr $C$DW$88, DW_AT_name("_uxTaskPriorityGet")
+     870                      .dwattr $C$DW$88, DW_AT_TI_call
+     871 000231 6C00          CALL #_uxTaskPriorityGet ; |311| 
+         000233 0000!
+     872                                                      ; call occurs [#_uxTaskPriorityGet] ; |311| 
+     873 000235 3C19          MOV #1, AR1
+     874 000237 1240          CMPU T0 == AR1, TC1 ; |311| 
+         000239 94   
+     875 00023a 6364          BCC $C$L14,TC1 ; |311| 
+     876                                                      ; branchcc occurs ; |311| 
+     877                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 313,column 3,is_stmt
+     878 00023c E631          MOV #1, *(#_xErrorDetected) ; |313| 
+         00023e 0100 
+         000240 0000-
+     879 000242       $C$L14:    
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   20
+
+     880                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 318,column 2,is_stmt
+     881 000242 E631          MOV #1, *(#_xOkToGiveMutex) ; |318| 
+         000244 0100 
+         000246 0001-
+     882                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 319,column 2,is_stmt
+     883 000248 A031          MOV *(#_xInterruptGivePeriod), AC0 ; |319| 
+         00024a 0000 
+         00024c 00+  
+     884 00024d ED31          MOV dbl(*(#_xISRMutex)), XAR0
+         00024f 8F00 
+         000251 0008-
+     885 000253 5000          SFTL AC0, #1, AC0 ; |319| 
+     886              $C$DW$89        .dwtag  DW_TAG_TI_branch
+     887                      .dwattr $C$DW$89, DW_AT_low_pc(0x00)
+     888                      .dwattr $C$DW$89, DW_AT_name("_xQueueSemaphoreTake")
+     889                      .dwattr $C$DW$89, DW_AT_TI_call
+     890              
+     891 000255 6C00          CALL #_xQueueSemaphoreTake ; |319| 
+         000257 0000!
+     892 000259 2304  ||      MOV AC0, T0 ; |319| 
+     893              
+     894                                                      ; call occurs [#_xQueueSemaphoreTake] ; |319| 
+     895 00025b 3C19          MOV #1, AR1
+     896 00025d 1240          CMP T0 == AR1, TC1 ; |319| 
+         00025f 90   
+     897 000260 6364          BCC $C$L15,TC1 ; |319| 
+     898                                                      ; branchcc occurs ; |319| 
+     899                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 321,column 3,is_stmt
+     900 000262 E631          MOV #1, *(#_xErrorDetected) ; |321| 
+         000264 0100 
+         000266 0000-
+     901 000268       $C$L15:    
+     902                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 323,column 2,is_stmt
+     903 000268 E631          MOV #0, *(#_xOkToGiveMutex) ; |323| 
+         00026a 0000 
+         00026c 0001-
+     904                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 327,column 2,is_stmt
+     905 00026e ED31          MOV dbl(*(#_xISRMutex)), XAR0
+         000270 8F00 
+         000272 0008-
+     906              $C$DW$90        .dwtag  DW_TAG_TI_branch
+     907                      .dwattr $C$DW$90, DW_AT_low_pc(0x00)
+     908                      .dwattr $C$DW$90, DW_AT_name("_xQueueSemaphoreTake")
+     909                      .dwattr $C$DW$90, DW_AT_TI_call
+     910              
+     911 000274 6C00          CALL #_xQueueSemaphoreTake ; |327| 
+         000276 0000!
+     912 000278 3D04  ||      MOV #0, T0
+     913              
+     914                                                      ; call occurs [#_xQueueSemaphoreTake] ; |327| 
+     915 00027a 6304          BCC $C$L16,T0 == #0 ; |327| 
+     916                                                      ; branchcc occurs ; |327| 
+     917                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 329,column 3,is_stmt
+     918 00027c E631          MOV #1, *(#_xErrorDetected) ; |329| 
+         00027e 0100 
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   21
+
+         000280 0000-
+     919 000282       $C$L16:    
+     920                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 333,column 2,is_stmt
+     921 000282 EC31          AMOV #0, XAR0 ; |333| 
+         000284 8E00 
+         000286 0000 
+     922              $C$DW$91        .dwtag  DW_TAG_TI_branch
+     923                      .dwattr $C$DW$91, DW_AT_low_pc(0x00)
+     924                      .dwattr $C$DW$91, DW_AT_name("_uxTaskPriorityGet")
+     925                      .dwattr $C$DW$91, DW_AT_TI_call
+     926 000288 6C00          CALL #_uxTaskPriorityGet ; |333| 
+         00028a 0000!
+     927                                                      ; call occurs [#_uxTaskPriorityGet] ; |333| 
+     928 00028c 3C19          MOV #1, AR1
+     929 00028e 1240          CMPU T0 == AR1, TC1 ; |333| 
+         000290 94   
+     930 000291 6364          BCC $C$L17,TC1 ; |333| 
+     931                                                      ; branchcc occurs ; |333| 
+     932                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 335,column 3,is_stmt
+     933 000293 E631          MOV #1, *(#_xErrorDetected) ; |335| 
+         000295 0100 
+         000297 0000-
+     934 000299       $C$L17:    
+     935                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 341,column 2,is_stmt
+     936 000299 ED31          MOV dbl(*(#_xMasterSlaveMutex)), XAR0
+         00029b 8F00 
+         00029d 000C-
+     937 00029f EC31          AMOV #0, XAR1 ; |341| 
+         0002a1 9E00 
+         0002a3 0000 
+     938 0002a5 3C04          MOV #0, T0
+     939              $C$DW$92        .dwtag  DW_TAG_TI_branch
+     940                      .dwattr $C$DW$92, DW_AT_low_pc(0x00)
+     941                      .dwattr $C$DW$92, DW_AT_name("_xQueueGenericSend")
+     942                      .dwattr $C$DW$92, DW_AT_TI_call
+     943              
+     944 0002a7 6C00          CALL #_xQueueGenericSend ; |341| 
+         0002a9 0000!
+     945 0002ab 3D05  ||      MOV #0, T1
+     946              
+     947                                                      ; call occurs [#_xQueueGenericSend] ; |341| 
+     948 0002ad 3C19          MOV #1, AR1
+     949 0002af 1240          CMP T0 == AR1, TC1 ; |341| 
+         0002b1 90   
+     950 0002b2 6364          BCC $C$L18,TC1 ; |341| 
+     951                                                      ; branchcc occurs ; |341| 
+     952                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 343,column 3,is_stmt
+     953 0002b4 E631          MOV #1, *(#_xErrorDetected) ; |343| 
+         0002b6 0100 
+         0002b8 0000-
+     954 0002ba       $C$L18:    
+     955                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 349,column 2,is_stmt
+     956 0002ba EC31          AMOV #0, XAR0 ; |349| 
+         0002bc 8E00 
+         0002be 0000 
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   22
+
+     957              $C$DW$93        .dwtag  DW_TAG_TI_branch
+     958                      .dwattr $C$DW$93, DW_AT_low_pc(0x00)
+     959                      .dwattr $C$DW$93, DW_AT_name("_uxTaskPriorityGet")
+     960                      .dwattr $C$DW$93, DW_AT_TI_call
+     961 0002c0 6C00          CALL #_uxTaskPriorityGet ; |349| 
+         0002c2 0000!
+     962                                                      ; call occurs [#_uxTaskPriorityGet] ; |349| 
+     963 0002c4 3C19          MOV #1, AR1
+     964 0002c6 1240          CMPU T0 == AR1, TC1 ; |349| 
+         0002c8 94   
+     965 0002c9 6364          BCC $C$L19,TC1 ; |349| 
+     966                                                      ; branchcc occurs ; |349| 
+     967                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 351,column 3,is_stmt
+     968 0002cb E631          MOV #1, *(#_xErrorDetected) ; |351| 
+         0002cd 0100 
+         0002cf 0000-
+     969 0002d1       $C$L19:    
+     970                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 356,column 2,is_stmt
+     971 0002d1 ED31          MOV dbl(*(#_xISRMutex)), XAR0
+         0002d3 8F00 
+         0002d5 0008-
+     972 0002d7 EC31          AMOV #0, XAR1 ; |356| 
+         0002d9 9E00 
+         0002db 0000 
+     973 0002dd 3C04          MOV #0, T0
+     974              $C$DW$94        .dwtag  DW_TAG_TI_branch
+     975                      .dwattr $C$DW$94, DW_AT_low_pc(0x00)
+     976                      .dwattr $C$DW$94, DW_AT_name("_xQueueGenericSend")
+     977                      .dwattr $C$DW$94, DW_AT_TI_call
+     978              
+     979 0002df 6C00          CALL #_xQueueGenericSend ; |356| 
+         0002e1 0000!
+     980 0002e3 3D05  ||      MOV #0, T1
+     981              
+     982                                                      ; call occurs [#_xQueueGenericSend] ; |356| 
+     983 0002e5 3C19          MOV #1, AR1
+     984 0002e7 1240          CMP T0 == AR1, TC1 ; |356| 
+         0002e9 90   
+     985 0002ea 6364          BCC $C$L20,TC1 ; |356| 
+     986                                                      ; branchcc occurs ; |356| 
+     987                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 358,column 3,is_stmt
+     988 0002ec E631          MOV #1, *(#_xErrorDetected) ; |358| 
+         0002ee 0100 
+         0002f0 0000-
+     989 0002f2       $C$L20:    
+     990                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 361,column 2,is_stmt
+     991 0002f2 EC31          AMOV #0, XAR0 ; |361| 
+         0002f4 8E00 
+         0002f6 0000 
+     992              $C$DW$95        .dwtag  DW_TAG_TI_branch
+     993                      .dwattr $C$DW$95, DW_AT_low_pc(0x00)
+     994                      .dwattr $C$DW$95, DW_AT_name("_uxTaskPriorityGet")
+     995                      .dwattr $C$DW$95, DW_AT_TI_call
+     996 0002f8 6C00          CALL #_uxTaskPriorityGet ; |361| 
+         0002fa 0000!
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   23
+
+     997                                                      ; call occurs [#_uxTaskPriorityGet] ; |361| 
+     998 0002fc 6304          BCC $C$L21,T0 == #0 ; |361| 
+     999                                                      ; branchcc occurs ; |361| 
+    1000                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 363,column 3,is_stmt
+    1001 0002fe E631          MOV #1, *(#_xErrorDetected) ; |363| 
+         000300 0100 
+         000302 0000-
+    1002 000304       $C$L21:    
+    1003                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 367,column 2,is_stmt
+    1004 000304 ED31          MOV dbl(*(#_xISRMutex)), XAR0
+         000306 8F00 
+         000308 0008-
+    1005 00030a 3C04          MOV #0, T0
+    1006              $C$DW$96        .dwtag  DW_TAG_TI_branch
+    1007                      .dwattr $C$DW$96, DW_AT_low_pc(0x00)
+    1008                      .dwattr $C$DW$96, DW_AT_name("_xQueueGenericReset")
+    1009                      .dwattr $C$DW$96, DW_AT_TI_call
+    1010 00030c 6C00          CALL #_xQueueGenericReset ; |367| 
+         00030e 0000!
+    1011                                                      ; call occurs [#_xQueueGenericReset] ; |367| 
+    1012                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 368,column 1,is_stmt
+    1013 000310 4E01          AADD #1, SP
+    1014                      .dwcfi  cfa_offset, 1
+    1015              $C$DW$97        .dwtag  DW_TAG_TI_branch
+    1016                      .dwattr $C$DW$97, DW_AT_low_pc(0x00)
+    1017                      .dwattr $C$DW$97, DW_AT_TI_return
+    1018 000312 4804          RET
+    1019                                                      ; return occurs
+    1020                      .dwattr $C$DW$84, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+    1021                      .dwattr $C$DW$84, DW_AT_TI_end_line(0x170)
+    1022                      .dwattr $C$DW$84, DW_AT_TI_end_column(0x01)
+    1023                      .dwendentry
+    1024                      .dwendtag $C$DW$84
+    1025              
+    1026 000314               .sect   ".text"
+    1027                      .align 4
+    1028              
+    1029              $C$DW$98        .dwtag  DW_TAG_subprogram, DW_AT_name("vInterruptMutexSlaveTask")
+    1030                      .dwattr $C$DW$98, DW_AT_low_pc(_vInterruptMutexSlaveTask)
+    1031                      .dwattr $C$DW$98, DW_AT_high_pc(0x00)
+    1032                      .dwattr $C$DW$98, DW_AT_TI_symbol_name("_vInterruptMutexSlaveTask")
+    1033                      .dwattr $C$DW$98, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+    1034                      .dwattr $C$DW$98, DW_AT_TI_begin_line(0x173)
+    1035                      .dwattr $C$DW$98, DW_AT_TI_begin_column(0x0d)
+    1036                      .dwattr $C$DW$98, DW_AT_TI_max_frame_size(0x06)
+    1037                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 372,column 1,is_stmt,address _vInter
+    1038              
+    1039                      .dwfde $C$DW$CIE, _vInterruptMutexSlaveTask
+    1040              $C$DW$99        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
+    1041                      .dwattr $C$DW$99, DW_AT_TI_symbol_name("_pvParameters")
+    1042                      .dwattr $C$DW$99, DW_AT_type(*$C$DW$T$3)
+    1043                      .dwattr $C$DW$99, DW_AT_location[DW_OP_reg17]
+    1044              ;*******************************************************************************
+    1045              ;* FUNCTION NAME: vInterruptMutexSlaveTask                                     *
+    1046              ;*                                                                             *
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   24
+
+    1047              ;*   Function Uses Regs : T0,T1,T2,T3,AR0,XAR0,AR1,XAR1,SP,TC1,M40,SATA,SATD,  *
+    1048              ;*                        RDM,FRCT,SMUL                                        *
+    1049              ;*   Save On Entry Regs : T2,T3                                                *
+    1050              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+    1051              ;*   Total Frame Size   : 6 words                                              *
+    1052              ;*                        (2 return address/alignment)                         *
+    1053              ;*                        (2 local values)                                     *
+    1054              ;*                        (2 register save area)                               *
+    1055              ;*   Min System Stack   : 1 word                                               *
+    1056              ;*******************************************************************************
+    1057 000314       _vInterruptMutexSlaveTask:
+    1058                      .dwcfi  cfa_offset, 1
+    1059                      .dwcfi  save_reg_to_mem, 91, -1
+    1060 000314 5066          PSH T2
+    1061                      .dwcfi  cfa_offset, 2
+    1062                      .dwcfi  save_reg_to_mem, 14, -2
+    1063 000316 5076          PSH T3
+    1064                      .dwcfi  cfa_offset, 3
+    1065                      .dwcfi  save_reg_to_mem, 15, -3
+    1066 000318 4EFD          AADD #-3, SP
+    1067                      .dwcfi  cfa_offset, 6
+    1068              $C$DW$100       .dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
+    1069                      .dwattr $C$DW$100, DW_AT_TI_symbol_name("_pvParameters")
+    1070                      .dwattr $C$DW$100, DW_AT_type(*$C$DW$T$3)
+    1071                      .dwattr $C$DW$100, DW_AT_location[DW_OP_bregx 0x24 0]
+    1072 00031a EB00          MOV XAR0, dbl(*SP(#0))
+         00031c 85   
+    1073              
+    1074 00031d 3C17          MOV #1, T3
+    1075 00031f 3D16  ||      MOV #1, T2
+    1076              
+    1077                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 374,column 2,is_stmt
+    1078 000321       $C$L22:    
+    1079 000321       $C$DW$L$_vInterruptMutexSlaveTask$2$B:
+    1080                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 380,column 3,is_stmt
+    1081 000321 EC31          AMOV #0, XAR0 ; |380| 
+         000323 8E00 
+         000325 0000 
+    1082              $C$DW$101       .dwtag  DW_TAG_TI_branch
+    1083                      .dwattr $C$DW$101, DW_AT_low_pc(0x00)
+    1084                      .dwattr $C$DW$101, DW_AT_name("_vTaskSuspend")
+    1085                      .dwattr $C$DW$101, DW_AT_TI_call
+    1086 000327 6C00          CALL #_vTaskSuspend ; |380| 
+         000329 0000!
+    1087                                                      ; call occurs [#_vTaskSuspend] ; |380| 
+    1088                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 385,column 3,is_stmt
+    1089 00032b 76FF          MOV #65535, T0 ; |385| 
+         00032d FF48 
+    1090 00032f ED31          MOV dbl(*(#_xMasterSlaveMutex)), XAR0
+         000331 8F00 
+         000333 000C-
+    1091              $C$DW$102       .dwtag  DW_TAG_TI_branch
+    1092                      .dwattr $C$DW$102, DW_AT_low_pc(0x00)
+    1093                      .dwattr $C$DW$102, DW_AT_name("_xQueueSemaphoreTake")
+    1094                      .dwattr $C$DW$102, DW_AT_TI_call
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   25
+
+    1095 000335 6C00          CALL #_xQueueSemaphoreTake ; |385| 
+         000337 0000!
+    1096                                                      ; call occurs [#_xQueueSemaphoreTake] ; |385| 
+    1097 000339 1240          CMP T0 == T3, TC1 ; |385| 
+         00033b 70   
+    1098 00033c 6364          BCC $C$L23,TC1 ; |385| 
+    1099                                                      ; branchcc occurs ; |385| 
+    1100 00033e       $C$DW$L$_vInterruptMutexSlaveTask$2$E:
+    1101 00033e       $C$DW$L$_vInterruptMutexSlaveTask$3$B:
+    1102                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 387,column 4,is_stmt
+    1103 00033e E631          MOV #1, *(#_xErrorDetected) ; |387| 
+         000340 0100 
+         000342 0000-
+    1104 000344       $C$DW$L$_vInterruptMutexSlaveTask$3$E:
+    1105 000344       $C$L23:    
+    1106 000344       $C$DW$L$_vInterruptMutexSlaveTask$4$B:
+    1107                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 390,column 3,is_stmt
+    1108 000344 ED31          MOV dbl(*(#_xMasterSlaveMutex)), XAR0
+         000346 8F00 
+         000348 000C-
+    1109 00034a EC31          AMOV #0, XAR1 ; |390| 
+         00034c 9E00 
+         00034e 0000 
+    1110 000350 3C04          MOV #0, T0
+    1111              $C$DW$103       .dwtag  DW_TAG_TI_branch
+    1112                      .dwattr $C$DW$103, DW_AT_low_pc(0x00)
+    1113                      .dwattr $C$DW$103, DW_AT_name("_xQueueGenericSend")
+    1114                      .dwattr $C$DW$103, DW_AT_TI_call
+    1115              
+    1116 000352 6C00          CALL #_xQueueGenericSend ; |390| 
+         000354 0000!
+    1117 000356 3D05  ||      MOV #0, T1
+    1118              
+    1119                                                      ; call occurs [#_xQueueGenericSend] ; |390| 
+    1120 000358 1240          CMP T0 == T2, TC1 ; |390| 
+         00035a 60   
+    1121 00035b 0464          BCC $C$L22,TC1 ; |390| 
+         00035d C3   
+    1122                                                      ; branchcc occurs ; |390| 
+    1123 00035e       $C$DW$L$_vInterruptMutexSlaveTask$4$E:
+    1124 00035e       $C$DW$L$_vInterruptMutexSlaveTask$5$B:
+    1125                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 392,column 4,is_stmt
+    1126 00035e E631          MOV #1, *(#_xErrorDetected) ; |392| 
+         000360 0100 
+         000362 0000-
+    1127                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 394,column 2,is_stmt
+    1128 000364 06FF          B $C$L22  ; |394| 
+         000366 BA   
+    1129                                                      ; branch occurs ; |394| 
+    1130 000367       $C$DW$L$_vInterruptMutexSlaveTask$5$E:
+    1131                      .dwcfi  cfa_offset, 3
+    1132                      .dwcfi  restore_reg, 15
+    1133                      .dwcfi  cfa_offset, 2
+    1134                      .dwcfi  restore_reg, 14
+    1135                      .dwcfi  cfa_offset, 1
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   26
+
+    1136              
+    1137              $C$DW$104       .dwtag  DW_TAG_TI_loop
+    1138                      .dwattr $C$DW$104, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\I
+    1139                      .dwattr $C$DW$104, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+    1140                      .dwattr $C$DW$104, DW_AT_TI_begin_line(0x178)
+    1141                      .dwattr $C$DW$104, DW_AT_TI_end_line(0x18a)
+    1142              $C$DW$105       .dwtag  DW_TAG_TI_loop_range
+    1143                      .dwattr $C$DW$105, DW_AT_low_pc($C$DW$L$_vInterruptMutexSlaveTask$2$B)
+    1144                      .dwattr $C$DW$105, DW_AT_high_pc($C$DW$L$_vInterruptMutexSlaveTask$2$E)
+    1145              $C$DW$106       .dwtag  DW_TAG_TI_loop_range
+    1146                      .dwattr $C$DW$106, DW_AT_low_pc($C$DW$L$_vInterruptMutexSlaveTask$3$B)
+    1147                      .dwattr $C$DW$106, DW_AT_high_pc($C$DW$L$_vInterruptMutexSlaveTask$3$E)
+    1148              $C$DW$107       .dwtag  DW_TAG_TI_loop_range
+    1149                      .dwattr $C$DW$107, DW_AT_low_pc($C$DW$L$_vInterruptMutexSlaveTask$5$B)
+    1150                      .dwattr $C$DW$107, DW_AT_high_pc($C$DW$L$_vInterruptMutexSlaveTask$5$E)
+    1151              $C$DW$108       .dwtag  DW_TAG_TI_loop_range
+    1152                      .dwattr $C$DW$108, DW_AT_low_pc($C$DW$L$_vInterruptMutexSlaveTask$4$B)
+    1153                      .dwattr $C$DW$108, DW_AT_high_pc($C$DW$L$_vInterruptMutexSlaveTask$4$E)
+    1154                      .dwendtag $C$DW$104
+    1155              
+    1156                      .dwattr $C$DW$98, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+    1157                      .dwattr $C$DW$98, DW_AT_TI_end_line(0x18b)
+    1158                      .dwattr $C$DW$98, DW_AT_TI_end_column(0x01)
+    1159                      .dwendentry
+    1160                      .dwendtag $C$DW$98
+    1161              
+    1162 000367               .sect   ".text"
+    1163                      .align 4
+    1164              
+    1165              $C$DW$109       .dwtag  DW_TAG_subprogram, DW_AT_name("vInterruptCountingSemaphoreTask")
+    1166                      .dwattr $C$DW$109, DW_AT_low_pc(_vInterruptCountingSemaphoreTask)
+    1167                      .dwattr $C$DW$109, DW_AT_high_pc(0x00)
+    1168                      .dwattr $C$DW$109, DW_AT_TI_symbol_name("_vInterruptCountingSemaphoreTask")
+    1169                      .dwattr $C$DW$109, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+    1170                      .dwattr $C$DW$109, DW_AT_TI_begin_line(0x18e)
+    1171                      .dwattr $C$DW$109, DW_AT_TI_begin_column(0x0d)
+    1172                      .dwattr $C$DW$109, DW_AT_TI_max_frame_size(0x08)
+    1173                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 399,column 1,is_stmt,address _vInter
+    1174              
+    1175                      .dwfde $C$DW$CIE, _vInterruptCountingSemaphoreTask
+    1176              $C$DW$110       .dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
+    1177                      .dwattr $C$DW$110, DW_AT_TI_symbol_name("_pvParameters")
+    1178                      .dwattr $C$DW$110, DW_AT_type(*$C$DW$T$3)
+    1179                      .dwattr $C$DW$110, DW_AT_location[DW_OP_reg17]
+    1180              ;*******************************************************************************
+    1181              ;* FUNCTION NAME: vInterruptCountingSemaphoreTask                              *
+    1182              ;*                                                                             *
+    1183              ;*   Function Uses Regs : AC0,AC0,T0,T2,T3,AR0,XAR0,AR1,SP,CARRY,TC1,M40,SATA, *
+    1184              ;*                        SATD,RDM,FRCT,SMUL                                   *
+    1185              ;*   Save On Entry Regs : T2,T3                                                *
+    1186              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+    1187              ;*   Total Frame Size   : 8 words                                              *
+    1188              ;*                        (2 return address/alignment)                         *
+    1189              ;*                        (4 local values)                                     *
+    1190              ;*                        (2 register save area)                               *
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   27
+
+    1191              ;*   Min System Stack   : 1 word                                               *
+    1192              ;*******************************************************************************
+    1193 000368       _vInterruptCountingSemaphoreTask:
+    1194                      .dwcfi  cfa_offset, 1
+    1195                      .dwcfi  save_reg_to_mem, 91, -1
+    1196 000368 5066          PSH T2
+    1197                      .dwcfi  cfa_offset, 2
+    1198                      .dwcfi  save_reg_to_mem, 14, -2
+    1199 00036a 5076          PSH T3
+    1200                      .dwcfi  cfa_offset, 3
+    1201                      .dwcfi  save_reg_to_mem, 15, -3
+    1202 00036c 4EFB          AADD #-5, SP
+    1203                      .dwcfi  cfa_offset, 8
+    1204              $C$DW$111       .dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
+    1205                      .dwattr $C$DW$111, DW_AT_TI_symbol_name("_pvParameters")
+    1206                      .dwattr $C$DW$111, DW_AT_type(*$C$DW$T$3)
+    1207                      .dwattr $C$DW$111, DW_AT_location[DW_OP_bregx 0x24 0]
+    1208              $C$DW$112       .dwtag  DW_TAG_variable, DW_AT_name("xCount")
+    1209                      .dwattr $C$DW$112, DW_AT_TI_symbol_name("_xCount")
+    1210                      .dwattr $C$DW$112, DW_AT_type(*$C$DW$T$52)
+    1211                      .dwattr $C$DW$112, DW_AT_location[DW_OP_bregx 0x24 2]
+    1212              $C$DW$113       .dwtag  DW_TAG_variable, DW_AT_name("xDelay")
+    1213                      .dwattr $C$DW$113, DW_AT_TI_symbol_name("_xDelay")
+    1214                      .dwattr $C$DW$113, DW_AT_type(*$C$DW$T$38)
+    1215                      .dwattr $C$DW$113, DW_AT_location[DW_OP_bregx 0x24 3]
+    1216 00036e EB00          MOV XAR0, dbl(*SP(#0))
+         000370 85   
+    1217                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 401,column 18,is_stmt
+    1218 000371 3C37          MOV #3, T3
+    1219              
+    1220 000373 FB06          MOV #136, *SP(#3) ; |401| 
+         000375 0088 
+    1221 000377 3D16  ||      MOV #1, T2
+    1222              
+    1223                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 403,column 2,is_stmt
+    1224 000379       $C$L24:    
+    1225 000379       $C$DW$L$_vInterruptCountingSemaphoreTask$2$B:
+    1226                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 408,column 3,is_stmt
+    1227 000379 ED31          MOV dbl(*(#_xISRCountingSemaphore)), XAR0
+         00037b 8F00 
+         00037d 000A-
+    1228              $C$DW$114       .dwtag  DW_TAG_TI_branch
+    1229                      .dwattr $C$DW$114, DW_AT_low_pc(0x00)
+    1230                      .dwattr $C$DW$114, DW_AT_name("_uxQueueMessagesWaiting")
+    1231                      .dwattr $C$DW$114, DW_AT_TI_call
+    1232 00037f 6C00          CALL #_uxQueueMessagesWaiting ; |408| 
+         000381 0000!
+    1233                                                      ; call occurs [#_uxQueueMessagesWaiting] ; |408| 
+    1234 000383 6304          BCC $C$L25,T0 == #0 ; |408| 
+    1235                                                      ; branchcc occurs ; |408| 
+    1236 000385       $C$DW$L$_vInterruptCountingSemaphoreTask$2$E:
+    1237 000385       $C$DW$L$_vInterruptCountingSemaphoreTask$3$B:
+    1238                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 410,column 4,is_stmt
+    1239 000385 E631          MOV #1, *(#_xErrorDetected) ; |410| 
+         000387 0100 
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   28
+
+         000389 0000-
+    1240 00038b       $C$DW$L$_vInterruptCountingSemaphoreTask$3$E:
+    1241 00038b       $C$L25:    
+    1242 00038b       $C$DW$L$_vInterruptCountingSemaphoreTask$4$B:
+    1243                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 415,column 3,is_stmt
+    1244 00038b E631          MOV #1, *(#_xOkToGiveCountingSemaphore) ; |415| 
+         00038d 0100 
+         00038f 000E-
+    1245                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 416,column 3,is_stmt
+    1246 000391 A406          MOV *SP(#3), T0 ; |416| 
+    1247              $C$DW$115       .dwtag  DW_TAG_TI_branch
+    1248                      .dwattr $C$DW$115, DW_AT_low_pc(0x00)
+    1249                      .dwattr $C$DW$115, DW_AT_name("_vTaskDelay")
+    1250                      .dwattr $C$DW$115, DW_AT_TI_call
+    1251 000393 6C00          CALL #_vTaskDelay ; |416| 
+         000395 0000!
+    1252                                                      ; call occurs [#_vTaskDelay] ; |416| 
+    1253                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 417,column 3,is_stmt
+    1254 000397 E631          MOV #0, *(#_xOkToGiveCountingSemaphore) ; |417| 
+         000399 0000 
+         00039b 000E-
+    1255                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 420,column 3,is_stmt
+    1256 00039d ED31          MOV dbl(*(#_xISRCountingSemaphore)), XAR0
+         00039f 8F00 
+         0003a1 000A-
+    1257              $C$DW$116       .dwtag  DW_TAG_TI_branch
+    1258                      .dwattr $C$DW$116, DW_AT_low_pc(0x00)
+    1259                      .dwattr $C$DW$116, DW_AT_name("_uxQueueMessagesWaiting")
+    1260                      .dwattr $C$DW$116, DW_AT_TI_call
+    1261 0003a3 6C00          CALL #_uxQueueMessagesWaiting ; |420| 
+         0003a5 0000!
+    1262                                                      ; call occurs [#_uxQueueMessagesWaiting] ; |420| 
+    1263 0003a7 1240          CMPU T0 == T3, TC1 ; |420| 
+         0003a9 74   
+    1264 0003aa 6364          BCC $C$L26,TC1 ; |420| 
+    1265                                                      ; branchcc occurs ; |420| 
+    1266 0003ac       $C$DW$L$_vInterruptCountingSemaphoreTask$4$E:
+    1267 0003ac       $C$DW$L$_vInterruptCountingSemaphoreTask$5$B:
+    1268                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 422,column 4,is_stmt
+    1269 0003ac E631          MOV #1, *(#_xErrorDetected) ; |422| 
+         0003ae 0100 
+         0003b0 0000-
+    1270 0003b2       $C$DW$L$_vInterruptCountingSemaphoreTask$5$E:
+    1271 0003b2       $C$L26:    
+    1272 0003b2       $C$DW$L$_vInterruptCountingSemaphoreTask$6$B:
+    1273                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 425,column 3,is_stmt
+    1274 0003b2 ED31          MOV dbl(*(#_xISRCountingSemaphore)), XAR0
+         0003b4 8F00 
+         0003b6 000A-
+    1275              $C$DW$117       .dwtag  DW_TAG_TI_branch
+    1276                      .dwattr $C$DW$117, DW_AT_low_pc(0x00)
+    1277                      .dwattr $C$DW$117, DW_AT_name("_uxQueueSpacesAvailable")
+    1278                      .dwattr $C$DW$117, DW_AT_TI_call
+    1279 0003b8 6C00          CALL #_uxQueueSpacesAvailable ; |425| 
+         0003ba 0000!
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   29
+
+    1280                                                      ; call occurs [#_uxQueueSpacesAvailable] ; |425| 
+    1281 0003bc 6304          BCC $C$L27,T0 == #0 ; |425| 
+    1282                                                      ; branchcc occurs ; |425| 
+    1283 0003be       $C$DW$L$_vInterruptCountingSemaphoreTask$6$E:
+    1284 0003be       $C$DW$L$_vInterruptCountingSemaphoreTask$7$B:
+    1285                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 427,column 4,is_stmt
+    1286 0003be E631          MOV #1, *(#_xErrorDetected) ; |427| 
+         0003c0 0100 
+         0003c2 0000-
+    1287 0003c4       $C$DW$L$_vInterruptCountingSemaphoreTask$7$E:
+    1288 0003c4       $C$L27:    
+    1289 0003c4       $C$DW$L$_vInterruptCountingSemaphoreTask$8$B:
+    1290                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 430,column 3,is_stmt
+    1291 0003c4 ED31          MOV dbl(*(#_ulCountingSemaphoreLoops)), AC0 ; |430| 
+         0003c6 0800 
+         0003c8 0004-
+    1292 0003ca 4010          ADD #1, AC0 ; |430| 
+    1293 0003cc EB31          MOV AC0, dbl(*(#_ulCountingSemaphoreLoops)) ; |430| 
+         0003ce 0800 
+         0003d0 0004-
+    1294                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 435,column 3,is_stmt
+    1295 0003d2 E604          MOV #0, *SP(#2) ; |435| 
+         0003d4 00   
+    1296                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 436,column 10,is_stmt
+    1297 0003d5 ED31          MOV dbl(*(#_xISRCountingSemaphore)), XAR0
+         0003d7 8F00 
+         0003d9 000A-
+    1298              $C$DW$118       .dwtag  DW_TAG_TI_branch
+    1299                      .dwattr $C$DW$118, DW_AT_low_pc(0x00)
+    1300                      .dwattr $C$DW$118, DW_AT_name("_xQueueSemaphoreTake")
+    1301                      .dwattr $C$DW$118, DW_AT_TI_call
+    1302              
+    1303 0003db 6C00          CALL #_xQueueSemaphoreTake ; |436| 
+         0003dd 0000!
+    1304 0003df 3D04  ||      MOV #0, T0
+    1305              
+    1306                                                      ; call occurs [#_xQueueSemaphoreTake] ; |436| 
+    1307 0003e1 124C          CMP T0 != T2, TC1 ; |436| 
+         0003e3 60   
+    1308 0003e4 0464          BCC $C$L29,TC1 ; |436| 
+         0003e6 18   
+    1309                                                      ; branchcc occurs ; |436| 
+    1310 0003e7       $C$DW$L$_vInterruptCountingSemaphoreTask$8$E:
+    1311 0003e7       $C$L28:    
+    1312 0003e7       $C$DW$L$_vInterruptCountingSemaphoreTask$9$B:
+    1313                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 438,column 4,is_stmt
+    1314 0003e7 F704          ADD #1, *SP(#2) ; |438| 
+         0003e9 0001 
+    1315                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 436,column 10,is_stmt
+    1316 0003eb ED31          MOV dbl(*(#_xISRCountingSemaphore)), XAR0
+         0003ed 8F00 
+         0003ef 000A-
+    1317              $C$DW$119       .dwtag  DW_TAG_TI_branch
+    1318                      .dwattr $C$DW$119, DW_AT_low_pc(0x00)
+    1319                      .dwattr $C$DW$119, DW_AT_name("_xQueueSemaphoreTake")
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   30
+
+    1320                      .dwattr $C$DW$119, DW_AT_TI_call
+    1321              
+    1322 0003f1 6C00          CALL #_xQueueSemaphoreTake ; |436| 
+         0003f3 0000!
+    1323 0003f5 3D04  ||      MOV #0, T0
+    1324              
+    1325                                                      ; call occurs [#_xQueueSemaphoreTake] ; |436| 
+    1326 0003f7 3C19          MOV #1, AR1
+    1327 0003f9 1240          CMP T0 == AR1, TC1 ; |436| 
+         0003fb 90   
+    1328 0003fc 0464          BCC $C$L28,TC1 ; |436| 
+         0003fe E8   
+    1329                                                      ; branchcc occurs ; |436| 
+    1330 0003ff       $C$DW$L$_vInterruptCountingSemaphoreTask$9$E:
+    1331 0003ff       $C$L29:    
+    1332 0003ff       $C$DW$L$_vInterruptCountingSemaphoreTask$10$B:
+    1333                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 441,column 3,is_stmt
+    1334 0003ff F004          CMP *SP(#2) == #3, TC1 ; |441| 
+         000401 0003 
+    1335 000403 6364          BCC $C$L30,TC1 ; |441| 
+    1336                                                      ; branchcc occurs ; |441| 
+    1337 000405       $C$DW$L$_vInterruptCountingSemaphoreTask$10$E:
+    1338 000405       $C$DW$L$_vInterruptCountingSemaphoreTask$11$B:
+    1339                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 443,column 4,is_stmt
+    1340 000405 E631          MOV #1, *(#_xErrorDetected) ; |443| 
+         000407 0100 
+         000409 0000-
+    1341 00040b       $C$DW$L$_vInterruptCountingSemaphoreTask$11$E:
+    1342 00040b       $C$L30:    
+    1343 00040b       $C$DW$L$_vInterruptCountingSemaphoreTask$12$B:
+    1344                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 448,column 3,is_stmt
+    1345 00040b EC31          AMOV #0, XAR0 ; |448| 
+         00040d 8E00 
+         00040f 0000 
+    1346              $C$DW$120       .dwtag  DW_TAG_TI_branch
+    1347                      .dwattr $C$DW$120, DW_AT_low_pc(0x00)
+    1348                      .dwattr $C$DW$120, DW_AT_name("_vTaskPrioritySet")
+    1349                      .dwattr $C$DW$120, DW_AT_TI_call
+    1350              
+    1351 000411 6C00          CALL #_vTaskPrioritySet ; |448| 
+         000413 0000!
+    1352 000415 3D34  ||      MOV #3, T0
+    1353              
+    1354                                                      ; call occurs [#_vTaskPrioritySet] ; |448| 
+    1355                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 451,column 3,is_stmt
+    1356 000417 E631          MOV #1, *(#_xOkToGiveCountingSemaphore) ; |451| 
+         000419 0100 
+         00041b 000E-
+    1357                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 452,column 3,is_stmt
+    1358 00041d 76FF          MOV #65535, T0 ; |452| 
+         00041f FF48 
+    1359 000421 ED31          MOV dbl(*(#_xISRCountingSemaphore)), XAR0
+         000423 8F00 
+         000425 000A-
+    1360              $C$DW$121       .dwtag  DW_TAG_TI_branch
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   31
+
+    1361                      .dwattr $C$DW$121, DW_AT_low_pc(0x00)
+    1362                      .dwattr $C$DW$121, DW_AT_name("_xQueueSemaphoreTake")
+    1363                      .dwattr $C$DW$121, DW_AT_TI_call
+    1364 000427 6C00          CALL #_xQueueSemaphoreTake ; |452| 
+         000429 0000!
+    1365                                                      ; call occurs [#_xQueueSemaphoreTake] ; |452| 
+    1366                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 453,column 3,is_stmt
+    1367 00042b 76FF          MOV #65535, T0 ; |453| 
+         00042d FF48 
+    1368 00042f ED31          MOV dbl(*(#_xISRCountingSemaphore)), XAR0
+         000431 8F00 
+         000433 000A-
+    1369              $C$DW$122       .dwtag  DW_TAG_TI_branch
+    1370                      .dwattr $C$DW$122, DW_AT_low_pc(0x00)
+    1371                      .dwattr $C$DW$122, DW_AT_name("_xQueueSemaphoreTake")
+    1372                      .dwattr $C$DW$122, DW_AT_TI_call
+    1373 000435 6C00          CALL #_xQueueSemaphoreTake ; |453| 
+         000437 0000!
+    1374                                                      ; call occurs [#_xQueueSemaphoreTake] ; |453| 
+    1375                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 454,column 3,is_stmt
+    1376 000439 E631          MOV #0, *(#_xOkToGiveCountingSemaphore) ; |454| 
+         00043b 0000 
+         00043d 000E-
+    1377                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 457,column 3,is_stmt
+    1378 00043f EC31          AMOV #0, XAR0 ; |457| 
+         000441 8E00 
+         000443 0000 
+    1379              $C$DW$123       .dwtag  DW_TAG_TI_branch
+    1380                      .dwattr $C$DW$123, DW_AT_low_pc(0x00)
+    1381                      .dwattr $C$DW$123, DW_AT_name("_vTaskPrioritySet")
+    1382                      .dwattr $C$DW$123, DW_AT_TI_call
+    1383              
+    1384 000445 6C00          CALL #_vTaskPrioritySet ; |457| 
+         000447 0000!
+    1385 000449 3D04  ||      MOV #0, T0
+    1386              
+    1387                                                      ; call occurs [#_vTaskPrioritySet] ; |457| 
+    1388                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 459,column 3,is_stmt
+    1389 00044b ED31          MOV dbl(*(#_ulCountingSemaphoreLoops)), AC0 ; |459| 
+         00044d 0800 
+         00044f 0004-
+    1390 000451 4010          ADD #1, AC0 ; |459| 
+    1391 000453 EB31          MOV AC0, dbl(*(#_ulCountingSemaphoreLoops)) ; |459| 
+         000455 0800 
+         000457 0004-
+    1392                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 460,column 2,is_stmt
+    1393 000459 06FF          B $C$L24  ; |460| 
+         00045b 1D   
+    1394                                                      ; branch occurs ; |460| 
+    1395 00045c       $C$DW$L$_vInterruptCountingSemaphoreTask$12$E:
+    1396                      .dwcfi  cfa_offset, 3
+    1397                      .dwcfi  restore_reg, 15
+    1398                      .dwcfi  cfa_offset, 2
+    1399                      .dwcfi  restore_reg, 14
+    1400                      .dwcfi  cfa_offset, 1
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   32
+
+    1401              
+    1402              $C$DW$124       .dwtag  DW_TAG_TI_loop
+    1403                      .dwattr $C$DW$124, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\I
+    1404                      .dwattr $C$DW$124, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+    1405                      .dwattr $C$DW$124, DW_AT_TI_begin_line(0x195)
+    1406                      .dwattr $C$DW$124, DW_AT_TI_end_line(0x1cc)
+    1407              $C$DW$125       .dwtag  DW_TAG_TI_loop_range
+    1408                      .dwattr $C$DW$125, DW_AT_low_pc($C$DW$L$_vInterruptCountingSemaphoreTask$2$B)
+    1409                      .dwattr $C$DW$125, DW_AT_high_pc($C$DW$L$_vInterruptCountingSemaphoreTask$2$E)
+    1410              $C$DW$126       .dwtag  DW_TAG_TI_loop_range
+    1411                      .dwattr $C$DW$126, DW_AT_low_pc($C$DW$L$_vInterruptCountingSemaphoreTask$3$B)
+    1412                      .dwattr $C$DW$126, DW_AT_high_pc($C$DW$L$_vInterruptCountingSemaphoreTask$3$E)
+    1413              $C$DW$127       .dwtag  DW_TAG_TI_loop_range
+    1414                      .dwattr $C$DW$127, DW_AT_low_pc($C$DW$L$_vInterruptCountingSemaphoreTask$4$B)
+    1415                      .dwattr $C$DW$127, DW_AT_high_pc($C$DW$L$_vInterruptCountingSemaphoreTask$4$E)
+    1416              $C$DW$128       .dwtag  DW_TAG_TI_loop_range
+    1417                      .dwattr $C$DW$128, DW_AT_low_pc($C$DW$L$_vInterruptCountingSemaphoreTask$5$B)
+    1418                      .dwattr $C$DW$128, DW_AT_high_pc($C$DW$L$_vInterruptCountingSemaphoreTask$5$E)
+    1419              $C$DW$129       .dwtag  DW_TAG_TI_loop_range
+    1420                      .dwattr $C$DW$129, DW_AT_low_pc($C$DW$L$_vInterruptCountingSemaphoreTask$6$B)
+    1421                      .dwattr $C$DW$129, DW_AT_high_pc($C$DW$L$_vInterruptCountingSemaphoreTask$6$E)
+    1422              $C$DW$130       .dwtag  DW_TAG_TI_loop_range
+    1423                      .dwattr $C$DW$130, DW_AT_low_pc($C$DW$L$_vInterruptCountingSemaphoreTask$7$B)
+    1424                      .dwattr $C$DW$130, DW_AT_high_pc($C$DW$L$_vInterruptCountingSemaphoreTask$7$E)
+    1425              $C$DW$131       .dwtag  DW_TAG_TI_loop_range
+    1426                      .dwattr $C$DW$131, DW_AT_low_pc($C$DW$L$_vInterruptCountingSemaphoreTask$8$B)
+    1427                      .dwattr $C$DW$131, DW_AT_high_pc($C$DW$L$_vInterruptCountingSemaphoreTask$8$E)
+    1428              $C$DW$132       .dwtag  DW_TAG_TI_loop_range
+    1429                      .dwattr $C$DW$132, DW_AT_low_pc($C$DW$L$_vInterruptCountingSemaphoreTask$10$B)
+    1430                      .dwattr $C$DW$132, DW_AT_high_pc($C$DW$L$_vInterruptCountingSemaphoreTask$10$E)
+    1431              $C$DW$133       .dwtag  DW_TAG_TI_loop_range
+    1432                      .dwattr $C$DW$133, DW_AT_low_pc($C$DW$L$_vInterruptCountingSemaphoreTask$11$B)
+    1433                      .dwattr $C$DW$133, DW_AT_high_pc($C$DW$L$_vInterruptCountingSemaphoreTask$11$E)
+    1434              $C$DW$134       .dwtag  DW_TAG_TI_loop_range
+    1435                      .dwattr $C$DW$134, DW_AT_low_pc($C$DW$L$_vInterruptCountingSemaphoreTask$12$B)
+    1436                      .dwattr $C$DW$134, DW_AT_high_pc($C$DW$L$_vInterruptCountingSemaphoreTask$12$E)
+    1437              
+    1438              $C$DW$135       .dwtag  DW_TAG_TI_loop
+    1439                      .dwattr $C$DW$135, DW_AT_name("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug\I
+    1440                      .dwattr $C$DW$135, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+    1441                      .dwattr $C$DW$135, DW_AT_TI_begin_line(0x1b4)
+    1442                      .dwattr $C$DW$135, DW_AT_TI_end_line(0x1b7)
+    1443              $C$DW$136       .dwtag  DW_TAG_TI_loop_range
+    1444                      .dwattr $C$DW$136, DW_AT_low_pc($C$DW$L$_vInterruptCountingSemaphoreTask$9$B)
+    1445                      .dwattr $C$DW$136, DW_AT_high_pc($C$DW$L$_vInterruptCountingSemaphoreTask$9$E)
+    1446                      .dwendtag $C$DW$135
+    1447              
+    1448                      .dwendtag $C$DW$124
+    1449              
+    1450                      .dwattr $C$DW$109, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+    1451                      .dwattr $C$DW$109, DW_AT_TI_end_line(0x1cd)
+    1452                      .dwattr $C$DW$109, DW_AT_TI_end_column(0x01)
+    1453                      .dwendentry
+    1454                      .dwendtag $C$DW$109
+    1455              
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   33
+
+    1456 00045c               .sect   ".text"
+    1457                      .align 4
+    1458                      .global _vInterruptSemaphorePeriodicTest
+    1459              
+    1460              $C$DW$137       .dwtag  DW_TAG_subprogram, DW_AT_name("vInterruptSemaphorePeriodicTest")
+    1461                      .dwattr $C$DW$137, DW_AT_low_pc(_vInterruptSemaphorePeriodicTest)
+    1462                      .dwattr $C$DW$137, DW_AT_high_pc(0x00)
+    1463                      .dwattr $C$DW$137, DW_AT_TI_symbol_name("_vInterruptSemaphorePeriodicTest")
+    1464                      .dwattr $C$DW$137, DW_AT_external
+    1465                      .dwattr $C$DW$137, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+    1466                      .dwattr $C$DW$137, DW_AT_TI_begin_line(0x1d0)
+    1467                      .dwattr $C$DW$137, DW_AT_TI_begin_column(0x06)
+    1468                      .dwattr $C$DW$137, DW_AT_TI_max_frame_size(0x04)
+    1469                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 465,column 1,is_stmt,address _vInter
+    1470              
+    1471                      .dwfde $C$DW$CIE, _vInterruptSemaphorePeriodicTest
+    1472              $C$DW$138       .dwtag  DW_TAG_variable, DW_AT_name("xLastGiveTime")
+    1473                      .dwattr $C$DW$138, DW_AT_TI_symbol_name("_xLastGiveTime$1")
+    1474                      .dwattr $C$DW$138, DW_AT_type(*$C$DW$T$37)
+    1475                      .dwattr $C$DW$138, DW_AT_location[DW_OP_addr _xLastGiveTime$1]
+    1476              ;*******************************************************************************
+    1477              ;* FUNCTION NAME: vInterruptSemaphorePeriodicTest                              *
+    1478              ;*                                                                             *
+    1479              ;*   Function Uses Regs : AC0,T0,AR0,XAR0,AR1,XAR1,AR2,SP,CARRY,TC1,M40,SATA,  *
+    1480              ;*                        SATD,RDM,FRCT,SMUL                                   *
+    1481              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+    1482              ;*   Total Frame Size   : 4 words                                              *
+    1483              ;*                        (2 return address/alignment)                         *
+    1484              ;*                        (2 local values)                                     *
+    1485              ;*   Min System Stack   : 1 word                                               *
+    1486              ;*******************************************************************************
+    1487 00045c       _vInterruptSemaphorePeriodicTest:
+    1488                      .dwcfi  cfa_offset, 1
+    1489                      .dwcfi  save_reg_to_mem, 91, -1
+    1490 00045c 4EFD          AADD #-3, SP
+    1491                      .dwcfi  cfa_offset, 4
+    1492              $C$DW$139       .dwtag  DW_TAG_variable, DW_AT_name("xHigherPriorityTaskWoken")
+    1493                      .dwattr $C$DW$139, DW_AT_TI_symbol_name("_xHigherPriorityTaskWoken")
+    1494                      .dwattr $C$DW$139, DW_AT_type(*$C$DW$T$52)
+    1495                      .dwattr $C$DW$139, DW_AT_location[DW_OP_bregx 0x24 0]
+    1496              $C$DW$140       .dwtag  DW_TAG_variable, DW_AT_name("xTimeNow")
+    1497                      .dwattr $C$DW$140, DW_AT_TI_symbol_name("_xTimeNow")
+    1498                      .dwattr $C$DW$140, DW_AT_type(*$C$DW$T$37)
+    1499                      .dwattr $C$DW$140, DW_AT_location[DW_OP_bregx 0x24 1]
+    1500                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 467,column 12,is_stmt
+    1501 00045e E600          MOV #0, *SP(#0) ; |467| 
+         000460 00   
+    1502                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 472,column 2,is_stmt
+    1503              $C$DW$141       .dwtag  DW_TAG_TI_branch
+    1504                      .dwattr $C$DW$141, DW_AT_low_pc(0x00)
+    1505                      .dwattr $C$DW$141, DW_AT_name("_xTaskGetTickCountFromISR")
+    1506                      .dwattr $C$DW$141, DW_AT_TI_call
+    1507 000461 6C00          CALL #_xTaskGetTickCountFromISR ; |472| 
+         000463 0000!
+    1508                                                      ; call occurs [#_xTaskGetTickCountFromISR] ; |472| 
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   34
+
+    1509 000465 C402          MOV T0, *SP(#1) ; |472| 
+    1510                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 473,column 2,is_stmt
+    1511 000467 2240          MOV T0, AC0 ; |473| 
+    1512 000469 DF31          SUB uns(*(#_xLastGiveTime$1)), AC0, AC0 ; |473| 
+         00046b 0F00 
+         00046d 000F-
+    1513              
+    1514 000473 2309          MOV AC0, AR1 ; |473| 
+    1515 00046f 7600  ||      MOV #34, AR2 ; |473| 
+         000471 22A8 
+    1516              
+    1517 000475 1294          CMPU AR1 < AR2, TC1 ; |473| 
+         000477 A4   
+    1518 000478 0464          BCC $C$L33,TC1 ; |473| 
+         00047a 33   
+    1519                                                      ; branchcc occurs ; |473| 
+    1520                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 476,column 3,is_stmt
+    1521 00047b A931          MOV *(#_xOkToGiveMutex), AR1 ; |476| 
+         00047d 0000 
+         00047f 01-  
+    1522 000480 0409          BCC $C$L31,AR1 == #0 ; |476| 
+         000482 10   
+    1523                                                      ; branchcc occurs ; |476| 
+    1524                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 480,column 4,is_stmt
+    1525 000483 ED31          MOV dbl(*(#_xISRMutex)), XAR0
+         000485 8F00 
+         000487 0008-
+    1526 000489 EC31          AMOV #0, XAR1 ; |480| 
+         00048b 9E00 
+         00048d 0000 
+    1527              $C$DW$142       .dwtag  DW_TAG_TI_branch
+    1528                      .dwattr $C$DW$142, DW_AT_low_pc(0x00)
+    1529                      .dwattr $C$DW$142, DW_AT_name("_xQueueGiveFromISR")
+    1530                      .dwattr $C$DW$142, DW_AT_TI_call
+    1531 00048f 6C00          CALL #_xQueueGiveFromISR ; |480| 
+         000491 0000!
+    1532                                                      ; call occurs [#_xQueueGiveFromISR] ; |480| 
+    1533 000493       $C$L31:    
+    1534                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 486,column 3,is_stmt
+    1535 000493 A931          MOV *(#_xOkToGiveCountingSemaphore), AR1 ; |486| 
+         000495 0000 
+         000497 0E-  
+    1536 000498 6689          BCC $C$L32,AR1 == #0 ; |486| 
+    1537                                                      ; branchcc occurs ; |486| 
+    1538                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 488,column 4,is_stmt
+    1539 00049a EC00          AMAR *SP(#0), XAR1
+         00049c 9E   
+    1540 00049d ED31          MOV dbl(*(#_xISRCountingSemaphore)), XAR0
+         00049f 8F00 
+         0004a1 000A-
+    1541              $C$DW$143       .dwtag  DW_TAG_TI_branch
+    1542                      .dwattr $C$DW$143, DW_AT_low_pc(0x00)
+    1543                      .dwattr $C$DW$143, DW_AT_name("_xQueueGiveFromISR")
+    1544                      .dwattr $C$DW$143, DW_AT_TI_call
+    1545 0004a3 6C00          CALL #_xQueueGiveFromISR ; |488| 
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   35
+
+         0004a5 0000!
+    1546                                                      ; call occurs [#_xQueueGiveFromISR] ; |488| 
+    1547 0004a7       $C$L32:    
+    1548                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 490,column 3,is_stmt
+    1549 0004a7 A902          MOV *SP(#1), AR1 ; |490| 
+    1550 0004a9 C931          MOV AR1, *(#_xLastGiveTime$1) ; |490| 
+         0004ab 0000 
+         0004ad 0F-  
+    1551                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 494,column 2,is_stmt
+    1552                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 495,column 1,is_stmt
+    1553 0004ae       $C$L33:    
+    1554 0004ae 4E03          AADD #3, SP
+    1555                      .dwcfi  cfa_offset, 1
+    1556              $C$DW$144       .dwtag  DW_TAG_TI_branch
+    1557                      .dwattr $C$DW$144, DW_AT_low_pc(0x00)
+    1558                      .dwattr $C$DW$144, DW_AT_TI_return
+    1559 0004b0 4804          RET
+    1560                                                      ; return occurs
+    1561                      .dwattr $C$DW$137, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+    1562                      .dwattr $C$DW$137, DW_AT_TI_end_line(0x1ef)
+    1563                      .dwattr $C$DW$137, DW_AT_TI_end_column(0x01)
+    1564                      .dwendentry
+    1565                      .dwendtag $C$DW$137
+    1566              
+    1567 0004b2               .sect   ".text"
+    1568                      .align 4
+    1569                      .global _xAreInterruptSemaphoreTasksStillRunning
+    1570              
+    1571              $C$DW$145       .dwtag  DW_TAG_subprogram, DW_AT_name("xAreInterruptSemaphoreTasksStillRunning")
+    1572                      .dwattr $C$DW$145, DW_AT_low_pc(_xAreInterruptSemaphoreTasksStillRunning)
+    1573                      .dwattr $C$DW$145, DW_AT_high_pc(0x00)
+    1574                      .dwattr $C$DW$145, DW_AT_TI_symbol_name("_xAreInterruptSemaphoreTasksStillRunning")
+    1575                      .dwattr $C$DW$145, DW_AT_external
+    1576                      .dwattr $C$DW$145, DW_AT_type(*$C$DW$T$52)
+    1577                      .dwattr $C$DW$145, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+    1578                      .dwattr $C$DW$145, DW_AT_TI_begin_line(0x1f3)
+    1579                      .dwattr $C$DW$145, DW_AT_TI_begin_column(0x0c)
+    1580                      .dwattr $C$DW$145, DW_AT_TI_max_frame_size(0x01)
+    1581                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 500,column 1,is_stmt,address _xAreIn
+    1582              
+    1583                      .dwfde $C$DW$CIE, _xAreInterruptSemaphoreTasksStillRunning
+    1584              $C$DW$146       .dwtag  DW_TAG_variable, DW_AT_name("ulLastMasterLoopCounter")
+    1585                      .dwattr $C$DW$146, DW_AT_TI_symbol_name("_ulLastMasterLoopCounter$2")
+    1586                      .dwattr $C$DW$146, DW_AT_type(*$C$DW$T$83)
+    1587                      .dwattr $C$DW$146, DW_AT_location[DW_OP_addr _ulLastMasterLoopCounter$2]
+    1588              $C$DW$147       .dwtag  DW_TAG_variable, DW_AT_name("ulLastCountingSemaphoreLoops")
+    1589                      .dwattr $C$DW$147, DW_AT_TI_symbol_name("_ulLastCountingSemaphoreLoops$3")
+    1590                      .dwattr $C$DW$147, DW_AT_type(*$C$DW$T$83)
+    1591                      .dwattr $C$DW$147, DW_AT_location[DW_OP_addr _ulLastCountingSemaphoreLoops$3]
+    1592              ;*******************************************************************************
+    1593              ;* FUNCTION NAME: xAreInterruptSemaphoreTasksStillRunning                      *
+    1594              ;*                                                                             *
+    1595              ;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,AR1,AR2,SP,CARRY,TC1,M40,SATA,    *
+    1596              ;*                        SATD,RDM,FRCT,SMUL                                   *
+    1597              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   36
+
+    1598              ;*   Total Frame Size   : 1 word                                               *
+    1599              ;*                        (1 return address/alignment)                         *
+    1600              ;*   Min System Stack   : 1 word                                               *
+    1601              ;*******************************************************************************
+    1602 0004b4       _xAreInterruptSemaphoreTasksStillRunning:
+    1603                      .dwcfi  cfa_offset, 1
+    1604                      .dwcfi  save_reg_to_mem, 91, -1
+    1605                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 505,column 2,is_stmt
+    1606 0004b4 ED31          MOV dbl(*(#_ulMasterLoops)), AC0 ; |505| 
+         0004b6 0800 
+         0004b8 0002-
+    1607 0004ba ED31          MOV dbl(*(#_ulLastMasterLoopCounter$2)), AC1 ; |505| 
+         0004bc 1800 
+         0004be 0010-
+    1608 0004c0 121C          CMPU AC1 != AC0, TC1 ; |505| 
+         0004c2 04   
+    1609 0004c3 6364          BCC $C$L34,TC1 ; |505| 
+    1610                                                      ; branchcc occurs ; |505| 
+    1611                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 507,column 3,is_stmt
+    1612 0004c5 E631          MOV #1, *(#_xErrorDetected) ; |507| 
+         0004c7 0100 
+         0004c9 0000-
+    1613 0004cb       $C$L34:    
+    1614                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 510,column 2,is_stmt
+    1615 0004cb ED31          MOV dbl(*(#_ulMasterLoops)), AC0 ; |510| 
+         0004cd 0800 
+         0004cf 0002-
+    1616 0004d1 EB31          MOV AC0, dbl(*(#_ulLastMasterLoopCounter$2)) ; |510| 
+         0004d3 0800 
+         0004d5 0010-
+    1617                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 512,column 2,is_stmt
+    1618 0004d7 ED31          MOV dbl(*(#_ulLastCountingSemaphoreLoops$3)), AC1 ; |512| 
+         0004d9 1800 
+         0004db 0012-
+    1619 0004dd ED31          MOV dbl(*(#_ulCountingSemaphoreLoops)), AC0 ; |512| 
+         0004df 0800 
+         0004e1 0004-
+    1620 0004e3 121C          CMPU AC1 != AC0, TC1 ; |512| 
+         0004e5 04   
+    1621 0004e6 6364          BCC $C$L35,TC1 ; |512| 
+    1622                                                      ; branchcc occurs ; |512| 
+    1623                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 514,column 3,is_stmt
+    1624 0004e8 E631          MOV #1, *(#_xErrorDetected) ; |514| 
+         0004ea 0100 
+         0004ec 0000-
+    1625 0004ee       $C$L35:    
+    1626                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 517,column 2,is_stmt
+    1627 0004ee ED31          MOV dbl(*(#_ulCountingSemaphoreLoops)), AC0 ; |517| 
+         0004f0 0800 
+         0004f2 0004-
+    1628 0004f4 7B00          ADD #1, AC0, AC1 ; |517| 
+         0004f6 0110 
+    1629 0004f8 EB31          MOV AC1, dbl(*(#_ulCountingSemaphoreLoops)) ; |517| 
+         0004fa 1800 
+         0004fc 0004-
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   37
+
+    1630 0004fe 20            NOP
+    1631 0004ff EB31          MOV AC0, dbl(*(#_ulLastCountingSemaphoreLoops$3)) ; |517| 
+         000501 0800 
+         000503 0012-
+    1632                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 522,column 2,is_stmt
+    1633              
+    1634 000505 3C04          MOV #0, T0
+    1635 000507 3D09  ||      MOV #0, AR1
+    1636              
+    1637 000509 AA31          MOV *(#_xErrorDetected), AR2 ; |522| 
+         00050b 0000 
+         00050d 00-  
+    1638 00050e 610A          BCC $C$L36,AR2 == #0 ; |522| 
+    1639                                                      ; branchcc occurs ; |522| 
+    1640 000510 3C19          MOV #1, AR1
+    1641 000512       $C$L36:    
+    1642 000512 6119          BCC $C$L37,AR1 != #0 ; |522| 
+    1643                                                      ; branchcc occurs ; |522| 
+    1644 000514 3C14          MOV #1, T0
+    1645 000516       $C$L37:    
+    1646                      .dwpsn  file "../FreeRTOS/Demo/Common/Minimal/IntSemTest.c",line 523,column 1,is_stmt
+    1647              $C$DW$148       .dwtag  DW_TAG_TI_branch
+    1648                      .dwattr $C$DW$148, DW_AT_low_pc(0x00)
+    1649                      .dwattr $C$DW$148, DW_AT_TI_return
+    1650 000516 4804          RET
+    1651                                                      ; return occurs
+    1652                      .dwattr $C$DW$145, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/IntSemTest.c")
+    1653                      .dwattr $C$DW$145, DW_AT_TI_end_line(0x20b)
+    1654                      .dwattr $C$DW$145, DW_AT_TI_end_column(0x01)
+    1655                      .dwendentry
+    1656                      .dwendtag $C$DW$145
+    1657              
+    1658              ;*******************************************************************************
+    1659              ;* FAR STRINGS                                                                 *
+    1660              ;*******************************************************************************
+    1661 000000               .sect   ".const:.string"
+    1662                      .align  2
+    1663 000000 0049  $C$FSL1:        .string "IntMuS",0
+         000001 006E 
+         000002 0074 
+         000003 004D 
+         000004 0075 
+         000005 0053 
+         000006 0000 
+    1664                      .align  2
+    1665 000008 0049  $C$FSL2:        .string "IntMuM",0
+         000009 006E 
+         00000a 0074 
+         00000b 004D 
+         00000c 0075 
+         00000d 004D 
+         00000e 0000 
+    1666                      .align  2
+    1667 000010 0049  $C$FSL3:        .string "IntCnt",0
+         000011 006E 
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   38
+
+         000012 0074 
+         000013 0043 
+         000014 006E 
+         000015 0074 
+         000016 0000 
+    1668              ;******************************************************************************
+    1669              ;* UNDEFINED EXTERNAL REFERENCES                                              *
+    1670              ;******************************************************************************
+    1671                      .global _xTaskCreate
+    1672                      .global _vTaskDelay
+    1673                      .global _uxTaskPriorityGet
+    1674                      .global _vTaskPrioritySet
+    1675                      .global _vTaskSuspend
+    1676                      .global _vTaskResume
+    1677                      .global _xTaskGetTickCountFromISR
+    1678                      .global _xQueueGenericSend
+    1679                      .global _uxQueueMessagesWaiting
+    1680                      .global _uxQueueSpacesAvailable
+    1681                      .global _xQueueGiveFromISR
+    1682                      .global _xQueueCreateMutex
+    1683                      .global _xQueueCreateCountingSemaphore
+    1684                      .global _xQueueSemaphoreTake
+    1685                      .global _xQueueGenericReset
+    1686              
+    1687              ;*******************************************************************************
+    1688              ;* TYPE INFORMATION                                                            *
+    1689              ;*******************************************************************************
+    1690              
+    1691              $C$DW$T$19      .dwtag  DW_TAG_structure_type
+    1692                      .dwattr $C$DW$T$19, DW_AT_name("QueueDefinition")
+    1693                      .dwattr $C$DW$T$19, DW_AT_declaration
+    1694                      .dwendtag $C$DW$T$19
+    1695              
+    1696              $C$DW$T$21      .dwtag  DW_TAG_pointer_type
+    1697                      .dwattr $C$DW$T$21, DW_AT_type(*$C$DW$T$19)
+    1698                      .dwattr $C$DW$T$21, DW_AT_address_class(0x17)
+    1699              $C$DW$T$22      .dwtag  DW_TAG_typedef, DW_AT_name("QueueHandle_t")
+    1700                      .dwattr $C$DW$T$22, DW_AT_type(*$C$DW$T$21)
+    1701                      .dwattr $C$DW$T$22, DW_AT_language(DW_LANG_C)
+    1702              $C$DW$149       .dwtag  DW_TAG_TI_far_type
+    1703                      .dwattr $C$DW$149, DW_AT_type(*$C$DW$T$22)
+    1704              $C$DW$T$23      .dwtag  DW_TAG_const_type
+    1705                      .dwattr $C$DW$T$23, DW_AT_type(*$C$DW$149)
+    1706              $C$DW$T$24      .dwtag  DW_TAG_typedef, DW_AT_name("SemaphoreHandle_t")
+    1707                      .dwattr $C$DW$T$24, DW_AT_type(*$C$DW$T$22)
+    1708                      .dwattr $C$DW$T$24, DW_AT_language(DW_LANG_C)
+    1709              $C$DW$T$3       .dwtag  DW_TAG_pointer_type
+    1710                      .dwattr $C$DW$T$3, DW_AT_address_class(0x17)
+    1711              $C$DW$150       .dwtag  DW_TAG_TI_far_type
+    1712                      .dwattr $C$DW$150, DW_AT_type(*$C$DW$T$3)
+    1713              $C$DW$T$33      .dwtag  DW_TAG_const_type
+    1714                      .dwattr $C$DW$T$33, DW_AT_type(*$C$DW$150)
+    1715              
+    1716              $C$DW$T$34      .dwtag  DW_TAG_subroutine_type
+    1717                      .dwattr $C$DW$T$34, DW_AT_language(DW_LANG_C)
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   39
+
+    1718              $C$DW$151       .dwtag  DW_TAG_formal_parameter
+    1719                      .dwattr $C$DW$151, DW_AT_type(*$C$DW$T$3)
+    1720                      .dwendtag $C$DW$T$34
+    1721              
+    1722              $C$DW$T$35      .dwtag  DW_TAG_pointer_type
+    1723                      .dwattr $C$DW$T$35, DW_AT_type(*$C$DW$T$34)
+    1724                      .dwattr $C$DW$T$35, DW_AT_address_class(0x20)
+    1725              $C$DW$T$36      .dwtag  DW_TAG_typedef, DW_AT_name("TaskFunction_t")
+    1726                      .dwattr $C$DW$T$36, DW_AT_type(*$C$DW$T$35)
+    1727                      .dwattr $C$DW$T$36, DW_AT_language(DW_LANG_C)
+    1728              $C$DW$152       .dwtag  DW_TAG_TI_far_type
+    1729              $C$DW$T$47      .dwtag  DW_TAG_const_type
+    1730                      .dwattr $C$DW$T$47, DW_AT_type(*$C$DW$152)
+    1731              $C$DW$T$48      .dwtag  DW_TAG_pointer_type
+    1732                      .dwattr $C$DW$T$48, DW_AT_type(*$C$DW$T$47)
+    1733                      .dwattr $C$DW$T$48, DW_AT_address_class(0x17)
+    1734              $C$DW$153       .dwtag  DW_TAG_TI_far_type
+    1735                      .dwattr $C$DW$153, DW_AT_type(*$C$DW$T$48)
+    1736              $C$DW$T$49      .dwtag  DW_TAG_const_type
+    1737                      .dwattr $C$DW$T$49, DW_AT_type(*$C$DW$153)
+    1738              $C$DW$T$4       .dwtag  DW_TAG_base_type
+    1739                      .dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
+    1740                      .dwattr $C$DW$T$4, DW_AT_name("bool")
+    1741                      .dwattr $C$DW$T$4, DW_AT_byte_size(0x01)
+    1742              $C$DW$T$5       .dwtag  DW_TAG_base_type
+    1743                      .dwattr $C$DW$T$5, DW_AT_encoding(DW_ATE_signed_char)
+    1744                      .dwattr $C$DW$T$5, DW_AT_name("signed char")
+    1745                      .dwattr $C$DW$T$5, DW_AT_byte_size(0x01)
+    1746              $C$DW$T$6       .dwtag  DW_TAG_base_type
+    1747                      .dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
+    1748                      .dwattr $C$DW$T$6, DW_AT_name("unsigned char")
+    1749                      .dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
+    1750              $C$DW$T$25      .dwtag  DW_TAG_typedef, DW_AT_name("uint8_t")
+    1751                      .dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$6)
+    1752                      .dwattr $C$DW$T$25, DW_AT_language(DW_LANG_C)
+    1753              $C$DW$154       .dwtag  DW_TAG_TI_far_type
+    1754                      .dwattr $C$DW$154, DW_AT_type(*$C$DW$T$25)
+    1755              $C$DW$T$26      .dwtag  DW_TAG_const_type
+    1756                      .dwattr $C$DW$T$26, DW_AT_type(*$C$DW$154)
+    1757              $C$DW$T$7       .dwtag  DW_TAG_base_type
+    1758                      .dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
+    1759                      .dwattr $C$DW$T$7, DW_AT_name("wchar_t")
+    1760                      .dwattr $C$DW$T$7, DW_AT_byte_size(0x01)
+    1761              $C$DW$T$8       .dwtag  DW_TAG_base_type
+    1762                      .dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
+    1763                      .dwattr $C$DW$T$8, DW_AT_name("short")
+    1764                      .dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
+    1765              $C$DW$T$52      .dwtag  DW_TAG_typedef, DW_AT_name("BaseType_t")
+    1766                      .dwattr $C$DW$T$52, DW_AT_type(*$C$DW$T$8)
+    1767                      .dwattr $C$DW$T$52, DW_AT_language(DW_LANG_C)
+    1768              $C$DW$155       .dwtag  DW_TAG_TI_far_type
+    1769                      .dwattr $C$DW$155, DW_AT_type(*$C$DW$T$52)
+    1770              $C$DW$T$53      .dwtag  DW_TAG_const_type
+    1771                      .dwattr $C$DW$T$53, DW_AT_type(*$C$DW$155)
+    1772              $C$DW$156       .dwtag  DW_TAG_TI_far_type
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   40
+
+    1773                      .dwattr $C$DW$156, DW_AT_type(*$C$DW$T$52)
+    1774              $C$DW$T$54      .dwtag  DW_TAG_volatile_type
+    1775                      .dwattr $C$DW$T$54, DW_AT_type(*$C$DW$156)
+    1776              $C$DW$T$67      .dwtag  DW_TAG_pointer_type
+    1777                      .dwattr $C$DW$T$67, DW_AT_type(*$C$DW$T$52)
+    1778                      .dwattr $C$DW$T$67, DW_AT_address_class(0x17)
+    1779              $C$DW$157       .dwtag  DW_TAG_TI_far_type
+    1780                      .dwattr $C$DW$157, DW_AT_type(*$C$DW$T$67)
+    1781              $C$DW$T$68      .dwtag  DW_TAG_const_type
+    1782                      .dwattr $C$DW$T$68, DW_AT_type(*$C$DW$157)
+    1783              $C$DW$T$9       .dwtag  DW_TAG_base_type
+    1784                      .dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
+    1785                      .dwattr $C$DW$T$9, DW_AT_name("unsigned short")
+    1786                      .dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
+    1787              $C$DW$T$29      .dwtag  DW_TAG_typedef, DW_AT_name("UBaseType_t")
+    1788                      .dwattr $C$DW$T$29, DW_AT_type(*$C$DW$T$9)
+    1789                      .dwattr $C$DW$T$29, DW_AT_language(DW_LANG_C)
+    1790              $C$DW$158       .dwtag  DW_TAG_TI_far_type
+    1791                      .dwattr $C$DW$158, DW_AT_type(*$C$DW$T$29)
+    1792              $C$DW$T$30      .dwtag  DW_TAG_const_type
+    1793                      .dwattr $C$DW$T$30, DW_AT_type(*$C$DW$158)
+    1794              $C$DW$T$10      .dwtag  DW_TAG_base_type
+    1795                      .dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
+    1796                      .dwattr $C$DW$T$10, DW_AT_name("int")
+    1797                      .dwattr $C$DW$T$10, DW_AT_byte_size(0x01)
+    1798              $C$DW$T$11      .dwtag  DW_TAG_base_type
+    1799                      .dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
+    1800                      .dwattr $C$DW$T$11, DW_AT_name("unsigned int")
+    1801                      .dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
+    1802              $C$DW$T$37      .dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
+    1803                      .dwattr $C$DW$T$37, DW_AT_type(*$C$DW$T$11)
+    1804                      .dwattr $C$DW$T$37, DW_AT_language(DW_LANG_C)
+    1805              $C$DW$159       .dwtag  DW_TAG_TI_far_type
+    1806                      .dwattr $C$DW$159, DW_AT_type(*$C$DW$T$37)
+    1807              $C$DW$T$38      .dwtag  DW_TAG_const_type
+    1808                      .dwattr $C$DW$T$38, DW_AT_type(*$C$DW$159)
+    1809              $C$DW$T$59      .dwtag  DW_TAG_typedef, DW_AT_name("uint16_t")
+    1810                      .dwattr $C$DW$T$59, DW_AT_type(*$C$DW$T$11)
+    1811                      .dwattr $C$DW$T$59, DW_AT_language(DW_LANG_C)
+    1812              $C$DW$160       .dwtag  DW_TAG_TI_far_type
+    1813                      .dwattr $C$DW$160, DW_AT_type(*$C$DW$T$59)
+    1814              $C$DW$T$60      .dwtag  DW_TAG_const_type
+    1815                      .dwattr $C$DW$T$60, DW_AT_type(*$C$DW$160)
+    1816              $C$DW$T$12      .dwtag  DW_TAG_base_type
+    1817                      .dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
+    1818                      .dwattr $C$DW$T$12, DW_AT_name("long")
+    1819                      .dwattr $C$DW$T$12, DW_AT_byte_size(0x02)
+    1820              $C$DW$T$13      .dwtag  DW_TAG_base_type
+    1821                      .dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
+    1822                      .dwattr $C$DW$T$13, DW_AT_name("unsigned long")
+    1823                      .dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+    1824              $C$DW$T$83      .dwtag  DW_TAG_typedef, DW_AT_name("uint32_t")
+    1825                      .dwattr $C$DW$T$83, DW_AT_type(*$C$DW$T$13)
+    1826                      .dwattr $C$DW$T$83, DW_AT_language(DW_LANG_C)
+    1827              $C$DW$161       .dwtag  DW_TAG_TI_far_type
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   41
+
+    1828                      .dwattr $C$DW$161, DW_AT_type(*$C$DW$T$83)
+    1829              $C$DW$T$84      .dwtag  DW_TAG_volatile_type
+    1830                      .dwattr $C$DW$T$84, DW_AT_type(*$C$DW$161)
+    1831              $C$DW$T$14      .dwtag  DW_TAG_base_type
+    1832                      .dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
+    1833                      .dwattr $C$DW$T$14, DW_AT_name("long long")
+    1834                      .dwattr $C$DW$T$14, DW_AT_byte_size(0x04)
+    1835                      .dwattr $C$DW$T$14, DW_AT_bit_size(0x28)
+    1836                      .dwattr $C$DW$T$14, DW_AT_bit_offset(0x18)
+    1837              $C$DW$T$15      .dwtag  DW_TAG_base_type
+    1838                      .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
+    1839                      .dwattr $C$DW$T$15, DW_AT_name("unsigned long long")
+    1840                      .dwattr $C$DW$T$15, DW_AT_byte_size(0x04)
+    1841                      .dwattr $C$DW$T$15, DW_AT_bit_size(0x28)
+    1842                      .dwattr $C$DW$T$15, DW_AT_bit_offset(0x18)
+    1843              $C$DW$T$16      .dwtag  DW_TAG_base_type
+    1844                      .dwattr $C$DW$T$16, DW_AT_encoding(DW_ATE_float)
+    1845                      .dwattr $C$DW$T$16, DW_AT_name("float")
+    1846                      .dwattr $C$DW$T$16, DW_AT_byte_size(0x02)
+    1847              $C$DW$T$17      .dwtag  DW_TAG_base_type
+    1848                      .dwattr $C$DW$T$17, DW_AT_encoding(DW_ATE_float)
+    1849                      .dwattr $C$DW$T$17, DW_AT_name("double")
+    1850                      .dwattr $C$DW$T$17, DW_AT_byte_size(0x02)
+    1851              $C$DW$T$18      .dwtag  DW_TAG_base_type
+    1852                      .dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
+    1853                      .dwattr $C$DW$T$18, DW_AT_name("long double")
+    1854                      .dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
+    1855              $C$DW$T$55      .dwtag  DW_TAG_base_type
+    1856                      .dwattr $C$DW$T$55, DW_AT_encoding(DW_ATE_signed_char)
+    1857                      .dwattr $C$DW$T$55, DW_AT_name("signed char")
+    1858                      .dwattr $C$DW$T$55, DW_AT_byte_size(0x01)
+    1859              $C$DW$162       .dwtag  DW_TAG_TI_far_type
+    1860                      .dwattr $C$DW$162, DW_AT_type(*$C$DW$T$55)
+    1861              $C$DW$T$56      .dwtag  DW_TAG_const_type
+    1862                      .dwattr $C$DW$T$56, DW_AT_type(*$C$DW$162)
+    1863              $C$DW$T$57      .dwtag  DW_TAG_pointer_type
+    1864                      .dwattr $C$DW$T$57, DW_AT_type(*$C$DW$T$56)
+    1865                      .dwattr $C$DW$T$57, DW_AT_address_class(0x17)
+    1866              $C$DW$163       .dwtag  DW_TAG_TI_far_type
+    1867                      .dwattr $C$DW$163, DW_AT_type(*$C$DW$T$57)
+    1868              $C$DW$T$58      .dwtag  DW_TAG_const_type
+    1869                      .dwattr $C$DW$T$58, DW_AT_type(*$C$DW$163)
+    1870              
+    1871              $C$DW$T$20      .dwtag  DW_TAG_structure_type
+    1872                      .dwattr $C$DW$T$20, DW_AT_name("tskTaskControlBlock")
+    1873                      .dwattr $C$DW$T$20, DW_AT_declaration
+    1874                      .dwendtag $C$DW$T$20
+    1875              
+    1876              $C$DW$T$41      .dwtag  DW_TAG_pointer_type
+    1877                      .dwattr $C$DW$T$41, DW_AT_type(*$C$DW$T$20)
+    1878                      .dwattr $C$DW$T$41, DW_AT_address_class(0x17)
+    1879              $C$DW$T$42      .dwtag  DW_TAG_typedef, DW_AT_name("TaskHandle_t")
+    1880                      .dwattr $C$DW$T$42, DW_AT_type(*$C$DW$T$41)
+    1881                      .dwattr $C$DW$T$42, DW_AT_language(DW_LANG_C)
+    1882              $C$DW$164       .dwtag  DW_TAG_TI_far_type
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   42
+
+    1883                      .dwattr $C$DW$164, DW_AT_type(*$C$DW$T$42)
+    1884              $C$DW$T$76      .dwtag  DW_TAG_const_type
+    1885                      .dwattr $C$DW$T$76, DW_AT_type(*$C$DW$164)
+    1886              $C$DW$T$61      .dwtag  DW_TAG_pointer_type
+    1887                      .dwattr $C$DW$T$61, DW_AT_type(*$C$DW$T$42)
+    1888                      .dwattr $C$DW$T$61, DW_AT_address_class(0x17)
+    1889              $C$DW$165       .dwtag  DW_TAG_TI_far_type
+    1890                      .dwattr $C$DW$165, DW_AT_type(*$C$DW$T$61)
+    1891              $C$DW$T$62      .dwtag  DW_TAG_const_type
+    1892                      .dwattr $C$DW$T$62, DW_AT_type(*$C$DW$165)
+    1893                      .dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
+    1894              
+    1895              ;***************************************************************
+    1896              ;* DWARF CIE ENTRIES                                           *
+    1897              ;***************************************************************
+    1898              
+    1899              $C$DW$CIE       .dwcie 91
+    1900                      .dwcfi  cfa_register, 36
+    1901                      .dwcfi  cfa_offset, 0
+    1902                      .dwcfi  undefined, 0
+    1903                      .dwcfi  undefined, 1
+    1904                      .dwcfi  undefined, 2
+    1905                      .dwcfi  undefined, 3
+    1906                      .dwcfi  undefined, 4
+    1907                      .dwcfi  undefined, 5
+    1908                      .dwcfi  undefined, 6
+    1909                      .dwcfi  undefined, 7
+    1910                      .dwcfi  undefined, 8
+    1911                      .dwcfi  undefined, 9
+    1912                      .dwcfi  undefined, 10
+    1913                      .dwcfi  undefined, 11
+    1914                      .dwcfi  undefined, 12
+    1915                      .dwcfi  undefined, 13
+    1916                      .dwcfi  same_value, 14
+    1917                      .dwcfi  same_value, 15
+    1918                      .dwcfi  undefined, 16
+    1919                      .dwcfi  undefined, 17
+    1920                      .dwcfi  undefined, 18
+    1921                      .dwcfi  undefined, 19
+    1922                      .dwcfi  undefined, 20
+    1923                      .dwcfi  undefined, 21
+    1924                      .dwcfi  undefined, 22
+    1925                      .dwcfi  undefined, 23
+    1926                      .dwcfi  undefined, 24
+    1927                      .dwcfi  undefined, 25
+    1928                      .dwcfi  same_value, 26
+    1929                      .dwcfi  same_value, 27
+    1930                      .dwcfi  same_value, 28
+    1931                      .dwcfi  same_value, 29
+    1932                      .dwcfi  same_value, 30
+    1933                      .dwcfi  same_value, 31
+    1934                      .dwcfi  undefined, 32
+    1935                      .dwcfi  undefined, 33
+    1936                      .dwcfi  undefined, 34
+    1937                      .dwcfi  undefined, 35
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   43
+
+    1938                      .dwcfi  undefined, 36
+    1939                      .dwcfi  undefined, 37
+    1940                      .dwcfi  undefined, 38
+    1941                      .dwcfi  undefined, 39
+    1942                      .dwcfi  undefined, 40
+    1943                      .dwcfi  undefined, 41
+    1944                      .dwcfi  undefined, 42
+    1945                      .dwcfi  undefined, 43
+    1946                      .dwcfi  undefined, 44
+    1947                      .dwcfi  undefined, 45
+    1948                      .dwcfi  undefined, 46
+    1949                      .dwcfi  undefined, 47
+    1950                      .dwcfi  undefined, 48
+    1951                      .dwcfi  undefined, 49
+    1952                      .dwcfi  undefined, 50
+    1953                      .dwcfi  undefined, 51
+    1954                      .dwcfi  undefined, 52
+    1955                      .dwcfi  undefined, 53
+    1956                      .dwcfi  undefined, 54
+    1957                      .dwcfi  undefined, 55
+    1958                      .dwcfi  undefined, 56
+    1959                      .dwcfi  undefined, 57
+    1960                      .dwcfi  undefined, 58
+    1961                      .dwcfi  undefined, 59
+    1962                      .dwcfi  undefined, 60
+    1963                      .dwcfi  undefined, 61
+    1964                      .dwcfi  undefined, 62
+    1965                      .dwcfi  undefined, 63
+    1966                      .dwcfi  undefined, 64
+    1967                      .dwcfi  undefined, 65
+    1968                      .dwcfi  undefined, 66
+    1969                      .dwcfi  undefined, 67
+    1970                      .dwcfi  undefined, 68
+    1971                      .dwcfi  undefined, 69
+    1972                      .dwcfi  undefined, 70
+    1973                      .dwcfi  undefined, 71
+    1974                      .dwcfi  undefined, 72
+    1975                      .dwcfi  undefined, 73
+    1976                      .dwcfi  undefined, 74
+    1977                      .dwcfi  undefined, 75
+    1978                      .dwcfi  undefined, 76
+    1979                      .dwcfi  undefined, 77
+    1980                      .dwcfi  undefined, 78
+    1981                      .dwcfi  undefined, 79
+    1982                      .dwcfi  undefined, 80
+    1983                      .dwcfi  undefined, 81
+    1984                      .dwcfi  undefined, 82
+    1985                      .dwcfi  undefined, 83
+    1986                      .dwcfi  undefined, 84
+    1987                      .dwcfi  undefined, 85
+    1988                      .dwcfi  undefined, 86
+    1989                      .dwcfi  undefined, 87
+    1990                      .dwcfi  undefined, 88
+    1991                      .dwcfi  undefined, 89
+    1992                      .dwcfi  undefined, 90
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   44
+
+    1993                      .dwcfi  undefined, 91
+    1994                      .dwendentry
+    1995              
+    1996              ;***************************************************************
+    1997              ;* DWARF REGISTER MAP                                          *
+    1998              ;***************************************************************
+    1999              
+    2000              $C$DW$166       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    2001                      .dwattr $C$DW$166, DW_AT_location[DW_OP_reg0]
+    2002              $C$DW$167       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    2003                      .dwattr $C$DW$167, DW_AT_location[DW_OP_reg1]
+    2004              $C$DW$168       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0_G")
+    2005                      .dwattr $C$DW$168, DW_AT_location[DW_OP_reg2]
+    2006              $C$DW$169       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    2007                      .dwattr $C$DW$169, DW_AT_location[DW_OP_reg3]
+    2008              $C$DW$170       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    2009                      .dwattr $C$DW$170, DW_AT_location[DW_OP_reg4]
+    2010              $C$DW$171       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1_G")
+    2011                      .dwattr $C$DW$171, DW_AT_location[DW_OP_reg5]
+    2012              $C$DW$172       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    2013                      .dwattr $C$DW$172, DW_AT_location[DW_OP_reg6]
+    2014              $C$DW$173       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    2015                      .dwattr $C$DW$173, DW_AT_location[DW_OP_reg7]
+    2016              $C$DW$174       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2_G")
+    2017                      .dwattr $C$DW$174, DW_AT_location[DW_OP_reg8]
+    2018              $C$DW$175       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    2019                      .dwattr $C$DW$175, DW_AT_location[DW_OP_reg9]
+    2020              $C$DW$176       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    2021                      .dwattr $C$DW$176, DW_AT_location[DW_OP_reg10]
+    2022              $C$DW$177       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3_G")
+    2023                      .dwattr $C$DW$177, DW_AT_location[DW_OP_reg11]
+    2024              $C$DW$178       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T0")
+    2025                      .dwattr $C$DW$178, DW_AT_location[DW_OP_reg12]
+    2026              $C$DW$179       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T1")
+    2027                      .dwattr $C$DW$179, DW_AT_location[DW_OP_reg13]
+    2028              $C$DW$180       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T2")
+    2029                      .dwattr $C$DW$180, DW_AT_location[DW_OP_reg14]
+    2030              $C$DW$181       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T3")
+    2031                      .dwattr $C$DW$181, DW_AT_location[DW_OP_reg15]
+    2032              $C$DW$182       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0")
+    2033                      .dwattr $C$DW$182, DW_AT_location[DW_OP_reg16]
+    2034              $C$DW$183       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR0")
+    2035                      .dwattr $C$DW$183, DW_AT_location[DW_OP_reg17]
+    2036              $C$DW$184       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1")
+    2037                      .dwattr $C$DW$184, DW_AT_location[DW_OP_reg18]
+    2038              $C$DW$185       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR1")
+    2039                      .dwattr $C$DW$185, DW_AT_location[DW_OP_reg19]
+    2040              $C$DW$186       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
+    2041                      .dwattr $C$DW$186, DW_AT_location[DW_OP_reg20]
+    2042              $C$DW$187       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR2")
+    2043                      .dwattr $C$DW$187, DW_AT_location[DW_OP_reg21]
+    2044              $C$DW$188       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3")
+    2045                      .dwattr $C$DW$188, DW_AT_location[DW_OP_reg22]
+    2046              $C$DW$189       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR3")
+    2047                      .dwattr $C$DW$189, DW_AT_location[DW_OP_reg23]
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   45
+
+    2048              $C$DW$190       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4")
+    2049                      .dwattr $C$DW$190, DW_AT_location[DW_OP_reg24]
+    2050              $C$DW$191       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR4")
+    2051                      .dwattr $C$DW$191, DW_AT_location[DW_OP_reg25]
+    2052              $C$DW$192       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5")
+    2053                      .dwattr $C$DW$192, DW_AT_location[DW_OP_reg26]
+    2054              $C$DW$193       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR5")
+    2055                      .dwattr $C$DW$193, DW_AT_location[DW_OP_reg27]
+    2056              $C$DW$194       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6")
+    2057                      .dwattr $C$DW$194, DW_AT_location[DW_OP_reg28]
+    2058              $C$DW$195       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR6")
+    2059                      .dwattr $C$DW$195, DW_AT_location[DW_OP_reg29]
+    2060              $C$DW$196       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7")
+    2061                      .dwattr $C$DW$196, DW_AT_location[DW_OP_reg30]
+    2062              $C$DW$197       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR7")
+    2063                      .dwattr $C$DW$197, DW_AT_location[DW_OP_reg31]
+    2064              $C$DW$198       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FP")
+    2065                      .dwattr $C$DW$198, DW_AT_location[DW_OP_regx 0x20]
+    2066              $C$DW$199       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XFP")
+    2067                      .dwattr $C$DW$199, DW_AT_location[DW_OP_regx 0x21]
+    2068              $C$DW$200       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
+    2069                      .dwattr $C$DW$200, DW_AT_location[DW_OP_regx 0x22]
+    2070              $C$DW$201       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
+    2071                      .dwattr $C$DW$201, DW_AT_location[DW_OP_regx 0x23]
+    2072              $C$DW$202       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XSP")
+    2073                      .dwattr $C$DW$202, DW_AT_location[DW_OP_regx 0x24]
+    2074              $C$DW$203       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BKC")
+    2075                      .dwattr $C$DW$203, DW_AT_location[DW_OP_regx 0x25]
+    2076              $C$DW$204       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK03")
+    2077                      .dwattr $C$DW$204, DW_AT_location[DW_OP_regx 0x26]
+    2078              $C$DW$205       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK47")
+    2079                      .dwattr $C$DW$205, DW_AT_location[DW_OP_regx 0x27]
+    2080              $C$DW$206       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST0")
+    2081                      .dwattr $C$DW$206, DW_AT_location[DW_OP_regx 0x28]
+    2082              $C$DW$207       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST1")
+    2083                      .dwattr $C$DW$207, DW_AT_location[DW_OP_regx 0x29]
+    2084              $C$DW$208       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST2")
+    2085                      .dwattr $C$DW$208, DW_AT_location[DW_OP_regx 0x2a]
+    2086              $C$DW$209       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST3")
+    2087                      .dwattr $C$DW$209, DW_AT_location[DW_OP_regx 0x2b]
+    2088              $C$DW$210       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP")
+    2089                      .dwattr $C$DW$210, DW_AT_location[DW_OP_regx 0x2c]
+    2090              $C$DW$211       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP05")
+    2091                      .dwattr $C$DW$211, DW_AT_location[DW_OP_regx 0x2d]
+    2092              $C$DW$212       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP67")
+    2093                      .dwattr $C$DW$212, DW_AT_location[DW_OP_regx 0x2e]
+    2094              $C$DW$213       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
+    2095                      .dwattr $C$DW$213, DW_AT_location[DW_OP_regx 0x2f]
+    2096              $C$DW$214       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
+    2097                      .dwattr $C$DW$214, DW_AT_location[DW_OP_regx 0x30]
+    2098              $C$DW$215       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0_H")
+    2099                      .dwattr $C$DW$215, DW_AT_location[DW_OP_regx 0x31]
+    2100              $C$DW$216       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0")
+    2101                      .dwattr $C$DW$216, DW_AT_location[DW_OP_regx 0x32]
+    2102              $C$DW$217       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0_H")
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   46
+
+    2103                      .dwattr $C$DW$217, DW_AT_location[DW_OP_regx 0x33]
+    2104              $C$DW$218       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRS1")
+    2105                      .dwattr $C$DW$218, DW_AT_location[DW_OP_regx 0x34]
+    2106              $C$DW$219       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC1")
+    2107                      .dwattr $C$DW$219, DW_AT_location[DW_OP_regx 0x35]
+    2108              $C$DW$220       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1")
+    2109                      .dwattr $C$DW$220, DW_AT_location[DW_OP_regx 0x36]
+    2110              $C$DW$221       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1_H")
+    2111                      .dwattr $C$DW$221, DW_AT_location[DW_OP_regx 0x37]
+    2112              $C$DW$222       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1")
+    2113                      .dwattr $C$DW$222, DW_AT_location[DW_OP_regx 0x38]
+    2114              $C$DW$223       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1_H")
+    2115                      .dwattr $C$DW$223, DW_AT_location[DW_OP_regx 0x39]
+    2116              $C$DW$224       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CSR")
+    2117                      .dwattr $C$DW$224, DW_AT_location[DW_OP_regx 0x3a]
+    2118              $C$DW$225       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RPTC")
+    2119                      .dwattr $C$DW$225, DW_AT_location[DW_OP_regx 0x3b]
+    2120              $C$DW$226       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDP")
+    2121                      .dwattr $C$DW$226, DW_AT_location[DW_OP_regx 0x3c]
+    2122              $C$DW$227       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XCDP")
+    2123                      .dwattr $C$DW$227, DW_AT_location[DW_OP_regx 0x3d]
+    2124              $C$DW$228       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN0")
+    2125                      .dwattr $C$DW$228, DW_AT_location[DW_OP_regx 0x3e]
+    2126              $C$DW$229       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN1")
+    2127                      .dwattr $C$DW$229, DW_AT_location[DW_OP_regx 0x3f]
+    2128              $C$DW$230       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA01")
+    2129                      .dwattr $C$DW$230, DW_AT_location[DW_OP_regx 0x40]
+    2130              $C$DW$231       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA23")
+    2131                      .dwattr $C$DW$231, DW_AT_location[DW_OP_regx 0x41]
+    2132              $C$DW$232       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA45")
+    2133                      .dwattr $C$DW$232, DW_AT_location[DW_OP_regx 0x42]
+    2134              $C$DW$233       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA67")
+    2135                      .dwattr $C$DW$233, DW_AT_location[DW_OP_regx 0x43]
+    2136              $C$DW$234       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSAC")
+    2137                      .dwattr $C$DW$234, DW_AT_location[DW_OP_regx 0x44]
+    2138              $C$DW$235       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CARRY")
+    2139                      .dwattr $C$DW$235, DW_AT_location[DW_OP_regx 0x45]
+    2140              $C$DW$236       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC1")
+    2141                      .dwattr $C$DW$236, DW_AT_location[DW_OP_regx 0x46]
+    2142              $C$DW$237       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC2")
+    2143                      .dwattr $C$DW$237, DW_AT_location[DW_OP_regx 0x47]
+    2144              $C$DW$238       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("M40")
+    2145                      .dwattr $C$DW$238, DW_AT_location[DW_OP_regx 0x48]
+    2146              $C$DW$239       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SXMD")
+    2147                      .dwattr $C$DW$239, DW_AT_location[DW_OP_regx 0x49]
+    2148              $C$DW$240       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ARMS")
+    2149                      .dwattr $C$DW$240, DW_AT_location[DW_OP_regx 0x4a]
+    2150              $C$DW$241       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
+    2151                      .dwattr $C$DW$241, DW_AT_location[DW_OP_regx 0x4b]
+    2152              $C$DW$242       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATA")
+    2153                      .dwattr $C$DW$242, DW_AT_location[DW_OP_regx 0x4c]
+    2154              $C$DW$243       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATD")
+    2155                      .dwattr $C$DW$243, DW_AT_location[DW_OP_regx 0x4d]
+    2156              $C$DW$244       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RDM")
+    2157                      .dwattr $C$DW$244, DW_AT_location[DW_OP_regx 0x4e]
+TMS320C55x Assembler PC v4.4.1 Sat Sep 08 06:04:48 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+IntSemTest.asm                                                       PAGE   47
+
+    2158              $C$DW$245       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FRCT")
+    2159                      .dwattr $C$DW$245, DW_AT_location[DW_OP_regx 0x4f]
+    2160              $C$DW$246       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SMUL")
+    2161                      .dwattr $C$DW$246, DW_AT_location[DW_OP_regx 0x50]
+    2162              $C$DW$247       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("INTM")
+    2163                      .dwattr $C$DW$247, DW_AT_location[DW_OP_regx 0x51]
+    2164              $C$DW$248       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0LC")
+    2165                      .dwattr $C$DW$248, DW_AT_location[DW_OP_regx 0x52]
+    2166              $C$DW$249       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1LC")
+    2167                      .dwattr $C$DW$249, DW_AT_location[DW_OP_regx 0x53]
+    2168              $C$DW$250       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2LC")
+    2169                      .dwattr $C$DW$250, DW_AT_location[DW_OP_regx 0x54]
+    2170              $C$DW$251       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3LC")
+    2171                      .dwattr $C$DW$251, DW_AT_location[DW_OP_regx 0x55]
+    2172              $C$DW$252       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4LC")
+    2173                      .dwattr $C$DW$252, DW_AT_location[DW_OP_regx 0x56]
+    2174              $C$DW$253       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5LC")
+    2175                      .dwattr $C$DW$253, DW_AT_location[DW_OP_regx 0x57]
+    2176              $C$DW$254       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6LC")
+    2177                      .dwattr $C$DW$254, DW_AT_location[DW_OP_regx 0x58]
+    2178              $C$DW$255       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7LC")
+    2179                      .dwattr $C$DW$255, DW_AT_location[DW_OP_regx 0x59]
+    2180              $C$DW$256       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDPLC")
+    2181                      .dwattr $C$DW$256, DW_AT_location[DW_OP_regx 0x5a]
+    2182              $C$DW$257       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
+    2183                      .dwattr $C$DW$257, DW_AT_location[DW_OP_regx 0x5b]
+    2184                      .dwendtag $C$DW$CU
+    2185              
+    2185              
+    2185              
+
+No Assembly Errors, No Assembly Warnings

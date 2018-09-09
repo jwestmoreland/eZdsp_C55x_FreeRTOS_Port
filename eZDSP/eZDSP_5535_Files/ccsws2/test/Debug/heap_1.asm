@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Fri Sep 07 01:41:57 2018                                 *
+;* Date/Time created: Sat Sep 08 17:55:44 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -27,7 +27,7 @@ $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../FreeRTOS/Source/portable/MemMang/heap_1.c")
 	.dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
-	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\site\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug")
+	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_C55x_FreeRTOS_Port\eZDSP\eZDSP_5535_Files\ccsws2\test\Debug")
 ;******************************************************************************
 ;* CINIT RECORDS                                                              *
 ;******************************************************************************
@@ -38,6 +38,13 @@ $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.field  	0,8
 	.field	0,16			; _xNextFreeByte @ 0
 
+	.sect	".cinit"
+	.align	1
+	.field  	2,16
+	.field  	_pucAlignedHeap$1+0,24
+	.field  	0,8
+	.field	0,32			; _pucAlignedHeap$1 @ 0
+
 
 $C$DW$1	.dwtag  DW_TAG_subprogram, DW_AT_name("vTaskSuspendAll")
 	.dwattr $C$DW$1, DW_AT_TI_symbol_name("_vTaskSuspendAll")
@@ -46,46 +53,56 @@ $C$DW$1	.dwtag  DW_TAG_subprogram, DW_AT_name("vTaskSuspendAll")
 
 $C$DW$2	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskResumeAll")
 	.dwattr $C$DW$2, DW_AT_TI_symbol_name("_xTaskResumeAll")
-	.dwattr $C$DW$2, DW_AT_type(*$C$DW$T$10)
+	.dwattr $C$DW$2, DW_AT_type(*$C$DW$T$27)
 	.dwattr $C$DW$2, DW_AT_declaration
 	.dwattr $C$DW$2, DW_AT_external
-	.bss	_xHeap,5000,0,2
-$C$DW$3	.dwtag  DW_TAG_variable, DW_AT_name("xHeap")
-	.dwattr $C$DW$3, DW_AT_TI_symbol_name("_xHeap")
-	.dwattr $C$DW$3, DW_AT_type(*$C$DW$T$21)
-	.dwattr $C$DW$3, DW_AT_location[DW_OP_addr _xHeap]
+
+$C$DW$3	.dwtag  DW_TAG_subprogram, DW_AT_name("vApplicationMallocFailedHook")
+	.dwattr $C$DW$3, DW_AT_TI_symbol_name("_vApplicationMallocFailedHook")
+	.dwattr $C$DW$3, DW_AT_declaration
+	.dwattr $C$DW$3, DW_AT_external
+	.bss	_ucHeap,7000,0,0
+$C$DW$4	.dwtag  DW_TAG_variable, DW_AT_name("ucHeap")
+	.dwattr $C$DW$4, DW_AT_TI_symbol_name("_ucHeap")
+	.dwattr $C$DW$4, DW_AT_type(*$C$DW$T$25)
+	.dwattr $C$DW$4, DW_AT_location[DW_OP_addr _ucHeap]
 	.bss	_xNextFreeByte,1,0,0
-$C$DW$4	.dwtag  DW_TAG_variable, DW_AT_name("xNextFreeByte")
-	.dwattr $C$DW$4, DW_AT_TI_symbol_name("_xNextFreeByte")
-	.dwattr $C$DW$4, DW_AT_type(*$C$DW$T$22)
-	.dwattr $C$DW$4, DW_AT_location[DW_OP_addr _xNextFreeByte]
-;	F:\TI_CCS_7P4\ccsv7\tools\compiler\c5500_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\0263212 
+$C$DW$5	.dwtag  DW_TAG_variable, DW_AT_name("xNextFreeByte")
+	.dwattr $C$DW$5, DW_AT_TI_symbol_name("_xNextFreeByte")
+	.dwattr $C$DW$5, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$5, DW_AT_location[DW_OP_addr _xNextFreeByte]
+	.bss	_pucAlignedHeap$1,2,0,2
+;	F:\TI_CCS_7P4\ccsv7\tools\compiler\c5500_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1725612 
 	.sect	".text"
 	.align 4
 	.global	_pvPortMalloc
 
-$C$DW$5	.dwtag  DW_TAG_subprogram, DW_AT_name("pvPortMalloc")
-	.dwattr $C$DW$5, DW_AT_low_pc(_pvPortMalloc)
-	.dwattr $C$DW$5, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$5, DW_AT_TI_symbol_name("_pvPortMalloc")
-	.dwattr $C$DW$5, DW_AT_external
-	.dwattr $C$DW$5, DW_AT_type(*$C$DW$T$3)
-	.dwattr $C$DW$5, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
-	.dwattr $C$DW$5, DW_AT_TI_begin_line(0x59)
-	.dwattr $C$DW$5, DW_AT_TI_begin_column(0x07)
-	.dwattr $C$DW$5, DW_AT_TI_max_frame_size(0x06)
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 90,column 1,is_stmt,address _pvPortMalloc
+$C$DW$6	.dwtag  DW_TAG_subprogram, DW_AT_name("pvPortMalloc")
+	.dwattr $C$DW$6, DW_AT_low_pc(_pvPortMalloc)
+	.dwattr $C$DW$6, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$6, DW_AT_TI_symbol_name("_pvPortMalloc")
+	.dwattr $C$DW$6, DW_AT_external
+	.dwattr $C$DW$6, DW_AT_type(*$C$DW$T$3)
+	.dwattr $C$DW$6, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
+	.dwattr $C$DW$6, DW_AT_TI_begin_line(0x45)
+	.dwattr $C$DW$6, DW_AT_TI_begin_column(0x07)
+	.dwattr $C$DW$6, DW_AT_TI_max_frame_size(0x06)
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 70,column 1,is_stmt,address _pvPortMalloc
 
 	.dwfde $C$DW$CIE, _pvPortMalloc
-$C$DW$6	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xWantedSize")
-	.dwattr $C$DW$6, DW_AT_TI_symbol_name("_xWantedSize")
-	.dwattr $C$DW$6, DW_AT_type(*$C$DW$T$22)
-	.dwattr $C$DW$6, DW_AT_location[DW_OP_reg12]
+$C$DW$7	.dwtag  DW_TAG_variable, DW_AT_name("pucAlignedHeap")
+	.dwattr $C$DW$7, DW_AT_TI_symbol_name("_pucAlignedHeap$1")
+	.dwattr $C$DW$7, DW_AT_type(*$C$DW$T$26)
+	.dwattr $C$DW$7, DW_AT_location[DW_OP_addr _pucAlignedHeap$1]
+$C$DW$8	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xWantedSize")
+	.dwattr $C$DW$8, DW_AT_TI_symbol_name("_xWantedSize")
+	.dwattr $C$DW$8, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$8, DW_AT_location[DW_OP_reg12]
 ;*******************************************************************************
 ;* FUNCTION NAME: pvPortMalloc                                                 *
 ;*                                                                             *
-;*   Function Uses Regs : AC0,AC0,T0,AR0,XAR0,AR1,AR2,AR3,XAR3,SP,CARRY,TC1,   *
-;*                        M40,SATA,SATD,RDM,FRCT,SMUL                          *
+;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,AR0,XAR0,AR1,AR2,AR3,XAR3,SP,     *
+;*                        CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL                *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
 ;*   Total Frame Size   : 6 words                                              *
 ;*                        (2 return address/alignment)                         *
@@ -97,104 +114,130 @@ _pvPortMalloc:
 	.dwcfi	save_reg_to_mem, 91, -1
         AADD #-5, SP
 	.dwcfi	cfa_offset, 6
-$C$DW$7	.dwtag  DW_TAG_variable, DW_AT_name("xWantedSize")
-	.dwattr $C$DW$7, DW_AT_TI_symbol_name("_xWantedSize")
-	.dwattr $C$DW$7, DW_AT_type(*$C$DW$T$22)
-	.dwattr $C$DW$7, DW_AT_location[DW_OP_bregx 0x24 0]
-$C$DW$8	.dwtag  DW_TAG_variable, DW_AT_name("pvReturn")
-	.dwattr $C$DW$8, DW_AT_TI_symbol_name("_pvReturn")
-	.dwattr $C$DW$8, DW_AT_type(*$C$DW$T$3)
-	.dwattr $C$DW$8, DW_AT_location[DW_OP_bregx 0x24 2]
-        MOV T0, *SP(#0) ; |90| 
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 91,column 7,is_stmt
-        MOV #0, AC0 ; |91| 
+$C$DW$9	.dwtag  DW_TAG_variable, DW_AT_name("xWantedSize")
+	.dwattr $C$DW$9, DW_AT_TI_symbol_name("_xWantedSize")
+	.dwattr $C$DW$9, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$9, DW_AT_location[DW_OP_bregx 0x24 0]
+$C$DW$10	.dwtag  DW_TAG_variable, DW_AT_name("pvReturn")
+	.dwattr $C$DW$10, DW_AT_TI_symbol_name("_pvReturn")
+	.dwattr $C$DW$10, DW_AT_type(*$C$DW$T$3)
+	.dwattr $C$DW$10, DW_AT_location[DW_OP_bregx 0x24 2]
+        MOV T0, *SP(#0) ; |70| 
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 71,column 7,is_stmt
+        MOV #0, AC0 ; |71| 
         MOV AC0, dbl(*SP(#2))
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 95,column 3,is_stmt
-        BAND *SP(#0), #3, TC1 ; |95| 
-        BCC $C$L1,!TC1 ; |95| 
-                                        ; branchcc occurs ; |95| 
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 98,column 4,is_stmt
-        MOV *SP(#0), AR1 ; |98| 
-        AND #0x0003, AR1, AR1 ; |98| 
-        SUB AR1, *SP(#0), AR1 ; |98| 
-        ADD #4, AR1 ; |98| 
-        MOV AR1, *SP(#0) ; |98| 
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 77,column 3,is_stmt
+        BAND *SP(#0), #3, TC1 ; |77| 
+        BCC $C$L1,!TC1 ; |77| 
+                                        ; branchcc occurs ; |77| 
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 80,column 4,is_stmt
+        MOV *SP(#0), AR1 ; |80| 
+        AND #0x0003, AR1, AR1 ; |80| 
+        SUB AR1, *SP(#0), AR1 ; |80| 
+        ADD #4, AR1 ; |80| 
+        MOV AR1, *SP(#0) ; |80| 
 $C$L1:    
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 102,column 2,is_stmt
-$C$DW$9	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$9, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$9, DW_AT_name("_vTaskSuspendAll")
-	.dwattr $C$DW$9, DW_AT_TI_call
-        CALL #_vTaskSuspendAll ; |102| 
-                                        ; call occurs [#_vTaskSuspendAll] ; |102| 
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 105,column 3,is_stmt
-        MOV #5000, AR2 ; |105| 
-        MOV *SP(#0), AR1 ; |105| 
-        ADD *(#_xNextFreeByte), AR1, AR1 ; |105| 
-        CMPU AR1 >= AR2, TC1 ; |105| 
-        BCC $C$L2,TC1 ; |105| 
-                                        ; branchcc occurs ; |105| 
-        MOV *SP(#0), AR2 ; |105| 
-        MOV *(#_xNextFreeByte), AR1 ; |105| 
-        ADD *(#_xNextFreeByte), AR2, AR2 ; |105| 
-        CMPU AR2 <= AR1, TC1 ; |105| 
-        BCC $C$L2,TC1 ; |105| 
-                                        ; branchcc occurs ; |105| 
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 110,column 4,is_stmt
-        MOV *(#_xNextFreeByte), AR1 ; |110| 
-        AMOV #_xHeap, XAR3 ; |110| 
-
-        MOV XAR3, dbl(*SP(#2))
-||      AADD AR1, AR3 ; |110| 
-
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 111,column 4,is_stmt
-        MOV *SP(#0), AR1 ; |111| 
-        ADD *(#_xNextFreeByte), AR1, AR1 ; |111| 
-        MOV AR1, *(#_xNextFreeByte) ; |111| 
-$C$L2:    
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 114,column 2,is_stmt
-$C$DW$10	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$10, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$10, DW_AT_name("_xTaskResumeAll")
-	.dwattr $C$DW$10, DW_AT_TI_call
-        CALL #_xTaskResumeAll ; |114| 
-                                        ; call occurs [#_xTaskResumeAll] ; |114| 
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 126,column 2,is_stmt
-        MOV dbl(*SP(#2)), XAR0
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 127,column 1,is_stmt
-        AADD #5, SP
-	.dwcfi	cfa_offset, 1
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 85,column 2,is_stmt
 $C$DW$11	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$11, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$11, DW_AT_TI_return
+	.dwattr $C$DW$11, DW_AT_name("_vTaskSuspendAll")
+	.dwattr $C$DW$11, DW_AT_TI_call
+        CALL #_vTaskSuspendAll ; |85| 
+                                        ; call occurs [#_vTaskSuspendAll] ; |85| 
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 87,column 3,is_stmt
+        MOV dbl(*(#_pucAlignedHeap$1)), XAR3
+        MOV XAR3, AC0
+        BCC $C$L2,AC0 != #0 ; |87| 
+                                        ; branchcc occurs ; |87| 
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 90,column 4,is_stmt
+        MOV #-1 << #16, AC0 ; |90| 
+        MOV #((_ucHeap+4) >> 16) << #16, AC1 ; |90| 
+        OR #0xfffc, AC0, AC0 ; |90| 
+        OR #((_ucHeap+4) & 0xffff), AC1, AC1 ; |90| 
+        AND AC1, AC0 ; |90| 
+        MOV AC0, dbl(*(#_pucAlignedHeap$1))
+$C$L2:    
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 94,column 3,is_stmt
+        MOV *SP(#0), AR1 ; |94| 
+        MOV #6996, AR2 ; |94| 
+        ADD *(#_xNextFreeByte), AR1, AR1 ; |94| 
+        CMPU AR1 >= AR2, TC1 ; |94| 
+        BCC $C$L3,TC1 ; |94| 
+                                        ; branchcc occurs ; |94| 
+        MOV *SP(#0), AR2 ; |94| 
+        MOV *(#_xNextFreeByte), AR1 ; |94| 
+        ADD *(#_xNextFreeByte), AR2, AR2 ; |94| 
+        CMPU AR2 <= AR1, TC1 ; |94| 
+        BCC $C$L3,TC1 ; |94| 
+                                        ; branchcc occurs ; |94| 
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 99,column 4,is_stmt
+        MOV dbl(*(#_pucAlignedHeap$1)), XAR3
+        MOV *(#_xNextFreeByte), AR1 ; |99| 
+
+        MOV XAR3, dbl(*SP(#2))
+||      AADD AR1, AR3 ; |99| 
+
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 100,column 4,is_stmt
+        MOV *SP(#0), AR1 ; |100| 
+        ADD *(#_xNextFreeByte), AR1, AR1 ; |100| 
+        MOV AR1, *(#_xNextFreeByte) ; |100| 
+$C$L3:    
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 105,column 2,is_stmt
+$C$DW$12	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$12, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$12, DW_AT_name("_xTaskResumeAll")
+	.dwattr $C$DW$12, DW_AT_TI_call
+        CALL #_xTaskResumeAll ; |105| 
+                                        ; call occurs [#_xTaskResumeAll] ; |105| 
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 109,column 3,is_stmt
+        MOV dbl(*SP(#2)), XAR3
+        MOV XAR3, AC0
+        BCC $C$L4,AC0 != #0 ; |109| 
+                                        ; branchcc occurs ; |109| 
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 112,column 4,is_stmt
+$C$DW$13	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$13, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$13, DW_AT_name("_vApplicationMallocFailedHook")
+	.dwattr $C$DW$13, DW_AT_TI_call
+        CALL #_vApplicationMallocFailedHook ; |112| 
+                                        ; call occurs [#_vApplicationMallocFailedHook] ; |112| 
+$C$L4:    
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 117,column 2,is_stmt
+        MOV dbl(*SP(#2)), XAR0
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 118,column 1,is_stmt
+        AADD #5, SP
+	.dwcfi	cfa_offset, 1
+$C$DW$14	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$14, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$14, DW_AT_TI_return
         RET
                                         ; return occurs
-	.dwattr $C$DW$5, DW_AT_TI_end_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
-	.dwattr $C$DW$5, DW_AT_TI_end_line(0x7f)
-	.dwattr $C$DW$5, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$6, DW_AT_TI_end_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
+	.dwattr $C$DW$6, DW_AT_TI_end_line(0x76)
+	.dwattr $C$DW$6, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$5
+	.dwendtag $C$DW$6
 
 	.sect	".text"
 	.align 4
 	.global	_vPortFree
 
-$C$DW$12	.dwtag  DW_TAG_subprogram, DW_AT_name("vPortFree")
-	.dwattr $C$DW$12, DW_AT_low_pc(_vPortFree)
-	.dwattr $C$DW$12, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$12, DW_AT_TI_symbol_name("_vPortFree")
-	.dwattr $C$DW$12, DW_AT_external
-	.dwattr $C$DW$12, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
-	.dwattr $C$DW$12, DW_AT_TI_begin_line(0x82)
-	.dwattr $C$DW$12, DW_AT_TI_begin_column(0x06)
-	.dwattr $C$DW$12, DW_AT_TI_max_frame_size(0x04)
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 131,column 1,is_stmt,address _vPortFree
+$C$DW$15	.dwtag  DW_TAG_subprogram, DW_AT_name("vPortFree")
+	.dwattr $C$DW$15, DW_AT_low_pc(_vPortFree)
+	.dwattr $C$DW$15, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$15, DW_AT_TI_symbol_name("_vPortFree")
+	.dwattr $C$DW$15, DW_AT_external
+	.dwattr $C$DW$15, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
+	.dwattr $C$DW$15, DW_AT_TI_begin_line(0x79)
+	.dwattr $C$DW$15, DW_AT_TI_begin_column(0x06)
+	.dwattr $C$DW$15, DW_AT_TI_max_frame_size(0x04)
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 122,column 1,is_stmt,address _vPortFree
 
 	.dwfde $C$DW$CIE, _vPortFree
-$C$DW$13	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pv")
-	.dwattr $C$DW$13, DW_AT_TI_symbol_name("_pv")
-	.dwattr $C$DW$13, DW_AT_type(*$C$DW$T$3)
-	.dwattr $C$DW$13, DW_AT_location[DW_OP_reg17]
+$C$DW$16	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pv")
+	.dwattr $C$DW$16, DW_AT_TI_symbol_name("_pv")
+	.dwattr $C$DW$16, DW_AT_type(*$C$DW$T$3)
+	.dwattr $C$DW$16, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: vPortFree                                                    *
 ;*                                                                             *
@@ -210,40 +253,40 @@ _vPortFree:
 	.dwcfi	save_reg_to_mem, 91, -1
         AADD #-3, SP
 	.dwcfi	cfa_offset, 4
-$C$DW$14	.dwtag  DW_TAG_variable, DW_AT_name("pv")
-	.dwattr $C$DW$14, DW_AT_TI_symbol_name("_pv")
-	.dwattr $C$DW$14, DW_AT_type(*$C$DW$T$3)
-	.dwattr $C$DW$14, DW_AT_location[DW_OP_bregx 0x24 0]
+$C$DW$17	.dwtag  DW_TAG_variable, DW_AT_name("pv")
+	.dwattr $C$DW$17, DW_AT_TI_symbol_name("_pv")
+	.dwattr $C$DW$17, DW_AT_type(*$C$DW$T$3)
+	.dwattr $C$DW$17, DW_AT_location[DW_OP_bregx 0x24 0]
         MOV XAR0, dbl(*SP(#0))
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 135,column 2,is_stmt
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 136,column 1,is_stmt
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 126,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 130,column 1,is_stmt
         AADD #3, SP
 	.dwcfi	cfa_offset, 1
-$C$DW$15	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$15, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$15, DW_AT_TI_return
+$C$DW$18	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$18, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$18, DW_AT_TI_return
         RET
                                         ; return occurs
-	.dwattr $C$DW$12, DW_AT_TI_end_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
-	.dwattr $C$DW$12, DW_AT_TI_end_line(0x88)
-	.dwattr $C$DW$12, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$15, DW_AT_TI_end_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
+	.dwattr $C$DW$15, DW_AT_TI_end_line(0x82)
+	.dwattr $C$DW$15, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$12
+	.dwendtag $C$DW$15
 
 	.sect	".text"
 	.align 4
 	.global	_vPortInitialiseBlocks
 
-$C$DW$16	.dwtag  DW_TAG_subprogram, DW_AT_name("vPortInitialiseBlocks")
-	.dwattr $C$DW$16, DW_AT_low_pc(_vPortInitialiseBlocks)
-	.dwattr $C$DW$16, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$16, DW_AT_TI_symbol_name("_vPortInitialiseBlocks")
-	.dwattr $C$DW$16, DW_AT_external
-	.dwattr $C$DW$16, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
-	.dwattr $C$DW$16, DW_AT_TI_begin_line(0x8b)
-	.dwattr $C$DW$16, DW_AT_TI_begin_column(0x06)
-	.dwattr $C$DW$16, DW_AT_TI_max_frame_size(0x01)
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 140,column 1,is_stmt,address _vPortInitialiseBlocks
+$C$DW$19	.dwtag  DW_TAG_subprogram, DW_AT_name("vPortInitialiseBlocks")
+	.dwattr $C$DW$19, DW_AT_low_pc(_vPortInitialiseBlocks)
+	.dwattr $C$DW$19, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$19, DW_AT_TI_symbol_name("_vPortInitialiseBlocks")
+	.dwattr $C$DW$19, DW_AT_external
+	.dwattr $C$DW$19, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
+	.dwattr $C$DW$19, DW_AT_TI_begin_line(0x85)
+	.dwattr $C$DW$19, DW_AT_TI_begin_column(0x06)
+	.dwattr $C$DW$19, DW_AT_TI_max_frame_size(0x01)
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 134,column 1,is_stmt,address _vPortInitialiseBlocks
 
 	.dwfde $C$DW$CIE, _vPortInitialiseBlocks
 ;*******************************************************************************
@@ -258,35 +301,35 @@ $C$DW$16	.dwtag  DW_TAG_subprogram, DW_AT_name("vPortInitialiseBlocks")
 _vPortInitialiseBlocks:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 142,column 2,is_stmt
-        MOV #0, *(#_xNextFreeByte) ; |142| 
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 143,column 1,is_stmt
-$C$DW$17	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$17, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$17, DW_AT_TI_return
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 136,column 2,is_stmt
+        MOV #0, *(#_xNextFreeByte) ; |136| 
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 137,column 1,is_stmt
+$C$DW$20	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$20, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$20, DW_AT_TI_return
         RET
                                         ; return occurs
-	.dwattr $C$DW$16, DW_AT_TI_end_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
-	.dwattr $C$DW$16, DW_AT_TI_end_line(0x8f)
-	.dwattr $C$DW$16, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$19, DW_AT_TI_end_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
+	.dwattr $C$DW$19, DW_AT_TI_end_line(0x89)
+	.dwattr $C$DW$19, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$16
+	.dwendtag $C$DW$19
 
 	.sect	".text"
 	.align 4
 	.global	_xPortGetFreeHeapSize
 
-$C$DW$18	.dwtag  DW_TAG_subprogram, DW_AT_name("xPortGetFreeHeapSize")
-	.dwattr $C$DW$18, DW_AT_low_pc(_xPortGetFreeHeapSize)
-	.dwattr $C$DW$18, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$18, DW_AT_TI_symbol_name("_xPortGetFreeHeapSize")
-	.dwattr $C$DW$18, DW_AT_external
-	.dwattr $C$DW$18, DW_AT_type(*$C$DW$T$22)
-	.dwattr $C$DW$18, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
-	.dwattr $C$DW$18, DW_AT_TI_begin_line(0x92)
-	.dwattr $C$DW$18, DW_AT_TI_begin_column(0x08)
-	.dwattr $C$DW$18, DW_AT_TI_max_frame_size(0x01)
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 147,column 1,is_stmt,address _xPortGetFreeHeapSize
+$C$DW$21	.dwtag  DW_TAG_subprogram, DW_AT_name("xPortGetFreeHeapSize")
+	.dwattr $C$DW$21, DW_AT_low_pc(_xPortGetFreeHeapSize)
+	.dwattr $C$DW$21, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$21, DW_AT_TI_symbol_name("_xPortGetFreeHeapSize")
+	.dwattr $C$DW$21, DW_AT_external
+	.dwattr $C$DW$21, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$21, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
+	.dwattr $C$DW$21, DW_AT_TI_begin_line(0x8c)
+	.dwattr $C$DW$21, DW_AT_TI_begin_column(0x08)
+	.dwattr $C$DW$21, DW_AT_TI_max_frame_size(0x01)
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 141,column 1,is_stmt,address _xPortGetFreeHeapSize
 
 	.dwfde $C$DW$CIE, _xPortGetFreeHeapSize
 ;*******************************************************************************
@@ -301,27 +344,28 @@ $C$DW$18	.dwtag  DW_TAG_subprogram, DW_AT_name("xPortGetFreeHeapSize")
 _xPortGetFreeHeapSize:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 148,column 2,is_stmt
-        MOV #5000, AC0 ; |148| 
-        SUB uns(*(#_xNextFreeByte)), AC0, AC0 ; |148| 
-	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 149,column 1,is_stmt
-        MOV AC0, T0 ; |148| 
-$C$DW$19	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$19, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$19, DW_AT_TI_return
-        RET       ; |148| 
-                                        ; return occurs ; |148| 
-	.dwattr $C$DW$18, DW_AT_TI_end_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
-	.dwattr $C$DW$18, DW_AT_TI_end_line(0x95)
-	.dwattr $C$DW$18, DW_AT_TI_end_column(0x01)
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 142,column 2,is_stmt
+        MOV #6996, AC0 ; |142| 
+        SUB uns(*(#_xNextFreeByte)), AC0, AC0 ; |142| 
+	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 143,column 1,is_stmt
+        MOV AC0, T0 ; |142| 
+$C$DW$22	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$22, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$22, DW_AT_TI_return
+        RET       ; |142| 
+                                        ; return occurs ; |142| 
+	.dwattr $C$DW$21, DW_AT_TI_end_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
+	.dwattr $C$DW$21, DW_AT_TI_end_line(0x8f)
+	.dwattr $C$DW$21, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$18
+	.dwendtag $C$DW$21
 
 ;******************************************************************************
 ;* UNDEFINED EXTERNAL REFERENCES                                              *
 ;******************************************************************************
 	.global	_vTaskSuspendAll
 	.global	_xTaskResumeAll
+	.global	_vApplicationMallocFailedHook
 
 ;*******************************************************************************
 ;* TYPE INFORMATION                                                            *
@@ -340,15 +384,21 @@ $C$DW$T$6	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
 	.dwattr $C$DW$T$6, DW_AT_name("unsigned char")
 	.dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
+$C$DW$T$24	.dwtag  DW_TAG_typedef, DW_AT_name("uint8_t")
+	.dwattr $C$DW$T$24, DW_AT_type(*$C$DW$T$6)
+	.dwattr $C$DW$T$24, DW_AT_language(DW_LANG_C)
 
-$C$DW$T$20	.dwtag  DW_TAG_array_type
-	.dwattr $C$DW$T$20, DW_AT_type(*$C$DW$T$6)
-	.dwattr $C$DW$T$20, DW_AT_language(DW_LANG_C)
-	.dwattr $C$DW$T$20, DW_AT_byte_size(0x1388)
-$C$DW$20	.dwtag  DW_TAG_subrange_type
-	.dwattr $C$DW$20, DW_AT_upper_bound(0x1387)
-	.dwendtag $C$DW$T$20
+$C$DW$T$25	.dwtag  DW_TAG_array_type
+	.dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$24)
+	.dwattr $C$DW$T$25, DW_AT_language(DW_LANG_C)
+	.dwattr $C$DW$T$25, DW_AT_byte_size(0x1b58)
+$C$DW$23	.dwtag  DW_TAG_subrange_type
+	.dwattr $C$DW$23, DW_AT_upper_bound(0x1b57)
+	.dwendtag $C$DW$T$25
 
+$C$DW$T$26	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$26, DW_AT_type(*$C$DW$T$24)
+	.dwattr $C$DW$T$26, DW_AT_address_class(0x17)
 $C$DW$T$7	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
 	.dwattr $C$DW$T$7, DW_AT_name("wchar_t")
@@ -357,6 +407,9 @@ $C$DW$T$8	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$8, DW_AT_name("short")
 	.dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
+$C$DW$T$27	.dwtag  DW_TAG_typedef, DW_AT_name("BaseType_t")
+	.dwattr $C$DW$T$27, DW_AT_type(*$C$DW$T$8)
+	.dwattr $C$DW$T$27, DW_AT_language(DW_LANG_C)
 $C$DW$T$9	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$9, DW_AT_name("unsigned short")
@@ -369,9 +422,9 @@ $C$DW$T$11	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$11, DW_AT_name("unsigned int")
 	.dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
-$C$DW$T$22	.dwtag  DW_TAG_typedef, DW_AT_name("size_t")
-	.dwattr $C$DW$T$22, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$22, DW_AT_language(DW_LANG_C)
+$C$DW$T$19	.dwtag  DW_TAG_typedef, DW_AT_name("size_t")
+	.dwattr $C$DW$T$19, DW_AT_type(*$C$DW$T$11)
+	.dwattr $C$DW$T$19, DW_AT_language(DW_LANG_C)
 $C$DW$T$12	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$12, DW_AT_name("long")
@@ -380,10 +433,9 @@ $C$DW$T$13	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$13, DW_AT_name("unsigned long")
 	.dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
-$C$DW$21	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$21, DW_AT_type(*$C$DW$T$13)
-$C$DW$T$19	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$19, DW_AT_type(*$C$DW$21)
+$C$DW$T$31	.dwtag  DW_TAG_typedef, DW_AT_name("uint32_t")
+	.dwattr $C$DW$T$31, DW_AT_type(*$C$DW$T$13)
+	.dwattr $C$DW$T$31, DW_AT_language(DW_LANG_C)
 $C$DW$T$14	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$14, DW_AT_name("long long")
@@ -408,24 +460,6 @@ $C$DW$T$18	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
 	.dwattr $C$DW$T$18, DW_AT_name("long double")
 	.dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
-
-$C$DW$T$21	.dwtag  DW_TAG_union_type
-	.dwattr $C$DW$T$21, DW_AT_name("xRTOS_HEAP")
-	.dwattr $C$DW$T$21, DW_AT_byte_size(0x1388)
-$C$DW$22	.dwtag  DW_TAG_member
-	.dwattr $C$DW$22, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$22, DW_AT_name("ulDummy")
-	.dwattr $C$DW$22, DW_AT_TI_symbol_name("_ulDummy")
-	.dwattr $C$DW$22, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
-	.dwattr $C$DW$22, DW_AT_accessibility(DW_ACCESS_public)
-$C$DW$23	.dwtag  DW_TAG_member
-	.dwattr $C$DW$23, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$23, DW_AT_name("ucHeap")
-	.dwattr $C$DW$23, DW_AT_TI_symbol_name("_ucHeap")
-	.dwattr $C$DW$23, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
-	.dwattr $C$DW$23, DW_AT_accessibility(DW_ACCESS_public)
-	.dwendtag $C$DW$T$21
-
 	.dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
 
 ;***************************************************************

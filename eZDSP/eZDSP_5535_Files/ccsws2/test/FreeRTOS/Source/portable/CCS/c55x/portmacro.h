@@ -78,14 +78,19 @@ extern "C" {
 #define portSHORT		int
 // #define portSTACK_TYPE	unsigned portSHORT
 #define portSTACK_TYPE	unsigned portSHORT
-#define portBASE_TYPE	portSHORT
+typedef portSTACK_TYPE StackType_t;
+typedef short BaseType_t;
+typedef unsigned short UBaseType_t;
+// #define BaseType_t 	portSHORT
+typedef portCHAR unsigned uint8_t;
+typedef portCHAR signed int8_t;
 
 #if( configUSE_16_BIT_TICKS == 1 )
-	typedef unsigned portSHORT portTickType;
-	#define portMAX_DELAY ( portTickType ) 0xffff
+	typedef unsigned portSHORT TickType_t;
+	#define portMAX_DELAY ( TickType_t ) 0xffff
 #else
-	typedef unsigned portLONG portTickType;
-	#define portMAX_DELAY ( portTickType ) 0xffffffff
+	typedef unsigned portLONG TickType_t;
+	#define portMAX_DELAY ( TickType_t ) 0xffffffff
 #endif
 /*-----------------------------------------------------------*/	
 
@@ -152,7 +157,8 @@ extern void vPortYield( void );
 #define portBYTE_ALIGNMENT			 4                   // 2
 #define portSTACK_GROWTH			( -1 )
 //#define portSTACK_GROWTH			( 1 )
-#define portTICK_RATE_MS			( ( portTickType ) 1000 / configTICK_RATE_HZ )		
+// #define portTICK_RATE_MS			( ( TickType_t  ) 1000 / configTICK_RATE_HZ )
+#define portTICK_PERIOD_MS			( ( TickType_t  ) 1000 / configTICK_RATE_HZ )			// oh.
 /*-----------------------------------------------------------*/
 
 /* Task function macros as described on the FreeRTOS.org WEB site. */

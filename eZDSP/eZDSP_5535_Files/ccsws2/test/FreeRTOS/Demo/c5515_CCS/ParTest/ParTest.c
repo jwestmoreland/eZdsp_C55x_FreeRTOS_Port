@@ -89,7 +89,7 @@ and off to generate '*' characters. */
 #define partstSEGMENTS_OFF		( ( unsigned char ) 0x00 )
 
 /* The LED number of the real on board LED, rather than a simulated LED. */
-#define partstON_BOARD_LED		( ( unsigned portBASE_TYPE ) 1 )
+#define partstON_BOARD_LED		( ( BaseType_t ) 1 )
 #define mainON_BOARD_LED_BIT	( ( unsigned char ) 0x01 )
 
 /* The LCD segments used to generate the '*' characters for LED's 0 to 5. */
@@ -161,10 +161,10 @@ void vParTestInitialise( void )
 }
 /*-----------------------------------------------------------*/
 
-void vParTestSetLED( unsigned portBASE_TYPE uxLED, signed portBASE_TYPE xValue )
+void vParTestSetLED( UBaseType_t uxLED, BaseType_t xValue )
 {
 	/* Set or clear the output [in this case show or hide the '*' character. */
-	if( uxLED < ( portBASE_TYPE ) partstNUM_LEDS )
+	if( uxLED < ( UBaseType_t ) partstNUM_LEDS )
 	{
 //		vTaskSuspendAll();
 		{
@@ -186,10 +186,10 @@ void vParTestSetLED( unsigned portBASE_TYPE uxLED, signed portBASE_TYPE xValue )
 }
 /*-----------------------------------------------------------*/
 
-void vParTestToggleLED( unsigned portBASE_TYPE uxLED )
+void vParTestToggleLED( UBaseType_t uxLED )
 {
 	static short flag = 0;
-	if( uxLED < ( portBASE_TYPE ) partstNUM_LEDS )
+	if( uxLED < ( UBaseType_t ) partstNUM_LEDS )
 	{
 //		vTaskSuspendAll();
 		{
