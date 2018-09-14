@@ -6,7 +6,7 @@ SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CMD_SRCS += \
-../lnkx.cmd 
+../lnkx-standalone.cmd 
 
 ASM_SRCS += \
 ../asm/aic_test_i2c.asm \

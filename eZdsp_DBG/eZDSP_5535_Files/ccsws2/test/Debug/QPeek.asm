@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sun Sep 09 04:48:26 2018                                 *
+;* Date/Time created: Fri Sep 14 03:53:52 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -199,7 +199,7 @@ $C$DW$37	.dwtag  DW_TAG_variable, DW_AT_name("xHighestPriorityTask")
 	.dwattr $C$DW$37, DW_AT_type(*$C$DW$T$39)
 	.dwattr $C$DW$37, DW_AT_external
 	.bss	_ulLastLoopCounter$1,2,0,2
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\2293612 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1712412 
 	.sect	".text"
 	.align 4
 	.global	_vStartQueuePeekTasks
@@ -415,9 +415,10 @@ $C$DW$50	.dwtag  DW_TAG_variable, DW_AT_name("ulValue")
 $C$L2:    
 $C$DW$L$_prvHighestPriorityPeekTask$2$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/QPeek.c",line 129,column 3,is_stmt
+        MOV #-1 << #16, AC0 ; |129| 
         MOV dbl(*SP(#2)), XAR0
         AMAR *SP(#4), XAR1
-        MOV #65535, T0 ; |129| 
+        OR #0xffff, AC0, AC0 ; |129| 
 $C$DW$51	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$51, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$51, DW_AT_name("_xQueuePeek")
@@ -477,10 +478,7 @@ $C$DW$53	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$53, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$53, DW_AT_name("_xQueueReceive")
 	.dwattr $C$DW$53, DW_AT_TI_call
-
         CALL #_xQueueReceive ; |157| 
-||      MOV #0, T0
-
                                         ; call occurs [#_xQueueReceive] ; |157| 
         CMP T0 == AR6, TC1 ; |157| 
         BCC $C$L6,TC1 ; |157| 
@@ -507,9 +505,10 @@ $C$DW$L$_prvHighestPriorityPeekTask$11$E:
 $C$L7:    
 $C$DW$L$_prvHighestPriorityPeekTask$12$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/QPeek.c",line 172,column 3,is_stmt
+        MOV #-1 << #16, AC0 ; |172| 
         MOV dbl(*SP(#2)), XAR0
         AMAR *SP(#4), XAR1
-        MOV #65535, T0 ; |172| 
+        OR #0xffff, AC0, AC0 ; |172| 
 $C$DW$54	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$54, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$54, DW_AT_name("_xQueuePeek")
@@ -567,9 +566,10 @@ $C$DW$56	.dwtag  DW_TAG_TI_branch
         CALL #_vTaskSuspend ; |196| 
                                         ; call occurs [#_vTaskSuspend] ; |196| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/QPeek.c",line 203,column 3,is_stmt
-        MOV #65535, T0 ; |203| 
+        MOV #-1 << #16, AC0 ; |203| 
         AMAR *SP(#4), XAR1
         MOV dbl(*SP(#2)), XAR0
+        OR #0xffff, AC0, AC0 ; |203| 
 $C$DW$57	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$57, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$57, DW_AT_name("_xQueuePeek")
@@ -625,7 +625,7 @@ $C$DW$L$_prvHighestPriorityPeekTask$22$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$59	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$59, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\QPeek.asm:$C$L2:1:1536493706")
+	.dwattr $C$DW$59, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\QPeek.asm:$C$L2:1:1536922432")
 	.dwattr $C$DW$59, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/QPeek.c")
 	.dwattr $C$DW$59, DW_AT_TI_begin_line(0x7d)
 	.dwattr $C$DW$59, DW_AT_TI_end_line(0xd6)
@@ -771,9 +771,10 @@ $C$DW$85	.dwtag  DW_TAG_variable, DW_AT_name("ulValue")
 $C$L13:    
 $C$DW$L$_prvHighPriorityPeekTask$2$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/QPeek.c",line 228,column 3,is_stmt
+        MOV #-1 << #16, AC0 ; |228| 
         MOV dbl(*SP(#2)), XAR0
         AMAR *SP(#4), XAR1
-        MOV #65535, T0 ; |228| 
+        OR #0xffff, AC0, AC0 ; |228| 
 $C$DW$86	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$86, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$86, DW_AT_name("_xQueuePeek")
@@ -831,9 +832,10 @@ $C$DW$88	.dwtag  DW_TAG_TI_branch
         CALL #_vTaskSuspend ; |253| 
                                         ; call occurs [#_vTaskSuspend] ; |253| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/QPeek.c",line 258,column 3,is_stmt
-        MOV #65535, T0 ; |258| 
+        MOV #-1 << #16, AC0 ; |258| 
         AMAR *SP(#4), XAR1
         MOV dbl(*SP(#2)), XAR0
+        OR #0xffff, AC0, AC0 ; |258| 
 $C$DW$89	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$89, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$89, DW_AT_name("_xQueueReceive")
@@ -885,7 +887,7 @@ $C$DW$L$_prvHighPriorityPeekTask$12$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$91	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$91, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\QPeek.asm:$C$L13:1:1536493706")
+	.dwattr $C$DW$91, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\QPeek.asm:$C$L13:1:1536922432")
 	.dwattr $C$DW$91, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/QPeek.c")
 	.dwattr $C$DW$91, DW_AT_TI_begin_line(0xdf)
 	.dwattr $C$DW$91, DW_AT_TI_end_line(0x10d)
@@ -995,9 +997,10 @@ $C$DW$107	.dwtag  DW_TAG_variable, DW_AT_name("ulValue")
 $C$L19:    
 $C$DW$L$_prvMediumPriorityPeekTask$2$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/QPeek.c",line 283,column 3,is_stmt
+        MOV #-1 << #16, AC0 ; |283| 
         MOV dbl(*SP(#2)), XAR0
         AMAR *SP(#4), XAR1
-        MOV #65535, T0 ; |283| 
+        OR #0xffff, AC0, AC0 ; |283| 
 $C$DW$108	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$108, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$108, DW_AT_name("_xQueuePeek")
@@ -1069,7 +1072,7 @@ $C$DW$L$_prvMediumPriorityPeekTask$8$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$111	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$111, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\QPeek.asm:$C$L19:1:1536493706")
+	.dwattr $C$DW$111, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\QPeek.asm:$C$L19:1:1536922432")
 	.dwattr $C$DW$111, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/QPeek.c")
 	.dwattr $C$DW$111, DW_AT_TI_begin_line(0x116)
 	.dwattr $C$DW$111, DW_AT_TI_end_line(0x136)
@@ -1123,8 +1126,8 @@ $C$DW$120	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
 ;*******************************************************************************
 ;* FUNCTION NAME: prvLowPriorityPeekTask                                       *
 ;*                                                                             *
-;*   Function Uses Regs : AC0,AC0,T0,T1,T2,T3,AR0,XAR0,AR1,XAR1,AR3,XAR3,AR5,  *
-;*                        AR6,SP,TC1,M40,SATA,SATD,RDM,FRCT,SMUL               *
+;*   Function Uses Regs : AC0,AC0,T0,T2,T3,AR0,XAR0,AR1,XAR1,AR3,XAR3,AR5,AR6, *
+;*                        SP,TC1,M40,SATA,SATD,RDM,FRCT,SMUL                   *
 ;*   Save On Entry Regs : T2,T3,AR5,AR6                                        *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
 ;*   Total Frame Size   : 12 words                                             *
@@ -1192,7 +1195,7 @@ $C$DW$124	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$124, DW_AT_TI_call
 
         CALL #_xQueueGenericSend ; |324| 
-||      MOV #0, T1
+||      MOV #0, AC0 ; |324| 
 
                                         ; call occurs [#_xQueueGenericSend] ; |324| 
         CMP T0 == AR6, TC1 ; |324| 
@@ -1238,7 +1241,7 @@ $C$DW$126	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$126, DW_AT_TI_call
 
         CALL #_xQueueGenericSend ; |345| 
-||      MOV #0, T1
+||      MOV #0, AC0 ; |345| 
 
                                         ; call occurs [#_xQueueGenericSend] ; |345| 
         CMP T0 == AR5, TC1 ; |345| 
@@ -1261,10 +1264,7 @@ $C$DW$127	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$127, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$127, DW_AT_name("_xQueueReceive")
 	.dwattr $C$DW$127, DW_AT_TI_call
-
         CALL #_xQueueReceive ; |359| 
-||      MOV #0, T0
-
                                         ; call occurs [#_xQueueReceive] ; |359| 
         CMP T0 == T3, TC1 ; |359| 
         BCC $C$L27,TC1 ; |359| 
@@ -1284,7 +1284,7 @@ $C$DW$128	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$128, DW_AT_TI_call
 
         CALL #_vTaskDelay ; |372| 
-||      MOV #10, T0
+||      MOV #10, AC0 ; |372| 
 
                                         ; call occurs [#_vTaskDelay] ; |372| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/QPeek.c",line 379,column 3,is_stmt
@@ -1319,7 +1319,7 @@ $C$DW$131	.dwtag  DW_TAG_TI_branch
         MOV dbl(*SP(#2)), XAR0
 
         AMAR *SP(#4), XAR1
-||      MOV #1, T1
+||      MOV #0, AC0 ; |388| 
 
 $C$DW$132	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$132, DW_AT_low_pc(0x00)
@@ -1327,7 +1327,7 @@ $C$DW$132	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$132, DW_AT_TI_call
 
         CALL #_xQueueGenericSend ; |388| 
-||      MOV #0, T0
+||      MOV #1, T0
 
                                         ; call occurs [#_xQueueGenericSend] ; |388| 
         CMP T0 == T2, TC1 ; |388| 
@@ -1349,7 +1349,7 @@ $C$DW$133	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$133, DW_AT_TI_call
 
         CALL #_xQueuePeek ; |401| 
-||      MOV #0, T0
+||      MOV #0, AC0 ; |401| 
 
                                         ; call occurs [#_xQueuePeek] ; |401| 
         BCC $C$L29,T0 == #0 ; |401| 
@@ -1384,7 +1384,7 @@ $C$DW$136	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$136, DW_AT_TI_call
 
         CALL #_vTaskDelay ; |415| 
-||      MOV #10, T0
+||      MOV #10, AC0 ; |415| 
 
                                         ; call occurs [#_vTaskDelay] ; |415| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/QPeek.c",line 416,column 2,is_stmt
@@ -1402,7 +1402,7 @@ $C$DW$L$_prvLowPriorityPeekTask$14$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$137	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$137, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\QPeek.asm:$C$L23:1:1536493706")
+	.dwattr $C$DW$137, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\QPeek.asm:$C$L23:1:1536922432")
 	.dwattr $C$DW$137, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/QPeek.c")
 	.dwattr $C$DW$137, DW_AT_TI_begin_line(0x13f)
 	.dwattr $C$DW$137, DW_AT_TI_end_line(0x1a0)
@@ -1655,20 +1655,13 @@ $C$DW$T$11	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$11, DW_AT_name("unsigned int")
 	.dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
-$C$DW$T$34	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
-	.dwattr $C$DW$T$34, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$34, DW_AT_language(DW_LANG_C)
-$C$DW$163	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$163, DW_AT_type(*$C$DW$T$34)
-$C$DW$T$35	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$35, DW_AT_type(*$C$DW$163)
 $C$DW$T$53	.dwtag  DW_TAG_typedef, DW_AT_name("uint16_t")
 	.dwattr $C$DW$T$53, DW_AT_type(*$C$DW$T$11)
 	.dwattr $C$DW$T$53, DW_AT_language(DW_LANG_C)
-$C$DW$164	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$164, DW_AT_type(*$C$DW$T$53)
+$C$DW$163	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$163, DW_AT_type(*$C$DW$T$53)
 $C$DW$T$54	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$54, DW_AT_type(*$C$DW$164)
+	.dwattr $C$DW$T$54, DW_AT_type(*$C$DW$163)
 $C$DW$T$12	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$12, DW_AT_name("long")
@@ -1677,6 +1670,13 @@ $C$DW$T$13	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$13, DW_AT_name("unsigned long")
 	.dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+$C$DW$T$34	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
+	.dwattr $C$DW$T$34, DW_AT_type(*$C$DW$T$13)
+	.dwattr $C$DW$T$34, DW_AT_language(DW_LANG_C)
+$C$DW$164	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$164, DW_AT_type(*$C$DW$T$34)
+$C$DW$T$35	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$35, DW_AT_type(*$C$DW$164)
 $C$DW$T$66	.dwtag  DW_TAG_typedef, DW_AT_name("uint32_t")
 	.dwattr $C$DW$T$66, DW_AT_type(*$C$DW$T$13)
 	.dwattr $C$DW$T$66, DW_AT_language(DW_LANG_C)

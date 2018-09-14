@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sun Sep 09 04:48:27 2018                                 *
+;* Date/Time created: Fri Sep 14 03:53:53 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -205,7 +205,7 @@ $C$DW$41	.dwtag  DW_TAG_variable, DW_AT_name("xISRQueue")
 	.dwattr $C$DW$41, DW_AT_type(*$C$DW$T$22)
 	.dwattr $C$DW$41, DW_AT_location[DW_OP_addr _xISRQueue]
 	.bss	_ulCallCount$1,2,0,2
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1410812 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\2030012 
 	.sect	".text"
 	.align 4
 	.global	_vStartQueueOverwriteTask
@@ -383,7 +383,7 @@ $C$DW$L$_prvQueueOverwriteTask$2$B:
         MOV AC0, dbl(*SP(#6)) ; |96| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/QueueOverwrite.c",line 97,column 3,is_stmt
 
-        MOV #0, T0
+        MOV #2, T0
 ||      AMAR *SP(#6), XAR1
 
         MOV dbl(*SP(#2)), XAR0
@@ -393,7 +393,7 @@ $C$DW$58	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$58, DW_AT_TI_call
 
         CALL #_xQueueGenericSend ; |97| 
-||      MOV #2, T1
+||      MOV #0, AC0 ; |97| 
 
                                         ; call occurs [#_xQueueGenericSend] ; |97| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/QueueOverwrite.c",line 99,column 3,is_stmt
@@ -406,10 +406,7 @@ $C$DW$59	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$59, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$59, DW_AT_name("_xQueueReceive")
 	.dwattr $C$DW$59, DW_AT_TI_call
-
         CALL #_xQueueReceive ; |100| 
-||      MOV #0, T0
-
                                         ; call occurs [#_xQueueReceive] ; |100| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/QueueOverwrite.c",line 102,column 3,is_stmt
 
@@ -444,7 +441,7 @@ $C$DW$L$_prvQueueOverwriteTask$5$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/QueueOverwrite.c",line 112,column 4,is_stmt
         MOV dbl(*SP(#2)), XAR0
 
-        MOV #0, T0
+        MOV #0, AC0 ; |112| 
 ||      AMAR *SP(#10), XAR1
 
 $C$DW$60	.dwtag  DW_TAG_TI_branch
@@ -453,7 +450,7 @@ $C$DW$60	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$60, DW_AT_TI_call
 
         CALL #_xQueueGenericSend ; |112| 
-||      MOV #2, T1
+||      MOV #2, T0
 
                                         ; call occurs [#_xQueueGenericSend] ; |112| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/QueueOverwrite.c",line 116,column 4,is_stmt
@@ -465,7 +462,7 @@ $C$DW$61	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$61, DW_AT_TI_call
 
         CALL #_xQueuePeek ; |116| 
-||      MOV #0, T0
+||      MOV #0, AC0 ; |116| 
 
                                         ; call occurs [#_xQueuePeek] ; |116| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/QueueOverwrite.c",line 117,column 4,is_stmt
@@ -526,7 +523,7 @@ $C$DW$63	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$63, DW_AT_TI_call
 
         CALL #_xQueueReceive ; |130| 
-||      MOV #0, T0
+||      MOV #0, AC0 ; |130| 
 
                                         ; call occurs [#_xQueueReceive] ; |130| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/QueueOverwrite.c",line 132,column 3,is_stmt
@@ -564,7 +561,7 @@ $C$DW$L$_prvQueueOverwriteTask$13$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$65	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$65, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\QueueOverwrite.asm:$C$L1:1:1536493707")
+	.dwattr $C$DW$65, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\QueueOverwrite.asm:$C$L1:1:1536922433")
 	.dwattr $C$DW$65, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/QueueOverwrite.c")
 	.dwattr $C$DW$65, DW_AT_TI_begin_line(0x5c)
 	.dwattr $C$DW$65, DW_AT_TI_end_line(0x93)
@@ -591,7 +588,7 @@ $C$DW$72	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$72, DW_AT_high_pc($C$DW$L$_prvQueueOverwriteTask$12$E)
 
 $C$DW$73	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$73, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\QueueOverwrite.asm:$C$L3:2:1536493707")
+	.dwattr $C$DW$73, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\QueueOverwrite.asm:$C$L3:2:1536922433")
 	.dwattr $C$DW$73, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/QueueOverwrite.c")
 	.dwattr $C$DW$73, DW_AT_TI_begin_line(0x6d)
 	.dwattr $C$DW$73, DW_AT_TI_end_line(0x7f)
@@ -1004,9 +1001,6 @@ $C$DW$T$11	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$11, DW_AT_name("unsigned int")
 	.dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
-$C$DW$T$53	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
-	.dwattr $C$DW$T$53, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$53, DW_AT_language(DW_LANG_C)
 $C$DW$T$45	.dwtag  DW_TAG_typedef, DW_AT_name("uint16_t")
 	.dwattr $C$DW$T$45, DW_AT_type(*$C$DW$T$11)
 	.dwattr $C$DW$T$45, DW_AT_language(DW_LANG_C)
@@ -1022,6 +1016,9 @@ $C$DW$T$13	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$13, DW_AT_name("unsigned long")
 	.dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+$C$DW$T$53	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
+	.dwattr $C$DW$T$53, DW_AT_type(*$C$DW$T$13)
+	.dwattr $C$DW$T$53, DW_AT_language(DW_LANG_C)
 $C$DW$T$69	.dwtag  DW_TAG_typedef, DW_AT_name("uint32_t")
 	.dwattr $C$DW$T$69, DW_AT_type(*$C$DW$T$13)
 	.dwattr $C$DW$T$69, DW_AT_language(DW_LANG_C)

@@ -74,7 +74,7 @@ ORDERED_OBJS += \
 "./c5535_bsl_revc/ezdsp5535_v1/lib/bsl/ezdsp5535_sdcard.obj" \
 "./c5535_bsl_revc/ezdsp5535_v1/lib/bsl/ezdsp5535_spiflash.obj" \
 "./c5535_bsl_revc/ezdsp5535_v1/lib/bsl/ezdsp5535_uart.obj" \
-"../lnkx.cmd" \
+"../lnkx-standalone.cmd" \
 "../c5535_bsl_revc/ezdsp5535_v1/lib/ezdsp5535bsl.lib" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
@@ -223,7 +223,7 @@ all: test.out
 test.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: C5500 Linker'
-	"F:/ti/ccs8p1/ccsv8/tools/compiler/alt-install-ti-cgt-c55x_4.4.1/bin/cl55" -v5535 --memory_model=large -g --define=portUSING_SYSSTACK --define=configUSE_PREEMPTION --define=c5535 --display_error_number --diag_warning=225 --align_functions --ptrdiff_size=16 --asm_source=mnemonic -k --asm_listing --asm_define=configUSE_PREEMPTION --asm_define=portUSING_SYSSTACK -z -m"test.map" --stack_size=0x400 --heap_size=0x1000 -i"F:/ti/ccs8p1/ccsv8/tools/compiler/alt-install-ti-cgt-c55x_4.4.1/lib" -i"F:/ti/ccs8p1/ccsv8/tools/compiler/alt-install-ti-cgt-c55x_4.4.1/include" --reread_libs --display_error_number --warn_sections --xml_link_info="test_linkInfo.xml" --rom_model --sys_stacksize=0x1000 -o "test.out" $(ORDERED_OBJS)
+	"F:/ti/ccs8p1/ccsv8/tools/compiler/alt-install-ti-cgt-c55x_4.4.1/bin/cl55" -v5535 --memory_model=large -g --define=portUSING_SYSSTACK --define=eZdsp_c5535 --define=configUSE_PREEMPTION --define=c5535 --display_error_number --diag_warning=225 --align_functions --ptrdiff_size=16 --asm_source=mnemonic --translate_c54x_mnem_source -k --asm_listing --asm_define=configUSE_PREEMPTION --asm_define=portUSING_SYSSTACK -z -m"test.map" --stack_size=0x400 --heap_size=0x1000 -i"F:/ti/ccs8p1/ccsv8/tools/compiler/alt-install-ti-cgt-c55x_4.4.1/lib" -i"F:/ti/ccs8p1/ccsv8/tools/compiler/alt-install-ti-cgt-c55x_4.4.1/include" --reread_libs --display_error_number --warn_sections --xml_link_info="test_linkInfo.xml" --rom_model --sys_stacksize=0x1000 -o "test.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 

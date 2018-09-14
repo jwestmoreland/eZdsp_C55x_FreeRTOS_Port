@@ -24,9 +24,9 @@ c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_intc.obj: F:/eZdsp_DBG/eZDSP_5535_
 c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_intc.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/cslr_wdt.h
 c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_intc.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_error.h
 c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_intc.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_types.h
-c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_intc.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stdio.h
-c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_intc.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/linkage.h
-c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_intc.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stdarg.h
+c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_intc.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdio.h
+c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_intc.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/linkage.h
+c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_intc.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdarg.h
 
 ../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_intc.c: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_intc.h: 
@@ -52,6 +52,6 @@ F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/cslr_wdt.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_error.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_types.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stdio.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/linkage.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stdarg.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdio.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/linkage.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdarg.h: 

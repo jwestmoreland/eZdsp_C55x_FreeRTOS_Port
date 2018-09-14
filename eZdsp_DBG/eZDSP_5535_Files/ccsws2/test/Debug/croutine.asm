@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sun Sep 09 04:48:32 2018                                 *
+;* Date/Time created: Fri Sep 14 03:53:58 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -47,24 +47,24 @@ $C$DW$CU	.dwtag  DW_TAG_compile_unit
 
 	.sect	".cinit"
 	.align	1
-	.field  	1,16
+	.field  	2,16
 	.field  	_xCoRoutineTickCount+0,24
 	.field  	0,8
-	.field	0,16			; _xCoRoutineTickCount @ 0
+	.field	0,32			; _xCoRoutineTickCount @ 0
 
 	.sect	".cinit"
 	.align	1
-	.field  	1,16
+	.field  	2,16
 	.field  	_xLastTickCount+0,24
 	.field  	0,8
-	.field	0,16			; _xLastTickCount @ 0
+	.field	0,32			; _xLastTickCount @ 0
 
 	.sect	".cinit"
 	.align	1
-	.field  	1,16
+	.field  	2,16
 	.field  	_xPassedTicks+0,24
 	.field  	0,8
-	.field	0,16			; _xPassedTicks @ 0
+	.field	0,32			; _xPassedTicks @ 0
 
 
 $C$DW$1	.dwtag  DW_TAG_subprogram, DW_AT_name("pvPortMalloc")
@@ -174,22 +174,22 @@ $C$DW$23	.dwtag  DW_TAG_variable, DW_AT_name("uxTopCoRoutineReadyPriority")
 	.dwattr $C$DW$23, DW_AT_TI_symbol_name("_uxTopCoRoutineReadyPriority")
 	.dwattr $C$DW$23, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$23, DW_AT_location[DW_OP_addr _uxTopCoRoutineReadyPriority]
-	.bss	_xCoRoutineTickCount,1,0,0
+	.bss	_xCoRoutineTickCount,2,0,2
 $C$DW$24	.dwtag  DW_TAG_variable, DW_AT_name("xCoRoutineTickCount")
 	.dwattr $C$DW$24, DW_AT_TI_symbol_name("_xCoRoutineTickCount")
 	.dwattr $C$DW$24, DW_AT_type(*$C$DW$T$31)
 	.dwattr $C$DW$24, DW_AT_location[DW_OP_addr _xCoRoutineTickCount]
-	.bss	_xLastTickCount,1,0,0
+	.bss	_xLastTickCount,2,0,2
 $C$DW$25	.dwtag  DW_TAG_variable, DW_AT_name("xLastTickCount")
 	.dwattr $C$DW$25, DW_AT_TI_symbol_name("_xLastTickCount")
 	.dwattr $C$DW$25, DW_AT_type(*$C$DW$T$31)
 	.dwattr $C$DW$25, DW_AT_location[DW_OP_addr _xLastTickCount]
-	.bss	_xPassedTicks,1,0,0
+	.bss	_xPassedTicks,2,0,2
 $C$DW$26	.dwtag  DW_TAG_variable, DW_AT_name("xPassedTicks")
 	.dwattr $C$DW$26, DW_AT_TI_symbol_name("_xPassedTicks")
 	.dwattr $C$DW$26, DW_AT_type(*$C$DW$T$31)
 	.dwattr $C$DW$26, DW_AT_location[DW_OP_addr _xPassedTicks]
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1325612 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\0608812 
 	.sect	".text"
 	.align 4
 	.global	_xCoRoutineCreate
@@ -342,9 +342,9 @@ $C$DW$39	.dwtag  DW_TAG_TI_branch
         MOV XAR3, dbl(*AR2(#18))
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 142,column 3,is_stmt
         MOV dbl(*SP(#6)), XAR3
-        MOV #2, AC0
+        MOV #2, AC0 ; |142| 
         SUB uns(*SP(#2)), AC0, AC0 ; |142| 
-        MOV AC0, *AR3(#12) ; |142| 
+        MOV AC0, dbl(*AR3(#12)) ; |142| 
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 146,column 3,is_stmt
         MOV dbl(*SP(#6)), XAR3
         MOV *(#_uxTopCoRoutineReadyPriority), AR1 ; |146| 
@@ -404,14 +404,14 @@ $C$DW$42	.dwtag  DW_TAG_subprogram, DW_AT_name("vCoRoutineAddToDelayedList")
 	.dwattr $C$DW$42, DW_AT_TI_begin_file("../FreeRTOS/Source/croutine.c")
 	.dwattr $C$DW$42, DW_AT_TI_begin_line(0x9f)
 	.dwattr $C$DW$42, DW_AT_TI_begin_column(0x06)
-	.dwattr $C$DW$42, DW_AT_TI_max_frame_size(0x06)
+	.dwattr $C$DW$42, DW_AT_TI_max_frame_size(0x08)
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 160,column 1,is_stmt,address _vCoRoutineAddToDelayedList
 
 	.dwfde $C$DW$CIE, _vCoRoutineAddToDelayedList
 $C$DW$43	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTicksToDelay")
 	.dwattr $C$DW$43, DW_AT_TI_symbol_name("_xTicksToDelay")
 	.dwattr $C$DW$43, DW_AT_type(*$C$DW$T$31)
-	.dwattr $C$DW$43, DW_AT_location[DW_OP_reg12]
+	.dwattr $C$DW$43, DW_AT_location[DW_OP_reg0]
 $C$DW$44	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxEventList")
 	.dwattr $C$DW$44, DW_AT_TI_symbol_name("_pxEventList")
 	.dwattr $C$DW$44, DW_AT_type(*$C$DW$T$40)
@@ -419,19 +419,19 @@ $C$DW$44	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxEventList")
 ;*******************************************************************************
 ;* FUNCTION NAME: vCoRoutineAddToDelayedList                                   *
 ;*                                                                             *
-;*   Function Uses Regs : AC0,AC0,T0,AR0,XAR0,AR1,XAR1,AR2,AR3,XAR3,SP,CARRY,  *
+;*   Function Uses Regs : AC0,AC0,AC1,AC1,AR0,XAR0,AR1,XAR1,AR3,XAR3,SP,CARRY, *
 ;*                        TC1,M40,SATA,SATD,RDM,FRCT,SMUL                      *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-;*   Total Frame Size   : 6 words                                              *
-;*                        (1 return address/alignment)                         *
-;*                        (5 local values)                                     *
+;*   Total Frame Size   : 8 words                                              *
+;*                        (2 return address/alignment)                         *
+;*                        (6 local values)                                     *
 ;*   Min System Stack   : 1 word                                               *
 ;*******************************************************************************
 _vCoRoutineAddToDelayedList:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-        AADD #-5, SP
-	.dwcfi	cfa_offset, 6
+        AADD #-7, SP
+	.dwcfi	cfa_offset, 8
 $C$DW$45	.dwtag  DW_TAG_variable, DW_AT_name("xTicksToDelay")
 	.dwattr $C$DW$45, DW_AT_TI_symbol_name("_xTicksToDelay")
 	.dwattr $C$DW$45, DW_AT_type(*$C$DW$T$31)
@@ -445,11 +445,11 @@ $C$DW$47	.dwtag  DW_TAG_variable, DW_AT_name("xTimeToWake")
 	.dwattr $C$DW$47, DW_AT_type(*$C$DW$T$31)
 	.dwattr $C$DW$47, DW_AT_location[DW_OP_bregx 0x24 4]
         MOV XAR0, dbl(*SP(#2))
-        MOV T0, *SP(#0) ; |160| 
+        MOV AC0, dbl(*SP(#0)) ; |160| 
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 165,column 2,is_stmt
-        MOV T0, AR1
-        ADD *(#_xCoRoutineTickCount), AR1, AR1 ; |165| 
-        MOV AR1, *SP(#4) ; |165| 
+        MOV dbl(*SP(#0)), AC0 ; |165| 
+        ADD dbl(*(#_xCoRoutineTickCount)), AC0, AC0 ; |165| 
+        MOV AC0, dbl(*SP(#4)) ; |165| 
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 170,column 2,is_stmt
         MOV dbl(*(#_pxCurrentCoRoutine)), XAR0
         AADD #2, AR0 ; |170| 
@@ -461,12 +461,12 @@ $C$DW$48	.dwtag  DW_TAG_TI_branch
                                         ; call occurs [#_uxListRemove] ; |170| 
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 173,column 2,is_stmt
         MOV dbl(*(#_pxCurrentCoRoutine)), XAR3
-        MOV *SP(#4), AR1 ; |173| 
-        MOV AR1, *AR3(short(#2)) ; |173| 
+        MOV dbl(*SP(#4)), AC0 ; |173| 
+        MOV AC0, dbl(*AR3(short(#2))) ; |173| 
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 175,column 2,is_stmt
-        MOV *(#_xCoRoutineTickCount), AR1 ; |175| 
-        MOV *SP(#4), AR2 ; |175| 
-        CMPU AR2 >= AR1, TC1 ; |175| 
+        MOV dbl(*(#_xCoRoutineTickCount)), AC0 ; |175| 
+        MOV dbl(*SP(#4)), AC1 ; |175| 
+        CMPU AC1 >= AC0, TC1 ; |175| 
         BCC $C$L6,TC1 ; |175| 
                                         ; branchcc occurs ; |175| 
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 179,column 3,is_stmt
@@ -511,7 +511,7 @@ $C$DW$51	.dwtag  DW_TAG_TI_branch
                                         ; call occurs [#_vListInsert] ; |192| 
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 194,column 1,is_stmt
 $C$L8:    
-        AADD #5, SP
+        AADD #7, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$52	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$52, DW_AT_low_pc(0x00)
@@ -653,7 +653,7 @@ $C$DW$59	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$60	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$60, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\croutine.asm:$C$L11:1:1536493712")
+	.dwattr $C$DW$60, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\croutine.asm:$C$L11:1:1536922438")
 	.dwattr $C$DW$60, DW_AT_TI_begin_file("../FreeRTOS/Source/croutine.c")
 	.dwattr $C$DW$60, DW_AT_TI_begin_line(0xca)
 	.dwattr $C$DW$60, DW_AT_TI_end_line(0xd8)
@@ -703,8 +703,8 @@ $C$DW$68	.dwtag  DW_TAG_subprogram, DW_AT_name("prvCheckDelayedList")
 ;*******************************************************************************
 ;* FUNCTION NAME: prvCheckDelayedList                                          *
 ;*                                                                             *
-;*   Function Uses Regs : AC0,AC0,T0,AR0,XAR0,AR1,XAR1,AR2,AR3,XAR3,SP,CARRY,  *
-;*                        TC1,M40,SATA,SATD,RDM,FRCT,SMUL                      *
+;*   Function Uses Regs : AC0,AC0,AC1,AC1,AR0,XAR0,AR1,XAR1,AR2,AR3,XAR3,SP,   *
+;*                        CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL                *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
 ;*   Total Frame Size   : 6 words                                              *
 ;*                        (2 return address/alignment)                         *
@@ -727,22 +727,25 @@ $C$DW$70	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$70, DW_AT_TI_call
         CALL #_xTaskGetTickCount ; |224| 
                                         ; call occurs [#_xTaskGetTickCount] ; |224| 
-        MOV T0, AC0 ; |224| 
-        SUB uns(*(#_xLastTickCount)), AC0, AC0 ; |224| 
-        MOV AC0, *(#_xPassedTicks) ; |224| 
+        SUB dbl(*(#_xLastTickCount)), AC0, AC0 ; |224| 
+        MOV AC0, dbl(*(#_xPassedTicks)) ; |224| 
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 225,column 2,is_stmt
-        MOV AC0, AR1
-        BCC $C$L22,AR1 == #0 ; |225| 
+        MOV dbl(*(#_xPassedTicks)), AC0 ; |225| 
+        BCC $C$L22,AC0 == #0 ; |225| 
                                         ; branchcc occurs ; |225| 
 $C$L14:    
 $C$DW$L$_prvCheckDelayedList$2$B:
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 227,column 3,is_stmt
-        ADD #1, *(#_xCoRoutineTickCount) ; |227| 
+        MOV dbl(*(#_xCoRoutineTickCount)), AC0 ; |227| 
+        ADD #1, AC0 ; |227| 
+        MOV AC0, dbl(*(#_xCoRoutineTickCount)) ; |227| 
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 228,column 3,is_stmt
-        SUB #1, *(#_xPassedTicks) ; |228| 
+        MOV dbl(*(#_xPassedTicks)), AC0 ; |228| 
+        SUB #1, AC0 ; |228| 
+        MOV AC0, dbl(*(#_xPassedTicks)) ; |228| 
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 231,column 3,is_stmt
-        MOV *(#_xCoRoutineTickCount), AR1 ; |231| 
-        BCC $C$L18,AR1 != #0 ; |231| 
+        MOV dbl(*(#_xCoRoutineTickCount)), AC0 ; |231| 
+        BCC $C$L18,AC0 != #0 ; |231| 
                                         ; branchcc occurs ; |231| 
 $C$DW$L$_prvCheckDelayedList$2$E:
 $C$DW$L$_prvCheckDelayedList$3$B:
@@ -774,9 +777,9 @@ $C$DW$L$_prvCheckDelayedList$4$B:
         MOV dbl(*AR3(short(#6))), XAR3
         MOV XAR3, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 247,column 4,is_stmt
-        MOV *(#_xCoRoutineTickCount), AR2 ; |247| 
-        MOV *AR3(short(#2)), AR1 ; |247| 
-        CMPU AR2 >= AR1, TC1 ; |247| 
+        MOV dbl(*(#_xCoRoutineTickCount)), AC1 ; |247| 
+        MOV dbl(*AR3(short(#2))), AC0 ; |247| 
+        CMPU AC1 >= AC0, TC1 ; |247| 
         BCC $C$L21,!TC1 ; |247| 
                                         ; branchcc occurs ; |247| 
 $C$DW$L$_prvCheckDelayedList$4$E:
@@ -869,14 +872,14 @@ $C$DW$L$_prvCheckDelayedList$13$E:
 $C$L21:    
 $C$DW$L$_prvCheckDelayedList$14$B:
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 272,column 2,is_stmt
-        MOV *(#_xPassedTicks), AR1 ; |272| 
-        BCC $C$L14,AR1 != #0 ; |272| 
+        MOV dbl(*(#_xPassedTicks)), AC0 ; |272| 
+        BCC $C$L14,AC0 != #0 ; |272| 
                                         ; branchcc occurs ; |272| 
 $C$DW$L$_prvCheckDelayedList$14$E:
 $C$L22:    
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 274,column 2,is_stmt
-        MOV *(#_xCoRoutineTickCount), AR1 ; |274| 
-        MOV AR1, *(#_xLastTickCount) ; |274| 
+        MOV dbl(*(#_xCoRoutineTickCount)), AC0 ; |274| 
+        MOV AC0, dbl(*(#_xLastTickCount)) ; |274| 
 	.dwpsn	file "../FreeRTOS/Source/croutine.c",line 275,column 1,is_stmt
         AADD #5, SP
 	.dwcfi	cfa_offset, 1
@@ -887,7 +890,7 @@ $C$DW$76	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$77	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$77, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\croutine.asm:$C$L14:1:1536493712")
+	.dwattr $C$DW$77, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\croutine.asm:$C$L14:1:1536922438")
 	.dwattr $C$DW$77, DW_AT_TI_begin_file("../FreeRTOS/Source/croutine.c")
 	.dwattr $C$DW$77, DW_AT_TI_begin_line(0xe1)
 	.dwattr $C$DW$77, DW_AT_TI_end_line(0x110)
@@ -902,7 +905,7 @@ $C$DW$80	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$80, DW_AT_high_pc($C$DW$L$_prvCheckDelayedList$14$E)
 
 $C$DW$81	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$81, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\croutine.asm:$C$L18:2:1536493712")
+	.dwattr $C$DW$81, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\croutine.asm:$C$L18:2:1536922438")
 	.dwattr $C$DW$81, DW_AT_TI_begin_file("../FreeRTOS/Source/croutine.c")
 	.dwattr $C$DW$81, DW_AT_TI_begin_line(0xf3)
 	.dwattr $C$DW$81, DW_AT_TI_end_line(0x10e)
@@ -1091,7 +1094,7 @@ $C$DW$98	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$99	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$99, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\croutine.asm:$C$L24:1:1536493712")
+	.dwattr $C$DW$99, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\croutine.asm:$C$L24:1:1536922438")
 	.dwattr $C$DW$99, DW_AT_TI_begin_file("../FreeRTOS/Source/croutine.c")
 	.dwattr $C$DW$99, DW_AT_TI_begin_line(0x11f)
 	.dwattr $C$DW$99, DW_AT_TI_end_line(0x127)
@@ -1230,7 +1233,7 @@ $C$DW$112	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$113	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$113, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\croutine.asm:$C$L29:1:1536493712")
+	.dwattr $C$DW$113, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\croutine.asm:$C$L29:1:1536922438")
 	.dwattr $C$DW$113, DW_AT_TI_begin_file("../FreeRTOS/Source/croutine.c")
 	.dwattr $C$DW$113, DW_AT_TI_begin_line(0x138)
 	.dwattr $C$DW$113, DW_AT_TI_end_line(0x13b)
@@ -1428,9 +1431,6 @@ $C$DW$T$11	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$11, DW_AT_name("unsigned int")
 	.dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
-$C$DW$T$31	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
-	.dwattr $C$DW$T$31, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$31, DW_AT_language(DW_LANG_C)
 $C$DW$T$36	.dwtag  DW_TAG_typedef, DW_AT_name("size_t")
 	.dwattr $C$DW$T$36, DW_AT_type(*$C$DW$T$11)
 	.dwattr $C$DW$T$36, DW_AT_language(DW_LANG_C)
@@ -1445,6 +1445,9 @@ $C$DW$T$13	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$13, DW_AT_name("unsigned long")
 	.dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+$C$DW$T$31	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
+	.dwattr $C$DW$T$31, DW_AT_type(*$C$DW$T$13)
+	.dwattr $C$DW$T$31, DW_AT_language(DW_LANG_C)
 $C$DW$T$14	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$14, DW_AT_name("long long")

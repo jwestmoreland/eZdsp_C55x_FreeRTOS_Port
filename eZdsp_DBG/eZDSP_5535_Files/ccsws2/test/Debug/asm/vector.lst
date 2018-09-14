@@ -1,0 +1,336 @@
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 20:30:04 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+..\asm\vector.asm                                                    PAGE    1
+
+     203              ; Temporary Registers Used: None
+       1              *****************************************************************************
+       2              *  Copyright (c) 2005  Texas Instruments, Inc. All Rights Reserved          *
+       3              *  This is proprietary information, not to be published -- TI INTERNAL DATA *
+       4              *****************************************************************************
+       5              
+       6                       .mmregs
+       7                       .include "lpva200.inc"
+       8              
+       9                           .C54CM_off
+      10                       .CPL_on
+      11                       .ARMS_off
+      12                           .align 4
+      13                       
+      14              ;               .c28_amode
+      15                       
+      16              ;         .C54CM_off
+      17              ;         .CPL_off
+      18              ;         .ARMS_off
+      19                 
+      20              ;**********************************************************************************
+      21              ;        predefined stack operation modes  
+      22              ;**********************************************************************************
+      23              ;        USE_RETA     : 2x16-bit fast return mode (RETA used)
+      24              ;        NO_RETA      : 2x16-bit slow return mode (RETA not used)
+      25              ;        C54X_STK     : 32-bit fast return mode 
+      26              
+      27              ;**********************************************************************************    
+      28                       ;.global _DMA_Isr 
+      29                       ;.global _SAR_Isr 
+      30                       ;.global _I2S0_TX_Isr
+      31                       ;.global _I2S1_RX_Isr
+      32                       .global _RTC_Isr
+      33                               .global _Timer_isr
+      34              ;                .global _Timer02_isr
+      35                               .global _VECSTART  
+      36                               .global _vTickISR
+      37                           
+      38              ;**********************************************************************************
+      39 000000               .sect "vectors"
+      40                      .align  256         
+      41              ;**********************************************************************************
+      42              
+      43              ;****************************************************************************
+      44              ;* Other interrupt vector definitions go here
+      45              ;****************************************************************************
+      46                      .def    _RST
+      47              ; _RST:         .ivec    reset_isr, USE_RETA; Reset / Software Interrupt #0
+      48 000000       _VECSTART:
+      49 000000 EA    _RST:           .ivec    reset_isr, C54X_STK; Reset / Software Interrupt #0
+         000001 0000 
+         000003 00%  
+      50              
+      51 000008 EA    NMI:            .ivec    reset_isr                              ; Nonmaskable Interrupt
+         000009 0000 
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 20:30:04 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+..\asm\vector.asm                                                    PAGE    2
+
+         00000b 00%  
+      52              
+      53 000010 EA    INT0:           .ivec    dummy_isr                              ; External User Interrupt #0 
+         000011 0000 
+         000013 08%  
+      54              
+      55 000018 EA    INT1:           .ivec    dummy_isr                              ; External User Interrupt #1
+         000019 0000 
+         00001b 08%  
+      56              
+      57              ; TINT:         .ivec    _Timer_isr                             ; Timer #0 / Software Interrupt #4
+      58 000020 EA    TINT:           .ivec    _vTickISR
+         000021 0000 
+         000023 00%  
+      59              ;PROG0:         .ivec    _I2S0_TX_Isr                   ; Programmable 0 Interrupt
+      60 000028 EA    PROG0:          .ivec    dummy_isr                      ; Programmable 0 Interrupt
+         000029 0000 
+         00002b 08%  
+      61              
+      62 000030 EA    UART:           .ivec    dummy_isr                              ; IIS #1 Receive Interrupt
+         000031 0000 
+         000033 08%  
+      63              
+      64 000038 EA    PROG1:          .ivec    dummy_isr                              ; Programmable 1 Interrupt
+         000039 0000 
+         00003b 08%  
+      65              
+      66              ;DMA:           .ivec    _DMA_Isr                ; DMA Interrupt
+      67 000040 EA    DMA:            .ivec    dummy_isr                ; DMA Interrupt
+         000041 0000 
+         000043 08%  
+      68              
+      69 000048 EA    PROG2:          .ivec    dummy_isr                      ; Programmable 2 Interrupt
+         000049 0000 
+         00004b 08%  
+      70              
+      71 000050 EA    COPROCFFT:  .ivec    dummy_isr                  ; Coprocessor FFT Module Interrupt
+         000051 0000 
+         000053 08%  
+      72              
+      73              ;PROG3:         .ivec    _I2S1_RX_Isr                   ; Programmable 3 Interrupt
+      74 000058 EA    PROG3:          .ivec    dummy_isr                      ; Programmable 3 Interrupt
+         000059 0000 
+         00005b 08%  
+      75              
+      76 000060 EA    LCD:            .ivec    dummy_isr                              ; LCD Interrupt
+         000061 0000 
+         000063 08%  
+      77              
+      78 000068 EA    SARADC:         .ivec    dummy_isr                              ; SAR ADC Interrupt
+         000069 0000 
+         00006b 08%  
+      79              
+      80 000070 EA    XMIT2:          .ivec    dummy_isr                  ; I2S2 Tx Interrupt
+         000071 0000 
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 20:30:04 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+..\asm\vector.asm                                                    PAGE    3
+
+         000073 08%  
+      81              
+      82 000078 EA    RCV2:           .ivec    dummy_isr                  ; I2S2 Rx Interrupt
+         000079 0000 
+         00007b 08%  
+      83              
+      84 000080 EA    XMIT3:          .ivec    dummy_isr                  ; I2S3 Tx Interrupt
+         000081 0000 
+         000083 08%  
+      85              
+      86 000088 EA    RCV3:           .ivec    dummy_isr                  ; I2S3 Rx Interrupt
+         000089 0000 
+         00008b 08%  
+      87              
+      88 000090 EA    RTC:            .ivec    _RTC_Isr                               ; RTC interrupt
+         000091 0000 
+         000093 00%  
+      89              
+      90 000098 EA    SPI:            .ivec    dummy_isr                              ; SPI Receive Interrupt
+         000099 0000 
+         00009b 08%  
+      91              
+      92 0000a0 EA    USB:            .ivec    dummy_isr                              ; USB Transmit Interrupt
+         0000a1 0000 
+         0000a3 08%  
+      93              
+      94 0000a8 EA    GPIO:           .ivec    dummy_isr                              ; GPIO Interrupt
+         0000a9 0000 
+         0000ab 08%  
+      95              
+      96 0000b0 EA    EMIF:       .ivec    dummy_isr                      ; EMIF Interrupt
+         0000b1 0000 
+         0000b3 08%  
+      97              
+      98 0000b8 EA    I2C:            .ivec    dummy_isr                              ; IIC interrupt
+         0000b9 0000 
+         0000bb 08%  
+      99              
+     100 0000c0       BERRIV:
+     101 0000c0 EA    IV24:           .ivec    dummy_isr   ; Bus error interrupt
+         0000c1 0000 
+         0000c3 08%  
+     102              
+     103              ;    .ref  _DLOGINT_isr 
+     104 0000c8       DLOGIV:
+     105 0000c8 EA    IV25:           .ivec   dummy_isr  ; Data log (RTDX) interrupt
+         0000c9 0000 
+         0000cb 08%  
+     106              
+     107              ;       .ref _RTOSINT_isr
+     108 0000d0       RTOSIV:
+     109 0000d0 EA    IV26:           .ivec dummy_isr  ; Real-time OS interrupt
+         0000d1 0000 
+         0000d3 08%  
+     110 0000d8 EA    IV27:           .ivec dummy_isr  ; General-purpose software-only interrupt
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 20:30:04 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+..\asm\vector.asm                                                    PAGE    4
+
+         0000d9 0000 
+         0000db 08%  
+     111 0000e0 EA    IV28:           .ivec dummy_isr  ; General-purpose software-only interrupt
+         0000e1 0000 
+         0000e3 08%  
+     112 0000e8 EA    IV29:           .ivec dummy_isr  ; General-purpose software-only interrupt
+         0000e9 0000 
+         0000eb 08%  
+     113 0000f0 EA    IV30:           .ivec dummy_isr  ; General-purpose software-only interrupt
+         0000f1 0000 
+         0000f3 08%  
+     114 0000f8 EA    IV31:           .ivec dummy_isr  ; General-purpose software-only interrupt
+         0000f9 0000 
+         0000fb 08%  
+     115              
+     116              
+     117              ;****************************************************************************
+     118              ;* Reset 
+     119              ;****************************************************************************
+     120              
+     121 000000                       .text
+     122                              .mmregs
+     123                              .def reset_isr
+     124                              .ref _c_int00
+     125                              .C54CM_off
+     126                      .CPL_on
+     127                       .ARMS_off
+     128              ;            .align 4
+     129                      .align 2                
+     130 000000       reset_isr:
+     131                      ;       *port(#0x1C01) = #0x0                           ; Clear idles
+     132                              bit (ST1, #11) = #1                                     ; Disable interrupts
+ "..\asm\vector.asm", ERROR!   at line 132: [E9999] Syntax Error
+ "..\asm\vector.asm", ERROR!   at line 132: [E9999] Invalid instructionsyntax, Xmem or Ymem expected
+ "..\asm\vector.asm", ERROR!   at line 132: [E9999] Invalid mnemonic specified
+     133                      @IVPD_L = #(_RST >> 8) || mmap()
+ "..\asm\vector.asm", ERROR!   at line 133: [E9999] Illegal directive or mnemonic
+     134                      @IVPH_L = #(_RST >> 8) || mmap()
+ "..\asm\vector.asm", ERROR!   at line 134: [E9999] Illegal directive or mnemonic
+     135                               bit(ST3,#7) = #0               ; Clear bus error interrupts
+ "..\asm\vector.asm", ERROR!   at line 135: [E9999] Syntax Error
+ "..\asm\vector.asm", ERROR!   at line 135: [E9999] Invalid mnemonic specified
+ "..\asm\vector.asm", ERROR!   at line 135: [E9999] Invalid mnemonic specified
+     136                               bit(ST3,#2) = #0               ; turn on clockout port
+ "..\asm\vector.asm", ERROR!   at line 136: [E9999] Syntax Error
+ "..\asm\vector.asm", ERROR!   at line 136: [E9999] Invalid mnemonic specified
+ "..\asm\vector.asm", ERROR!   at line 136: [E9999] Invalid mnemonic specified
+     137                               bit(ST1,#13) = #0              ; shut off XF port
+ "..\asm\vector.asm", ERROR!   at line 137: [E9999] Syntax Error
+ "..\asm\vector.asm", ERROR!   at line 137: [E9999] Invalid mnemonic specified
+ "..\asm\vector.asm", ERROR!   at line 137: [E9999] Invalid mnemonic specified
+     138              
+     139                              @#IFR0_L = #0xffff || mmap() ; clear all pending interrupts
+ "..\asm\vector.asm", ERROR!   at line 139: [E9999] Illegal directive or mnemonic
+     140                              @#IFR1_L = #0xffff || mmap()
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 20:30:04 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+..\asm\vector.asm                                                    PAGE    5
+
+ "..\asm\vector.asm", ERROR!   at line 140: [E9999] Illegal directive or mnemonic
+     141              
+     142                              *port(#IDLE_ICR) = #(RESERVED_ICR|IPORT_IDLE|HWA_IDLE|DPORT_IDLE)
+ "..\asm\vector.asm", ERROR!   at line 142: [E9999] Illegal directive or mnemonic
+     143 000000 7A00                  idle
+         000002 000C 
+     144              
+     145              ;**********************************************************************************
+     146              ;     Reset all peripherals
+     147              ;**********************************************************************************
+     148                      *port(#0x1C04) = 0x1
+ "..\asm\vector.asm", ERROR!   at line 148: [E9999] Illegal directive or mnemonic
+     149 000004 5E80          nop_16
+     150                      *port(#0x1C05) = 0x00FB ; Reset all peripherals
+ "..\asm\vector.asm", ERROR!   at line 150: [E9999] Illegal directive or mnemonic
+     151 000006 5E80          nop_16
+     152              
+     153              
+     154              ;**********************************************************************************
+     155              ;     Enable EMIF
+     156              ;**********************************************************************************
+     157              
+     158                  *port(IDLE_PCGCR) = #0x0
+ "..\asm\vector.asm", ERROR!   at line 158: [E9999] Illegal directive or mnemonic
+     159              
+     160                  ;/* Config EMIF - System Control Regsiter */
+     161                  *port(#0x1C33) = #0x0  
+ "..\asm\vector.asm", ERROR!   at line 161: [E9999] Illegal directive or mnemonic
+     162              
+     163                  ;// for SRAM in memory card (Async_CE1)
+     164                  ;/* Config EMIF - ASYNC Regsiters */
+     165                  *port(#0x1004) = #0x0080     
+ "..\asm\vector.asm", ERROR!   at line 165: [E9999] Illegal directive or mnemonic
+     166                  *port(#0x1005) = #0x00E4     
+ "..\asm\vector.asm", ERROR!   at line 166: [E9999] Illegal directive or mnemonic
+     167              
+     168                      ;/* Configure as 16-bit data bus */    
+     169                  ;// Async4 ==> Async_CE1 (SRAM)     
+     170                  *port(#0x101C) = #0x40AD     
+ "..\asm\vector.asm", ERROR!   at line 170: [E9999] Illegal directive or mnemonic
+     171                  *port(#0x101D) = #0x0020     
+ "..\asm\vector.asm", ERROR!   at line 171: [E9999] Illegal directive or mnemonic
+     172              
+     173                  ;// Async3 ==> Async_CE0(Flash)
+     174                  *port(#0x1018) = #0xFFFD     
+ "..\asm\vector.asm", ERROR!   at line 174: [E9999] Illegal directive or mnemonic
+     175                  *port(#0x1019) = #0x3FFF     
+ "..\asm\vector.asm", ERROR!   at line 175: [E9999] Illegal directive or mnemonic
+     176              
+     177              
+     178                  ;// do not assign Async_CE0 and Async_CE1 for NAND
+     179                  *port(#0x1060) = #0x0003     
+ "..\asm\vector.asm", ERROR!   at line 179: [E9999] Illegal directive or mnemonic
+     180                  
+     181                  ;// Turn off page mode for all Chip Selects
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 20:30:04 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+..\asm\vector.asm                                                    PAGE    6
+
+     182                  *port(#0x1068) = #0xFCFC     
+ "..\asm\vector.asm", ERROR!   at line 182: [E9999] Illegal directive or mnemonic
+     183                  *port(#0x1069) = #0xFCFC     
+ "..\asm\vector.asm", ERROR!   at line 183: [E9999] Illegal directive or mnemonic
+     184              
+     185                      goto    _c_int00
+ "..\asm\vector.asm", ERROR!   at line 185: [E9999] Syntax Error
+ "..\asm\vector.asm", ERROR!   at line 185: [E9999] Invalid mnemonic specified
+     186                              
+     187              ********************************************************************************
+     188              ** Name     : no_isr                                                          **
+     189              **                                                                            **
+     190              ** Purpose  : Spurious interrupt handler                                      **
+     191              **                                                                            **
+     192              ** Author   :                                                                 **
+     193              **                                                                            **
+     194              ********************************************************************************
+     195 000008                    .text   
+     196 000008       no_isr:      goto no_isr 
+ "..\asm\vector.asm", ERROR!   at line 196: [E9999] Syntax Error
+ "..\asm\vector.asm", ERROR!   at line 196: [E9999] Invalid mnemonic specified
+     197              
+     198              
+     199 000008       dummy_isr:
+     200                  return_int
+ "..\asm\vector.asm", ERROR!   at line 200: [E9999] Syntax Error
+     201               
+     202                  
+     203                  .end
+
+39 Assembly Errors, 3 Assembly Warnings

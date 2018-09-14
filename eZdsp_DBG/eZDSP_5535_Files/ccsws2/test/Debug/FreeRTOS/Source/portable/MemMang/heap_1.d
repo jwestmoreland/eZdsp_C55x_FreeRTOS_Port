@@ -1,13 +1,13 @@
 # FIXED
 
 FreeRTOS/Source/portable/MemMang/heap_1.obj: ../FreeRTOS/Source/portable/MemMang/heap_1.c
-FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stdlib.h
-FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/linkage.h
+FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdlib.h
+FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/linkage.h
 FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/FreeRTOS.h
-FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stddef.h
-FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stdint.h
+FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stddef.h
+FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdint.h
 FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Demo/c5515_CCS/FreeRTOSConfig.h
-FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/c55x.h
+FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/c55x.h
 FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/include/ezdsp5535.h
 FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/tistdtypes.h
 FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/soc.h
@@ -38,13 +38,13 @@ FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws
 FreeRTOS/Source/portable/MemMang/heap_1.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/list.h
 
 ../FreeRTOS/Source/portable/MemMang/heap_1.c: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stdlib.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/linkage.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdlib.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/linkage.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/FreeRTOS.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stddef.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stdint.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stddef.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdint.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Demo/c5515_CCS/FreeRTOSConfig.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/c55x.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/c55x.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/include/ezdsp5535.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/tistdtypes.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/soc.h: 

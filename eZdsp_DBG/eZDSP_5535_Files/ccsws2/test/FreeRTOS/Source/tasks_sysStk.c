@@ -108,6 +108,7 @@ set then don't fill the stack so there is no unnecessary dependency on memset. *
 
 unsigned long wall_clk_ctr = 0;
 struct tagSTACKSTRUCT *stackStruct;
+extern void vApplicationMallocFailedHook( void );
 /*
  * Macros used by vListTask to indicate which state a task is in.
  */
@@ -761,12 +762,6 @@ static void prvAddNewTaskToReadyList( TCB_t *pxNewTCB ) PRIVILEGED_FUNCTION;
 	{
 	TCB_t *pxNewTCB;
 	BaseType_t xReturn;
-
-	stackStruct = ( struct tagSTACKSTRUCT * ) pvPortMalloc( sizeof( struct tagSTACKSTRUCT ) );
-
-	if ( stackStruct != NULL ) {
-		;				// decide what to do
-	}
 	
 	StackType_t *pxStack;
 	StackType_t *pxSysStack;
@@ -869,6 +864,16 @@ static void prvInitialiseNewTask( 	TaskFunction_t pxTaskCode,
 	StackType_t *pxTopOfSysStack;
 	UBaseType_t x;
 
+	stackStruct = ( struct tagSTACKSTRUCT * ) pvPortMalloc( sizeof( struct tagSTACKSTRUCT ) );
+
+	if ( stackStruct != NULL ) {
+		;				// decide what to do
+	} else {
+		vApplicationMallocFailedHook();
+		while(1);
+	}
+
+	
 	#if( portUSING_MPU_WRAPPERS == 1 )
 		/* Should the task be created in privileged mode? */
 		BaseType_t xRunPrivileged;
@@ -2670,6 +2675,8 @@ TCB_t * pxTCB;
 TickType_t xItemValue;
 BaseType_t xSwitchRequired = pdFALSE;
 
+     wall_clk_ctr++;
+
 	/* Called by the portable layer each time a tick interrupt occurs.
 	Increments the tick then checks to see if the new tick value will cause any
 	tasks to be unblocked. */
@@ -3331,8 +3338,8 @@ static portTASK_FUNCTION( prvIdleTask, pvParameters )
 	for( ;; )
 	{
 
-		wall_clk_ctr++;
 		
+
 		/* See if any tasks have deleted themselves - if so then the idle task
 		is responsible for freeing the deleted task's TCB and stack. */
 		prvCheckTasksWaitingTermination();

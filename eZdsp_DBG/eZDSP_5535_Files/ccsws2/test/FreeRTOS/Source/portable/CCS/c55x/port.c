@@ -83,7 +83,7 @@ unsigned long save_xsp = 0x00000000;
 unsigned long save_xssp = 0x00000000;
 unsigned long save_xar7 = 0x00000000;
 unsigned int  save_xar6 = 0x00000000;
-volatile unsigned long tickIRQctr = 0x1;
+unsigned long tickIRQctr = 0x0;
 
 /* We require the address of the pxCurrentTCB variable, but don't want to know
 any details of its type. */
@@ -395,7 +395,9 @@ void pxPortInitialiseStack( StackType_t *pxTopOfStack, StackType_t *pxTopOfSysSt
 	pxTopOfStack--;						// 4
 //	*pxTopOfStack = ( portSTACK_TYPE ) STATUS1_HIGH;
 //	pxTopOfStack--;
-
+//	*pxTopOfStack = ( StackType_t ) ST3_55;
+//	pxTopOfStack--;
+	// 4
 	*pxTopOfSysStack = ( StackType_t ) (((unsigned long)(pxCode))>>16);
 //	pxTopOfSysStack--;			// 5
 

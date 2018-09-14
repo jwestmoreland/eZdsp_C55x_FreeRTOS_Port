@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sun Sep 09 04:48:34 2018                                 *
+;* Date/Time created: Fri Sep 14 03:54:00 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -28,7 +28,7 @@ $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
 	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug")
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1527612 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\0659612 
 	.sect	".text"
 	.align 4
 	.global	_vListInitialise
@@ -52,8 +52,8 @@ $C$DW$2	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxList")
 ;*******************************************************************************
 ;* FUNCTION NAME: vListInitialise                                              *
 ;*                                                                             *
-;*   Function Uses Regs : AR0,XAR0,AR2,XAR2,AR3,XAR3,SP,M40,SATA,SATD,RDM,FRCT,*
-;*                        SMUL                                                 *
+;*   Function Uses Regs : AC0,AC0,AR0,XAR0,AR2,XAR2,AR3,XAR3,SP,M40,SATA,SATD, *
+;*                        RDM,FRCT,SMUL                                        *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
 ;*   Total Frame Size   : 4 words                                              *
 ;*                        (2 return address/alignment)                         *
@@ -79,7 +79,9 @@ $C$DW$3	.dwtag  DW_TAG_variable, DW_AT_name("pxList")
 
 	.dwpsn	file "../FreeRTOS/Source/list.c",line 46,column 2,is_stmt
         MOV dbl(*SP(#0)), XAR3
-        MOV #65535, *AR3(short(#4)) ; |46| 
+        MOV #-1 << #16, AC0 ; |46| 
+        OR #0xffff, AC0, AC0 ; |46| 
+        MOV AC0, dbl(*AR3(short(#4))) ; |46| 
 	.dwpsn	file "../FreeRTOS/Source/list.c",line 50,column 2,is_stmt
         MOV dbl(*SP(#0)), XAR2
         MOV dbl(*SP(#0)), XAR3
@@ -277,7 +279,7 @@ $C$DW$16	.dwtag  DW_TAG_subprogram, DW_AT_name("vListInsert")
 	.dwattr $C$DW$16, DW_AT_TI_begin_file("../FreeRTOS/Source/list.c")
 	.dwattr $C$DW$16, DW_AT_TI_begin_line(0x67)
 	.dwattr $C$DW$16, DW_AT_TI_begin_column(0x06)
-	.dwattr $C$DW$16, DW_AT_TI_max_frame_size(0x08)
+	.dwattr $C$DW$16, DW_AT_TI_max_frame_size(0x0a)
 	.dwpsn	file "../FreeRTOS/Source/list.c",line 104,column 1,is_stmt,address _vListInsert
 
 	.dwfde $C$DW$CIE, _vListInsert
@@ -292,19 +294,19 @@ $C$DW$18	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxNewListItem")
 ;*******************************************************************************
 ;* FUNCTION NAME: vListInsert                                                  *
 ;*                                                                             *
-;*   Function Uses Regs : AR0,XAR0,AR1,XAR1,AR2,XAR2,AR3,XAR3,SP,CARRY,TC1,M40,*
-;*                        SATA,SATD,RDM,FRCT,SMUL                              *
+;*   Function Uses Regs : AC0,AC0,AC1,AC1,AR0,XAR0,AR1,XAR1,AR2,XAR2,AR3,XAR3, *
+;*                        SP,CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL             *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-;*   Total Frame Size   : 8 words                                              *
-;*                        (1 return address/alignment)                         *
-;*                        (7 local values)                                     *
+;*   Total Frame Size   : 10 words                                             *
+;*                        (2 return address/alignment)                         *
+;*                        (8 local values)                                     *
 ;*   Min System Stack   : 1 word                                               *
 ;*******************************************************************************
 _vListInsert:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-        AADD #-7, SP
-	.dwcfi	cfa_offset, 8
+        AADD #-9, SP
+	.dwcfi	cfa_offset, 10
 $C$DW$19	.dwtag  DW_TAG_variable, DW_AT_name("pxList")
 	.dwattr $C$DW$19, DW_AT_TI_symbol_name("_pxList")
 	.dwattr $C$DW$19, DW_AT_type(*$C$DW$T$32)
@@ -325,11 +327,13 @@ $C$DW$22	.dwtag  DW_TAG_variable, DW_AT_name("xValueOfInsertion")
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/list.c",line 106,column 18,is_stmt
         MOV dbl(*SP(#2)), XAR3
-        MOV *AR3, AR1 ; |106| 
-        MOV AR1, *SP(#6) ; |106| 
+        MOV dbl(*AR3), AC0 ; |106| 
+        MOV AC0, dbl(*SP(#6)) ; |106| 
 	.dwpsn	file "../FreeRTOS/Source/list.c",line 122,column 2,is_stmt
-        MOV #65535, AR2 ; |122| 
-        CMPU AR1 != AR2, TC1 ; |122| 
+        MOV #-1 << #16, AC0 ; |122| 
+        MOV dbl(*SP(#6)), AC1 ; |122| 
+        OR #0xffff, AC0, AC0 ; |122| 
+        CMPU AC1 != AC0, TC1 ; |122| 
         BCC $C$L1,TC1 ; |122| 
                                         ; branchcc occurs ; |122| 
 	.dwpsn	file "../FreeRTOS/Source/list.c",line 124,column 3,is_stmt
@@ -348,9 +352,9 @@ $C$L1:
 
 	.dwpsn	file "../FreeRTOS/Source/list.c",line 150,column 61,is_stmt
         MOV dbl(*AR3(short(#2))), XAR3
-        MOV *SP(#6), AR1 ; |150| 
-        MOV *AR3, AR2 ; |150| 
-        CMPU AR2 > AR1, TC1 ; |150| 
+        MOV dbl(*SP(#6)), AC0 ; |150| 
+        MOV dbl(*AR3), AC1 ; |150| 
+        CMPU AC1 > AC0, TC1 ; |150| 
         BCC $C$L3,TC1 ; |150| 
                                         ; branchcc occurs ; |150| 
 $C$L2:    
@@ -361,9 +365,9 @@ $C$DW$L$_vListInsert$4$B:
         MOV XAR3, dbl(*SP(#4))
 	.dwpsn	file "../FreeRTOS/Source/list.c",line 150,column 61,is_stmt
         MOV dbl(*AR3(short(#2))), XAR3
-        MOV *SP(#6), AR1 ; |150| 
-        MOV *AR3, AR2 ; |150| 
-        CMPU AR2 <= AR1, TC1 ; |150| 
+        MOV dbl(*SP(#6)), AC0 ; |150| 
+        MOV dbl(*AR3), AC1 ; |150| 
+        CMPU AC1 <= AC0, TC1 ; |150| 
         BCC $C$L2,TC1 ; |150| 
                                         ; branchcc occurs ; |150| 
 $C$DW$L$_vListInsert$4$E:
@@ -394,7 +398,7 @@ $C$L3:
         MOV dbl(*SP(#0)), XAR3
         ADD #1, *AR3 ; |166| 
 	.dwpsn	file "../FreeRTOS/Source/list.c",line 167,column 1,is_stmt
-        AADD #7, SP
+        AADD #9, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$23	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$23, DW_AT_low_pc(0x00)
@@ -403,7 +407,7 @@ $C$DW$23	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$24	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$24, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\list.asm:$C$L2:1:1536493714")
+	.dwattr $C$DW$24, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\list.asm:$C$L2:1:1536922440")
 	.dwattr $C$DW$24, DW_AT_TI_begin_file("../FreeRTOS/Source/list.c")
 	.dwattr $C$DW$24, DW_AT_TI_begin_line(0x96)
 	.dwattr $C$DW$24, DW_AT_TI_end_line(0x9a)
@@ -565,13 +569,6 @@ $C$DW$T$11	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$11, DW_AT_name("unsigned int")
 	.dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
-$C$DW$T$25	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
-	.dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$25, DW_AT_language(DW_LANG_C)
-$C$DW$32	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$32, DW_AT_type(*$C$DW$T$25)
-$C$DW$T$38	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$38, DW_AT_type(*$C$DW$32)
 $C$DW$T$12	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$12, DW_AT_name("long")
@@ -580,6 +577,13 @@ $C$DW$T$13	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$13, DW_AT_name("unsigned long")
 	.dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+$C$DW$T$25	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
+	.dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$13)
+	.dwattr $C$DW$T$25, DW_AT_language(DW_LANG_C)
+$C$DW$32	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$32, DW_AT_type(*$C$DW$T$25)
+$C$DW$T$38	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$38, DW_AT_type(*$C$DW$32)
 $C$DW$T$14	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$14, DW_AT_name("long long")

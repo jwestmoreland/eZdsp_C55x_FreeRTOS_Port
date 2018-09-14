@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sun Sep 09 04:48:30 2018                                 *
+;* Date/Time created: Fri Sep 14 03:53:56 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -156,7 +156,7 @@ $C$DW$27	.dwtag  DW_TAG_variable, DW_AT_name("usCriticalNesting")
 	.dwattr $C$DW$27, DW_AT_declaration
 	.dwattr $C$DW$27, DW_AT_external
 	.bss	_sLastCheckVariables$1,4,0,0
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\0136413 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1642412 
 	.sect	".text"
 	.align 4
 	.global	_vStartSemaphoreTasks
@@ -169,7 +169,7 @@ $C$DW$28	.dwtag  DW_TAG_subprogram, DW_AT_name("vStartSemaphoreTasks")
 	.dwattr $C$DW$28, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/semtest.c")
 	.dwattr $C$DW$28, DW_AT_TI_begin_line(0x59)
 	.dwattr $C$DW$28, DW_AT_TI_begin_column(0x06)
-	.dwattr $C$DW$28, DW_AT_TI_max_frame_size(0x08)
+	.dwattr $C$DW$28, DW_AT_TI_max_frame_size(0x0a)
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 90,column 1,is_stmt,address _vStartSemaphoreTasks
 
 	.dwfde $C$DW$CIE, _vStartSemaphoreTasks
@@ -183,16 +183,16 @@ $C$DW$29	.dwtag  DW_TAG_formal_parameter, DW_AT_name("uxPriority")
 ;*   Function Uses Regs : AC0,AC0,T0,T1,AR0,XAR0,AR1,XAR1,AR2,XAR2,AR3,XAR3,SP,*
 ;*                        M40,SATA,SATD,RDM,FRCT,SMUL                          *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-;*   Total Frame Size   : 8 words                                              *
-;*                        (1 return address/alignment)                         *
-;*                        (7 local values)                                     *
+;*   Total Frame Size   : 10 words                                             *
+;*                        (2 return address/alignment)                         *
+;*                        (8 local values)                                     *
 ;*   Min System Stack   : 1 word                                               *
 ;*******************************************************************************
 _vStartSemaphoreTasks:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-        AADD #-7, SP
-	.dwcfi	cfa_offset, 8
+        AADD #-9, SP
+	.dwcfi	cfa_offset, 10
 $C$DW$30	.dwtag  DW_TAG_variable, DW_AT_name("uxPriority")
 	.dwattr $C$DW$30, DW_AT_TI_symbol_name("_uxPriority")
 	.dwattr $C$DW$30, DW_AT_type(*$C$DW$T$29)
@@ -211,7 +211,8 @@ $C$DW$33	.dwtag  DW_TAG_variable, DW_AT_name("xBlockTime")
 	.dwattr $C$DW$33, DW_AT_location[DW_OP_bregx 0x24 6]
         MOV T0, *SP(#0) ; |90| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 92,column 18,is_stmt
-        MOV #100, *SP(#6) ; |92| 
+        MOV #100, AC0 ; |92| 
+        MOV AC0, dbl(*SP(#6)) ; |92| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 95,column 2,is_stmt
 $C$DW$34	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$34, DW_AT_low_pc(0x00)
@@ -253,7 +254,7 @@ $C$DW$35	.dwtag  DW_TAG_TI_branch
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 104,column 4,is_stmt
         MOV dbl(*SP(#2)), XAR3
         AMOV #0, XAR1 ; |104| 
-        MOV #0, T0
+        MOV #0, AC0 ; |104| 
         MOV dbl(*AR3), XAR0
 $C$DW$36	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$36, DW_AT_low_pc(0x00)
@@ -261,7 +262,7 @@ $C$DW$36	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$36, DW_AT_TI_call
 
         CALL #_xQueueGenericSend ; |104| 
-||      MOV #0, T1
+||      MOV #0, T0
 
                                         ; call occurs [#_xQueueGenericSend] ; |104| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 107,column 4,is_stmt
@@ -283,7 +284,8 @@ $C$DW$37	.dwtag  DW_TAG_TI_branch
         MOV AC0, dbl(*AR3) ; |110| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 113,column 4,is_stmt
         MOV dbl(*SP(#2)), XAR3
-        MOV #0, *AR3(short(#4)) ; |113| 
+        MOV #0, AC0 ; |113| 
+        MOV AC0, dbl(*AR3(short(#4))) ; |113| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 116,column 4,is_stmt
         MOV #(_prvSemaphoreTest >> 16) << #16, AC0 ; |116| 
         MOV #128, T0 ; |116| 
@@ -358,7 +360,7 @@ $C$DW$41	.dwtag  DW_TAG_TI_branch
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 138,column 4,is_stmt
         MOV dbl(*SP(#4)), XAR3
         AMOV #0, XAR1 ; |138| 
-        MOV #0, T0
+        MOV #0, AC0 ; |138| 
         MOV dbl(*AR3), XAR0
 $C$DW$42	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$42, DW_AT_low_pc(0x00)
@@ -366,7 +368,7 @@ $C$DW$42	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$42, DW_AT_TI_call
 
         CALL #_xQueueGenericSend ; |138| 
-||      MOV #0, T1
+||      MOV #0, T0
 
                                         ; call occurs [#_xQueueGenericSend] ; |138| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 140,column 4,is_stmt
@@ -388,15 +390,15 @@ $C$DW$43	.dwtag  DW_TAG_TI_branch
         MOV AC0, dbl(*AR3) ; |141| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 142,column 4,is_stmt
         MOV dbl(*SP(#4)), XAR3
-        MOV *SP(#6), AR1 ; |142| 
-        MOV AR1, *AR3(short(#4)) ; |142| 
+        MOV dbl(*SP(#6)), AC0 ; |142| 
+        MOV AC0, dbl(*AR3(short(#4))) ; |142| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 144,column 4,is_stmt
         MOV #(_prvSemaphoreTest >> 16) << #16, AC0 ; |144| 
         MOV #128, T0 ; |144| 
         AMOV #0, XAR2 ; |144| 
         OR #(_prvSemaphoreTest & 0xffff), AC0, AC0 ; |144| 
-        AMOV #$C$FSL3, XAR0 ; |144| 
         MOV *SP(#0), T1 ; |144| 
+        AMOV #$C$FSL3, XAR0 ; |144| 
         MOV dbl(*SP(#4)), XAR1
 $C$DW$44	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$44, DW_AT_low_pc(0x00)
@@ -420,7 +422,7 @@ $C$DW$45	.dwtag  DW_TAG_TI_branch
                                         ; call occurs [#_xTaskCreate] ; |145| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 156,column 1,is_stmt
 $C$L2:    
-        AADD #7, SP
+        AADD #9, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$46	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$46, DW_AT_low_pc(0x00)
@@ -454,8 +456,8 @@ $C$DW$48	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
 ;*******************************************************************************
 ;* FUNCTION NAME: prvSemaphoreTest                                             *
 ;*                                                                             *
-;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,T1,AR0,XAR0,AR1,XAR1,AR2,AR3,XAR3,*
-;*                        SP,CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL             *
+;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,AR0,XAR0,AR1,XAR1,AR2,AR3,XAR3,SP,*
+;*                        CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL                *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
 ;*   Total Frame Size   : 14 words                                             *
 ;*                        (2 return address/alignment)                         *
@@ -535,8 +537,8 @@ $C$L3:
         MOV XAR3, dbl(*SP(#4))
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 180,column 2,is_stmt
         MOV dbl(*SP(#2)), XAR3
-        MOV *AR3(short(#4)), AR1 ; |180| 
-        BCC $C$L4,AR1 == #0 ; |180| 
+        MOV dbl(*AR3(short(#4))), AC0 ; |180| 
+        BCC $C$L4,AC0 == #0 ; |180| 
                                         ; branchcc occurs ; |180| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 182,column 3,is_stmt
         MOV #4095, AC0 ; |182| 
@@ -553,7 +555,7 @@ $C$DW$L$_prvSemaphoreTest$7$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 192,column 3,is_stmt
         MOV dbl(*SP(#2)), XAR3
         MOV dbl(*AR3), XAR0
-        MOV *AR3(short(#4)), T0 ; |192| 
+        MOV dbl(*AR3(short(#4))), AC0 ; |192| 
 $C$DW$56	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$56, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$56, DW_AT_name("_xQueueSemaphoreTake")
@@ -627,7 +629,7 @@ $C$DW$L$_prvSemaphoreTest$14$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 216,column 4,is_stmt
         MOV dbl(*SP(#2)), XAR3
         AMOV #0, XAR1 ; |216| 
-        MOV #0, T0
+        MOV #0, AC0 ; |216| 
         MOV dbl(*AR3), XAR0
 $C$DW$57	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$57, DW_AT_low_pc(0x00)
@@ -635,7 +637,7 @@ $C$DW$57	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$57, DW_AT_TI_call
 
         CALL #_xQueueGenericSend ; |216| 
-||      MOV #0, T1
+||      MOV #0, T0
 
                                         ; call occurs [#_xQueueGenericSend] ; |216| 
         BCC $C$L10,T0 != #0 ; |216| 
@@ -672,14 +674,16 @@ $C$L11:
 $C$DW$L$_prvSemaphoreTest$19$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 234,column 4,is_stmt
         MOV dbl(*SP(#2)), XAR3
-        MPYMK *AR3(short(#4)), #10, AC0 ; |234| 
+        MOV dbl(*AR3(short(#4))), AC0 ; |234| 
+        SFTL AC0, #3, AC1 ; |234| 
+        SFTL AC0, #1, AC0 ; |234| 
 $C$DW$58	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$58, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$58, DW_AT_name("_vTaskDelay")
 	.dwattr $C$DW$58, DW_AT_TI_call
 
         CALL #_vTaskDelay ; |234| 
-||      MOV AC0, T0 ; |234| 
+||      ADD AC1, AC0 ; |234| 
 
                                         ; call occurs [#_vTaskDelay] ; |234| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 235,column 3,is_stmt
@@ -690,8 +694,8 @@ $C$L12:
 $C$DW$L$_prvSemaphoreTest$20$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/semtest.c",line 238,column 4,is_stmt
         MOV dbl(*SP(#2)), XAR3
-        MOV *AR3(short(#4)), AR1 ; |238| 
-        BCC $C$L5,AR1 != #0 ; |238| 
+        MOV dbl(*AR3(short(#4))), AC0 ; |238| 
+        BCC $C$L5,AC0 != #0 ; |238| 
                                         ; branchcc occurs ; |238| 
 $C$DW$L$_prvSemaphoreTest$20$E:
 $C$DW$L$_prvSemaphoreTest$21$B:
@@ -709,7 +713,7 @@ $C$DW$L$_prvSemaphoreTest$21$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$60	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$60, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\semtest.asm:$C$L5:1:1536493711")
+	.dwattr $C$DW$60, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\semtest.asm:$C$L5:1:1536922436")
 	.dwattr $C$DW$60, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/semtest.c")
 	.dwattr $C$DW$60, DW_AT_TI_begin_line(0xbd)
 	.dwattr $C$DW$60, DW_AT_TI_end_line(0xf6)
@@ -751,7 +755,7 @@ $C$DW$72	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$72, DW_AT_high_pc($C$DW$L$_prvSemaphoreTest$19$E)
 
 $C$DW$73	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$73, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\semtest.asm:$C$L7:2:1536493711")
+	.dwattr $C$DW$73, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\semtest.asm:$C$L7:2:1536922436")
 	.dwattr $C$DW$73, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/semtest.c")
 	.dwattr $C$DW$73, DW_AT_TI_begin_line(0xcd)
 	.dwattr $C$DW$73, DW_AT_TI_end_line(0xd4)
@@ -879,7 +883,7 @@ $C$DW$81	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$82	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$82, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\semtest.asm:$C$L13:1:1536493711")
+	.dwattr $C$DW$82, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\semtest.asm:$C$L13:1:1536922436")
 	.dwattr $C$DW$82, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/semtest.c")
 	.dwattr $C$DW$82, DW_AT_TI_begin_line(0x100)
 	.dwattr $C$DW$82, DW_AT_TI_end_line(0x108)
@@ -1076,27 +1080,20 @@ $C$DW$T$11	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$11, DW_AT_name("unsigned int")
 	.dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
-$C$DW$T$27	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
-	.dwattr $C$DW$T$27, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$27, DW_AT_language(DW_LANG_C)
 $C$DW$99	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$99, DW_AT_type(*$C$DW$T$27)
-$C$DW$T$46	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$46, DW_AT_type(*$C$DW$99)
-$C$DW$100	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$100, DW_AT_type(*$C$DW$T$11)
+	.dwattr $C$DW$99, DW_AT_type(*$C$DW$T$11)
 $C$DW$T$77	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$77, DW_AT_type(*$C$DW$100)
+	.dwattr $C$DW$T$77, DW_AT_type(*$C$DW$99)
 $C$DW$T$37	.dwtag  DW_TAG_typedef, DW_AT_name("size_t")
 	.dwattr $C$DW$T$37, DW_AT_type(*$C$DW$T$11)
 	.dwattr $C$DW$T$37, DW_AT_language(DW_LANG_C)
 $C$DW$T$59	.dwtag  DW_TAG_typedef, DW_AT_name("uint16_t")
 	.dwattr $C$DW$T$59, DW_AT_type(*$C$DW$T$11)
 	.dwattr $C$DW$T$59, DW_AT_language(DW_LANG_C)
-$C$DW$101	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$101, DW_AT_type(*$C$DW$T$59)
+$C$DW$100	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$100, DW_AT_type(*$C$DW$T$59)
 $C$DW$T$60	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$60, DW_AT_type(*$C$DW$101)
+	.dwattr $C$DW$T$60, DW_AT_type(*$C$DW$100)
 $C$DW$T$12	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$12, DW_AT_name("long")
@@ -1105,6 +1102,13 @@ $C$DW$T$13	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$13, DW_AT_name("unsigned long")
 	.dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+$C$DW$T$27	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
+	.dwattr $C$DW$T$27, DW_AT_type(*$C$DW$T$13)
+	.dwattr $C$DW$T$27, DW_AT_language(DW_LANG_C)
+$C$DW$101	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$101, DW_AT_type(*$C$DW$T$27)
+$C$DW$T$46	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$46, DW_AT_type(*$C$DW$101)
 $C$DW$T$24	.dwtag  DW_TAG_typedef, DW_AT_name("uint32_t")
 	.dwattr $C$DW$T$24, DW_AT_type(*$C$DW$T$13)
 	.dwattr $C$DW$T$24, DW_AT_language(DW_LANG_C)

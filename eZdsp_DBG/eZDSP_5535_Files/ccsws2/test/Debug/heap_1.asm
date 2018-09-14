@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sun Sep 09 04:48:41 2018                                 *
+;* Date/Time created: Fri Sep 14 03:54:07 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -61,7 +61,7 @@ $C$DW$3	.dwtag  DW_TAG_subprogram, DW_AT_name("vApplicationMallocFailedHook")
 	.dwattr $C$DW$3, DW_AT_TI_symbol_name("_vApplicationMallocFailedHook")
 	.dwattr $C$DW$3, DW_AT_declaration
 	.dwattr $C$DW$3, DW_AT_external
-	.bss	_ucHeap,7000,0,0
+	.bss	_ucHeap,5000,0,0
 $C$DW$4	.dwtag  DW_TAG_variable, DW_AT_name("ucHeap")
 	.dwattr $C$DW$4, DW_AT_TI_symbol_name("_ucHeap")
 	.dwattr $C$DW$4, DW_AT_type(*$C$DW$T$25)
@@ -72,7 +72,7 @@ $C$DW$5	.dwtag  DW_TAG_variable, DW_AT_name("xNextFreeByte")
 	.dwattr $C$DW$5, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$5, DW_AT_location[DW_OP_addr _xNextFreeByte]
 	.bss	_pucAlignedHeap$1,2,0,2
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\0175212 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\0791212 
 	.sect	".text"
 	.align 4
 	.global	_pvPortMalloc
@@ -159,7 +159,7 @@ $C$DW$11	.dwtag  DW_TAG_TI_branch
 $C$L2:    
 	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 94,column 3,is_stmt
         MOV *SP(#0), AR1 ; |94| 
-        MOV #6996, AR2 ; |94| 
+        MOV #4996, AR2 ; |94| 
         ADD *(#_xNextFreeByte), AR1, AR1 ; |94| 
         CMPU AR1 >= AR2, TC1 ; |94| 
         BCC $C$L3,TC1 ; |94| 
@@ -345,7 +345,7 @@ _xPortGetFreeHeapSize:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
 	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 142,column 2,is_stmt
-        MOV #6996, AC0 ; |142| 
+        MOV #4996, AC0 ; |142| 
         SUB uns(*(#_xNextFreeByte)), AC0, AC0 ; |142| 
 	.dwpsn	file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 143,column 1,is_stmt
         MOV AC0, T0 ; |142| 
@@ -391,9 +391,9 @@ $C$DW$T$24	.dwtag  DW_TAG_typedef, DW_AT_name("uint8_t")
 $C$DW$T$25	.dwtag  DW_TAG_array_type
 	.dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$24)
 	.dwattr $C$DW$T$25, DW_AT_language(DW_LANG_C)
-	.dwattr $C$DW$T$25, DW_AT_byte_size(0x1b58)
+	.dwattr $C$DW$T$25, DW_AT_byte_size(0x1388)
 $C$DW$23	.dwtag  DW_TAG_subrange_type
-	.dwattr $C$DW$23, DW_AT_upper_bound(0x1b57)
+	.dwattr $C$DW$23, DW_AT_upper_bound(0x1387)
 	.dwendtag $C$DW$T$25
 
 $C$DW$T$26	.dwtag  DW_TAG_pointer_type

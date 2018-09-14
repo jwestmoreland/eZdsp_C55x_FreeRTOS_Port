@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sun Sep 09 04:48:56 2018                                 *
+;* Date/Time created: Fri Sep 14 03:54:21 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -42,7 +42,7 @@ $C$DW$2	.dwtag  DW_TAG_variable, DW_AT_name("i2cHandle")
 	.dwattr $C$DW$2, DW_AT_location[DW_OP_addr _i2cHandle]
 	.dwattr $C$DW$2, DW_AT_type(*$C$DW$T$63)
 	.dwattr $C$DW$2, DW_AT_external
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1459612 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\2169212 
 	.sect	".text"
 	.align 4
 	.global	_I2C_init
@@ -185,7 +185,7 @@ $C$DW$8	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$9	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$9, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2c.asm:$C$L2:1:1536493736")
+	.dwattr $C$DW$9, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2c.asm:$C$L2:1:1536922461")
 	.dwattr $C$DW$9, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_i2c.c")
 	.dwattr $C$DW$9, DW_AT_TI_begin_line(0x55)
 	.dwattr $C$DW$9, DW_AT_TI_end_line(0x56)
@@ -1216,7 +1216,7 @@ $C$DW$48	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$49	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$49, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2c.asm:$C$L25:1:1536493736")
+	.dwattr $C$DW$49, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2c.asm:$C$L25:1:1536922461")
 	.dwattr $C$DW$49, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_i2c.c")
 	.dwattr $C$DW$49, DW_AT_TI_begin_line(0x21f)
 	.dwattr $C$DW$49, DW_AT_TI_end_line(0x243)
@@ -1237,7 +1237,7 @@ $C$DW$54	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$54, DW_AT_high_pc($C$DW$L$_I2C_write$25$E)
 
 $C$DW$55	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$55, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2c.asm:$C$L26:2:1536493736")
+	.dwattr $C$DW$55, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2c.asm:$C$L26:2:1536922461")
 	.dwattr $C$DW$55, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_i2c.c")
 	.dwattr $C$DW$55, DW_AT_TI_begin_line(0x222)
 	.dwattr $C$DW$55, DW_AT_TI_end_line(0x22a)
@@ -1251,7 +1251,7 @@ $C$DW$57	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$58	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$58, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2c.asm:$C$L29:2:1536493736")
+	.dwattr $C$DW$58, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2c.asm:$C$L29:2:1536922461")
 	.dwattr $C$DW$58, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_i2c.c")
 	.dwattr $C$DW$58, DW_AT_TI_begin_line(0x234)
 	.dwattr $C$DW$58, DW_AT_TI_end_line(0x23d)
@@ -1267,7 +1267,7 @@ $C$DW$60	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$61	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$61, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2c.asm:$C$L19:1:1536493736")
+	.dwattr $C$DW$61, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2c.asm:$C$L19:1:1536922461")
 	.dwattr $C$DW$61, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_i2c.c")
 	.dwattr $C$DW$61, DW_AT_TI_begin_line(0x1f0)
 	.dwattr $C$DW$61, DW_AT_TI_end_line(0x1f7)
@@ -1663,7 +1663,7 @@ $C$DW$82	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$83	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$83, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2c.asm:$C$L41:1:1536493736")
+	.dwattr $C$DW$83, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2c.asm:$C$L41:1:1536922461")
 	.dwattr $C$DW$83, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_i2c.c")
 	.dwattr $C$DW$83, DW_AT_TI_begin_line(0x2cf)
 	.dwattr $C$DW$83, DW_AT_TI_end_line(0x2ea)
@@ -1681,7 +1681,7 @@ $C$DW$87	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$87, DW_AT_high_pc($C$DW$L$_I2C_read$23$E)
 
 $C$DW$88	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$88, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2c.asm:$C$L42:2:1536493736")
+	.dwattr $C$DW$88, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2c.asm:$C$L42:2:1536922461")
 	.dwattr $C$DW$88, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_i2c.c")
 	.dwattr $C$DW$88, DW_AT_TI_begin_line(0x2d2)
 	.dwattr $C$DW$88, DW_AT_TI_end_line(0x2da)
@@ -1697,7 +1697,7 @@ $C$DW$90	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$91	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$91, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2c.asm:$C$L38:1:1536493736")
+	.dwattr $C$DW$91, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_i2c.asm:$C$L38:1:1536922461")
 	.dwattr $C$DW$91, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_i2c.c")
 	.dwattr $C$DW$91, DW_AT_TI_begin_line(0x2bf)
 	.dwattr $C$DW$91, DW_AT_TI_end_line(0x2c6)

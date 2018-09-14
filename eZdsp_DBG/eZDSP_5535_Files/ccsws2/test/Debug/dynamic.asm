@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sun Sep 09 04:48:28 2018                                 *
+;* Date/Time created: Fri Sep 14 03:53:54 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -253,7 +253,7 @@ $C$DW$42	.dwtag  DW_TAG_variable, DW_AT_name("usCriticalNesting")
 	.bss	_ulValueToSend$1,2,0,2
 	.bss	_usLastTaskCheck$2,1,0,0
 	.bss	_ulLastExpectedValue$3,2,0,2
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\2134412 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\2088012 
 	.sect	".text"
 	.align 4
 	.global	_vStartDynamicPriorityTasks
@@ -486,7 +486,7 @@ $C$DW$L$_vLimitedIncrementTask$3$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$57	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$57, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L2:1:1536493708")
+	.dwattr $C$DW$57, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L2:1:1536922434")
 	.dwattr $C$DW$57, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/dynamic.c")
 	.dwattr $C$DW$57, DW_AT_TI_begin_line(0xb9)
 	.dwattr $C$DW$57, DW_AT_TI_end_line(0xc2)
@@ -596,7 +596,7 @@ $C$DW$L$_vContinuousIncrementTask$2$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$68	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$68, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L3:1:1536493708")
+	.dwattr $C$DW$68, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L3:1:1536922434")
 	.dwattr $C$DW$68, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/dynamic.c")
 	.dwattr $C$DW$68, DW_AT_TI_begin_line(0xd7)
 	.dwattr $C$DW$68, DW_AT_TI_end_line(0xe7)
@@ -632,8 +632,8 @@ $C$DW$71	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
 ;*******************************************************************************
 ;* FUNCTION NAME: vCounterControlTask                                          *
 ;*                                                                             *
-;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,T2,AR0,XAR0,AR1,AR2,SP,CARRY,TC1, *
-;*                        M40,SATA,SATD,RDM,FRCT,SMUL                          *
+;*   Function Uses Regs : AC0,AC0,AC1,AC1,T2,AR0,XAR0,AR1,AR2,SP,CARRY,TC1,M40,*
+;*                        SATA,SATD,RDM,FRCT,SMUL                              *
 ;*   Save On Entry Regs : T2                                                   *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
 ;*   Total Frame Size   : 8 words                                              *
@@ -708,7 +708,7 @@ $C$DW$77	.dwtag  DW_TAG_TI_branch
         CALL #_vTaskResume ; |271| 
                                         ; call occurs [#_vTaskResume] ; |271| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/dynamic.c",line 284,column 4,is_stmt
-        MOV #62, T0 ; |284| 
+        MOV #128, AC0 ; |284| 
 $C$DW$78	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$78, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$78, DW_AT_name("_vTaskDelay")
@@ -839,7 +839,7 @@ $C$DW$L$_vCounterControlTask$12$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$84	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$84, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L4:1:1536493708")
+	.dwattr $C$DW$84, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L4:1:1536922434")
 	.dwattr $C$DW$84, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/dynamic.c")
 	.dwattr $C$DW$84, DW_AT_TI_begin_line(0xf7)
 	.dwattr $C$DW$84, DW_AT_TI_end_line(0x161)
@@ -869,7 +869,7 @@ $C$DW$92	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$92, DW_AT_high_pc($C$DW$L$_vCounterControlTask$12$E)
 
 $C$DW$93	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$93, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L5:2:1536493708")
+	.dwattr $C$DW$93, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L5:2:1536922434")
 	.dwattr $C$DW$93, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/dynamic.c")
 	.dwattr $C$DW$93, DW_AT_TI_begin_line(0xff)
 	.dwattr $C$DW$93, DW_AT_TI_end_line(0x12b)
@@ -917,7 +917,7 @@ $C$DW$99	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
 ;*******************************************************************************
 ;* FUNCTION NAME: vQueueSendWhenSuspendedTask                                  *
 ;*                                                                             *
-;*   Function Uses Regs : AC0,AC0,T0,T1,T2,AR0,XAR0,AR1,XAR1,SP,CARRY,TC1,M40, *
+;*   Function Uses Regs : AC0,AC0,T0,T2,AR0,XAR0,AR1,XAR1,SP,CARRY,TC1,M40,    *
 ;*                        SATA,SATD,RDM,FRCT,SMUL                              *
 ;*   Save On Entry Regs : T2                                                   *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
@@ -963,7 +963,7 @@ $C$DW$102	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$102, DW_AT_TI_call
 
         CALL #_xQueueGenericSend ; |369| 
-||      MOV #0, T1
+||      MOV #0, AC0 ; |369| 
 
                                         ; call occurs [#_xQueueGenericSend] ; |369| 
         CMP T0 == T2, TC1 ; |369| 
@@ -984,7 +984,7 @@ $C$DW$103	.dwtag  DW_TAG_TI_branch
         CALL #_xTaskResumeAll ; |374| 
                                         ; call occurs [#_xTaskResumeAll] ; |374| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/dynamic.c",line 376,column 3,is_stmt
-        MOV #62, T0 ; |376| 
+        MOV #128, AC0 ; |376| 
 $C$DW$104	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$104, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$104, DW_AT_name("_vTaskDelay")
@@ -1004,7 +1004,7 @@ $C$DW$L$_vQueueSendWhenSuspendedTask$4$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$105	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$105, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L10:1:1536493708")
+	.dwattr $C$DW$105, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L10:1:1536922434")
 	.dwattr $C$DW$105, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/dynamic.c")
 	.dwattr $C$DW$105, DW_AT_TI_begin_line(0x16c)
 	.dwattr $C$DW$105, DW_AT_TI_end_line(0x17b)
@@ -1098,7 +1098,7 @@ $C$DW$116	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$116, DW_AT_TI_call
 
         CALL #_xQueueReceive ; |404| 
-||      MOV #0, T0
+||      MOV #0, AC0 ; |404| 
 
                                         ; call occurs [#_xQueueReceive] ; |404| 
         MOV T0, *SP(#4) ; |404| 
@@ -1161,7 +1161,7 @@ $C$DW$L$_vQueueReceiveWhenSuspendedTask$8$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$119	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$119, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L12:1:1536493708")
+	.dwattr $C$DW$119, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L12:1:1536922434")
 	.dwattr $C$DW$119, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/dynamic.c")
 	.dwattr $C$DW$119, DW_AT_TI_begin_line(0x189)
 	.dwattr $C$DW$119, DW_AT_TI_end_line(0x1b1)
@@ -1426,28 +1426,21 @@ $C$DW$T$11	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$11, DW_AT_name("unsigned int")
 	.dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
-$C$DW$T$33	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
-	.dwattr $C$DW$T$33, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$33, DW_AT_language(DW_LANG_C)
 $C$DW$140	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$140, DW_AT_type(*$C$DW$T$33)
-$C$DW$T$34	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$34, DW_AT_type(*$C$DW$140)
-$C$DW$141	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$141, DW_AT_type(*$C$DW$T$11)
+	.dwattr $C$DW$140, DW_AT_type(*$C$DW$T$11)
 $C$DW$T$70	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$70, DW_AT_type(*$C$DW$141)
+	.dwattr $C$DW$T$70, DW_AT_type(*$C$DW$140)
 $C$DW$T$55	.dwtag  DW_TAG_typedef, DW_AT_name("uint16_t")
 	.dwattr $C$DW$T$55, DW_AT_type(*$C$DW$T$11)
 	.dwattr $C$DW$T$55, DW_AT_language(DW_LANG_C)
+$C$DW$141	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$141, DW_AT_type(*$C$DW$T$55)
+$C$DW$T$56	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$56, DW_AT_type(*$C$DW$141)
 $C$DW$142	.dwtag  DW_TAG_TI_far_type
 	.dwattr $C$DW$142, DW_AT_type(*$C$DW$T$55)
-$C$DW$T$56	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$56, DW_AT_type(*$C$DW$142)
-$C$DW$143	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$143, DW_AT_type(*$C$DW$T$55)
 $C$DW$T$71	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$71, DW_AT_type(*$C$DW$143)
+	.dwattr $C$DW$T$71, DW_AT_type(*$C$DW$142)
 $C$DW$T$12	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$12, DW_AT_name("long")
@@ -1456,6 +1449,13 @@ $C$DW$T$13	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$13, DW_AT_name("unsigned long")
 	.dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+$C$DW$T$33	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
+	.dwattr $C$DW$T$33, DW_AT_type(*$C$DW$T$13)
+	.dwattr $C$DW$T$33, DW_AT_language(DW_LANG_C)
+$C$DW$143	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$143, DW_AT_type(*$C$DW$T$33)
+$C$DW$T$34	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$34, DW_AT_type(*$C$DW$143)
 $C$DW$T$72	.dwtag  DW_TAG_typedef, DW_AT_name("uint32_t")
 	.dwattr $C$DW$T$72, DW_AT_type(*$C$DW$T$13)
 	.dwattr $C$DW$T$72, DW_AT_language(DW_LANG_C)

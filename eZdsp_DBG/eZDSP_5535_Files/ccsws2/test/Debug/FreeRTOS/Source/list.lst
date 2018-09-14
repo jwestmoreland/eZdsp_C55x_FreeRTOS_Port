@@ -1,12 +1,12 @@
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE    1
 
-    1012              ; Temporary Registers Used: None
+    1016              ; Temporary Registers Used: None
        1              ;*******************************************************************************
        2              ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-       3              ;* Date/Time created: Sun Sep 09 04:48:34 2018                                 *
+       3              ;* Date/Time created: Fri Sep 14 03:54:00 2018                                 *
        4              ;*******************************************************************************
        5                      .compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --si
        6                      .mmregs
@@ -58,13 +58,13 @@ list.asm                                                             PAGE    1
       52              ;*******************************************************************************
       53              ;* FUNCTION NAME: vListInitialise                                              *
       54              ;*                                                                             *
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE    2
 
-      55              ;*   Function Uses Regs : AR0,XAR0,AR2,XAR2,AR3,XAR3,SP,M40,SATA,SATD,RDM,FRCT,*
-      56              ;*                        SMUL                                                 *
+      55              ;*   Function Uses Regs : AC0,AC0,AR0,XAR0,AR2,XAR2,AR3,XAR3,SP,M40,SATA,SATD, *
+      56              ;*                        RDM,FRCT,SMUL                                        *
       57              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
       58              ;*   Total Frame Size   : 4 words                                              *
       59              ;*                        (2 return address/alignment)                         *
@@ -96,1142 +96,1156 @@ list.asm                                                             PAGE    2
       80                      .dwpsn  file "../FreeRTOS/Source/list.c",line 46,column 2,is_stmt
       81 000011 ED00          MOV dbl(*SP(#0)), XAR3
          000013 BF   
-      82 000014 FB79          MOV #65535, *AR3(short(#4)) ; |46| 
-         000016 FFFF 
-      83                      .dwpsn  file "../FreeRTOS/Source/list.c",line 50,column 2,is_stmt
-      84 000018 ED00          MOV dbl(*SP(#0)), XAR2
-         00001a AF   
-      85 00001b ED00          MOV dbl(*SP(#0)), XAR3
-         00001d BF   
-      86              
-      87 00001e 8E7D          MOV XAR2, dbl(*AR3(short(#6)))
-         000020 AB14 
-         000022 A504 
-      88              ||      AADD #4, AR2 ; |50| 
-      89              
-      90                      .dwpsn  file "../FreeRTOS/Source/list.c",line 51,column 2,is_stmt
-      91 000024 ED00          MOV dbl(*SP(#0)), XAR3
-         000026 BF   
-      92 000027 ED00          MOV dbl(*SP(#0)), XAR2
-         000029 AF   
-      93 00002a 1404          AADD #4, AR3 ; |51| 
-         00002c B4   
-      94 00002d EB4D          MOV XAR3, dbl(*AR2(#8))
-         00002f B500 
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+      82 000014 7AFF          MOV #-1 << #16, AC0 ; |46| 
+         000016 FF0A 
+      83 000018 7EFF          OR #0xffff, AC0, AC0 ; |46| 
+         00001a FF00 
+      84 00001c EB79          MOV AC0, dbl(*AR3(short(#4))) ; |46| 
+         00001e 08   
+      85                      .dwpsn  file "../FreeRTOS/Source/list.c",line 50,column 2,is_stmt
+      86 00001f ED00          MOV dbl(*SP(#0)), XAR2
+         000021 AF   
+      87 000022 ED00          MOV dbl(*SP(#0)), XAR3
+         000024 BF   
+      88              
+      89 000025 8E7D          MOV XAR2, dbl(*AR3(short(#6)))
+         000027 AB14 
+         000029 A504 
+      90              ||      AADD #4, AR2 ; |50| 
+      91              
+      92                      .dwpsn  file "../FreeRTOS/Source/list.c",line 51,column 2,is_stmt
+      93 00002b ED00          MOV dbl(*SP(#0)), XAR3
+         00002d BF   
+      94 00002e ED00          MOV dbl(*SP(#0)), XAR2
+         000030 AF   
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE    3
 
-         000031 08   
-      95                      .dwpsn  file "../FreeRTOS/Source/list.c",line 53,column 2,is_stmt
-      96 000032 ED00          MOV dbl(*SP(#0)), XAR3
-         000034 BF   
-      97 000035 E661          MOV #0, *AR3 ; |53| 
-         000037 00   
-      98                      .dwpsn  file "../FreeRTOS/Source/list.c",line 59,column 1,is_stmt
-      99 000038 4E03          AADD #3, SP
-     100                      .dwcfi  cfa_offset, 1
-     101              $C$DW$4 .dwtag  DW_TAG_TI_branch
-     102                      .dwattr $C$DW$4, DW_AT_low_pc(0x00)
-     103                      .dwattr $C$DW$4, DW_AT_TI_return
-     104 00003a 4804          RET
-     105                                                      ; return occurs
-     106                      .dwattr $C$DW$1, DW_AT_TI_end_file("../FreeRTOS/Source/list.c")
-     107                      .dwattr $C$DW$1, DW_AT_TI_end_line(0x3b)
-     108                      .dwattr $C$DW$1, DW_AT_TI_end_column(0x01)
-     109                      .dwendentry
-     110                      .dwendtag $C$DW$1
-     111              
-     112 00003c               .sect   ".text"
-     113                      .align 4
-     114                      .global _vListInitialiseItem
-     115              
-     116              $C$DW$5 .dwtag  DW_TAG_subprogram, DW_AT_name("vListInitialiseItem")
-     117                      .dwattr $C$DW$5, DW_AT_low_pc(_vListInitialiseItem)
-     118                      .dwattr $C$DW$5, DW_AT_high_pc(0x00)
-     119                      .dwattr $C$DW$5, DW_AT_TI_symbol_name("_vListInitialiseItem")
-     120                      .dwattr $C$DW$5, DW_AT_external
-     121                      .dwattr $C$DW$5, DW_AT_TI_begin_file("../FreeRTOS/Source/list.c")
-     122                      .dwattr $C$DW$5, DW_AT_TI_begin_line(0x3e)
-     123                      .dwattr $C$DW$5, DW_AT_TI_begin_column(0x06)
-     124                      .dwattr $C$DW$5, DW_AT_TI_max_frame_size(0x04)
-     125                      .dwpsn  file "../FreeRTOS/Source/list.c",line 63,column 1,is_stmt,address _vListInitialiseItem
-     126              
-     127                      .dwfde $C$DW$CIE, _vListInitialiseItem
-     128              $C$DW$6 .dwtag  DW_TAG_formal_parameter, DW_AT_name("pxItem")
-     129                      .dwattr $C$DW$6, DW_AT_TI_symbol_name("_pxItem")
-     130                      .dwattr $C$DW$6, DW_AT_type(*$C$DW$T$34)
-     131                      .dwattr $C$DW$6, DW_AT_location[DW_OP_reg17]
-     132              ;*******************************************************************************
-     133              ;* FUNCTION NAME: vListInitialiseItem                                          *
-     134              ;*                                                                             *
-     135              ;*   Function Uses Regs : AC0,AC0,AR0,XAR0,AR3,XAR3,SP,M40,SATA,SATD,RDM,FRCT, *
-     136              ;*                        SMUL                                                 *
-     137              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-     138              ;*   Total Frame Size   : 4 words                                              *
-     139              ;*                        (2 return address/alignment)                         *
-     140              ;*                        (2 local values)                                     *
-     141              ;*   Min System Stack   : 1 word                                               *
-     142              ;*******************************************************************************
-     143 00003c       _vListInitialiseItem:
-     144                      .dwcfi  cfa_offset, 1
-     145                      .dwcfi  save_reg_to_mem, 91, -1
-     146 00003c 4EFD          AADD #-3, SP
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+      95 000031 1404          AADD #4, AR3 ; |51| 
+         000033 B4   
+      96 000034 EB4D          MOV XAR3, dbl(*AR2(#8))
+         000036 B500 
+         000038 08   
+      97                      .dwpsn  file "../FreeRTOS/Source/list.c",line 53,column 2,is_stmt
+      98 000039 ED00          MOV dbl(*SP(#0)), XAR3
+         00003b BF   
+      99 00003c E661          MOV #0, *AR3 ; |53| 
+         00003e 00   
+     100                      .dwpsn  file "../FreeRTOS/Source/list.c",line 59,column 1,is_stmt
+     101 00003f 4E03          AADD #3, SP
+     102                      .dwcfi  cfa_offset, 1
+     103              $C$DW$4 .dwtag  DW_TAG_TI_branch
+     104                      .dwattr $C$DW$4, DW_AT_low_pc(0x00)
+     105                      .dwattr $C$DW$4, DW_AT_TI_return
+     106 000041 4804          RET
+     107                                                      ; return occurs
+     108                      .dwattr $C$DW$1, DW_AT_TI_end_file("../FreeRTOS/Source/list.c")
+     109                      .dwattr $C$DW$1, DW_AT_TI_end_line(0x3b)
+     110                      .dwattr $C$DW$1, DW_AT_TI_end_column(0x01)
+     111                      .dwendentry
+     112                      .dwendtag $C$DW$1
+     113              
+     114 000043               .sect   ".text"
+     115                      .align 4
+     116                      .global _vListInitialiseItem
+     117              
+     118              $C$DW$5 .dwtag  DW_TAG_subprogram, DW_AT_name("vListInitialiseItem")
+     119                      .dwattr $C$DW$5, DW_AT_low_pc(_vListInitialiseItem)
+     120                      .dwattr $C$DW$5, DW_AT_high_pc(0x00)
+     121                      .dwattr $C$DW$5, DW_AT_TI_symbol_name("_vListInitialiseItem")
+     122                      .dwattr $C$DW$5, DW_AT_external
+     123                      .dwattr $C$DW$5, DW_AT_TI_begin_file("../FreeRTOS/Source/list.c")
+     124                      .dwattr $C$DW$5, DW_AT_TI_begin_line(0x3e)
+     125                      .dwattr $C$DW$5, DW_AT_TI_begin_column(0x06)
+     126                      .dwattr $C$DW$5, DW_AT_TI_max_frame_size(0x04)
+     127                      .dwpsn  file "../FreeRTOS/Source/list.c",line 63,column 1,is_stmt,address _vListInitialiseItem
+     128              
+     129                      .dwfde $C$DW$CIE, _vListInitialiseItem
+     130              $C$DW$6 .dwtag  DW_TAG_formal_parameter, DW_AT_name("pxItem")
+     131                      .dwattr $C$DW$6, DW_AT_TI_symbol_name("_pxItem")
+     132                      .dwattr $C$DW$6, DW_AT_type(*$C$DW$T$34)
+     133                      .dwattr $C$DW$6, DW_AT_location[DW_OP_reg17]
+     134              ;*******************************************************************************
+     135              ;* FUNCTION NAME: vListInitialiseItem                                          *
+     136              ;*                                                                             *
+     137              ;*   Function Uses Regs : AC0,AC0,AR0,XAR0,AR3,XAR3,SP,M40,SATA,SATD,RDM,FRCT, *
+     138              ;*                        SMUL                                                 *
+     139              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     140              ;*   Total Frame Size   : 4 words                                              *
+     141              ;*                        (2 return address/alignment)                         *
+     142              ;*                        (2 local values)                                     *
+     143              ;*   Min System Stack   : 1 word                                               *
+     144              ;*******************************************************************************
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE    4
 
-     147                      .dwcfi  cfa_offset, 4
-     148              $C$DW$7 .dwtag  DW_TAG_variable, DW_AT_name("pxItem")
-     149                      .dwattr $C$DW$7, DW_AT_TI_symbol_name("_pxItem")
-     150                      .dwattr $C$DW$7, DW_AT_type(*$C$DW$T$34)
-     151                      .dwattr $C$DW$7, DW_AT_location[DW_OP_bregx 0x24 0]
-     152 00003e EB00          MOV XAR0, dbl(*SP(#0))
-         000040 85   
-     153                      .dwpsn  file "../FreeRTOS/Source/list.c",line 65,column 2,is_stmt
-     154 000041 ED00          MOV dbl(*SP(#0)), XAR3
-         000043 BF   
-     155 000044 3C00          MOV #0, AC0 ; |65| 
-     156 000046 EB6D          MOV AC0, dbl(*AR3(#8))
-         000048 0800 
-         00004a 08   
-     157                      .dwpsn  file "../FreeRTOS/Source/list.c",line 71,column 1,is_stmt
-     158 00004b 4E03          AADD #3, SP
-     159                      .dwcfi  cfa_offset, 1
-     160              $C$DW$8 .dwtag  DW_TAG_TI_branch
-     161                      .dwattr $C$DW$8, DW_AT_low_pc(0x00)
-     162                      .dwattr $C$DW$8, DW_AT_TI_return
-     163 00004d 4804          RET
-     164                                                      ; return occurs
-     165                      .dwattr $C$DW$5, DW_AT_TI_end_file("../FreeRTOS/Source/list.c")
-     166                      .dwattr $C$DW$5, DW_AT_TI_end_line(0x47)
-     167                      .dwattr $C$DW$5, DW_AT_TI_end_column(0x01)
-     168                      .dwendentry
-     169                      .dwendtag $C$DW$5
-     170              
-     171 00004f               .sect   ".text"
-     172                      .align 4
-     173                      .global _vListInsertEnd
-     174              
-     175              $C$DW$9 .dwtag  DW_TAG_subprogram, DW_AT_name("vListInsertEnd")
-     176                      .dwattr $C$DW$9, DW_AT_low_pc(_vListInsertEnd)
-     177                      .dwattr $C$DW$9, DW_AT_high_pc(0x00)
-     178                      .dwattr $C$DW$9, DW_AT_TI_symbol_name("_vListInsertEnd")
-     179                      .dwattr $C$DW$9, DW_AT_external
-     180                      .dwattr $C$DW$9, DW_AT_TI_begin_file("../FreeRTOS/Source/list.c")
-     181                      .dwattr $C$DW$9, DW_AT_TI_begin_line(0x4a)
-     182                      .dwattr $C$DW$9, DW_AT_TI_begin_column(0x06)
-     183                      .dwattr $C$DW$9, DW_AT_TI_max_frame_size(0x08)
-     184                      .dwpsn  file "../FreeRTOS/Source/list.c",line 75,column 1,is_stmt,address _vListInsertEnd
-     185              
-     186                      .dwfde $C$DW$CIE, _vListInsertEnd
-     187              $C$DW$10        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pxList")
-     188                      .dwattr $C$DW$10, DW_AT_TI_symbol_name("_pxList")
-     189                      .dwattr $C$DW$10, DW_AT_type(*$C$DW$T$32)
-     190                      .dwattr $C$DW$10, DW_AT_location[DW_OP_reg17]
-     191              $C$DW$11        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pxNewListItem")
-     192                      .dwattr $C$DW$11, DW_AT_TI_symbol_name("_pxNewListItem")
-     193                      .dwattr $C$DW$11, DW_AT_type(*$C$DW$T$34)
-     194                      .dwattr $C$DW$11, DW_AT_location[DW_OP_reg19]
-     195              ;*******************************************************************************
-     196              ;* FUNCTION NAME: vListInsertEnd                                               *
-     197              ;*                                                                             *
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+     145 000044       _vListInitialiseItem:
+     146                      .dwcfi  cfa_offset, 1
+     147                      .dwcfi  save_reg_to_mem, 91, -1
+     148 000044 4EFD          AADD #-3, SP
+     149                      .dwcfi  cfa_offset, 4
+     150              $C$DW$7 .dwtag  DW_TAG_variable, DW_AT_name("pxItem")
+     151                      .dwattr $C$DW$7, DW_AT_TI_symbol_name("_pxItem")
+     152                      .dwattr $C$DW$7, DW_AT_type(*$C$DW$T$34)
+     153                      .dwattr $C$DW$7, DW_AT_location[DW_OP_bregx 0x24 0]
+     154 000046 EB00          MOV XAR0, dbl(*SP(#0))
+         000048 85   
+     155                      .dwpsn  file "../FreeRTOS/Source/list.c",line 65,column 2,is_stmt
+     156 000049 ED00          MOV dbl(*SP(#0)), XAR3
+         00004b BF   
+     157 00004c 3C00          MOV #0, AC0 ; |65| 
+     158 00004e EB6D          MOV AC0, dbl(*AR3(#8))
+         000050 0800 
+         000052 08   
+     159                      .dwpsn  file "../FreeRTOS/Source/list.c",line 71,column 1,is_stmt
+     160 000053 4E03          AADD #3, SP
+     161                      .dwcfi  cfa_offset, 1
+     162              $C$DW$8 .dwtag  DW_TAG_TI_branch
+     163                      .dwattr $C$DW$8, DW_AT_low_pc(0x00)
+     164                      .dwattr $C$DW$8, DW_AT_TI_return
+     165 000055 4804          RET
+     166                                                      ; return occurs
+     167                      .dwattr $C$DW$5, DW_AT_TI_end_file("../FreeRTOS/Source/list.c")
+     168                      .dwattr $C$DW$5, DW_AT_TI_end_line(0x47)
+     169                      .dwattr $C$DW$5, DW_AT_TI_end_column(0x01)
+     170                      .dwendentry
+     171                      .dwendtag $C$DW$5
+     172              
+     173 000057               .sect   ".text"
+     174                      .align 4
+     175                      .global _vListInsertEnd
+     176              
+     177              $C$DW$9 .dwtag  DW_TAG_subprogram, DW_AT_name("vListInsertEnd")
+     178                      .dwattr $C$DW$9, DW_AT_low_pc(_vListInsertEnd)
+     179                      .dwattr $C$DW$9, DW_AT_high_pc(0x00)
+     180                      .dwattr $C$DW$9, DW_AT_TI_symbol_name("_vListInsertEnd")
+     181                      .dwattr $C$DW$9, DW_AT_external
+     182                      .dwattr $C$DW$9, DW_AT_TI_begin_file("../FreeRTOS/Source/list.c")
+     183                      .dwattr $C$DW$9, DW_AT_TI_begin_line(0x4a)
+     184                      .dwattr $C$DW$9, DW_AT_TI_begin_column(0x06)
+     185                      .dwattr $C$DW$9, DW_AT_TI_max_frame_size(0x08)
+     186                      .dwpsn  file "../FreeRTOS/Source/list.c",line 75,column 1,is_stmt,address _vListInsertEnd
+     187              
+     188                      .dwfde $C$DW$CIE, _vListInsertEnd
+     189              $C$DW$10        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pxList")
+     190                      .dwattr $C$DW$10, DW_AT_TI_symbol_name("_pxList")
+     191                      .dwattr $C$DW$10, DW_AT_type(*$C$DW$T$32)
+     192                      .dwattr $C$DW$10, DW_AT_location[DW_OP_reg17]
+     193              $C$DW$11        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pxNewListItem")
+     194                      .dwattr $C$DW$11, DW_AT_TI_symbol_name("_pxNewListItem")
+     195                      .dwattr $C$DW$11, DW_AT_type(*$C$DW$T$34)
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE    5
 
-     198              ;*   Function Uses Regs : AR0,XAR0,AR1,XAR1,AR2,XAR2,AR3,XAR3,SP,CARRY,M40,    *
-     199              ;*                        SATA,SATD,RDM,FRCT,SMUL                              *
-     200              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-     201              ;*   Total Frame Size   : 8 words                                              *
-     202              ;*                        (2 return address/alignment)                         *
-     203              ;*                        (6 local values)                                     *
-     204              ;*   Min System Stack   : 1 word                                               *
-     205              ;*******************************************************************************
-     206 000050       _vListInsertEnd:
-     207                      .dwcfi  cfa_offset, 1
-     208                      .dwcfi  save_reg_to_mem, 91, -1
-     209 000050 4EF9          AADD #-7, SP
-     210                      .dwcfi  cfa_offset, 8
-     211              $C$DW$12        .dwtag  DW_TAG_variable, DW_AT_name("pxList")
-     212                      .dwattr $C$DW$12, DW_AT_TI_symbol_name("_pxList")
-     213                      .dwattr $C$DW$12, DW_AT_type(*$C$DW$T$32)
-     214                      .dwattr $C$DW$12, DW_AT_location[DW_OP_bregx 0x24 0]
-     215              $C$DW$13        .dwtag  DW_TAG_variable, DW_AT_name("pxNewListItem")
-     216                      .dwattr $C$DW$13, DW_AT_TI_symbol_name("_pxNewListItem")
-     217                      .dwattr $C$DW$13, DW_AT_type(*$C$DW$T$34)
-     218                      .dwattr $C$DW$13, DW_AT_location[DW_OP_bregx 0x24 2]
-     219              $C$DW$14        .dwtag  DW_TAG_variable, DW_AT_name("pxIndex")
-     220                      .dwattr $C$DW$14, DW_AT_TI_symbol_name("_pxIndex")
-     221                      .dwattr $C$DW$14, DW_AT_type(*$C$DW$T$34)
-     222                      .dwattr $C$DW$14, DW_AT_location[DW_OP_bregx 0x24 4]
-     223 000052 EB04          MOV XAR1, dbl(*SP(#2))
-         000054 95   
-     224 000055 EB00          MOV XAR0, dbl(*SP(#0))
-         000057 85   
-     225                      .dwpsn  file "../FreeRTOS/Source/list.c",line 76,column 20,is_stmt
-     226 000058 ED00          MOV dbl(*SP(#0)), XAR3
-         00005a BF   
-     227 00005b ED75          MOV dbl(*AR3(short(#2))), XAR3
-         00005d BF   
-     228 00005e EB08          MOV XAR3, dbl(*SP(#4))
-         000060 B5   
-     229                      .dwpsn  file "../FreeRTOS/Source/list.c",line 87,column 2,is_stmt
-     230 000061 ED04          MOV dbl(*SP(#2)), XAR3
-         000063 BF   
-     231 000064 ED08          MOV dbl(*SP(#4)), XAR2
-         000066 AF   
-     232 000067 EB75          MOV XAR2, dbl(*AR3(short(#2)))
-         000069 A5   
-     233                      .dwpsn  file "../FreeRTOS/Source/list.c",line 88,column 2,is_stmt
-     234 00006a ED08          MOV dbl(*SP(#4)), XAR3
-         00006c BF   
-     235 00006d ED79          MOV dbl(*AR3(short(#4))), XAR2
-         00006f AF   
-     236 000070 ED04          MOV dbl(*SP(#2)), XAR3
-         000072 BF   
-     237 000073 EB79          MOV XAR2, dbl(*AR3(short(#4)))
-         000075 A5   
-     238                      .dwpsn  file "../FreeRTOS/Source/list.c",line 93,column 2,is_stmt
-     239 000076 ED08          MOV dbl(*SP(#4)), XAR3
-         000078 BF   
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+     196                      .dwattr $C$DW$11, DW_AT_location[DW_OP_reg19]
+     197              ;*******************************************************************************
+     198              ;* FUNCTION NAME: vListInsertEnd                                               *
+     199              ;*                                                                             *
+     200              ;*   Function Uses Regs : AR0,XAR0,AR1,XAR1,AR2,XAR2,AR3,XAR3,SP,CARRY,M40,    *
+     201              ;*                        SATA,SATD,RDM,FRCT,SMUL                              *
+     202              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     203              ;*   Total Frame Size   : 8 words                                              *
+     204              ;*                        (2 return address/alignment)                         *
+     205              ;*                        (6 local values)                                     *
+     206              ;*   Min System Stack   : 1 word                                               *
+     207              ;*******************************************************************************
+     208 000058       _vListInsertEnd:
+     209                      .dwcfi  cfa_offset, 1
+     210                      .dwcfi  save_reg_to_mem, 91, -1
+     211 000058 4EF9          AADD #-7, SP
+     212                      .dwcfi  cfa_offset, 8
+     213              $C$DW$12        .dwtag  DW_TAG_variable, DW_AT_name("pxList")
+     214                      .dwattr $C$DW$12, DW_AT_TI_symbol_name("_pxList")
+     215                      .dwattr $C$DW$12, DW_AT_type(*$C$DW$T$32)
+     216                      .dwattr $C$DW$12, DW_AT_location[DW_OP_bregx 0x24 0]
+     217              $C$DW$13        .dwtag  DW_TAG_variable, DW_AT_name("pxNewListItem")
+     218                      .dwattr $C$DW$13, DW_AT_TI_symbol_name("_pxNewListItem")
+     219                      .dwattr $C$DW$13, DW_AT_type(*$C$DW$T$34)
+     220                      .dwattr $C$DW$13, DW_AT_location[DW_OP_bregx 0x24 2]
+     221              $C$DW$14        .dwtag  DW_TAG_variable, DW_AT_name("pxIndex")
+     222                      .dwattr $C$DW$14, DW_AT_TI_symbol_name("_pxIndex")
+     223                      .dwattr $C$DW$14, DW_AT_type(*$C$DW$T$34)
+     224                      .dwattr $C$DW$14, DW_AT_location[DW_OP_bregx 0x24 4]
+     225 00005a EB04          MOV XAR1, dbl(*SP(#2))
+         00005c 95   
+     226 00005d EB00          MOV XAR0, dbl(*SP(#0))
+         00005f 85   
+     227                      .dwpsn  file "../FreeRTOS/Source/list.c",line 76,column 20,is_stmt
+     228 000060 ED00          MOV dbl(*SP(#0)), XAR3
+         000062 BF   
+     229 000063 ED75          MOV dbl(*AR3(short(#2))), XAR3
+         000065 BF   
+     230 000066 EB08          MOV XAR3, dbl(*SP(#4))
+         000068 B5   
+     231                      .dwpsn  file "../FreeRTOS/Source/list.c",line 87,column 2,is_stmt
+     232 000069 ED04          MOV dbl(*SP(#2)), XAR3
+         00006b BF   
+     233 00006c ED08          MOV dbl(*SP(#4)), XAR2
+         00006e AF   
+     234 00006f EB75          MOV XAR2, dbl(*AR3(short(#2)))
+         000071 A5   
+     235                      .dwpsn  file "../FreeRTOS/Source/list.c",line 88,column 2,is_stmt
+     236 000072 ED08          MOV dbl(*SP(#4)), XAR3
+         000074 BF   
+     237 000075 ED79          MOV dbl(*AR3(short(#4))), XAR2
+         000077 AF   
+     238 000078 ED04          MOV dbl(*SP(#2)), XAR3
+         00007a BF   
+     239 00007b EB79          MOV XAR2, dbl(*AR3(short(#4)))
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE    6
 
-     240 000079 ED79          MOV dbl(*AR3(short(#4))), XAR3
-         00007b BF   
-     241 00007c ED04          MOV dbl(*SP(#2)), XAR2
-         00007e AF   
-     242 00007f EB75          MOV XAR2, dbl(*AR3(short(#2)))
-         000081 A5   
-     243                      .dwpsn  file "../FreeRTOS/Source/list.c",line 94,column 2,is_stmt
-     244 000082 ED08          MOV dbl(*SP(#4)), XAR3
-         000084 BF   
-     245 000085 ED04          MOV dbl(*SP(#2)), XAR2
-         000087 AF   
-     246 000088 EB79          MOV XAR2, dbl(*AR3(short(#4)))
-         00008a A5   
-     247                      .dwpsn  file "../FreeRTOS/Source/list.c",line 97,column 2,is_stmt
-     248 00008b ED04          MOV dbl(*SP(#2)), XAR2
-         00008d AF   
-     249 00008e ED00          MOV dbl(*SP(#0)), XAR3
-         000090 BF   
-     250 000091 EB4D          MOV XAR3, dbl(*AR2(#8))
-         000093 B500 
-         000095 08   
-     251                      .dwpsn  file "../FreeRTOS/Source/list.c",line 99,column 2,is_stmt
-     252 000096 ED00          MOV dbl(*SP(#0)), XAR3
+         00007d A5   
+     240                      .dwpsn  file "../FreeRTOS/Source/list.c",line 93,column 2,is_stmt
+     241 00007e ED08          MOV dbl(*SP(#4)), XAR3
+         000080 BF   
+     242 000081 ED79          MOV dbl(*AR3(short(#4))), XAR3
+         000083 BF   
+     243 000084 ED04          MOV dbl(*SP(#2)), XAR2
+         000086 AF   
+     244 000087 EB75          MOV XAR2, dbl(*AR3(short(#2)))
+         000089 A5   
+     245                      .dwpsn  file "../FreeRTOS/Source/list.c",line 94,column 2,is_stmt
+     246 00008a ED08          MOV dbl(*SP(#4)), XAR3
+         00008c BF   
+     247 00008d ED04          MOV dbl(*SP(#2)), XAR2
+         00008f AF   
+     248 000090 EB79          MOV XAR2, dbl(*AR3(short(#4)))
+         000092 A5   
+     249                      .dwpsn  file "../FreeRTOS/Source/list.c",line 97,column 2,is_stmt
+     250 000093 ED04          MOV dbl(*SP(#2)), XAR2
+         000095 AF   
+     251 000096 ED00          MOV dbl(*SP(#0)), XAR3
          000098 BF   
-     253 000099 F761          ADD #1, *AR3 ; |99| 
-         00009b 0001 
-     254                      .dwpsn  file "../FreeRTOS/Source/list.c",line 100,column 1,is_stmt
-     255 00009d 4E07          AADD #7, SP
-     256                      .dwcfi  cfa_offset, 1
-     257              $C$DW$15        .dwtag  DW_TAG_TI_branch
-     258                      .dwattr $C$DW$15, DW_AT_low_pc(0x00)
-     259                      .dwattr $C$DW$15, DW_AT_TI_return
-     260 00009f 4804          RET
-     261                                                      ; return occurs
-     262                      .dwattr $C$DW$9, DW_AT_TI_end_file("../FreeRTOS/Source/list.c")
-     263                      .dwattr $C$DW$9, DW_AT_TI_end_line(0x64)
-     264                      .dwattr $C$DW$9, DW_AT_TI_end_column(0x01)
-     265                      .dwendentry
-     266                      .dwendtag $C$DW$9
-     267              
-     268 0000a1               .sect   ".text"
-     269                      .align 4
-     270                      .global _vListInsert
-     271              
-     272              $C$DW$16        .dwtag  DW_TAG_subprogram, DW_AT_name("vListInsert")
-     273                      .dwattr $C$DW$16, DW_AT_low_pc(_vListInsert)
-     274                      .dwattr $C$DW$16, DW_AT_high_pc(0x00)
-     275                      .dwattr $C$DW$16, DW_AT_TI_symbol_name("_vListInsert")
-     276                      .dwattr $C$DW$16, DW_AT_external
-     277                      .dwattr $C$DW$16, DW_AT_TI_begin_file("../FreeRTOS/Source/list.c")
-     278                      .dwattr $C$DW$16, DW_AT_TI_begin_line(0x67)
-     279                      .dwattr $C$DW$16, DW_AT_TI_begin_column(0x06)
-     280                      .dwattr $C$DW$16, DW_AT_TI_max_frame_size(0x08)
-     281                      .dwpsn  file "../FreeRTOS/Source/list.c",line 104,column 1,is_stmt,address _vListInsert
-     282              
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+     252 000099 EB4D          MOV XAR3, dbl(*AR2(#8))
+         00009b B500 
+         00009d 08   
+     253                      .dwpsn  file "../FreeRTOS/Source/list.c",line 99,column 2,is_stmt
+     254 00009e ED00          MOV dbl(*SP(#0)), XAR3
+         0000a0 BF   
+     255 0000a1 F761          ADD #1, *AR3 ; |99| 
+         0000a3 0001 
+     256                      .dwpsn  file "../FreeRTOS/Source/list.c",line 100,column 1,is_stmt
+     257 0000a5 4E07          AADD #7, SP
+     258                      .dwcfi  cfa_offset, 1
+     259              $C$DW$15        .dwtag  DW_TAG_TI_branch
+     260                      .dwattr $C$DW$15, DW_AT_low_pc(0x00)
+     261                      .dwattr $C$DW$15, DW_AT_TI_return
+     262 0000a7 4804          RET
+     263                                                      ; return occurs
+     264                      .dwattr $C$DW$9, DW_AT_TI_end_file("../FreeRTOS/Source/list.c")
+     265                      .dwattr $C$DW$9, DW_AT_TI_end_line(0x64)
+     266                      .dwattr $C$DW$9, DW_AT_TI_end_column(0x01)
+     267                      .dwendentry
+     268                      .dwendtag $C$DW$9
+     269              
+     270 0000a9               .sect   ".text"
+     271                      .align 4
+     272                      .global _vListInsert
+     273              
+     274              $C$DW$16        .dwtag  DW_TAG_subprogram, DW_AT_name("vListInsert")
+     275                      .dwattr $C$DW$16, DW_AT_low_pc(_vListInsert)
+     276                      .dwattr $C$DW$16, DW_AT_high_pc(0x00)
+     277                      .dwattr $C$DW$16, DW_AT_TI_symbol_name("_vListInsert")
+     278                      .dwattr $C$DW$16, DW_AT_external
+     279                      .dwattr $C$DW$16, DW_AT_TI_begin_file("../FreeRTOS/Source/list.c")
+     280                      .dwattr $C$DW$16, DW_AT_TI_begin_line(0x67)
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE    7
 
-     283                      .dwfde $C$DW$CIE, _vListInsert
-     284              $C$DW$17        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pxList")
-     285                      .dwattr $C$DW$17, DW_AT_TI_symbol_name("_pxList")
-     286                      .dwattr $C$DW$17, DW_AT_type(*$C$DW$T$32)
-     287                      .dwattr $C$DW$17, DW_AT_location[DW_OP_reg17]
-     288              $C$DW$18        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pxNewListItem")
-     289                      .dwattr $C$DW$18, DW_AT_TI_symbol_name("_pxNewListItem")
-     290                      .dwattr $C$DW$18, DW_AT_type(*$C$DW$T$34)
-     291                      .dwattr $C$DW$18, DW_AT_location[DW_OP_reg19]
-     292              ;*******************************************************************************
-     293              ;* FUNCTION NAME: vListInsert                                                  *
-     294              ;*                                                                             *
-     295              ;*   Function Uses Regs : AR0,XAR0,AR1,XAR1,AR2,XAR2,AR3,XAR3,SP,CARRY,TC1,M40,*
-     296              ;*                        SATA,SATD,RDM,FRCT,SMUL                              *
-     297              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-     298              ;*   Total Frame Size   : 8 words                                              *
-     299              ;*                        (1 return address/alignment)                         *
-     300              ;*                        (7 local values)                                     *
-     301              ;*   Min System Stack   : 1 word                                               *
-     302              ;*******************************************************************************
-     303 0000a4       _vListInsert:
-     304                      .dwcfi  cfa_offset, 1
-     305                      .dwcfi  save_reg_to_mem, 91, -1
-     306 0000a4 4EF9          AADD #-7, SP
-     307                      .dwcfi  cfa_offset, 8
-     308              $C$DW$19        .dwtag  DW_TAG_variable, DW_AT_name("pxList")
-     309                      .dwattr $C$DW$19, DW_AT_TI_symbol_name("_pxList")
-     310                      .dwattr $C$DW$19, DW_AT_type(*$C$DW$T$32)
-     311                      .dwattr $C$DW$19, DW_AT_location[DW_OP_bregx 0x24 0]
-     312              $C$DW$20        .dwtag  DW_TAG_variable, DW_AT_name("pxNewListItem")
-     313                      .dwattr $C$DW$20, DW_AT_TI_symbol_name("_pxNewListItem")
-     314                      .dwattr $C$DW$20, DW_AT_type(*$C$DW$T$34)
-     315                      .dwattr $C$DW$20, DW_AT_location[DW_OP_bregx 0x24 2]
-     316              $C$DW$21        .dwtag  DW_TAG_variable, DW_AT_name("pxIterator")
-     317                      .dwattr $C$DW$21, DW_AT_TI_symbol_name("_pxIterator")
-     318                      .dwattr $C$DW$21, DW_AT_type(*$C$DW$T$22)
-     319                      .dwattr $C$DW$21, DW_AT_location[DW_OP_bregx 0x24 4]
-     320              $C$DW$22        .dwtag  DW_TAG_variable, DW_AT_name("xValueOfInsertion")
-     321                      .dwattr $C$DW$22, DW_AT_TI_symbol_name("_xValueOfInsertion")
-     322                      .dwattr $C$DW$22, DW_AT_type(*$C$DW$T$38)
-     323                      .dwattr $C$DW$22, DW_AT_location[DW_OP_bregx 0x24 6]
-     324 0000a6 EB04          MOV XAR1, dbl(*SP(#2))
-         0000a8 95   
-     325 0000a9 EB00          MOV XAR0, dbl(*SP(#0))
-         0000ab 85   
-     326                      .dwpsn  file "../FreeRTOS/Source/list.c",line 106,column 18,is_stmt
-     327 0000ac ED04          MOV dbl(*SP(#2)), XAR3
-         0000ae BF   
-     328 0000af A961          MOV *AR3, AR1 ; |106| 
-     329 0000b1 C90C          MOV AR1, *SP(#6) ; |106| 
-     330                      .dwpsn  file "../FreeRTOS/Source/list.c",line 122,column 2,is_stmt
-     331 0000b3 76FF          MOV #65535, AR2 ; |122| 
-         0000b5 FFA8 
-     332 0000b7 129C          CMPU AR1 != AR2, TC1 ; |122| 
-         0000b9 A4   
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+     281                      .dwattr $C$DW$16, DW_AT_TI_begin_column(0x06)
+     282                      .dwattr $C$DW$16, DW_AT_TI_max_frame_size(0x0a)
+     283                      .dwpsn  file "../FreeRTOS/Source/list.c",line 104,column 1,is_stmt,address _vListInsert
+     284              
+     285                      .dwfde $C$DW$CIE, _vListInsert
+     286              $C$DW$17        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pxList")
+     287                      .dwattr $C$DW$17, DW_AT_TI_symbol_name("_pxList")
+     288                      .dwattr $C$DW$17, DW_AT_type(*$C$DW$T$32)
+     289                      .dwattr $C$DW$17, DW_AT_location[DW_OP_reg17]
+     290              $C$DW$18        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pxNewListItem")
+     291                      .dwattr $C$DW$18, DW_AT_TI_symbol_name("_pxNewListItem")
+     292                      .dwattr $C$DW$18, DW_AT_type(*$C$DW$T$34)
+     293                      .dwattr $C$DW$18, DW_AT_location[DW_OP_reg19]
+     294              ;*******************************************************************************
+     295              ;* FUNCTION NAME: vListInsert                                                  *
+     296              ;*                                                                             *
+     297              ;*   Function Uses Regs : AC0,AC0,AC1,AC1,AR0,XAR0,AR1,XAR1,AR2,XAR2,AR3,XAR3, *
+     298              ;*                        SP,CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL             *
+     299              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     300              ;*   Total Frame Size   : 10 words                                             *
+     301              ;*                        (2 return address/alignment)                         *
+     302              ;*                        (8 local values)                                     *
+     303              ;*   Min System Stack   : 1 word                                               *
+     304              ;*******************************************************************************
+     305 0000ac       _vListInsert:
+     306                      .dwcfi  cfa_offset, 1
+     307                      .dwcfi  save_reg_to_mem, 91, -1
+     308 0000ac 4EF7          AADD #-9, SP
+     309                      .dwcfi  cfa_offset, 10
+     310              $C$DW$19        .dwtag  DW_TAG_variable, DW_AT_name("pxList")
+     311                      .dwattr $C$DW$19, DW_AT_TI_symbol_name("_pxList")
+     312                      .dwattr $C$DW$19, DW_AT_type(*$C$DW$T$32)
+     313                      .dwattr $C$DW$19, DW_AT_location[DW_OP_bregx 0x24 0]
+     314              $C$DW$20        .dwtag  DW_TAG_variable, DW_AT_name("pxNewListItem")
+     315                      .dwattr $C$DW$20, DW_AT_TI_symbol_name("_pxNewListItem")
+     316                      .dwattr $C$DW$20, DW_AT_type(*$C$DW$T$34)
+     317                      .dwattr $C$DW$20, DW_AT_location[DW_OP_bregx 0x24 2]
+     318              $C$DW$21        .dwtag  DW_TAG_variable, DW_AT_name("pxIterator")
+     319                      .dwattr $C$DW$21, DW_AT_TI_symbol_name("_pxIterator")
+     320                      .dwattr $C$DW$21, DW_AT_type(*$C$DW$T$22)
+     321                      .dwattr $C$DW$21, DW_AT_location[DW_OP_bregx 0x24 4]
+     322              $C$DW$22        .dwtag  DW_TAG_variable, DW_AT_name("xValueOfInsertion")
+     323                      .dwattr $C$DW$22, DW_AT_TI_symbol_name("_xValueOfInsertion")
+     324                      .dwattr $C$DW$22, DW_AT_type(*$C$DW$T$38)
+     325                      .dwattr $C$DW$22, DW_AT_location[DW_OP_bregx 0x24 6]
+     326 0000ae EB04          MOV XAR1, dbl(*SP(#2))
+         0000b0 95   
+     327 0000b1 EB00          MOV XAR0, dbl(*SP(#0))
+         0000b3 85   
+     328                      .dwpsn  file "../FreeRTOS/Source/list.c",line 106,column 18,is_stmt
+     329 0000b4 ED04          MOV dbl(*SP(#2)), XAR3
+         0000b6 BF   
+     330 0000b7 ED61          MOV dbl(*AR3), AC0 ; |106| 
+         0000b9 08   
+     331 0000ba EB0C          MOV AC0, dbl(*SP(#6)) ; |106| 
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE    8
 
-     333 0000ba 66E4          BCC $C$L1,TC1 ; |122| 
-     334                                                      ; branchcc occurs ; |122| 
-     335                      .dwpsn  file "../FreeRTOS/Source/list.c",line 124,column 3,is_stmt
-     336 0000bc ED00          MOV dbl(*SP(#0)), XAR3
-         0000be BF   
-     337 0000bf ED6D          MOV dbl(*AR3(#8)), XAR3
-         0000c1 BF00 
-         0000c3 08   
-     338 0000c4 EB08          MOV XAR3, dbl(*SP(#4))
-         0000c6 B5   
-     339                      .dwpsn  file "../FreeRTOS/Source/list.c",line 125,column 2,is_stmt
-     340 0000c7 4A2C          B $C$L3   ; |125| 
-     341                                                      ; branch occurs ; |125| 
-     342 0000c9       $C$L1:    
-     343                      .dwpsn  file "../FreeRTOS/Source/list.c",line 150,column 8,is_stmt
-     344 0000c9 ED00          MOV dbl(*SP(#0)), XAR3
-         0000cb BF   
-     345              
-     346 0000cc 8E08          MOV XAR3, dbl(*SP(#4))
-         0000ce BB14 
-         0000d0 B504 
-     347              ||      AADD #4, AR3 ; |150| 
-     348              
-     349                      .dwpsn  file "../FreeRTOS/Source/list.c",line 150,column 61,is_stmt
-     350 0000d2 ED75          MOV dbl(*AR3(short(#2))), XAR3
-         0000d4 BF   
-     351 0000d5 A90C          MOV *SP(#6), AR1 ; |150| 
-     352 0000d7 AA61          MOV *AR3, AR2 ; |150| 
-     353 0000d9 1294          CMPU AR2 > AR1, TC1 ; |150| 
-         0000db A4   
-     354 0000dc 0464          BCC $C$L3,TC1 ; |150| 
-         0000de 16   
-     355                                                      ; branchcc occurs ; |150| 
-     356 0000df       $C$L2:    
-     357 0000df       $C$DW$L$_vListInsert$4$B:
-     358                      .dwpsn  file "../FreeRTOS/Source/list.c",line 150,column 114,is_stmt
-     359 0000df ED08          MOV dbl(*SP(#4)), XAR3
-         0000e1 BF   
-     360 0000e2 ED75          MOV dbl(*AR3(short(#2))), XAR3
-         0000e4 BF   
-     361 0000e5 EB08          MOV XAR3, dbl(*SP(#4))
-         0000e7 B5   
-     362                      .dwpsn  file "../FreeRTOS/Source/list.c",line 150,column 61,is_stmt
-     363 0000e8 ED75          MOV dbl(*AR3(short(#2))), XAR3
-         0000ea BF   
-     364 0000eb A90C          MOV *SP(#6), AR1 ; |150| 
-     365 0000ed AA61          MOV *AR3, AR2 ; |150| 
-     366 0000ef 1298          CMPU AR2 <= AR1, TC1 ; |150| 
-         0000f1 A4   
-     367 0000f2 0464          BCC $C$L2,TC1 ; |150| 
-         0000f4 EA   
-     368                                                      ; branchcc occurs ; |150| 
-     369 0000f5       $C$DW$L$_vListInsert$4$E:
-     370 0000f5       $C$L3:    
-     371                      .dwpsn  file "../FreeRTOS/Source/list.c",line 157,column 2,is_stmt
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+         0000bc 08   
+     332                      .dwpsn  file "../FreeRTOS/Source/list.c",line 122,column 2,is_stmt
+     333 0000bd 7AFF          MOV #-1 << #16, AC0 ; |122| 
+         0000bf FF0A 
+     334 0000c1 ED0C          MOV dbl(*SP(#6)), AC1 ; |122| 
+         0000c3 18   
+     335 0000c4 7EFF          OR #0xffff, AC0, AC0 ; |122| 
+         0000c6 FF00 
+     336 0000c8 121C          CMPU AC1 != AC0, TC1 ; |122| 
+         0000ca 04   
+     337 0000cb 66E4          BCC $C$L1,TC1 ; |122| 
+     338                                                      ; branchcc occurs ; |122| 
+     339                      .dwpsn  file "../FreeRTOS/Source/list.c",line 124,column 3,is_stmt
+     340 0000cd ED00          MOV dbl(*SP(#0)), XAR3
+         0000cf BF   
+     341 0000d0 ED6D          MOV dbl(*AR3(#8)), XAR3
+         0000d2 BF00 
+         0000d4 08   
+     342 0000d5 EB08          MOV XAR3, dbl(*SP(#4))
+         0000d7 B5   
+     343                      .dwpsn  file "../FreeRTOS/Source/list.c",line 125,column 2,is_stmt
+     344 0000d8 4A30          B $C$L3   ; |125| 
+     345                                                      ; branch occurs ; |125| 
+     346 0000da       $C$L1:    
+     347                      .dwpsn  file "../FreeRTOS/Source/list.c",line 150,column 8,is_stmt
+     348 0000da ED00          MOV dbl(*SP(#0)), XAR3
+         0000dc BF   
+     349              
+     350 0000dd 8E08          MOV XAR3, dbl(*SP(#4))
+         0000df BB14 
+         0000e1 B504 
+     351              ||      AADD #4, AR3 ; |150| 
+     352              
+     353                      .dwpsn  file "../FreeRTOS/Source/list.c",line 150,column 61,is_stmt
+     354 0000e3 ED75          MOV dbl(*AR3(short(#2))), XAR3
+         0000e5 BF   
+     355 0000e6 ED0C          MOV dbl(*SP(#6)), AC0 ; |150| 
+         0000e8 08   
+     356 0000e9 ED61          MOV dbl(*AR3), AC1 ; |150| 
+         0000eb 18   
+     357 0000ec 1204          CMPU AC1 > AC0, TC1 ; |150| 
+         0000ee 14   
+     358 0000ef 0464          BCC $C$L3,TC1 ; |150| 
+         0000f1 18   
+     359                                                      ; branchcc occurs ; |150| 
+     360 0000f2       $C$L2:    
+     361 0000f2       $C$DW$L$_vListInsert$4$B:
+     362                      .dwpsn  file "../FreeRTOS/Source/list.c",line 150,column 114,is_stmt
+     363 0000f2 ED08          MOV dbl(*SP(#4)), XAR3
+         0000f4 BF   
+     364 0000f5 ED75          MOV dbl(*AR3(short(#2))), XAR3
+         0000f7 BF   
+     365 0000f8 EB08          MOV XAR3, dbl(*SP(#4))
+         0000fa B5   
+     366                      .dwpsn  file "../FreeRTOS/Source/list.c",line 150,column 61,is_stmt
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE    9
 
-     372 0000f5 ED08          MOV dbl(*SP(#4)), XAR3
-         0000f7 BF   
-     373 0000f8 ED75          MOV dbl(*AR3(short(#2))), XAR2
-         0000fa AF   
-     374 0000fb ED04          MOV dbl(*SP(#2)), XAR3
+     367 0000fb ED75          MOV dbl(*AR3(short(#2))), XAR3
          0000fd BF   
-     375 0000fe EB75          MOV XAR2, dbl(*AR3(short(#2)))
-         000100 A5   
-     376                      .dwpsn  file "../FreeRTOS/Source/list.c",line 158,column 2,is_stmt
-     377 000101 ED04          MOV dbl(*SP(#2)), XAR3
-         000103 BF   
-     378 000104 ED75          MOV dbl(*AR3(short(#2))), XAR3
-         000106 BF   
-     379 000107 ED04          MOV dbl(*SP(#2)), XAR2
-         000109 AF   
-     380 00010a EB79          MOV XAR2, dbl(*AR3(short(#4)))
-         00010c A5   
-     381                      .dwpsn  file "../FreeRTOS/Source/list.c",line 159,column 2,is_stmt
-     382 00010d ED04          MOV dbl(*SP(#2)), XAR3
-         00010f BF   
-     383 000110 ED08          MOV dbl(*SP(#4)), XAR2
-         000112 AF   
-     384 000113 EB79          MOV XAR2, dbl(*AR3(short(#4)))
+     368 0000fe ED0C          MOV dbl(*SP(#6)), AC0 ; |150| 
+         000100 08   
+     369 000101 ED61          MOV dbl(*AR3), AC1 ; |150| 
+         000103 18   
+     370 000104 1208          CMPU AC1 <= AC0, TC1 ; |150| 
+         000106 14   
+     371 000107 0464          BCC $C$L2,TC1 ; |150| 
+         000109 E8   
+     372                                                      ; branchcc occurs ; |150| 
+     373 00010a       $C$DW$L$_vListInsert$4$E:
+     374 00010a       $C$L3:    
+     375                      .dwpsn  file "../FreeRTOS/Source/list.c",line 157,column 2,is_stmt
+     376 00010a ED08          MOV dbl(*SP(#4)), XAR3
+         00010c BF   
+     377 00010d ED75          MOV dbl(*AR3(short(#2))), XAR2
+         00010f AF   
+     378 000110 ED04          MOV dbl(*SP(#2)), XAR3
+         000112 BF   
+     379 000113 EB75          MOV XAR2, dbl(*AR3(short(#2)))
          000115 A5   
-     385                      .dwpsn  file "../FreeRTOS/Source/list.c",line 160,column 2,is_stmt
-     386 000116 ED08          MOV dbl(*SP(#4)), XAR3
+     380                      .dwpsn  file "../FreeRTOS/Source/list.c",line 158,column 2,is_stmt
+     381 000116 ED04          MOV dbl(*SP(#2)), XAR3
          000118 BF   
-     387 000119 ED04          MOV dbl(*SP(#2)), XAR2
-         00011b AF   
-     388 00011c EB75          MOV XAR2, dbl(*AR3(short(#2)))
-         00011e A5   
-     389                      .dwpsn  file "../FreeRTOS/Source/list.c",line 164,column 2,is_stmt
-     390 00011f ED04          MOV dbl(*SP(#2)), XAR2
-         000121 AF   
-     391 000122 ED00          MOV dbl(*SP(#0)), XAR3
+     382 000119 ED75          MOV dbl(*AR3(short(#2))), XAR3
+         00011b BF   
+     383 00011c ED04          MOV dbl(*SP(#2)), XAR2
+         00011e AF   
+     384 00011f EB79          MOV XAR2, dbl(*AR3(short(#4)))
+         000121 A5   
+     385                      .dwpsn  file "../FreeRTOS/Source/list.c",line 159,column 2,is_stmt
+     386 000122 ED04          MOV dbl(*SP(#2)), XAR3
          000124 BF   
-     392 000125 EB4D          MOV XAR3, dbl(*AR2(#8))
-         000127 B500 
-         000129 08   
-     393                      .dwpsn  file "../FreeRTOS/Source/list.c",line 166,column 2,is_stmt
-     394 00012a ED00          MOV dbl(*SP(#0)), XAR3
-         00012c BF   
-     395 00012d F761          ADD #1, *AR3 ; |166| 
-         00012f 0001 
-     396                      .dwpsn  file "../FreeRTOS/Source/list.c",line 167,column 1,is_stmt
-     397 000131 4E07          AADD #7, SP
-     398                      .dwcfi  cfa_offset, 1
-     399              $C$DW$23        .dwtag  DW_TAG_TI_branch
-     400                      .dwattr $C$DW$23, DW_AT_low_pc(0x00)
-     401                      .dwattr $C$DW$23, DW_AT_TI_return
-     402 000133 4804          RET
-     403                                                      ; return occurs
-     404              
-     405              $C$DW$24        .dwtag  DW_TAG_TI_loop
-     406                      .dwattr $C$DW$24, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\list.asm:$C$L2:1:153649
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+     387 000125 ED08          MOV dbl(*SP(#4)), XAR2
+         000127 AF   
+     388 000128 EB79          MOV XAR2, dbl(*AR3(short(#4)))
+         00012a A5   
+     389                      .dwpsn  file "../FreeRTOS/Source/list.c",line 160,column 2,is_stmt
+     390 00012b ED08          MOV dbl(*SP(#4)), XAR3
+         00012d BF   
+     391 00012e ED04          MOV dbl(*SP(#2)), XAR2
+         000130 AF   
+     392 000131 EB75          MOV XAR2, dbl(*AR3(short(#2)))
+         000133 A5   
+     393                      .dwpsn  file "../FreeRTOS/Source/list.c",line 164,column 2,is_stmt
+     394 000134 ED04          MOV dbl(*SP(#2)), XAR2
+         000136 AF   
+     395 000137 ED00          MOV dbl(*SP(#0)), XAR3
+         000139 BF   
+     396 00013a EB4D          MOV XAR3, dbl(*AR2(#8))
+         00013c B500 
+         00013e 08   
+     397                      .dwpsn  file "../FreeRTOS/Source/list.c",line 166,column 2,is_stmt
+     398 00013f ED00          MOV dbl(*SP(#0)), XAR3
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE   10
 
-     407                      .dwattr $C$DW$24, DW_AT_TI_begin_file("../FreeRTOS/Source/list.c")
-     408                      .dwattr $C$DW$24, DW_AT_TI_begin_line(0x96)
-     409                      .dwattr $C$DW$24, DW_AT_TI_end_line(0x9a)
-     410              $C$DW$25        .dwtag  DW_TAG_TI_loop_range
-     411                      .dwattr $C$DW$25, DW_AT_low_pc($C$DW$L$_vListInsert$4$B)
-     412                      .dwattr $C$DW$25, DW_AT_high_pc($C$DW$L$_vListInsert$4$E)
-     413                      .dwendtag $C$DW$24
-     414              
-     415                      .dwattr $C$DW$16, DW_AT_TI_end_file("../FreeRTOS/Source/list.c")
-     416                      .dwattr $C$DW$16, DW_AT_TI_end_line(0xa7)
-     417                      .dwattr $C$DW$16, DW_AT_TI_end_column(0x01)
-     418                      .dwendentry
-     419                      .dwendtag $C$DW$16
-     420              
-     421 000135               .sect   ".text"
-     422                      .align 4
-     423                      .global _uxListRemove
+         000141 BF   
+     399 000142 F761          ADD #1, *AR3 ; |166| 
+         000144 0001 
+     400                      .dwpsn  file "../FreeRTOS/Source/list.c",line 167,column 1,is_stmt
+     401 000146 4E09          AADD #9, SP
+     402                      .dwcfi  cfa_offset, 1
+     403              $C$DW$23        .dwtag  DW_TAG_TI_branch
+     404                      .dwattr $C$DW$23, DW_AT_low_pc(0x00)
+     405                      .dwattr $C$DW$23, DW_AT_TI_return
+     406 000148 4804          RET
+     407                                                      ; return occurs
+     408              
+     409              $C$DW$24        .dwtag  DW_TAG_TI_loop
+     410                      .dwattr $C$DW$24, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\list.asm:$C$L2:1:153692
+     411                      .dwattr $C$DW$24, DW_AT_TI_begin_file("../FreeRTOS/Source/list.c")
+     412                      .dwattr $C$DW$24, DW_AT_TI_begin_line(0x96)
+     413                      .dwattr $C$DW$24, DW_AT_TI_end_line(0x9a)
+     414              $C$DW$25        .dwtag  DW_TAG_TI_loop_range
+     415                      .dwattr $C$DW$25, DW_AT_low_pc($C$DW$L$_vListInsert$4$B)
+     416                      .dwattr $C$DW$25, DW_AT_high_pc($C$DW$L$_vListInsert$4$E)
+     417                      .dwendtag $C$DW$24
+     418              
+     419                      .dwattr $C$DW$16, DW_AT_TI_end_file("../FreeRTOS/Source/list.c")
+     420                      .dwattr $C$DW$16, DW_AT_TI_end_line(0xa7)
+     421                      .dwattr $C$DW$16, DW_AT_TI_end_column(0x01)
+     422                      .dwendentry
+     423                      .dwendtag $C$DW$16
      424              
-     425              $C$DW$26        .dwtag  DW_TAG_subprogram, DW_AT_name("uxListRemove")
-     426                      .dwattr $C$DW$26, DW_AT_low_pc(_uxListRemove)
-     427                      .dwattr $C$DW$26, DW_AT_high_pc(0x00)
-     428                      .dwattr $C$DW$26, DW_AT_TI_symbol_name("_uxListRemove")
-     429                      .dwattr $C$DW$26, DW_AT_external
-     430                      .dwattr $C$DW$26, DW_AT_type(*$C$DW$T$19)
-     431                      .dwattr $C$DW$26, DW_AT_TI_begin_file("../FreeRTOS/Source/list.c")
-     432                      .dwattr $C$DW$26, DW_AT_TI_begin_line(0xaa)
-     433                      .dwattr $C$DW$26, DW_AT_TI_begin_column(0x0d)
-     434                      .dwattr $C$DW$26, DW_AT_TI_max_frame_size(0x06)
-     435                      .dwpsn  file "../FreeRTOS/Source/list.c",line 171,column 1,is_stmt,address _uxListRemove
-     436              
-     437                      .dwfde $C$DW$CIE, _uxListRemove
-     438              $C$DW$27        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pxItemToRemove")
-     439                      .dwattr $C$DW$27, DW_AT_TI_symbol_name("_pxItemToRemove")
-     440                      .dwattr $C$DW$27, DW_AT_type(*$C$DW$T$34)
-     441                      .dwattr $C$DW$27, DW_AT_location[DW_OP_reg17]
-     442              ;*******************************************************************************
-     443              ;* FUNCTION NAME: uxListRemove                                                 *
-     444              ;*                                                                             *
-     445              ;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,AR0,XAR0,AR2,XAR2,AR3,XAR3,SP,    *
-     446              ;*                        CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL                *
-     447              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-     448              ;*   Total Frame Size   : 6 words                                              *
-     449              ;*                        (2 return address/alignment)                         *
-     450              ;*                        (4 local values)                                     *
-     451              ;*   Min System Stack   : 1 word                                               *
-     452              ;*******************************************************************************
-     453 000138       _uxListRemove:
-     454                      .dwcfi  cfa_offset, 1
-     455                      .dwcfi  save_reg_to_mem, 91, -1
-     456 000138 4EFB          AADD #-5, SP
-     457                      .dwcfi  cfa_offset, 6
-     458              $C$DW$28        .dwtag  DW_TAG_variable, DW_AT_name("pxItemToRemove")
-     459                      .dwattr $C$DW$28, DW_AT_TI_symbol_name("_pxItemToRemove")
-     460                      .dwattr $C$DW$28, DW_AT_type(*$C$DW$T$34)
-     461                      .dwattr $C$DW$28, DW_AT_location[DW_OP_bregx 0x24 0]
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+     425 00014a               .sect   ".text"
+     426                      .align 4
+     427                      .global _uxListRemove
+     428              
+     429              $C$DW$26        .dwtag  DW_TAG_subprogram, DW_AT_name("uxListRemove")
+     430                      .dwattr $C$DW$26, DW_AT_low_pc(_uxListRemove)
+     431                      .dwattr $C$DW$26, DW_AT_high_pc(0x00)
+     432                      .dwattr $C$DW$26, DW_AT_TI_symbol_name("_uxListRemove")
+     433                      .dwattr $C$DW$26, DW_AT_external
+     434                      .dwattr $C$DW$26, DW_AT_type(*$C$DW$T$19)
+     435                      .dwattr $C$DW$26, DW_AT_TI_begin_file("../FreeRTOS/Source/list.c")
+     436                      .dwattr $C$DW$26, DW_AT_TI_begin_line(0xaa)
+     437                      .dwattr $C$DW$26, DW_AT_TI_begin_column(0x0d)
+     438                      .dwattr $C$DW$26, DW_AT_TI_max_frame_size(0x06)
+     439                      .dwpsn  file "../FreeRTOS/Source/list.c",line 171,column 1,is_stmt,address _uxListRemove
+     440              
+     441                      .dwfde $C$DW$CIE, _uxListRemove
+     442              $C$DW$27        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pxItemToRemove")
+     443                      .dwattr $C$DW$27, DW_AT_TI_symbol_name("_pxItemToRemove")
+     444                      .dwattr $C$DW$27, DW_AT_type(*$C$DW$T$34)
+     445                      .dwattr $C$DW$27, DW_AT_location[DW_OP_reg17]
+     446              ;*******************************************************************************
+     447              ;* FUNCTION NAME: uxListRemove                                                 *
+     448              ;*                                                                             *
+     449              ;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,AR0,XAR0,AR2,XAR2,AR3,XAR3,SP,    *
+     450              ;*                        CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL                *
+     451              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE   11
 
-     462              $C$DW$29        .dwtag  DW_TAG_variable, DW_AT_name("pxList")
-     463                      .dwattr $C$DW$29, DW_AT_TI_symbol_name("_pxList")
-     464                      .dwattr $C$DW$29, DW_AT_type(*$C$DW$T$32)
-     465                      .dwattr $C$DW$29, DW_AT_location[DW_OP_bregx 0x24 2]
-     466 00013a EB00          MOV XAR0, dbl(*SP(#0))
-         00013c 85   
-     467                      .dwpsn  file "../FreeRTOS/Source/list.c",line 174,column 16,is_stmt
-     468 00013d ED00          MOV dbl(*SP(#0)), XAR3
-         00013f BF   
-     469 000140 ED6D          MOV dbl(*AR3(#8)), XAR3
-         000142 BF00 
-         000144 08   
-     470 000145 EB04          MOV XAR3, dbl(*SP(#2))
-         000147 B5   
-     471                      .dwpsn  file "../FreeRTOS/Source/list.c",line 176,column 2,is_stmt
-     472 000148 ED00          MOV dbl(*SP(#0)), XAR3
-         00014a BF   
-     473 00014b ED79          MOV dbl(*AR3(short(#4))), XAR2
-         00014d AF   
-     474 00014e ED75          MOV dbl(*AR3(short(#2))), XAR3
-         000150 BF   
-     475 000151 EB79          MOV XAR2, dbl(*AR3(short(#4)))
-         000153 A5   
-     476                      .dwpsn  file "../FreeRTOS/Source/list.c",line 177,column 2,is_stmt
-     477 000154 ED00          MOV dbl(*SP(#0)), XAR3
-         000156 BF   
-     478 000157 ED75          MOV dbl(*AR3(short(#2))), XAR2
-         000159 AF   
-     479 00015a ED79          MOV dbl(*AR3(short(#4))), XAR3
-         00015c BF   
-     480 00015d EB75          MOV XAR2, dbl(*AR3(short(#2)))
-         00015f A5   
-     481                      .dwpsn  file "../FreeRTOS/Source/list.c",line 183,column 2,is_stmt
-     482 000160 ED00          MOV dbl(*SP(#0)), XAR3
-         000162 BF   
-     483 000163 90B0          MOV XAR3, AC0
-     484 000165 ED04          MOV dbl(*SP(#2)), XAR3
-         000167 BF   
-     485 000168 ED75          MOV dbl(*AR3(short(#2))), XAR3
+     452              ;*   Total Frame Size   : 6 words                                              *
+     453              ;*                        (2 return address/alignment)                         *
+     454              ;*                        (4 local values)                                     *
+     455              ;*   Min System Stack   : 1 word                                               *
+     456              ;*******************************************************************************
+     457 00014c       _uxListRemove:
+     458                      .dwcfi  cfa_offset, 1
+     459                      .dwcfi  save_reg_to_mem, 91, -1
+     460 00014c 4EFB          AADD #-5, SP
+     461                      .dwcfi  cfa_offset, 6
+     462              $C$DW$28        .dwtag  DW_TAG_variable, DW_AT_name("pxItemToRemove")
+     463                      .dwattr $C$DW$28, DW_AT_TI_symbol_name("_pxItemToRemove")
+     464                      .dwattr $C$DW$28, DW_AT_type(*$C$DW$T$34)
+     465                      .dwattr $C$DW$28, DW_AT_location[DW_OP_bregx 0x24 0]
+     466              $C$DW$29        .dwtag  DW_TAG_variable, DW_AT_name("pxList")
+     467                      .dwattr $C$DW$29, DW_AT_TI_symbol_name("_pxList")
+     468                      .dwattr $C$DW$29, DW_AT_type(*$C$DW$T$32)
+     469                      .dwattr $C$DW$29, DW_AT_location[DW_OP_bregx 0x24 2]
+     470 00014e EB00          MOV XAR0, dbl(*SP(#0))
+         000150 85   
+     471                      .dwpsn  file "../FreeRTOS/Source/list.c",line 174,column 16,is_stmt
+     472 000151 ED00          MOV dbl(*SP(#0)), XAR3
+         000153 BF   
+     473 000154 ED6D          MOV dbl(*AR3(#8)), XAR3
+         000156 BF00 
+         000158 08   
+     474 000159 EB04          MOV XAR3, dbl(*SP(#2))
+         00015b B5   
+     475                      .dwpsn  file "../FreeRTOS/Source/list.c",line 176,column 2,is_stmt
+     476 00015c ED00          MOV dbl(*SP(#0)), XAR3
+         00015e BF   
+     477 00015f ED79          MOV dbl(*AR3(short(#4))), XAR2
+         000161 AF   
+     478 000162 ED75          MOV dbl(*AR3(short(#2))), XAR3
+         000164 BF   
+     479 000165 EB79          MOV XAR2, dbl(*AR3(short(#4)))
+         000167 A5   
+     480                      .dwpsn  file "../FreeRTOS/Source/list.c",line 177,column 2,is_stmt
+     481 000168 ED00          MOV dbl(*SP(#0)), XAR3
          00016a BF   
-     486 00016b 90B1          MOV XAR3, AC1
-     487 00016d 121C          CMPU AC1 != AC0, TC1 ; |183| 
-         00016f 04   
-     488 000170 6664          BCC $C$L4,TC1 ; |183| 
-     489                                                      ; branchcc occurs ; |183| 
-     490                      .dwpsn  file "../FreeRTOS/Source/list.c",line 185,column 3,is_stmt
-     491 000172 ED00          MOV dbl(*SP(#0)), XAR3
-         000174 BF   
-     492 000175 ED79          MOV dbl(*AR3(short(#4))), XAR2
-         000177 AF   
-     493 000178 ED04          MOV dbl(*SP(#2)), XAR3
-         00017a BF   
-     494 00017b EB75          MOV XAR2, dbl(*AR3(short(#2)))
-         00017d A5   
-     495                      .dwpsn  file "../FreeRTOS/Source/list.c",line 186,column 2,is_stmt
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+     482 00016b ED75          MOV dbl(*AR3(short(#2))), XAR2
+         00016d AF   
+     483 00016e ED79          MOV dbl(*AR3(short(#4))), XAR3
+         000170 BF   
+     484 000171 EB75          MOV XAR2, dbl(*AR3(short(#2)))
+         000173 A5   
+     485                      .dwpsn  file "../FreeRTOS/Source/list.c",line 183,column 2,is_stmt
+     486 000174 ED00          MOV dbl(*SP(#0)), XAR3
+         000176 BF   
+     487 000177 90B0          MOV XAR3, AC0
+     488 000179 ED04          MOV dbl(*SP(#2)), XAR3
+         00017b BF   
+     489 00017c ED75          MOV dbl(*AR3(short(#2))), XAR3
+         00017e BF   
+     490 00017f 90B1          MOV XAR3, AC1
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE   12
 
-     496 00017e       $C$L4:    
-     497                      .dwpsn  file "../FreeRTOS/Source/list.c",line 192,column 2,is_stmt
-     498 00017e ED00          MOV dbl(*SP(#0)), XAR3
-         000180 BF   
-     499 000181 3C00          MOV #0, AC0 ; |192| 
-     500 000183 EB6D          MOV AC0, dbl(*AR3(#8))
-         000185 0800 
-         000187 08   
-     501                      .dwpsn  file "../FreeRTOS/Source/list.c",line 193,column 2,is_stmt
-     502 000188 ED04          MOV dbl(*SP(#2)), XAR3
-         00018a BF   
-     503 00018b F761          SUB #1, *AR3 ; |193| 
-         00018d FFFF 
-     504 00018f 20            NOP
-     505 000190 20            NOP
-     506                      .dwpsn  file "../FreeRTOS/Source/list.c",line 195,column 2,is_stmt
-     507 000191 ED04          MOV dbl(*SP(#2)), XAR3
-         000193 BF   
-     508 000194 A461          MOV *AR3, T0 ; |195| 
-     509                      .dwpsn  file "../FreeRTOS/Source/list.c",line 196,column 1,is_stmt
-     510 000196 4E05          AADD #5, SP
-     511                      .dwcfi  cfa_offset, 1
-     512              $C$DW$30        .dwtag  DW_TAG_TI_branch
-     513                      .dwattr $C$DW$30, DW_AT_low_pc(0x00)
-     514                      .dwattr $C$DW$30, DW_AT_TI_return
-     515 000198 4804          RET
-     516                                                      ; return occurs
-     517                      .dwattr $C$DW$26, DW_AT_TI_end_file("../FreeRTOS/Source/list.c")
-     518                      .dwattr $C$DW$26, DW_AT_TI_end_line(0xc4)
-     519                      .dwattr $C$DW$26, DW_AT_TI_end_column(0x01)
-     520                      .dwendentry
-     521                      .dwendtag $C$DW$26
-     522              
-     523              
-     524              ;*******************************************************************************
-     525              ;* TYPE INFORMATION                                                            *
-     526              ;*******************************************************************************
-     527              $C$DW$T$3       .dwtag  DW_TAG_pointer_type
-     528                      .dwattr $C$DW$T$3, DW_AT_address_class(0x17)
-     529              $C$DW$T$4       .dwtag  DW_TAG_base_type
-     530                      .dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
-     531                      .dwattr $C$DW$T$4, DW_AT_name("bool")
-     532                      .dwattr $C$DW$T$4, DW_AT_byte_size(0x01)
-     533              $C$DW$T$5       .dwtag  DW_TAG_base_type
-     534                      .dwattr $C$DW$T$5, DW_AT_encoding(DW_ATE_signed_char)
-     535                      .dwattr $C$DW$T$5, DW_AT_name("signed char")
-     536                      .dwattr $C$DW$T$5, DW_AT_byte_size(0x01)
-     537              $C$DW$T$6       .dwtag  DW_TAG_base_type
-     538                      .dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
-     539                      .dwattr $C$DW$T$6, DW_AT_name("unsigned char")
-     540                      .dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
-     541              $C$DW$T$7       .dwtag  DW_TAG_base_type
-     542                      .dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
-     543                      .dwattr $C$DW$T$7, DW_AT_name("wchar_t")
-     544                      .dwattr $C$DW$T$7, DW_AT_byte_size(0x01)
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+     491 000181 121C          CMPU AC1 != AC0, TC1 ; |183| 
+         000183 04   
+     492 000184 6664          BCC $C$L4,TC1 ; |183| 
+     493                                                      ; branchcc occurs ; |183| 
+     494                      .dwpsn  file "../FreeRTOS/Source/list.c",line 185,column 3,is_stmt
+     495 000186 ED00          MOV dbl(*SP(#0)), XAR3
+         000188 BF   
+     496 000189 ED79          MOV dbl(*AR3(short(#4))), XAR2
+         00018b AF   
+     497 00018c ED04          MOV dbl(*SP(#2)), XAR3
+         00018e BF   
+     498 00018f EB75          MOV XAR2, dbl(*AR3(short(#2)))
+         000191 A5   
+     499                      .dwpsn  file "../FreeRTOS/Source/list.c",line 186,column 2,is_stmt
+     500 000192       $C$L4:    
+     501                      .dwpsn  file "../FreeRTOS/Source/list.c",line 192,column 2,is_stmt
+     502 000192 ED00          MOV dbl(*SP(#0)), XAR3
+         000194 BF   
+     503 000195 3C00          MOV #0, AC0 ; |192| 
+     504 000197 EB6D          MOV AC0, dbl(*AR3(#8))
+         000199 0800 
+         00019b 08   
+     505                      .dwpsn  file "../FreeRTOS/Source/list.c",line 193,column 2,is_stmt
+     506 00019c ED04          MOV dbl(*SP(#2)), XAR3
+         00019e BF   
+     507 00019f F761          SUB #1, *AR3 ; |193| 
+         0001a1 FFFF 
+     508 0001a3 20            NOP
+     509 0001a4 20            NOP
+     510                      .dwpsn  file "../FreeRTOS/Source/list.c",line 195,column 2,is_stmt
+     511 0001a5 ED04          MOV dbl(*SP(#2)), XAR3
+         0001a7 BF   
+     512 0001a8 A461          MOV *AR3, T0 ; |195| 
+     513                      .dwpsn  file "../FreeRTOS/Source/list.c",line 196,column 1,is_stmt
+     514 0001aa 4E05          AADD #5, SP
+     515                      .dwcfi  cfa_offset, 1
+     516              $C$DW$30        .dwtag  DW_TAG_TI_branch
+     517                      .dwattr $C$DW$30, DW_AT_low_pc(0x00)
+     518                      .dwattr $C$DW$30, DW_AT_TI_return
+     519 0001ac 4804          RET
+     520                                                      ; return occurs
+     521                      .dwattr $C$DW$26, DW_AT_TI_end_file("../FreeRTOS/Source/list.c")
+     522                      .dwattr $C$DW$26, DW_AT_TI_end_line(0xc4)
+     523                      .dwattr $C$DW$26, DW_AT_TI_end_column(0x01)
+     524                      .dwendentry
+     525                      .dwendtag $C$DW$26
+     526              
+     527              
+     528              ;*******************************************************************************
+     529              ;* TYPE INFORMATION                                                            *
+     530              ;*******************************************************************************
+     531              $C$DW$T$3       .dwtag  DW_TAG_pointer_type
+     532                      .dwattr $C$DW$T$3, DW_AT_address_class(0x17)
+     533              $C$DW$T$4       .dwtag  DW_TAG_base_type
+     534                      .dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE   13
 
-     545              $C$DW$T$8       .dwtag  DW_TAG_base_type
-     546                      .dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
-     547                      .dwattr $C$DW$T$8, DW_AT_name("short")
-     548                      .dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
-     549              $C$DW$T$9       .dwtag  DW_TAG_base_type
-     550                      .dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
-     551                      .dwattr $C$DW$T$9, DW_AT_name("unsigned short")
-     552                      .dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
-     553              $C$DW$T$19      .dwtag  DW_TAG_typedef, DW_AT_name("UBaseType_t")
-     554                      .dwattr $C$DW$T$19, DW_AT_type(*$C$DW$T$9)
-     555                      .dwattr $C$DW$T$19, DW_AT_language(DW_LANG_C)
-     556              $C$DW$31        .dwtag  DW_TAG_TI_far_type
-     557                      .dwattr $C$DW$31, DW_AT_type(*$C$DW$T$19)
-     558              $C$DW$T$20      .dwtag  DW_TAG_volatile_type
-     559                      .dwattr $C$DW$T$20, DW_AT_type(*$C$DW$31)
-     560              $C$DW$T$10      .dwtag  DW_TAG_base_type
-     561                      .dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
-     562                      .dwattr $C$DW$T$10, DW_AT_name("int")
-     563                      .dwattr $C$DW$T$10, DW_AT_byte_size(0x01)
-     564              $C$DW$T$11      .dwtag  DW_TAG_base_type
-     565                      .dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
-     566                      .dwattr $C$DW$T$11, DW_AT_name("unsigned int")
-     567                      .dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
-     568              $C$DW$T$25      .dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
-     569                      .dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$11)
-     570                      .dwattr $C$DW$T$25, DW_AT_language(DW_LANG_C)
-     571              $C$DW$32        .dwtag  DW_TAG_TI_far_type
-     572                      .dwattr $C$DW$32, DW_AT_type(*$C$DW$T$25)
-     573              $C$DW$T$38      .dwtag  DW_TAG_const_type
-     574                      .dwattr $C$DW$T$38, DW_AT_type(*$C$DW$32)
-     575              $C$DW$T$12      .dwtag  DW_TAG_base_type
-     576                      .dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
-     577                      .dwattr $C$DW$T$12, DW_AT_name("long")
-     578                      .dwattr $C$DW$T$12, DW_AT_byte_size(0x02)
-     579              $C$DW$T$13      .dwtag  DW_TAG_base_type
-     580                      .dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
-     581                      .dwattr $C$DW$T$13, DW_AT_name("unsigned long")
-     582                      .dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
-     583              $C$DW$T$14      .dwtag  DW_TAG_base_type
-     584                      .dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
-     585                      .dwattr $C$DW$T$14, DW_AT_name("long long")
-     586                      .dwattr $C$DW$T$14, DW_AT_byte_size(0x04)
-     587                      .dwattr $C$DW$T$14, DW_AT_bit_size(0x28)
-     588                      .dwattr $C$DW$T$14, DW_AT_bit_offset(0x18)
-     589              $C$DW$T$15      .dwtag  DW_TAG_base_type
-     590                      .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
-     591                      .dwattr $C$DW$T$15, DW_AT_name("unsigned long long")
-     592                      .dwattr $C$DW$T$15, DW_AT_byte_size(0x04)
-     593                      .dwattr $C$DW$T$15, DW_AT_bit_size(0x28)
-     594                      .dwattr $C$DW$T$15, DW_AT_bit_offset(0x18)
-     595              $C$DW$T$16      .dwtag  DW_TAG_base_type
-     596                      .dwattr $C$DW$T$16, DW_AT_encoding(DW_ATE_float)
-     597                      .dwattr $C$DW$T$16, DW_AT_name("float")
-     598                      .dwattr $C$DW$T$16, DW_AT_byte_size(0x02)
-     599              $C$DW$T$17      .dwtag  DW_TAG_base_type
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+     535                      .dwattr $C$DW$T$4, DW_AT_name("bool")
+     536                      .dwattr $C$DW$T$4, DW_AT_byte_size(0x01)
+     537              $C$DW$T$5       .dwtag  DW_TAG_base_type
+     538                      .dwattr $C$DW$T$5, DW_AT_encoding(DW_ATE_signed_char)
+     539                      .dwattr $C$DW$T$5, DW_AT_name("signed char")
+     540                      .dwattr $C$DW$T$5, DW_AT_byte_size(0x01)
+     541              $C$DW$T$6       .dwtag  DW_TAG_base_type
+     542                      .dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
+     543                      .dwattr $C$DW$T$6, DW_AT_name("unsigned char")
+     544                      .dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
+     545              $C$DW$T$7       .dwtag  DW_TAG_base_type
+     546                      .dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
+     547                      .dwattr $C$DW$T$7, DW_AT_name("wchar_t")
+     548                      .dwattr $C$DW$T$7, DW_AT_byte_size(0x01)
+     549              $C$DW$T$8       .dwtag  DW_TAG_base_type
+     550                      .dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
+     551                      .dwattr $C$DW$T$8, DW_AT_name("short")
+     552                      .dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
+     553              $C$DW$T$9       .dwtag  DW_TAG_base_type
+     554                      .dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
+     555                      .dwattr $C$DW$T$9, DW_AT_name("unsigned short")
+     556                      .dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
+     557              $C$DW$T$19      .dwtag  DW_TAG_typedef, DW_AT_name("UBaseType_t")
+     558                      .dwattr $C$DW$T$19, DW_AT_type(*$C$DW$T$9)
+     559                      .dwattr $C$DW$T$19, DW_AT_language(DW_LANG_C)
+     560              $C$DW$31        .dwtag  DW_TAG_TI_far_type
+     561                      .dwattr $C$DW$31, DW_AT_type(*$C$DW$T$19)
+     562              $C$DW$T$20      .dwtag  DW_TAG_volatile_type
+     563                      .dwattr $C$DW$T$20, DW_AT_type(*$C$DW$31)
+     564              $C$DW$T$10      .dwtag  DW_TAG_base_type
+     565                      .dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
+     566                      .dwattr $C$DW$T$10, DW_AT_name("int")
+     567                      .dwattr $C$DW$T$10, DW_AT_byte_size(0x01)
+     568              $C$DW$T$11      .dwtag  DW_TAG_base_type
+     569                      .dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
+     570                      .dwattr $C$DW$T$11, DW_AT_name("unsigned int")
+     571                      .dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
+     572              $C$DW$T$12      .dwtag  DW_TAG_base_type
+     573                      .dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
+     574                      .dwattr $C$DW$T$12, DW_AT_name("long")
+     575                      .dwattr $C$DW$T$12, DW_AT_byte_size(0x02)
+     576              $C$DW$T$13      .dwtag  DW_TAG_base_type
+     577                      .dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
+     578                      .dwattr $C$DW$T$13, DW_AT_name("unsigned long")
+     579                      .dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+     580              $C$DW$T$25      .dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
+     581                      .dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$13)
+     582                      .dwattr $C$DW$T$25, DW_AT_language(DW_LANG_C)
+     583              $C$DW$32        .dwtag  DW_TAG_TI_far_type
+     584                      .dwattr $C$DW$32, DW_AT_type(*$C$DW$T$25)
+     585              $C$DW$T$38      .dwtag  DW_TAG_const_type
+     586                      .dwattr $C$DW$T$38, DW_AT_type(*$C$DW$32)
+     587              $C$DW$T$14      .dwtag  DW_TAG_base_type
+     588                      .dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
+     589                      .dwattr $C$DW$T$14, DW_AT_name("long long")
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE   14
 
-     600                      .dwattr $C$DW$T$17, DW_AT_encoding(DW_ATE_float)
-     601                      .dwattr $C$DW$T$17, DW_AT_name("double")
-     602                      .dwattr $C$DW$T$17, DW_AT_byte_size(0x02)
-     603              $C$DW$T$18      .dwtag  DW_TAG_base_type
-     604                      .dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
-     605                      .dwattr $C$DW$T$18, DW_AT_name("long double")
-     606                      .dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
-     607              
-     608              $C$DW$T$24      .dwtag  DW_TAG_structure_type
-     609                      .dwattr $C$DW$T$24, DW_AT_name("xLIST")
-     610                      .dwattr $C$DW$T$24, DW_AT_byte_size(0x0a)
-     611              $C$DW$33        .dwtag  DW_TAG_member
-     612                      .dwattr $C$DW$33, DW_AT_type(*$C$DW$T$20)
-     613                      .dwattr $C$DW$33, DW_AT_name("uxNumberOfItems")
-     614                      .dwattr $C$DW$33, DW_AT_TI_symbol_name("_uxNumberOfItems")
-     615                      .dwattr $C$DW$33, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
-     616                      .dwattr $C$DW$33, DW_AT_accessibility(DW_ACCESS_public)
-     617              $C$DW$34        .dwtag  DW_TAG_member
-     618                      .dwattr $C$DW$34, DW_AT_type(*$C$DW$T$22)
-     619                      .dwattr $C$DW$34, DW_AT_name("pxIndex")
-     620                      .dwattr $C$DW$34, DW_AT_TI_symbol_name("_pxIndex")
-     621                      .dwattr $C$DW$34, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
-     622                      .dwattr $C$DW$34, DW_AT_accessibility(DW_ACCESS_public)
-     623              $C$DW$35        .dwtag  DW_TAG_member
-     624                      .dwattr $C$DW$35, DW_AT_type(*$C$DW$T$23)
-     625                      .dwattr $C$DW$35, DW_AT_name("xListEnd")
-     626                      .dwattr $C$DW$35, DW_AT_TI_symbol_name("_xListEnd")
-     627                      .dwattr $C$DW$35, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
-     628                      .dwattr $C$DW$35, DW_AT_accessibility(DW_ACCESS_public)
-     629                      .dwendtag $C$DW$T$24
-     630              
-     631              $C$DW$T$30      .dwtag  DW_TAG_typedef, DW_AT_name("List_t")
-     632                      .dwattr $C$DW$T$30, DW_AT_type(*$C$DW$T$24)
-     633                      .dwattr $C$DW$T$30, DW_AT_language(DW_LANG_C)
-     634              $C$DW$T$31      .dwtag  DW_TAG_pointer_type
-     635                      .dwattr $C$DW$T$31, DW_AT_type(*$C$DW$T$30)
-     636                      .dwattr $C$DW$T$31, DW_AT_address_class(0x17)
-     637              $C$DW$36        .dwtag  DW_TAG_TI_far_type
-     638                      .dwattr $C$DW$36, DW_AT_type(*$C$DW$T$31)
-     639              $C$DW$T$32      .dwtag  DW_TAG_const_type
-     640                      .dwattr $C$DW$T$32, DW_AT_type(*$C$DW$36)
-     641              $C$DW$T$27      .dwtag  DW_TAG_pointer_type
-     642                      .dwattr $C$DW$T$27, DW_AT_type(*$C$DW$T$24)
-     643                      .dwattr $C$DW$T$27, DW_AT_address_class(0x17)
-     644              
-     645              $C$DW$T$28      .dwtag  DW_TAG_structure_type
-     646                      .dwattr $C$DW$T$28, DW_AT_name("xLIST_ITEM")
-     647                      .dwattr $C$DW$T$28, DW_AT_byte_size(0x0a)
-     648              $C$DW$37        .dwtag  DW_TAG_member
-     649                      .dwattr $C$DW$37, DW_AT_type(*$C$DW$T$25)
-     650                      .dwattr $C$DW$37, DW_AT_name("xItemValue")
-     651                      .dwattr $C$DW$37, DW_AT_TI_symbol_name("_xItemValue")
-     652                      .dwattr $C$DW$37, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
-     653                      .dwattr $C$DW$37, DW_AT_accessibility(DW_ACCESS_public)
-     654              $C$DW$38        .dwtag  DW_TAG_member
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+     590                      .dwattr $C$DW$T$14, DW_AT_byte_size(0x04)
+     591                      .dwattr $C$DW$T$14, DW_AT_bit_size(0x28)
+     592                      .dwattr $C$DW$T$14, DW_AT_bit_offset(0x18)
+     593              $C$DW$T$15      .dwtag  DW_TAG_base_type
+     594                      .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
+     595                      .dwattr $C$DW$T$15, DW_AT_name("unsigned long long")
+     596                      .dwattr $C$DW$T$15, DW_AT_byte_size(0x04)
+     597                      .dwattr $C$DW$T$15, DW_AT_bit_size(0x28)
+     598                      .dwattr $C$DW$T$15, DW_AT_bit_offset(0x18)
+     599              $C$DW$T$16      .dwtag  DW_TAG_base_type
+     600                      .dwattr $C$DW$T$16, DW_AT_encoding(DW_ATE_float)
+     601                      .dwattr $C$DW$T$16, DW_AT_name("float")
+     602                      .dwattr $C$DW$T$16, DW_AT_byte_size(0x02)
+     603              $C$DW$T$17      .dwtag  DW_TAG_base_type
+     604                      .dwattr $C$DW$T$17, DW_AT_encoding(DW_ATE_float)
+     605                      .dwattr $C$DW$T$17, DW_AT_name("double")
+     606                      .dwattr $C$DW$T$17, DW_AT_byte_size(0x02)
+     607              $C$DW$T$18      .dwtag  DW_TAG_base_type
+     608                      .dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
+     609                      .dwattr $C$DW$T$18, DW_AT_name("long double")
+     610                      .dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
+     611              
+     612              $C$DW$T$24      .dwtag  DW_TAG_structure_type
+     613                      .dwattr $C$DW$T$24, DW_AT_name("xLIST")
+     614                      .dwattr $C$DW$T$24, DW_AT_byte_size(0x0a)
+     615              $C$DW$33        .dwtag  DW_TAG_member
+     616                      .dwattr $C$DW$33, DW_AT_type(*$C$DW$T$20)
+     617                      .dwattr $C$DW$33, DW_AT_name("uxNumberOfItems")
+     618                      .dwattr $C$DW$33, DW_AT_TI_symbol_name("_uxNumberOfItems")
+     619                      .dwattr $C$DW$33, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+     620                      .dwattr $C$DW$33, DW_AT_accessibility(DW_ACCESS_public)
+     621              $C$DW$34        .dwtag  DW_TAG_member
+     622                      .dwattr $C$DW$34, DW_AT_type(*$C$DW$T$22)
+     623                      .dwattr $C$DW$34, DW_AT_name("pxIndex")
+     624                      .dwattr $C$DW$34, DW_AT_TI_symbol_name("_pxIndex")
+     625                      .dwattr $C$DW$34, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+     626                      .dwattr $C$DW$34, DW_AT_accessibility(DW_ACCESS_public)
+     627              $C$DW$35        .dwtag  DW_TAG_member
+     628                      .dwattr $C$DW$35, DW_AT_type(*$C$DW$T$23)
+     629                      .dwattr $C$DW$35, DW_AT_name("xListEnd")
+     630                      .dwattr $C$DW$35, DW_AT_TI_symbol_name("_xListEnd")
+     631                      .dwattr $C$DW$35, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+     632                      .dwattr $C$DW$35, DW_AT_accessibility(DW_ACCESS_public)
+     633                      .dwendtag $C$DW$T$24
+     634              
+     635              $C$DW$T$30      .dwtag  DW_TAG_typedef, DW_AT_name("List_t")
+     636                      .dwattr $C$DW$T$30, DW_AT_type(*$C$DW$T$24)
+     637                      .dwattr $C$DW$T$30, DW_AT_language(DW_LANG_C)
+     638              $C$DW$T$31      .dwtag  DW_TAG_pointer_type
+     639                      .dwattr $C$DW$T$31, DW_AT_type(*$C$DW$T$30)
+     640                      .dwattr $C$DW$T$31, DW_AT_address_class(0x17)
+     641              $C$DW$36        .dwtag  DW_TAG_TI_far_type
+     642                      .dwattr $C$DW$36, DW_AT_type(*$C$DW$T$31)
+     643              $C$DW$T$32      .dwtag  DW_TAG_const_type
+     644                      .dwattr $C$DW$T$32, DW_AT_type(*$C$DW$36)
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE   15
 
-     655                      .dwattr $C$DW$38, DW_AT_type(*$C$DW$T$26)
-     656                      .dwattr $C$DW$38, DW_AT_name("pxNext")
-     657                      .dwattr $C$DW$38, DW_AT_TI_symbol_name("_pxNext")
-     658                      .dwattr $C$DW$38, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
-     659                      .dwattr $C$DW$38, DW_AT_accessibility(DW_ACCESS_public)
-     660              $C$DW$39        .dwtag  DW_TAG_member
-     661                      .dwattr $C$DW$39, DW_AT_type(*$C$DW$T$26)
-     662                      .dwattr $C$DW$39, DW_AT_name("pxPrevious")
-     663                      .dwattr $C$DW$39, DW_AT_TI_symbol_name("_pxPrevious")
-     664                      .dwattr $C$DW$39, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
-     665                      .dwattr $C$DW$39, DW_AT_accessibility(DW_ACCESS_public)
-     666              $C$DW$40        .dwtag  DW_TAG_member
-     667                      .dwattr $C$DW$40, DW_AT_type(*$C$DW$T$3)
-     668                      .dwattr $C$DW$40, DW_AT_name("pvOwner")
-     669                      .dwattr $C$DW$40, DW_AT_TI_symbol_name("_pvOwner")
-     670                      .dwattr $C$DW$40, DW_AT_data_member_location[DW_OP_plus_uconst 0x6]
-     671                      .dwattr $C$DW$40, DW_AT_accessibility(DW_ACCESS_public)
-     672              $C$DW$41        .dwtag  DW_TAG_member
-     673                      .dwattr $C$DW$41, DW_AT_type(*$C$DW$T$27)
-     674                      .dwattr $C$DW$41, DW_AT_name("pvContainer")
-     675                      .dwattr $C$DW$41, DW_AT_TI_symbol_name("_pvContainer")
-     676                      .dwattr $C$DW$41, DW_AT_data_member_location[DW_OP_plus_uconst 0x8]
-     677                      .dwattr $C$DW$41, DW_AT_accessibility(DW_ACCESS_public)
-     678                      .dwendtag $C$DW$T$28
-     679              
-     680              $C$DW$T$21      .dwtag  DW_TAG_typedef, DW_AT_name("ListItem_t")
-     681                      .dwattr $C$DW$T$21, DW_AT_type(*$C$DW$T$28)
-     682                      .dwattr $C$DW$T$21, DW_AT_language(DW_LANG_C)
-     683              $C$DW$T$22      .dwtag  DW_TAG_pointer_type
-     684                      .dwattr $C$DW$T$22, DW_AT_type(*$C$DW$T$21)
-     685                      .dwattr $C$DW$T$22, DW_AT_address_class(0x17)
-     686              $C$DW$42        .dwtag  DW_TAG_TI_far_type
-     687                      .dwattr $C$DW$42, DW_AT_type(*$C$DW$T$22)
-     688              $C$DW$T$34      .dwtag  DW_TAG_const_type
-     689                      .dwattr $C$DW$T$34, DW_AT_type(*$C$DW$42)
-     690              $C$DW$T$26      .dwtag  DW_TAG_pointer_type
-     691                      .dwattr $C$DW$T$26, DW_AT_type(*$C$DW$T$28)
-     692                      .dwattr $C$DW$T$26, DW_AT_address_class(0x17)
-     693              
-     694              $C$DW$T$29      .dwtag  DW_TAG_structure_type
-     695                      .dwattr $C$DW$T$29, DW_AT_name("xMINI_LIST_ITEM")
-     696                      .dwattr $C$DW$T$29, DW_AT_byte_size(0x06)
-     697              $C$DW$43        .dwtag  DW_TAG_member
-     698                      .dwattr $C$DW$43, DW_AT_type(*$C$DW$T$25)
-     699                      .dwattr $C$DW$43, DW_AT_name("xItemValue")
-     700                      .dwattr $C$DW$43, DW_AT_TI_symbol_name("_xItemValue")
-     701                      .dwattr $C$DW$43, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
-     702                      .dwattr $C$DW$43, DW_AT_accessibility(DW_ACCESS_public)
-     703              $C$DW$44        .dwtag  DW_TAG_member
-     704                      .dwattr $C$DW$44, DW_AT_type(*$C$DW$T$26)
-     705                      .dwattr $C$DW$44, DW_AT_name("pxNext")
-     706                      .dwattr $C$DW$44, DW_AT_TI_symbol_name("_pxNext")
-     707                      .dwattr $C$DW$44, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
-     708                      .dwattr $C$DW$44, DW_AT_accessibility(DW_ACCESS_public)
-     709              $C$DW$45        .dwtag  DW_TAG_member
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+     645              $C$DW$T$27      .dwtag  DW_TAG_pointer_type
+     646                      .dwattr $C$DW$T$27, DW_AT_type(*$C$DW$T$24)
+     647                      .dwattr $C$DW$T$27, DW_AT_address_class(0x17)
+     648              
+     649              $C$DW$T$28      .dwtag  DW_TAG_structure_type
+     650                      .dwattr $C$DW$T$28, DW_AT_name("xLIST_ITEM")
+     651                      .dwattr $C$DW$T$28, DW_AT_byte_size(0x0a)
+     652              $C$DW$37        .dwtag  DW_TAG_member
+     653                      .dwattr $C$DW$37, DW_AT_type(*$C$DW$T$25)
+     654                      .dwattr $C$DW$37, DW_AT_name("xItemValue")
+     655                      .dwattr $C$DW$37, DW_AT_TI_symbol_name("_xItemValue")
+     656                      .dwattr $C$DW$37, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+     657                      .dwattr $C$DW$37, DW_AT_accessibility(DW_ACCESS_public)
+     658              $C$DW$38        .dwtag  DW_TAG_member
+     659                      .dwattr $C$DW$38, DW_AT_type(*$C$DW$T$26)
+     660                      .dwattr $C$DW$38, DW_AT_name("pxNext")
+     661                      .dwattr $C$DW$38, DW_AT_TI_symbol_name("_pxNext")
+     662                      .dwattr $C$DW$38, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+     663                      .dwattr $C$DW$38, DW_AT_accessibility(DW_ACCESS_public)
+     664              $C$DW$39        .dwtag  DW_TAG_member
+     665                      .dwattr $C$DW$39, DW_AT_type(*$C$DW$T$26)
+     666                      .dwattr $C$DW$39, DW_AT_name("pxPrevious")
+     667                      .dwattr $C$DW$39, DW_AT_TI_symbol_name("_pxPrevious")
+     668                      .dwattr $C$DW$39, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+     669                      .dwattr $C$DW$39, DW_AT_accessibility(DW_ACCESS_public)
+     670              $C$DW$40        .dwtag  DW_TAG_member
+     671                      .dwattr $C$DW$40, DW_AT_type(*$C$DW$T$3)
+     672                      .dwattr $C$DW$40, DW_AT_name("pvOwner")
+     673                      .dwattr $C$DW$40, DW_AT_TI_symbol_name("_pvOwner")
+     674                      .dwattr $C$DW$40, DW_AT_data_member_location[DW_OP_plus_uconst 0x6]
+     675                      .dwattr $C$DW$40, DW_AT_accessibility(DW_ACCESS_public)
+     676              $C$DW$41        .dwtag  DW_TAG_member
+     677                      .dwattr $C$DW$41, DW_AT_type(*$C$DW$T$27)
+     678                      .dwattr $C$DW$41, DW_AT_name("pvContainer")
+     679                      .dwattr $C$DW$41, DW_AT_TI_symbol_name("_pvContainer")
+     680                      .dwattr $C$DW$41, DW_AT_data_member_location[DW_OP_plus_uconst 0x8]
+     681                      .dwattr $C$DW$41, DW_AT_accessibility(DW_ACCESS_public)
+     682                      .dwendtag $C$DW$T$28
+     683              
+     684              $C$DW$T$21      .dwtag  DW_TAG_typedef, DW_AT_name("ListItem_t")
+     685                      .dwattr $C$DW$T$21, DW_AT_type(*$C$DW$T$28)
+     686                      .dwattr $C$DW$T$21, DW_AT_language(DW_LANG_C)
+     687              $C$DW$T$22      .dwtag  DW_TAG_pointer_type
+     688                      .dwattr $C$DW$T$22, DW_AT_type(*$C$DW$T$21)
+     689                      .dwattr $C$DW$T$22, DW_AT_address_class(0x17)
+     690              $C$DW$42        .dwtag  DW_TAG_TI_far_type
+     691                      .dwattr $C$DW$42, DW_AT_type(*$C$DW$T$22)
+     692              $C$DW$T$34      .dwtag  DW_TAG_const_type
+     693                      .dwattr $C$DW$T$34, DW_AT_type(*$C$DW$42)
+     694              $C$DW$T$26      .dwtag  DW_TAG_pointer_type
+     695                      .dwattr $C$DW$T$26, DW_AT_type(*$C$DW$T$28)
+     696                      .dwattr $C$DW$T$26, DW_AT_address_class(0x17)
+     697              
+     698              $C$DW$T$29      .dwtag  DW_TAG_structure_type
+     699                      .dwattr $C$DW$T$29, DW_AT_name("xMINI_LIST_ITEM")
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE   16
 
-     710                      .dwattr $C$DW$45, DW_AT_type(*$C$DW$T$26)
-     711                      .dwattr $C$DW$45, DW_AT_name("pxPrevious")
-     712                      .dwattr $C$DW$45, DW_AT_TI_symbol_name("_pxPrevious")
-     713                      .dwattr $C$DW$45, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
-     714                      .dwattr $C$DW$45, DW_AT_accessibility(DW_ACCESS_public)
-     715                      .dwendtag $C$DW$T$29
-     716              
-     717              $C$DW$T$23      .dwtag  DW_TAG_typedef, DW_AT_name("MiniListItem_t")
-     718                      .dwattr $C$DW$T$23, DW_AT_type(*$C$DW$T$29)
-     719                      .dwattr $C$DW$T$23, DW_AT_language(DW_LANG_C)
-     720                      .dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
-     721              
-     722              ;***************************************************************
-     723              ;* DWARF CIE ENTRIES                                           *
-     724              ;***************************************************************
+     700                      .dwattr $C$DW$T$29, DW_AT_byte_size(0x06)
+     701              $C$DW$43        .dwtag  DW_TAG_member
+     702                      .dwattr $C$DW$43, DW_AT_type(*$C$DW$T$25)
+     703                      .dwattr $C$DW$43, DW_AT_name("xItemValue")
+     704                      .dwattr $C$DW$43, DW_AT_TI_symbol_name("_xItemValue")
+     705                      .dwattr $C$DW$43, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+     706                      .dwattr $C$DW$43, DW_AT_accessibility(DW_ACCESS_public)
+     707              $C$DW$44        .dwtag  DW_TAG_member
+     708                      .dwattr $C$DW$44, DW_AT_type(*$C$DW$T$26)
+     709                      .dwattr $C$DW$44, DW_AT_name("pxNext")
+     710                      .dwattr $C$DW$44, DW_AT_TI_symbol_name("_pxNext")
+     711                      .dwattr $C$DW$44, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+     712                      .dwattr $C$DW$44, DW_AT_accessibility(DW_ACCESS_public)
+     713              $C$DW$45        .dwtag  DW_TAG_member
+     714                      .dwattr $C$DW$45, DW_AT_type(*$C$DW$T$26)
+     715                      .dwattr $C$DW$45, DW_AT_name("pxPrevious")
+     716                      .dwattr $C$DW$45, DW_AT_TI_symbol_name("_pxPrevious")
+     717                      .dwattr $C$DW$45, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+     718                      .dwattr $C$DW$45, DW_AT_accessibility(DW_ACCESS_public)
+     719                      .dwendtag $C$DW$T$29
+     720              
+     721              $C$DW$T$23      .dwtag  DW_TAG_typedef, DW_AT_name("MiniListItem_t")
+     722                      .dwattr $C$DW$T$23, DW_AT_type(*$C$DW$T$29)
+     723                      .dwattr $C$DW$T$23, DW_AT_language(DW_LANG_C)
+     724                      .dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
      725              
-     726              $C$DW$CIE       .dwcie 91
-     727                      .dwcfi  cfa_register, 36
-     728                      .dwcfi  cfa_offset, 0
-     729                      .dwcfi  undefined, 0
-     730                      .dwcfi  undefined, 1
-     731                      .dwcfi  undefined, 2
-     732                      .dwcfi  undefined, 3
-     733                      .dwcfi  undefined, 4
-     734                      .dwcfi  undefined, 5
-     735                      .dwcfi  undefined, 6
-     736                      .dwcfi  undefined, 7
-     737                      .dwcfi  undefined, 8
-     738                      .dwcfi  undefined, 9
-     739                      .dwcfi  undefined, 10
-     740                      .dwcfi  undefined, 11
-     741                      .dwcfi  undefined, 12
-     742                      .dwcfi  undefined, 13
-     743                      .dwcfi  same_value, 14
-     744                      .dwcfi  same_value, 15
-     745                      .dwcfi  undefined, 16
-     746                      .dwcfi  undefined, 17
-     747                      .dwcfi  undefined, 18
-     748                      .dwcfi  undefined, 19
-     749                      .dwcfi  undefined, 20
-     750                      .dwcfi  undefined, 21
-     751                      .dwcfi  undefined, 22
-     752                      .dwcfi  undefined, 23
-     753                      .dwcfi  undefined, 24
-     754                      .dwcfi  undefined, 25
-     755                      .dwcfi  same_value, 26
-     756                      .dwcfi  same_value, 27
-     757                      .dwcfi  same_value, 28
-     758                      .dwcfi  same_value, 29
-     759                      .dwcfi  same_value, 30
-     760                      .dwcfi  same_value, 31
-     761                      .dwcfi  undefined, 32
-     762                      .dwcfi  undefined, 33
-     763                      .dwcfi  undefined, 34
-     764                      .dwcfi  undefined, 35
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+     726              ;***************************************************************
+     727              ;* DWARF CIE ENTRIES                                           *
+     728              ;***************************************************************
+     729              
+     730              $C$DW$CIE       .dwcie 91
+     731                      .dwcfi  cfa_register, 36
+     732                      .dwcfi  cfa_offset, 0
+     733                      .dwcfi  undefined, 0
+     734                      .dwcfi  undefined, 1
+     735                      .dwcfi  undefined, 2
+     736                      .dwcfi  undefined, 3
+     737                      .dwcfi  undefined, 4
+     738                      .dwcfi  undefined, 5
+     739                      .dwcfi  undefined, 6
+     740                      .dwcfi  undefined, 7
+     741                      .dwcfi  undefined, 8
+     742                      .dwcfi  undefined, 9
+     743                      .dwcfi  undefined, 10
+     744                      .dwcfi  undefined, 11
+     745                      .dwcfi  undefined, 12
+     746                      .dwcfi  undefined, 13
+     747                      .dwcfi  same_value, 14
+     748                      .dwcfi  same_value, 15
+     749                      .dwcfi  undefined, 16
+     750                      .dwcfi  undefined, 17
+     751                      .dwcfi  undefined, 18
+     752                      .dwcfi  undefined, 19
+     753                      .dwcfi  undefined, 20
+     754                      .dwcfi  undefined, 21
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE   17
 
-     765                      .dwcfi  undefined, 36
-     766                      .dwcfi  undefined, 37
-     767                      .dwcfi  undefined, 38
-     768                      .dwcfi  undefined, 39
-     769                      .dwcfi  undefined, 40
-     770                      .dwcfi  undefined, 41
-     771                      .dwcfi  undefined, 42
-     772                      .dwcfi  undefined, 43
-     773                      .dwcfi  undefined, 44
-     774                      .dwcfi  undefined, 45
-     775                      .dwcfi  undefined, 46
-     776                      .dwcfi  undefined, 47
-     777                      .dwcfi  undefined, 48
-     778                      .dwcfi  undefined, 49
-     779                      .dwcfi  undefined, 50
-     780                      .dwcfi  undefined, 51
-     781                      .dwcfi  undefined, 52
-     782                      .dwcfi  undefined, 53
-     783                      .dwcfi  undefined, 54
-     784                      .dwcfi  undefined, 55
-     785                      .dwcfi  undefined, 56
-     786                      .dwcfi  undefined, 57
-     787                      .dwcfi  undefined, 58
-     788                      .dwcfi  undefined, 59
-     789                      .dwcfi  undefined, 60
-     790                      .dwcfi  undefined, 61
-     791                      .dwcfi  undefined, 62
-     792                      .dwcfi  undefined, 63
-     793                      .dwcfi  undefined, 64
-     794                      .dwcfi  undefined, 65
-     795                      .dwcfi  undefined, 66
-     796                      .dwcfi  undefined, 67
-     797                      .dwcfi  undefined, 68
-     798                      .dwcfi  undefined, 69
-     799                      .dwcfi  undefined, 70
-     800                      .dwcfi  undefined, 71
-     801                      .dwcfi  undefined, 72
-     802                      .dwcfi  undefined, 73
-     803                      .dwcfi  undefined, 74
-     804                      .dwcfi  undefined, 75
-     805                      .dwcfi  undefined, 76
-     806                      .dwcfi  undefined, 77
-     807                      .dwcfi  undefined, 78
-     808                      .dwcfi  undefined, 79
-     809                      .dwcfi  undefined, 80
-     810                      .dwcfi  undefined, 81
-     811                      .dwcfi  undefined, 82
-     812                      .dwcfi  undefined, 83
-     813                      .dwcfi  undefined, 84
-     814                      .dwcfi  undefined, 85
-     815                      .dwcfi  undefined, 86
-     816                      .dwcfi  undefined, 87
-     817                      .dwcfi  undefined, 88
-     818                      .dwcfi  undefined, 89
-     819                      .dwcfi  undefined, 90
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+     755                      .dwcfi  undefined, 22
+     756                      .dwcfi  undefined, 23
+     757                      .dwcfi  undefined, 24
+     758                      .dwcfi  undefined, 25
+     759                      .dwcfi  same_value, 26
+     760                      .dwcfi  same_value, 27
+     761                      .dwcfi  same_value, 28
+     762                      .dwcfi  same_value, 29
+     763                      .dwcfi  same_value, 30
+     764                      .dwcfi  same_value, 31
+     765                      .dwcfi  undefined, 32
+     766                      .dwcfi  undefined, 33
+     767                      .dwcfi  undefined, 34
+     768                      .dwcfi  undefined, 35
+     769                      .dwcfi  undefined, 36
+     770                      .dwcfi  undefined, 37
+     771                      .dwcfi  undefined, 38
+     772                      .dwcfi  undefined, 39
+     773                      .dwcfi  undefined, 40
+     774                      .dwcfi  undefined, 41
+     775                      .dwcfi  undefined, 42
+     776                      .dwcfi  undefined, 43
+     777                      .dwcfi  undefined, 44
+     778                      .dwcfi  undefined, 45
+     779                      .dwcfi  undefined, 46
+     780                      .dwcfi  undefined, 47
+     781                      .dwcfi  undefined, 48
+     782                      .dwcfi  undefined, 49
+     783                      .dwcfi  undefined, 50
+     784                      .dwcfi  undefined, 51
+     785                      .dwcfi  undefined, 52
+     786                      .dwcfi  undefined, 53
+     787                      .dwcfi  undefined, 54
+     788                      .dwcfi  undefined, 55
+     789                      .dwcfi  undefined, 56
+     790                      .dwcfi  undefined, 57
+     791                      .dwcfi  undefined, 58
+     792                      .dwcfi  undefined, 59
+     793                      .dwcfi  undefined, 60
+     794                      .dwcfi  undefined, 61
+     795                      .dwcfi  undefined, 62
+     796                      .dwcfi  undefined, 63
+     797                      .dwcfi  undefined, 64
+     798                      .dwcfi  undefined, 65
+     799                      .dwcfi  undefined, 66
+     800                      .dwcfi  undefined, 67
+     801                      .dwcfi  undefined, 68
+     802                      .dwcfi  undefined, 69
+     803                      .dwcfi  undefined, 70
+     804                      .dwcfi  undefined, 71
+     805                      .dwcfi  undefined, 72
+     806                      .dwcfi  undefined, 73
+     807                      .dwcfi  undefined, 74
+     808                      .dwcfi  undefined, 75
+     809                      .dwcfi  undefined, 76
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE   18
 
-     820                      .dwcfi  undefined, 91
-     821                      .dwendentry
-     822              
-     823              ;***************************************************************
-     824              ;* DWARF REGISTER MAP                                          *
-     825              ;***************************************************************
+     810                      .dwcfi  undefined, 77
+     811                      .dwcfi  undefined, 78
+     812                      .dwcfi  undefined, 79
+     813                      .dwcfi  undefined, 80
+     814                      .dwcfi  undefined, 81
+     815                      .dwcfi  undefined, 82
+     816                      .dwcfi  undefined, 83
+     817                      .dwcfi  undefined, 84
+     818                      .dwcfi  undefined, 85
+     819                      .dwcfi  undefined, 86
+     820                      .dwcfi  undefined, 87
+     821                      .dwcfi  undefined, 88
+     822                      .dwcfi  undefined, 89
+     823                      .dwcfi  undefined, 90
+     824                      .dwcfi  undefined, 91
+     825                      .dwendentry
      826              
-     827              $C$DW$46        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
-     828                      .dwattr $C$DW$46, DW_AT_location[DW_OP_reg0]
-     829              $C$DW$47        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
-     830                      .dwattr $C$DW$47, DW_AT_location[DW_OP_reg1]
-     831              $C$DW$48        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0_G")
-     832                      .dwattr $C$DW$48, DW_AT_location[DW_OP_reg2]
-     833              $C$DW$49        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
-     834                      .dwattr $C$DW$49, DW_AT_location[DW_OP_reg3]
-     835              $C$DW$50        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
-     836                      .dwattr $C$DW$50, DW_AT_location[DW_OP_reg4]
-     837              $C$DW$51        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1_G")
-     838                      .dwattr $C$DW$51, DW_AT_location[DW_OP_reg5]
-     839              $C$DW$52        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
-     840                      .dwattr $C$DW$52, DW_AT_location[DW_OP_reg6]
-     841              $C$DW$53        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
-     842                      .dwattr $C$DW$53, DW_AT_location[DW_OP_reg7]
-     843              $C$DW$54        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2_G")
-     844                      .dwattr $C$DW$54, DW_AT_location[DW_OP_reg8]
-     845              $C$DW$55        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
-     846                      .dwattr $C$DW$55, DW_AT_location[DW_OP_reg9]
-     847              $C$DW$56        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
-     848                      .dwattr $C$DW$56, DW_AT_location[DW_OP_reg10]
-     849              $C$DW$57        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3_G")
-     850                      .dwattr $C$DW$57, DW_AT_location[DW_OP_reg11]
-     851              $C$DW$58        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T0")
-     852                      .dwattr $C$DW$58, DW_AT_location[DW_OP_reg12]
-     853              $C$DW$59        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T1")
-     854                      .dwattr $C$DW$59, DW_AT_location[DW_OP_reg13]
-     855              $C$DW$60        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T2")
-     856                      .dwattr $C$DW$60, DW_AT_location[DW_OP_reg14]
-     857              $C$DW$61        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T3")
-     858                      .dwattr $C$DW$61, DW_AT_location[DW_OP_reg15]
-     859              $C$DW$62        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0")
-     860                      .dwattr $C$DW$62, DW_AT_location[DW_OP_reg16]
-     861              $C$DW$63        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR0")
-     862                      .dwattr $C$DW$63, DW_AT_location[DW_OP_reg17]
-     863              $C$DW$64        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1")
-     864                      .dwattr $C$DW$64, DW_AT_location[DW_OP_reg18]
-     865              $C$DW$65        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR1")
-     866                      .dwattr $C$DW$65, DW_AT_location[DW_OP_reg19]
-     867              $C$DW$66        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
-     868                      .dwattr $C$DW$66, DW_AT_location[DW_OP_reg20]
-     869              $C$DW$67        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR2")
-     870                      .dwattr $C$DW$67, DW_AT_location[DW_OP_reg21]
-     871              $C$DW$68        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3")
-     872                      .dwattr $C$DW$68, DW_AT_location[DW_OP_reg22]
-     873              $C$DW$69        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR3")
-     874                      .dwattr $C$DW$69, DW_AT_location[DW_OP_reg23]
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+     827              ;***************************************************************
+     828              ;* DWARF REGISTER MAP                                          *
+     829              ;***************************************************************
+     830              
+     831              $C$DW$46        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+     832                      .dwattr $C$DW$46, DW_AT_location[DW_OP_reg0]
+     833              $C$DW$47        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+     834                      .dwattr $C$DW$47, DW_AT_location[DW_OP_reg1]
+     835              $C$DW$48        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0_G")
+     836                      .dwattr $C$DW$48, DW_AT_location[DW_OP_reg2]
+     837              $C$DW$49        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+     838                      .dwattr $C$DW$49, DW_AT_location[DW_OP_reg3]
+     839              $C$DW$50        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+     840                      .dwattr $C$DW$50, DW_AT_location[DW_OP_reg4]
+     841              $C$DW$51        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1_G")
+     842                      .dwattr $C$DW$51, DW_AT_location[DW_OP_reg5]
+     843              $C$DW$52        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+     844                      .dwattr $C$DW$52, DW_AT_location[DW_OP_reg6]
+     845              $C$DW$53        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+     846                      .dwattr $C$DW$53, DW_AT_location[DW_OP_reg7]
+     847              $C$DW$54        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2_G")
+     848                      .dwattr $C$DW$54, DW_AT_location[DW_OP_reg8]
+     849              $C$DW$55        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+     850                      .dwattr $C$DW$55, DW_AT_location[DW_OP_reg9]
+     851              $C$DW$56        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+     852                      .dwattr $C$DW$56, DW_AT_location[DW_OP_reg10]
+     853              $C$DW$57        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3_G")
+     854                      .dwattr $C$DW$57, DW_AT_location[DW_OP_reg11]
+     855              $C$DW$58        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T0")
+     856                      .dwattr $C$DW$58, DW_AT_location[DW_OP_reg12]
+     857              $C$DW$59        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T1")
+     858                      .dwattr $C$DW$59, DW_AT_location[DW_OP_reg13]
+     859              $C$DW$60        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T2")
+     860                      .dwattr $C$DW$60, DW_AT_location[DW_OP_reg14]
+     861              $C$DW$61        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T3")
+     862                      .dwattr $C$DW$61, DW_AT_location[DW_OP_reg15]
+     863              $C$DW$62        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0")
+     864                      .dwattr $C$DW$62, DW_AT_location[DW_OP_reg16]
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE   19
 
-     875              $C$DW$70        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4")
-     876                      .dwattr $C$DW$70, DW_AT_location[DW_OP_reg24]
-     877              $C$DW$71        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR4")
-     878                      .dwattr $C$DW$71, DW_AT_location[DW_OP_reg25]
-     879              $C$DW$72        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5")
-     880                      .dwattr $C$DW$72, DW_AT_location[DW_OP_reg26]
-     881              $C$DW$73        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR5")
-     882                      .dwattr $C$DW$73, DW_AT_location[DW_OP_reg27]
-     883              $C$DW$74        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6")
-     884                      .dwattr $C$DW$74, DW_AT_location[DW_OP_reg28]
-     885              $C$DW$75        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR6")
-     886                      .dwattr $C$DW$75, DW_AT_location[DW_OP_reg29]
-     887              $C$DW$76        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7")
-     888                      .dwattr $C$DW$76, DW_AT_location[DW_OP_reg30]
-     889              $C$DW$77        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR7")
-     890                      .dwattr $C$DW$77, DW_AT_location[DW_OP_reg31]
-     891              $C$DW$78        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FP")
-     892                      .dwattr $C$DW$78, DW_AT_location[DW_OP_regx 0x20]
-     893              $C$DW$79        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XFP")
-     894                      .dwattr $C$DW$79, DW_AT_location[DW_OP_regx 0x21]
-     895              $C$DW$80        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
-     896                      .dwattr $C$DW$80, DW_AT_location[DW_OP_regx 0x22]
-     897              $C$DW$81        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
-     898                      .dwattr $C$DW$81, DW_AT_location[DW_OP_regx 0x23]
-     899              $C$DW$82        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XSP")
-     900                      .dwattr $C$DW$82, DW_AT_location[DW_OP_regx 0x24]
-     901              $C$DW$83        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BKC")
-     902                      .dwattr $C$DW$83, DW_AT_location[DW_OP_regx 0x25]
-     903              $C$DW$84        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK03")
-     904                      .dwattr $C$DW$84, DW_AT_location[DW_OP_regx 0x26]
-     905              $C$DW$85        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK47")
-     906                      .dwattr $C$DW$85, DW_AT_location[DW_OP_regx 0x27]
-     907              $C$DW$86        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST0")
-     908                      .dwattr $C$DW$86, DW_AT_location[DW_OP_regx 0x28]
-     909              $C$DW$87        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST1")
-     910                      .dwattr $C$DW$87, DW_AT_location[DW_OP_regx 0x29]
-     911              $C$DW$88        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST2")
-     912                      .dwattr $C$DW$88, DW_AT_location[DW_OP_regx 0x2a]
-     913              $C$DW$89        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST3")
-     914                      .dwattr $C$DW$89, DW_AT_location[DW_OP_regx 0x2b]
-     915              $C$DW$90        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP")
-     916                      .dwattr $C$DW$90, DW_AT_location[DW_OP_regx 0x2c]
-     917              $C$DW$91        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP05")
-     918                      .dwattr $C$DW$91, DW_AT_location[DW_OP_regx 0x2d]
-     919              $C$DW$92        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP67")
-     920                      .dwattr $C$DW$92, DW_AT_location[DW_OP_regx 0x2e]
-     921              $C$DW$93        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
-     922                      .dwattr $C$DW$93, DW_AT_location[DW_OP_regx 0x2f]
-     923              $C$DW$94        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
-     924                      .dwattr $C$DW$94, DW_AT_location[DW_OP_regx 0x30]
-     925              $C$DW$95        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0_H")
-     926                      .dwattr $C$DW$95, DW_AT_location[DW_OP_regx 0x31]
-     927              $C$DW$96        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0")
-     928                      .dwattr $C$DW$96, DW_AT_location[DW_OP_regx 0x32]
-     929              $C$DW$97        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0_H")
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+     865              $C$DW$63        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR0")
+     866                      .dwattr $C$DW$63, DW_AT_location[DW_OP_reg17]
+     867              $C$DW$64        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1")
+     868                      .dwattr $C$DW$64, DW_AT_location[DW_OP_reg18]
+     869              $C$DW$65        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR1")
+     870                      .dwattr $C$DW$65, DW_AT_location[DW_OP_reg19]
+     871              $C$DW$66        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
+     872                      .dwattr $C$DW$66, DW_AT_location[DW_OP_reg20]
+     873              $C$DW$67        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR2")
+     874                      .dwattr $C$DW$67, DW_AT_location[DW_OP_reg21]
+     875              $C$DW$68        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3")
+     876                      .dwattr $C$DW$68, DW_AT_location[DW_OP_reg22]
+     877              $C$DW$69        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR3")
+     878                      .dwattr $C$DW$69, DW_AT_location[DW_OP_reg23]
+     879              $C$DW$70        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4")
+     880                      .dwattr $C$DW$70, DW_AT_location[DW_OP_reg24]
+     881              $C$DW$71        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR4")
+     882                      .dwattr $C$DW$71, DW_AT_location[DW_OP_reg25]
+     883              $C$DW$72        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5")
+     884                      .dwattr $C$DW$72, DW_AT_location[DW_OP_reg26]
+     885              $C$DW$73        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR5")
+     886                      .dwattr $C$DW$73, DW_AT_location[DW_OP_reg27]
+     887              $C$DW$74        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6")
+     888                      .dwattr $C$DW$74, DW_AT_location[DW_OP_reg28]
+     889              $C$DW$75        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR6")
+     890                      .dwattr $C$DW$75, DW_AT_location[DW_OP_reg29]
+     891              $C$DW$76        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7")
+     892                      .dwattr $C$DW$76, DW_AT_location[DW_OP_reg30]
+     893              $C$DW$77        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR7")
+     894                      .dwattr $C$DW$77, DW_AT_location[DW_OP_reg31]
+     895              $C$DW$78        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FP")
+     896                      .dwattr $C$DW$78, DW_AT_location[DW_OP_regx 0x20]
+     897              $C$DW$79        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XFP")
+     898                      .dwattr $C$DW$79, DW_AT_location[DW_OP_regx 0x21]
+     899              $C$DW$80        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
+     900                      .dwattr $C$DW$80, DW_AT_location[DW_OP_regx 0x22]
+     901              $C$DW$81        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
+     902                      .dwattr $C$DW$81, DW_AT_location[DW_OP_regx 0x23]
+     903              $C$DW$82        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XSP")
+     904                      .dwattr $C$DW$82, DW_AT_location[DW_OP_regx 0x24]
+     905              $C$DW$83        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BKC")
+     906                      .dwattr $C$DW$83, DW_AT_location[DW_OP_regx 0x25]
+     907              $C$DW$84        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK03")
+     908                      .dwattr $C$DW$84, DW_AT_location[DW_OP_regx 0x26]
+     909              $C$DW$85        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK47")
+     910                      .dwattr $C$DW$85, DW_AT_location[DW_OP_regx 0x27]
+     911              $C$DW$86        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST0")
+     912                      .dwattr $C$DW$86, DW_AT_location[DW_OP_regx 0x28]
+     913              $C$DW$87        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST1")
+     914                      .dwattr $C$DW$87, DW_AT_location[DW_OP_regx 0x29]
+     915              $C$DW$88        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST2")
+     916                      .dwattr $C$DW$88, DW_AT_location[DW_OP_regx 0x2a]
+     917              $C$DW$89        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST3")
+     918                      .dwattr $C$DW$89, DW_AT_location[DW_OP_regx 0x2b]
+     919              $C$DW$90        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP")
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE   20
 
-     930                      .dwattr $C$DW$97, DW_AT_location[DW_OP_regx 0x33]
-     931              $C$DW$98        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRS1")
-     932                      .dwattr $C$DW$98, DW_AT_location[DW_OP_regx 0x34]
-     933              $C$DW$99        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC1")
-     934                      .dwattr $C$DW$99, DW_AT_location[DW_OP_regx 0x35]
-     935              $C$DW$100       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1")
-     936                      .dwattr $C$DW$100, DW_AT_location[DW_OP_regx 0x36]
-     937              $C$DW$101       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1_H")
-     938                      .dwattr $C$DW$101, DW_AT_location[DW_OP_regx 0x37]
-     939              $C$DW$102       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1")
-     940                      .dwattr $C$DW$102, DW_AT_location[DW_OP_regx 0x38]
-     941              $C$DW$103       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1_H")
-     942                      .dwattr $C$DW$103, DW_AT_location[DW_OP_regx 0x39]
-     943              $C$DW$104       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CSR")
-     944                      .dwattr $C$DW$104, DW_AT_location[DW_OP_regx 0x3a]
-     945              $C$DW$105       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RPTC")
-     946                      .dwattr $C$DW$105, DW_AT_location[DW_OP_regx 0x3b]
-     947              $C$DW$106       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDP")
-     948                      .dwattr $C$DW$106, DW_AT_location[DW_OP_regx 0x3c]
-     949              $C$DW$107       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XCDP")
-     950                      .dwattr $C$DW$107, DW_AT_location[DW_OP_regx 0x3d]
-     951              $C$DW$108       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN0")
-     952                      .dwattr $C$DW$108, DW_AT_location[DW_OP_regx 0x3e]
-     953              $C$DW$109       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN1")
-     954                      .dwattr $C$DW$109, DW_AT_location[DW_OP_regx 0x3f]
-     955              $C$DW$110       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA01")
-     956                      .dwattr $C$DW$110, DW_AT_location[DW_OP_regx 0x40]
-     957              $C$DW$111       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA23")
-     958                      .dwattr $C$DW$111, DW_AT_location[DW_OP_regx 0x41]
-     959              $C$DW$112       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA45")
-     960                      .dwattr $C$DW$112, DW_AT_location[DW_OP_regx 0x42]
-     961              $C$DW$113       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA67")
-     962                      .dwattr $C$DW$113, DW_AT_location[DW_OP_regx 0x43]
-     963              $C$DW$114       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSAC")
-     964                      .dwattr $C$DW$114, DW_AT_location[DW_OP_regx 0x44]
-     965              $C$DW$115       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CARRY")
-     966                      .dwattr $C$DW$115, DW_AT_location[DW_OP_regx 0x45]
-     967              $C$DW$116       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC1")
-     968                      .dwattr $C$DW$116, DW_AT_location[DW_OP_regx 0x46]
-     969              $C$DW$117       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC2")
-     970                      .dwattr $C$DW$117, DW_AT_location[DW_OP_regx 0x47]
-     971              $C$DW$118       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("M40")
-     972                      .dwattr $C$DW$118, DW_AT_location[DW_OP_regx 0x48]
-     973              $C$DW$119       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SXMD")
-     974                      .dwattr $C$DW$119, DW_AT_location[DW_OP_regx 0x49]
-     975              $C$DW$120       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ARMS")
-     976                      .dwattr $C$DW$120, DW_AT_location[DW_OP_regx 0x4a]
-     977              $C$DW$121       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
-     978                      .dwattr $C$DW$121, DW_AT_location[DW_OP_regx 0x4b]
-     979              $C$DW$122       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATA")
-     980                      .dwattr $C$DW$122, DW_AT_location[DW_OP_regx 0x4c]
-     981              $C$DW$123       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATD")
-     982                      .dwattr $C$DW$123, DW_AT_location[DW_OP_regx 0x4d]
-     983              $C$DW$124       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RDM")
-     984                      .dwattr $C$DW$124, DW_AT_location[DW_OP_regx 0x4e]
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:34 2018
+     920                      .dwattr $C$DW$90, DW_AT_location[DW_OP_regx 0x2c]
+     921              $C$DW$91        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP05")
+     922                      .dwattr $C$DW$91, DW_AT_location[DW_OP_regx 0x2d]
+     923              $C$DW$92        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP67")
+     924                      .dwattr $C$DW$92, DW_AT_location[DW_OP_regx 0x2e]
+     925              $C$DW$93        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
+     926                      .dwattr $C$DW$93, DW_AT_location[DW_OP_regx 0x2f]
+     927              $C$DW$94        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
+     928                      .dwattr $C$DW$94, DW_AT_location[DW_OP_regx 0x30]
+     929              $C$DW$95        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0_H")
+     930                      .dwattr $C$DW$95, DW_AT_location[DW_OP_regx 0x31]
+     931              $C$DW$96        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0")
+     932                      .dwattr $C$DW$96, DW_AT_location[DW_OP_regx 0x32]
+     933              $C$DW$97        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0_H")
+     934                      .dwattr $C$DW$97, DW_AT_location[DW_OP_regx 0x33]
+     935              $C$DW$98        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRS1")
+     936                      .dwattr $C$DW$98, DW_AT_location[DW_OP_regx 0x34]
+     937              $C$DW$99        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC1")
+     938                      .dwattr $C$DW$99, DW_AT_location[DW_OP_regx 0x35]
+     939              $C$DW$100       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1")
+     940                      .dwattr $C$DW$100, DW_AT_location[DW_OP_regx 0x36]
+     941              $C$DW$101       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1_H")
+     942                      .dwattr $C$DW$101, DW_AT_location[DW_OP_regx 0x37]
+     943              $C$DW$102       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1")
+     944                      .dwattr $C$DW$102, DW_AT_location[DW_OP_regx 0x38]
+     945              $C$DW$103       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1_H")
+     946                      .dwattr $C$DW$103, DW_AT_location[DW_OP_regx 0x39]
+     947              $C$DW$104       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CSR")
+     948                      .dwattr $C$DW$104, DW_AT_location[DW_OP_regx 0x3a]
+     949              $C$DW$105       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RPTC")
+     950                      .dwattr $C$DW$105, DW_AT_location[DW_OP_regx 0x3b]
+     951              $C$DW$106       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDP")
+     952                      .dwattr $C$DW$106, DW_AT_location[DW_OP_regx 0x3c]
+     953              $C$DW$107       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XCDP")
+     954                      .dwattr $C$DW$107, DW_AT_location[DW_OP_regx 0x3d]
+     955              $C$DW$108       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN0")
+     956                      .dwattr $C$DW$108, DW_AT_location[DW_OP_regx 0x3e]
+     957              $C$DW$109       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN1")
+     958                      .dwattr $C$DW$109, DW_AT_location[DW_OP_regx 0x3f]
+     959              $C$DW$110       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA01")
+     960                      .dwattr $C$DW$110, DW_AT_location[DW_OP_regx 0x40]
+     961              $C$DW$111       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA23")
+     962                      .dwattr $C$DW$111, DW_AT_location[DW_OP_regx 0x41]
+     963              $C$DW$112       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA45")
+     964                      .dwattr $C$DW$112, DW_AT_location[DW_OP_regx 0x42]
+     965              $C$DW$113       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA67")
+     966                      .dwattr $C$DW$113, DW_AT_location[DW_OP_regx 0x43]
+     967              $C$DW$114       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSAC")
+     968                      .dwattr $C$DW$114, DW_AT_location[DW_OP_regx 0x44]
+     969              $C$DW$115       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CARRY")
+     970                      .dwattr $C$DW$115, DW_AT_location[DW_OP_regx 0x45]
+     971              $C$DW$116       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC1")
+     972                      .dwattr $C$DW$116, DW_AT_location[DW_OP_regx 0x46]
+     973              $C$DW$117       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC2")
+     974                      .dwattr $C$DW$117, DW_AT_location[DW_OP_regx 0x47]
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:00 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 list.asm                                                             PAGE   21
 
-     985              $C$DW$125       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FRCT")
-     986                      .dwattr $C$DW$125, DW_AT_location[DW_OP_regx 0x4f]
-     987              $C$DW$126       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SMUL")
-     988                      .dwattr $C$DW$126, DW_AT_location[DW_OP_regx 0x50]
-     989              $C$DW$127       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("INTM")
-     990                      .dwattr $C$DW$127, DW_AT_location[DW_OP_regx 0x51]
-     991              $C$DW$128       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0LC")
-     992                      .dwattr $C$DW$128, DW_AT_location[DW_OP_regx 0x52]
-     993              $C$DW$129       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1LC")
-     994                      .dwattr $C$DW$129, DW_AT_location[DW_OP_regx 0x53]
-     995              $C$DW$130       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2LC")
-     996                      .dwattr $C$DW$130, DW_AT_location[DW_OP_regx 0x54]
-     997              $C$DW$131       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3LC")
-     998                      .dwattr $C$DW$131, DW_AT_location[DW_OP_regx 0x55]
-     999              $C$DW$132       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4LC")
-    1000                      .dwattr $C$DW$132, DW_AT_location[DW_OP_regx 0x56]
-    1001              $C$DW$133       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5LC")
-    1002                      .dwattr $C$DW$133, DW_AT_location[DW_OP_regx 0x57]
-    1003              $C$DW$134       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6LC")
-    1004                      .dwattr $C$DW$134, DW_AT_location[DW_OP_regx 0x58]
-    1005              $C$DW$135       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7LC")
-    1006                      .dwattr $C$DW$135, DW_AT_location[DW_OP_regx 0x59]
-    1007              $C$DW$136       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDPLC")
-    1008                      .dwattr $C$DW$136, DW_AT_location[DW_OP_regx 0x5a]
-    1009              $C$DW$137       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
-    1010                      .dwattr $C$DW$137, DW_AT_location[DW_OP_regx 0x5b]
-    1011                      .dwendtag $C$DW$CU
-    1012              
-    1012              
-    1012              
+     975              $C$DW$118       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("M40")
+     976                      .dwattr $C$DW$118, DW_AT_location[DW_OP_regx 0x48]
+     977              $C$DW$119       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SXMD")
+     978                      .dwattr $C$DW$119, DW_AT_location[DW_OP_regx 0x49]
+     979              $C$DW$120       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ARMS")
+     980                      .dwattr $C$DW$120, DW_AT_location[DW_OP_regx 0x4a]
+     981              $C$DW$121       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
+     982                      .dwattr $C$DW$121, DW_AT_location[DW_OP_regx 0x4b]
+     983              $C$DW$122       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATA")
+     984                      .dwattr $C$DW$122, DW_AT_location[DW_OP_regx 0x4c]
+     985              $C$DW$123       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATD")
+     986                      .dwattr $C$DW$123, DW_AT_location[DW_OP_regx 0x4d]
+     987              $C$DW$124       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RDM")
+     988                      .dwattr $C$DW$124, DW_AT_location[DW_OP_regx 0x4e]
+     989              $C$DW$125       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FRCT")
+     990                      .dwattr $C$DW$125, DW_AT_location[DW_OP_regx 0x4f]
+     991              $C$DW$126       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SMUL")
+     992                      .dwattr $C$DW$126, DW_AT_location[DW_OP_regx 0x50]
+     993              $C$DW$127       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("INTM")
+     994                      .dwattr $C$DW$127, DW_AT_location[DW_OP_regx 0x51]
+     995              $C$DW$128       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0LC")
+     996                      .dwattr $C$DW$128, DW_AT_location[DW_OP_regx 0x52]
+     997              $C$DW$129       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1LC")
+     998                      .dwattr $C$DW$129, DW_AT_location[DW_OP_regx 0x53]
+     999              $C$DW$130       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2LC")
+    1000                      .dwattr $C$DW$130, DW_AT_location[DW_OP_regx 0x54]
+    1001              $C$DW$131       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3LC")
+    1002                      .dwattr $C$DW$131, DW_AT_location[DW_OP_regx 0x55]
+    1003              $C$DW$132       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4LC")
+    1004                      .dwattr $C$DW$132, DW_AT_location[DW_OP_regx 0x56]
+    1005              $C$DW$133       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5LC")
+    1006                      .dwattr $C$DW$133, DW_AT_location[DW_OP_regx 0x57]
+    1007              $C$DW$134       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6LC")
+    1008                      .dwattr $C$DW$134, DW_AT_location[DW_OP_regx 0x58]
+    1009              $C$DW$135       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7LC")
+    1010                      .dwattr $C$DW$135, DW_AT_location[DW_OP_regx 0x59]
+    1011              $C$DW$136       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDPLC")
+    1012                      .dwattr $C$DW$136, DW_AT_location[DW_OP_regx 0x5a]
+    1013              $C$DW$137       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
+    1014                      .dwattr $C$DW$137, DW_AT_location[DW_OP_regx 0x5b]
+    1015                      .dwendtag $C$DW$CU
+    1016              
+    1016              
+    1016              
 
 No Assembly Errors, No Assembly Warnings

@@ -1,17 +1,17 @@
 # FIXED
 
 FreeRTOS/Source/portable/CCS/c55x/port.obj: ../FreeRTOS/Source/portable/CCS/c55x/port.c
-FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stdlib.h
-FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/linkage.h
-FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/signal.h
-FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/yvals.h
-FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stdarg.h
-FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/_lock.h
+FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdlib.h
+FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/linkage.h
+FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/signal.h
+FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/yvals.h
+FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdarg.h
+FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/_lock.h
 FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/FreeRTOS.h
-FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stddef.h
-FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stdint.h
+FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stddef.h
+FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdint.h
 FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Demo/c5515_CCS/FreeRTOSConfig.h
-FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/c55x.h
+FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/c55x.h
 FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/include/ezdsp5535.h
 FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/tistdtypes.h
 FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/soc.h
@@ -40,21 +40,21 @@ FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2
 FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/mpu_wrappers.h
 FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/task.h
 FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/list.h
-FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/scratch/c5515_eZdsp_FreeRTOS_Demo/inc/register_system.h
-FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/scratch/c5515_eZdsp_FreeRTOS_Demo/inc/register_cpu.h
+FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/inc/register_system.h
+FreeRTOS/Source/portable/CCS/c55x/port.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/inc/register_cpu.h
 
 ../FreeRTOS/Source/portable/CCS/c55x/port.c: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stdlib.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/linkage.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/signal.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/yvals.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stdarg.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/_lock.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdlib.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/linkage.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/signal.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/yvals.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdarg.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/_lock.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/FreeRTOS.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stddef.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stdint.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stddef.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdint.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Demo/c5515_CCS/FreeRTOSConfig.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/c55x.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/c55x.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/include/ezdsp5535.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/tistdtypes.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/soc.h: 
@@ -83,5 +83,5 @@ F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/portable/CCS/c55x/port
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/mpu_wrappers.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/task.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/list.h: 
-F:/scratch/c5515_eZdsp_FreeRTOS_Demo/inc/register_system.h: 
-F:/scratch/c5515_eZdsp_FreeRTOS_Demo/inc/register_cpu.h: 
+F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/inc/register_system.h: 
+F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/inc/register_cpu.h: 

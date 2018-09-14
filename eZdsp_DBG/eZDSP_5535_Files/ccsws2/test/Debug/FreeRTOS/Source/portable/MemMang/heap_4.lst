@@ -1,0 +1,1783 @@
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE    1
+
+    1398              ; Temporary Registers Used: None
+       1              ;*******************************************************************************
+       2              ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
+       3              ;* Date/Time created: Wed Sep 12 23:15:59 2018                                 *
+       4              ;*******************************************************************************
+       5                      .compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --si
+       6                      .mmregs
+       7                      .cpl_on
+       8                      .arms_on
+       9                      .c54cm_off
+      10                      .asg AR6, FP
+      11                      .asg XAR6, XFP
+      12                      .asg DPH, MDP
+      13                      .model call=c55_std
+      14                      .model mem=large
+      15                      .noremark 5002  ; code respects overwrite rules
+      16              ;*******************************************************************************
+      17              ;* GLOBAL FILE PARAMETERS                                                      *
+      18              ;*                                                                             *
+      19              ;*   Architecture       : TMS320C55x                                           *
+      20              ;*   Optimizing for     : Speed                                                *
+      21              ;*   Memory             : Large Model (23-Bit Data Pointers)                   *
+      22              ;*   Calls              : Normal Library ASM calls                             *
+      23              ;*   Debug Info         : Standard TI Debug Information                        *
+      24              ;*******************************************************************************
+      25              
+      26              $C$DW$CU        .dwtag  DW_TAG_compile_unit
+      27                      .dwattr $C$DW$CU, DW_AT_name("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+      28                      .dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas In
+      29                      .dwattr $C$DW$CU, DW_AT_TI_version(0x01)
+      30                      .dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug")
+      31              ;******************************************************************************
+      32              ;* CINIT RECORDS                                                              *
+      33              ;******************************************************************************
+      34 000000               .sect   ".cinit"
+      35                      .align  1
+      36 000000 0002          .field          2,16
+      37 000001 001B-         .field          _pxEnd+0,24
+         000002 5C00 
+      38 000002 5C00          .field          0,8
+      39 000003 0000          .field  0,32                    ; _pxEnd @ 0
+         000004 0000 
+      40              
+      41 000005               .sect   ".cinit"
+      42                      .align  1
+      43 000005 0001          .field          1,16
+      44 000006 001B-         .field          _xFreeBytesRemaining+0,24
+         000007 5E00 
+      45 000007 5E00          .field          0,8
+      46 000008 0000          .field  0,16                    ; _xFreeBytesRemaining @ 0
+      47              
+      48 000009               .sect   ".cinit"
+      49                      .align  1
+      50 000009 0001          .field          1,16
+      51 00000a 001B-         .field          _xMinimumEverFreeBytesRemaining+0,24
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE    2
+
+         00000b 5F00 
+      52 00000b 5F00          .field          0,8
+      53 00000c 0000          .field  0,16                    ; _xMinimumEverFreeBytesRemaining @ 0
+      54              
+      55 00000d               .sect   ".cinit"
+      56                      .align  1
+      57 00000d 0001          .field          1,16
+      58 00000e 001B-         .field          _xBlockAllocatedBit+0,24
+         00000f 6000 
+      59 00000f 6000          .field          0,8
+      60 000010 0000          .field  0,16                    ; _xBlockAllocatedBit @ 0
+      61              
+      62              
+      63              $C$DW$1 .dwtag  DW_TAG_subprogram, DW_AT_name("vTaskSuspendAll")
+      64                      .dwattr $C$DW$1, DW_AT_TI_symbol_name("_vTaskSuspendAll")
+      65                      .dwattr $C$DW$1, DW_AT_declaration
+      66                      .dwattr $C$DW$1, DW_AT_external
+      67              
+      68              $C$DW$2 .dwtag  DW_TAG_subprogram, DW_AT_name("xTaskResumeAll")
+      69                      .dwattr $C$DW$2, DW_AT_TI_symbol_name("_xTaskResumeAll")
+      70                      .dwattr $C$DW$2, DW_AT_type(*$C$DW$T$33)
+      71                      .dwattr $C$DW$2, DW_AT_declaration
+      72                      .dwattr $C$DW$2, DW_AT_external
+      73              
+      74              $C$DW$3 .dwtag  DW_TAG_subprogram, DW_AT_name("vApplicationMallocFailedHook")
+      75                      .dwattr $C$DW$3, DW_AT_TI_symbol_name("_vApplicationMallocFailedHook")
+      76                      .dwattr $C$DW$3, DW_AT_declaration
+      77                      .dwattr $C$DW$3, DW_AT_external
+      78 000000               .bss    _ucHeap,7000,0,0
+      79              $C$DW$4 .dwtag  DW_TAG_variable, DW_AT_name("ucHeap")
+      80                      .dwattr $C$DW$4, DW_AT_TI_symbol_name("_ucHeap")
+      81                      .dwattr $C$DW$4, DW_AT_type(*$C$DW$T$31)
+      82                      .dwattr $C$DW$4, DW_AT_location[DW_OP_addr _ucHeap]
+      83 000000               .sect   ".const"
+      84                      .align  1
+      85 000000       _xHeapStructSize:
+      86 000000 0004          .field  4,16                    ; _xHeapStructSize @ 0
+      87              
+      88              $C$DW$5 .dwtag  DW_TAG_variable, DW_AT_name("xHeapStructSize")
+      89                      .dwattr $C$DW$5, DW_AT_TI_symbol_name("_xHeapStructSize")
+      90                      .dwattr $C$DW$5, DW_AT_type(*$C$DW$T$37)
+      91                      .dwattr $C$DW$5, DW_AT_location[DW_OP_addr _xHeapStructSize]
+      92 001b58               .bss    _xStart,4,0,2
+      93              $C$DW$6 .dwtag  DW_TAG_variable, DW_AT_name("xStart")
+      94                      .dwattr $C$DW$6, DW_AT_TI_symbol_name("_xStart")
+      95                      .dwattr $C$DW$6, DW_AT_type(*$C$DW$T$22)
+      96                      .dwattr $C$DW$6, DW_AT_location[DW_OP_addr _xStart]
+      97 001b5c               .bss    _pxEnd,2,0,2
+      98              $C$DW$7 .dwtag  DW_TAG_variable, DW_AT_name("pxEnd")
+      99                      .dwattr $C$DW$7, DW_AT_TI_symbol_name("_pxEnd")
+     100                      .dwattr $C$DW$7, DW_AT_type(*$C$DW$T$23)
+     101                      .dwattr $C$DW$7, DW_AT_location[DW_OP_addr _pxEnd]
+     102 001b5e               .bss    _xFreeBytesRemaining,1,0,0
+     103              $C$DW$8 .dwtag  DW_TAG_variable, DW_AT_name("xFreeBytesRemaining")
+     104                      .dwattr $C$DW$8, DW_AT_TI_symbol_name("_xFreeBytesRemaining")
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE    3
+
+     105                      .dwattr $C$DW$8, DW_AT_type(*$C$DW$T$20)
+     106                      .dwattr $C$DW$8, DW_AT_location[DW_OP_addr _xFreeBytesRemaining]
+     107 001b5f               .bss    _xMinimumEverFreeBytesRemaining,1,0,0
+     108              $C$DW$9 .dwtag  DW_TAG_variable, DW_AT_name("xMinimumEverFreeBytesRemaining")
+     109                      .dwattr $C$DW$9, DW_AT_TI_symbol_name("_xMinimumEverFreeBytesRemaining")
+     110                      .dwattr $C$DW$9, DW_AT_type(*$C$DW$T$20)
+     111                      .dwattr $C$DW$9, DW_AT_location[DW_OP_addr _xMinimumEverFreeBytesRemaining]
+     112 001b60               .bss    _xBlockAllocatedBit,1,0,0
+     113              $C$DW$10        .dwtag  DW_TAG_variable, DW_AT_name("xBlockAllocatedBit")
+     114                      .dwattr $C$DW$10, DW_AT_TI_symbol_name("_xBlockAllocatedBit")
+     115                      .dwattr $C$DW$10, DW_AT_type(*$C$DW$T$20)
+     116                      .dwattr $C$DW$10, DW_AT_location[DW_OP_addr _xBlockAllocatedBit]
+     117              ;       F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\T
+     118 000000               .sect   ".text"
+     119                      .align 4
+     120                      .global _pvPortMalloc
+     121              
+     122              $C$DW$11        .dwtag  DW_TAG_subprogram, DW_AT_name("pvPortMalloc")
+     123                      .dwattr $C$DW$11, DW_AT_low_pc(_pvPortMalloc)
+     124                      .dwattr $C$DW$11, DW_AT_high_pc(0x00)
+     125                      .dwattr $C$DW$11, DW_AT_TI_symbol_name("_pvPortMalloc")
+     126                      .dwattr $C$DW$11, DW_AT_external
+     127                      .dwattr $C$DW$11, DW_AT_type(*$C$DW$T$3)
+     128                      .dwattr $C$DW$11, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+     129                      .dwattr $C$DW$11, DW_AT_TI_begin_line(0x71)
+     130                      .dwattr $C$DW$11, DW_AT_TI_begin_column(0x07)
+     131                      .dwattr $C$DW$11, DW_AT_TI_max_frame_size(0x0c)
+     132                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 114,column 1,is_stmt,address _pvPort
+     133              
+     134                      .dwfde $C$DW$CIE, _pvPortMalloc
+     135              $C$DW$12        .dwtag  DW_TAG_formal_parameter, DW_AT_name("xWantedSize")
+     136                      .dwattr $C$DW$12, DW_AT_TI_symbol_name("_xWantedSize")
+     137                      .dwattr $C$DW$12, DW_AT_type(*$C$DW$T$20)
+     138                      .dwattr $C$DW$12, DW_AT_location[DW_OP_reg12]
+     139              ;*******************************************************************************
+     140              ;* FUNCTION NAME: pvPortMalloc                                                 *
+     141              ;*                                                                             *
+     142              ;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,AR0,XAR0,AR1,AR2,XAR2,AR3,XAR3,SP,*
+     143              ;*                        CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL                *
+     144              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     145              ;*   Total Frame Size   : 12 words                                             *
+     146              ;*                        (2 return address/alignment)                         *
+     147              ;*                        (10 local values)                                    *
+     148              ;*   Min System Stack   : 1 word                                               *
+     149              ;*******************************************************************************
+     150 000000       _pvPortMalloc:
+     151                      .dwcfi  cfa_offset, 1
+     152                      .dwcfi  save_reg_to_mem, 91, -1
+     153 000000 4EF5          AADD #-11, SP
+     154                      .dwcfi  cfa_offset, 12
+     155              $C$DW$13        .dwtag  DW_TAG_variable, DW_AT_name("xWantedSize")
+     156                      .dwattr $C$DW$13, DW_AT_TI_symbol_name("_xWantedSize")
+     157                      .dwattr $C$DW$13, DW_AT_type(*$C$DW$T$20)
+     158                      .dwattr $C$DW$13, DW_AT_location[DW_OP_bregx 0x24 0]
+     159              $C$DW$14        .dwtag  DW_TAG_variable, DW_AT_name("pxBlock")
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE    4
+
+     160                      .dwattr $C$DW$14, DW_AT_TI_symbol_name("_pxBlock")
+     161                      .dwattr $C$DW$14, DW_AT_type(*$C$DW$T$23)
+     162                      .dwattr $C$DW$14, DW_AT_location[DW_OP_bregx 0x24 2]
+     163              $C$DW$15        .dwtag  DW_TAG_variable, DW_AT_name("pxPreviousBlock")
+     164                      .dwattr $C$DW$15, DW_AT_TI_symbol_name("_pxPreviousBlock")
+     165                      .dwattr $C$DW$15, DW_AT_type(*$C$DW$T$23)
+     166                      .dwattr $C$DW$15, DW_AT_location[DW_OP_bregx 0x24 4]
+     167              $C$DW$16        .dwtag  DW_TAG_variable, DW_AT_name("pxNewBlockLink")
+     168                      .dwattr $C$DW$16, DW_AT_TI_symbol_name("_pxNewBlockLink")
+     169                      .dwattr $C$DW$16, DW_AT_type(*$C$DW$T$23)
+     170                      .dwattr $C$DW$16, DW_AT_location[DW_OP_bregx 0x24 6]
+     171              $C$DW$17        .dwtag  DW_TAG_variable, DW_AT_name("pvReturn")
+     172                      .dwattr $C$DW$17, DW_AT_TI_symbol_name("_pvReturn")
+     173                      .dwattr $C$DW$17, DW_AT_type(*$C$DW$T$3)
+     174                      .dwattr $C$DW$17, DW_AT_location[DW_OP_bregx 0x24 8]
+     175 000002 C400          MOV T0, *SP(#0) ; |114| 
+     176                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 116,column 7,is_stmt
+     177 000004 3C00          MOV #0, AC0 ; |116| 
+     178 000006 EB10          MOV AC0, dbl(*SP(#8))
+         000008 08   
+     179                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 118,column 2,is_stmt
+     180              $C$DW$18        .dwtag  DW_TAG_TI_branch
+     181                      .dwattr $C$DW$18, DW_AT_low_pc(0x00)
+     182                      .dwattr $C$DW$18, DW_AT_name("_vTaskSuspendAll")
+     183                      .dwattr $C$DW$18, DW_AT_TI_call
+     184 000009 6C00          CALL #_vTaskSuspendAll ; |118| 
+         00000b 0000!
+     185                                                      ; call occurs [#_vTaskSuspendAll] ; |118| 
+     186                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 122,column 3,is_stmt
+     187 00000d ED31          MOV dbl(*(#_pxEnd)), XAR3
+         00000f BF00 
+         000011 1B5C-
+     188 000013 90B0          MOV XAR3, AC0
+     189 000015 6190          BCC $C$L1,AC0 != #0 ; |122| 
+     190                                                      ; branchcc occurs ; |122| 
+     191                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 124,column 4,is_stmt
+     192              $C$DW$19        .dwtag  DW_TAG_TI_branch
+     193                      .dwattr $C$DW$19, DW_AT_low_pc(0x00)
+     194                      .dwattr $C$DW$19, DW_AT_name("_prvHeapInit")
+     195                      .dwattr $C$DW$19, DW_AT_TI_call
+     196 000017 0801          CALL #_prvHeapInit ; |124| 
+         000019 AA   
+     197                                                      ; call occurs [#_prvHeapInit] ; |124| 
+     198                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 125,column 3,is_stmt
+     199 00001a       $C$L1:    
+     200                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 135,column 3,is_stmt
+     201 00001a A931          MOV *(#_xBlockAllocatedBit), AR1 ; |135| 
+         00001c 001B 
+         00001e 60-  
+     202 00001f D900          AND *SP(#0), AR1, AR1 ; |135| 
+         000021 99   
+     203 000022 6D19          BCC $C$L8,AR1 != #0 ; |135| 
+         000024 0105 
+     204                                                      ; branchcc occurs ; |135| 
+     205                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 139,column 4,is_stmt
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE    5
+
+     206 000026 A900          MOV *SP(#0), AR1 ; |139| 
+     207 000028 0409          BCC $C$L2,AR1 == #0 ; |139| 
+         00002a 1C   
+     208                                                      ; branchcc occurs ; |139| 
+     209                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 141,column 5,is_stmt
+     210 00002b A931          MOV *(#_xHeapStructSize), AR1 ; |141| 
+         00002d 0000 
+         00002f 00+  
+     211 000030 D600          ADD *SP(#0), AR1, AR1 ; |141| 
+         000032 99   
+     212 000033 C900          MOV AR1, *SP(#0) ; |141| 
+     213                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 145,column 5,is_stmt
+     214 000035 F200          BAND *SP(#0), #3, TC1 ; |145| 
+         000037 0003 
+     215 000039 6674          BCC $C$L2,!TC1 ; |145| 
+     216                                                      ; branchcc occurs ; |145| 
+     217                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 148,column 6,is_stmt
+     218 00003b 1803          AND #0x0003, AR1, AR1 ; |148| 
+         00003d 99   
+     219 00003e D800          SUB AR1, *SP(#0), AR1 ; |148| 
+         000040 99   
+     220 000041 4049          ADD #4, AR1 ; |148| 
+     221 000043 C900          MOV AR1, *SP(#0) ; |148| 
+     222                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 150,column 5,is_stmt
+     223 000045 4A00          B $C$L2   ; |150| 
+     224                                                      ; branch occurs ; |150| 
+     225 000047       $C$L2:    
+     226                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 161,column 4,is_stmt
+     227 000047 6D09          BCC $C$L8,AR1 == #0 ; |161| 
+         000049 00E0 
+     228                                                      ; branchcc occurs ; |161| 
+     229 00004b A931          MOV *(#_xFreeBytesRemaining), AR1 ; |161| 
+         00004d 001B 
+         00004f 5E-  
+     230 000050 AA00          MOV *SP(#0), AR2 ; |161| 
+     231 000052 1294          CMPU AR2 > AR1, TC1 ; |161| 
+         000054 A4   
+     232 000055 6D64          BCC $C$L8,TC1 ; |161| 
+         000057 00D2 
+     233                                                      ; branchcc occurs ; |161| 
+     234                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 165,column 5,is_stmt
+     235 000059 EC31          AMOV #_xStart, XAR3 ; |165| 
+         00005b BE00 
+         00005d 1B58-
+     236 00005f EB08          MOV XAR3, dbl(*SP(#4))
+         000061 B5   
+     237                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 166,column 5,is_stmt
+     238 000062 ED31          MOV dbl(*(#_xStart)), XAR3
+         000064 BF00 
+         000066 1B58-
+     239 000068 EB04          MOV XAR3, dbl(*SP(#2))
+         00006a B5   
+     240                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 167,column 5,is_stmt
+     241 00006b 4A0F          B $C$L4   ; |167| 
+     242                                                      ; branch occurs ; |167| 
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE    6
+
+     243 00006d       $C$L3:    
+     244 00006d       $C$DW$L$_pvPortMalloc$11$B:
+     245                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 169,column 6,is_stmt
+     246 00006d ED04          MOV dbl(*SP(#2)), XAR3
+         00006f BF   
+     247 000070 EB08          MOV XAR3, dbl(*SP(#4))
+         000072 B5   
+     248                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 170,column 6,is_stmt
+     249 000073 ED04          MOV dbl(*SP(#2)), XAR3
+         000075 BF   
+     250 000076 ED61          MOV dbl(*AR3), XAR3
+         000078 BF   
+     251 000079 EB04          MOV XAR3, dbl(*SP(#2))
+         00007b B5   
+     252 00007c       $C$DW$L$_pvPortMalloc$11$E:
+     253 00007c       $C$L4:    
+     254 00007c       $C$DW$L$_pvPortMalloc$12$B:
+     255                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 167,column 12,is_stmt
+     256 00007c A900          MOV *SP(#0), AR1 ; |167| 
+     257 00007e AA75          MOV *AR3(short(#2)), AR2 ; |167| 
+     258 000080 12A8          CMPU AR2 >= AR1, TC1 ; |167| 
+         000082 94   
+     259 000083 6464          BCC $C$L5,TC1 ; |167| 
+     260                                                      ; branchcc occurs ; |167| 
+     261 000085       $C$DW$L$_pvPortMalloc$12$E:
+     262 000085       $C$DW$L$_pvPortMalloc$13$B:
+     263 000085 ED61          MOV dbl(*AR3), XAR3
+         000087 BF   
+     264 000088 90B0          MOV XAR3, AC0
+     265 00008a 0410          BCC $C$L3,AC0 != #0 ; |167| 
+         00008c E0   
+     266                                                      ; branchcc occurs ; |167| 
+     267 00008d       $C$DW$L$_pvPortMalloc$13$E:
+     268 00008d       $C$L5:    
+     269                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 175,column 5,is_stmt
+     270 00008d ED31          MOV dbl(*(#_pxEnd)), XAR3
+         00008f BF00 
+         000091 1B5C-
+     271 000093 90B0          MOV XAR3, AC0
+     272 000095 ED04          MOV dbl(*SP(#2)), XAR3
+         000097 BF   
+     273 000098 90B1          MOV XAR3, AC1
+     274 00009a 1210          CMPU AC1 == AC0, TC1 ; |175| 
+         00009c 04   
+     275 00009d 6D64          BCC $C$L8,TC1 ; |175| 
+         00009f 008A 
+     276                                                      ; branchcc occurs ; |175| 
+     277                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 179,column 6,is_stmt
+     278 0000a1 ED08          MOV dbl(*SP(#4)), XAR3
+         0000a3 BF   
+     279 0000a4 A931          MOV *(#_xHeapStructSize), AR1 ; |179| 
+         0000a6 0000 
+         0000a8 00+  
+     280 0000a9 ED61          MOV dbl(*AR3), XAR3
+         0000ab BF   
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE    7
+
+     281              
+     282 0000ac 8E10          MOV XAR3, dbl(*SP(#8))
+         0000ae BB10 
+         0000b0 B590 
+     283              ||      AADD AR1, AR3 ; |179| 
+     284              
+     285                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 183,column 6,is_stmt
+     286 0000b2 ED08          MOV dbl(*SP(#4)), XAR2
+         0000b4 AF   
+     287 0000b5 ED04          MOV dbl(*SP(#2)), XAR3
+         0000b7 BF   
+     288 0000b8 8061          MOV dbl(*AR3), dbl(*AR2)
+         0000ba 00   
+     289                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 187,column 6,is_stmt
+     290 0000bb ED04          MOV dbl(*SP(#2)), XAR3
+         0000bd BF   
+     291 0000be A931          MOV *(#_xHeapStructSize), AR1 ; |187| 
+         0000c0 0000 
+         0000c2 00+  
+     292 0000c3 A075          MOV *AR3(short(#2)), AC0 ; |187| 
+     293 0000c5 DF00          SUB uns(*SP(#0)), AC0, AC0 ; |187| 
+         0000c7 0F   
+     294 0000c8 5090          SFTL AR1, #1 ; |187| 
+     295 0000ca 220A          MOV AC0, AR2 ; |187| 
+     296 0000cc 1298          CMPU AR2 <= AR1, TC1 ; |187| 
+         0000ce A4   
+     297 0000cf 0464          BCC $C$L6,TC1 ; |187| 
+         0000d1 22   
+     298                                                      ; branchcc occurs ; |187| 
+     299                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 193,column 7,is_stmt
+     300 0000d2 A900          MOV *SP(#0), AR1 ; |193| 
+     301              
+     302 0000d4 8E0C          MOV XAR3, dbl(*SP(#6))
+         0000d6 BB10 
+         0000d8 B590 
+     303              ||      AADD AR1, AR3 ; |193| 
+     304              
+     305                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 198,column 7,is_stmt
+     306 0000da ED04          MOV dbl(*SP(#2)), XAR3
+         0000dc BF   
+     307 0000dd A075          MOV *AR3(short(#2)), AC0 ; |198| 
+     308 0000df ED0C          MOV dbl(*SP(#6)), XAR3
+         0000e1 BF   
+     309 0000e2 DF00          SUB uns(*SP(#0)), AC0, AC0 ; |198| 
+         0000e4 0F   
+     310 0000e5 C075          MOV AC0, *AR3(short(#2)) ; |198| 
+     311                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 199,column 7,is_stmt
+     312 0000e7 ED04          MOV dbl(*SP(#2)), XAR3
+         0000e9 BF   
+     313 0000ea A900          MOV *SP(#0), AR1 ; |199| 
+     314 0000ec C975          MOV AR1, *AR3(short(#2)) ; |199| 
+     315                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 202,column 7,is_stmt
+     316 0000ee ED0C          MOV dbl(*SP(#6)), XAR0
+         0000f0 8F   
+     317              $C$DW$20        .dwtag  DW_TAG_TI_branch
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE    8
+
+     318                      .dwattr $C$DW$20, DW_AT_low_pc(0x00)
+     319                      .dwattr $C$DW$20, DW_AT_name("_prvInsertBlockIntoFreeList")
+     320                      .dwattr $C$DW$20, DW_AT_TI_call
+     321 0000f1 0801          CALL #_prvInsertBlockIntoFreeList ; |202| 
+         0000f3 70   
+     322                                                      ; call occurs [#_prvInsertBlockIntoFreeList] ; |202| 
+     323                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 203,column 6,is_stmt
+     324 0000f4       $C$L6:    
+     325                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 209,column 6,is_stmt
+     326 0000f4 ED04          MOV dbl(*SP(#2)), XAR3
+         0000f6 BF   
+     327 0000f7 A031          MOV *(#_xFreeBytesRemaining), AC0 ; |209| 
+         0000f9 001B 
+         0000fb 5E-  
+     328 0000fc DF75          SUB uns(*AR3(short(#2))), AC0, AC0 ; |209| 
+         0000fe 0F   
+     329 0000ff C031          MOV AC0, *(#_xFreeBytesRemaining) ; |209| 
+         000101 001B 
+         000103 5E-  
+     330                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 211,column 6,is_stmt
+     331 000104 A931          MOV *(#_xMinimumEverFreeBytesRemaining), AR1 ; |211| 
+         000106 001B 
+         000108 5F-  
+     332 000109 220A          MOV AC0, AR2 ; |211| 
+     333 00010b 12A8          CMPU AR2 >= AR1, TC1 ; |211| 
+         00010d 94   
+     334 00010e 63E4          BCC $C$L7,TC1 ; |211| 
+     335                                                      ; branchcc occurs ; |211| 
+     336                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 213,column 7,is_stmt
+     337 000110 22A9          MOV AR2, AR1
+     338 000112 C931          MOV AR1, *(#_xMinimumEverFreeBytesRemaining) ; |213| 
+         000114 001B 
+         000116 5F-  
+     339                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 214,column 6,is_stmt
+     340 000117       $C$L7:    
+     341                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 222,column 6,is_stmt
+     342 000117 A931          MOV *(#_xBlockAllocatedBit), AR1 ; |222| 
+         000119 001B 
+         00011b 60-  
+     343 00011c DA75          OR *AR3(short(#2)), AR1, AR1 ; |222| 
+         00011e 99   
+     344 00011f C975          MOV AR1, *AR3(short(#2)) ; |222| 
+     345                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 223,column 6,is_stmt
+     346 000121 ED04          MOV dbl(*SP(#2)), XAR3
+         000123 BF   
+     347 000124 3C00          MOV #0, AC0 ; |223| 
+     348 000126 EB61          MOV AC0, dbl(*AR3)
+         000128 08   
+     349                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 224,column 5,is_stmt
+     350 000129 4A00          B $C$L8   ; |224| 
+     351                                                      ; branch occurs ; |224| 
+     352 00012b       $C$L8:    
+     353                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 242,column 2,is_stmt
+     354              $C$DW$21        .dwtag  DW_TAG_TI_branch
+     355                      .dwattr $C$DW$21, DW_AT_low_pc(0x00)
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE    9
+
+     356                      .dwattr $C$DW$21, DW_AT_name("_xTaskResumeAll")
+     357                      .dwattr $C$DW$21, DW_AT_TI_call
+     358 00012b 6C00          CALL #_xTaskResumeAll ; |242| 
+         00012d 0000!
+     359                                                      ; call occurs [#_xTaskResumeAll] ; |242| 
+     360                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 246,column 3,is_stmt
+     361 00012f ED10          MOV dbl(*SP(#8)), XAR3
+         000131 BF   
+     362 000132 90B0          MOV XAR3, AC0
+     363 000134 6210          BCC $C$L9,AC0 != #0 ; |246| 
+     364                                                      ; branchcc occurs ; |246| 
+     365                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 249,column 4,is_stmt
+     366              $C$DW$22        .dwtag  DW_TAG_TI_branch
+     367                      .dwattr $C$DW$22, DW_AT_low_pc(0x00)
+     368                      .dwattr $C$DW$22, DW_AT_name("_vApplicationMallocFailedHook")
+     369                      .dwattr $C$DW$22, DW_AT_TI_call
+     370 000136 6C00          CALL #_vApplicationMallocFailedHook ; |249| 
+         000138 0000!
+     371                                                      ; call occurs [#_vApplicationMallocFailedHook] ; |249| 
+     372                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 250,column 3,is_stmt
+     373 00013a       $C$L9:    
+     374                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 259,column 2,is_stmt
+     375 00013a ED10          MOV dbl(*SP(#8)), XAR0
+         00013c 8F   
+     376                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 260,column 1,is_stmt
+     377 00013d 4E0B          AADD #11, SP
+     378                      .dwcfi  cfa_offset, 1
+     379              $C$DW$23        .dwtag  DW_TAG_TI_branch
+     380                      .dwattr $C$DW$23, DW_AT_low_pc(0x00)
+     381                      .dwattr $C$DW$23, DW_AT_TI_return
+     382 00013f 4804          RET
+     383                                                      ; return occurs
+     384              
+     385              $C$DW$24        .dwtag  DW_TAG_TI_loop
+     386                      .dwattr $C$DW$24, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_4.asm:$C$L4:1:1536
+     387                      .dwattr $C$DW$24, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+     388                      .dwattr $C$DW$24, DW_AT_TI_begin_line(0xa7)
+     389                      .dwattr $C$DW$24, DW_AT_TI_end_line(0xaa)
+     390              $C$DW$25        .dwtag  DW_TAG_TI_loop_range
+     391                      .dwattr $C$DW$25, DW_AT_low_pc($C$DW$L$_pvPortMalloc$12$B)
+     392                      .dwattr $C$DW$25, DW_AT_high_pc($C$DW$L$_pvPortMalloc$12$E)
+     393              $C$DW$26        .dwtag  DW_TAG_TI_loop_range
+     394                      .dwattr $C$DW$26, DW_AT_low_pc($C$DW$L$_pvPortMalloc$13$B)
+     395                      .dwattr $C$DW$26, DW_AT_high_pc($C$DW$L$_pvPortMalloc$13$E)
+     396              $C$DW$27        .dwtag  DW_TAG_TI_loop_range
+     397                      .dwattr $C$DW$27, DW_AT_low_pc($C$DW$L$_pvPortMalloc$11$B)
+     398                      .dwattr $C$DW$27, DW_AT_high_pc($C$DW$L$_pvPortMalloc$11$E)
+     399                      .dwendtag $C$DW$24
+     400              
+     401                      .dwattr $C$DW$11, DW_AT_TI_end_file("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+     402                      .dwattr $C$DW$11, DW_AT_TI_end_line(0x104)
+     403                      .dwattr $C$DW$11, DW_AT_TI_end_column(0x01)
+     404                      .dwendentry
+     405                      .dwendtag $C$DW$11
+     406              
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   10
+
+     407 000141               .sect   ".text"
+     408                      .align 4
+     409                      .global _vPortFree
+     410              
+     411              $C$DW$28        .dwtag  DW_TAG_subprogram, DW_AT_name("vPortFree")
+     412                      .dwattr $C$DW$28, DW_AT_low_pc(_vPortFree)
+     413                      .dwattr $C$DW$28, DW_AT_high_pc(0x00)
+     414                      .dwattr $C$DW$28, DW_AT_TI_symbol_name("_vPortFree")
+     415                      .dwattr $C$DW$28, DW_AT_external
+     416                      .dwattr $C$DW$28, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+     417                      .dwattr $C$DW$28, DW_AT_TI_begin_line(0x107)
+     418                      .dwattr $C$DW$28, DW_AT_TI_begin_column(0x06)
+     419                      .dwattr $C$DW$28, DW_AT_TI_max_frame_size(0x08)
+     420                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 264,column 1,is_stmt,address _vPortF
+     421              
+     422                      .dwfde $C$DW$CIE, _vPortFree
+     423              $C$DW$29        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pv")
+     424                      .dwattr $C$DW$29, DW_AT_TI_symbol_name("_pv")
+     425                      .dwattr $C$DW$29, DW_AT_type(*$C$DW$T$3)
+     426                      .dwattr $C$DW$29, DW_AT_location[DW_OP_reg17]
+     427              ;*******************************************************************************
+     428              ;* FUNCTION NAME: vPortFree                                                    *
+     429              ;*                                                                             *
+     430              ;*   Function Uses Regs : AC0,AC0,AR0,XAR0,AR1,AR3,XAR3,SP,CARRY,M40,SATA,SATD,*
+     431              ;*                        RDM,FRCT,SMUL                                        *
+     432              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     433              ;*   Total Frame Size   : 8 words                                              *
+     434              ;*                        (2 return address/alignment)                         *
+     435              ;*                        (6 local values)                                     *
+     436              ;*   Min System Stack   : 1 word                                               *
+     437              ;*******************************************************************************
+     438 000144       _vPortFree:
+     439                      .dwcfi  cfa_offset, 1
+     440                      .dwcfi  save_reg_to_mem, 91, -1
+     441 000144 4EF9          AADD #-7, SP
+     442                      .dwcfi  cfa_offset, 8
+     443              $C$DW$30        .dwtag  DW_TAG_variable, DW_AT_name("pv")
+     444                      .dwattr $C$DW$30, DW_AT_TI_symbol_name("_pv")
+     445                      .dwattr $C$DW$30, DW_AT_type(*$C$DW$T$3)
+     446                      .dwattr $C$DW$30, DW_AT_location[DW_OP_bregx 0x24 0]
+     447              $C$DW$31        .dwtag  DW_TAG_variable, DW_AT_name("puc")
+     448                      .dwattr $C$DW$31, DW_AT_TI_symbol_name("_puc")
+     449                      .dwattr $C$DW$31, DW_AT_type(*$C$DW$T$32)
+     450                      .dwattr $C$DW$31, DW_AT_location[DW_OP_bregx 0x24 2]
+     451              $C$DW$32        .dwtag  DW_TAG_variable, DW_AT_name("pxLink")
+     452                      .dwattr $C$DW$32, DW_AT_TI_symbol_name("_pxLink")
+     453                      .dwattr $C$DW$32, DW_AT_type(*$C$DW$T$23)
+     454                      .dwattr $C$DW$32, DW_AT_location[DW_OP_bregx 0x24 4]
+     455 000146 EB00          MOV XAR0, dbl(*SP(#0))
+         000148 85   
+     456                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 265,column 10,is_stmt
+     457 000149 ED00          MOV dbl(*SP(#0)), XAR3
+         00014b BF   
+     458 00014c EB04          MOV XAR3, dbl(*SP(#2))
+         00014e B5   
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   11
+
+     459                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 268,column 2,is_stmt
+     460 00014f ED00          MOV dbl(*SP(#0)), XAR3
+         000151 BF   
+     461 000152 90B0          MOV XAR3, AC0
+     462 000154 0400          BCC $C$L10,AC0 == #0 ; |268| 
+         000156 53   
+     463                                                      ; branchcc occurs ; |268| 
+     464                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 272,column 3,is_stmt
+     465 000157 ED04          MOV dbl(*SP(#2)), XAR3
+         000159 BF   
+     466 00015a A931          MOV *(#_xHeapStructSize), AR1 ; |272| 
+         00015c 0000 
+         00015e 00+  
+     467              
+     468 00015f 8E04          MOV XAR3, dbl(*SP(#2))
+         000161 BB12 
+         000163 B590 
+     469              ||      ASUB AR1, AR3 ; |272| 
+     470              
+     471                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 275,column 3,is_stmt
+     472 000165 EB08          MOV XAR3, dbl(*SP(#4))
+         000167 B5   
+     473                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 281,column 3,is_stmt
+     474 000168 A931          MOV *(#_xBlockAllocatedBit), AR1 ; |281| 
+         00016a 001B 
+         00016c 60-  
+     475 00016d D975          AND *AR3(short(#2)), AR1, AR1 ; |281| 
+         00016f 99   
+     476 000170 0409          BCC $C$L10,AR1 == #0 ; |281| 
+         000172 37   
+     477                                                      ; branchcc occurs ; |281| 
+     478                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 283,column 4,is_stmt
+     479 000173 ED61          MOV dbl(*AR3), XAR3
+         000175 BF   
+     480 000176 90B0          MOV XAR3, AC0
+     481 000178 0410          BCC $C$L10,AC0 != #0 ; |283| 
+         00017a 2F   
+     482                                                      ; branchcc occurs ; |283| 
+     483                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 287,column 5,is_stmt
+     484 00017b ED08          MOV dbl(*SP(#4)), XAR3
+         00017d BF   
+     485 00017e A931          MOV *(#_xBlockAllocatedBit), AR1 ; |287| 
+         000180 001B 
+         000182 60-  
+     486 000183 3699          NOT AR1, AR1 ; |287| 
+     487 000185 D975          AND *AR3(short(#2)), AR1, AC0 ; |287| 
+         000187 09   
+     488 000188 C075          MOV AC0, *AR3(short(#2)) ; |287| 
+     489                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 289,column 5,is_stmt
+     490              $C$DW$33        .dwtag  DW_TAG_TI_branch
+     491                      .dwattr $C$DW$33, DW_AT_low_pc(0x00)
+     492                      .dwattr $C$DW$33, DW_AT_name("_vTaskSuspendAll")
+     493                      .dwattr $C$DW$33, DW_AT_TI_call
+     494 00018a 6C00          CALL #_vTaskSuspendAll ; |289| 
+         00018c 0000!
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   12
+
+     495                                                      ; call occurs [#_vTaskSuspendAll] ; |289| 
+     496                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 292,column 6,is_stmt
+     497 00018e ED08          MOV dbl(*SP(#4)), XAR3
+         000190 BF   
+     498 000191 A975          MOV *AR3(short(#2)), AR1 ; |292| 
+     499 000193 D631          ADD *(#_xFreeBytesRemaining), AR1, AR1 ; |292| 
+         000195 9900 
+         000197 1B5E-
+     500 000199 C931          MOV AR1, *(#_xFreeBytesRemaining) ; |292| 
+         00019b 001B 
+         00019d 5E-  
+     501                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 294,column 6,is_stmt
+     502 00019e ED08          MOV dbl(*SP(#4)), XAR0
+         0001a0 8F   
+     503              $C$DW$34        .dwtag  DW_TAG_TI_branch
+     504                      .dwattr $C$DW$34, DW_AT_low_pc(0x00)
+     505                      .dwattr $C$DW$34, DW_AT_name("_prvInsertBlockIntoFreeList")
+     506                      .dwattr $C$DW$34, DW_AT_TI_call
+     507 0001a1 0800          CALL #_prvInsertBlockIntoFreeList ; |294| 
+         0001a3 C0   
+     508                                                      ; call occurs [#_prvInsertBlockIntoFreeList] ; |294| 
+     509                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 296,column 5,is_stmt
+     510              $C$DW$35        .dwtag  DW_TAG_TI_branch
+     511                      .dwattr $C$DW$35, DW_AT_low_pc(0x00)
+     512                      .dwattr $C$DW$35, DW_AT_name("_xTaskResumeAll")
+     513                      .dwattr $C$DW$35, DW_AT_TI_call
+     514 0001a4 6C00          CALL #_xTaskResumeAll ; |296| 
+         0001a6 0000!
+     515                                                      ; call occurs [#_xTaskResumeAll] ; |296| 
+     516                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 297,column 4,is_stmt
+     517 0001a8 4A00          B $C$L10  ; |297| 
+     518                                                      ; branch occurs ; |297| 
+     519 0001aa       $C$L10:    
+     520 0001aa 4E07          AADD #7, SP
+     521                      .dwcfi  cfa_offset, 1
+     522              $C$DW$36        .dwtag  DW_TAG_TI_branch
+     523                      .dwattr $C$DW$36, DW_AT_low_pc(0x00)
+     524                      .dwattr $C$DW$36, DW_AT_TI_return
+     525 0001ac 4804          RET
+     526                                                      ; return occurs
+     527                      .dwattr $C$DW$28, DW_AT_TI_end_file("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+     528                      .dwattr $C$DW$28, DW_AT_TI_end_line(0x134)
+     529                      .dwattr $C$DW$28, DW_AT_TI_end_column(0x01)
+     530                      .dwendentry
+     531                      .dwendtag $C$DW$28
+     532              
+     533 0001ae               .sect   ".text"
+     534                      .align 4
+     535                      .global _xPortGetFreeHeapSize
+     536              
+     537              $C$DW$37        .dwtag  DW_TAG_subprogram, DW_AT_name("xPortGetFreeHeapSize")
+     538                      .dwattr $C$DW$37, DW_AT_low_pc(_xPortGetFreeHeapSize)
+     539                      .dwattr $C$DW$37, DW_AT_high_pc(0x00)
+     540                      .dwattr $C$DW$37, DW_AT_TI_symbol_name("_xPortGetFreeHeapSize")
+     541                      .dwattr $C$DW$37, DW_AT_external
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   13
+
+     542                      .dwattr $C$DW$37, DW_AT_type(*$C$DW$T$20)
+     543                      .dwattr $C$DW$37, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+     544                      .dwattr $C$DW$37, DW_AT_TI_begin_line(0x137)
+     545                      .dwattr $C$DW$37, DW_AT_TI_begin_column(0x08)
+     546                      .dwattr $C$DW$37, DW_AT_TI_max_frame_size(0x01)
+     547                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 312,column 1,is_stmt,address _xPortG
+     548              
+     549                      .dwfde $C$DW$CIE, _xPortGetFreeHeapSize
+     550              ;*******************************************************************************
+     551              ;* FUNCTION NAME: xPortGetFreeHeapSize                                         *
+     552              ;*                                                                             *
+     553              ;*   Function Uses Regs : T0,SP,M40,SATA,SATD,RDM,FRCT,SMUL                    *
+     554              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     555              ;*   Total Frame Size   : 1 word                                               *
+     556              ;*                        (1 return address/alignment)                         *
+     557              ;*   Min System Stack   : 1 word                                               *
+     558              ;*******************************************************************************
+     559 0001b0       _xPortGetFreeHeapSize:
+     560                      .dwcfi  cfa_offset, 1
+     561                      .dwcfi  save_reg_to_mem, 91, -1
+     562                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 313,column 2,is_stmt
+     563 0001b0 A431          MOV *(#_xFreeBytesRemaining), T0 ; |313| 
+         0001b2 001B 
+         0001b4 5E-  
+     564                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 314,column 1,is_stmt
+     565              $C$DW$38        .dwtag  DW_TAG_TI_branch
+     566                      .dwattr $C$DW$38, DW_AT_low_pc(0x00)
+     567                      .dwattr $C$DW$38, DW_AT_TI_return
+     568 0001b5 4804          RET
+     569                                                      ; return occurs
+     570                      .dwattr $C$DW$37, DW_AT_TI_end_file("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+     571                      .dwattr $C$DW$37, DW_AT_TI_end_line(0x13a)
+     572                      .dwattr $C$DW$37, DW_AT_TI_end_column(0x01)
+     573                      .dwendentry
+     574                      .dwendtag $C$DW$37
+     575              
+     576 0001b7               .sect   ".text"
+     577                      .align 4
+     578                      .global _xPortGetMinimumEverFreeHeapSize
+     579              
+     580              $C$DW$39        .dwtag  DW_TAG_subprogram, DW_AT_name("xPortGetMinimumEverFreeHeapSize")
+     581                      .dwattr $C$DW$39, DW_AT_low_pc(_xPortGetMinimumEverFreeHeapSize)
+     582                      .dwattr $C$DW$39, DW_AT_high_pc(0x00)
+     583                      .dwattr $C$DW$39, DW_AT_TI_symbol_name("_xPortGetMinimumEverFreeHeapSize")
+     584                      .dwattr $C$DW$39, DW_AT_external
+     585                      .dwattr $C$DW$39, DW_AT_type(*$C$DW$T$20)
+     586                      .dwattr $C$DW$39, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+     587                      .dwattr $C$DW$39, DW_AT_TI_begin_line(0x13d)
+     588                      .dwattr $C$DW$39, DW_AT_TI_begin_column(0x08)
+     589                      .dwattr $C$DW$39, DW_AT_TI_max_frame_size(0x01)
+     590                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 318,column 1,is_stmt,address _xPortG
+     591              
+     592                      .dwfde $C$DW$CIE, _xPortGetMinimumEverFreeHeapSize
+     593              ;*******************************************************************************
+     594              ;* FUNCTION NAME: xPortGetMinimumEverFreeHeapSize                              *
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   14
+
+     595              ;*                                                                             *
+     596              ;*   Function Uses Regs : T0,SP,M40,SATA,SATD,RDM,FRCT,SMUL                    *
+     597              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     598              ;*   Total Frame Size   : 1 word                                               *
+     599              ;*                        (1 return address/alignment)                         *
+     600              ;*   Min System Stack   : 1 word                                               *
+     601              ;*******************************************************************************
+     602 0001b8       _xPortGetMinimumEverFreeHeapSize:
+     603                      .dwcfi  cfa_offset, 1
+     604                      .dwcfi  save_reg_to_mem, 91, -1
+     605                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 319,column 2,is_stmt
+     606 0001b8 A431          MOV *(#_xMinimumEverFreeBytesRemaining), T0 ; |319| 
+         0001ba 001B 
+         0001bc 5F-  
+     607                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 320,column 1,is_stmt
+     608              $C$DW$40        .dwtag  DW_TAG_TI_branch
+     609                      .dwattr $C$DW$40, DW_AT_low_pc(0x00)
+     610                      .dwattr $C$DW$40, DW_AT_TI_return
+     611 0001bd 4804          RET
+     612                                                      ; return occurs
+     613                      .dwattr $C$DW$39, DW_AT_TI_end_file("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+     614                      .dwattr $C$DW$39, DW_AT_TI_end_line(0x140)
+     615                      .dwattr $C$DW$39, DW_AT_TI_end_column(0x01)
+     616                      .dwendentry
+     617                      .dwendtag $C$DW$39
+     618              
+     619 0001bf               .sect   ".text"
+     620                      .align 4
+     621                      .global _vPortInitialiseBlocks
+     622              
+     623              $C$DW$41        .dwtag  DW_TAG_subprogram, DW_AT_name("vPortInitialiseBlocks")
+     624                      .dwattr $C$DW$41, DW_AT_low_pc(_vPortInitialiseBlocks)
+     625                      .dwattr $C$DW$41, DW_AT_high_pc(0x00)
+     626                      .dwattr $C$DW$41, DW_AT_TI_symbol_name("_vPortInitialiseBlocks")
+     627                      .dwattr $C$DW$41, DW_AT_external
+     628                      .dwattr $C$DW$41, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+     629                      .dwattr $C$DW$41, DW_AT_TI_begin_line(0x143)
+     630                      .dwattr $C$DW$41, DW_AT_TI_begin_column(0x06)
+     631                      .dwattr $C$DW$41, DW_AT_TI_max_frame_size(0x01)
+     632                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 324,column 1,is_stmt,address _vPortI
+     633              
+     634                      .dwfde $C$DW$CIE, _vPortInitialiseBlocks
+     635              ;*******************************************************************************
+     636              ;* FUNCTION NAME: vPortInitialiseBlocks                                        *
+     637              ;*                                                                             *
+     638              ;*   Function Uses Regs : SP,M40,SATA,SATD,RDM,FRCT,SMUL                       *
+     639              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     640              ;*   Total Frame Size   : 1 word                                               *
+     641              ;*                        (1 return address/alignment)                         *
+     642              ;*   Min System Stack   : 1 word                                               *
+     643              ;*******************************************************************************
+     644 0001c0       _vPortInitialiseBlocks:
+     645                      .dwcfi  cfa_offset, 1
+     646                      .dwcfi  save_reg_to_mem, 91, -1
+     647                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 326,column 1,is_stmt
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   15
+
+     648              $C$DW$42        .dwtag  DW_TAG_TI_branch
+     649                      .dwattr $C$DW$42, DW_AT_low_pc(0x00)
+     650                      .dwattr $C$DW$42, DW_AT_TI_return
+     651 0001c0 4804          RET
+     652                                                      ; return occurs
+     653                      .dwattr $C$DW$41, DW_AT_TI_end_file("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+     654                      .dwattr $C$DW$41, DW_AT_TI_end_line(0x146)
+     655                      .dwattr $C$DW$41, DW_AT_TI_end_column(0x01)
+     656                      .dwendentry
+     657                      .dwendtag $C$DW$41
+     658              
+     659 0001c2               .sect   ".text"
+     660                      .align 4
+     661              
+     662              $C$DW$43        .dwtag  DW_TAG_subprogram, DW_AT_name("prvHeapInit")
+     663                      .dwattr $C$DW$43, DW_AT_low_pc(_prvHeapInit)
+     664                      .dwattr $C$DW$43, DW_AT_high_pc(0x00)
+     665                      .dwattr $C$DW$43, DW_AT_TI_symbol_name("_prvHeapInit")
+     666                      .dwattr $C$DW$43, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+     667                      .dwattr $C$DW$43, DW_AT_TI_begin_line(0x149)
+     668                      .dwattr $C$DW$43, DW_AT_TI_begin_column(0x0d)
+     669                      .dwattr $C$DW$43, DW_AT_TI_max_frame_size(0x08)
+     670                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 330,column 1,is_stmt,address _prvHea
+     671              
+     672                      .dwfde $C$DW$CIE, _prvHeapInit
+     673              ;*******************************************************************************
+     674              ;* FUNCTION NAME: prvHeapInit                                                  *
+     675              ;*                                                                             *
+     676              ;*   Function Uses Regs : AC0,AC0,AR1,AR2,XAR2,AR3,XAR3,SP,CARRY,TC1,M40,SATA, *
+     677              ;*                        SATD,RDM,FRCT,SMUL                                   *
+     678              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     679              ;*   Total Frame Size   : 8 words                                              *
+     680              ;*                        (2 return address/alignment)                         *
+     681              ;*                        (6 local values)                                     *
+     682              ;*   Min System Stack   : 1 word                                               *
+     683              ;*******************************************************************************
+     684 0001c4       _prvHeapInit:
+     685                      .dwcfi  cfa_offset, 1
+     686                      .dwcfi  save_reg_to_mem, 91, -1
+     687 0001c4 4EF9          AADD #-7, SP
+     688                      .dwcfi  cfa_offset, 8
+     689              $C$DW$44        .dwtag  DW_TAG_variable, DW_AT_name("pxFirstFreeBlock")
+     690                      .dwattr $C$DW$44, DW_AT_TI_symbol_name("_pxFirstFreeBlock")
+     691                      .dwattr $C$DW$44, DW_AT_type(*$C$DW$T$23)
+     692                      .dwattr $C$DW$44, DW_AT_location[DW_OP_bregx 0x24 0]
+     693              $C$DW$45        .dwtag  DW_TAG_variable, DW_AT_name("pucAlignedHeap")
+     694                      .dwattr $C$DW$45, DW_AT_TI_symbol_name("_pucAlignedHeap")
+     695                      .dwattr $C$DW$45, DW_AT_type(*$C$DW$T$32)
+     696                      .dwattr $C$DW$45, DW_AT_location[DW_OP_bregx 0x24 2]
+     697              $C$DW$46        .dwtag  DW_TAG_variable, DW_AT_name("uxAddress")
+     698                      .dwattr $C$DW$46, DW_AT_TI_symbol_name("_uxAddress")
+     699                      .dwattr $C$DW$46, DW_AT_type(*$C$DW$T$20)
+     700                      .dwattr $C$DW$46, DW_AT_location[DW_OP_bregx 0x24 4]
+     701              $C$DW$47        .dwtag  DW_TAG_variable, DW_AT_name("xTotalHeapSize")
+     702                      .dwattr $C$DW$47, DW_AT_TI_symbol_name("_xTotalHeapSize")
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   16
+
+     703                      .dwattr $C$DW$47, DW_AT_type(*$C$DW$T$20)
+     704                      .dwattr $C$DW$47, DW_AT_location[DW_OP_bregx 0x24 5]
+     705                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 334,column 8,is_stmt
+     706 0001c6 FB0A          MOV #7000, *SP(#5) ; |334| 
+         0001c8 1B58 
+     707                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 337,column 2,is_stmt
+     708 0001ca FB08          MOV #_ucHeap, *SP(#4) ; |337| 
+         0001cc 0000-
+     709                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 339,column 2,is_stmt
+     710 0001ce F208          BAND *SP(#4), #3, TC1 ; |339| 
+         0001d0 0003 
+     711 0001d2 0474          BCC $C$L11,!TC1 ; |339| 
+         0001d4 13   
+     712                                                      ; branchcc occurs ; |339| 
+     713                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 341,column 3,is_stmt
+     714 0001d5 F708          ADD #3, *SP(#4) ; |341| 
+         0001d7 0003 
+     715                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 342,column 3,is_stmt
+     716 0001d9 F408          AND #0xfffc, *SP(#4) ; |342| 
+         0001db FFFC 
+     717                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 343,column 3,is_stmt
+     718 0001dd A00A          MOV *SP(#5), AC0 ; |343| 
+     719 0001df DF08          SUB uns(*SP(#4)), AC0, AC0 ; |343| 
+         0001e1 0F   
+     720 0001e2 7B00          ADD #_ucHeap, AC0, AR1 ; |343| 
+         0001e4 0090-
+     721 0001e6 C90A          MOV AR1, *SP(#5) ; |343| 
+     722 0001e8       $C$L11:    
+     723                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 346,column 2,is_stmt
+     724 0001e8 DF08          MOV uns(*SP(#4)), AC0 ; |346| 
+         0001ea 05   
+     725 0001eb EB04          MOV AC0, dbl(*SP(#2))
+         0001ed 08   
+     726                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 350,column 2,is_stmt
+     727 0001ee ED04          MOV dbl(*SP(#2)), XAR3
+         0001f0 BF   
+     728 0001f1 EB31          MOV XAR3, dbl(*(#_xStart))
+         0001f3 B500 
+         0001f5 1B58-
+     729                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 351,column 2,is_stmt
+     730 0001f7 E631          MOV #0, *(#(_xStart+2)) ; |351| 
+         0001f9 0000 
+         0001fb 1B5A-
+     731                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 355,column 2,is_stmt
+     732 0001fd A90A          MOV *SP(#5), AR1 ; |355| 
+     733 0001ff D606          ADD *SP(#3), AR1, AR1 ; |355| 
+         000201 99   
+     734 000202 C908          MOV AR1, *SP(#4) ; |355| 
+     735                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 356,column 2,is_stmt
+     736 000204 2290          MOV AR1, AC0
+     737 000206 DF31          SUB uns(*(#_xHeapStructSize)), AC0, AC0 ; |356| 
+         000208 0F00 
+         00020a 0000+
+     738 00020c C008          MOV AC0, *SP(#4) ; |356| 
+     739                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 357,column 2,is_stmt
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   17
+
+     740 00020e F408          AND #0xfffc, *SP(#4) ; |357| 
+         000210 FFFC 
+     741                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 358,column 2,is_stmt
+     742 000212 DF08          MOV uns(*SP(#4)), AC0 ; |358| 
+         000214 05   
+     743 000215 EB31          MOV AC0, dbl(*(#_pxEnd))
+         000217 0800 
+         000219 1B5C-
+     744                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 359,column 2,is_stmt
+     745 00021b ED31          MOV dbl(*(#_pxEnd)), XAR3
+         00021d BF00 
+         00021f 1B5C-
+     746 000221 E675          MOV #0, *AR3(short(#2)) ; |359| 
+         000223 00   
+     747                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 360,column 2,is_stmt
+     748 000224 ED31          MOV dbl(*(#_pxEnd)), XAR3
+         000226 BF00 
+         000228 1B5C-
+     749 00022a 3C00          MOV #0, AC0 ; |360| 
+     750 00022c EB61          MOV AC0, dbl(*AR3)
+         00022e 08   
+     751                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 364,column 2,is_stmt
+     752 00022f ED04          MOV dbl(*SP(#2)), XAR3
+         000231 BF   
+     753 000232 EB00          MOV XAR3, dbl(*SP(#0))
+         000234 B5   
+     754                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 365,column 2,is_stmt
+     755 000235 A008          MOV *SP(#4), AC0 ; |365| 
+     756 000237 DF02          SUB uns(*SP(#1)), AC0, AC0 ; |365| 
+         000239 0F   
+     757 00023a C075          MOV AC0, *AR3(short(#2)) ; |365| 
+     758                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 366,column 2,is_stmt
+     759 00023c ED00          MOV dbl(*SP(#0)), XAR2
+         00023e AF   
+     760 00023f ED31          MOV dbl(*(#_pxEnd)), XAR3
+         000241 BF00 
+         000243 1B5C-
+     761 000245 EB41          MOV XAR3, dbl(*AR2)
+         000247 B5   
+     762                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 369,column 2,is_stmt
+     763 000248 ED00          MOV dbl(*SP(#0)), XAR3
+         00024a BF   
+     764 00024b A975          MOV *AR3(short(#2)), AR1 ; |369| 
+     765 00024d C931          MOV AR1, *(#_xMinimumEverFreeBytesRemaining) ; |369| 
+         00024f 001B 
+         000251 5F-  
+     766                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 370,column 2,is_stmt
+     767 000252 A975          MOV *AR3(short(#2)), AR1 ; |370| 
+     768 000254 C931          MOV AR1, *(#_xFreeBytesRemaining) ; |370| 
+         000256 001B 
+         000258 5E-  
+     769                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 373,column 2,is_stmt
+     770 000259 FB31          MOV #128, *(#_xBlockAllocatedBit) ; |373| 
+         00025b 0080 
+         00025d 001B 
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   18
+
+         00025f 60-  
+     771                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 374,column 1,is_stmt
+     772 000260 4E07          AADD #7, SP
+     773                      .dwcfi  cfa_offset, 1
+     774              $C$DW$48        .dwtag  DW_TAG_TI_branch
+     775                      .dwattr $C$DW$48, DW_AT_low_pc(0x00)
+     776                      .dwattr $C$DW$48, DW_AT_TI_return
+     777 000262 4804          RET
+     778                                                      ; return occurs
+     779                      .dwattr $C$DW$43, DW_AT_TI_end_file("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+     780                      .dwattr $C$DW$43, DW_AT_TI_end_line(0x176)
+     781                      .dwattr $C$DW$43, DW_AT_TI_end_column(0x01)
+     782                      .dwendentry
+     783                      .dwendtag $C$DW$43
+     784              
+     785 000264               .sect   ".text"
+     786                      .align 4
+     787              
+     788              $C$DW$49        .dwtag  DW_TAG_subprogram, DW_AT_name("prvInsertBlockIntoFreeList")
+     789                      .dwattr $C$DW$49, DW_AT_low_pc(_prvInsertBlockIntoFreeList)
+     790                      .dwattr $C$DW$49, DW_AT_high_pc(0x00)
+     791                      .dwattr $C$DW$49, DW_AT_TI_symbol_name("_prvInsertBlockIntoFreeList")
+     792                      .dwattr $C$DW$49, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+     793                      .dwattr $C$DW$49, DW_AT_TI_begin_line(0x179)
+     794                      .dwattr $C$DW$49, DW_AT_TI_begin_column(0x0d)
+     795                      .dwattr $C$DW$49, DW_AT_TI_max_frame_size(0x08)
+     796                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 378,column 1,is_stmt,address _prvIns
+     797              
+     798                      .dwfde $C$DW$CIE, _prvInsertBlockIntoFreeList
+     799              $C$DW$50        .dwtag  DW_TAG_formal_parameter, DW_AT_name("pxBlockToInsert")
+     800                      .dwattr $C$DW$50, DW_AT_TI_symbol_name("_pxBlockToInsert")
+     801                      .dwattr $C$DW$50, DW_AT_type(*$C$DW$T$23)
+     802                      .dwattr $C$DW$50, DW_AT_location[DW_OP_reg17]
+     803              ;*******************************************************************************
+     804              ;* FUNCTION NAME: prvInsertBlockIntoFreeList                                   *
+     805              ;*                                                                             *
+     806              ;*   Function Uses Regs : AC0,AC0,AC1,AC1,AR0,XAR0,AR1,AR2,XAR2,AR3,XAR3,SP,   *
+     807              ;*                        CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL                *
+     808              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     809              ;*   Total Frame Size   : 8 words                                              *
+     810              ;*                        (2 return address/alignment)                         *
+     811              ;*                        (6 local values)                                     *
+     812              ;*   Min System Stack   : 1 word                                               *
+     813              ;*******************************************************************************
+     814 000264       _prvInsertBlockIntoFreeList:
+     815                      .dwcfi  cfa_offset, 1
+     816                      .dwcfi  save_reg_to_mem, 91, -1
+     817 000264 4EF9          AADD #-7, SP
+     818                      .dwcfi  cfa_offset, 8
+     819              $C$DW$51        .dwtag  DW_TAG_variable, DW_AT_name("pxBlockToInsert")
+     820                      .dwattr $C$DW$51, DW_AT_TI_symbol_name("_pxBlockToInsert")
+     821                      .dwattr $C$DW$51, DW_AT_type(*$C$DW$T$23)
+     822                      .dwattr $C$DW$51, DW_AT_location[DW_OP_bregx 0x24 0]
+     823              $C$DW$52        .dwtag  DW_TAG_variable, DW_AT_name("pxIterator")
+     824                      .dwattr $C$DW$52, DW_AT_TI_symbol_name("_pxIterator")
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   19
+
+     825                      .dwattr $C$DW$52, DW_AT_type(*$C$DW$T$23)
+     826                      .dwattr $C$DW$52, DW_AT_location[DW_OP_bregx 0x24 2]
+     827              $C$DW$53        .dwtag  DW_TAG_variable, DW_AT_name("puc")
+     828                      .dwattr $C$DW$53, DW_AT_TI_symbol_name("_puc")
+     829                      .dwattr $C$DW$53, DW_AT_type(*$C$DW$T$32)
+     830                      .dwattr $C$DW$53, DW_AT_location[DW_OP_bregx 0x24 4]
+     831 000266 EB00          MOV XAR0, dbl(*SP(#0))
+         000268 85   
+     832                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 384,column 7,is_stmt
+     833 000269 EC31          AMOV #_xStart, XAR3 ; |384| 
+         00026b BE00 
+         00026d 1B58-
+     834 00026f EB04          MOV XAR3, dbl(*SP(#2))
+         000271 B5   
+     835                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 384,column 29,is_stmt
+     836 000272 ED00          MOV dbl(*SP(#0)), XAR3
+         000274 BF   
+     837 000275 90B0          MOV XAR3, AC0
+     838 000277 ED04          MOV dbl(*SP(#2)), XAR3
+         000279 BF   
+     839 00027a ED61          MOV dbl(*AR3), XAR3
+         00027c BF   
+     840 00027d 90B1          MOV XAR3, AC1
+     841 00027f 1218          CMPU AC1 >= AC0, TC1 ; |384| 
+         000281 04   
+     842 000282 0464          BCC $C$L13,TC1 ; |384| 
+         000284 1C   
+     843                                                      ; branchcc occurs ; |384| 
+     844 000285       $C$L12:    
+     845 000285       $C$DW$L$_prvInsertBlockIntoFreeList$2$B:
+     846                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 384,column 76,is_stmt
+     847 000285 ED04          MOV dbl(*SP(#2)), XAR3
+         000287 BF   
+     848 000288 ED61          MOV dbl(*AR3), XAR3
+         00028a BF   
+     849 00028b EB04          MOV XAR3, dbl(*SP(#2))
+         00028d B5   
+     850                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 384,column 29,is_stmt
+     851 00028e ED00          MOV dbl(*SP(#0)), XAR3
+         000290 BF   
+     852 000291 90B0          MOV XAR3, AC0
+     853 000293 ED04          MOV dbl(*SP(#2)), XAR3
+         000295 BF   
+     854 000296 ED61          MOV dbl(*AR3), XAR3
+         000298 BF   
+     855 000299 90B1          MOV XAR3, AC1
+     856 00029b 1214          CMPU AC1 < AC0, TC1 ; |384| 
+         00029d 04   
+     857 00029e 0464          BCC $C$L12,TC1 ; |384| 
+         0002a0 E4   
+     858                                                      ; branchcc occurs ; |384| 
+     859 0002a1       $C$DW$L$_prvInsertBlockIntoFreeList$2$E:
+     860 0002a1       $C$L13:    
+     861                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 391,column 2,is_stmt
+     862 0002a1 ED04          MOV dbl(*SP(#2)), XAR3
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   20
+
+         0002a3 BF   
+     863 0002a4 EB08          MOV XAR3, dbl(*SP(#4))
+         0002a6 B5   
+     864                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 392,column 2,is_stmt
+     865 0002a7 ED04          MOV dbl(*SP(#2)), XAR3
+         0002a9 BF   
+     866 0002aa A975          MOV *AR3(short(#2)), AR1 ; |392| 
+     867 0002ac ED08          MOV dbl(*SP(#4)), XAR3
+         0002ae BF   
+     868 0002af 1490          AADD AR1, AR3 ; |392| 
+         0002b1 B0   
+     869 0002b2 90B0          MOV XAR3, AC0
+     870 0002b4 ED00          MOV dbl(*SP(#0)), XAR3
+         0002b6 BF   
+     871 0002b7 90B1          MOV XAR3, AC1
+     872 0002b9 120C          CMPU AC0 != AC1, TC1 ; |392| 
+         0002bb 14   
+     873 0002bc 0464          BCC $C$L14,TC1 ; |392| 
+         0002be 13   
+     874                                                      ; branchcc occurs ; |392| 
+     875                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 394,column 3,is_stmt
+     876 0002bf ED00          MOV dbl(*SP(#0)), XAR2
+         0002c1 AF   
+     877 0002c2 ED04          MOV dbl(*SP(#2)), XAR3
+         0002c4 BF   
+     878 0002c5 A955          MOV *AR2(short(#2)), AR1 ; |394| 
+     879 0002c7 D675          ADD *AR3(short(#2)), AR1, AR1 ; |394| 
+         0002c9 99   
+     880 0002ca C975          MOV AR1, *AR3(short(#2)) ; |394| 
+     881                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 395,column 3,is_stmt
+     882 0002cc ED04          MOV dbl(*SP(#2)), XAR3
+         0002ce BF   
+     883 0002cf EB00          MOV XAR3, dbl(*SP(#0))
+         0002d1 B5   
+     884                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 396,column 2,is_stmt
+     885 0002d2       $C$L14:    
+     886                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 404,column 2,is_stmt
+     887 0002d2 EB08          MOV XAR3, dbl(*SP(#4))
+         0002d4 B5   
+     888                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 405,column 2,is_stmt
+     889 0002d5 ED00          MOV dbl(*SP(#0)), XAR3
+         0002d7 BF   
+     890 0002d8 A975          MOV *AR3(short(#2)), AR1 ; |405| 
+     891 0002da ED08          MOV dbl(*SP(#4)), XAR3
+         0002dc BF   
+     892 0002dd 1490          AADD AR1, AR3 ; |405| 
+         0002df B0   
+     893 0002e0 90B0          MOV XAR3, AC0
+     894 0002e2 ED04          MOV dbl(*SP(#2)), XAR3
+         0002e4 BF   
+     895 0002e5 ED61          MOV dbl(*AR3), XAR3
+         0002e7 BF   
+     896 0002e8 90B1          MOV XAR3, AC1
+     897 0002ea 120C          CMPU AC0 != AC1, TC1 ; |405| 
+         0002ec 14   
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   21
+
+     898 0002ed 0464          BCC $C$L16,TC1 ; |405| 
+         0002ef 42   
+     899                                                      ; branchcc occurs ; |405| 
+     900                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 407,column 3,is_stmt
+     901 0002f0 ED31          MOV dbl(*(#_pxEnd)), XAR3
+         0002f2 BF00 
+         0002f4 1B5C-
+     902 0002f6 90B0          MOV XAR3, AC0
+     903 0002f8 ED04          MOV dbl(*SP(#2)), XAR3
+         0002fa BF   
+     904 0002fb ED61          MOV dbl(*AR3), XAR3
+         0002fd BF   
+     905 0002fe 90B1          MOV XAR3, AC1
+     906 000300 1210          CMPU AC1 == AC0, TC1 ; |407| 
+         000302 04   
+     907 000303 0464          BCC $C$L15,TC1 ; |407| 
+         000305 1E   
+     908                                                      ; branchcc occurs ; |407| 
+     909                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 410,column 4,is_stmt
+     910 000306 ED04          MOV dbl(*SP(#2)), XAR2
+         000308 AF   
+     911 000309 ED41          MOV dbl(*AR2), XAR2
+         00030b AF   
+     912 00030c ED00          MOV dbl(*SP(#0)), XAR3
+         00030e BF   
+     913 00030f A955          MOV *AR2(short(#2)), AR1 ; |410| 
+     914 000311 D675          ADD *AR3(short(#2)), AR1, AR1 ; |410| 
+         000313 99   
+     915 000314 C975          MOV AR1, *AR3(short(#2)) ; |410| 
+     916                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 411,column 4,is_stmt
+     917 000316 ED04          MOV dbl(*SP(#2)), XAR3
+         000318 BF   
+     918 000319 ED00          MOV dbl(*SP(#0)), XAR2
+         00031b AF   
+     919 00031c ED61          MOV dbl(*AR3), XAR3
+         00031e BF   
+     920 00031f 8061          MOV dbl(*AR3), dbl(*AR2)
+         000321 00   
+     921                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 412,column 3,is_stmt
+     922 000322 4A17          B $C$L17  ; |412| 
+     923                                                      ; branch occurs ; |412| 
+     924 000324       $C$L15:    
+     925                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 415,column 4,is_stmt
+     926 000324 ED00          MOV dbl(*SP(#0)), XAR2
+         000326 AF   
+     927 000327 ED31          MOV dbl(*(#_pxEnd)), XAR3
+         000329 BF00 
+         00032b 1B5C-
+     928 00032d EB41          MOV XAR3, dbl(*AR2)
+         00032f B5   
+     929                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 417,column 2,is_stmt
+     930 000330 4A09          B $C$L17  ; |417| 
+     931                                                      ; branch occurs ; |417| 
+     932 000332       $C$L16:    
+     933                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 420,column 3,is_stmt
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   22
+
+     934 000332 ED04          MOV dbl(*SP(#2)), XAR3
+         000334 BF   
+     935 000335 ED00          MOV dbl(*SP(#0)), XAR2
+         000337 AF   
+     936 000338 8061          MOV dbl(*AR3), dbl(*AR2)
+         00033a 00   
+     937 00033b       $C$L17:    
+     938                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 427,column 2,is_stmt
+     939 00033b ED00          MOV dbl(*SP(#0)), XAR3
+         00033d BF   
+     940 00033e 90B0          MOV XAR3, AC0
+     941 000340 ED04          MOV dbl(*SP(#2)), XAR3
+         000342 BF   
+     942 000343 90B1          MOV XAR3, AC1
+     943 000345 1210          CMPU AC1 == AC0, TC1 ; |427| 
+         000347 04   
+     944 000348 65E4          BCC $C$L18,TC1 ; |427| 
+     945                                                      ; branchcc occurs ; |427| 
+     946                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 429,column 3,is_stmt
+     947 00034a ED04          MOV dbl(*SP(#2)), XAR2
+         00034c AF   
+     948 00034d ED00          MOV dbl(*SP(#0)), XAR3
+         00034f BF   
+     949 000350 EB41          MOV XAR3, dbl(*AR2)
+         000352 B5   
+     950                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_4.c",line 430,column 2,is_stmt
+     951 000353 4A00          B $C$L18  ; |430| 
+     952                                                      ; branch occurs ; |430| 
+     953 000355       $C$L18:    
+     954 000355 4E07          AADD #7, SP
+     955                      .dwcfi  cfa_offset, 1
+     956              $C$DW$54        .dwtag  DW_TAG_TI_branch
+     957                      .dwattr $C$DW$54, DW_AT_low_pc(0x00)
+     958                      .dwattr $C$DW$54, DW_AT_TI_return
+     959 000357 4804          RET
+     960                                                      ; return occurs
+     961              
+     962              $C$DW$55        .dwtag  DW_TAG_TI_loop
+     963                      .dwattr $C$DW$55, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_4.asm:$C$L12:1:153
+     964                      .dwattr $C$DW$55, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+     965                      .dwattr $C$DW$55, DW_AT_TI_begin_line(0x180)
+     966                      .dwattr $C$DW$55, DW_AT_TI_end_line(0x183)
+     967              $C$DW$56        .dwtag  DW_TAG_TI_loop_range
+     968                      .dwattr $C$DW$56, DW_AT_low_pc($C$DW$L$_prvInsertBlockIntoFreeList$2$B)
+     969                      .dwattr $C$DW$56, DW_AT_high_pc($C$DW$L$_prvInsertBlockIntoFreeList$2$E)
+     970                      .dwendtag $C$DW$55
+     971              
+     972                      .dwattr $C$DW$49, DW_AT_TI_end_file("../FreeRTOS/Source/portable/MemMang/heap_4.c")
+     973                      .dwattr $C$DW$49, DW_AT_TI_end_line(0x1b3)
+     974                      .dwattr $C$DW$49, DW_AT_TI_end_column(0x01)
+     975                      .dwendentry
+     976                      .dwendtag $C$DW$49
+     977              
+     978              ;******************************************************************************
+     979              ;* UNDEFINED EXTERNAL REFERENCES                                              *
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   23
+
+     980              ;******************************************************************************
+     981                      .global _vTaskSuspendAll
+     982                      .global _xTaskResumeAll
+     983                      .global _vApplicationMallocFailedHook
+     984              
+     985              ;*******************************************************************************
+     986              ;* TYPE INFORMATION                                                            *
+     987              ;*******************************************************************************
+     988              
+     989              $C$DW$T$21      .dwtag  DW_TAG_structure_type
+     990                      .dwattr $C$DW$T$21, DW_AT_name("A_BLOCK_LINK")
+     991                      .dwattr $C$DW$T$21, DW_AT_byte_size(0x04)
+     992              $C$DW$57        .dwtag  DW_TAG_member
+     993                      .dwattr $C$DW$57, DW_AT_type(*$C$DW$T$19)
+     994                      .dwattr $C$DW$57, DW_AT_name("pxNextFreeBlock")
+     995                      .dwattr $C$DW$57, DW_AT_TI_symbol_name("_pxNextFreeBlock")
+     996                      .dwattr $C$DW$57, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+     997                      .dwattr $C$DW$57, DW_AT_accessibility(DW_ACCESS_public)
+     998              $C$DW$58        .dwtag  DW_TAG_member
+     999                      .dwattr $C$DW$58, DW_AT_type(*$C$DW$T$20)
+    1000                      .dwattr $C$DW$58, DW_AT_name("xBlockSize")
+    1001                      .dwattr $C$DW$58, DW_AT_TI_symbol_name("_xBlockSize")
+    1002                      .dwattr $C$DW$58, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+    1003                      .dwattr $C$DW$58, DW_AT_accessibility(DW_ACCESS_public)
+    1004                      .dwendtag $C$DW$T$21
+    1005              
+    1006              $C$DW$T$22      .dwtag  DW_TAG_typedef, DW_AT_name("BlockLink_t")
+    1007                      .dwattr $C$DW$T$22, DW_AT_type(*$C$DW$T$21)
+    1008                      .dwattr $C$DW$T$22, DW_AT_language(DW_LANG_C)
+    1009              $C$DW$T$23      .dwtag  DW_TAG_pointer_type
+    1010                      .dwattr $C$DW$T$23, DW_AT_type(*$C$DW$T$22)
+    1011                      .dwattr $C$DW$T$23, DW_AT_address_class(0x17)
+    1012              $C$DW$T$19      .dwtag  DW_TAG_pointer_type
+    1013                      .dwattr $C$DW$T$19, DW_AT_type(*$C$DW$T$21)
+    1014                      .dwattr $C$DW$T$19, DW_AT_address_class(0x17)
+    1015              $C$DW$T$3       .dwtag  DW_TAG_pointer_type
+    1016                      .dwattr $C$DW$T$3, DW_AT_address_class(0x17)
+    1017              $C$DW$T$4       .dwtag  DW_TAG_base_type
+    1018                      .dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
+    1019                      .dwattr $C$DW$T$4, DW_AT_name("bool")
+    1020                      .dwattr $C$DW$T$4, DW_AT_byte_size(0x01)
+    1021              $C$DW$T$5       .dwtag  DW_TAG_base_type
+    1022                      .dwattr $C$DW$T$5, DW_AT_encoding(DW_ATE_signed_char)
+    1023                      .dwattr $C$DW$T$5, DW_AT_name("signed char")
+    1024                      .dwattr $C$DW$T$5, DW_AT_byte_size(0x01)
+    1025              $C$DW$T$6       .dwtag  DW_TAG_base_type
+    1026                      .dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
+    1027                      .dwattr $C$DW$T$6, DW_AT_name("unsigned char")
+    1028                      .dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
+    1029              $C$DW$T$30      .dwtag  DW_TAG_typedef, DW_AT_name("uint8_t")
+    1030                      .dwattr $C$DW$T$30, DW_AT_type(*$C$DW$T$6)
+    1031                      .dwattr $C$DW$T$30, DW_AT_language(DW_LANG_C)
+    1032              
+    1033              $C$DW$T$31      .dwtag  DW_TAG_array_type
+    1034                      .dwattr $C$DW$T$31, DW_AT_type(*$C$DW$T$30)
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   24
+
+    1035                      .dwattr $C$DW$T$31, DW_AT_language(DW_LANG_C)
+    1036                      .dwattr $C$DW$T$31, DW_AT_byte_size(0x1b58)
+    1037              $C$DW$59        .dwtag  DW_TAG_subrange_type
+    1038                      .dwattr $C$DW$59, DW_AT_upper_bound(0x1b57)
+    1039                      .dwendtag $C$DW$T$31
+    1040              
+    1041              $C$DW$T$32      .dwtag  DW_TAG_pointer_type
+    1042                      .dwattr $C$DW$T$32, DW_AT_type(*$C$DW$T$30)
+    1043                      .dwattr $C$DW$T$32, DW_AT_address_class(0x17)
+    1044              $C$DW$T$7       .dwtag  DW_TAG_base_type
+    1045                      .dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
+    1046                      .dwattr $C$DW$T$7, DW_AT_name("wchar_t")
+    1047                      .dwattr $C$DW$T$7, DW_AT_byte_size(0x01)
+    1048              $C$DW$T$8       .dwtag  DW_TAG_base_type
+    1049                      .dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
+    1050                      .dwattr $C$DW$T$8, DW_AT_name("short")
+    1051                      .dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
+    1052              $C$DW$T$33      .dwtag  DW_TAG_typedef, DW_AT_name("BaseType_t")
+    1053                      .dwattr $C$DW$T$33, DW_AT_type(*$C$DW$T$8)
+    1054                      .dwattr $C$DW$T$33, DW_AT_language(DW_LANG_C)
+    1055              $C$DW$T$9       .dwtag  DW_TAG_base_type
+    1056                      .dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
+    1057                      .dwattr $C$DW$T$9, DW_AT_name("unsigned short")
+    1058                      .dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
+    1059              $C$DW$T$10      .dwtag  DW_TAG_base_type
+    1060                      .dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
+    1061                      .dwattr $C$DW$T$10, DW_AT_name("int")
+    1062                      .dwattr $C$DW$T$10, DW_AT_byte_size(0x01)
+    1063              $C$DW$T$11      .dwtag  DW_TAG_base_type
+    1064                      .dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
+    1065                      .dwattr $C$DW$T$11, DW_AT_name("unsigned int")
+    1066                      .dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
+    1067              $C$DW$T$20      .dwtag  DW_TAG_typedef, DW_AT_name("size_t")
+    1068                      .dwattr $C$DW$T$20, DW_AT_type(*$C$DW$T$11)
+    1069                      .dwattr $C$DW$T$20, DW_AT_language(DW_LANG_C)
+    1070              $C$DW$60        .dwtag  DW_TAG_TI_far_type
+    1071                      .dwattr $C$DW$60, DW_AT_type(*$C$DW$T$20)
+    1072              $C$DW$T$37      .dwtag  DW_TAG_const_type
+    1073                      .dwattr $C$DW$T$37, DW_AT_type(*$C$DW$60)
+    1074              $C$DW$T$12      .dwtag  DW_TAG_base_type
+    1075                      .dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
+    1076                      .dwattr $C$DW$T$12, DW_AT_name("long")
+    1077                      .dwattr $C$DW$T$12, DW_AT_byte_size(0x02)
+    1078              $C$DW$T$13      .dwtag  DW_TAG_base_type
+    1079                      .dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
+    1080                      .dwattr $C$DW$T$13, DW_AT_name("unsigned long")
+    1081                      .dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+    1082              $C$DW$T$14      .dwtag  DW_TAG_base_type
+    1083                      .dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
+    1084                      .dwattr $C$DW$T$14, DW_AT_name("long long")
+    1085                      .dwattr $C$DW$T$14, DW_AT_byte_size(0x04)
+    1086                      .dwattr $C$DW$T$14, DW_AT_bit_size(0x28)
+    1087                      .dwattr $C$DW$T$14, DW_AT_bit_offset(0x18)
+    1088              $C$DW$T$15      .dwtag  DW_TAG_base_type
+    1089                      .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   25
+
+    1090                      .dwattr $C$DW$T$15, DW_AT_name("unsigned long long")
+    1091                      .dwattr $C$DW$T$15, DW_AT_byte_size(0x04)
+    1092                      .dwattr $C$DW$T$15, DW_AT_bit_size(0x28)
+    1093                      .dwattr $C$DW$T$15, DW_AT_bit_offset(0x18)
+    1094              $C$DW$T$16      .dwtag  DW_TAG_base_type
+    1095                      .dwattr $C$DW$T$16, DW_AT_encoding(DW_ATE_float)
+    1096                      .dwattr $C$DW$T$16, DW_AT_name("float")
+    1097                      .dwattr $C$DW$T$16, DW_AT_byte_size(0x02)
+    1098              $C$DW$T$17      .dwtag  DW_TAG_base_type
+    1099                      .dwattr $C$DW$T$17, DW_AT_encoding(DW_ATE_float)
+    1100                      .dwattr $C$DW$T$17, DW_AT_name("double")
+    1101                      .dwattr $C$DW$T$17, DW_AT_byte_size(0x02)
+    1102              $C$DW$T$18      .dwtag  DW_TAG_base_type
+    1103                      .dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
+    1104                      .dwattr $C$DW$T$18, DW_AT_name("long double")
+    1105                      .dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
+    1106                      .dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
+    1107              
+    1108              ;***************************************************************
+    1109              ;* DWARF CIE ENTRIES                                           *
+    1110              ;***************************************************************
+    1111              
+    1112              $C$DW$CIE       .dwcie 91
+    1113                      .dwcfi  cfa_register, 36
+    1114                      .dwcfi  cfa_offset, 0
+    1115                      .dwcfi  undefined, 0
+    1116                      .dwcfi  undefined, 1
+    1117                      .dwcfi  undefined, 2
+    1118                      .dwcfi  undefined, 3
+    1119                      .dwcfi  undefined, 4
+    1120                      .dwcfi  undefined, 5
+    1121                      .dwcfi  undefined, 6
+    1122                      .dwcfi  undefined, 7
+    1123                      .dwcfi  undefined, 8
+    1124                      .dwcfi  undefined, 9
+    1125                      .dwcfi  undefined, 10
+    1126                      .dwcfi  undefined, 11
+    1127                      .dwcfi  undefined, 12
+    1128                      .dwcfi  undefined, 13
+    1129                      .dwcfi  same_value, 14
+    1130                      .dwcfi  same_value, 15
+    1131                      .dwcfi  undefined, 16
+    1132                      .dwcfi  undefined, 17
+    1133                      .dwcfi  undefined, 18
+    1134                      .dwcfi  undefined, 19
+    1135                      .dwcfi  undefined, 20
+    1136                      .dwcfi  undefined, 21
+    1137                      .dwcfi  undefined, 22
+    1138                      .dwcfi  undefined, 23
+    1139                      .dwcfi  undefined, 24
+    1140                      .dwcfi  undefined, 25
+    1141                      .dwcfi  same_value, 26
+    1142                      .dwcfi  same_value, 27
+    1143                      .dwcfi  same_value, 28
+    1144                      .dwcfi  same_value, 29
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   26
+
+    1145                      .dwcfi  same_value, 30
+    1146                      .dwcfi  same_value, 31
+    1147                      .dwcfi  undefined, 32
+    1148                      .dwcfi  undefined, 33
+    1149                      .dwcfi  undefined, 34
+    1150                      .dwcfi  undefined, 35
+    1151                      .dwcfi  undefined, 36
+    1152                      .dwcfi  undefined, 37
+    1153                      .dwcfi  undefined, 38
+    1154                      .dwcfi  undefined, 39
+    1155                      .dwcfi  undefined, 40
+    1156                      .dwcfi  undefined, 41
+    1157                      .dwcfi  undefined, 42
+    1158                      .dwcfi  undefined, 43
+    1159                      .dwcfi  undefined, 44
+    1160                      .dwcfi  undefined, 45
+    1161                      .dwcfi  undefined, 46
+    1162                      .dwcfi  undefined, 47
+    1163                      .dwcfi  undefined, 48
+    1164                      .dwcfi  undefined, 49
+    1165                      .dwcfi  undefined, 50
+    1166                      .dwcfi  undefined, 51
+    1167                      .dwcfi  undefined, 52
+    1168                      .dwcfi  undefined, 53
+    1169                      .dwcfi  undefined, 54
+    1170                      .dwcfi  undefined, 55
+    1171                      .dwcfi  undefined, 56
+    1172                      .dwcfi  undefined, 57
+    1173                      .dwcfi  undefined, 58
+    1174                      .dwcfi  undefined, 59
+    1175                      .dwcfi  undefined, 60
+    1176                      .dwcfi  undefined, 61
+    1177                      .dwcfi  undefined, 62
+    1178                      .dwcfi  undefined, 63
+    1179                      .dwcfi  undefined, 64
+    1180                      .dwcfi  undefined, 65
+    1181                      .dwcfi  undefined, 66
+    1182                      .dwcfi  undefined, 67
+    1183                      .dwcfi  undefined, 68
+    1184                      .dwcfi  undefined, 69
+    1185                      .dwcfi  undefined, 70
+    1186                      .dwcfi  undefined, 71
+    1187                      .dwcfi  undefined, 72
+    1188                      .dwcfi  undefined, 73
+    1189                      .dwcfi  undefined, 74
+    1190                      .dwcfi  undefined, 75
+    1191                      .dwcfi  undefined, 76
+    1192                      .dwcfi  undefined, 77
+    1193                      .dwcfi  undefined, 78
+    1194                      .dwcfi  undefined, 79
+    1195                      .dwcfi  undefined, 80
+    1196                      .dwcfi  undefined, 81
+    1197                      .dwcfi  undefined, 82
+    1198                      .dwcfi  undefined, 83
+    1199                      .dwcfi  undefined, 84
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   27
+
+    1200                      .dwcfi  undefined, 85
+    1201                      .dwcfi  undefined, 86
+    1202                      .dwcfi  undefined, 87
+    1203                      .dwcfi  undefined, 88
+    1204                      .dwcfi  undefined, 89
+    1205                      .dwcfi  undefined, 90
+    1206                      .dwcfi  undefined, 91
+    1207                      .dwendentry
+    1208              
+    1209              ;***************************************************************
+    1210              ;* DWARF REGISTER MAP                                          *
+    1211              ;***************************************************************
+    1212              
+    1213              $C$DW$61        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    1214                      .dwattr $C$DW$61, DW_AT_location[DW_OP_reg0]
+    1215              $C$DW$62        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    1216                      .dwattr $C$DW$62, DW_AT_location[DW_OP_reg1]
+    1217              $C$DW$63        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0_G")
+    1218                      .dwattr $C$DW$63, DW_AT_location[DW_OP_reg2]
+    1219              $C$DW$64        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    1220                      .dwattr $C$DW$64, DW_AT_location[DW_OP_reg3]
+    1221              $C$DW$65        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    1222                      .dwattr $C$DW$65, DW_AT_location[DW_OP_reg4]
+    1223              $C$DW$66        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1_G")
+    1224                      .dwattr $C$DW$66, DW_AT_location[DW_OP_reg5]
+    1225              $C$DW$67        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    1226                      .dwattr $C$DW$67, DW_AT_location[DW_OP_reg6]
+    1227              $C$DW$68        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    1228                      .dwattr $C$DW$68, DW_AT_location[DW_OP_reg7]
+    1229              $C$DW$69        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2_G")
+    1230                      .dwattr $C$DW$69, DW_AT_location[DW_OP_reg8]
+    1231              $C$DW$70        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    1232                      .dwattr $C$DW$70, DW_AT_location[DW_OP_reg9]
+    1233              $C$DW$71        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    1234                      .dwattr $C$DW$71, DW_AT_location[DW_OP_reg10]
+    1235              $C$DW$72        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3_G")
+    1236                      .dwattr $C$DW$72, DW_AT_location[DW_OP_reg11]
+    1237              $C$DW$73        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T0")
+    1238                      .dwattr $C$DW$73, DW_AT_location[DW_OP_reg12]
+    1239              $C$DW$74        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T1")
+    1240                      .dwattr $C$DW$74, DW_AT_location[DW_OP_reg13]
+    1241              $C$DW$75        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T2")
+    1242                      .dwattr $C$DW$75, DW_AT_location[DW_OP_reg14]
+    1243              $C$DW$76        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T3")
+    1244                      .dwattr $C$DW$76, DW_AT_location[DW_OP_reg15]
+    1245              $C$DW$77        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0")
+    1246                      .dwattr $C$DW$77, DW_AT_location[DW_OP_reg16]
+    1247              $C$DW$78        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR0")
+    1248                      .dwattr $C$DW$78, DW_AT_location[DW_OP_reg17]
+    1249              $C$DW$79        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1")
+    1250                      .dwattr $C$DW$79, DW_AT_location[DW_OP_reg18]
+    1251              $C$DW$80        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR1")
+    1252                      .dwattr $C$DW$80, DW_AT_location[DW_OP_reg19]
+    1253              $C$DW$81        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
+    1254                      .dwattr $C$DW$81, DW_AT_location[DW_OP_reg20]
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   28
+
+    1255              $C$DW$82        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR2")
+    1256                      .dwattr $C$DW$82, DW_AT_location[DW_OP_reg21]
+    1257              $C$DW$83        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3")
+    1258                      .dwattr $C$DW$83, DW_AT_location[DW_OP_reg22]
+    1259              $C$DW$84        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR3")
+    1260                      .dwattr $C$DW$84, DW_AT_location[DW_OP_reg23]
+    1261              $C$DW$85        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4")
+    1262                      .dwattr $C$DW$85, DW_AT_location[DW_OP_reg24]
+    1263              $C$DW$86        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR4")
+    1264                      .dwattr $C$DW$86, DW_AT_location[DW_OP_reg25]
+    1265              $C$DW$87        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5")
+    1266                      .dwattr $C$DW$87, DW_AT_location[DW_OP_reg26]
+    1267              $C$DW$88        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR5")
+    1268                      .dwattr $C$DW$88, DW_AT_location[DW_OP_reg27]
+    1269              $C$DW$89        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6")
+    1270                      .dwattr $C$DW$89, DW_AT_location[DW_OP_reg28]
+    1271              $C$DW$90        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR6")
+    1272                      .dwattr $C$DW$90, DW_AT_location[DW_OP_reg29]
+    1273              $C$DW$91        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7")
+    1274                      .dwattr $C$DW$91, DW_AT_location[DW_OP_reg30]
+    1275              $C$DW$92        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR7")
+    1276                      .dwattr $C$DW$92, DW_AT_location[DW_OP_reg31]
+    1277              $C$DW$93        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FP")
+    1278                      .dwattr $C$DW$93, DW_AT_location[DW_OP_regx 0x20]
+    1279              $C$DW$94        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XFP")
+    1280                      .dwattr $C$DW$94, DW_AT_location[DW_OP_regx 0x21]
+    1281              $C$DW$95        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
+    1282                      .dwattr $C$DW$95, DW_AT_location[DW_OP_regx 0x22]
+    1283              $C$DW$96        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
+    1284                      .dwattr $C$DW$96, DW_AT_location[DW_OP_regx 0x23]
+    1285              $C$DW$97        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XSP")
+    1286                      .dwattr $C$DW$97, DW_AT_location[DW_OP_regx 0x24]
+    1287              $C$DW$98        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BKC")
+    1288                      .dwattr $C$DW$98, DW_AT_location[DW_OP_regx 0x25]
+    1289              $C$DW$99        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK03")
+    1290                      .dwattr $C$DW$99, DW_AT_location[DW_OP_regx 0x26]
+    1291              $C$DW$100       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK47")
+    1292                      .dwattr $C$DW$100, DW_AT_location[DW_OP_regx 0x27]
+    1293              $C$DW$101       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST0")
+    1294                      .dwattr $C$DW$101, DW_AT_location[DW_OP_regx 0x28]
+    1295              $C$DW$102       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST1")
+    1296                      .dwattr $C$DW$102, DW_AT_location[DW_OP_regx 0x29]
+    1297              $C$DW$103       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST2")
+    1298                      .dwattr $C$DW$103, DW_AT_location[DW_OP_regx 0x2a]
+    1299              $C$DW$104       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST3")
+    1300                      .dwattr $C$DW$104, DW_AT_location[DW_OP_regx 0x2b]
+    1301              $C$DW$105       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP")
+    1302                      .dwattr $C$DW$105, DW_AT_location[DW_OP_regx 0x2c]
+    1303              $C$DW$106       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP05")
+    1304                      .dwattr $C$DW$106, DW_AT_location[DW_OP_regx 0x2d]
+    1305              $C$DW$107       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP67")
+    1306                      .dwattr $C$DW$107, DW_AT_location[DW_OP_regx 0x2e]
+    1307              $C$DW$108       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
+    1308                      .dwattr $C$DW$108, DW_AT_location[DW_OP_regx 0x2f]
+    1309              $C$DW$109       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   29
+
+    1310                      .dwattr $C$DW$109, DW_AT_location[DW_OP_regx 0x30]
+    1311              $C$DW$110       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0_H")
+    1312                      .dwattr $C$DW$110, DW_AT_location[DW_OP_regx 0x31]
+    1313              $C$DW$111       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0")
+    1314                      .dwattr $C$DW$111, DW_AT_location[DW_OP_regx 0x32]
+    1315              $C$DW$112       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0_H")
+    1316                      .dwattr $C$DW$112, DW_AT_location[DW_OP_regx 0x33]
+    1317              $C$DW$113       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRS1")
+    1318                      .dwattr $C$DW$113, DW_AT_location[DW_OP_regx 0x34]
+    1319              $C$DW$114       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC1")
+    1320                      .dwattr $C$DW$114, DW_AT_location[DW_OP_regx 0x35]
+    1321              $C$DW$115       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1")
+    1322                      .dwattr $C$DW$115, DW_AT_location[DW_OP_regx 0x36]
+    1323              $C$DW$116       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1_H")
+    1324                      .dwattr $C$DW$116, DW_AT_location[DW_OP_regx 0x37]
+    1325              $C$DW$117       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1")
+    1326                      .dwattr $C$DW$117, DW_AT_location[DW_OP_regx 0x38]
+    1327              $C$DW$118       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1_H")
+    1328                      .dwattr $C$DW$118, DW_AT_location[DW_OP_regx 0x39]
+    1329              $C$DW$119       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CSR")
+    1330                      .dwattr $C$DW$119, DW_AT_location[DW_OP_regx 0x3a]
+    1331              $C$DW$120       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RPTC")
+    1332                      .dwattr $C$DW$120, DW_AT_location[DW_OP_regx 0x3b]
+    1333              $C$DW$121       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDP")
+    1334                      .dwattr $C$DW$121, DW_AT_location[DW_OP_regx 0x3c]
+    1335              $C$DW$122       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XCDP")
+    1336                      .dwattr $C$DW$122, DW_AT_location[DW_OP_regx 0x3d]
+    1337              $C$DW$123       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN0")
+    1338                      .dwattr $C$DW$123, DW_AT_location[DW_OP_regx 0x3e]
+    1339              $C$DW$124       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN1")
+    1340                      .dwattr $C$DW$124, DW_AT_location[DW_OP_regx 0x3f]
+    1341              $C$DW$125       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA01")
+    1342                      .dwattr $C$DW$125, DW_AT_location[DW_OP_regx 0x40]
+    1343              $C$DW$126       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA23")
+    1344                      .dwattr $C$DW$126, DW_AT_location[DW_OP_regx 0x41]
+    1345              $C$DW$127       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA45")
+    1346                      .dwattr $C$DW$127, DW_AT_location[DW_OP_regx 0x42]
+    1347              $C$DW$128       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA67")
+    1348                      .dwattr $C$DW$128, DW_AT_location[DW_OP_regx 0x43]
+    1349              $C$DW$129       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSAC")
+    1350                      .dwattr $C$DW$129, DW_AT_location[DW_OP_regx 0x44]
+    1351              $C$DW$130       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CARRY")
+    1352                      .dwattr $C$DW$130, DW_AT_location[DW_OP_regx 0x45]
+    1353              $C$DW$131       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC1")
+    1354                      .dwattr $C$DW$131, DW_AT_location[DW_OP_regx 0x46]
+    1355              $C$DW$132       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC2")
+    1356                      .dwattr $C$DW$132, DW_AT_location[DW_OP_regx 0x47]
+    1357              $C$DW$133       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("M40")
+    1358                      .dwattr $C$DW$133, DW_AT_location[DW_OP_regx 0x48]
+    1359              $C$DW$134       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SXMD")
+    1360                      .dwattr $C$DW$134, DW_AT_location[DW_OP_regx 0x49]
+    1361              $C$DW$135       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ARMS")
+    1362                      .dwattr $C$DW$135, DW_AT_location[DW_OP_regx 0x4a]
+    1363              $C$DW$136       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
+    1364                      .dwattr $C$DW$136, DW_AT_location[DW_OP_regx 0x4b]
+TMS320C55x Assembler PC v4.4.1 Wed Sep 12 23:15:59 2018
+
+Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
+heap_4.asm                                                           PAGE   30
+
+    1365              $C$DW$137       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATA")
+    1366                      .dwattr $C$DW$137, DW_AT_location[DW_OP_regx 0x4c]
+    1367              $C$DW$138       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATD")
+    1368                      .dwattr $C$DW$138, DW_AT_location[DW_OP_regx 0x4d]
+    1369              $C$DW$139       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RDM")
+    1370                      .dwattr $C$DW$139, DW_AT_location[DW_OP_regx 0x4e]
+    1371              $C$DW$140       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FRCT")
+    1372                      .dwattr $C$DW$140, DW_AT_location[DW_OP_regx 0x4f]
+    1373              $C$DW$141       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SMUL")
+    1374                      .dwattr $C$DW$141, DW_AT_location[DW_OP_regx 0x50]
+    1375              $C$DW$142       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("INTM")
+    1376                      .dwattr $C$DW$142, DW_AT_location[DW_OP_regx 0x51]
+    1377              $C$DW$143       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0LC")
+    1378                      .dwattr $C$DW$143, DW_AT_location[DW_OP_regx 0x52]
+    1379              $C$DW$144       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1LC")
+    1380                      .dwattr $C$DW$144, DW_AT_location[DW_OP_regx 0x53]
+    1381              $C$DW$145       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2LC")
+    1382                      .dwattr $C$DW$145, DW_AT_location[DW_OP_regx 0x54]
+    1383              $C$DW$146       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3LC")
+    1384                      .dwattr $C$DW$146, DW_AT_location[DW_OP_regx 0x55]
+    1385              $C$DW$147       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4LC")
+    1386                      .dwattr $C$DW$147, DW_AT_location[DW_OP_regx 0x56]
+    1387              $C$DW$148       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5LC")
+    1388                      .dwattr $C$DW$148, DW_AT_location[DW_OP_regx 0x57]
+    1389              $C$DW$149       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6LC")
+    1390                      .dwattr $C$DW$149, DW_AT_location[DW_OP_regx 0x58]
+    1391              $C$DW$150       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7LC")
+    1392                      .dwattr $C$DW$150, DW_AT_location[DW_OP_regx 0x59]
+    1393              $C$DW$151       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDPLC")
+    1394                      .dwattr $C$DW$151, DW_AT_location[DW_OP_regx 0x5a]
+    1395              $C$DW$152       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
+    1396                      .dwattr $C$DW$152, DW_AT_location[DW_OP_regx 0x5b]
+    1397                      .dwendtag $C$DW$CU
+    1398              
+    1398              
+    1398              
+
+No Assembly Errors, No Assembly Warnings

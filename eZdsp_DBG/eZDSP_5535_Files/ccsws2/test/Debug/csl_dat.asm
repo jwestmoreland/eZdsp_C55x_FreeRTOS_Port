@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sun Sep 09 04:48:47 2018                                 *
+;* Date/Time created: Fri Sep 14 03:54:13 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -28,7 +28,7 @@ $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.4.1 Copyright (c) 1996-2012 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
 	.dwattr $C$DW$CU, DW_AT_comp_dir("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug")
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1594812 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1536412 
 	.sect	".text"
 	.align 4
 	.global	_DAT_open
@@ -491,7 +491,7 @@ $C$DW$16	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$17	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$17, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_dat.asm:$C$L10:1:1536493727")
+	.dwattr $C$DW$17, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_dat.asm:$C$L10:1:1536922453")
 	.dwattr $C$DW$17, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_dat.c")
 	.dwattr $C$DW$17, DW_AT_TI_begin_line(0xc1)
 	.dwattr $C$DW$17, DW_AT_TI_end_line(0xc4)
@@ -1180,7 +1180,7 @@ $C$DW$33	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$34	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$34, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_dat.asm:$C$L26:1:1536493727")
+	.dwattr $C$DW$34, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_dat.asm:$C$L26:1:1536922453")
 	.dwattr $C$DW$34, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_dat.c")
 	.dwattr $C$DW$34, DW_AT_TI_begin_line(0x16b)
 	.dwattr $C$DW$34, DW_AT_TI_end_line(0x16e)
@@ -1884,7 +1884,7 @@ $C$DW$51	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$52	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$52, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_dat.asm:$C$L43:1:1536493727")
+	.dwattr $C$DW$52, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_dat.asm:$C$L43:1:1536922453")
 	.dwattr $C$DW$52, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_dat.c")
 	.dwattr $C$DW$52, DW_AT_TI_begin_line(0x268)
 	.dwattr $C$DW$52, DW_AT_TI_end_line(0x26b)
@@ -2164,7 +2164,7 @@ $C$DW$60	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$61	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$61, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_dat.asm:$C$L60:1:1536493727")
+	.dwattr $C$DW$61, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_dat.asm:$C$L60:1:1536922453")
 	.dwattr $C$DW$61, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_dat.c")
 	.dwattr $C$DW$61, DW_AT_TI_begin_line(0x34d)
 	.dwattr $C$DW$61, DW_AT_TI_end_line(0x350)
@@ -2178,7 +2178,7 @@ $C$DW$63	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$64	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$64, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_dat.asm:$C$L58:1:1536493727")
+	.dwattr $C$DW$64, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_dat.asm:$C$L58:1:1536922453")
 	.dwattr $C$DW$64, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_dat.c")
 	.dwattr $C$DW$64, DW_AT_TI_begin_line(0x345)
 	.dwattr $C$DW$64, DW_AT_TI_end_line(0x348)
@@ -2192,7 +2192,7 @@ $C$DW$66	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$67	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$67, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_dat.asm:$C$L56:1:1536493727")
+	.dwattr $C$DW$67, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_dat.asm:$C$L56:1:1536922453")
 	.dwattr $C$DW$67, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_dat.c")
 	.dwattr $C$DW$67, DW_AT_TI_begin_line(0x33d)
 	.dwattr $C$DW$67, DW_AT_TI_end_line(0x340)
@@ -2206,7 +2206,7 @@ $C$DW$69	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$70	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$70, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_dat.asm:$C$L54:1:1536493727")
+	.dwattr $C$DW$70, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_dat.asm:$C$L54:1:1536922453")
 	.dwattr $C$DW$70, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_dat.c")
 	.dwattr $C$DW$70, DW_AT_TI_begin_line(0x335)
 	.dwattr $C$DW$70, DW_AT_TI_end_line(0x338)
@@ -2220,7 +2220,7 @@ $C$DW$72	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$73	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$73, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_dat.asm:$C$L52:1:1536493727")
+	.dwattr $C$DW$73, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_dat.asm:$C$L52:1:1536922453")
 	.dwattr $C$DW$73, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_dat.c")
 	.dwattr $C$DW$73, DW_AT_TI_begin_line(0x32c)
 	.dwattr $C$DW$73, DW_AT_TI_end_line(0x32f)

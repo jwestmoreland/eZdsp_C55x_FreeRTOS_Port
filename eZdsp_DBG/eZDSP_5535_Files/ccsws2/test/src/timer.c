@@ -35,7 +35,8 @@
 
 Uint16 fTimer =0;
 Uint16 fTimer02 =0;
-Uint16 Timer0_Int_CTR =0;
+volatile Uint16 Timer0_Int_CTR =0;
+volatile Uint16 Timer2_Int_CTR =0;
  extern void xTaskIncrementTick();
  extern void vTaskSwitchContext();
 
@@ -51,10 +52,14 @@ void Timer0Init(void)
 // 24K/12K = 2Hz (12K = 0x2EE0)
 
 	/* TIM0 EN | AutoReload disable | Prescale = 0(100/2 = 50MHz) ==> 20nsec */
-	*CPU_TIM0_CTRL = 0x802E; 	// autoReload
+	*CPU_TIM0_CTRL = 0x8002; 	// autoReload
+//	*CPU_TIM0_CTRL = 0x802E;
     //*CPU_TIM0_CTRL = 0x802C; 	// disable autoReload
 
-	*CPU_TIM0_PLWR = 0x2EE0;
+//	*CPU_TIM0_PLWR = 0x2EE0;
+	*CPU_TIM0_PLWR = 0xC350;	// PLL is 100MHz / 2 -> 50MHz - these many 1ms counts for 1ms tick
+//	*CPU_TIM0_PLWR = 0x1000;
+//	*CPU_TIM0_PLWR = 0x0020;
 	*CPU_TIM0_PHWR = 0x0000; 
 
 	*CPU_TIM0_CLWR = 0x0000;
@@ -80,7 +85,8 @@ void Timer02Init(void)
 	*CPU_TIM02_CTRL = 0x802E; 	// autoReload
     //*CPU_TIM0_CTRL = 0x802C; 	// disable autoReload
 
-	*CPU_TIM02_PLWR = 0x2EE0;
+//	*CPU_TIM02_PLWR = 0x2EE0;
+ 	 *CPU_TIM0_PLWR = 0xC350;	// PLL is 100MHz / 2 -> 50MHz - these many 1ms counts for 1ms tick
 	*CPU_TIM02_PHWR = 0x0000; 
 
 	*CPU_TIM02_CLWR = 0x0000;
@@ -104,13 +110,14 @@ void StartTimer02(void)
 	/* Start Timer 02*/
 	*CPU_TIM02_CTRL = *CPU_TIM02_CTRL | 0x0001; 
 }
-
+#if 1
 interrupt void Timer_isr(void)
 {
 Timer0_Int_CTR++;
     // clear timer int flag
     IFR0 = IFR0&0x0010; 
 //    IFR0 |= 0x0010;
+    *CPU_TIM0_IER = 0x0000;
     
     // timer0 or timer2?
     
@@ -156,13 +163,14 @@ Timer0_Int_CTR++;
    	DBIER0 |= BIT4; 
 #endif  
 
-   
  	
 }
 
+#endif
+
 interrupt void Timer02_isr(void)
 {
-
+	Timer2_Int_CTR++;
     // clear timer02 int flag
     IFR0 = IFR0&0x0010; 
     

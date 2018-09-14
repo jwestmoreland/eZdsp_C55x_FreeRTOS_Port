@@ -2,10 +2,10 @@
 
 timer.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c
 timer.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/FreeRTOS.h
-timer.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stddef.h
-timer.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stdint.h
+timer.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stddef.h
+timer.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdint.h
 timer.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Demo/c5515_CCS/FreeRTOSConfig.h
-timer.obj: F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/c55x.h
+timer.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/c55x.h
 timer.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/include/ezdsp5535.h
 timer.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/tistdtypes.h
 timer.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/soc.h
@@ -32,15 +32,15 @@ timer.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/por
 timer.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/deprecated_definitions.h
 timer.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/portable/CCS/c55x/portmacro.h
 timer.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/mpu_wrappers.h
-timer.obj: F:/scratch/c5515_eZdsp_FreeRTOS_Demo/inc/timer.h
-timer.obj: F:/scratch/c5515_eZdsp_FreeRTOS_Demo/inc/register_cpu.h
+timer.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/inc/timer.h
+timer.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/inc/register_cpu.h
 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/FreeRTOS.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stddef.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/stdint.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stddef.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdint.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Demo/c5515_CCS/FreeRTOSConfig.h: 
-F:/ti/ccsv6/tools/compiler/c5500_4.4.1/include/c55x.h: 
+F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/c55x.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/include/ezdsp5535.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/tistdtypes.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/soc.h: 
@@ -67,5 +67,5 @@ F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/portable.h:
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/deprecated_definitions.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/portable/CCS/c55x/portmacro.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/mpu_wrappers.h: 
-F:/scratch/c5515_eZdsp_FreeRTOS_Demo/inc/timer.h: 
-F:/scratch/c5515_eZdsp_FreeRTOS_Demo/inc/register_cpu.h: 
+F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/inc/timer.h: 
+F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/inc/register_cpu.h: 

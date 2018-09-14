@@ -84,13 +84,15 @@
 
 /* Constants required to access the "LED's".  The LED segments are turned on
 and off to generate '*' characters. */
-#define partstNUM_LEDS			( ( unsigned char ) 1 )
+#define partstNUM_LEDS			( ( unsigned char ) 5 )
 #define partstSEGMENTS_ON		( ( unsigned char ) 0x0f )
 #define partstSEGMENTS_OFF		( ( unsigned char ) 0x00 )
 
 /* The LED number of the real on board LED, rather than a simulated LED. */
-#define partstON_BOARD_LED		( ( BaseType_t ) 1 )
+#define partstON_BOARD_LED		( ( BaseType_t ) 5 )
 #define mainON_BOARD_LED_BIT	( ( unsigned char ) 0x01 )
+
+unsigned long led_tsk_ctr = 0;
 
 /* The LCD segments used to generate the '*' characters for LED's 0 to 5. */
 /*
@@ -197,12 +199,12 @@ void vParTestToggleLED( UBaseType_t uxLED )
 			showing then show it. */
 			if( flag == 0 )
 			{
-				EZDSP5535_LED_on( uxLED );       // Turn on user LED i
+				EZDSP5535_LED_off( uxLED );       // Turn on user LED i
 				flag = 1;
 			}
 			else
 			{
-				EZDSP5535_LED_off( uxLED ); // Turn off user LED i
+				EZDSP5535_LED_on( uxLED ); // Turn off user LED i
 				flag = 0;
 			}
 		}
@@ -217,7 +219,8 @@ void vParTestToggleLED( UBaseType_t uxLED )
 			/* The request related to the genuine on board LED. */
 			prvToggleOnBoardLED();
 		}
-	}	
+	}
+	led_tsk_ctr++;
 }
 /*-----------------------------------------------------------*/
 
@@ -250,6 +253,11 @@ static void toggleLED(void)
 {
 	portSHORT temp;
 
+#ifdef eZdsp_c5535
+	EZDSP5535_XF_toggle();
+#endif
+
+#if 0
     temp = ST1_55;
     if((temp&0x2000) == 0)
     {
@@ -262,7 +270,7 @@ static void toggleLED(void)
         temp &=0xDFFF;
     }
     ST1_55 = temp; 
-
+#endif
 //    vTaskDelay ( 1000 );
     
     

@@ -5,11 +5,17 @@
 
          .mmregs
          .include "lpva200.inc"
-         
-         
-         .C54CM_off
-         .CPL_off
+
+	     .C54CM_off
+         .CPL_on
          .ARMS_off
+	     .align 4
+         
+;   		.c28_amode
+         
+;         .C54CM_off
+;         .CPL_off
+;         .ARMS_off
    
 ;**********************************************************************************
 ;        predefined stack operation modes  
@@ -30,7 +36,7 @@
  		 .global _vTickISR
              
 ;**********************************************************************************
-        .sect "vector"
+        .sect "vectors"
         .align  256         
 ;**********************************************************************************
 
@@ -113,9 +119,13 @@ IV31:		.ivec dummy_isr  ; General-purpose software-only interrupt
 ;****************************************************************************
 
 		.text
+		.mmregs
 		.def reset_isr
 		.ref _c_int00
-		
+		.C54CM_off
+        .CPL_on
+         .ARMS_off
+;	     .align 4
         .align 2		
 reset_isr:
 	;	*port(#0x1C01) = #0x0				; Clear idles
@@ -142,7 +152,7 @@ reset_isr:
 
 
 ;**********************************************************************************
-;     Enalbe EMIF
+;     Enable EMIF
 ;**********************************************************************************
 
     *port(IDLE_PCGCR) = #0x0

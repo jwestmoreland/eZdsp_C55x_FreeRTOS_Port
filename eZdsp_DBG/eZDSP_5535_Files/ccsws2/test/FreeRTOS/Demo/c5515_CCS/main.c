@@ -112,9 +112,15 @@
 // #include "stdio.h"
 // #include "ezdsp5535.h"
 // #include "ezdsp5535_led.h"
+#include "ezdsp5535_gpio.h"
 #include "ezdsp5535_lcd.h"
 #include "ezdsp5535_sar.h"
 #include "csl_pll.h"
+
+#define eZdsp_c5535   (1)
+#ifndef eZdsp_c5535
+#define c5545_bp   (1)
+#endif
 
 void InitSystem(void);
 void ConfigPort(void);
@@ -216,7 +222,7 @@ static volatile unsigned long ulIdleLoops = 0UL;
  */
  
 extern unsigned short int VECSTART;		// defined in vector.asm
- 
+static toggleLEDlocal(void);
 int main( void )
 {
 	portSHORT temp, key, i;
@@ -247,8 +253,13 @@ int main( void )
 ///		InitSystem();
 	    systemInit();
 	    EZDSP5535_init( );
-//	    EZDSP5535_GPIO_init();
+
 	    EZDSP5535_LED_init( );
+	    EZDSP5535_GPIO_init();
+
+#if c5545_bp
+	    EZDSP5535_GPIO_setDirection( 28, GPIO_OUT );  // LED3
+#endif
 	    EZDSP5535_SAR_init();
 
 	    /* Memory test */
@@ -256,16 +267,33 @@ int main( void )
 	    if(!mem_test( ))
 	        EZDSP5535_LED_on(0);
 	    oled_test(4);
-	    while(EZDSP5535_SAR_getKey() != SW1);
+#if eZdsp_c5535                                          // 5535 using AIN1 to read switches
+	    while(EZDSP5535_SAR_getKey() != SW1);            // CSL_GPIO_PIN12 EZDSP5545_SAR
 	    while(EZDSP5535_SAR_getKey() != SW2);
-
+#endif
+#if c5545_bp
+	    while(EZDSP5535_GPIO_getInput(GPIO12) != 0);	// switches are default high - when pressed low
+//	    EZDSP5535_LED_on(1);
+	    while(EZDSP5535_GPIO_getInput(GPIO13) != 0);
+//	    EZDSP5535_LED_on(2);
+	    while(EZDSP5535_GPIO_getInput(GPIO14) != 0);
+//	    EZDSP5535_LED_on(3);
+#endif
 	    /* SPI FLASH */
 	    oled_test(1);
 	    if(!spiflash_test( ))
 	        EZDSP5535_LED_on(1);
 	    oled_test(4);
+#if eZdsp_c5535
 	    while(EZDSP5535_SAR_getKey() != SW1);
 	    while(EZDSP5535_SAR_getKey() != SW2);
+#endif
+#if c5545_bp
+	    while(EZDSP5535_GPIO_getInput(GPIO12) != 0);
+	    while(EZDSP5535_GPIO_getInput(GPIO13) != 0);
+	    while(EZDSP5535_GPIO_getInput(GPIO14) != 0);
+
+#endif
 #if 0
 	    /* Codec Loopback */
 	    oled_test(2);
@@ -278,8 +306,16 @@ int main( void )
 	    /* USB test */
 	    oled_test(3);
 	    EZDSP5535_LED_on(3);
-	
+#if 0
+	    HeapRegion_t xHeapRegions[] =
+	     {
+	     { ( uint8_t * ) 0x010000UL, 0x010000 }, // << Defines a block of 0x10000 bytes starting at address 0x80000000
+	     // { ( uint8_t * ) 0x90000000UL, 0xa0000 }, // << Defines a block of 0xa0000 bytes starting at address of 0x90000000
+	     { NULL, 0 }              //   << Terminates the array.
+	     };
 
+	     vPortDefineHeapRegions( xHeapRegions );
+#endif
 	/* Setup the hardware ready for the demo. */
 	
 //	EZDSP5535_init( );
@@ -306,8 +342,10 @@ int main( void )
 		//*(ioport volatile unsigned *)0x0001 = 0x03FF;
 		//asm("	idle");
 //	EZDSP5535_LED_init( );
+//	EZDSP5535_GPIO_init();
         BlinkLED();
 //	GenerateAudioTone();
+#if eZdsp_c5535
 #if 1		
     for ( i = 0 ; i < 4 ; i++ )
     {
@@ -319,8 +357,14 @@ int main( void )
             EZDSP5535_LED_on( i );       // Turn on user LED i
             EZDSP5535_waitusec( 50000 );
         }
+#endif
+#endif
+#if c5545_bp
+    toggleLED();
+#endif
 
-#else
+// #else
+#if 0
 		/* Get Switch values an toggle LEDs accordingly */
     	key = Get_Sar_Key();
     	if((key == SW1))   // If SW1 pressed
@@ -375,18 +419,20 @@ int main( void )
 
     	SYS_GlobalIntDisable();
 	/* Start the standard demo application tasks. */
-	vStartLEDFlashTasks( mainLED_TASK_PRIORITY );
+//	vStartLEDFlashTasks( mainLED_TASK_PRIORITY );
 //	vStartIntegerMathTasks( tskIDLE_PRIORITY );
 //	vAltStartComTestTasks( mainCOM_TEST_PRIORITY, mainCOM_TEST_BAUD_RATE, mainCOM_TEST_LED - 1 );
 //	vStartPolledQueueTasks( mainQUEUE_POLL_PRIORITY );
 
 	/* Start the 'Check' task which is defined in this file. */
-	xTaskCreate( vErrorChecks, "Check", configMINIMAL_STACK_SIZE, NULL, mainCHECK_TASK_PRIORITY, NULL );
+//	xTaskCreate( vErrorChecks, "Check", configMINIMAL_STACK_SIZE, NULL, mainCHECK_TASK_PRIORITY, NULL );
+	vStartLEDFlashTasks( mainLED_TASK_PRIORITY );
+//	vStartIntegerMathTasks( tskIDLE_PRIORITY );
 //	SYS_GlobalIntDisable();
 	
 	IER0 &= ~(BIT13);       // disable SAR IRQ's
 
-	SYS_GlobalIntEnable();
+//	SYS_GlobalIntEnable();
 
 	/* Start the scheduler. */
 // IRQ's shouldn't be enabled before the scheduler
@@ -551,12 +597,13 @@ void vApplicationIdleHook( void )
 //	_BIS_SR( LPM3_bits );
 	ulIdleLoops++;
 //	BlinkLED();
-	toggleLED();
+//	toggleLED();
 //	EZDSP5535_LED_toggle(3);		// toggle 'BLUE' LED
 	
-	if ( ulIdleLoops < 500000 )
+	if ( ulIdleLoops > 500000 )
 	{
-
+		toggleLEDlocal();					// as a diagnostic; if timing is in the ballpark - the XF LED will blink at the rate ~1s (50% duty cycle)
+//		EZDSP5535_LED_toggle(0);
 #if 0
 
 		
@@ -578,7 +625,11 @@ void vApplicationIdleHook( void )
         ulIdleLoops = 0;
 
 	}
-
+#if configUSE_PREEMPTION == 0
+      {
+          taskYIELD();
+      }
+      #endif
 
 //	vTaskDelay ( 5000 );
 	
@@ -669,16 +720,18 @@ void SYS_GlobalIntDisable(void)
 }
 
 
-static toggleLED(void)
+static toggleLEDlocal(void)
 {
 	portSHORT temp, i;
-	
+#if eZdsp_c5535
 	EZDSP5535_XF_toggle();
+#endif
 //	EZDSP5535_LED_toggle( 3 );
 //	EZDSP5535_waitusec( 70000 );
 	
 //	oled_test ( 5 );
-#if 1
+#if 0
+#if eZdsp_c5535
     for ( i = 0 ; i < 4 ; i++ )
     {
         EZDSP5535_LED_off( i ); // Turn off user LED i
@@ -691,6 +744,41 @@ static toggleLED(void)
             EZDSP5535_waitusec( 50000 );
         }
 #endif
+#endif
+#if c5545_bp
+
+    EZDSP5535_GPIO_setOutput(GPIO16, 0 );
+    EZDSP5535_waitusec( 50000 );
+    EZDSP5535_GPIO_setOutput(GPIO17, 0 );
+    EZDSP5535_waitusec( 50000 );
+    EZDSP5535_GPIO_setOutput(GPIO28, 0 );
+    EZDSP5535_waitusec( 50000 );
+
+#if 0
+    for ( i = 0 ; i <= 3 ; i++ )
+    {
+        EZDSP5535_LED_off( i ); // Turn off user LED i
+        EZDSP5535_waitusec( 50000 );
+    }
+#endif
+//    oled_test ( 6 );
+#if 0
+    for ( i = 0 ; i <= 3 ; i++ )
+        {
+            EZDSP5535_LED_on( i );       // Turn on user LED i
+            EZDSP5535_waitusec( 50000 );
+        }
+#endif
+
+        EZDSP5535_GPIO_setOutput(GPIO16, 1 );
+        EZDSP5535_waitusec( 50000 );
+        EZDSP5535_GPIO_setOutput(GPIO17, 1 );
+        EZDSP5535_waitusec( 50000 );
+        EZDSP5535_GPIO_setOutput(GPIO28, 1 );
+        EZDSP5535_waitusec( 50000 );
+
+#endif
+
 //	EZDSP5535_LED_off(0);		// toggle 'BLUE' LED
 //	EZDSP5535_LED_toggle(2);
 //	EZDSP5535_LED_toggle(1);
@@ -733,7 +821,7 @@ void BlinkLED(void)
    		if(Flag_RTC ==1)
 		{
       		Flag_RTC =0;
-			toggleLED();
+			toggleLEDlocal();
 		}
 	
 	}
@@ -742,7 +830,7 @@ void BlinkLED(void)
    		if(fTimer ==1)
 		{
       		fTimer =0;
-			toggleLED();
+			toggleLEDlocal();
 		}
 	}
 

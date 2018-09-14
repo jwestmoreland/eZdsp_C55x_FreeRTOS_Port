@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sun Sep 09 04:49:46 2018                                 *
+;* Date/Time created: Fri Sep 14 03:55:12 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -83,7 +83,7 @@ $C$DW$13	.dwtag  DW_TAG_variable, DW_AT_name("hI2s")
 	.dwattr $C$DW$13, DW_AT_location[DW_OP_addr _hI2s]
 	.dwattr $C$DW$13, DW_AT_type(*$C$DW$T$67)
 	.dwattr $C$DW$13, DW_AT_external
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\2224812 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1763613 
 	.sect	".text"
 	.align 4
 	.global	_EZDSP5535_I2S_init
@@ -280,7 +280,7 @@ $C$DW$25	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$26	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$26, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\ezdsp5535_i2s.asm:$C$L1:1:1536493786")
+	.dwattr $C$DW$26, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\ezdsp5535_i2s.asm:$C$L1:1:1536922512")
 	.dwattr $C$DW$26, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/lib/bsl/ezdsp5535_i2s.c")
 	.dwattr $C$DW$26, DW_AT_TI_begin_line(0x5c)
 	.dwattr $C$DW$26, DW_AT_TI_end_line(0x5c)
@@ -370,7 +370,7 @@ $C$DW$32	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$33	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$33, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\ezdsp5535_i2s.asm:$C$L3:1:1536493786")
+	.dwattr $C$DW$33, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\ezdsp5535_i2s.asm:$C$L3:1:1536922512")
 	.dwattr $C$DW$33, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/lib/bsl/ezdsp5535_i2s.c")
 	.dwattr $C$DW$33, DW_AT_TI_begin_line(0x6c)
 	.dwattr $C$DW$33, DW_AT_TI_end_line(0x6c)

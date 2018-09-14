@@ -1,4 +1,4 @@
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:07 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 heap_1.asm                                                           PAGE    1
@@ -6,7 +6,7 @@ heap_1.asm                                                           PAGE    1
      755              ; Temporary Registers Used: None
        1              ;*******************************************************************************
        2              ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-       3              ;* Date/Time created: Sun Sep 09 04:48:41 2018                                 *
+       3              ;* Date/Time created: Fri Sep 14 03:54:07 2018                                 *
        4              ;*******************************************************************************
        5                      .compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --si
        6                      .mmregs
@@ -40,17 +40,17 @@ heap_1.asm                                                           PAGE    1
       34 000000               .sect   ".cinit"
       35                      .align  1
       36 000000 0001          .field          1,16
-      37 000001 001B-         .field          _xNextFreeByte+0,24
-         000002 5800 
-      38 000002 5800          .field          0,8
+      37 000001 0013-         .field          _xNextFreeByte+0,24
+         000002 8800 
+      38 000002 8800          .field          0,8
       39 000003 0000          .field  0,16                    ; _xNextFreeByte @ 0
       40              
       41 000004               .sect   ".cinit"
       42                      .align  1
       43 000004 0002          .field          2,16
-      44 000005 001B-         .field          _pucAlignedHeap$1+0,24
-         000006 5A00 
-      45 000006 5A00          .field          0,8
+      44 000005 0013-         .field          _pucAlignedHeap$1+0,24
+         000006 8A00 
+      45 000006 8A00          .field          0,8
       46 000007 0000          .field  0,32                    ; _pucAlignedHeap$1 @ 0
          000008 0000 
       47              
@@ -58,7 +58,7 @@ heap_1.asm                                                           PAGE    1
       49              $C$DW$1 .dwtag  DW_TAG_subprogram, DW_AT_name("vTaskSuspendAll")
       50                      .dwattr $C$DW$1, DW_AT_TI_symbol_name("_vTaskSuspendAll")
       51                      .dwattr $C$DW$1, DW_AT_declaration
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:07 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 heap_1.asm                                                           PAGE    2
@@ -75,17 +75,17 @@ heap_1.asm                                                           PAGE    2
       61                      .dwattr $C$DW$3, DW_AT_TI_symbol_name("_vApplicationMallocFailedHook")
       62                      .dwattr $C$DW$3, DW_AT_declaration
       63                      .dwattr $C$DW$3, DW_AT_external
-      64 000000               .bss    _ucHeap,7000,0,0
+      64 000000               .bss    _ucHeap,5000,0,0
       65              $C$DW$4 .dwtag  DW_TAG_variable, DW_AT_name("ucHeap")
       66                      .dwattr $C$DW$4, DW_AT_TI_symbol_name("_ucHeap")
       67                      .dwattr $C$DW$4, DW_AT_type(*$C$DW$T$25)
       68                      .dwattr $C$DW$4, DW_AT_location[DW_OP_addr _ucHeap]
-      69 001b58               .bss    _xNextFreeByte,1,0,0
+      69 001388               .bss    _xNextFreeByte,1,0,0
       70              $C$DW$5 .dwtag  DW_TAG_variable, DW_AT_name("xNextFreeByte")
       71                      .dwattr $C$DW$5, DW_AT_TI_symbol_name("_xNextFreeByte")
       72                      .dwattr $C$DW$5, DW_AT_type(*$C$DW$T$19)
       73                      .dwattr $C$DW$5, DW_AT_location[DW_OP_addr _xNextFreeByte]
-      74 001b5a               .bss    _pucAlignedHeap$1,2,0,2
+      74 00138a               .bss    _pucAlignedHeap$1,2,0,2
       75              ;       F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\T
       76 000000               .sect   ".text"
       77                      .align 4
@@ -118,7 +118,7 @@ heap_1.asm                                                           PAGE    2
      104              ;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,AR0,XAR0,AR1,AR2,AR3,XAR3,SP,     *
      105              ;*                        CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL                *
      106              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:07 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 heap_1.asm                                                           PAGE    3
@@ -171,14 +171,14 @@ heap_1.asm                                                           PAGE    3
      147                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 87,column 3,is_stmt
      148 00001f ED31          MOV dbl(*(#_pucAlignedHeap$1)), XAR3
          000021 BF00 
-         000023 1B5A-
+         000023 138A-
      149 000025 90B0          MOV XAR3, AC0
      150 000027 0410          BCC $C$L2,AC0 != #0 ; |87| 
          000029 18   
      151                                                      ; branchcc occurs ; |87| 
      152                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 90,column 4,is_stmt
      153 00002a 7AFF          MOV #-1 << #16, AC0 ; |90| 
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:07 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 heap_1.asm                                                           PAGE    4
@@ -193,15 +193,15 @@ heap_1.asm                                                           PAGE    4
      157 00003a 2810          AND AC1, AC0 ; |90| 
      158 00003c EB31          MOV AC0, dbl(*(#_pucAlignedHeap$1))
          00003e 0800 
-         000040 1B5A-
+         000040 138A-
      159 000042       $C$L2:    
      160                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 94,column 3,is_stmt
      161 000042 A900          MOV *SP(#0), AR1 ; |94| 
-     162 000044 761B          MOV #6996, AR2 ; |94| 
-         000046 54A8 
+     162 000044 7613          MOV #4996, AR2 ; |94| 
+         000046 84A8 
      163 000048 D631          ADD *(#_xNextFreeByte), AR1, AR1 ; |94| 
          00004a 9900 
-         00004c 1B58-
+         00004c 1388-
      164 00004e 1298          CMPU AR1 >= AR2, TC1 ; |94| 
          000050 A4   
      165 000051 0464          BCC $C$L3,TC1 ; |94| 
@@ -209,11 +209,11 @@ heap_1.asm                                                           PAGE    4
      166                                                      ; branchcc occurs ; |94| 
      167 000054 AA00          MOV *SP(#0), AR2 ; |94| 
      168 000056 A931          MOV *(#_xNextFreeByte), AR1 ; |94| 
-         000058 001B 
-         00005a 58-  
+         000058 0013 
+         00005a 88-  
      169 00005b D631          ADD *(#_xNextFreeByte), AR2, AR2 ; |94| 
          00005d AA00 
-         00005f 1B58-
+         00005f 1388-
      170 000061 1298          CMPU AR2 <= AR1, TC1 ; |94| 
          000063 A4   
      171 000064 0464          BCC $C$L3,TC1 ; |94| 
@@ -222,10 +222,10 @@ heap_1.asm                                                           PAGE    4
      173                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 99,column 4,is_stmt
      174 000067 ED31          MOV dbl(*(#_pucAlignedHeap$1)), XAR3
          000069 BF00 
-         00006b 1B5A-
+         00006b 138A-
      175 00006d A931          MOV *(#_xNextFreeByte), AR1 ; |99| 
-         00006f 001B 
-         000071 58-  
+         00006f 0013 
+         000071 88-  
      176              
      177 000072 8E04          MOV XAR3, dbl(*SP(#2))
          000074 BB10 
@@ -236,15 +236,15 @@ heap_1.asm                                                           PAGE    4
      181 000078 A900          MOV *SP(#0), AR1 ; |100| 
      182 00007a D631          ADD *(#_xNextFreeByte), AR1, AR1 ; |100| 
          00007c 9900 
-         00007e 1B58-
+         00007e 1388-
      183 000080 C931          MOV AR1, *(#_xNextFreeByte) ; |100| 
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:07 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 heap_1.asm                                                           PAGE    5
 
-         000082 001B 
-         000084 58-  
+         000082 0013 
+         000084 88-  
      184 000085       $C$L3:    
      185                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 105,column 2,is_stmt
      186              $C$DW$12        .dwtag  DW_TAG_TI_branch
@@ -298,7 +298,7 @@ heap_1.asm                                                           PAGE    5
      230                      .dwattr $C$DW$15, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
      231                      .dwattr $C$DW$15, DW_AT_TI_begin_line(0x79)
      232                      .dwattr $C$DW$15, DW_AT_TI_begin_column(0x06)
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:07 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 heap_1.asm                                                           PAGE    6
@@ -358,7 +358,7 @@ heap_1.asm                                                           PAGE    6
      284                      .dwattr $C$DW$19, DW_AT_external
      285                      .dwattr $C$DW$19, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
      286                      .dwattr $C$DW$19, DW_AT_TI_begin_line(0x85)
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:07 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 heap_1.asm                                                           PAGE    7
@@ -383,7 +383,7 @@ heap_1.asm                                                           PAGE    7
      304                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 136,column 2,is_stmt
      305 0000a8 E631          MOV #0, *(#_xNextFreeByte) ; |136| 
          0000aa 0000 
-         0000ac 1B58-
+         0000ac 1388-
      306                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 137,column 1,is_stmt
      307              $C$DW$20        .dwtag  DW_TAG_TI_branch
      308                      .dwattr $C$DW$20, DW_AT_low_pc(0x00)
@@ -418,7 +418,7 @@ heap_1.asm                                                           PAGE    7
      337              ;*                                                                             *
      338              ;*   Function Uses Regs : AC0,T0,SP,CARRY,M40,SATA,SATD,RDM,FRCT,SMUL          *
      339              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:07 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 heap_1.asm                                                           PAGE    8
@@ -431,11 +431,11 @@ heap_1.asm                                                           PAGE    8
      345                      .dwcfi  cfa_offset, 1
      346                      .dwcfi  save_reg_to_mem, 91, -1
      347                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 142,column 2,is_stmt
-     348 0000b0 761B          MOV #6996, AC0 ; |142| 
-         0000b2 5408 
+     348 0000b0 7613          MOV #4996, AC0 ; |142| 
+         0000b2 8408 
      349 0000b4 DF31          SUB uns(*(#_xNextFreeByte)), AC0, AC0 ; |142| 
          0000b6 0F00 
-         0000b8 1B58-
+         0000b8 1388-
      350                      .dwpsn  file "../FreeRTOS/Source/portable/MemMang/heap_1.c",line 143,column 1,is_stmt
      351 0000ba 2204          MOV AC0, T0 ; |142| 
      352              $C$DW$22        .dwtag  DW_TAG_TI_branch
@@ -478,16 +478,16 @@ heap_1.asm                                                           PAGE    8
      389                      .dwattr $C$DW$T$24, DW_AT_language(DW_LANG_C)
      390              
      391              $C$DW$T$25      .dwtag  DW_TAG_array_type
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:07 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 heap_1.asm                                                           PAGE    9
 
      392                      .dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$24)
      393                      .dwattr $C$DW$T$25, DW_AT_language(DW_LANG_C)
-     394                      .dwattr $C$DW$T$25, DW_AT_byte_size(0x1b58)
+     394                      .dwattr $C$DW$T$25, DW_AT_byte_size(0x1388)
      395              $C$DW$23        .dwtag  DW_TAG_subrange_type
-     396                      .dwattr $C$DW$23, DW_AT_upper_bound(0x1b57)
+     396                      .dwattr $C$DW$23, DW_AT_upper_bound(0x1387)
      397                      .dwendtag $C$DW$T$25
      398              
      399              $C$DW$T$26      .dwtag  DW_TAG_pointer_type
@@ -538,7 +538,7 @@ heap_1.asm                                                           PAGE    9
      444                      .dwattr $C$DW$T$14, DW_AT_bit_offset(0x18)
      445              $C$DW$T$15      .dwtag  DW_TAG_base_type
      446                      .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:07 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 heap_1.asm                                                           PAGE   10
@@ -598,7 +598,7 @@ heap_1.asm                                                           PAGE   10
      499                      .dwcfi  same_value, 27
      500                      .dwcfi  same_value, 28
      501                      .dwcfi  same_value, 29
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:07 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 heap_1.asm                                                           PAGE   11
@@ -658,7 +658,7 @@ heap_1.asm                                                           PAGE   11
      554                      .dwcfi  undefined, 82
      555                      .dwcfi  undefined, 83
      556                      .dwcfi  undefined, 84
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:07 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 heap_1.asm                                                           PAGE   12
@@ -718,7 +718,7 @@ heap_1.asm                                                           PAGE   12
      609                      .dwattr $C$DW$43, DW_AT_location[DW_OP_reg19]
      610              $C$DW$44        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
      611                      .dwattr $C$DW$44, DW_AT_location[DW_OP_reg20]
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:07 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 heap_1.asm                                                           PAGE   13
@@ -778,7 +778,7 @@ heap_1.asm                                                           PAGE   13
      664              $C$DW$71        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
      665                      .dwattr $C$DW$71, DW_AT_location[DW_OP_regx 0x2f]
      666              $C$DW$72        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:07 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 heap_1.asm                                                           PAGE   14
@@ -838,7 +838,7 @@ heap_1.asm                                                           PAGE   14
      719                      .dwattr $C$DW$98, DW_AT_location[DW_OP_regx 0x4a]
      720              $C$DW$99        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
      721                      .dwattr $C$DW$99, DW_AT_location[DW_OP_regx 0x4b]
-TMS320C55x Assembler PC v4.4.1 Sun Sep 09 04:48:41 2018
+TMS320C55x Assembler PC v4.4.1 Fri Sep 14 03:54:07 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 heap_1.asm                                                           PAGE   15

@@ -50,8 +50,8 @@
 #include "flash.h"
 
 #define ledSTACK_SIZE		configMINIMAL_STACK_SIZE
-#define ledNUMBER_OF_LEDS	( 3 )
-#define ledFLASH_RATE_BASE	( ( TickType_t ) 333 )
+#define ledNUMBER_OF_LEDS	( 5 )													// eZdsp 5535 has 4 LED's plus XF LED
+#define ledFLASH_RATE_BASE	( ( TickType_t ) 500000  )								// consider this count in microseconds
 
 /* Variable used by the created tasks to calculate the LED number to use, and
 the rate at which they should flash the LED. */
@@ -59,6 +59,8 @@ static volatile UBaseType_t uxFlashTaskNumber = 0;
 
 /* The task that is created three times. */
 static portTASK_FUNCTION_PROTO( vLEDFlashTask, pvParameters );
+
+unsigned long LED_Blink_ctr = 0;
 
 /*-----------------------------------------------------------*/
 
@@ -108,12 +110,16 @@ UBaseType_t uxLED;
 	for(;;)
 	{
 		/* Delay for half the flash period then turn the LED on. */
-		vTaskDelayUntil( &xLastFlashTime, xFlashRate );
+//		vTaskDelayUntil( &xLastFlashTime, xFlashRate );
+		vTaskDelay(50000);
 		vParTestToggleLED( uxLED );
 
 		/* Delay for half the flash period then turn the LED off. */
-		vTaskDelayUntil( &xLastFlashTime, xFlashRate );
+//		vTaskDelayUntil( &xLastFlashTime, xFlashRate );
+		vTaskDelay(50000);
 		vParTestToggleLED( uxLED );
+
+		LED_Blink_ctr++;
 	}
 } /*lint !e715 !e818 !e830 Function definition must be standard for task creation. */
 

@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sun Sep 09 04:48:33 2018                                 *
+;* Date/Time created: Fri Sep 14 03:53:59 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -104,10 +104,10 @@ $C$DW$17	.dwtag  DW_TAG_subprogram, DW_AT_name("uxTaskResetEventItemValue")
 	.dwattr $C$DW$17, DW_AT_external
 $C$DW$18	.dwtag  DW_TAG_variable, DW_AT_name("usCriticalNesting")
 	.dwattr $C$DW$18, DW_AT_TI_symbol_name("_usCriticalNesting")
-	.dwattr $C$DW$18, DW_AT_type(*$C$DW$T$76)
+	.dwattr $C$DW$18, DW_AT_type(*$C$DW$T$69)
 	.dwattr $C$DW$18, DW_AT_declaration
 	.dwattr $C$DW$18, DW_AT_external
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\2355612 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1839212 
 	.sect	".text"
 	.align 4
 	.global	_xEventGroupCreate
@@ -162,7 +162,8 @@ $C$DW$21	.dwtag  DW_TAG_TI_branch
         BCC $C$L1,AC0 == #0 ; |164| 
                                         ; branchcc occurs ; |164| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 166,column 4,is_stmt
-        MOV #0, *AR3 ; |166| 
+        MOV #0, AC0 ; |166| 
+        MOV AC0, dbl(*AR3) ; |166| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 167,column 4,is_stmt
         MOV dbl(*SP(#0)), XAR0
         AADD #2, AR0 ; |167| 
@@ -203,7 +204,7 @@ $C$DW$24	.dwtag  DW_TAG_subprogram, DW_AT_name("xEventGroupSync")
 	.dwattr $C$DW$24, DW_AT_TI_begin_file("../FreeRTOS/Source/event_groups.c")
 	.dwattr $C$DW$24, DW_AT_TI_begin_line(0xbf)
 	.dwattr $C$DW$24, DW_AT_TI_begin_column(0x0d)
-	.dwattr $C$DW$24, DW_AT_TI_max_frame_size(0x0e)
+	.dwattr $C$DW$24, DW_AT_TI_max_frame_size(0x12)
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 192,column 1,is_stmt,address _xEventGroupSync
 
 	.dwfde $C$DW$CIE, _xEventGroupSync
@@ -214,31 +215,31 @@ $C$DW$25	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xEventGroup")
 $C$DW$26	.dwtag  DW_TAG_formal_parameter, DW_AT_name("uxBitsToSet")
 	.dwattr $C$DW$26, DW_AT_TI_symbol_name("_uxBitsToSet")
 	.dwattr $C$DW$26, DW_AT_type(*$C$DW$T$65)
-	.dwattr $C$DW$26, DW_AT_location[DW_OP_reg12]
+	.dwattr $C$DW$26, DW_AT_location[DW_OP_reg0]
 $C$DW$27	.dwtag  DW_TAG_formal_parameter, DW_AT_name("uxBitsToWaitFor")
 	.dwattr $C$DW$27, DW_AT_TI_symbol_name("_uxBitsToWaitFor")
 	.dwattr $C$DW$27, DW_AT_type(*$C$DW$T$65)
-	.dwattr $C$DW$27, DW_AT_location[DW_OP_reg13]
+	.dwattr $C$DW$27, DW_AT_location[DW_OP_reg3]
 $C$DW$28	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$28, DW_AT_TI_symbol_name("_xTicksToWait")
 	.dwattr $C$DW$28, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$28, DW_AT_location[DW_OP_reg18]
+	.dwattr $C$DW$28, DW_AT_location[DW_OP_reg6]
 ;*******************************************************************************
 ;* FUNCTION NAME: xEventGroupSync                                              *
 ;*                                                                             *
-;*   Function Uses Regs : AC0,AC0,T0,T1,AR0,XAR0,AR1,AR2,AR3,XAR3,SP,CARRY,TC1,*
-;*                        M40,SATA,SATD,RDM,FRCT,SMUL                          *
+;*   Function Uses Regs : AC0,AC0,AC1,AC1,AC2,AC2,T0,AR0,XAR0,AR1,AR3,XAR3,SP, *
+;*                        CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL                *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-;*   Total Frame Size   : 14 words                                             *
+;*   Total Frame Size   : 18 words                                             *
 ;*                        (2 return address/alignment)                         *
-;*                        (12 local values)                                    *
+;*                        (16 local values)                                    *
 ;*   Min System Stack   : 1 word                                               *
 ;*******************************************************************************
 _xEventGroupSync:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-        AADD #-13, SP
-	.dwcfi	cfa_offset, 14
+        AADD #-17, SP
+	.dwcfi	cfa_offset, 18
 $C$DW$29	.dwtag  DW_TAG_variable, DW_AT_name("xEventGroup")
 	.dwattr $C$DW$29, DW_AT_TI_symbol_name("_xEventGroup")
 	.dwattr $C$DW$29, DW_AT_type(*$C$DW$T$39)
@@ -250,40 +251,40 @@ $C$DW$30	.dwtag  DW_TAG_variable, DW_AT_name("uxBitsToSet")
 $C$DW$31	.dwtag  DW_TAG_variable, DW_AT_name("uxBitsToWaitFor")
 	.dwattr $C$DW$31, DW_AT_TI_symbol_name("_uxBitsToWaitFor")
 	.dwattr $C$DW$31, DW_AT_type(*$C$DW$T$65)
-	.dwattr $C$DW$31, DW_AT_location[DW_OP_bregx 0x24 3]
+	.dwattr $C$DW$31, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$32	.dwtag  DW_TAG_variable, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$32, DW_AT_TI_symbol_name("_xTicksToWait")
 	.dwattr $C$DW$32, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$32, DW_AT_location[DW_OP_bregx 0x24 4]
+	.dwattr $C$DW$32, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$33	.dwtag  DW_TAG_variable, DW_AT_name("uxOriginalBitValue")
 	.dwattr $C$DW$33, DW_AT_TI_symbol_name("_uxOriginalBitValue")
 	.dwattr $C$DW$33, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$33, DW_AT_location[DW_OP_bregx 0x24 5]
+	.dwattr $C$DW$33, DW_AT_location[DW_OP_bregx 0x24 8]
 $C$DW$34	.dwtag  DW_TAG_variable, DW_AT_name("uxReturn")
 	.dwattr $C$DW$34, DW_AT_TI_symbol_name("_uxReturn")
 	.dwattr $C$DW$34, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$34, DW_AT_location[DW_OP_bregx 0x24 6]
+	.dwattr $C$DW$34, DW_AT_location[DW_OP_bregx 0x24 10]
 $C$DW$35	.dwtag  DW_TAG_variable, DW_AT_name("pxEventBits")
 	.dwattr $C$DW$35, DW_AT_TI_symbol_name("_pxEventBits")
 	.dwattr $C$DW$35, DW_AT_type(*$C$DW$T$37)
-	.dwattr $C$DW$35, DW_AT_location[DW_OP_bregx 0x24 8]
+	.dwattr $C$DW$35, DW_AT_location[DW_OP_bregx 0x24 12]
 $C$DW$36	.dwtag  DW_TAG_variable, DW_AT_name("xAlreadyYielded")
 	.dwattr $C$DW$36, DW_AT_TI_symbol_name("_xAlreadyYielded")
 	.dwattr $C$DW$36, DW_AT_type(*$C$DW$T$61)
-	.dwattr $C$DW$36, DW_AT_location[DW_OP_bregx 0x24 10]
+	.dwattr $C$DW$36, DW_AT_location[DW_OP_bregx 0x24 14]
 $C$DW$37	.dwtag  DW_TAG_variable, DW_AT_name("xTimeoutOccurred")
 	.dwattr $C$DW$37, DW_AT_TI_symbol_name("_xTimeoutOccurred")
 	.dwattr $C$DW$37, DW_AT_type(*$C$DW$T$61)
-	.dwattr $C$DW$37, DW_AT_location[DW_OP_bregx 0x24 11]
-        MOV AR1, *SP(#4) ; |192| 
-        MOV T1, *SP(#3) ; |192| 
-        MOV T0, *SP(#2) ; |192| 
+	.dwattr $C$DW$37, DW_AT_location[DW_OP_bregx 0x24 15]
+        MOV AC2, dbl(*SP(#6)) ; |192| 
+        MOV AC1, dbl(*SP(#4)) ; |192| 
+        MOV AC0, dbl(*SP(#2)) ; |192| 
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 194,column 15,is_stmt
         MOV dbl(*SP(#0)), XAR3
-        MOV XAR3, dbl(*SP(#8))
+        MOV XAR3, dbl(*SP(#12))
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 196,column 12,is_stmt
-        MOV #0, *SP(#11) ; |196| 
+        MOV #0, *SP(#15) ; |196| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 206,column 2,is_stmt
 $C$DW$38	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$38, DW_AT_low_pc(0x00)
@@ -292,12 +293,12 @@ $C$DW$38	.dwtag  DW_TAG_TI_branch
         CALL #_vTaskSuspendAll ; |206| 
                                         ; call occurs [#_vTaskSuspendAll] ; |206| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 208,column 3,is_stmt
-        MOV dbl(*SP(#8)), XAR3
-        MOV *AR3, AR1 ; |208| 
-        MOV AR1, *SP(#5) ; |208| 
+        MOV dbl(*SP(#12)), XAR3
+        MOV dbl(*AR3), AC0 ; |208| 
+        MOV AC0, dbl(*SP(#8)) ; |208| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 210,column 3,is_stmt
-        MOV *SP(#2), T0 ; |210| 
         MOV dbl(*SP(#0)), XAR0
+        MOV dbl(*SP(#2)), AC0 ; |210| 
 $C$DW$39	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$39, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$39, DW_AT_name("_xEventGroupSetBits")
@@ -305,40 +306,51 @@ $C$DW$39	.dwtag  DW_TAG_TI_branch
         CALL #_xEventGroupSetBits ; |210| 
                                         ; call occurs [#_xEventGroupSetBits] ; |210| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 212,column 3,is_stmt
-        MOV *SP(#2), AR2 ; |212| 
-        MOV *SP(#3), AR1 ; |212| 
-        OR *SP(#5), AR2, AR2 ; |212| 
-        AND *SP(#3), AR2, AR2 ; |212| 
-        CMPU AR2 != AR1, TC1 ; |212| 
+        MOV dbl(*SP(#2)), AC0 ; |212| 
+        MOV dbl(*SP(#8)), AC1 ; |212| 
+
+        MOV dbl(*SP(#4)), AC1 ; |212| 
+||      OR AC1, AC0 ; |212| 
+
+        MOV dbl(*SP(#4)), AC0 ; |212| 
+||      AND AC0, AC1 ; |212| 
+
+        CMPU AC1 != AC0, TC1 ; |212| 
         BCC $C$L2,TC1 ; |212| 
                                         ; branchcc occurs ; |212| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 215,column 4,is_stmt
-        MOV *SP(#2), AR1 ; |215| 
-        OR *SP(#5), AR1, AR1 ; |215| 
-        MOV AR1, *SP(#6) ; |215| 
+        MOV dbl(*SP(#8)), AC1 ; |215| 
+        MOV dbl(*SP(#2)), AC0 ; |215| 
+        OR AC1, AC0 ; |215| 
+        MOV AC0, dbl(*SP(#10)) ; |215| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 219,column 4,is_stmt
-        MOV dbl(*SP(#8)), XAR3
-        MOV *SP(#3), AR1 ; |219| 
-        NOT AR1, AR1 ; |219| 
-        AND *AR3, AR1, AC0 ; |219| 
-        MOV AC0, *AR3 ; |219| 
+        MOV dbl(*SP(#12)), XAR3
+        MOV dbl(*SP(#4)), AC0 ; |219| 
+
+        MOV dbl(*AR3), AC1 ; |219| 
+||      NOT AC0, AC0 ; |219| 
+
+        AND AC1, AC0 ; |219| 
+        MOV AC0, dbl(*AR3) ; |219| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 221,column 4,is_stmt
-        MOV #0, *SP(#4) ; |221| 
+        MOV #0, AC0 ; |221| 
+        MOV AC0, dbl(*SP(#6)) ; |221| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 222,column 3,is_stmt
         B $C$L4   ; |222| 
                                         ; branch occurs ; |222| 
 $C$L2:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 225,column 4,is_stmt
-        MOV *SP(#4), AR1 ; |225| 
-        BCC $C$L3,AR1 == #0 ; |225| 
+        MOV dbl(*SP(#6)), AC0 ; |225| 
+        BCC $C$L3,AC0 == #0 ; |225| 
                                         ; branchcc occurs ; |225| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 232,column 5,is_stmt
-        MOV dbl(*SP(#8)), XAR0
-        MOV *SP(#3), AR1 ; |232| 
-        OR #0x0500, AR1, T0 ; |232| 
+        MOV dbl(*SP(#12)), XAR0
+        MOV dbl(*SP(#4)), AC1 ; |232| 
+        MOV #1280 << #16, AC0 ; |232| 
+        OR AC1, AC0 ; |232| 
 
-        AADD #2, AR0 ; |232| 
-||      MOV *SP(#4), T1 ; |232| 
+        MOV dbl(*SP(#6)), AC1 ; |232| 
+||      AADD #2, AR0 ; |232| 
 
 $C$DW$40	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$40, DW_AT_low_pc(0x00)
@@ -347,17 +359,18 @@ $C$DW$40	.dwtag  DW_TAG_TI_branch
         CALL #_vTaskPlaceOnUnorderedEventList ; |232| 
                                         ; call occurs [#_vTaskPlaceOnUnorderedEventList] ; |232| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 238,column 5,is_stmt
-        MOV #0, *SP(#6) ; |238| 
+        MOV #0, AC0 ; |238| 
+        MOV AC0, dbl(*SP(#10)) ; |238| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 239,column 4,is_stmt
         B $C$L4   ; |239| 
                                         ; branch occurs ; |239| 
 $C$L3:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 244,column 5,is_stmt
-        MOV dbl(*SP(#8)), XAR3
-        MOV *AR3, AR1 ; |244| 
-        MOV AR1, *SP(#6) ; |244| 
+        MOV dbl(*SP(#12)), XAR3
+        MOV dbl(*AR3), AC0 ; |244| 
+        MOV AC0, dbl(*SP(#10)) ; |244| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 245,column 5,is_stmt
-        MOV #1, *SP(#11) ; |245| 
+        MOV #1, *SP(#15) ; |245| 
 $C$L4:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 249,column 2,is_stmt
 $C$DW$41	.dwtag  DW_TAG_TI_branch
@@ -366,10 +379,10 @@ $C$DW$41	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$41, DW_AT_TI_call
         CALL #_xTaskResumeAll ; |249| 
                                         ; call occurs [#_xTaskResumeAll] ; |249| 
-        MOV T0, *SP(#10) ; |249| 
+        MOV T0, *SP(#14) ; |249| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 251,column 2,is_stmt
-        MOV *SP(#4), AR1 ; |251| 
-        BCC $C$L9,AR1 == #0 ; |251| 
+        MOV dbl(*SP(#6)), AC0 ; |251| 
+        BCC $C$L9,AC0 == #0 ; |251| 
                                         ; branchcc occurs ; |251| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 253,column 3,is_stmt
         MOV T0, AR1
@@ -391,31 +404,40 @@ $C$DW$43	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$43, DW_AT_TI_call
         CALL #_uxTaskResetEventItemValue ; |266| 
                                         ; call occurs [#_uxTaskResetEventItemValue] ; |266| 
-        MOV T0, *SP(#6) ; |266| 
+        MOV AC0, dbl(*SP(#10)) ; |266| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 268,column 3,is_stmt
-        BTST #9, *SP(#6), TC1 ; |268| 
-        BCC $C$L8,TC1 ; |268| 
+        MOV #512 << #16, AC0 ; |268| 
+        MOV dbl(*SP(#10)), AC1 ; |268| 
+        AND AC1, AC0 ; |268| 
+        BCC $C$L8,AC0 != #0 ; |268| 
                                         ; branchcc occurs ; |268| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 271,column 4,is_stmt
  nop
  bset INTM
         ADD #1, *(#_usCriticalNesting) ; |271| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 273,column 5,is_stmt
-        MOV dbl(*SP(#8)), XAR3
-        MOV *AR3, AR1 ; |273| 
-        MOV AR1, *SP(#6) ; |273| 
+        MOV dbl(*SP(#12)), XAR3
+        MOV dbl(*AR3), AC0 ; |273| 
+        MOV AC0, dbl(*SP(#10)) ; |273| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 279,column 5,is_stmt
-        MOV *SP(#3), AR1 ; |279| 
-        MOV AR1, AR2 ; |279| 
-        AND *SP(#6), AR2, AR2 ; |279| 
-        CMPU AR2 != AR1, TC1 ; |279| 
+        MOV dbl(*SP(#10)), AC1 ; |279| 
+        MOV dbl(*SP(#4)), AC0 ; |279| 
+
+        MOV dbl(*SP(#4)), AC1 ; |279| 
+||      AND AC1, AC0 ; |279| 
+
+        CMPU AC0 != AC1, TC1 ; |279| 
         BCC $C$L6,TC1 ; |279| 
                                         ; branchcc occurs ; |279| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 281,column 6,is_stmt
-        MOV dbl(*SP(#8)), XAR3
-        NOT AR1, AR1 ; |281| 
-        AND *AR3, AR1, AC0 ; |281| 
-        MOV AC0, *AR3 ; |281| 
+        MOV dbl(*SP(#12)), XAR3
+        MOV dbl(*SP(#4)), AC0 ; |281| 
+
+        MOV dbl(*AR3), AC1 ; |281| 
+||      NOT AC0, AC0 ; |281| 
+
+        AND AC1, AC0 ; |281| 
+        MOV AC0, dbl(*AR3) ; |281| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 282,column 5,is_stmt
 $C$L6:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 288,column 4,is_stmt
@@ -433,18 +455,22 @@ $C$L6:
  bclr INTM
 $C$L7:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 290,column 4,is_stmt
-        MOV #1, *SP(#11) ; |290| 
+        MOV #1, *SP(#15) ; |290| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 291,column 3,is_stmt
 $C$L8:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 299,column 3,is_stmt
-        AND #0x00ff, *SP(#6) ; |299| 
+        MOV #255 << #16, AC0 ; |299| 
+        MOV dbl(*SP(#10)), AC1 ; |299| 
+        OR #0xffff, AC0, AC0 ; |299| 
+        AND AC1, AC0 ; |299| 
+        MOV AC0, dbl(*SP(#10)) ; |299| 
 $C$L9:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 302,column 2,is_stmt
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 305,column 2,is_stmt
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 307,column 2,is_stmt
-        MOV *SP(#6), T0 ; |307| 
+        MOV dbl(*SP(#10)), AC0 ; |307| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 308,column 1,is_stmt
-        AADD #13, SP
+        AADD #17, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$44	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$44, DW_AT_low_pc(0x00)
@@ -470,7 +496,7 @@ $C$DW$45	.dwtag  DW_TAG_subprogram, DW_AT_name("xEventGroupWaitBits")
 	.dwattr $C$DW$45, DW_AT_TI_begin_file("../FreeRTOS/Source/event_groups.c")
 	.dwattr $C$DW$45, DW_AT_TI_begin_line(0x137)
 	.dwattr $C$DW$45, DW_AT_TI_begin_column(0x0d)
-	.dwattr $C$DW$45, DW_AT_TI_max_frame_size(0x10)
+	.dwattr $C$DW$45, DW_AT_TI_max_frame_size(0x16)
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 312,column 1,is_stmt,address _xEventGroupWaitBits
 
 	.dwfde $C$DW$CIE, _xEventGroupWaitBits
@@ -481,35 +507,35 @@ $C$DW$46	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xEventGroup")
 $C$DW$47	.dwtag  DW_TAG_formal_parameter, DW_AT_name("uxBitsToWaitFor")
 	.dwattr $C$DW$47, DW_AT_TI_symbol_name("_uxBitsToWaitFor")
 	.dwattr $C$DW$47, DW_AT_type(*$C$DW$T$65)
-	.dwattr $C$DW$47, DW_AT_location[DW_OP_reg12]
+	.dwattr $C$DW$47, DW_AT_location[DW_OP_reg0]
 $C$DW$48	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xClearOnExit")
 	.dwattr $C$DW$48, DW_AT_TI_symbol_name("_xClearOnExit")
 	.dwattr $C$DW$48, DW_AT_type(*$C$DW$T$62)
-	.dwattr $C$DW$48, DW_AT_location[DW_OP_reg13]
+	.dwattr $C$DW$48, DW_AT_location[DW_OP_reg12]
 $C$DW$49	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xWaitForAllBits")
 	.dwattr $C$DW$49, DW_AT_TI_symbol_name("_xWaitForAllBits")
 	.dwattr $C$DW$49, DW_AT_type(*$C$DW$T$62)
-	.dwattr $C$DW$49, DW_AT_location[DW_OP_reg18]
+	.dwattr $C$DW$49, DW_AT_location[DW_OP_reg13]
 $C$DW$50	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$50, DW_AT_TI_symbol_name("_xTicksToWait")
 	.dwattr $C$DW$50, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$50, DW_AT_location[DW_OP_reg20]
+	.dwattr $C$DW$50, DW_AT_location[DW_OP_reg3]
 ;*******************************************************************************
 ;* FUNCTION NAME: xEventGroupWaitBits                                          *
 ;*                                                                             *
-;*   Function Uses Regs : AC0,AC0,T0,T1,AR0,XAR0,AR1,AR2,AR3,XAR3,SP,CARRY,TC1,*
+;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,T1,AR0,XAR0,AR1,AR3,XAR3,SP,CARRY,*
 ;*                        M40,SATA,SATD,RDM,FRCT,SMUL                          *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-;*   Total Frame Size   : 16 words                                             *
+;*   Total Frame Size   : 22 words                                             *
 ;*                        (2 return address/alignment)                         *
-;*                        (14 local values)                                    *
+;*                        (20 local values)                                    *
 ;*   Min System Stack   : 1 word                                               *
 ;*******************************************************************************
 _xEventGroupWaitBits:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-        AADD #-15, SP
-	.dwcfi	cfa_offset, 16
+        AADD #-21, SP
+	.dwcfi	cfa_offset, 22
 $C$DW$51	.dwtag  DW_TAG_variable, DW_AT_name("xEventGroup")
 	.dwattr $C$DW$51, DW_AT_TI_symbol_name("_xEventGroup")
 	.dwattr $C$DW$51, DW_AT_type(*$C$DW$T$39)
@@ -521,51 +547,52 @@ $C$DW$52	.dwtag  DW_TAG_variable, DW_AT_name("uxBitsToWaitFor")
 $C$DW$53	.dwtag  DW_TAG_variable, DW_AT_name("xClearOnExit")
 	.dwattr $C$DW$53, DW_AT_TI_symbol_name("_xClearOnExit")
 	.dwattr $C$DW$53, DW_AT_type(*$C$DW$T$62)
-	.dwattr $C$DW$53, DW_AT_location[DW_OP_bregx 0x24 3]
+	.dwattr $C$DW$53, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$54	.dwtag  DW_TAG_variable, DW_AT_name("xWaitForAllBits")
 	.dwattr $C$DW$54, DW_AT_TI_symbol_name("_xWaitForAllBits")
 	.dwattr $C$DW$54, DW_AT_type(*$C$DW$T$62)
-	.dwattr $C$DW$54, DW_AT_location[DW_OP_bregx 0x24 4]
+	.dwattr $C$DW$54, DW_AT_location[DW_OP_bregx 0x24 5]
 $C$DW$55	.dwtag  DW_TAG_variable, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$55, DW_AT_TI_symbol_name("_xTicksToWait")
 	.dwattr $C$DW$55, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$55, DW_AT_location[DW_OP_bregx 0x24 5]
+	.dwattr $C$DW$55, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$56	.dwtag  DW_TAG_variable, DW_AT_name("pxEventBits")
 	.dwattr $C$DW$56, DW_AT_TI_symbol_name("_pxEventBits")
 	.dwattr $C$DW$56, DW_AT_type(*$C$DW$T$37)
-	.dwattr $C$DW$56, DW_AT_location[DW_OP_bregx 0x24 6]
+	.dwattr $C$DW$56, DW_AT_location[DW_OP_bregx 0x24 8]
 $C$DW$57	.dwtag  DW_TAG_variable, DW_AT_name("uxReturn")
 	.dwattr $C$DW$57, DW_AT_TI_symbol_name("_uxReturn")
 	.dwattr $C$DW$57, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$57, DW_AT_location[DW_OP_bregx 0x24 8]
+	.dwattr $C$DW$57, DW_AT_location[DW_OP_bregx 0x24 10]
 $C$DW$58	.dwtag  DW_TAG_variable, DW_AT_name("uxControlBits")
 	.dwattr $C$DW$58, DW_AT_TI_symbol_name("_uxControlBits")
 	.dwattr $C$DW$58, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$58, DW_AT_location[DW_OP_bregx 0x24 9]
+	.dwattr $C$DW$58, DW_AT_location[DW_OP_bregx 0x24 12]
 $C$DW$59	.dwtag  DW_TAG_variable, DW_AT_name("xWaitConditionMet")
 	.dwattr $C$DW$59, DW_AT_TI_symbol_name("_xWaitConditionMet")
 	.dwattr $C$DW$59, DW_AT_type(*$C$DW$T$61)
-	.dwattr $C$DW$59, DW_AT_location[DW_OP_bregx 0x24 10]
+	.dwattr $C$DW$59, DW_AT_location[DW_OP_bregx 0x24 14]
 $C$DW$60	.dwtag  DW_TAG_variable, DW_AT_name("xAlreadyYielded")
 	.dwattr $C$DW$60, DW_AT_TI_symbol_name("_xAlreadyYielded")
 	.dwattr $C$DW$60, DW_AT_type(*$C$DW$T$61)
-	.dwattr $C$DW$60, DW_AT_location[DW_OP_bregx 0x24 11]
+	.dwattr $C$DW$60, DW_AT_location[DW_OP_bregx 0x24 15]
 $C$DW$61	.dwtag  DW_TAG_variable, DW_AT_name("xTimeoutOccurred")
 	.dwattr $C$DW$61, DW_AT_TI_symbol_name("_xTimeoutOccurred")
 	.dwattr $C$DW$61, DW_AT_type(*$C$DW$T$61)
-	.dwattr $C$DW$61, DW_AT_location[DW_OP_bregx 0x24 12]
-        MOV AR2, *SP(#5) ; |312| 
-        MOV AR1, *SP(#4) ; |312| 
-        MOV T1, *SP(#3) ; |312| 
-        MOV T0, *SP(#2) ; |312| 
+	.dwattr $C$DW$61, DW_AT_location[DW_OP_bregx 0x24 16]
+        MOV AC1, dbl(*SP(#6)) ; |312| 
+        MOV T1, *SP(#5) ; |312| 
+        MOV T0, *SP(#4) ; |312| 
+        MOV AC0, dbl(*SP(#2)) ; |312| 
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 313,column 15,is_stmt
         MOV dbl(*SP(#0)), XAR3
-        MOV XAR3, dbl(*SP(#6))
+        MOV XAR3, dbl(*SP(#8))
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 314,column 23,is_stmt
-        MOV #0, *SP(#9) ; |314| 
+        MOV #0, AC0 ; |314| 
+        MOV AC0, dbl(*SP(#12)) ; |314| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 316,column 12,is_stmt
-        MOV #0, *SP(#12) ; |316| 
+        MOV #0, *SP(#16) ; |316| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 329,column 2,is_stmt
 $C$DW$62	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$62, DW_AT_low_pc(0x00)
@@ -578,83 +605,90 @@ $C$DW$63	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
 $C$DW$64	.dwtag  DW_TAG_variable, DW_AT_name("uxCurrentEventBits")
 	.dwattr $C$DW$64, DW_AT_TI_symbol_name("_uxCurrentEventBits")
 	.dwattr $C$DW$64, DW_AT_type(*$C$DW$T$65)
-	.dwattr $C$DW$64, DW_AT_location[DW_OP_bregx 0x24 13]
+	.dwattr $C$DW$64, DW_AT_location[DW_OP_bregx 0x24 18]
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 331,column 21,is_stmt
-        MOV dbl(*SP(#6)), XAR3
-        MOV *AR3, AR1 ; |331| 
-        MOV AR1, *SP(#13) ; |331| 
+        MOV dbl(*SP(#8)), XAR3
+        MOV dbl(*AR3), AC0 ; |331| 
+        MOV AC0, dbl(*SP(#18)) ; |331| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 334,column 3,is_stmt
-        MOV *SP(#2), T1 ; |334| 
-        MOV *SP(#4), AR0 ; |334| 
+        MOV *SP(#5), T0 ; |334| 
+        MOV dbl(*SP(#18)), AC0 ; |334| 
+        MOV dbl(*SP(#2)), AC1 ; |334| 
 $C$DW$65	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$65, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$65, DW_AT_name("_prvTestWaitCondition")
 	.dwattr $C$DW$65, DW_AT_TI_call
-
         CALL #_prvTestWaitCondition ; |334| 
-||      MOV AR1, T0
-
                                         ; call occurs [#_prvTestWaitCondition] ; |334| 
-        MOV T0, *SP(#10) ; |334| 
+        MOV T0, *SP(#14) ; |334| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 336,column 3,is_stmt
         MOV T0, AR1
         BCC $C$L10,AR1 == #0 ; |336| 
                                         ; branchcc occurs ; |336| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 340,column 4,is_stmt
-        MOV *SP(#13), AR1 ; |340| 
-        MOV AR1, *SP(#8) ; |340| 
+        MOV dbl(*SP(#18)), AC0 ; |340| 
+        MOV AC0, dbl(*SP(#10)) ; |340| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 341,column 4,is_stmt
-        MOV #0, *SP(#5) ; |341| 
+        MOV #0, AC0 ; |341| 
+        MOV AC0, dbl(*SP(#6)) ; |341| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 344,column 4,is_stmt
-        MOV *SP(#3), AR1 ; |344| 
+        MOV *SP(#4), AR1 ; |344| 
         BCC $C$L14,AR1 == #0 ; |344| 
                                         ; branchcc occurs ; |344| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 346,column 5,is_stmt
-        MOV dbl(*SP(#6)), XAR3
-        MOV *SP(#2), AR1 ; |346| 
-        NOT AR1, AR1 ; |346| 
-        AND *AR3, AR1, AC0 ; |346| 
-        MOV AC0, *AR3 ; |346| 
+        MOV dbl(*SP(#8)), XAR3
+        MOV dbl(*SP(#2)), AC0 ; |346| 
+
+        MOV dbl(*AR3), AC1 ; |346| 
+||      NOT AC0, AC0 ; |346| 
+
+        AND AC1, AC0 ; |346| 
+        MOV AC0, dbl(*AR3) ; |346| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 347,column 4,is_stmt
         B $C$L14  ; |347| 
                                         ; branch occurs ; |347| 
 $C$L10:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 353,column 8,is_stmt
-        MOV *SP(#5), AR1 ; |353| 
-        BCC $C$L11,AR1 != #0 ; |353| 
+        MOV dbl(*SP(#6)), AC0 ; |353| 
+        BCC $C$L11,AC0 != #0 ; |353| 
                                         ; branchcc occurs ; |353| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 357,column 4,is_stmt
-        MOV *SP(#13), AR1 ; |357| 
-        MOV AR1, *SP(#8) ; |357| 
+        MOV dbl(*SP(#18)), AC0 ; |357| 
+        MOV AC0, dbl(*SP(#10)) ; |357| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 358,column 4,is_stmt
-        MOV #1, *SP(#12) ; |358| 
+        MOV #1, *SP(#16) ; |358| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 359,column 3,is_stmt
         B $C$L14  ; |359| 
                                         ; branch occurs ; |359| 
 $C$L11:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 366,column 4,is_stmt
-        MOV *SP(#3), AR1 ; |366| 
+        MOV *SP(#4), AR1 ; |366| 
         BCC $C$L12,AR1 == #0 ; |366| 
                                         ; branchcc occurs ; |366| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 368,column 5,is_stmt
-        OR #0x0100, *SP(#9) ; |368| 
+        MOV dbl(*SP(#12)), AC0 ; |368| 
+        BSET @#24, AC0 ; |368| 
+        MOV AC0, dbl(*SP(#12)) ; |368| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 369,column 4,is_stmt
 $C$L12:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 375,column 4,is_stmt
-        MOV *SP(#4), AR1 ; |375| 
+        MOV *SP(#5), AR1 ; |375| 
         BCC $C$L13,AR1 == #0 ; |375| 
                                         ; branchcc occurs ; |375| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 377,column 5,is_stmt
-        OR #0x0400, *SP(#9) ; |377| 
+        MOV dbl(*SP(#12)), AC0 ; |377| 
+        BSET @#26, AC0 ; |377| 
+        MOV AC0, dbl(*SP(#12)) ; |377| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 378,column 4,is_stmt
 $C$L13:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 387,column 4,is_stmt
-        MOV dbl(*SP(#6)), XAR0
-        MOV *SP(#9), AR1 ; |387| 
-        MOV *SP(#5), T1 ; |387| 
+        MOV dbl(*SP(#8)), XAR0
+        MOV dbl(*SP(#2)), AC1 ; |387| 
+        MOV dbl(*SP(#12)), AC0 ; |387| 
+        OR AC1, AC0 ; |387| 
 
-        AADD #2, AR0 ; |387| 
-||      OR *SP(#2), AR1, T0 ; |387| 
+        MOV dbl(*SP(#6)), AC1 ; |387| 
+||      AADD #2, AR0 ; |387| 
 
 $C$DW$66	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$66, DW_AT_low_pc(0x00)
@@ -663,7 +697,8 @@ $C$DW$66	.dwtag  DW_TAG_TI_branch
         CALL #_vTaskPlaceOnUnorderedEventList ; |387| 
                                         ; call occurs [#_vTaskPlaceOnUnorderedEventList] ; |387| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 392,column 4,is_stmt
-        MOV #0, *SP(#8) ; |392| 
+        MOV #0, AC0 ; |392| 
+        MOV AC0, dbl(*SP(#10)) ; |392| 
 $C$L14:    
 	.dwendtag $C$DW$63
 
@@ -674,10 +709,10 @@ $C$DW$67	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$67, DW_AT_TI_call
         CALL #_xTaskResumeAll ; |397| 
                                         ; call occurs [#_xTaskResumeAll] ; |397| 
-        MOV T0, *SP(#11) ; |397| 
+        MOV T0, *SP(#15) ; |397| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 399,column 2,is_stmt
-        MOV *SP(#5), AR1 ; |399| 
-        BCC $C$L18,AR1 == #0 ; |399| 
+        MOV dbl(*SP(#6)), AC0 ; |399| 
+        BCC $C$L18,AC0 == #0 ; |399| 
                                         ; branchcc occurs ; |399| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 401,column 3,is_stmt
         MOV T0, AR1
@@ -699,49 +734,52 @@ $C$DW$69	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$69, DW_AT_TI_call
         CALL #_uxTaskResetEventItemValue ; |414| 
                                         ; call occurs [#_uxTaskResetEventItemValue] ; |414| 
-        MOV T0, *SP(#8) ; |414| 
+        MOV AC0, dbl(*SP(#10)) ; |414| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 416,column 3,is_stmt
-        BTST #9, *SP(#8), TC1 ; |416| 
-        BCC $C$L17,TC1 ; |416| 
+        MOV #512 << #16, AC0 ; |416| 
+        MOV dbl(*SP(#10)), AC1 ; |416| 
+        AND AC1, AC0 ; |416| 
+        BCC $C$L17,AC0 != #0 ; |416| 
                                         ; branchcc occurs ; |416| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 418,column 4,is_stmt
  nop
  bset INTM
         ADD #1, *(#_usCriticalNesting) ; |418| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 421,column 5,is_stmt
-        MOV dbl(*SP(#6)), XAR3
-        MOV *AR3, AR1 ; |421| 
-        MOV AR1, *SP(#8) ; |421| 
+        MOV dbl(*SP(#8)), XAR3
+        MOV dbl(*AR3), AC0 ; |421| 
+        MOV AC0, dbl(*SP(#10)) ; |421| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 425,column 5,is_stmt
-        MOV *SP(#2), T1 ; |425| 
-        MOV *SP(#4), AR0 ; |425| 
+        MOV dbl(*SP(#2)), AC1 ; |425| 
+        MOV *SP(#5), T0 ; |425| 
+        MOV dbl(*SP(#10)), AC0 ; |425| 
 $C$DW$70	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$70, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$70, DW_AT_name("_prvTestWaitCondition")
 	.dwattr $C$DW$70, DW_AT_TI_call
-
         CALL #_prvTestWaitCondition ; |425| 
-||      MOV AR1, T0
-
                                         ; call occurs [#_prvTestWaitCondition] ; |425| 
         BCC $C$L16,T0 == #0 ; |425| 
                                         ; branchcc occurs ; |425| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 427,column 6,is_stmt
-        MOV *SP(#3), AR1 ; |427| 
+        MOV *SP(#4), AR1 ; |427| 
         BCC $C$L16,AR1 == #0 ; |427| 
                                         ; branchcc occurs ; |427| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 429,column 7,is_stmt
-        MOV dbl(*SP(#6)), XAR3
-        MOV *SP(#2), AR1 ; |429| 
-        NOT AR1, AR1 ; |429| 
-        AND *AR3, AR1, AC0 ; |429| 
-        MOV AC0, *AR3 ; |429| 
+        MOV dbl(*SP(#8)), XAR3
+        MOV dbl(*SP(#2)), AC0 ; |429| 
+
+        MOV dbl(*AR3), AC1 ; |429| 
+||      NOT AC0, AC0 ; |429| 
+
+        AND AC1, AC0 ; |429| 
+        MOV AC0, dbl(*AR3) ; |429| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 430,column 6,is_stmt
         B $C$L16  ; |430| 
                                         ; branch occurs ; |430| 
 $C$L16:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 440,column 5,is_stmt
-        MOV #1, *SP(#12) ; |440| 
+        MOV #1, *SP(#16) ; |440| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 442,column 4,is_stmt
         MOV *(#_usCriticalNesting), AR1 ; |442| 
         BCC $C$L17,AR1 == #0 ; |442| 
@@ -758,14 +796,18 @@ $C$L16:
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 443,column 3,is_stmt
 $C$L17:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 450,column 3,is_stmt
-        AND #0x00ff, *SP(#8) ; |450| 
+        MOV #255 << #16, AC0 ; |450| 
+        MOV dbl(*SP(#10)), AC1 ; |450| 
+        OR #0xffff, AC0, AC0 ; |450| 
+        AND AC1, AC0 ; |450| 
+        MOV AC0, dbl(*SP(#10)) ; |450| 
 $C$L18:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 452,column 2,is_stmt
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 455,column 2,is_stmt
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 457,column 2,is_stmt
-        MOV *SP(#8), T0 ; |457| 
+        MOV dbl(*SP(#10)), AC0 ; |457| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 458,column 1,is_stmt
-        AADD #15, SP
+        AADD #21, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$71	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$71, DW_AT_low_pc(0x00)
@@ -791,7 +833,7 @@ $C$DW$72	.dwtag  DW_TAG_subprogram, DW_AT_name("xEventGroupClearBits")
 	.dwattr $C$DW$72, DW_AT_TI_begin_file("../FreeRTOS/Source/event_groups.c")
 	.dwattr $C$DW$72, DW_AT_TI_begin_line(0x1cd)
 	.dwattr $C$DW$72, DW_AT_TI_begin_column(0x0d)
-	.dwattr $C$DW$72, DW_AT_TI_max_frame_size(0x08)
+	.dwattr $C$DW$72, DW_AT_TI_max_frame_size(0x0a)
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 462,column 1,is_stmt,address _xEventGroupClearBits
 
 	.dwfde $C$DW$CIE, _xEventGroupClearBits
@@ -802,23 +844,23 @@ $C$DW$73	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xEventGroup")
 $C$DW$74	.dwtag  DW_TAG_formal_parameter, DW_AT_name("uxBitsToClear")
 	.dwattr $C$DW$74, DW_AT_TI_symbol_name("_uxBitsToClear")
 	.dwattr $C$DW$74, DW_AT_type(*$C$DW$T$65)
-	.dwattr $C$DW$74, DW_AT_location[DW_OP_reg12]
+	.dwattr $C$DW$74, DW_AT_location[DW_OP_reg0]
 ;*******************************************************************************
 ;* FUNCTION NAME: xEventGroupClearBits                                         *
 ;*                                                                             *
-;*   Function Uses Regs : AC0,AC0,T0,AR0,XAR0,AR1,AR3,XAR3,SP,CARRY,M40,SATA,  *
-;*                        SATD,RDM,FRCT,SMUL                                   *
+;*   Function Uses Regs : AC0,AC0,AC1,AC1,AR0,XAR0,AR1,AR3,XAR3,SP,CARRY,M40,  *
+;*                        SATA,SATD,RDM,FRCT,SMUL                              *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-;*   Total Frame Size   : 8 words                                              *
-;*                        (1 return address/alignment)                         *
-;*                        (7 local values)                                     *
+;*   Total Frame Size   : 10 words                                             *
+;*                        (2 return address/alignment)                         *
+;*                        (8 local values)                                     *
 ;*   Min System Stack   : 1 word                                               *
 ;*******************************************************************************
 _xEventGroupClearBits:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-        AADD #-7, SP
-	.dwcfi	cfa_offset, 8
+        AADD #-9, SP
+	.dwcfi	cfa_offset, 10
 $C$DW$75	.dwtag  DW_TAG_variable, DW_AT_name("xEventGroup")
 	.dwattr $C$DW$75, DW_AT_TI_symbol_name("_xEventGroup")
 	.dwattr $C$DW$75, DW_AT_type(*$C$DW$T$39)
@@ -835,7 +877,7 @@ $C$DW$78	.dwtag  DW_TAG_variable, DW_AT_name("uxReturn")
 	.dwattr $C$DW$78, DW_AT_TI_symbol_name("_uxReturn")
 	.dwattr $C$DW$78, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$78, DW_AT_location[DW_OP_bregx 0x24 6]
-        MOV T0, *SP(#2) ; |462| 
+        MOV AC0, dbl(*SP(#2)) ; |462| 
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 463,column 15,is_stmt
         MOV dbl(*SP(#0)), XAR3
@@ -845,14 +887,17 @@ $C$DW$78	.dwtag  DW_TAG_variable, DW_AT_name("uxReturn")
  bset INTM
         ADD #1, *(#_usCriticalNesting) ; |471| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 477,column 3,is_stmt
-        MOV *AR3, AR1 ; |477| 
-        MOV AR1, *SP(#6) ; |477| 
+        MOV dbl(*AR3), AC0 ; |477| 
+        MOV AC0, dbl(*SP(#6)) ; |477| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 480,column 3,is_stmt
         MOV dbl(*SP(#4)), XAR3
-        MOV *SP(#2), AR1 ; |480| 
-        NOT AR1, AR1 ; |480| 
-        AND *AR3, AR1, AC0 ; |480| 
-        MOV AC0, *AR3 ; |480| 
+        MOV dbl(*SP(#2)), AC0 ; |480| 
+
+        MOV dbl(*AR3), AC1 ; |480| 
+||      NOT AC0, AC0 ; |480| 
+
+        AND AC1, AC0 ; |480| 
+        MOV AC0, dbl(*AR3) ; |480| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 482,column 2,is_stmt
         MOV *(#_usCriticalNesting), AR1 ; |482| 
         BCC $C$L19,AR1 == #0 ; |482| 
@@ -868,9 +913,9 @@ $C$DW$78	.dwtag  DW_TAG_variable, DW_AT_name("uxReturn")
  bclr INTM
 $C$L19:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 484,column 2,is_stmt
-        MOV *SP(#6), T0 ; |484| 
+        MOV dbl(*SP(#6)), AC0 ; |484| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 485,column 1,is_stmt
-        AADD #7, SP
+        AADD #9, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$79	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$79, DW_AT_low_pc(0x00)
@@ -896,7 +941,7 @@ $C$DW$80	.dwtag  DW_TAG_subprogram, DW_AT_name("xEventGroupGetBitsFromISR")
 	.dwattr $C$DW$80, DW_AT_TI_begin_file("../FreeRTOS/Source/event_groups.c")
 	.dwattr $C$DW$80, DW_AT_TI_begin_line(0x1f7)
 	.dwattr $C$DW$80, DW_AT_TI_begin_column(0x0d)
-	.dwattr $C$DW$80, DW_AT_TI_max_frame_size(0x08)
+	.dwattr $C$DW$80, DW_AT_TI_max_frame_size(0x0a)
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 504,column 1,is_stmt,address _xEventGroupGetBitsFromISR
 
 	.dwfde $C$DW$CIE, _xEventGroupGetBitsFromISR
@@ -907,19 +952,19 @@ $C$DW$81	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xEventGroup")
 ;*******************************************************************************
 ;* FUNCTION NAME: xEventGroupGetBitsFromISR                                    *
 ;*                                                                             *
-;*   Function Uses Regs : T0,AR0,XAR0,AR1,AR3,XAR3,SP,M40,SATA,SATD,RDM,FRCT,  *
+;*   Function Uses Regs : AC0,AC0,AR0,XAR0,AR3,XAR3,SP,M40,SATA,SATD,RDM,FRCT, *
 ;*                        SMUL                                                 *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-;*   Total Frame Size   : 8 words                                              *
-;*                        (1 return address/alignment)                         *
-;*                        (7 local values)                                     *
+;*   Total Frame Size   : 10 words                                             *
+;*                        (2 return address/alignment)                         *
+;*                        (8 local values)                                     *
 ;*   Min System Stack   : 1 word                                               *
 ;*******************************************************************************
 _xEventGroupGetBitsFromISR:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-        AADD #-7, SP
-	.dwcfi	cfa_offset, 8
+        AADD #-9, SP
+	.dwcfi	cfa_offset, 10
 $C$DW$82	.dwtag  DW_TAG_variable, DW_AT_name("xEventGroup")
 	.dwattr $C$DW$82, DW_AT_TI_symbol_name("_xEventGroup")
 	.dwattr $C$DW$82, DW_AT_type(*$C$DW$T$39)
@@ -944,13 +989,13 @@ $C$DW$85	.dwtag  DW_TAG_variable, DW_AT_name("uxReturn")
         MOV #0, *SP(#2) ; |509| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 511,column 3,is_stmt
         MOV dbl(*SP(#4)), XAR3
-        MOV *AR3, AR1 ; |511| 
-        MOV AR1, *SP(#6) ; |511| 
+        MOV dbl(*AR3), AC0 ; |511| 
+        MOV AC0, dbl(*SP(#6)) ; |511| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 513,column 2,is_stmt
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 515,column 2,is_stmt
-        MOV AR1, T0
+        MOV dbl(*SP(#6)), AC0 ; |515| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 516,column 1,is_stmt
-        AADD #7, SP
+        AADD #9, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$86	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$86, DW_AT_low_pc(0x00)
@@ -976,7 +1021,7 @@ $C$DW$87	.dwtag  DW_TAG_subprogram, DW_AT_name("xEventGroupSetBits")
 	.dwattr $C$DW$87, DW_AT_TI_begin_file("../FreeRTOS/Source/event_groups.c")
 	.dwattr $C$DW$87, DW_AT_TI_begin_line(0x207)
 	.dwattr $C$DW$87, DW_AT_TI_begin_column(0x0d)
-	.dwattr $C$DW$87, DW_AT_TI_max_frame_size(0x14)
+	.dwattr $C$DW$87, DW_AT_TI_max_frame_size(0x16)
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 520,column 1,is_stmt,address _xEventGroupSetBits
 
 	.dwfde $C$DW$CIE, _xEventGroupSetBits
@@ -987,23 +1032,23 @@ $C$DW$88	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xEventGroup")
 $C$DW$89	.dwtag  DW_TAG_formal_parameter, DW_AT_name("uxBitsToSet")
 	.dwattr $C$DW$89, DW_AT_TI_symbol_name("_uxBitsToSet")
 	.dwattr $C$DW$89, DW_AT_type(*$C$DW$T$65)
-	.dwattr $C$DW$89, DW_AT_location[DW_OP_reg12]
+	.dwattr $C$DW$89, DW_AT_location[DW_OP_reg0]
 ;*******************************************************************************
 ;* FUNCTION NAME: xEventGroupSetBits                                           *
 ;*                                                                             *
-;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,AR0,XAR0,AR1,AR2,AR3,XAR3,SP,TC1, *
-;*                        M40,SATA,SATD,RDM,FRCT,SMUL                          *
+;*   Function Uses Regs : AC0,AC0,AC1,AC1,AR0,XAR0,AR1,AR3,XAR3,SP,TC1,M40,    *
+;*                        SATA,SATD,RDM,FRCT,SMUL                              *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-;*   Total Frame Size   : 20 words                                             *
+;*   Total Frame Size   : 22 words                                             *
 ;*                        (1 return address/alignment)                         *
-;*                        (19 local values)                                    *
+;*                        (21 local values)                                    *
 ;*   Min System Stack   : 1 word                                               *
 ;*******************************************************************************
 _xEventGroupSetBits:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-        AADD #-19, SP
-	.dwcfi	cfa_offset, 20
+        AADD #-21, SP
+	.dwcfi	cfa_offset, 22
 $C$DW$90	.dwtag  DW_TAG_variable, DW_AT_name("xEventGroup")
 	.dwattr $C$DW$90, DW_AT_TI_symbol_name("_xEventGroup")
 	.dwattr $C$DW$90, DW_AT_type(*$C$DW$T$39)
@@ -1035,30 +1080,31 @@ $C$DW$96	.dwtag  DW_TAG_variable, DW_AT_name("uxBitsToClear")
 $C$DW$97	.dwtag  DW_TAG_variable, DW_AT_name("uxBitsWaitedFor")
 	.dwattr $C$DW$97, DW_AT_TI_symbol_name("_uxBitsWaitedFor")
 	.dwattr $C$DW$97, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$97, DW_AT_location[DW_OP_bregx 0x24 13]
+	.dwattr $C$DW$97, DW_AT_location[DW_OP_bregx 0x24 14]
 $C$DW$98	.dwtag  DW_TAG_variable, DW_AT_name("uxControlBits")
 	.dwattr $C$DW$98, DW_AT_TI_symbol_name("_uxControlBits")
 	.dwattr $C$DW$98, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$98, DW_AT_location[DW_OP_bregx 0x24 14]
+	.dwattr $C$DW$98, DW_AT_location[DW_OP_bregx 0x24 16]
 $C$DW$99	.dwtag  DW_TAG_variable, DW_AT_name("pxEventBits")
 	.dwattr $C$DW$99, DW_AT_TI_symbol_name("_pxEventBits")
 	.dwattr $C$DW$99, DW_AT_type(*$C$DW$T$37)
-	.dwattr $C$DW$99, DW_AT_location[DW_OP_bregx 0x24 16]
+	.dwattr $C$DW$99, DW_AT_location[DW_OP_bregx 0x24 18]
 $C$DW$100	.dwtag  DW_TAG_variable, DW_AT_name("xMatchFound")
 	.dwattr $C$DW$100, DW_AT_TI_symbol_name("_xMatchFound")
 	.dwattr $C$DW$100, DW_AT_type(*$C$DW$T$61)
-	.dwattr $C$DW$100, DW_AT_location[DW_OP_bregx 0x24 18]
-        MOV T0, *SP(#2) ; |520| 
+	.dwattr $C$DW$100, DW_AT_location[DW_OP_bregx 0x24 20]
+        MOV AC0, dbl(*SP(#2)) ; |520| 
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 524,column 13,is_stmt
-        MOV #0, *SP(#12) ; |524| 
+        MOV #0, AC0 ; |524| 
+        MOV AC0, dbl(*SP(#12)) ; |524| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 525,column 15,is_stmt
         MOV dbl(*SP(#0)), XAR3
-        MOV XAR3, dbl(*SP(#16))
+        MOV XAR3, dbl(*SP(#18))
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 526,column 12,is_stmt
-        MOV #0, *SP(#18) ; |526| 
+        MOV #0, *SP(#20) ; |526| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 533,column 2,is_stmt
-        MOV dbl(*SP(#16)), XAR3
+        MOV dbl(*SP(#18)), XAR3
 
         MOV XAR3, dbl(*SP(#10))
 ||      AADD #2, AR3 ; |533| 
@@ -1080,10 +1126,11 @@ $C$DW$101	.dwtag  DW_TAG_TI_branch
         MOV dbl(*AR3(short(#6))), XAR3
         MOV XAR3, dbl(*SP(#4))
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 542,column 3,is_stmt
-        MOV dbl(*SP(#16)), XAR3
-        MOV *SP(#2), AR1 ; |542| 
-        OR *AR3, AR1, AR1 ; |542| 
-        MOV AR1, *AR3 ; |542| 
+        MOV dbl(*SP(#18)), XAR3
+        MOV dbl(*SP(#2)), AC0 ; |542| 
+        MOV dbl(*AR3), AC1 ; |542| 
+        OR AC1, AC0 ; |542| 
+        MOV AC0, dbl(*AR3) ; |542| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 545,column 10,is_stmt
         MOV dbl(*SP(#8)), XAR3
         MOV XAR3, AC0
@@ -1099,32 +1146,40 @@ $C$DW$L$_xEventGroupSetBits$2$B:
         MOV XAR3, dbl(*SP(#6))
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 548,column 4,is_stmt
         MOV dbl(*SP(#4)), XAR3
-        MOV *AR3, AR1 ; |548| 
-        MOV AR1, *SP(#13) ; |548| 
+        MOV dbl(*AR3), AC0 ; |548| 
+        MOV AC0, dbl(*SP(#14)) ; |548| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 549,column 4,is_stmt
-        MOV #0, *SP(#18) ; |549| 
+        MOV #0, *SP(#20) ; |549| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 552,column 4,is_stmt
-        MOV *SP(#13), AR1 ; |552| 
-        AND #0xff00, AR1, AC0 ; |552| 
-        MOV AC0, *SP(#14) ; |552| 
+        MOV dbl(*SP(#14)), AC1 ; |552| 
+        MOV #-256 << #16, AC0 ; |552| 
+        AND AC1, AC0 ; |552| 
+        MOV AC0, dbl(*SP(#16)) ; |552| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 553,column 4,is_stmt
-        AND #0x00ff, *SP(#13) ; |553| 
+        MOV #255 << #16, AC0 ; |553| 
+        OR #0xffff, AC0, AC0 ; |553| 
+        MOV dbl(*SP(#14)), AC1 ; |553| 
+        AND AC1, AC0 ; |553| 
+        MOV AC0, dbl(*SP(#14)) ; |553| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 555,column 4,is_stmt
-        BTST #10, *SP(#14), TC1 ; |555| 
-        BCC $C$L21,TC1 ; |555| 
+        MOV #1024 << #16, AC0 ; |555| 
+        MOV dbl(*SP(#16)), AC1 ; |555| 
+        AND AC1, AC0 ; |555| 
+        BCC $C$L21,AC0 != #0 ; |555| 
                                         ; branchcc occurs ; |555| 
 $C$DW$L$_xEventGroupSetBits$2$E:
 $C$DW$L$_xEventGroupSetBits$3$B:
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 558,column 5,is_stmt
-        MOV dbl(*SP(#16)), XAR3
-        MOV *AR3, AR1 ; |558| 
-        AND *SP(#13), AR1, AR1 ; |558| 
-        BCC $C$L22,AR1 == #0 ; |558| 
+        MOV dbl(*SP(#18)), XAR3
+        MOV dbl(*SP(#14)), AC1 ; |558| 
+        MOV dbl(*AR3), AC0 ; |558| 
+        AND AC1, AC0 ; |558| 
+        BCC $C$L22,AC0 == #0 ; |558| 
                                         ; branchcc occurs ; |558| 
 $C$DW$L$_xEventGroupSetBits$3$E:
 $C$DW$L$_xEventGroupSetBits$4$B:
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 560,column 6,is_stmt
-        MOV #1, *SP(#18) ; |560| 
+        MOV #1, *SP(#20) ; |560| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 561,column 5,is_stmt
         B $C$L22  ; |561| 
                                         ; branch occurs ; |561| 
@@ -1132,46 +1187,52 @@ $C$DW$L$_xEventGroupSetBits$4$E:
 $C$L21:    
 $C$DW$L$_xEventGroupSetBits$6$B:
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 567,column 9,is_stmt
-        MOV dbl(*SP(#16)), XAR3
-        MOV *AR3, AR1 ; |567| 
-        AND *SP(#13), AR1, AR2 ; |567| 
-        MOV *SP(#13), AR1 ; |567| 
-        CMPU AR2 != AR1, TC1 ; |567| 
+        MOV dbl(*SP(#18)), XAR3
+        MOV dbl(*SP(#14)), AC1 ; |567| 
+        MOV dbl(*AR3), AC0 ; |567| 
+
+        MOV dbl(*SP(#14)), AC1 ; |567| 
+||      AND AC1, AC0 ; |567| 
+
+        CMPU AC0 != AC1, TC1 ; |567| 
         BCC $C$L22,TC1 ; |567| 
                                         ; branchcc occurs ; |567| 
 $C$DW$L$_xEventGroupSetBits$6$E:
 $C$DW$L$_xEventGroupSetBits$7$B:
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 570,column 5,is_stmt
-        MOV #1, *SP(#18) ; |570| 
+        MOV #1, *SP(#20) ; |570| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 571,column 4,is_stmt
 $C$DW$L$_xEventGroupSetBits$7$E:
 $C$L22:    
 $C$DW$L$_xEventGroupSetBits$8$B:
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 577,column 4,is_stmt
-        MOV *SP(#18), AR1 ; |577| 
+        MOV *SP(#20), AR1 ; |577| 
         BCC $C$L24,AR1 == #0 ; |577| 
                                         ; branchcc occurs ; |577| 
 $C$DW$L$_xEventGroupSetBits$8$E:
 $C$DW$L$_xEventGroupSetBits$9$B:
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 580,column 5,is_stmt
-        BTST #8, *SP(#14), TC1 ; |580| 
-        BCC $C$L23,!TC1 ; |580| 
+        MOV dbl(*SP(#16)), AC1 ; |580| 
+        MOV #256 << #16, AC0 ; |580| 
+        AND AC1, AC0 ; |580| 
+        BCC $C$L23,AC0 == #0 ; |580| 
                                         ; branchcc occurs ; |580| 
 $C$DW$L$_xEventGroupSetBits$9$E:
 $C$DW$L$_xEventGroupSetBits$10$B:
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 582,column 6,is_stmt
-        MOV *SP(#13), AR1 ; |582| 
-        OR *SP(#12), AR1, AR1 ; |582| 
-        MOV AR1, *SP(#12) ; |582| 
+        MOV dbl(*SP(#12)), AC1 ; |582| 
+        MOV dbl(*SP(#14)), AC0 ; |582| 
+        OR AC1, AC0 ; |582| 
+        MOV AC0, dbl(*SP(#12)) ; |582| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 583,column 5,is_stmt
 $C$DW$L$_xEventGroupSetBits$10$E:
 $C$L23:    
 $C$DW$L$_xEventGroupSetBits$11$B:
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 594,column 5,is_stmt
-        MOV dbl(*SP(#16)), XAR3
+        MOV dbl(*SP(#18)), XAR3
         MOV dbl(*SP(#4)), XAR0
-        MOV *AR3, AR1 ; |594| 
-        OR #0x0200, AR1, T0 ; |594| 
+        MOV dbl(*AR3), AC0 ; |594| 
+        BSET @#25, AC0 ; |594| 
 $C$DW$102	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$102, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$102, DW_AT_name("_vTaskRemoveFromUnorderedEventList")
@@ -1195,11 +1256,14 @@ $C$DW$L$_xEventGroupSetBits$12$B:
 $C$DW$L$_xEventGroupSetBits$12$E:
 $C$L25:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 605,column 3,is_stmt
-        MOV dbl(*SP(#16)), XAR3
-        MOV *SP(#12), AR1 ; |605| 
-        NOT AR1, AR1 ; |605| 
-        AND *AR3, AR1, AC0 ; |605| 
-        MOV AC0, *AR3 ; |605| 
+        MOV dbl(*SP(#18)), XAR3
+        MOV dbl(*SP(#12)), AC0 ; |605| 
+
+        MOV dbl(*AR3), AC1 ; |605| 
+||      NOT AC0, AC0 ; |605| 
+
+        AND AC1, AC0 ; |605| 
+        MOV AC0, dbl(*AR3) ; |605| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 607,column 2,is_stmt
 $C$DW$103	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$103, DW_AT_low_pc(0x00)
@@ -1208,10 +1272,10 @@ $C$DW$103	.dwtag  DW_TAG_TI_branch
         CALL #_xTaskResumeAll ; |607| 
                                         ; call occurs [#_xTaskResumeAll] ; |607| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 609,column 2,is_stmt
-        MOV dbl(*SP(#16)), XAR3
-        MOV *AR3, T0 ; |609| 
+        MOV dbl(*SP(#18)), XAR3
+        MOV dbl(*AR3), AC0 ; |609| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 610,column 1,is_stmt
-        AADD #19, SP
+        AADD #21, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$104	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$104, DW_AT_low_pc(0x00)
@@ -1220,7 +1284,7 @@ $C$DW$104	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$105	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$105, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\event_groups.asm:$C$L20:1:1536493713")
+	.dwattr $C$DW$105, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\event_groups.asm:$C$L20:1:1536922439")
 	.dwattr $C$DW$105, DW_AT_TI_begin_file("../FreeRTOS/Source/event_groups.c")
 	.dwattr $C$DW$105, DW_AT_TI_begin_line(0x221)
 	.dwattr $C$DW$105, DW_AT_TI_end_line(0x259)
@@ -1285,8 +1349,8 @@ $C$DW$117	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xEventGroup")
 ;*******************************************************************************
 ;* FUNCTION NAME: vEventGroupDelete                                            *
 ;*                                                                             *
-;*   Function Uses Regs : T0,AR0,XAR0,AR1,AR3,XAR3,SP,M40,SATA,SATD,RDM,FRCT,  *
-;*                        SMUL                                                 *
+;*   Function Uses Regs : AC0,AC0,AR0,XAR0,AR1,AR3,XAR3,SP,M40,SATA,SATD,RDM,  *
+;*                        FRCT,SMUL                                            *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
 ;*   Total Frame Size   : 8 words                                              *
 ;*                        (2 return address/alignment)                         *
@@ -1335,7 +1399,7 @@ $C$L26:
 $C$DW$L$_vEventGroupDelete$2$B:
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 627,column 4,is_stmt
         MOV dbl(*AR3(short(#6))), XAR0
-        MOV #512, T0 ; |627| 
+        MOV #512 << #16, AC0 ; |627| 
 $C$DW$122	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$122, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$122, DW_AT_name("_vTaskRemoveFromUnorderedEventList")
@@ -1374,7 +1438,7 @@ $C$DW$125	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$126	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$126, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\event_groups.asm:$C$L26:1:1536493713")
+	.dwattr $C$DW$126, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\event_groups.asm:$C$L26:1:1536922439")
 	.dwattr $C$DW$126, DW_AT_TI_begin_file("../FreeRTOS/Source/event_groups.c")
 	.dwattr $C$DW$126, DW_AT_TI_begin_line(0x26e)
 	.dwattr $C$DW$126, DW_AT_TI_end_line(0x274)
@@ -1416,7 +1480,7 @@ $C$DW$130	.dwtag  DW_TAG_formal_parameter, DW_AT_name("ulBitsToSet")
 ;*******************************************************************************
 ;* FUNCTION NAME: vEventGroupSetBitsCallback                                   *
 ;*                                                                             *
-;*   Function Uses Regs : AC0,AC0,T0,AR0,XAR0,SP,M40,SATA,SATD,RDM,FRCT,SMUL   *
+;*   Function Uses Regs : AC0,AC0,AR0,XAR0,SP,M40,SATA,SATD,RDM,FRCT,SMUL      *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
 ;*   Total Frame Size   : 6 words                                              *
 ;*                        (2 return address/alignment)                         *
@@ -1439,7 +1503,7 @@ $C$DW$132	.dwtag  DW_TAG_variable, DW_AT_name("ulBitsToSet")
         MOV AC0, dbl(*SP(#2)) ; |658| 
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 659,column 2,is_stmt
-        MOV *SP(#3), T0 ; |659| 
+        MOV dbl(*SP(#2)), AC0 ; |659| 
 $C$DW$133	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$133, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$133, DW_AT_name("_xEventGroupSetBits")
@@ -1487,7 +1551,7 @@ $C$DW$137	.dwtag  DW_TAG_formal_parameter, DW_AT_name("ulBitsToClear")
 ;*******************************************************************************
 ;* FUNCTION NAME: vEventGroupClearBitsCallback                                 *
 ;*                                                                             *
-;*   Function Uses Regs : AC0,AC0,T0,AR0,XAR0,SP,M40,SATA,SATD,RDM,FRCT,SMUL   *
+;*   Function Uses Regs : AC0,AC0,AR0,XAR0,SP,M40,SATA,SATD,RDM,FRCT,SMUL      *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
 ;*   Total Frame Size   : 6 words                                              *
 ;*                        (2 return address/alignment)                         *
@@ -1510,7 +1574,7 @@ $C$DW$139	.dwtag  DW_TAG_variable, DW_AT_name("ulBitsToClear")
         MOV AC0, dbl(*SP(#2)) ; |666| 
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 667,column 2,is_stmt
-        MOV *SP(#3), T0 ; |667| 
+        MOV dbl(*SP(#2)), AC0 ; |667| 
 $C$DW$140	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$140, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$140, DW_AT_name("_xEventGroupClearBits")
@@ -1542,37 +1606,38 @@ $C$DW$142	.dwtag  DW_TAG_subprogram, DW_AT_name("prvTestWaitCondition")
 	.dwattr $C$DW$142, DW_AT_TI_begin_file("../FreeRTOS/Source/event_groups.c")
 	.dwattr $C$DW$142, DW_AT_TI_begin_line(0x29f)
 	.dwattr $C$DW$142, DW_AT_TI_begin_column(0x13)
-	.dwattr $C$DW$142, DW_AT_TI_max_frame_size(0x06)
+	.dwattr $C$DW$142, DW_AT_TI_max_frame_size(0x08)
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 672,column 1,is_stmt,address _prvTestWaitCondition
 
 	.dwfde $C$DW$CIE, _prvTestWaitCondition
 $C$DW$143	.dwtag  DW_TAG_formal_parameter, DW_AT_name("uxCurrentEventBits")
 	.dwattr $C$DW$143, DW_AT_TI_symbol_name("_uxCurrentEventBits")
 	.dwattr $C$DW$143, DW_AT_type(*$C$DW$T$65)
-	.dwattr $C$DW$143, DW_AT_location[DW_OP_reg12]
+	.dwattr $C$DW$143, DW_AT_location[DW_OP_reg0]
 $C$DW$144	.dwtag  DW_TAG_formal_parameter, DW_AT_name("uxBitsToWaitFor")
 	.dwattr $C$DW$144, DW_AT_TI_symbol_name("_uxBitsToWaitFor")
 	.dwattr $C$DW$144, DW_AT_type(*$C$DW$T$65)
-	.dwattr $C$DW$144, DW_AT_location[DW_OP_reg13]
+	.dwattr $C$DW$144, DW_AT_location[DW_OP_reg3]
 $C$DW$145	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xWaitForAllBits")
 	.dwattr $C$DW$145, DW_AT_TI_symbol_name("_xWaitForAllBits")
 	.dwattr $C$DW$145, DW_AT_type(*$C$DW$T$62)
-	.dwattr $C$DW$145, DW_AT_location[DW_OP_reg16]
+	.dwattr $C$DW$145, DW_AT_location[DW_OP_reg12]
 ;*******************************************************************************
 ;* FUNCTION NAME: prvTestWaitCondition                                         *
 ;*                                                                             *
-;*   Function Uses Regs : T0,T1,AR0,AR1,AR2,SP,TC1,M40,SATA,SATD,RDM,FRCT,SMUL *
+;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,AR1,SP,TC1,M40,SATA,SATD,RDM,FRCT,*
+;*                        SMUL                                                 *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-;*   Total Frame Size   : 6 words                                              *
+;*   Total Frame Size   : 8 words                                              *
 ;*                        (2 return address/alignment)                         *
-;*                        (4 local values)                                     *
+;*                        (6 local values)                                     *
 ;*   Min System Stack   : 1 word                                               *
 ;*******************************************************************************
 _prvTestWaitCondition:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-        AADD #-5, SP
-	.dwcfi	cfa_offset, 6
+        AADD #-7, SP
+	.dwcfi	cfa_offset, 8
 $C$DW$146	.dwtag  DW_TAG_variable, DW_AT_name("uxCurrentEventBits")
 	.dwattr $C$DW$146, DW_AT_TI_symbol_name("_uxCurrentEventBits")
 	.dwattr $C$DW$146, DW_AT_type(*$C$DW$T$65)
@@ -1580,50 +1645,54 @@ $C$DW$146	.dwtag  DW_TAG_variable, DW_AT_name("uxCurrentEventBits")
 $C$DW$147	.dwtag  DW_TAG_variable, DW_AT_name("uxBitsToWaitFor")
 	.dwattr $C$DW$147, DW_AT_TI_symbol_name("_uxBitsToWaitFor")
 	.dwattr $C$DW$147, DW_AT_type(*$C$DW$T$65)
-	.dwattr $C$DW$147, DW_AT_location[DW_OP_bregx 0x24 1]
+	.dwattr $C$DW$147, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$148	.dwtag  DW_TAG_variable, DW_AT_name("xWaitForAllBits")
 	.dwattr $C$DW$148, DW_AT_TI_symbol_name("_xWaitForAllBits")
 	.dwattr $C$DW$148, DW_AT_type(*$C$DW$T$62)
-	.dwattr $C$DW$148, DW_AT_location[DW_OP_bregx 0x24 2]
+	.dwattr $C$DW$148, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$149	.dwtag  DW_TAG_variable, DW_AT_name("xWaitConditionMet")
 	.dwattr $C$DW$149, DW_AT_TI_symbol_name("_xWaitConditionMet")
 	.dwattr $C$DW$149, DW_AT_type(*$C$DW$T$61)
-	.dwattr $C$DW$149, DW_AT_location[DW_OP_bregx 0x24 3]
-        MOV AR0, *SP(#2) ; |672| 
-        MOV T1, *SP(#1) ; |672| 
-        MOV T0, *SP(#0) ; |672| 
+	.dwattr $C$DW$149, DW_AT_location[DW_OP_bregx 0x24 5]
+        MOV T0, *SP(#4) ; |672| 
+        MOV AC1, dbl(*SP(#2)) ; |672| 
+        MOV AC0, dbl(*SP(#0)) ; |672| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 673,column 12,is_stmt
-        MOV #0, *SP(#3) ; |673| 
+        MOV #0, *SP(#5) ; |673| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 675,column 2,is_stmt
-        MOV *SP(#2), AR1 ; |675| 
+        MOV *SP(#4), AR1 ; |675| 
         BCC $C$L28,AR1 != #0 ; |675| 
                                         ; branchcc occurs ; |675| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 679,column 3,is_stmt
-        MOV *SP(#1), AR1 ; |679| 
-        AND *SP(#0), AR1, AR1 ; |679| 
-        BCC $C$L29,AR1 == #0 ; |679| 
+        MOV dbl(*SP(#0)), AC1 ; |679| 
+        MOV dbl(*SP(#2)), AC0 ; |679| 
+        AND AC1, AC0 ; |679| 
+        BCC $C$L29,AC0 == #0 ; |679| 
                                         ; branchcc occurs ; |679| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 681,column 4,is_stmt
-        MOV #1, *SP(#3) ; |681| 
+        MOV #1, *SP(#5) ; |681| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 682,column 3,is_stmt
         B $C$L29  ; |682| 
                                         ; branch occurs ; |682| 
 $C$L28:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 692,column 3,is_stmt
-        MOV *SP(#1), AR1 ; |692| 
-        MOV AR1, AR2 ; |692| 
-        AND *SP(#0), AR2, AR2 ; |692| 
-        CMPU AR2 != AR1, TC1 ; |692| 
+        MOV dbl(*SP(#2)), AC0 ; |692| 
+        MOV dbl(*SP(#0)), AC1 ; |692| 
+
+        MOV dbl(*SP(#2)), AC1 ; |692| 
+||      AND AC1, AC0 ; |692| 
+
+        CMPU AC0 != AC1, TC1 ; |692| 
         BCC $C$L29,TC1 ; |692| 
                                         ; branchcc occurs ; |692| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 694,column 4,is_stmt
-        MOV #1, *SP(#3) ; |694| 
+        MOV #1, *SP(#5) ; |694| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 695,column 3,is_stmt
 $C$L29:    
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 702,column 2,is_stmt
-        MOV *SP(#3), T0 ; |702| 
+        MOV *SP(#5), T0 ; |702| 
 	.dwpsn	file "../FreeRTOS/Source/event_groups.c",line 703,column 1,is_stmt
-        AADD #5, SP
+        AADD #7, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$150	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$150, DW_AT_low_pc(0x00)
@@ -1742,24 +1811,10 @@ $C$DW$T$11	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$11, DW_AT_name("unsigned int")
 	.dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
-$C$DW$T$19	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
-	.dwattr $C$DW$T$19, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$19, DW_AT_language(DW_LANG_C)
-$C$DW$T$20	.dwtag  DW_TAG_typedef, DW_AT_name("EventBits_t")
-	.dwattr $C$DW$T$20, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$T$20, DW_AT_language(DW_LANG_C)
 $C$DW$157	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$157, DW_AT_type(*$C$DW$T$20)
-$C$DW$T$65	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$65, DW_AT_type(*$C$DW$157)
-$C$DW$158	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$158, DW_AT_type(*$C$DW$T$19)
-$C$DW$T$52	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$52, DW_AT_type(*$C$DW$158)
-$C$DW$159	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$159, DW_AT_type(*$C$DW$T$11)
-$C$DW$T$76	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$76, DW_AT_type(*$C$DW$159)
+	.dwattr $C$DW$157, DW_AT_type(*$C$DW$T$11)
+$C$DW$T$69	.dwtag  DW_TAG_volatile_type
+	.dwattr $C$DW$T$69, DW_AT_type(*$C$DW$157)
 $C$DW$T$41	.dwtag  DW_TAG_typedef, DW_AT_name("size_t")
 	.dwattr $C$DW$T$41, DW_AT_type(*$C$DW$T$11)
 	.dwattr $C$DW$T$41, DW_AT_language(DW_LANG_C)
@@ -1771,6 +1826,20 @@ $C$DW$T$13	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$13, DW_AT_name("unsigned long")
 	.dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+$C$DW$T$19	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
+	.dwattr $C$DW$T$19, DW_AT_type(*$C$DW$T$13)
+	.dwattr $C$DW$T$19, DW_AT_language(DW_LANG_C)
+$C$DW$T$20	.dwtag  DW_TAG_typedef, DW_AT_name("EventBits_t")
+	.dwattr $C$DW$T$20, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$T$20, DW_AT_language(DW_LANG_C)
+$C$DW$158	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$158, DW_AT_type(*$C$DW$T$20)
+$C$DW$T$65	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$65, DW_AT_type(*$C$DW$158)
+$C$DW$159	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$159, DW_AT_type(*$C$DW$T$19)
+$C$DW$T$52	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$52, DW_AT_type(*$C$DW$159)
 $C$DW$T$58	.dwtag  DW_TAG_typedef, DW_AT_name("uint32_t")
 	.dwattr $C$DW$T$58, DW_AT_type(*$C$DW$T$13)
 	.dwattr $C$DW$T$58, DW_AT_language(DW_LANG_C)

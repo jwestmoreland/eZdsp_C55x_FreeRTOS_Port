@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sun Sep 09 04:48:34 2018                                 *
+;* Date/Time created: Fri Sep 14 03:54:00 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -159,7 +159,7 @@ $C$DW$30	.dwtag  DW_TAG_variable, DW_AT_name("usCriticalNesting")
 	.dwattr $C$DW$30, DW_AT_type(*$C$DW$T$129)
 	.dwattr $C$DW$30, DW_AT_declaration
 	.dwattr $C$DW$30, DW_AT_external
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1854412 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\0091612 
 	.sect	".text"
 	.align 4
 	.global	_xQueueGenericReset
@@ -621,7 +621,7 @@ $C$DW$68	.dwtag  DW_TAG_subprogram, DW_AT_name("xQueueGenericSend")
 	.dwattr $C$DW$68, DW_AT_TI_begin_file("../FreeRTOS/Source/queue.c")
 	.dwattr $C$DW$68, DW_AT_TI_begin_line(0x2eb)
 	.dwattr $C$DW$68, DW_AT_TI_begin_column(0x0c)
-	.dwattr $C$DW$68, DW_AT_TI_max_frame_size(0x0e)
+	.dwattr $C$DW$68, DW_AT_TI_max_frame_size(0x12)
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 748,column 1,is_stmt,address _xQueueGenericSend
 
 	.dwfde $C$DW$CIE, _xQueueGenericSend
@@ -636,27 +636,27 @@ $C$DW$70	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvItemToQueue")
 $C$DW$71	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$71, DW_AT_TI_symbol_name("_xTicksToWait")
 	.dwattr $C$DW$71, DW_AT_type(*$C$DW$T$38)
-	.dwattr $C$DW$71, DW_AT_location[DW_OP_reg12]
+	.dwattr $C$DW$71, DW_AT_location[DW_OP_reg0]
 $C$DW$72	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xCopyPosition")
 	.dwattr $C$DW$72, DW_AT_TI_symbol_name("_xCopyPosition")
 	.dwattr $C$DW$72, DW_AT_type(*$C$DW$T$93)
-	.dwattr $C$DW$72, DW_AT_location[DW_OP_reg13]
+	.dwattr $C$DW$72, DW_AT_location[DW_OP_reg12]
 ;*******************************************************************************
 ;* FUNCTION NAME: xQueueGenericSend                                            *
 ;*                                                                             *
-;*   Function Uses Regs : T0,T1,AR0,XAR0,AR1,XAR1,AR2,AR3,XAR3,SP,CARRY,TC1,   *
-;*                        M40,SATA,SATD,RDM,FRCT,SMUL                          *
+;*   Function Uses Regs : AC0,AC0,T0,AR0,XAR0,AR1,XAR1,AR2,AR3,XAR3,SP,CARRY,  *
+;*                        TC1,M40,SATA,SATD,RDM,FRCT,SMUL                      *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-;*   Total Frame Size   : 14 words                                             *
+;*   Total Frame Size   : 18 words                                             *
 ;*                        (2 return address/alignment)                         *
-;*                        (12 local values)                                    *
+;*                        (16 local values)                                    *
 ;*   Min System Stack   : 1 word                                               *
 ;*******************************************************************************
 _xQueueGenericSend:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-        AADD #-13, SP
-	.dwcfi	cfa_offset, 14
+        AADD #-17, SP
+	.dwcfi	cfa_offset, 18
 $C$DW$73	.dwtag  DW_TAG_variable, DW_AT_name("xQueue")
 	.dwattr $C$DW$73, DW_AT_TI_symbol_name("_xQueue")
 	.dwattr $C$DW$73, DW_AT_type(*$C$DW$T$46)
@@ -672,32 +672,32 @@ $C$DW$75	.dwtag  DW_TAG_variable, DW_AT_name("xTicksToWait")
 $C$DW$76	.dwtag  DW_TAG_variable, DW_AT_name("xCopyPosition")
 	.dwattr $C$DW$76, DW_AT_TI_symbol_name("_xCopyPosition")
 	.dwattr $C$DW$76, DW_AT_type(*$C$DW$T$93)
-	.dwattr $C$DW$76, DW_AT_location[DW_OP_bregx 0x24 5]
+	.dwattr $C$DW$76, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$77	.dwtag  DW_TAG_variable, DW_AT_name("xEntryTimeSet")
 	.dwattr $C$DW$77, DW_AT_TI_symbol_name("_xEntryTimeSet")
 	.dwattr $C$DW$77, DW_AT_type(*$C$DW$T$43)
-	.dwattr $C$DW$77, DW_AT_location[DW_OP_bregx 0x24 6]
+	.dwattr $C$DW$77, DW_AT_location[DW_OP_bregx 0x24 7]
 $C$DW$78	.dwtag  DW_TAG_variable, DW_AT_name("xYieldRequired")
 	.dwattr $C$DW$78, DW_AT_TI_symbol_name("_xYieldRequired")
 	.dwattr $C$DW$78, DW_AT_type(*$C$DW$T$43)
-	.dwattr $C$DW$78, DW_AT_location[DW_OP_bregx 0x24 7]
+	.dwattr $C$DW$78, DW_AT_location[DW_OP_bregx 0x24 8]
 $C$DW$79	.dwtag  DW_TAG_variable, DW_AT_name("xTimeOut")
 	.dwattr $C$DW$79, DW_AT_TI_symbol_name("_xTimeOut")
 	.dwattr $C$DW$79, DW_AT_type(*$C$DW$T$77)
-	.dwattr $C$DW$79, DW_AT_location[DW_OP_bregx 0x24 8]
+	.dwattr $C$DW$79, DW_AT_location[DW_OP_bregx 0x24 10]
 $C$DW$80	.dwtag  DW_TAG_variable, DW_AT_name("pxQueue")
 	.dwattr $C$DW$80, DW_AT_TI_symbol_name("_pxQueue")
 	.dwattr $C$DW$80, DW_AT_type(*$C$DW$T$57)
-	.dwattr $C$DW$80, DW_AT_location[DW_OP_bregx 0x24 10]
-        MOV T1, *SP(#5) ; |748| 
-        MOV T0, *SP(#4) ; |748| 
+	.dwattr $C$DW$80, DW_AT_location[DW_OP_bregx 0x24 14]
+        MOV T0, *SP(#6) ; |748| 
+        MOV AC0, dbl(*SP(#4)) ; |748| 
         MOV XAR1, dbl(*SP(#2))
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 749,column 12,is_stmt
-        MOV #0, *SP(#6) ; |749| 
+        MOV #0, *SP(#7) ; |749| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 751,column 17,is_stmt
         MOV dbl(*SP(#0)), XAR3
-        MOV XAR3, dbl(*SP(#10))
+        MOV XAR3, dbl(*SP(#14))
 $C$L11:    
 $C$DW$L$_xQueueGenericSend$2$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 768,column 3,is_stmt
@@ -706,7 +706,7 @@ $C$DW$L$_xQueueGenericSend$2$B:
         ADD #1, *(#_usCriticalNesting) ; |768| 
         NOP
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 774,column 4,is_stmt
-        MOV dbl(*SP(#10)), XAR3
+        MOV dbl(*SP(#14)), XAR3
         MOV *AR3(#29), AR1 ; |774| 
         MOV *AR3(#28), AR2 ; |774| 
         CMPU AR2 < AR1, TC1 ; |774| 
@@ -714,24 +714,24 @@ $C$DW$L$_xQueueGenericSend$2$B:
                                         ; branchcc occurs ; |774| 
 $C$DW$L$_xQueueGenericSend$2$E:
 $C$DW$L$_xQueueGenericSend$3$B:
-        CMP *SP(#5) == #2, TC1 ; |774| 
+        CMP *SP(#6) == #2, TC1 ; |774| 
         BCC $C$L18,!TC1 ; |774| 
                                         ; branchcc occurs ; |774| 
 $C$DW$L$_xQueueGenericSend$3$E:
 $C$L12:    
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 840,column 6,is_stmt
-        MOV dbl(*SP(#10)), XAR0
+        MOV dbl(*SP(#14)), XAR0
         MOV dbl(*SP(#2)), XAR1
-        MOV *SP(#5), T0 ; |840| 
+        MOV *SP(#6), T0 ; |840| 
 $C$DW$81	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$81, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$81, DW_AT_name("_prvCopyDataToQueue")
 	.dwattr $C$DW$81, DW_AT_TI_call
         CALL #_prvCopyDataToQueue ; |840| 
                                         ; call occurs [#_prvCopyDataToQueue] ; |840| 
-        MOV T0, *SP(#7) ; |840| 
+        MOV T0, *SP(#8) ; |840| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 844,column 6,is_stmt
-        MOV dbl(*SP(#10)), XAR3
+        MOV dbl(*SP(#14)), XAR3
         MOV *AR3(#18), AR1 ; |844| 
         BCC $C$L13,AR1 != #0 ; |844| 
                                         ; branchcc occurs ; |844| 
@@ -744,7 +744,7 @@ $C$L14:
         BCC $C$L15,AR1 != #0 ; |844| 
                                         ; branchcc occurs ; |844| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 846,column 7,is_stmt
-        MOV dbl(*SP(#10)), XAR0
+        MOV dbl(*SP(#14)), XAR0
         AADD #18, AR0 ; |846| 
 $C$DW$82	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$82, DW_AT_low_pc(0x00)
@@ -799,8 +799,8 @@ $C$L17:
 $C$L18:    
 $C$DW$L$_xQueueGenericSend$18$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 879,column 5,is_stmt
-        MOV *SP(#4), AR1 ; |879| 
-        BCC $C$L20,AR1 != #0 ; |879| 
+        MOV dbl(*SP(#4)), AC0 ; |879| 
+        BCC $C$L20,AC0 != #0 ; |879| 
                                         ; branchcc occurs ; |879| 
 $C$DW$L$_xQueueGenericSend$18$E:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 883,column 6,is_stmt
@@ -824,13 +824,13 @@ $C$L19:
 $C$L20:    
 $C$DW$L$_xQueueGenericSend$24$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 890,column 10,is_stmt
-        MOV *SP(#6), AR1 ; |890| 
+        MOV *SP(#7), AR1 ; |890| 
         BCC $C$L21,AR1 != #0 ; |890| 
                                         ; branchcc occurs ; |890| 
 $C$DW$L$_xQueueGenericSend$24$E:
 $C$DW$L$_xQueueGenericSend$25$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 894,column 6,is_stmt
-        AMAR *SP(#8), XAR0
+        AMAR *SP(#10), XAR0
 $C$DW$85	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$85, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$85, DW_AT_name("_vTaskInternalSetTimeOutState")
@@ -838,7 +838,7 @@ $C$DW$85	.dwtag  DW_TAG_TI_branch
         CALL #_vTaskInternalSetTimeOutState ; |894| 
                                         ; call occurs [#_vTaskInternalSetTimeOutState] ; |894| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 895,column 6,is_stmt
-        MOV #1, *SP(#6) ; |895| 
+        MOV #1, *SP(#7) ; |895| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 896,column 5,is_stmt
 $C$DW$L$_xQueueGenericSend$25$E:
 $C$L21:    
@@ -876,7 +876,7 @@ $C$DW$86	.dwtag  DW_TAG_TI_branch
         ADD #1, *(#_usCriticalNesting) ; |910| 
         NOP
         NOP
-        MOV dbl(*SP(#10)), XAR3
+        MOV dbl(*SP(#14)), XAR3
         CMP *AR3(#31) == #-1, TC1 ; |910| 
         BCC $C$L23,!TC1 ; |910| 
                                         ; branchcc occurs ; |910| 
@@ -886,7 +886,7 @@ $C$DW$L$_xQueueGenericSend$30$B:
 $C$DW$L$_xQueueGenericSend$30$E:
 $C$L23:    
 $C$DW$L$_xQueueGenericSend$31$B:
-        MOV dbl(*SP(#10)), XAR3
+        MOV dbl(*SP(#14)), XAR3
         CMP *AR3(#32) == #-1, TC1 ; |910| 
         BCC $C$L24,!TC1 ; |910| 
                                         ; branchcc occurs ; |910| 
@@ -916,7 +916,7 @@ $C$DW$L$_xQueueGenericSend$35$E:
 $C$L25:    
 $C$DW$L$_xQueueGenericSend$36$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 913,column 3,is_stmt
-        AMAR *SP(#8), XAR0
+        AMAR *SP(#10), XAR0
         AMAR *SP(#4), XAR1
 $C$DW$87	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$87, DW_AT_low_pc(0x00)
@@ -929,7 +929,7 @@ $C$DW$87	.dwtag  DW_TAG_TI_branch
 $C$DW$L$_xQueueGenericSend$36$E:
 $C$DW$L$_xQueueGenericSend$37$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 915,column 4,is_stmt
-        MOV dbl(*SP(#10)), XAR0
+        MOV dbl(*SP(#14)), XAR0
 $C$DW$88	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$88, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$88, DW_AT_name("_prvIsQueueFull")
@@ -941,10 +941,10 @@ $C$DW$88	.dwtag  DW_TAG_TI_branch
 $C$DW$L$_xQueueGenericSend$37$E:
 $C$DW$L$_xQueueGenericSend$38$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 918,column 5,is_stmt
-        MOV dbl(*SP(#10)), XAR0
+        MOV dbl(*SP(#14)), XAR0
 
         AADD #8, AR0 ; |918| 
-||      MOV *SP(#4), T0 ; |918| 
+||      MOV dbl(*SP(#4)), AC0 ; |918| 
 
 $C$DW$89	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$89, DW_AT_low_pc(0x00)
@@ -953,7 +953,7 @@ $C$DW$89	.dwtag  DW_TAG_TI_branch
         CALL #_vTaskPlaceOnEventList ; |918| 
                                         ; call occurs [#_vTaskPlaceOnEventList] ; |918| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 925,column 5,is_stmt
-        MOV dbl(*SP(#10)), XAR0
+        MOV dbl(*SP(#14)), XAR0
 $C$DW$90	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$90, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$90, DW_AT_name("_prvUnlockQueue")
@@ -985,7 +985,7 @@ $C$DW$L$_xQueueGenericSend$39$E:
 $C$L26:    
 $C$DW$L$_xQueueGenericSend$40$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 940,column 5,is_stmt
-        MOV dbl(*SP(#10)), XAR0
+        MOV dbl(*SP(#14)), XAR0
 $C$DW$93	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$93, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$93, DW_AT_name("_prvUnlockQueue")
@@ -1005,7 +1005,7 @@ $C$DW$94	.dwtag  DW_TAG_TI_branch
 $C$DW$L$_xQueueGenericSend$40$E:
 $C$L27:    
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 947,column 4,is_stmt
-        MOV dbl(*SP(#10)), XAR0
+        MOV dbl(*SP(#14)), XAR0
 $C$DW$95	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$95, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$95, DW_AT_name("_prvUnlockQueue")
@@ -1025,7 +1025,7 @@ $C$DW$96	.dwtag  DW_TAG_TI_branch
                                         ; branch occurs ; |951| 
 $C$L28:    
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 954,column 1,is_stmt
-        AADD #13, SP
+        AADD #17, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$97	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$97, DW_AT_low_pc(0x00)
@@ -1034,7 +1034,7 @@ $C$DW$97	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$98	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$98, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\queue.asm:$C$L11:1:1536493715")
+	.dwattr $C$DW$98, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\queue.asm:$C$L11:1:1536922440")
 	.dwattr $C$DW$98, DW_AT_TI_begin_file("../FreeRTOS/Source/queue.c")
 	.dwattr $C$DW$98, DW_AT_TI_begin_line(0x2fe)
 	.dwattr $C$DW$98, DW_AT_TI_end_line(0x3b9)
@@ -1482,7 +1482,7 @@ $C$DW$150	.dwtag  DW_TAG_subprogram, DW_AT_name("xQueueReceive")
 	.dwattr $C$DW$150, DW_AT_TI_begin_file("../FreeRTOS/Source/queue.c")
 	.dwattr $C$DW$150, DW_AT_TI_begin_line(0x4f9)
 	.dwattr $C$DW$150, DW_AT_TI_begin_column(0x0c)
-	.dwattr $C$DW$150, DW_AT_TI_max_frame_size(0x0c)
+	.dwattr $C$DW$150, DW_AT_TI_max_frame_size(0x10)
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1274,column 1,is_stmt,address _xQueueReceive
 
 	.dwfde $C$DW$CIE, _xQueueReceive
@@ -1497,23 +1497,23 @@ $C$DW$152	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvBuffer")
 $C$DW$153	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$153, DW_AT_TI_symbol_name("_xTicksToWait")
 	.dwattr $C$DW$153, DW_AT_type(*$C$DW$T$38)
-	.dwattr $C$DW$153, DW_AT_location[DW_OP_reg12]
+	.dwattr $C$DW$153, DW_AT_location[DW_OP_reg0]
 ;*******************************************************************************
 ;* FUNCTION NAME: xQueueReceive                                                *
 ;*                                                                             *
-;*   Function Uses Regs : T0,AR0,XAR0,AR1,XAR1,AR3,XAR3,SP,CARRY,TC1,M40,SATA, *
-;*                        SATD,RDM,FRCT,SMUL                                   *
+;*   Function Uses Regs : AC0,AC0,T0,AR0,XAR0,AR1,XAR1,AR3,XAR3,SP,CARRY,TC1,  *
+;*                        M40,SATA,SATD,RDM,FRCT,SMUL                          *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-;*   Total Frame Size   : 12 words                                             *
+;*   Total Frame Size   : 16 words                                             *
 ;*                        (1 return address/alignment)                         *
-;*                        (11 local values)                                    *
+;*                        (15 local values)                                    *
 ;*   Min System Stack   : 1 word                                               *
 ;*******************************************************************************
 _xQueueReceive:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-        AADD #-11, SP
-	.dwcfi	cfa_offset, 12
+        AADD #-15, SP
+	.dwcfi	cfa_offset, 16
 $C$DW$154	.dwtag  DW_TAG_variable, DW_AT_name("xQueue")
 	.dwattr $C$DW$154, DW_AT_TI_symbol_name("_xQueue")
 	.dwattr $C$DW$154, DW_AT_type(*$C$DW$T$46)
@@ -1529,23 +1529,23 @@ $C$DW$156	.dwtag  DW_TAG_variable, DW_AT_name("xTicksToWait")
 $C$DW$157	.dwtag  DW_TAG_variable, DW_AT_name("xEntryTimeSet")
 	.dwattr $C$DW$157, DW_AT_TI_symbol_name("_xEntryTimeSet")
 	.dwattr $C$DW$157, DW_AT_type(*$C$DW$T$43)
-	.dwattr $C$DW$157, DW_AT_location[DW_OP_bregx 0x24 5]
+	.dwattr $C$DW$157, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$158	.dwtag  DW_TAG_variable, DW_AT_name("xTimeOut")
 	.dwattr $C$DW$158, DW_AT_TI_symbol_name("_xTimeOut")
 	.dwattr $C$DW$158, DW_AT_type(*$C$DW$T$77)
-	.dwattr $C$DW$158, DW_AT_location[DW_OP_bregx 0x24 6]
+	.dwattr $C$DW$158, DW_AT_location[DW_OP_bregx 0x24 8]
 $C$DW$159	.dwtag  DW_TAG_variable, DW_AT_name("pxQueue")
 	.dwattr $C$DW$159, DW_AT_TI_symbol_name("_pxQueue")
 	.dwattr $C$DW$159, DW_AT_type(*$C$DW$T$57)
-	.dwattr $C$DW$159, DW_AT_location[DW_OP_bregx 0x24 8]
-        MOV T0, *SP(#4) ; |1274| 
+	.dwattr $C$DW$159, DW_AT_location[DW_OP_bregx 0x24 12]
+        MOV AC0, dbl(*SP(#4)) ; |1274| 
         MOV XAR1, dbl(*SP(#2))
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1275,column 12,is_stmt
-        MOV #0, *SP(#5) ; |1275| 
+        MOV #0, *SP(#6) ; |1275| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1277,column 17,is_stmt
         MOV dbl(*SP(#0)), XAR3
-        MOV XAR3, dbl(*SP(#8))
+        MOV XAR3, dbl(*SP(#12))
 $C$L42:    
 $C$DW$L$_xQueueReceive$2$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1299,column 3,is_stmt
@@ -1559,17 +1559,17 @@ $C$DW$160	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
 $C$DW$161	.dwtag  DW_TAG_variable, DW_AT_name("uxMessagesWaiting")
 	.dwattr $C$DW$161, DW_AT_TI_symbol_name("_uxMessagesWaiting")
 	.dwattr $C$DW$161, DW_AT_type(*$C$DW$T$48)
-	.dwattr $C$DW$161, DW_AT_location[DW_OP_bregx 0x24 10]
+	.dwattr $C$DW$161, DW_AT_location[DW_OP_bregx 0x24 14]
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1301,column 22,is_stmt
-        MOV dbl(*SP(#8)), XAR3
+        MOV dbl(*SP(#12)), XAR3
         MOV *AR3(#28), AR1 ; |1301| 
-        MOV AR1, *SP(#10) ; |1301| 
+        MOV AR1, *SP(#14) ; |1301| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1305,column 4,is_stmt
         BCC $C$L47,AR1 == #0 ; |1305| 
                                         ; branchcc occurs ; |1305| 
 $C$DW$L$_xQueueReceive$2$E:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1308,column 5,is_stmt
-        MOV dbl(*SP(#8)), XAR0
+        MOV dbl(*SP(#12)), XAR0
         MOV dbl(*SP(#2)), XAR1
 $C$DW$162	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$162, DW_AT_low_pc(0x00)
@@ -1578,14 +1578,14 @@ $C$DW$162	.dwtag  DW_TAG_TI_branch
         CALL #_prvCopyDataFromQueue ; |1308| 
                                         ; call occurs [#_prvCopyDataFromQueue] ; |1308| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1310,column 5,is_stmt
-        MOV dbl(*SP(#8)), XAR3
-        MOV *SP(#10), AR1 ; |1310| 
+        MOV dbl(*SP(#12)), XAR3
+        MOV *SP(#14), AR1 ; |1310| 
         SUB #1, AR1 ; |1310| 
         MOV AR1, *AR3(#28) ; |1310| 
         NOP
         NOP
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1315,column 5,is_stmt
-        MOV dbl(*SP(#8)), XAR3
+        MOV dbl(*SP(#12)), XAR3
         MOV *AR3(#8), AR1 ; |1315| 
         BCC $C$L43,AR1 != #0 ; |1315| 
                                         ; branchcc occurs ; |1315| 
@@ -1598,7 +1598,7 @@ $C$L44:
         BCC $C$L45,AR1 != #0 ; |1315| 
                                         ; branchcc occurs ; |1315| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1317,column 6,is_stmt
-        MOV dbl(*SP(#8)), XAR0
+        MOV dbl(*SP(#12)), XAR0
         AADD #8, AR0 ; |1317| 
 $C$DW$163	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$163, DW_AT_low_pc(0x00)
@@ -1640,8 +1640,8 @@ $C$L46:
 $C$L47:    
 $C$DW$L$_xQueueReceive$15$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1336,column 5,is_stmt
-        MOV *SP(#4), AR1 ; |1336| 
-        BCC $C$L49,AR1 != #0 ; |1336| 
+        MOV dbl(*SP(#4)), AC0 ; |1336| 
+        BCC $C$L49,AC0 != #0 ; |1336| 
                                         ; branchcc occurs ; |1336| 
 $C$DW$L$_xQueueReceive$15$E:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1340,column 6,is_stmt
@@ -1665,13 +1665,13 @@ $C$L48:
 $C$L49:    
 $C$DW$L$_xQueueReceive$21$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1344,column 10,is_stmt
-        MOV *SP(#5), AR1 ; |1344| 
+        MOV *SP(#6), AR1 ; |1344| 
         BCC $C$L50,AR1 != #0 ; |1344| 
                                         ; branchcc occurs ; |1344| 
 $C$DW$L$_xQueueReceive$21$E:
 $C$DW$L$_xQueueReceive$22$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1348,column 6,is_stmt
-        AMAR *SP(#6), XAR0
+        AMAR *SP(#8), XAR0
 $C$DW$165	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$165, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$165, DW_AT_name("_vTaskInternalSetTimeOutState")
@@ -1679,7 +1679,7 @@ $C$DW$165	.dwtag  DW_TAG_TI_branch
         CALL #_vTaskInternalSetTimeOutState ; |1348| 
                                         ; call occurs [#_vTaskInternalSetTimeOutState] ; |1348| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1349,column 6,is_stmt
-        MOV #1, *SP(#5) ; |1349| 
+        MOV #1, *SP(#6) ; |1349| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1350,column 5,is_stmt
 $C$DW$L$_xQueueReceive$22$E:
 $C$L50:    
@@ -1719,7 +1719,7 @@ $C$DW$166	.dwtag  DW_TAG_TI_branch
         ADD #1, *(#_usCriticalNesting) ; |1364| 
         NOP
         NOP
-        MOV dbl(*SP(#8)), XAR3
+        MOV dbl(*SP(#12)), XAR3
         CMP *AR3(#31) == #-1, TC1 ; |1364| 
         BCC $C$L52,!TC1 ; |1364| 
                                         ; branchcc occurs ; |1364| 
@@ -1729,7 +1729,7 @@ $C$DW$L$_xQueueReceive$27$B:
 $C$DW$L$_xQueueReceive$27$E:
 $C$L52:    
 $C$DW$L$_xQueueReceive$28$B:
-        MOV dbl(*SP(#8)), XAR3
+        MOV dbl(*SP(#12)), XAR3
         CMP *AR3(#32) == #-1, TC1 ; |1364| 
         BCC $C$L53,!TC1 ; |1364| 
                                         ; branchcc occurs ; |1364| 
@@ -1759,7 +1759,7 @@ $C$DW$L$_xQueueReceive$32$E:
 $C$L54:    
 $C$DW$L$_xQueueReceive$33$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1367,column 3,is_stmt
-        AMAR *SP(#6), XAR0
+        AMAR *SP(#8), XAR0
         AMAR *SP(#4), XAR1
 $C$DW$167	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$167, DW_AT_low_pc(0x00)
@@ -1772,7 +1772,7 @@ $C$DW$167	.dwtag  DW_TAG_TI_branch
 $C$DW$L$_xQueueReceive$33$E:
 $C$DW$L$_xQueueReceive$34$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1371,column 4,is_stmt
-        MOV dbl(*SP(#8)), XAR0
+        MOV dbl(*SP(#12)), XAR0
 $C$DW$168	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$168, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$168, DW_AT_name("_prvIsQueueEmpty")
@@ -1784,10 +1784,10 @@ $C$DW$168	.dwtag  DW_TAG_TI_branch
 $C$DW$L$_xQueueReceive$34$E:
 $C$DW$L$_xQueueReceive$35$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1374,column 5,is_stmt
-        MOV dbl(*SP(#8)), XAR0
+        MOV dbl(*SP(#12)), XAR0
 
         AADD #18, AR0 ; |1374| 
-||      MOV *SP(#4), T0 ; |1374| 
+||      MOV dbl(*SP(#4)), AC0 ; |1374| 
 
 $C$DW$169	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$169, DW_AT_low_pc(0x00)
@@ -1796,7 +1796,7 @@ $C$DW$169	.dwtag  DW_TAG_TI_branch
         CALL #_vTaskPlaceOnEventList ; |1374| 
                                         ; call occurs [#_vTaskPlaceOnEventList] ; |1374| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1375,column 5,is_stmt
-        MOV dbl(*SP(#8)), XAR0
+        MOV dbl(*SP(#12)), XAR0
 $C$DW$170	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$170, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$170, DW_AT_name("_prvUnlockQueue")
@@ -1828,7 +1828,7 @@ $C$DW$L$_xQueueReceive$36$E:
 $C$L55:    
 $C$DW$L$_xQueueReceive$38$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1389,column 5,is_stmt
-        MOV dbl(*SP(#8)), XAR0
+        MOV dbl(*SP(#12)), XAR0
 $C$DW$173	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$173, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$173, DW_AT_name("_prvUnlockQueue")
@@ -1849,7 +1849,7 @@ $C$DW$L$_xQueueReceive$38$E:
 $C$L56:    
 $C$DW$L$_xQueueReceive$39$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1397,column 4,is_stmt
-        MOV dbl(*SP(#8)), XAR0
+        MOV dbl(*SP(#12)), XAR0
 $C$DW$175	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$175, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$175, DW_AT_name("_prvUnlockQueue")
@@ -1864,7 +1864,7 @@ $C$DW$176	.dwtag  DW_TAG_TI_branch
         CALL #_xTaskResumeAll ; |1398| 
                                         ; call occurs [#_xTaskResumeAll] ; |1398| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1400,column 4,is_stmt
-        MOV dbl(*SP(#8)), XAR0
+        MOV dbl(*SP(#12)), XAR0
 $C$DW$177	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$177, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$177, DW_AT_name("_prvIsQueueEmpty")
@@ -1880,7 +1880,7 @@ $C$DW$L$_xQueueReceive$39$E:
                                         ; branch occurs ; |1403| 
 $C$L57:    
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1411,column 1,is_stmt
-        AADD #11, SP
+        AADD #15, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$178	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$178, DW_AT_low_pc(0x00)
@@ -1889,7 +1889,7 @@ $C$DW$178	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$179	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$179, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\queue.asm:$C$L42:1:1536493715")
+	.dwattr $C$DW$179, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\queue.asm:$C$L42:1:1536922440")
 	.dwattr $C$DW$179, DW_AT_TI_begin_file("../FreeRTOS/Source/queue.c")
 	.dwattr $C$DW$179, DW_AT_TI_begin_line(0x511)
 	.dwattr $C$DW$179, DW_AT_TI_end_line(0x582)
@@ -1974,7 +1974,7 @@ $C$DW$200	.dwtag  DW_TAG_subprogram, DW_AT_name("xQueueSemaphoreTake")
 	.dwattr $C$DW$200, DW_AT_TI_begin_file("../FreeRTOS/Source/queue.c")
 	.dwattr $C$DW$200, DW_AT_TI_begin_line(0x586)
 	.dwattr $C$DW$200, DW_AT_TI_begin_column(0x0c)
-	.dwattr $C$DW$200, DW_AT_TI_max_frame_size(0x0a)
+	.dwattr $C$DW$200, DW_AT_TI_max_frame_size(0x0e)
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1415,column 1,is_stmt,address _xQueueSemaphoreTake
 
 	.dwfde $C$DW$CIE, _xQueueSemaphoreTake
@@ -1985,23 +1985,23 @@ $C$DW$201	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xQueue")
 $C$DW$202	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$202, DW_AT_TI_symbol_name("_xTicksToWait")
 	.dwattr $C$DW$202, DW_AT_type(*$C$DW$T$38)
-	.dwattr $C$DW$202, DW_AT_location[DW_OP_reg12]
+	.dwattr $C$DW$202, DW_AT_location[DW_OP_reg0]
 ;*******************************************************************************
 ;* FUNCTION NAME: xQueueSemaphoreTake                                          *
 ;*                                                                             *
-;*   Function Uses Regs : T0,AR0,XAR0,AR1,XAR1,AR3,XAR3,SP,CARRY,TC1,M40,SATA, *
-;*                        SATD,RDM,FRCT,SMUL                                   *
+;*   Function Uses Regs : AC0,AC0,T0,AR0,XAR0,AR1,XAR1,AR3,XAR3,SP,CARRY,TC1,  *
+;*                        M40,SATA,SATD,RDM,FRCT,SMUL                          *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-;*   Total Frame Size   : 10 words                                             *
+;*   Total Frame Size   : 14 words                                             *
 ;*                        (1 return address/alignment)                         *
-;*                        (9 local values)                                     *
+;*                        (13 local values)                                    *
 ;*   Min System Stack   : 1 word                                               *
 ;*******************************************************************************
 _xQueueSemaphoreTake:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-        AADD #-9, SP
-	.dwcfi	cfa_offset, 10
+        AADD #-13, SP
+	.dwcfi	cfa_offset, 14
 $C$DW$203	.dwtag  DW_TAG_variable, DW_AT_name("xQueue")
 	.dwattr $C$DW$203, DW_AT_TI_symbol_name("_xQueue")
 	.dwattr $C$DW$203, DW_AT_type(*$C$DW$T$46)
@@ -2013,22 +2013,22 @@ $C$DW$204	.dwtag  DW_TAG_variable, DW_AT_name("xTicksToWait")
 $C$DW$205	.dwtag  DW_TAG_variable, DW_AT_name("xEntryTimeSet")
 	.dwattr $C$DW$205, DW_AT_TI_symbol_name("_xEntryTimeSet")
 	.dwattr $C$DW$205, DW_AT_type(*$C$DW$T$43)
-	.dwattr $C$DW$205, DW_AT_location[DW_OP_bregx 0x24 3]
+	.dwattr $C$DW$205, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$206	.dwtag  DW_TAG_variable, DW_AT_name("xTimeOut")
 	.dwattr $C$DW$206, DW_AT_TI_symbol_name("_xTimeOut")
 	.dwattr $C$DW$206, DW_AT_type(*$C$DW$T$77)
-	.dwattr $C$DW$206, DW_AT_location[DW_OP_bregx 0x24 4]
+	.dwattr $C$DW$206, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$207	.dwtag  DW_TAG_variable, DW_AT_name("pxQueue")
 	.dwattr $C$DW$207, DW_AT_TI_symbol_name("_pxQueue")
 	.dwattr $C$DW$207, DW_AT_type(*$C$DW$T$57)
-	.dwattr $C$DW$207, DW_AT_location[DW_OP_bregx 0x24 6]
-        MOV T0, *SP(#2) ; |1415| 
+	.dwattr $C$DW$207, DW_AT_location[DW_OP_bregx 0x24 10]
+        MOV AC0, dbl(*SP(#2)) ; |1415| 
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1416,column 12,is_stmt
-        MOV #0, *SP(#3) ; |1416| 
+        MOV #0, *SP(#4) ; |1416| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1418,column 17,is_stmt
         MOV dbl(*SP(#0)), XAR3
-        MOV XAR3, dbl(*SP(#6))
+        MOV XAR3, dbl(*SP(#10))
 $C$L58:    
 $C$DW$L$_xQueueSemaphoreTake$2$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1444,column 3,is_stmt
@@ -2042,23 +2042,23 @@ $C$DW$208	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
 $C$DW$209	.dwtag  DW_TAG_variable, DW_AT_name("uxSemaphoreCount")
 	.dwattr $C$DW$209, DW_AT_TI_symbol_name("_uxSemaphoreCount")
 	.dwattr $C$DW$209, DW_AT_type(*$C$DW$T$48)
-	.dwattr $C$DW$209, DW_AT_location[DW_OP_bregx 0x24 8]
+	.dwattr $C$DW$209, DW_AT_location[DW_OP_bregx 0x24 12]
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1448,column 22,is_stmt
-        MOV dbl(*SP(#6)), XAR3
+        MOV dbl(*SP(#10)), XAR3
         MOV *AR3(#28), AR1 ; |1448| 
-        MOV AR1, *SP(#8) ; |1448| 
+        MOV AR1, *SP(#12) ; |1448| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1452,column 4,is_stmt
         BCC $C$L63,AR1 == #0 ; |1452| 
                                         ; branchcc occurs ; |1452| 
 $C$DW$L$_xQueueSemaphoreTake$2$E:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1458,column 5,is_stmt
-        MOV dbl(*SP(#6)), XAR3
+        MOV dbl(*SP(#10)), XAR3
         SUB #1, AR1 ; |1458| 
         MOV AR1, *AR3(#28) ; |1458| 
         NOP
         NOP
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1477,column 5,is_stmt
-        MOV dbl(*SP(#6)), XAR3
+        MOV dbl(*SP(#10)), XAR3
         MOV *AR3(#8), AR1 ; |1477| 
         BCC $C$L59,AR1 != #0 ; |1477| 
                                         ; branchcc occurs ; |1477| 
@@ -2071,7 +2071,7 @@ $C$L60:
         BCC $C$L61,AR1 != #0 ; |1477| 
                                         ; branchcc occurs ; |1477| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1479,column 6,is_stmt
-        MOV dbl(*SP(#6)), XAR0
+        MOV dbl(*SP(#10)), XAR0
         AADD #8, AR0 ; |1479| 
 $C$DW$210	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$210, DW_AT_low_pc(0x00)
@@ -2113,8 +2113,8 @@ $C$L62:
 $C$L63:    
 $C$DW$L$_xQueueSemaphoreTake$15$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1498,column 5,is_stmt
-        MOV *SP(#2), AR1 ; |1498| 
-        BCC $C$L65,AR1 != #0 ; |1498| 
+        MOV dbl(*SP(#2)), AC0 ; |1498| 
+        BCC $C$L65,AC0 != #0 ; |1498| 
                                         ; branchcc occurs ; |1498| 
 $C$DW$L$_xQueueSemaphoreTake$15$E:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1511,column 6,is_stmt
@@ -2138,13 +2138,13 @@ $C$L64:
 $C$L65:    
 $C$DW$L$_xQueueSemaphoreTake$21$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1515,column 10,is_stmt
-        MOV *SP(#3), AR1 ; |1515| 
+        MOV *SP(#4), AR1 ; |1515| 
         BCC $C$L66,AR1 != #0 ; |1515| 
                                         ; branchcc occurs ; |1515| 
 $C$DW$L$_xQueueSemaphoreTake$21$E:
 $C$DW$L$_xQueueSemaphoreTake$22$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1519,column 6,is_stmt
-        AMAR *SP(#4), XAR0
+        AMAR *SP(#6), XAR0
 $C$DW$212	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$212, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$212, DW_AT_name("_vTaskInternalSetTimeOutState")
@@ -2152,7 +2152,7 @@ $C$DW$212	.dwtag  DW_TAG_TI_branch
         CALL #_vTaskInternalSetTimeOutState ; |1519| 
                                         ; call occurs [#_vTaskInternalSetTimeOutState] ; |1519| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1520,column 6,is_stmt
-        MOV #1, *SP(#3) ; |1520| 
+        MOV #1, *SP(#4) ; |1520| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1521,column 5,is_stmt
 $C$DW$L$_xQueueSemaphoreTake$22$E:
 $C$L66:    
@@ -2192,7 +2192,7 @@ $C$DW$213	.dwtag  DW_TAG_TI_branch
         ADD #1, *(#_usCriticalNesting) ; |1535| 
         NOP
         NOP
-        MOV dbl(*SP(#6)), XAR3
+        MOV dbl(*SP(#10)), XAR3
         CMP *AR3(#31) == #-1, TC1 ; |1535| 
         BCC $C$L68,!TC1 ; |1535| 
                                         ; branchcc occurs ; |1535| 
@@ -2202,7 +2202,7 @@ $C$DW$L$_xQueueSemaphoreTake$27$B:
 $C$DW$L$_xQueueSemaphoreTake$27$E:
 $C$L68:    
 $C$DW$L$_xQueueSemaphoreTake$28$B:
-        MOV dbl(*SP(#6)), XAR3
+        MOV dbl(*SP(#10)), XAR3
         CMP *AR3(#32) == #-1, TC1 ; |1535| 
         BCC $C$L69,!TC1 ; |1535| 
                                         ; branchcc occurs ; |1535| 
@@ -2232,7 +2232,7 @@ $C$DW$L$_xQueueSemaphoreTake$32$E:
 $C$L70:    
 $C$DW$L$_xQueueSemaphoreTake$33$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1538,column 3,is_stmt
-        AMAR *SP(#4), XAR0
+        AMAR *SP(#6), XAR0
         AMAR *SP(#2), XAR1
 $C$DW$214	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$214, DW_AT_low_pc(0x00)
@@ -2245,7 +2245,7 @@ $C$DW$214	.dwtag  DW_TAG_TI_branch
 $C$DW$L$_xQueueSemaphoreTake$33$E:
 $C$DW$L$_xQueueSemaphoreTake$34$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1544,column 4,is_stmt
-        MOV dbl(*SP(#6)), XAR0
+        MOV dbl(*SP(#10)), XAR0
 $C$DW$215	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$215, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$215, DW_AT_name("_prvIsQueueEmpty")
@@ -2257,10 +2257,10 @@ $C$DW$215	.dwtag  DW_TAG_TI_branch
 $C$DW$L$_xQueueSemaphoreTake$34$E:
 $C$DW$L$_xQueueSemaphoreTake$35$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1565,column 5,is_stmt
-        MOV dbl(*SP(#6)), XAR0
+        MOV dbl(*SP(#10)), XAR0
 
         AADD #18, AR0 ; |1565| 
-||      MOV *SP(#2), T0 ; |1565| 
+||      MOV dbl(*SP(#2)), AC0 ; |1565| 
 
 $C$DW$216	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$216, DW_AT_low_pc(0x00)
@@ -2269,7 +2269,7 @@ $C$DW$216	.dwtag  DW_TAG_TI_branch
         CALL #_vTaskPlaceOnEventList ; |1565| 
                                         ; call occurs [#_vTaskPlaceOnEventList] ; |1565| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1566,column 5,is_stmt
-        MOV dbl(*SP(#6)), XAR0
+        MOV dbl(*SP(#10)), XAR0
 $C$DW$217	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$217, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$217, DW_AT_name("_prvUnlockQueue")
@@ -2301,7 +2301,7 @@ $C$DW$L$_xQueueSemaphoreTake$36$E:
 $C$L71:    
 $C$DW$L$_xQueueSemaphoreTake$38$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1580,column 5,is_stmt
-        MOV dbl(*SP(#6)), XAR0
+        MOV dbl(*SP(#10)), XAR0
 $C$DW$220	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$220, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$220, DW_AT_name("_prvUnlockQueue")
@@ -2322,7 +2322,7 @@ $C$DW$L$_xQueueSemaphoreTake$38$E:
 $C$L72:    
 $C$DW$L$_xQueueSemaphoreTake$39$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1587,column 4,is_stmt
-        MOV dbl(*SP(#6)), XAR0
+        MOV dbl(*SP(#10)), XAR0
 $C$DW$222	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$222, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$222, DW_AT_name("_prvUnlockQueue")
@@ -2337,7 +2337,7 @@ $C$DW$223	.dwtag  DW_TAG_TI_branch
         CALL #_xTaskResumeAll ; |1588| 
                                         ; call occurs [#_xTaskResumeAll] ; |1588| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1594,column 4,is_stmt
-        MOV dbl(*SP(#6)), XAR0
+        MOV dbl(*SP(#10)), XAR0
 $C$DW$224	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$224, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$224, DW_AT_name("_prvIsQueueEmpty")
@@ -2353,7 +2353,7 @@ $C$DW$L$_xQueueSemaphoreTake$39$E:
                                         ; branch occurs ; |1621| 
 $C$L73:    
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1629,column 1,is_stmt
-        AADD #9, SP
+        AADD #13, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$225	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$225, DW_AT_low_pc(0x00)
@@ -2362,7 +2362,7 @@ $C$DW$225	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$226	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$226, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\queue.asm:$C$L58:1:1536493715")
+	.dwattr $C$DW$226, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\queue.asm:$C$L58:1:1536922440")
 	.dwattr $C$DW$226, DW_AT_TI_begin_file("../FreeRTOS/Source/queue.c")
 	.dwattr $C$DW$226, DW_AT_TI_begin_line(0x5a2)
 	.dwattr $C$DW$226, DW_AT_TI_end_line(0x65c)
@@ -2447,7 +2447,7 @@ $C$DW$247	.dwtag  DW_TAG_subprogram, DW_AT_name("xQueuePeek")
 	.dwattr $C$DW$247, DW_AT_TI_begin_file("../FreeRTOS/Source/queue.c")
 	.dwattr $C$DW$247, DW_AT_TI_begin_line(0x660)
 	.dwattr $C$DW$247, DW_AT_TI_begin_column(0x0c)
-	.dwattr $C$DW$247, DW_AT_TI_max_frame_size(0x0e)
+	.dwattr $C$DW$247, DW_AT_TI_max_frame_size(0x12)
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1633,column 1,is_stmt,address _xQueuePeek
 
 	.dwfde $C$DW$CIE, _xQueuePeek
@@ -2462,23 +2462,23 @@ $C$DW$249	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvBuffer")
 $C$DW$250	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$250, DW_AT_TI_symbol_name("_xTicksToWait")
 	.dwattr $C$DW$250, DW_AT_type(*$C$DW$T$38)
-	.dwattr $C$DW$250, DW_AT_location[DW_OP_reg12]
+	.dwattr $C$DW$250, DW_AT_location[DW_OP_reg0]
 ;*******************************************************************************
 ;* FUNCTION NAME: xQueuePeek                                                   *
 ;*                                                                             *
-;*   Function Uses Regs : T0,AR0,XAR0,AR1,XAR1,AR2,XAR2,AR3,XAR3,SP,CARRY,TC1, *
-;*                        M40,SATA,SATD,RDM,FRCT,SMUL                          *
+;*   Function Uses Regs : AC0,AC0,T0,AR0,XAR0,AR1,XAR1,AR2,XAR2,AR3,XAR3,SP,   *
+;*                        CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL                *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-;*   Total Frame Size   : 14 words                                             *
+;*   Total Frame Size   : 18 words                                             *
 ;*                        (1 return address/alignment)                         *
-;*                        (13 local values)                                    *
+;*                        (17 local values)                                    *
 ;*   Min System Stack   : 1 word                                               *
 ;*******************************************************************************
 _xQueuePeek:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-        AADD #-13, SP
-	.dwcfi	cfa_offset, 14
+        AADD #-17, SP
+	.dwcfi	cfa_offset, 18
 $C$DW$251	.dwtag  DW_TAG_variable, DW_AT_name("xQueue")
 	.dwattr $C$DW$251, DW_AT_TI_symbol_name("_xQueue")
 	.dwattr $C$DW$251, DW_AT_type(*$C$DW$T$46)
@@ -2494,27 +2494,27 @@ $C$DW$253	.dwtag  DW_TAG_variable, DW_AT_name("xTicksToWait")
 $C$DW$254	.dwtag  DW_TAG_variable, DW_AT_name("xEntryTimeSet")
 	.dwattr $C$DW$254, DW_AT_TI_symbol_name("_xEntryTimeSet")
 	.dwattr $C$DW$254, DW_AT_type(*$C$DW$T$43)
-	.dwattr $C$DW$254, DW_AT_location[DW_OP_bregx 0x24 5]
+	.dwattr $C$DW$254, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$255	.dwtag  DW_TAG_variable, DW_AT_name("xTimeOut")
 	.dwattr $C$DW$255, DW_AT_TI_symbol_name("_xTimeOut")
 	.dwattr $C$DW$255, DW_AT_type(*$C$DW$T$77)
-	.dwattr $C$DW$255, DW_AT_location[DW_OP_bregx 0x24 6]
+	.dwattr $C$DW$255, DW_AT_location[DW_OP_bregx 0x24 8]
 $C$DW$256	.dwtag  DW_TAG_variable, DW_AT_name("pcOriginalReadPosition")
 	.dwattr $C$DW$256, DW_AT_TI_symbol_name("_pcOriginalReadPosition")
 	.dwattr $C$DW$256, DW_AT_type(*$C$DW$T$24)
-	.dwattr $C$DW$256, DW_AT_location[DW_OP_bregx 0x24 8]
+	.dwattr $C$DW$256, DW_AT_location[DW_OP_bregx 0x24 12]
 $C$DW$257	.dwtag  DW_TAG_variable, DW_AT_name("pxQueue")
 	.dwattr $C$DW$257, DW_AT_TI_symbol_name("_pxQueue")
 	.dwattr $C$DW$257, DW_AT_type(*$C$DW$T$57)
-	.dwattr $C$DW$257, DW_AT_location[DW_OP_bregx 0x24 10]
-        MOV T0, *SP(#4) ; |1633| 
+	.dwattr $C$DW$257, DW_AT_location[DW_OP_bregx 0x24 14]
+        MOV AC0, dbl(*SP(#4)) ; |1633| 
         MOV XAR1, dbl(*SP(#2))
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1634,column 12,is_stmt
-        MOV #0, *SP(#5) ; |1634| 
+        MOV #0, *SP(#6) ; |1634| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1637,column 17,is_stmt
         MOV dbl(*SP(#0)), XAR3
-        MOV XAR3, dbl(*SP(#10))
+        MOV XAR3, dbl(*SP(#14))
 $C$L74:    
 $C$DW$L$_xQueuePeek$2$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1659,column 3,is_stmt
@@ -2528,21 +2528,21 @@ $C$DW$258	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
 $C$DW$259	.dwtag  DW_TAG_variable, DW_AT_name("uxMessagesWaiting")
 	.dwattr $C$DW$259, DW_AT_TI_symbol_name("_uxMessagesWaiting")
 	.dwattr $C$DW$259, DW_AT_type(*$C$DW$T$48)
-	.dwattr $C$DW$259, DW_AT_location[DW_OP_bregx 0x24 12]
+	.dwattr $C$DW$259, DW_AT_location[DW_OP_bregx 0x24 16]
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1661,column 22,is_stmt
-        MOV dbl(*SP(#10)), XAR3
+        MOV dbl(*SP(#14)), XAR3
         MOV *AR3(#28), AR1 ; |1661| 
-        MOV AR1, *SP(#12) ; |1661| 
+        MOV AR1, *SP(#16) ; |1661| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1665,column 4,is_stmt
         BCC $C$L79,AR1 == #0 ; |1665| 
                                         ; branchcc occurs ; |1665| 
 $C$DW$L$_xQueuePeek$2$E:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1670,column 5,is_stmt
-        MOV dbl(*SP(#10)), XAR3
+        MOV dbl(*SP(#14)), XAR3
         MOV dbl(*AR3(short(#6))), XAR3
-        MOV XAR3, dbl(*SP(#8))
+        MOV XAR3, dbl(*SP(#12))
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1672,column 5,is_stmt
-        MOV dbl(*SP(#10)), XAR0
+        MOV dbl(*SP(#14)), XAR0
         MOV dbl(*SP(#2)), XAR1
 $C$DW$260	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$260, DW_AT_low_pc(0x00)
@@ -2551,11 +2551,11 @@ $C$DW$260	.dwtag  DW_TAG_TI_branch
         CALL #_prvCopyDataFromQueue ; |1672| 
                                         ; call occurs [#_prvCopyDataFromQueue] ; |1672| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1676,column 5,is_stmt
-        MOV dbl(*SP(#10)), XAR3
-        MOV dbl(*SP(#8)), XAR2
+        MOV dbl(*SP(#14)), XAR3
+        MOV dbl(*SP(#12)), XAR2
         MOV XAR2, dbl(*AR3(short(#6)))
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1680,column 5,is_stmt
-        MOV dbl(*SP(#10)), XAR3
+        MOV dbl(*SP(#14)), XAR3
         MOV *AR3(#18), AR1 ; |1680| 
         BCC $C$L75,AR1 != #0 ; |1680| 
                                         ; branchcc occurs ; |1680| 
@@ -2568,7 +2568,7 @@ $C$L76:
         BCC $C$L77,AR1 != #0 ; |1680| 
                                         ; branchcc occurs ; |1680| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1682,column 6,is_stmt
-        MOV dbl(*SP(#10)), XAR0
+        MOV dbl(*SP(#14)), XAR0
         AADD #18, AR0 ; |1682| 
 $C$DW$261	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$261, DW_AT_low_pc(0x00)
@@ -2610,8 +2610,8 @@ $C$L78:
 $C$L79:    
 $C$DW$L$_xQueuePeek$15$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1702,column 5,is_stmt
-        MOV *SP(#4), AR1 ; |1702| 
-        BCC $C$L81,AR1 != #0 ; |1702| 
+        MOV dbl(*SP(#4)), AC0 ; |1702| 
+        BCC $C$L81,AC0 != #0 ; |1702| 
                                         ; branchcc occurs ; |1702| 
 $C$DW$L$_xQueuePeek$15$E:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1706,column 6,is_stmt
@@ -2635,13 +2635,13 @@ $C$L80:
 $C$L81:    
 $C$DW$L$_xQueuePeek$21$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1710,column 10,is_stmt
-        MOV *SP(#5), AR1 ; |1710| 
+        MOV *SP(#6), AR1 ; |1710| 
         BCC $C$L82,AR1 != #0 ; |1710| 
                                         ; branchcc occurs ; |1710| 
 $C$DW$L$_xQueuePeek$21$E:
 $C$DW$L$_xQueuePeek$22$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1715,column 6,is_stmt
-        AMAR *SP(#6), XAR0
+        AMAR *SP(#8), XAR0
 $C$DW$263	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$263, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$263, DW_AT_name("_vTaskInternalSetTimeOutState")
@@ -2649,7 +2649,7 @@ $C$DW$263	.dwtag  DW_TAG_TI_branch
         CALL #_vTaskInternalSetTimeOutState ; |1715| 
                                         ; call occurs [#_vTaskInternalSetTimeOutState] ; |1715| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1716,column 6,is_stmt
-        MOV #1, *SP(#5) ; |1716| 
+        MOV #1, *SP(#6) ; |1716| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1717,column 5,is_stmt
 $C$DW$L$_xQueuePeek$22$E:
 $C$L82:    
@@ -2689,7 +2689,7 @@ $C$DW$264	.dwtag  DW_TAG_TI_branch
         ADD #1, *(#_usCriticalNesting) ; |1731| 
         NOP
         NOP
-        MOV dbl(*SP(#10)), XAR3
+        MOV dbl(*SP(#14)), XAR3
         CMP *AR3(#31) == #-1, TC1 ; |1731| 
         BCC $C$L84,!TC1 ; |1731| 
                                         ; branchcc occurs ; |1731| 
@@ -2699,7 +2699,7 @@ $C$DW$L$_xQueuePeek$27$B:
 $C$DW$L$_xQueuePeek$27$E:
 $C$L84:    
 $C$DW$L$_xQueuePeek$28$B:
-        MOV dbl(*SP(#10)), XAR3
+        MOV dbl(*SP(#14)), XAR3
         CMP *AR3(#32) == #-1, TC1 ; |1731| 
         BCC $C$L85,!TC1 ; |1731| 
                                         ; branchcc occurs ; |1731| 
@@ -2729,7 +2729,7 @@ $C$DW$L$_xQueuePeek$32$E:
 $C$L86:    
 $C$DW$L$_xQueuePeek$33$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1734,column 3,is_stmt
-        AMAR *SP(#6), XAR0
+        AMAR *SP(#8), XAR0
         AMAR *SP(#4), XAR1
 $C$DW$265	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$265, DW_AT_low_pc(0x00)
@@ -2742,7 +2742,7 @@ $C$DW$265	.dwtag  DW_TAG_TI_branch
 $C$DW$L$_xQueuePeek$33$E:
 $C$DW$L$_xQueuePeek$34$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1738,column 4,is_stmt
-        MOV dbl(*SP(#10)), XAR0
+        MOV dbl(*SP(#14)), XAR0
 $C$DW$266	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$266, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$266, DW_AT_name("_prvIsQueueEmpty")
@@ -2754,10 +2754,10 @@ $C$DW$266	.dwtag  DW_TAG_TI_branch
 $C$DW$L$_xQueuePeek$34$E:
 $C$DW$L$_xQueuePeek$35$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1741,column 5,is_stmt
-        MOV dbl(*SP(#10)), XAR0
+        MOV dbl(*SP(#14)), XAR0
 
         AADD #18, AR0 ; |1741| 
-||      MOV *SP(#4), T0 ; |1741| 
+||      MOV dbl(*SP(#4)), AC0 ; |1741| 
 
 $C$DW$267	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$267, DW_AT_low_pc(0x00)
@@ -2766,7 +2766,7 @@ $C$DW$267	.dwtag  DW_TAG_TI_branch
         CALL #_vTaskPlaceOnEventList ; |1741| 
                                         ; call occurs [#_vTaskPlaceOnEventList] ; |1741| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1742,column 5,is_stmt
-        MOV dbl(*SP(#10)), XAR0
+        MOV dbl(*SP(#14)), XAR0
 $C$DW$268	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$268, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$268, DW_AT_name("_prvUnlockQueue")
@@ -2798,7 +2798,7 @@ $C$DW$L$_xQueuePeek$36$E:
 $C$L87:    
 $C$DW$L$_xQueuePeek$38$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1756,column 5,is_stmt
-        MOV dbl(*SP(#10)), XAR0
+        MOV dbl(*SP(#14)), XAR0
 $C$DW$271	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$271, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$271, DW_AT_name("_prvUnlockQueue")
@@ -2819,7 +2819,7 @@ $C$DW$L$_xQueuePeek$38$E:
 $C$L88:    
 $C$DW$L$_xQueuePeek$39$B:
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1764,column 4,is_stmt
-        MOV dbl(*SP(#10)), XAR0
+        MOV dbl(*SP(#14)), XAR0
 $C$DW$273	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$273, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$273, DW_AT_name("_prvUnlockQueue")
@@ -2834,7 +2834,7 @@ $C$DW$274	.dwtag  DW_TAG_TI_branch
         CALL #_xTaskResumeAll ; |1765| 
                                         ; call occurs [#_xTaskResumeAll] ; |1765| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1767,column 4,is_stmt
-        MOV dbl(*SP(#10)), XAR0
+        MOV dbl(*SP(#14)), XAR0
 $C$DW$275	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$275, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$275, DW_AT_name("_prvIsQueueEmpty")
@@ -2850,7 +2850,7 @@ $C$DW$L$_xQueuePeek$39$E:
                                         ; branch occurs ; |1770| 
 $C$L89:    
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 1778,column 1,is_stmt
-        AADD #13, SP
+        AADD #17, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$276	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$276, DW_AT_low_pc(0x00)
@@ -2859,7 +2859,7 @@ $C$DW$276	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$277	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$277, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\queue.asm:$C$L74:1:1536493715")
+	.dwattr $C$DW$277, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\queue.asm:$C$L74:1:1536922440")
 	.dwattr $C$DW$277, DW_AT_TI_begin_file("../FreeRTOS/Source/queue.c")
 	.dwattr $C$DW$277, DW_AT_TI_begin_line(0x679)
 	.dwattr $C$DW$277, DW_AT_TI_end_line(0x6f1)
@@ -4104,7 +4104,7 @@ $C$DW$379	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$380	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$380, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\queue.asm:$C$L111:1:1536493715")
+	.dwattr $C$DW$380, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\queue.asm:$C$L111:1:1536922440")
 	.dwattr $C$DW$380, DW_AT_TI_begin_file("../FreeRTOS/Source/queue.c")
 	.dwattr $C$DW$380, DW_AT_TI_begin_line(0x8d4)
 	.dwattr $C$DW$380, DW_AT_TI_end_line(0x8e7)
@@ -4136,7 +4136,7 @@ $C$DW$388	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$389	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$389, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\queue.asm:$C$L105:1:1536493715")
+	.dwattr $C$DW$389, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\queue.asm:$C$L105:1:1536922440")
 	.dwattr $C$DW$389, DW_AT_TI_begin_file("../FreeRTOS/Source/queue.c")
 	.dwattr $C$DW$389, DW_AT_TI_begin_line(0x884)
 	.dwattr $C$DW$389, DW_AT_TI_end_line(0x8c9)
@@ -4537,7 +4537,7 @@ $C$DW$419	.dwtag  DW_TAG_subprogram, DW_AT_name("xQueueCRSend")
 	.dwattr $C$DW$419, DW_AT_TI_begin_file("../FreeRTOS/Source/queue.c")
 	.dwattr $C$DW$419, DW_AT_TI_begin_line(0x941)
 	.dwattr $C$DW$419, DW_AT_TI_begin_column(0x0d)
-	.dwattr $C$DW$419, DW_AT_TI_max_frame_size(0x0a)
+	.dwattr $C$DW$419, DW_AT_TI_max_frame_size(0x0c)
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2370,column 2,is_stmt,address _xQueueCRSend
 
 	.dwfde $C$DW$CIE, _xQueueCRSend
@@ -4552,23 +4552,23 @@ $C$DW$421	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvItemToQueue")
 $C$DW$422	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$422, DW_AT_TI_symbol_name("_xTicksToWait")
 	.dwattr $C$DW$422, DW_AT_type(*$C$DW$T$38)
-	.dwattr $C$DW$422, DW_AT_location[DW_OP_reg12]
+	.dwattr $C$DW$422, DW_AT_location[DW_OP_reg0]
 ;*******************************************************************************
 ;* FUNCTION NAME: xQueueCRSend                                                 *
 ;*                                                                             *
-;*   Function Uses Regs : T0,AR0,XAR0,AR1,XAR1,AR2,AR3,XAR3,SP,TC1,M40,SATA,   *
-;*                        SATD,RDM,FRCT,SMUL                                   *
+;*   Function Uses Regs : AC0,AC0,T0,AR0,XAR0,AR1,XAR1,AR2,AR3,XAR3,SP,TC1,M40,*
+;*                        SATA,SATD,RDM,FRCT,SMUL                              *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-;*   Total Frame Size   : 10 words                                             *
+;*   Total Frame Size   : 12 words                                             *
 ;*                        (2 return address/alignment)                         *
-;*                        (8 local values)                                     *
+;*                        (10 local values)                                    *
 ;*   Min System Stack   : 1 word                                               *
 ;*******************************************************************************
 _xQueueCRSend:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-        AADD #-9, SP
-	.dwcfi	cfa_offset, 10
+        AADD #-11, SP
+	.dwcfi	cfa_offset, 12
 $C$DW$423	.dwtag  DW_TAG_variable, DW_AT_name("xQueue")
 	.dwattr $C$DW$423, DW_AT_TI_symbol_name("_xQueue")
 	.dwattr $C$DW$423, DW_AT_type(*$C$DW$T$46)
@@ -4584,17 +4584,17 @@ $C$DW$425	.dwtag  DW_TAG_variable, DW_AT_name("xTicksToWait")
 $C$DW$426	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
 	.dwattr $C$DW$426, DW_AT_TI_symbol_name("_xReturn")
 	.dwattr $C$DW$426, DW_AT_type(*$C$DW$T$43)
-	.dwattr $C$DW$426, DW_AT_location[DW_OP_bregx 0x24 5]
+	.dwattr $C$DW$426, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$427	.dwtag  DW_TAG_variable, DW_AT_name("pxQueue")
 	.dwattr $C$DW$427, DW_AT_TI_symbol_name("_pxQueue")
 	.dwattr $C$DW$427, DW_AT_type(*$C$DW$T$57)
-	.dwattr $C$DW$427, DW_AT_location[DW_OP_bregx 0x24 6]
-        MOV T0, *SP(#4) ; |2370| 
+	.dwattr $C$DW$427, DW_AT_location[DW_OP_bregx 0x24 8]
+        MOV AC0, dbl(*SP(#4)) ; |2370| 
         MOV XAR1, dbl(*SP(#2))
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2372,column 18,is_stmt
         MOV dbl(*SP(#0)), XAR3
-        MOV XAR3, dbl(*SP(#6))
+        MOV XAR3, dbl(*SP(#8))
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2377,column 3,is_stmt
  nop
  bset INTM
@@ -4608,20 +4608,20 @@ $C$DW$428	.dwtag  DW_TAG_TI_branch
         BCC $C$L129,T0 == #0 ; |2379| 
                                         ; branchcc occurs ; |2379| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2383,column 5,is_stmt
-        MOV *SP(#4), AR1 ; |2383| 
-        BCC $C$L128,AR1 == #0 ; |2383| 
+        MOV dbl(*SP(#4)), AC0 ; |2383| 
+        BCC $C$L128,AC0 == #0 ; |2383| 
                                         ; branchcc occurs ; |2383| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2387,column 6,is_stmt
-        MOV dbl(*SP(#6)), XAR0
+        MOV dbl(*SP(#8)), XAR0
+
         AADD #8, AR0 ; |2387| 
+||      MOV dbl(*SP(#4)), AC0 ; |2387| 
+
 $C$DW$429	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$429, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$429, DW_AT_name("_vCoRoutineAddToDelayedList")
 	.dwattr $C$DW$429, DW_AT_TI_call
-
         CALL #_vCoRoutineAddToDelayedList ; |2387| 
-||      MOV AR1, T0 ; |2387| 
-
                                         ; call occurs [#_vCoRoutineAddToDelayedList] ; |2387| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2388,column 6,is_stmt
  nop
@@ -4646,14 +4646,14 @@ $C$L129:
  nop
  bset INTM
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2402,column 4,is_stmt
-        MOV dbl(*SP(#6)), XAR3
+        MOV dbl(*SP(#8)), XAR3
         MOV *AR3(#29), AR1 ; |2402| 
         MOV *AR3(#28), AR2 ; |2402| 
         CMPU AR2 >= AR1, TC1 ; |2402| 
         BCC $C$L132,TC1 ; |2402| 
                                         ; branchcc occurs ; |2402| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2405,column 5,is_stmt
-        MOV dbl(*SP(#6)), XAR0
+        MOV dbl(*SP(#8)), XAR0
         MOV dbl(*SP(#2)), XAR1
 $C$DW$430	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$430, DW_AT_low_pc(0x00)
@@ -4665,9 +4665,9 @@ $C$DW$430	.dwtag  DW_TAG_TI_branch
 
                                         ; call occurs [#_prvCopyDataToQueue] ; |2405| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2406,column 5,is_stmt
-        MOV #1, *SP(#5) ; |2406| 
+        MOV #1, *SP(#6) ; |2406| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2409,column 5,is_stmt
-        MOV dbl(*SP(#6)), XAR3
+        MOV dbl(*SP(#8)), XAR3
         MOV *AR3(#18), AR1 ; |2409| 
         BCC $C$L130,AR1 != #0 ; |2409| 
                                         ; branchcc occurs ; |2409| 
@@ -4680,7 +4680,7 @@ $C$L131:
         BCC $C$L133,AR1 != #0 ; |2409| 
                                         ; branchcc occurs ; |2409| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2415,column 6,is_stmt
-        MOV dbl(*SP(#6)), XAR0
+        MOV dbl(*SP(#8)), XAR0
         AADD #18, AR0 ; |2415| 
 $C$DW$431	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$431, DW_AT_low_pc(0x00)
@@ -4691,22 +4691,22 @@ $C$DW$431	.dwtag  DW_TAG_TI_branch
         BCC $C$L133,T0 == #0 ; |2415| 
                                         ; branchcc occurs ; |2415| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2419,column 7,is_stmt
-        MOV #-5, *SP(#5) ; |2419| 
+        MOV #-5, *SP(#6) ; |2419| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2420,column 6,is_stmt
         B $C$L133 ; |2420| 
                                         ; branch occurs ; |2420| 
 $C$L132:    
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2433,column 5,is_stmt
-        MOV #0, *SP(#5) ; |2433| 
+        MOV #0, *SP(#6) ; |2433| 
 $C$L133:    
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2436,column 3,is_stmt
  nop
  bclr INTM
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2438,column 3,is_stmt
-        MOV *SP(#5), T0 ; |2438| 
+        MOV *SP(#6), T0 ; |2438| 
 $C$L134:    
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2439,column 2,is_stmt
-        AADD #9, SP
+        AADD #11, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$432	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$432, DW_AT_low_pc(0x00)
@@ -4732,7 +4732,7 @@ $C$DW$433	.dwtag  DW_TAG_subprogram, DW_AT_name("xQueueCRReceive")
 	.dwattr $C$DW$433, DW_AT_TI_begin_file("../FreeRTOS/Source/queue.c")
 	.dwattr $C$DW$433, DW_AT_TI_begin_line(0x98e)
 	.dwattr $C$DW$433, DW_AT_TI_begin_column(0x0d)
-	.dwattr $C$DW$433, DW_AT_TI_max_frame_size(0x0a)
+	.dwattr $C$DW$433, DW_AT_TI_max_frame_size(0x0c)
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2447,column 2,is_stmt,address _xQueueCRReceive
 
 	.dwfde $C$DW$CIE, _xQueueCRReceive
@@ -4747,23 +4747,23 @@ $C$DW$435	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvBuffer")
 $C$DW$436	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$436, DW_AT_TI_symbol_name("_xTicksToWait")
 	.dwattr $C$DW$436, DW_AT_type(*$C$DW$T$38)
-	.dwattr $C$DW$436, DW_AT_location[DW_OP_reg12]
+	.dwattr $C$DW$436, DW_AT_location[DW_OP_reg0]
 ;*******************************************************************************
 ;* FUNCTION NAME: xQueueCRReceive                                              *
 ;*                                                                             *
 ;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,AR0,XAR0,AR1,XAR1,AR2,XAR2,AR3,   *
 ;*                        XAR3,SP,CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL        *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-;*   Total Frame Size   : 10 words                                             *
+;*   Total Frame Size   : 12 words                                             *
 ;*                        (2 return address/alignment)                         *
-;*                        (8 local values)                                     *
+;*                        (10 local values)                                    *
 ;*   Min System Stack   : 1 word                                               *
 ;*******************************************************************************
 _xQueueCRReceive:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-        AADD #-9, SP
-	.dwcfi	cfa_offset, 10
+        AADD #-11, SP
+	.dwcfi	cfa_offset, 12
 $C$DW$437	.dwtag  DW_TAG_variable, DW_AT_name("xQueue")
 	.dwattr $C$DW$437, DW_AT_TI_symbol_name("_xQueue")
 	.dwattr $C$DW$437, DW_AT_type(*$C$DW$T$46)
@@ -4779,17 +4779,17 @@ $C$DW$439	.dwtag  DW_TAG_variable, DW_AT_name("xTicksToWait")
 $C$DW$440	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
 	.dwattr $C$DW$440, DW_AT_TI_symbol_name("_xReturn")
 	.dwattr $C$DW$440, DW_AT_type(*$C$DW$T$43)
-	.dwattr $C$DW$440, DW_AT_location[DW_OP_bregx 0x24 5]
+	.dwattr $C$DW$440, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$441	.dwtag  DW_TAG_variable, DW_AT_name("pxQueue")
 	.dwattr $C$DW$441, DW_AT_TI_symbol_name("_pxQueue")
 	.dwattr $C$DW$441, DW_AT_type(*$C$DW$T$57)
-	.dwattr $C$DW$441, DW_AT_location[DW_OP_bregx 0x24 6]
-        MOV T0, *SP(#4) ; |2447| 
+	.dwattr $C$DW$441, DW_AT_location[DW_OP_bregx 0x24 8]
+        MOV AC0, dbl(*SP(#4)) ; |2447| 
         MOV XAR1, dbl(*SP(#2))
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2449,column 18,is_stmt
         MOV dbl(*SP(#0)), XAR3
-        MOV XAR3, dbl(*SP(#6))
+        MOV XAR3, dbl(*SP(#8))
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2454,column 3,is_stmt
  nop
  bset INTM
@@ -4798,19 +4798,19 @@ $C$DW$441	.dwtag  DW_TAG_variable, DW_AT_name("pxQueue")
         BCC $C$L136,AR1 != #0 ; |2456| 
                                         ; branchcc occurs ; |2456| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2460,column 5,is_stmt
-        MOV *SP(#4), AR1 ; |2460| 
-        BCC $C$L135,AR1 == #0 ; |2460| 
+        MOV dbl(*SP(#4)), AC0 ; |2460| 
+        BCC $C$L135,AC0 == #0 ; |2460| 
                                         ; branchcc occurs ; |2460| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2464,column 6,is_stmt
+
         AADD #18, AR0 ; |2464| 
+||      MOV dbl(*SP(#4)), AC0 ; |2464| 
+
 $C$DW$442	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$442, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$442, DW_AT_name("_vCoRoutineAddToDelayedList")
 	.dwattr $C$DW$442, DW_AT_TI_call
-
         CALL #_vCoRoutineAddToDelayedList ; |2464| 
-||      MOV AR1, T0 ; |2464| 
-
                                         ; call occurs [#_vCoRoutineAddToDelayedList] ; |2464| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2465,column 6,is_stmt
  nop
@@ -4839,7 +4839,7 @@ $C$L136:
         BCC $C$L140,AR1 == #0 ; |2483| 
                                         ; branchcc occurs ; |2483| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2486,column 5,is_stmt
-        MOV dbl(*SP(#6)), XAR2
+        MOV dbl(*SP(#8)), XAR2
         MOV *AR3(#30), AR1 ; |2486| 
         MOV dbl(*AR2(short(#6))), XAR3
 
@@ -4847,26 +4847,26 @@ $C$L136:
 ||      AADD AR1, AR3 ; |2486| 
 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2487,column 5,is_stmt
-        MOV dbl(*SP(#6)), XAR3
+        MOV dbl(*SP(#8)), XAR3
         MOV dbl(*AR3(short(#4))), XAR3
         MOV XAR3, AC0
-        MOV dbl(*SP(#6)), XAR3
+        MOV dbl(*SP(#8)), XAR3
         MOV dbl(*AR3(short(#6))), XAR3
         MOV XAR3, AC1
         CMPU AC1 < AC0, TC1 ; |2487| 
         BCC $C$L137,TC1 ; |2487| 
                                         ; branchcc occurs ; |2487| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2489,column 6,is_stmt
-        MOV dbl(*SP(#6)), XAR3
+        MOV dbl(*SP(#8)), XAR3
         MOV dbl(*AR3), XAR2
         MOV XAR2, dbl(*AR3(short(#6)))
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2490,column 5,is_stmt
 $C$L137:    
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2495,column 5,is_stmt
-        MOV dbl(*SP(#6)), XAR3
+        MOV dbl(*SP(#8)), XAR3
         SUB #1, *AR3(#28) ; |2495| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2496,column 5,is_stmt
-        MOV dbl(*SP(#6)), XAR3
+        MOV dbl(*SP(#8)), XAR3
         MOV dbl(*SP(#2)), XAR0
         MOV dbl(*AR3(short(#6))), XAR1
         MOV *AR3(#30), T0 ; |2496| 
@@ -4877,9 +4877,9 @@ $C$DW$443	.dwtag  DW_TAG_TI_branch
         CALL #_memcpy ; |2496| 
                                         ; call occurs [#_memcpy] ; |2496| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2498,column 5,is_stmt
-        MOV #1, *SP(#5) ; |2498| 
+        MOV #1, *SP(#6) ; |2498| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2501,column 5,is_stmt
-        MOV dbl(*SP(#6)), XAR3
+        MOV dbl(*SP(#8)), XAR3
         MOV *AR3(#8), AR1 ; |2501| 
         BCC $C$L138,AR1 != #0 ; |2501| 
                                         ; branchcc occurs ; |2501| 
@@ -4892,7 +4892,7 @@ $C$L139:
         BCC $C$L141,AR1 != #0 ; |2501| 
                                         ; branchcc occurs ; |2501| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2507,column 6,is_stmt
-        MOV dbl(*SP(#6)), XAR0
+        MOV dbl(*SP(#8)), XAR0
         AADD #8, AR0 ; |2507| 
 $C$DW$444	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$444, DW_AT_low_pc(0x00)
@@ -4903,22 +4903,22 @@ $C$DW$444	.dwtag  DW_TAG_TI_branch
         BCC $C$L141,T0 == #0 ; |2507| 
                                         ; branchcc occurs ; |2507| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2509,column 7,is_stmt
-        MOV #-5, *SP(#5) ; |2509| 
+        MOV #-5, *SP(#6) ; |2509| 
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2510,column 6,is_stmt
         B $C$L141 ; |2510| 
                                         ; branch occurs ; |2510| 
 $C$L140:    
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2523,column 5,is_stmt
-        MOV #0, *SP(#5) ; |2523| 
+        MOV #0, *SP(#6) ; |2523| 
 $C$L141:    
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2526,column 3,is_stmt
  nop
  bclr INTM
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2528,column 3,is_stmt
-        MOV *SP(#5), T0 ; |2528| 
+        MOV *SP(#6), T0 ; |2528| 
 $C$L142:    
 	.dwpsn	file "../FreeRTOS/Source/queue.c",line 2529,column 2,is_stmt
-        AADD #9, SP
+        AADD #11, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$445	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$445, DW_AT_low_pc(0x00)
@@ -5513,24 +5513,10 @@ $C$DW$T$11	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$11, DW_AT_name("unsigned int")
 	.dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
-$C$DW$T$38	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
-	.dwattr $C$DW$T$38, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$38, DW_AT_language(DW_LANG_C)
 $C$DW$498	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$498, DW_AT_type(*$C$DW$T$38)
-$C$DW$T$74	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$74, DW_AT_type(*$C$DW$498)
-$C$DW$T$101	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$101, DW_AT_type(*$C$DW$T$38)
-	.dwattr $C$DW$T$101, DW_AT_address_class(0x17)
-$C$DW$499	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$499, DW_AT_type(*$C$DW$T$101)
-$C$DW$T$102	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$102, DW_AT_type(*$C$DW$499)
-$C$DW$500	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$500, DW_AT_type(*$C$DW$T$11)
+	.dwattr $C$DW$498, DW_AT_type(*$C$DW$T$11)
 $C$DW$T$129	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$129, DW_AT_type(*$C$DW$500)
+	.dwattr $C$DW$T$129, DW_AT_type(*$C$DW$498)
 $C$DW$T$60	.dwtag  DW_TAG_typedef, DW_AT_name("size_t")
 	.dwattr $C$DW$T$60, DW_AT_type(*$C$DW$T$11)
 	.dwattr $C$DW$T$60, DW_AT_language(DW_LANG_C)
@@ -5542,6 +5528,20 @@ $C$DW$T$13	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$13, DW_AT_name("unsigned long")
 	.dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+$C$DW$T$38	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
+	.dwattr $C$DW$T$38, DW_AT_type(*$C$DW$T$13)
+	.dwattr $C$DW$T$38, DW_AT_language(DW_LANG_C)
+$C$DW$499	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$499, DW_AT_type(*$C$DW$T$38)
+$C$DW$T$74	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$74, DW_AT_type(*$C$DW$499)
+$C$DW$T$101	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$101, DW_AT_type(*$C$DW$T$38)
+	.dwattr $C$DW$T$101, DW_AT_address_class(0x17)
+$C$DW$500	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$500, DW_AT_type(*$C$DW$T$101)
+$C$DW$T$102	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$102, DW_AT_type(*$C$DW$500)
 $C$DW$T$14	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$14, DW_AT_name("long long")
@@ -5701,7 +5701,7 @@ $C$DW$T$36	.dwtag  DW_TAG_typedef, DW_AT_name("MiniListItem_t")
 
 $C$DW$T$44	.dwtag  DW_TAG_structure_type
 	.dwattr $C$DW$T$44, DW_AT_name("xTIME_OUT")
-	.dwattr $C$DW$T$44, DW_AT_byte_size(0x02)
+	.dwattr $C$DW$T$44, DW_AT_byte_size(0x04)
 $C$DW$515	.dwtag  DW_TAG_member
 	.dwattr $C$DW$515, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$515, DW_AT_name("xOverflowCount")
@@ -5712,7 +5712,7 @@ $C$DW$516	.dwtag  DW_TAG_member
 	.dwattr $C$DW$516, DW_AT_type(*$C$DW$T$38)
 	.dwattr $C$DW$516, DW_AT_name("xTimeOnEntering")
 	.dwattr $C$DW$516, DW_AT_TI_symbol_name("_xTimeOnEntering")
-	.dwattr $C$DW$516, DW_AT_data_member_location[DW_OP_plus_uconst 0x1]
+	.dwattr $C$DW$516, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
 	.dwattr $C$DW$516, DW_AT_accessibility(DW_ACCESS_public)
 	.dwendtag $C$DW$T$44
 

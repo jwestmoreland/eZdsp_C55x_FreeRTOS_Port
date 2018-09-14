@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sun Sep 09 04:48:25 2018                                 *
+;* Date/Time created: Fri Sep 14 03:53:51 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -144,7 +144,7 @@ $C$DW$27	.dwtag  DW_TAG_variable, DW_AT_name("usCriticalNesting")
 	.dwattr $C$DW$27, DW_AT_declaration
 	.dwattr $C$DW$27, DW_AT_external
 	.bss	_xPolledQueue$1,2,0,2
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1900412 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1928012 
 	.sect	".text"
 	.align 4
 	.global	_vStartPolledQueueTasks
@@ -274,8 +274,8 @@ $C$DW$37	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
 ;*******************************************************************************
 ;* FUNCTION NAME: vPolledQueueProducer                                         *
 ;*                                                                             *
-;*   Function Uses Regs : T0,T1,T2,AR0,XAR0,AR1,XAR1,AR2,AR3,XAR3,SP,CARRY,TC1,*
-;*                        M40,SATA,SATD,RDM,FRCT,SMUL                          *
+;*   Function Uses Regs : AC0,AC0,T0,T2,AR0,XAR0,AR1,XAR1,AR2,AR3,XAR3,SP,     *
+;*                        CARRY,TC1,M40,SATA,SATD,RDM,FRCT,SMUL                *
 ;*   Save On Entry Regs : T2                                                   *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
 ;*   Total Frame Size   : 8 words                                              *
@@ -331,7 +331,7 @@ $C$DW$L$_vPolledQueueProducer$3$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/PollQ.c",line 122,column 4,is_stmt
         MOV dbl(*SP(#0)), XAR3
 
-        MOV #0, T0
+        MOV #0, AC0 ; |122| 
 ||      AMAR *SP(#2), XAR1
 
         MOV dbl(*AR3), XAR0
@@ -341,7 +341,7 @@ $C$DW$42	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$42, DW_AT_TI_call
 
         CALL #_xQueueGenericSend ; |122| 
-||      MOV #0, T1
+||      MOV #0, T0
 
                                         ; call occurs [#_xQueueGenericSend] ; |122| 
         MOV #1, AR1
@@ -410,14 +410,12 @@ $C$DW$L$_vPolledQueueProducer$10$E:
 $C$L7:    
 $C$DW$L$_vPolledQueueProducer$11$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/PollQ.c",line 146,column 3,is_stmt
+        MOV #200, AC0 ; |146| 
 $C$DW$43	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$43, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$43, DW_AT_name("_vTaskDelay")
 	.dwattr $C$DW$43, DW_AT_TI_call
-
         CALL #_vTaskDelay ; |146| 
-||      MOV #3, T0
-
                                         ; call occurs [#_vTaskDelay] ; |146| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/PollQ.c",line 147,column 2,is_stmt
         B $C$L2   ; |147| 
@@ -428,7 +426,7 @@ $C$DW$L$_vPolledQueueProducer$11$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$44	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$44, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\PollQ.asm:$C$L2:1:1536493705")
+	.dwattr $C$DW$44, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\PollQ.asm:$C$L2:1:1536922431")
 	.dwattr $C$DW$44, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/PollQ.c")
 	.dwattr $C$DW$44, DW_AT_TI_begin_line(0x75)
 	.dwattr $C$DW$44, DW_AT_TI_end_line(0x93)
@@ -440,7 +438,7 @@ $C$DW$46	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$46, DW_AT_high_pc($C$DW$L$_vPolledQueueProducer$11$E)
 
 $C$DW$47	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$47, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\PollQ.asm:$C$L3:2:1536493705")
+	.dwattr $C$DW$47, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\PollQ.asm:$C$L3:2:1536922431")
 	.dwattr $C$DW$47, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/PollQ.c")
 	.dwattr $C$DW$47, DW_AT_TI_begin_line(0x77)
 	.dwattr $C$DW$47, DW_AT_TI_end_line(0x8e)
@@ -499,8 +497,8 @@ $C$DW$57	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
 ;*******************************************************************************
 ;* FUNCTION NAME: vPolledQueueConsumer                                         *
 ;*                                                                             *
-;*   Function Uses Regs : T0,AR0,XAR0,AR1,XAR1,AR2,AR3,XAR3,SP,CARRY,TC1,M40,  *
-;*                        SATA,SATD,RDM,FRCT,SMUL                              *
+;*   Function Uses Regs : AC0,AC0,T0,AR0,XAR0,AR1,XAR1,AR2,AR3,XAR3,SP,CARRY,  *
+;*                        TC1,M40,SATA,SATD,RDM,FRCT,SMUL                      *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
 ;*   Total Frame Size   : 6 words                                              *
 ;*                        (1 return address/alignment)                         *
@@ -559,7 +557,7 @@ $C$DW$63	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$63, DW_AT_TI_call
 
         CALL #_xQueueReceive ; |161| 
-||      MOV #0, T0
+||      MOV #0, AC0 ; |161| 
 
                                         ; call occurs [#_xQueueReceive] ; |161| 
         MOV #1, AR1
@@ -642,7 +640,7 @@ $C$DW$L$_vPolledQueueConsumer$11$E:
 $C$L13:    
 $C$DW$L$_vPolledQueueConsumer$12$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/PollQ.c",line 192,column 3,is_stmt
-        MOV #65519, T0 ; |192| 
+        MOV #180, AC0 ; |192| 
 $C$DW$65	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$65, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$65, DW_AT_name("_vTaskDelay")
@@ -656,7 +654,7 @@ $C$DW$L$_vPolledQueueConsumer$12$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$66	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$66, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\PollQ.asm:$C$L8:1:1536493705")
+	.dwattr $C$DW$66, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\PollQ.asm:$C$L8:1:1536922431")
 	.dwattr $C$DW$66, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/PollQ.c")
 	.dwattr $C$DW$66, DW_AT_TI_begin_line(0x9c)
 	.dwattr $C$DW$66, DW_AT_TI_end_line(0xc1)
@@ -668,7 +666,7 @@ $C$DW$68	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$68, DW_AT_high_pc($C$DW$L$_vPolledQueueConsumer$12$E)
 
 $C$DW$69	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$69, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\PollQ.asm:$C$L9:2:1536493705")
+	.dwattr $C$DW$69, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\PollQ.asm:$C$L9:2:1536922431")
 	.dwattr $C$DW$69, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/PollQ.c")
 	.dwattr $C$DW$69, DW_AT_TI_begin_line(0x9f)
 	.dwattr $C$DW$69, DW_AT_TI_end_line(0xbc)
@@ -906,24 +904,17 @@ $C$DW$T$11	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$11, DW_AT_name("unsigned int")
 	.dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
-$C$DW$T$35	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
-	.dwattr $C$DW$T$35, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$35, DW_AT_language(DW_LANG_C)
 $C$DW$91	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$91, DW_AT_type(*$C$DW$T$35)
-$C$DW$T$36	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$36, DW_AT_type(*$C$DW$91)
-$C$DW$92	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$92, DW_AT_type(*$C$DW$T$11)
+	.dwattr $C$DW$91, DW_AT_type(*$C$DW$T$11)
 $C$DW$T$65	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$65, DW_AT_type(*$C$DW$92)
+	.dwattr $C$DW$T$65, DW_AT_type(*$C$DW$91)
 $C$DW$T$50	.dwtag  DW_TAG_typedef, DW_AT_name("uint16_t")
 	.dwattr $C$DW$T$50, DW_AT_type(*$C$DW$T$11)
 	.dwattr $C$DW$T$50, DW_AT_language(DW_LANG_C)
-$C$DW$93	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$93, DW_AT_type(*$C$DW$T$50)
+$C$DW$92	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$92, DW_AT_type(*$C$DW$T$50)
 $C$DW$T$51	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$51, DW_AT_type(*$C$DW$93)
+	.dwattr $C$DW$T$51, DW_AT_type(*$C$DW$92)
 $C$DW$T$12	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$12, DW_AT_name("long")
@@ -932,6 +923,13 @@ $C$DW$T$13	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$13, DW_AT_name("unsigned long")
 	.dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+$C$DW$T$35	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
+	.dwattr $C$DW$T$35, DW_AT_type(*$C$DW$T$13)
+	.dwattr $C$DW$T$35, DW_AT_language(DW_LANG_C)
+$C$DW$93	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$93, DW_AT_type(*$C$DW$T$35)
+$C$DW$T$36	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$36, DW_AT_type(*$C$DW$93)
 $C$DW$T$14	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$14, DW_AT_name("long long")

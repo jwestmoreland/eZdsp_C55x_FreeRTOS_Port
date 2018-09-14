@@ -75,6 +75,10 @@ portSAVE_CONTEXT .macro
 			mov dbl (*ar7), xsp				; xsp contains our TCB now
 			mov dbl (*ar7(#2)), xssp			
 ;; what about xssp here?
+;;				mov xsp, dbl (*(#_save_xsp))			; save xsp
+;;			    mov xssp, dbl (*(#_save_xssp))			; save xssp
+
+
 			mov dbl (*(#_save_xar7)), xar7			; restore xar7
 
 			mov xar7, dbl(*sp(#8))				; save xar7
@@ -253,7 +257,7 @@ portRESTORE_CONTEXT .macro
 ;			mov dbl (*ar7), ar6
 ;			mov ar6, *sp				; xsp contains our TCB now
 ;			mov *ar7(#2), *ssp			
-
+;			POP mmap(ST3_55)
 ;			pshboth xar7				; should increment both
 			mov mmap(ST1_55), ar7
 			and #0xf7ff, ar7			; <here>#0800h
@@ -271,7 +275,8 @@ portRESTORE_CONTEXT .macro
 
 			mov dbl (*ar7), xsp				; xsp contains our TCB now
 			mov dbl (*ar7(#2)), xssp			
-
+;;                mov xsp, dbl (*(#_save_xsp))			; save xsp
+;;			    mov xssp, dbl (*(#_save_xssp))			; save xssp
 
 ;			mov mmap(ST0_55), *ssp(#1)
 ;			mov mmap(STO_55), *ssp(#2)
@@ -463,8 +468,10 @@ portRESTORE_CONTEXT .macro
 ;			mov t1, ssp
 ;			EDIS
 ;			NASP	; Un-align stack pointer
+;;			pop mmap(ST3_55)
 			mov dbl (*(#_save_xsp)), xsp			; restore xsp
 			mov dbl (*(#_save_xssp)), xssp			; restore xssp
+
 ;			aadd #-3, sp
 			bclr INTM		; enable interrupts
 ;			aadd #1, sp
@@ -497,7 +504,7 @@ _xPortStartScheduler:
 
 ;;		INTR INT14	; force interrupt - just for debug purposes.
 
-
+;;            psh mmap(ST3_55)
 			mov xar7, dbl (*(#_save_xar7))			; save xar7 
 			mov xar6, dbl (*(#_save_xar6))			; save xar6 
 
@@ -512,7 +519,7 @@ _xPortStartScheduler:
 			mov dbl (*(#_save_xar7)), xar7			; restore xar7
 			mov dbl (*(#_save_xar6)), xar6			; restore xar6
 			aadd #1, sp
-                portRESTORE_CONTEXT
+            portRESTORE_CONTEXT
 
 
 
@@ -520,20 +527,29 @@ _vTickISR:
  ;               bclr IFR0.IF4		; enable interrupts
 		
 		aadd #-1, sp
-		add #1, *(#_tickIRQctr)
+		MOV #0, *port(#6166) ; |119|
+        AND #0x0010, *(#1)
 		AND #0x0010, mmap(@IFR0)
-                portSAVE_CONTEXT
 
-                call     #_xTaskIncrementTick
+;		bset INTM		; disable interrupts
+		.if configUSE_TICK_CTR == 1
+		add #1, *(#_tickIRQctr)
+		.endif
+;;		psh mmap(ST3_55)
+        portSAVE_CONTEXT
 
-                .if configUSE_PREEMPTION == 1
-                call    #_vTaskSwitchContext
-                .endif
+        call     #_xTaskIncrementTick
+
+        .if configUSE_PREEMPTION == 1
+        mov xsp, dbl (*(#_save_xsp))			; save xsp
+	    mov xssp, dbl (*(#_save_xssp))			; save xssp
+        call    #_vTaskSwitchContext
+        .endif
 
    		mov #1, *port(#6166) ; |127|
 		or #0x0001, *port(#7188) ; |130|
 		aadd #1, sp
-                portRESTORE_CONTEXT
+        portRESTORE_CONTEXT
                                 
 ; /*-----------------------------------------------------------*/
 
@@ -579,6 +595,7 @@ _vPortYield:
 ;;                incdx.a r1
 
 ;                /* Save the context of the current task. */
+;;        psh mmap(ST3_55)
         portSAVE_CONTEXT
 
 ;        /* Switch to the highest priority task that is ready to run. */
