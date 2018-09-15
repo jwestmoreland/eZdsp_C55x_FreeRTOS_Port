@@ -541,7 +541,7 @@ _vTickISR:		; the timer ISR is aggregated for this processor architecture
 		aadd #-1, sp
 		MOV #0, *port(#6166) ; |119|
 		AND #0x0010, mmap(@IFR0)
-		bset INTM
+;		bset INTM
 	    MOV *port(#7188), AR1 ; |68|
         BSET @#0, AR1 ; |68|
         BCC $1,AR1 == #0 ; |68|
@@ -562,7 +562,7 @@ _vTickISR:		; the timer ISR is aggregated for this processor architecture
         call    #_vTaskSwitchContext
         .endif
 $1:
-		bclr INTM
+;		bclr INTM
    		mov #1, *port(#6166) ; |127|
    		MOV #0, *port(#6294) ; |92|
 ;		or #0x0001, *port(#7188) ; |130|

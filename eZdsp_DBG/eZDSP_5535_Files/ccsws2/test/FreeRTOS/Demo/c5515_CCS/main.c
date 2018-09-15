@@ -122,6 +122,8 @@
 #define c5545_bp   (1)
 #endif
 
+#define EVER ;;
+
 void InitSystem(void);
 void ConfigPort(void);
 void SYS_GlobalIntEnable(void);
@@ -188,11 +190,13 @@ static TaskHandle_t blueTaskHandle;
 static TaskHandle_t redTaskHandle;
 static TaskHandle_t greenTaskHandle;
 static TaskHandle_t xfTaskHandle;
+static TaskHandle_t controlTaskHandle;
 
 static SemaphoreHandle_t xSemaphoreR = NULL;
 static SemaphoreHandle_t xSemaphoreB = NULL;
 static SemaphoreHandle_t xSemaphoreY = NULL;
 static SemaphoreHandle_t xSemaphoreO = NULL;
+static SemaphoreHandle_t xSemaphoreBaton = NULL;
 
 
 static void blueLedToggle(void);
@@ -201,6 +205,7 @@ void LED_TaskRed(void * pvParameters);
 void LED_TaskBlue(void * pvParameters);
 void LED_TaskXF(void * pvParameters);			//
 static void LED_TaskGreen(void * pvParameters);
+static void LED_Control(void * pvParameters);
 // void DeviceInit(void);
 // void InitFlash();
 // void PieCntlInit(void);
@@ -460,8 +465,11 @@ int main( void )
     	 xSemaphoreY = xSemaphoreCreateBinary();
     	    	    	 if ( xSemaphoreY == NULL)
     	    	          { while(1); }
-
-
+#if 0
+    	 xSemaphoreBaton = xSemaphoreCreateBinary();
+    	    	    if ( xSemaphoreBaton == NULL)
+    	    	    	 { while(1); }
+#endif
 
 
         xTaskCreate(LED_TaskBlue,         // Function that implements the task.
@@ -495,6 +503,15 @@ int main( void )
                                          tskIDLE_PRIORITY + 1, // Priority at which the task is created.
                   //                       blueTaskStack,        // Array to use as the task's stack.
                   		 &greenTaskHandle );
+#if 0
+        xTaskCreate(LED_Control,  // Function that implements the task.
+                                  "LEDCTRL",      // Text name for the task.
+               				      configMINIMAL_STACK_SIZE,           // Number of indexes in the xStack array.
+                                  ( void * ) 2,         // Parameter passed into the task.
+                                  tskIDLE_PRIORITY + 1, // Priority at which the task is created.
+                  //                       blueTaskStack,        // Array to use as the task's stack.
+                  		 &controlTaskHandle );
+#endif
 
 //	vStartLEDFlashTasks( mainLED_TASK_PRIORITY );
 //	vStartIntegerMathTasks( tskIDLE_PRIORITY );
@@ -669,13 +686,13 @@ void vApplicationIdleHook( void )
 //	BlinkLED();
 //	toggleLED();
 //	EZDSP5535_LED_toggle(3);		// toggle 'BLUE' LED
-//	if ( ulIdleLoops > 500000 )
-	if ( ulIdleLoops > 60000 )
+	if ( ulIdleLoops > 250000 )
+//	if ( ulIdleLoops > 60000 )
 	{
 //		toggleLEDlocal();					// as a diagnostic; if timing is in the ballpark - the XF LED will blink at the rate ~1s (50% duty cycle)
 //		EZDSP5535_LED_toggle(0);
 		EZDSP5535_XF_toggle();
-
+#if 1
 		i++;
 
 		if ( i == 20 )
@@ -719,7 +736,7 @@ void vApplicationIdleHook( void )
 
         if ( i >= 100)
         	i = 0;
-
+#endif
 
 #if 0
 
@@ -1026,8 +1043,8 @@ void systemInit(void)
 // Bypass mode - set 12MHz CLK_IN, use for TIMER0
 
 //    CSL_SYSCTRL_REGS->CCR2->SYSCLKSEL = 0;   // clk_sel is set to 1 via SW3:1 on eZdsp
-    CSL_SYSCTRL_REGS->CCR2 = CSL_SYS_CCR2_TIMER0CLKSEL_SYSCLK | CSL_SYS_CCR2_SYSCLKSRC_BYPCLKIN ;
-//    CSL_SYSCTRL_REGS->CCR2 = CSL_SYS_CCR2_TIMER0CLKSEL_SYSCLK | CSL_SYS_CCR2_SYSCLKSEL_LOCK;
+//    CSL_SYSCTRL_REGS->CCR2 = CSL_SYS_CCR2_TIMER0CLKSEL_SYSCLK | CSL_SYS_CCR2_SYSCLKSRC_BYPCLKIN ;
+    CSL_SYSCTRL_REGS->CCR2 = CSL_SYS_CCR2_TIMER0CLKSEL_SYSCLK | CSL_SYS_CCR2_SYSCLKSEL_LOCK;
 
 
 
@@ -1067,6 +1084,12 @@ void LED_TaskBlue(void * pvParameters)
 //			vTaskDelay(1);
 
 		}
+#if 0
+		if (xSemaphoreGive ( xSemaphoreBaton) != pdTRUE )
+		{
+
+		}
+#endif
 	}
 }
 
@@ -1081,6 +1104,13 @@ void LED_TaskRed(void * pvParameters)
 //			vTaskDelay(1);
 
 		}
+#if 0
+		if (xSemaphoreGive ( xSemaphoreBaton) != pdTRUE )
+		{
+
+		}
+#endif
+
 	}
 }
 
@@ -1145,9 +1175,18 @@ static void LED_TaskXF(void * pvParameters)
 		EZDSP5535_GPIO_setOutput(15, 0);
 	}
 #endif
+
+
+
 //	vTaskDelay(500 / portTICK_PERIOD_MS);
 //	vTaskDelay(1);
 	}
+#if 0
+	if (xSemaphoreGive ( xSemaphoreBaton) != pdTRUE )
+	{
+
+	}
+#endif
 	}
 }
 
@@ -1174,8 +1213,73 @@ static void LED_TaskGreen(void * pvParameters)
 #endif
 //	vTaskDelay(500 / portTICK_PERIOD_MS);
 //	vTaskDelay(1);
+
 	}
+#if 0
+		if (xSemaphoreGive ( xSemaphoreBaton) != pdTRUE )
+			{
+
+			}
+#endif
+
 	}
 }
+#if 0
+static void LED_Control(void * pvParameters)
+{
+
+
+	for(EVER)
+	{
+
+		if (xSemaphoreGive ( xSemaphoreR) != pdTRUE )
+		{
+
+		}
+
+		if(xSemaphoreTake( xSemaphoreBaton, portMAX_DELAY ) != pdTRUE)
+		{
+
+		}
+
+		if (xSemaphoreGive ( xSemaphoreB) != pdTRUE )
+		{
+
+		}
+
+		if(xSemaphoreTake( xSemaphoreBaton, portMAX_DELAY ) != pdTRUE)
+		{
+
+		}
+
+		if (xSemaphoreGive ( xSemaphoreO) != pdTRUE )
+		{
+
+		}
+
+		if(xSemaphoreTake( xSemaphoreBaton, portMAX_DELAY ) != pdTRUE)
+		{
+
+		}
+
+		if (xSemaphoreGive ( xSemaphoreY) != pdTRUE )
+		{
+
+		}
+
+
+		if(xSemaphoreTake( xSemaphoreBaton, portMAX_DELAY ) != pdTRUE)
+		{
+
+        }
+
+
+	}
+
+
+}
+#endif
+
+
 
 //eof main.c

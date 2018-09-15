@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sat Sep 15 04:08:08 2018                                 *
+;* Date/Time created: Sat Sep 15 05:11:43 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -92,7 +92,7 @@ $C$DW$5	.dwtag  DW_TAG_variable, DW_AT_name("Timer2_Int_CTR")
 	.dwattr $C$DW$5, DW_AT_location[DW_OP_addr _Timer2_Int_CTR]
 	.dwattr $C$DW$5, DW_AT_type(*$C$DW$T$23)
 	.dwattr $C$DW$5, DW_AT_external
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1204412 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1408812 
 	.sect	".text"
 	.align 4
 	.global	_Timer0Init
@@ -125,8 +125,8 @@ _Timer0Init:
         MOV #32770, *port(#6160) ; |73| 
 	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 77,column 2,is_stmt
         MOV #0, *port(#6288) ; |77| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 81,column 2,is_stmt
-        MOV #12000, *port(#6162) ; |81| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 83,column 2,is_stmt
+        MOV #50000, *port(#6162) ; |83| 
 	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 86,column 2,is_stmt
         MOV #0, *port(#6163) ; |86| 
 	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 88,column 2,is_stmt

@@ -78,9 +78,9 @@ void Timer0Init(void)
 //	*CPU_TIM0_CTRL = 0x802E;
     //*CPU_TIM0_CTRL = 0x802C; 	// disable autoReload
 
-	*CPU_TIM0_PLWR = 0x2EE0;	// This is for 12MHz / 2 => 6MHz CLK
+//	*CPU_TIM0_PLWR = 0x2EE0;	// This is for 12MHz / 2 => 6MHz CLK
 //	*CPU_TIM0_PLWR = 0x1770;	// 6MHz - 60K counts in 1ms
-//	*CPU_TIM0_PLWR = 0xC350;	// PLL is 100MHz / 2 -> 50MHz - these many 1ms counts for 1ms tick
+	*CPU_TIM0_PLWR = 0xC350;	// PLL is 100MHz / 2 -> 50MHz - these many 1ms counts for 1ms tick
 //	*CPU_TIM0_PLWR = 0x1000;
 //	*CPU_TIM0_PLWR = 0x0020;
 	*CPU_TIM0_PHWR = 0x0000; 

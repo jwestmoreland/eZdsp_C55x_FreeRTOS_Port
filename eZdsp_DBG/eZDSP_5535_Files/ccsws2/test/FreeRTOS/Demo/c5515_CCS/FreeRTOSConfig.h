@@ -80,8 +80,8 @@
 /// #define configTICK_RATE_HZ						( ( TickType_t ) 1000 )
 #define configUSE_IDLE_HOOK			1
 #define configUSE_TICK_HOOK			0
-// #define configCPU_CLOCK_HZ			( ( unsigned long ) 50000000 ) /* Clock setup from main.c in the demo application. */
-#define configCPU_CLOCK_HZ			( ( unsigned long ) 6000000 )
+#define configCPU_CLOCK_HZ			( ( unsigned long ) 50000000 ) /* Clock setup from main.c in the demo application. */
+// #define configCPU_CLOCK_HZ			( ( unsigned long ) 6000000 )
 // #define configCPU_CLOCK_HZ			( ( unsigned long ) 0x1000 ) /
 // #define configCPU_CLOCK_HZ			( ( unsigned long ) 7995392 )
 #define configTICK_RATE_HZ			( ( TickType_t  ) 1000 )
@@ -119,7 +119,7 @@ to exclude the API function. */
 
 #define INCLUDE_xTaskResumeFromISR              1
 
-#define INCLUDE_xTaskGetSchedulerState          1
+#define INCLUDE_xTaskGetSchedulerState          0
 #define configQUEUE_REGISTRY_SIZE               8
 #if 1
 #define configASSERT( x ) if( ( x ) == pdFALSE ) { taskDISABLE_INTERRUPTS(); for( ;; ); }
