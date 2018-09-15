@@ -81,9 +81,12 @@ StackType_t portFLAGS_INT_ENABLED_POPPED = ( ( StackType_t ) 0xcd ) ;
 
 unsigned long save_xsp = 0x00000000;
 unsigned long save_xssp = 0x00000000;
+unsigned long first_save_xsp = 0x00000000;
+unsigned long first_save_xssp = 0x00000000;
+unsigned char first_flag = 0x00000000;
 unsigned long save_xar7 = 0x00000000;
 unsigned int  save_xar6 = 0x00000000;
-unsigned long tickIRQctr = 0x0;
+volatile unsigned short tickIRQctr = 0x0;
 
 /* We require the address of the pxCurrentTCB variable, but don't want to know
 any details of its type. */
@@ -93,7 +96,7 @@ extern volatile tskTCB * volatile pxCurrentTCB;
 extern struct tagSTACKSTRUCT *stackStruct;
 
 extern void StartTimer0(void);
-extern void StartTimer02(void);
+// extern void StartTimer02(void);
 
 extern void vTickISR(void);
 
@@ -208,6 +211,11 @@ void prvSetupTimerInterrupt( void );
 void pxPortInitialiseStack( StackType_t *pxTopOfStack, StackType_t *pxTopOfSysStack, TaskFunction_t pxCode, void *pvParameters )
 {
 //	STACKSTRUCT *stackStruct;
+#if 0
+	first_flag = 1;
+	if (first_flag == 1)
+		first_flag = 0;
+#endif
 	
 	/* 
 		Place a few bytes of known values on the bottom of the stack. 

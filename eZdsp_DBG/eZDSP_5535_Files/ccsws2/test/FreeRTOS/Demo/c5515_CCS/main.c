@@ -81,7 +81,7 @@
 #include "FreeRTOS.h"
 #include "ezdsp5535.h"
 #include "task.h"
-
+#include "semphr.h"
 /* Standard includes. */
 #include <stdio.h>
 #include <stdlib.h>
@@ -183,6 +183,24 @@ LCD represent LED's]*/
 #define mainNO_ERROR_CHECK_DELAY		( ( portTickType ) 3000 / portTICK_RATE_MS  )
 #define mainERROR_CHECK_DELAY			( ( portTickType ) 500 / portTICK_RATE_MS  )
 void vApplicationIdleHook( void );
+
+static TaskHandle_t blueTaskHandle;
+static TaskHandle_t redTaskHandle;
+static TaskHandle_t greenTaskHandle;
+static TaskHandle_t xfTaskHandle;
+
+static SemaphoreHandle_t xSemaphoreR = NULL;
+static SemaphoreHandle_t xSemaphoreB = NULL;
+static SemaphoreHandle_t xSemaphoreY = NULL;
+static SemaphoreHandle_t xSemaphoreO = NULL;
+
+
+static void blueLedToggle(void);
+static void redLedToggle(void);
+void LED_TaskRed(void * pvParameters);
+void LED_TaskBlue(void * pvParameters);
+void LED_TaskXF(void * pvParameters);			//
+static void LED_TaskGreen(void * pvParameters);
 // void DeviceInit(void);
 // void InitFlash();
 // void PieCntlInit(void);
@@ -235,8 +253,8 @@ int main( void )
 	IVPH = (unsigned short)temp1;
 	
 	asm ( " bclr C54CM" );    
-
-	// Change stack mode
+// #if 1
+	// Change stack mode - we're using 'slow' stack mode
 	if ( (DBIER0 & BIT2) == 0 )
 	{	// power-up case
 		DBIER0 |= BIT2;	// indicator for next reset
@@ -247,15 +265,15 @@ int main( void )
 		DBIER0 &= ~BIT2;	// put back to its reset state
 	}
 		asm ( " bclr C54CM" );    
-
-		
+// #endif
+		prvSetupHardware();
 	   /* Initialize board */
 ///		InitSystem();
 	    systemInit();
 	    EZDSP5535_init( );
-
-	    EZDSP5535_LED_init( );
 	    EZDSP5535_GPIO_init();
+	    EZDSP5535_LED_init( );
+
 
 #if c5545_bp
 	    EZDSP5535_GPIO_setDirection( 28, GPIO_OUT );  // LED3
@@ -323,7 +341,7 @@ int main( void )
 //	asm ( " bclr C54CM" );
 // mask all unused interrupts:
 
-	prvSetupHardware();
+
 //	DeviceInit();
 // Only used if running from FLASH
 // Note that the variable FLASH is defined by the compiler (-d FLASH)
@@ -426,7 +444,59 @@ int main( void )
 
 	/* Start the 'Check' task which is defined in this file. */
 //	xTaskCreate( vErrorChecks, "Check", configMINIMAL_STACK_SIZE, NULL, mainCHECK_TASK_PRIORITY, NULL );
-	vStartLEDFlashTasks( mainLED_TASK_PRIORITY );
+
+    	 xSemaphoreB = xSemaphoreCreateBinary();
+    	 if ( xSemaphoreB == NULL)
+          { while(1); }
+
+    	 xSemaphoreR = xSemaphoreCreateBinary();
+    	    	 if ( xSemaphoreR == NULL)
+    	          { while(1); }
+
+    	 xSemaphoreO = xSemaphoreCreateBinary();
+    	    	 if ( xSemaphoreO == NULL)
+    	          { while(1); }
+
+    	 xSemaphoreY = xSemaphoreCreateBinary();
+    	    	    	 if ( xSemaphoreY == NULL)
+    	    	          { while(1); }
+
+
+
+
+        xTaskCreate(LED_TaskBlue,         // Function that implements the task.
+                          "BlueLED",      // Text name for the task.
+						  configMINIMAL_STACK_SIZE,           // Number of indexes in the xStack array.
+                          ( void * ) 2,         // Parameter passed into the task.
+                          tskIDLE_PRIORITY + 0, // Priority at which the task is created.
+   //                       blueTaskStack,        // Array to use as the task's stack.
+   		 &blueTaskHandle );    // Variable to hold the task's data structure.
+
+        xTaskCreate(LED_TaskRed,         // Function that implements the task.
+                                 "RedLED",      // Text name for the task.
+       						  configMINIMAL_STACK_SIZE,           // Number of indexes in the xStack array.
+                                 ( void * ) 2,         // Parameter passed into the task.
+                                 tskIDLE_PRIORITY + 1, // Priority at which the task is created.
+          //                       blueTaskStack,        // Array to use as the task's stack.
+          		 &redTaskHandle );
+
+        xTaskCreate(LED_TaskXF,         // Function that implements the task.
+                                         "XFLEDtsk",      // Text name for the task.
+               						  configMINIMAL_STACK_SIZE,           // Number of indexes in the xStack array.
+                                         ( void * ) 2,         // Parameter passed into the task.
+                                         tskIDLE_PRIORITY + 0, // Priority at which the task is created.
+                  //                       blueTaskStack,        // Array to use as the task's stack.
+                  		 &xfTaskHandle );
+
+        xTaskCreate(LED_TaskGreen,         // Function that implements the task.
+                                         "GRNLED",      // Text name for the task.
+               						  configMINIMAL_STACK_SIZE,           // Number of indexes in the xStack array.
+                                         ( void * ) 2,         // Parameter passed into the task.
+                                         tskIDLE_PRIORITY + 1, // Priority at which the task is created.
+                  //                       blueTaskStack,        // Array to use as the task's stack.
+                  		 &greenTaskHandle );
+
+//	vStartLEDFlashTasks( mainLED_TASK_PRIORITY );
 //	vStartIntegerMathTasks( tskIDLE_PRIORITY );
 //	SYS_GlobalIntDisable();
 	
@@ -547,7 +617,7 @@ static void prvSetupHardware( void )
 //    IER0 = 0x0010;      // enable timer int    
 //    IER1 = 0x0004;      // enable RTC int	    
 //    Timer0Init();
-//    Timer02Init();
+ //   Timer02Init();
         RTC_reset();
 	reset_RTC();
 //	enable_rtc_second_int();
@@ -602,8 +672,55 @@ void vApplicationIdleHook( void )
 	
 	if ( ulIdleLoops > 500000 )
 	{
-		toggleLEDlocal();					// as a diagnostic; if timing is in the ballpark - the XF LED will blink at the rate ~1s (50% duty cycle)
+//		toggleLEDlocal();					// as a diagnostic; if timing is in the ballpark - the XF LED will blink at the rate ~1s (50% duty cycle)
 //		EZDSP5535_LED_toggle(0);
+		EZDSP5535_XF_toggle();
+
+		i++;
+
+		if ( i == 20 )
+		{
+
+		if (xSemaphoreGive ( xSemaphoreR) != pdTRUE )
+		{
+
+		}
+		}
+
+		if ( i == 40 )
+		{
+
+		if (xSemaphoreGive ( xSemaphoreB) != pdTRUE )
+		{
+
+		}
+
+		}
+
+		if ( i == 60 )
+		{
+
+		if (xSemaphoreGive ( xSemaphoreO) != pdTRUE )
+		{
+
+		}
+		}
+
+		if ( i == 80 )
+		{
+
+		if (xSemaphoreGive ( xSemaphoreY) != pdTRUE )
+		{
+
+		}
+
+		}
+
+
+        if ( i >= 100)
+        	i = 0;
+
+
 #if 0
 
 		
@@ -635,11 +752,6 @@ void vApplicationIdleHook( void )
 	
 }
 /*-----------------------------------------------------------*/
-
-
-
-
-
 
 
 void InitSystem(void)
@@ -723,9 +835,9 @@ void SYS_GlobalIntDisable(void)
 static toggleLEDlocal(void)
 {
 	portSHORT temp, i;
-#if eZdsp_c5535
-	EZDSP5535_XF_toggle();
-#endif
+// #if eZdsp_c5535
+// 	EZDSP5535_XF_toggle();
+// #endif
 //	EZDSP5535_LED_toggle( 3 );
 //	EZDSP5535_waitusec( 70000 );
 	
@@ -932,5 +1044,126 @@ void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
 	for( ;; );
 }
 
+void LED_TaskBlue(void * pvParameters)
+{
+	for(;;)
+	{
+		if(xSemaphoreTake( xSemaphoreB, portMAX_DELAY ) == pdTRUE)
+		{
+			blueLedToggle();
+//			vTaskDelay(500 / portTICK_PERIOD_MS);
+//			vTaskDelay(1);
 
+		}
+	}
+}
 
+void LED_TaskRed(void * pvParameters)
+{
+	for(;;)
+	{
+		if(xSemaphoreTake( xSemaphoreR, portMAX_DELAY ) == pdTRUE)
+		{
+			redLedToggle();
+//			vTaskDelay(500 / portTICK_PERIOD_MS);
+//			vTaskDelay(1);
+
+		}
+	}
+}
+
+static void blueLedToggle(void)
+{
+	static unsigned short counter = 0;
+
+	counter++;
+	if(counter & 1)
+	{
+		EZDSP5535_GPIO_setOutput(14,0);
+	}
+	else
+	{
+		EZDSP5535_GPIO_setOutput(14,1);
+	}
+}
+
+static void redLedToggle(void)
+{
+	static unsigned short counter = 0;
+
+	counter++;
+	if(counter & 1)
+	{
+		EZDSP5535_GPIO_setOutput(16, 1);
+	}
+	else
+	{
+		EZDSP5535_GPIO_setOutput(16, 0);
+	}
+}
+static void LED_TaskXF(void * pvParameters)
+{
+	static unsigned short counter = 0;
+
+//	counter++;
+//	if(counter & 1)
+//	{
+//		EZDSP5535_LED_on(2);
+//	}
+//	else
+//	{
+//		EZDSP5535_LED_off(2);
+//	}
+
+	for (;;)
+	{
+//	EZDSP5535_XF_toggle();
+
+	if(xSemaphoreTake( xSemaphoreY, portMAX_DELAY ) == pdTRUE)
+	{
+
+#if 1
+	counter++;
+	if(counter & 1)
+	{
+		EZDSP5535_GPIO_setOutput(15, 1);
+	}
+	else
+	{
+		EZDSP5535_GPIO_setOutput(15, 0);
+	}
+#endif
+//	vTaskDelay(500 / portTICK_PERIOD_MS);
+//	vTaskDelay(1);
+	}
+	}
+}
+
+static void LED_TaskGreen(void * pvParameters)
+{
+	static unsigned short counter = 0;
+
+	for (;;)
+	{
+
+		if(xSemaphoreTake( xSemaphoreO, portMAX_DELAY ) == pdTRUE)
+		{
+
+#if 1
+	counter++;
+	if(counter & 1)
+	{
+		EZDSP5535_GPIO_setOutput(17, 1);
+	}
+	else
+	{
+		EZDSP5535_GPIO_setOutput(17, 0);
+	}
+#endif
+//	vTaskDelay(500 / portTICK_PERIOD_MS);
+//	vTaskDelay(1);
+	}
+	}
+}
+
+//eof main.c

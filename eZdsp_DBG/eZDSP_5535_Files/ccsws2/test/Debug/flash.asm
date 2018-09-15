@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Fri Sep 14 03:53:55 2018                                 *
+;* Date/Time created: Sat Sep 15 01:52:29 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -106,7 +106,7 @@ $C$DW$15	.dwtag  DW_TAG_variable, DW_AT_name("usCriticalNesting")
 	.dwattr $C$DW$15, DW_AT_type(*$C$DW$T$45)
 	.dwattr $C$DW$15, DW_AT_declaration
 	.dwattr $C$DW$15, DW_AT_external
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1629612 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1718812 
 	.sect	".text"
 	.align 4
 	.global	_vStartLEDFlashTasks
@@ -198,7 +198,7 @@ $C$DW$21	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$22	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$22, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\flash.asm:$C$L1:1:1536922435")
+	.dwattr $C$DW$22, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\flash.asm:$C$L1:1:1537001549")
 	.dwattr $C$DW$22, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/flash.c")
 	.dwattr $C$DW$22, DW_AT_TI_begin_line(0x48)
 	.dwattr $C$DW$22, DW_AT_TI_end_line(0x4c)
@@ -223,7 +223,7 @@ $C$DW$24	.dwtag  DW_TAG_subprogram, DW_AT_name("vLEDFlashTask")
 	.dwattr $C$DW$24, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/flash.c")
 	.dwattr $C$DW$24, DW_AT_TI_begin_line(0x50)
 	.dwattr $C$DW$24, DW_AT_TI_begin_column(0x08)
-	.dwattr $C$DW$24, DW_AT_TI_max_frame_size(0x0a)
+	.dwattr $C$DW$24, DW_AT_TI_max_frame_size(0x08)
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/flash.c",line 81,column 1,is_stmt,address _vLEDFlashTask
 
 	.dwfde $C$DW$CIE, _vLEDFlashTask
@@ -234,27 +234,19 @@ $C$DW$25	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
 ;*******************************************************************************
 ;* FUNCTION NAME: vLEDFlashTask                                                *
 ;*                                                                             *
-;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,T2,T3,AR0,XAR0,AR1,AR3,XAR3,SP,   *
-;*                        CARRY,M40,SATA,SATD,RDM,FRCT,SMUL                    *
-;*   Save On Entry Regs : T2,T3                                                *
+;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,AR0,XAR0,AR1,AR3,XAR3,SP,CARRY,   *
+;*                        M40,SATA,SATD,RDM,FRCT,SMUL                          *
 ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
-;*   Total Frame Size   : 10 words                                             *
+;*   Total Frame Size   : 8 words                                              *
 ;*                        (1 return address/alignment)                         *
 ;*                        (7 local values)                                     *
-;*                        (2 register save area)                               *
 ;*   Min System Stack   : 1 word                                               *
 ;*******************************************************************************
 _vLEDFlashTask:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-        PSH T2
-	.dwcfi	cfa_offset, 2
-	.dwcfi	save_reg_to_mem, 14, -2
-        PSH T3
-	.dwcfi	cfa_offset, 3
-	.dwcfi	save_reg_to_mem, 15, -3
         AADD #-7, SP
-	.dwcfi	cfa_offset, 10
+	.dwcfi	cfa_offset, 8
 $C$DW$26	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
 	.dwattr $C$DW$26, DW_AT_TI_symbol_name("_pvParameters")
 	.dwattr $C$DW$26, DW_AT_type(*$C$DW$T$3)
@@ -329,43 +321,41 @@ $C$DW$31	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$31, DW_AT_TI_call
         CALL #_xTaskGetTickCount ; |108| 
                                         ; call occurs [#_xTaskGetTickCount] ; |108| 
-        MOV #50000, T2 ; |119| 
-        MOV #50000, T3 ; |114| 
         MOV AC0, dbl(*SP(#4)) ; |108| 
 $C$L4:    
 $C$DW$L$_vLEDFlashTask$5$B:
-	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/flash.c",line 114,column 3,is_stmt
-        AND #0xffff, T3, AC0 ; |114| 
-$C$DW$32	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$32, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$32, DW_AT_name("_vTaskDelay")
-	.dwattr $C$DW$32, DW_AT_TI_call
-        CALL #_vTaskDelay ; |114| 
-                                        ; call occurs [#_vTaskDelay] ; |114| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/flash.c",line 115,column 3,is_stmt
         MOV *SP(#6), T0 ; |115| 
-$C$DW$33	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$33, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$33, DW_AT_name("_vParTestToggleLED")
-	.dwattr $C$DW$33, DW_AT_TI_call
+$C$DW$32	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$32, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$32, DW_AT_name("_vParTestToggleLED")
+	.dwattr $C$DW$32, DW_AT_TI_call
         CALL #_vParTestToggleLED ; |115| 
                                         ; call occurs [#_vParTestToggleLED] ; |115| 
-	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/flash.c",line 119,column 3,is_stmt
-        AND #0xffff, T2, AC0 ; |119| 
-$C$DW$34	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$34, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$34, DW_AT_name("_vTaskDelay")
-	.dwattr $C$DW$34, DW_AT_TI_call
-        CALL #_vTaskDelay ; |119| 
-                                        ; call occurs [#_vTaskDelay] ; |119| 
+	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/flash.c",line 116,column 3,is_stmt
+        MOV #500, AC0 ; |116| 
+$C$DW$33	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$33, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$33, DW_AT_name("_vTaskDelay")
+	.dwattr $C$DW$33, DW_AT_TI_call
+        CALL #_vTaskDelay ; |116| 
+                                        ; call occurs [#_vTaskDelay] ; |116| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/flash.c",line 120,column 3,is_stmt
         MOV *SP(#6), T0 ; |120| 
-$C$DW$35	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$35, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$35, DW_AT_name("_vParTestToggleLED")
-	.dwattr $C$DW$35, DW_AT_TI_call
+$C$DW$34	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$34, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$34, DW_AT_name("_vParTestToggleLED")
+	.dwattr $C$DW$34, DW_AT_TI_call
         CALL #_vParTestToggleLED ; |120| 
                                         ; call occurs [#_vParTestToggleLED] ; |120| 
+	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/flash.c",line 121,column 3,is_stmt
+        MOV #500, AC0 ; |121| 
+$C$DW$35	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$35, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$35, DW_AT_name("_vTaskDelay")
+	.dwattr $C$DW$35, DW_AT_TI_call
+        CALL #_vTaskDelay ; |121| 
+                                        ; call occurs [#_vTaskDelay] ; |121| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/flash.c",line 122,column 3,is_stmt
         MOV dbl(*(#_LED_Blink_ctr)), AC0 ; |122| 
         ADD #1, AC0 ; |122| 
@@ -374,14 +364,10 @@ $C$DW$35	.dwtag  DW_TAG_TI_branch
         B $C$L4   ; |123| 
                                         ; branch occurs ; |123| 
 $C$DW$L$_vLEDFlashTask$5$E:
-	.dwcfi	cfa_offset, 3
-	.dwcfi	restore_reg, 15
-	.dwcfi	cfa_offset, 2
-	.dwcfi	restore_reg, 14
 	.dwcfi	cfa_offset, 1
 
 $C$DW$36	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$36, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\flash.asm:$C$L4:1:1536922435")
+	.dwattr $C$DW$36, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\flash.asm:$C$L4:1:1537001549")
 	.dwattr $C$DW$36, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/flash.c")
 	.dwattr $C$DW$36, DW_AT_TI_begin_line(0x6e)
 	.dwattr $C$DW$36, DW_AT_TI_end_line(0x7b)

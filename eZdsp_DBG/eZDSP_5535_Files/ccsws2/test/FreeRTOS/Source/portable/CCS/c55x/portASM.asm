@@ -1,25 +1,31 @@
-;	.cdecls C,LIST,"FreeRTOSConfig.h"
+; .cdecls C, LIST, "FreeRTOSConfig.h"
+;  .include "FreeRTOSConfig.h"
+; 32-bit stack slow mode
 	.mmregs
-
-
-	 .C54CM_off
-         .CPL_on
-         .ARMS_off
+;	 .C54CM_on
+;     .CPL_on
+;      .ARMS_off
 	 .align 4
-         
 ;	.c28_amode
-             .global _usCriticalNesting
+
+          .global _usCriticalNesting
 	     .global _save_xsp
 	     .global _save_xssp
+	     .global _first_save_xsp
+	     .global _first_save_xssp
+	     .global _first_flag
 	     .global _save_xar7
 	     .global _tZero
 	     .global _save_xar6
-             .global _pxCurrentTCB
+          .global _pxCurrentTCB
              .global _xTaskIncrementTick
              .ref    _xTaskIncrementTick
              .global _vTaskSwitchContext
              .global _prvSetupTimerInterrupt
 			 .global _tickIRQctr
+
+;			  .ref configUSE_TICK_CTR
+;			  .ref configUSE_PREEMPTION
 
              .def _vPortYield
              .def _xPortStartScheduler
@@ -40,15 +46,8 @@
 	     .global _STATUS2_HIGH
 ;	     .cdecls C,NOLIST,"portmacro.h"
 ;	     .cdecls C,LIST,"FreeRTOSConfig.h"
-
-
 ;			CLRC AMODE
-
 ;	System Stack
-
-
-
-
 	.text
 portSAVE_CONTEXT .macro 
 ;			;CONTEXT_SAVE
@@ -57,7 +56,7 @@ portSAVE_CONTEXT .macro
 ;			CLRC       AMODE
 ;			EALLOW
 
-	                bclr C54CM	; temp - until we figure out what is setting this
+;	                bclr C54CM	; temp - until we figure out what is setting this
 
 	                bset INTM		; disable interrupts
 
@@ -77,7 +76,6 @@ portSAVE_CONTEXT .macro
 ;; what about xssp here?
 ;;				mov xsp, dbl (*(#_save_xsp))			; save xsp
 ;;			    mov xssp, dbl (*(#_save_xssp))			; save xssp
-
 
 			mov dbl (*(#_save_xar7)), xar7			; restore xar7
 
@@ -202,9 +200,9 @@ portSAVE_CONTEXT .macro
 			.endm
 
 portRESTORE_CONTEXT .macro
-			.C54CM_off
-			.CPL_on
-			.ARMS_off
+;			.C54CM_on
+;			.CPL_on
+;			.ARMS_off
 			.align 4
 
 ; Restore context & return
@@ -221,15 +219,20 @@ portRESTORE_CONTEXT .macro
 			mov xar7, dbl (*(#_save_xar7))	
 
 			aadd #-3, sp
-
+;            aadd #-3, xsp
+;            CMP *(#_first_flag) == #1, TC1 ; |216|
+;            BCC $1,TC1 ; |216|
 			mov dbl (*(#_save_xsp)), xsp			; restore xsp
 			mov dbl (*(#_save_xssp)), xssp			; restore xssp
-
+;            B $4
 ;;;;;;			mov xsp, dbl (*(#_save_xsp))			; save xsp
 ;;;;;;			mov xssp, dbl (*(#_save_xssp))			; save xssp
 
 ;			aadd #-3, sp
-
+;$1
+;			mov dbl (*(#_first_save_xsp)), xsp			; restore xsp
+;			mov dbl (*(#_first_save_xssp)), xssp			; restore xssp
+;$4
 			mov xsp, xar7
 			mov xssp, xar6
 
@@ -469,9 +472,16 @@ portRESTORE_CONTEXT .macro
 ;			EDIS
 ;			NASP	; Un-align stack pointer
 ;;			pop mmap(ST3_55)
+;            CMP *(#_first_flag) == #1, TC1 ; |216|
+;            BCC $2,TC1 ; |216|
 			mov dbl (*(#_save_xsp)), xsp			; restore xsp
 			mov dbl (*(#_save_xssp)), xssp			; restore xssp
-
+;			B $3
+;$2
+;            MOV #0, *(#_first_flag) ; |217|
+;			mov dbl (*(#_first_save_xsp)), xsp			; restore xsp
+;			mov dbl (*(#_first_save_xssp)), xssp
+;$3
 ;			aadd #-3, sp
 			bclr INTM		; enable interrupts
 ;			aadd #1, sp
@@ -511,9 +521,12 @@ _xPortStartScheduler:
 			mov dbl (*(#_pxCurrentTCB)), xar7
 ; does this *always* work?
 			mov dbl (*ar7), xar6
+;			mov xsp, dbl (*(#_first_save_xsp))	        ; (init) xsp contains our TCB now
 			mov xsp, dbl (*(#_save_xsp))	        ; (init) xsp contains our TCB now
 			mov dbl (*ar7+), xar6
+;			mov xssp, dbl (*(#_first_save_xssp))
 			mov xssp, dbl (*(#_save_xssp))
+;			mov #1, *(#_first_flag)
 
 ; what about xssp here?
 			mov dbl (*(#_save_xar7)), xar7			; restore xar7
@@ -522,14 +535,17 @@ _xPortStartScheduler:
             portRESTORE_CONTEXT
 
 
-
-_vTickISR:
+_vTickISR:		; the timer ISR is aggregated for this processor architecture
  ;               bclr IFR0.IF4		; enable interrupts
 		
 		aadd #-1, sp
 		MOV #0, *port(#6166) ; |119|
-        AND #0x0010, *(#1)
 		AND #0x0010, mmap(@IFR0)
+		bset INTM
+	    MOV *port(#7188), AR1 ; |68|
+        BSET @#0, AR1 ; |68|
+        BCC $1,AR1 == #0 ; |68|
+;        AND #0x0010, *(#1)
 
 ;		bset INTM		; disable interrupts
 		.if configUSE_TICK_CTR == 1
@@ -541,13 +557,16 @@ _vTickISR:
         call     #_xTaskIncrementTick
 
         .if configUSE_PREEMPTION == 1
-        mov xsp, dbl (*(#_save_xsp))			; save xsp
-	    mov xssp, dbl (*(#_save_xssp))			; save xssp
+;        mov xsp, dbl (*(#_save_xsp))			; save xsp
+;	    mov xssp, dbl (*(#_save_xssp))			; save xssp
         call    #_vTaskSwitchContext
         .endif
-
+$1:
+		bclr INTM
    		mov #1, *port(#6166) ; |127|
-		or #0x0001, *port(#7188) ; |130|
+   		MOV #0, *port(#6294) ; |92|
+;		or #0x0001, *port(#7188) ; |130|
+        OR #0x0007, *port(#7188) ; |100|
 		aadd #1, sp
         portRESTORE_CONTEXT
                                 

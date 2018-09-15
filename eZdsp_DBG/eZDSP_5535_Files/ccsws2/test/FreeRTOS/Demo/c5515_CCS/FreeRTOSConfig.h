@@ -71,8 +71,10 @@
  * See http://www.freertos.org/a00110.html.
  *----------------------------------------------------------*/
 
+#define configUSE_TIME_SLICING		0				// preemptive, cooperative scheduler?
+#define configUSE_MUTEXES			1
 #define configUSE_PREEMPTION		1
-#define configUSE_TICK_CTR			0
+#define configUSE_TICK_CTR			1
 #define portUSING_SYSSTACK		    1				// defines using the SysStack in addition to the Stack
 #define configUSE_TICKLESS_IDLE		0
 /// #define configTICK_RATE_HZ						( ( TickType_t ) 1000 )
@@ -83,7 +85,7 @@
 // #define configCPU_CLOCK_HZ			( ( unsigned long ) 7995392 )
 #define configTICK_RATE_HZ			( ( TickType_t  ) 1000 )
 // #define configMAX_PRIORITIES		( ( unsigned BaseType_t ) 4 )
-#define configMAX_PRIORITIES		( 4 )
+#define configMAX_PRIORITIES		( 5 )
 #define configMINIMAL_STACK_SIZE	( ( unsigned short ) 128 )				// 128
 #define configTOTAL_HEAP_SIZE		( ( size_t ) ( 5000 ) )
 #define configMAX_TASK_NAME_LEN		( 8 )
@@ -92,12 +94,16 @@
 #define configIDLE_SHOULD_YIELD		1
 // #define configCHECK_FOR_STACK_OVERFLOW	2
 #define configUSE_MALLOC_FAILED_HOOK	1
+#define configSUPPORT_STATIC_ALLOCATION     0
 
-// #define configSUPPORT_DYNAMIC_ALLOCATION  ( 1 )
+#define configSUPPORT_DYNAMIC_ALLOCATION   1
 /* Co-routine definitions. */
 #define configUSE_CO_ROUTINES 		1
-#define configMAX_CO_ROUTINE_PRIORITIES ( 2 )
+#define configMAX_CO_ROUTINE_PRIORITIES 2
+#define configUSE_RECURSIVE_MUTEXES             1
 
+/* Semaphores */
+#define configUSE_COUNTING_SEMAPHORES           1
 /* Set the following definitions to 1 to include the API function, or zero
 to exclude the API function. */
 
@@ -110,10 +116,12 @@ to exclude the API function. */
 #define INCLUDE_vTaskDelay				1
 #define INCLUDE_uxTaskGetStackHighWaterMark 1
 
+#define INCLUDE_xTaskResumeFromISR              1
 
-
-
-
-
+#define INCLUDE_xTaskGetSchedulerState          1
+#define configQUEUE_REGISTRY_SIZE               8
+#if 1
+#define configASSERT( x ) if( ( x ) == pdFALSE ) { taskDISABLE_INTERRUPTS(); for( ;; ); }
+#endif
 
 #endif /* FREERTOS_CONFIG_H */

@@ -35,6 +35,8 @@ FreeRTOS/Demo/c5515_CCS/main.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/Free
 FreeRTOS/Demo/c5515_CCS/main.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/include/ezdsp5535.h
 FreeRTOS/Demo/c5515_CCS/main.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/task.h
 FreeRTOS/Demo/c5515_CCS/main.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/list.h
+FreeRTOS/Demo/c5515_CCS/main.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/semphr.h
+FreeRTOS/Demo/c5515_CCS/main.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/queue.h
 FreeRTOS/Demo/c5515_CCS/main.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdio.h
 FreeRTOS/Demo/c5515_CCS/main.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/linkage.h
 FreeRTOS/Demo/c5515_CCS/main.obj: F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdarg.h
@@ -102,6 +104,8 @@ F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/mpu_wrappers.h
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/include/ezdsp5535.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/task.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/list.h: 
+F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/semphr.h: 
+F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/queue.h: 
 F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdio.h: 
 F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/linkage.h: 
 F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdarg.h: 

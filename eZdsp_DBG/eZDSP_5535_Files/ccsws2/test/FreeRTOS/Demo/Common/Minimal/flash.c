@@ -111,14 +111,14 @@ UBaseType_t uxLED;
 	{
 		/* Delay for half the flash period then turn the LED on. */
 //		vTaskDelayUntil( &xLastFlashTime, xFlashRate );
-		vTaskDelay(50000);
-		vParTestToggleLED( uxLED );
 
+		vParTestToggleLED( uxLED );
+		vTaskDelay(500 / portTICK_PERIOD_MS);
 		/* Delay for half the flash period then turn the LED off. */
 //		vTaskDelayUntil( &xLastFlashTime, xFlashRate );
-		vTaskDelay(50000);
-		vParTestToggleLED( uxLED );
 
+		vParTestToggleLED( uxLED );
+		vTaskDelay(500 / portTICK_PERIOD_MS);
 		LED_Blink_ctr++;
 	}
 } /*lint !e715 !e818 !e830 Function definition must be standard for task creation. */

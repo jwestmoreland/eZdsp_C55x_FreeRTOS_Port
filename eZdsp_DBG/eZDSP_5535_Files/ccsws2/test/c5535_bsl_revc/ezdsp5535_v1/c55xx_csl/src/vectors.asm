@@ -12,9 +12,9 @@
          .mmregs
          .include "lpva200.inc"
          
-         .C54CM_off
-         .CPL_off
-         .ARMS_off
+;         .C54CM_on
+;         .CPL_off
+;         .ARMS_off
    
 ;**********************************************************************************
 ;        predefined stack operation modes  
@@ -41,7 +41,8 @@
 ;**********************************************************************************
 	.def	_RST
 _VECSTART:
-_RST:		.ivec    reset_isr, C54X_STK ; Reset / Software Interrupt #0
+_RST:		.ivec    reset_isr, C54X_STK ; Reset / Software Interrupt #0 ->slow-32 bit return
+; _RST:		.ivec    reset_isr, USE_RETA; Reset / Software Interrupt #0 ->fast return
 
 NMI:		.ivec    reset_isr	       ; Nonmaskable Interrupt
 
@@ -109,7 +110,7 @@ SINT31:		.ivec    sint31_isr		   ; Software Interrupt #31
 ;*****************************************************************
 ; Reset
 ;*****************************************************************
-
+;      .C54CM_off
       .text
       .def reset_isr
       .ref _c_int00

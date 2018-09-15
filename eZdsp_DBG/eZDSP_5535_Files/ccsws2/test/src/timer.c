@@ -41,18 +41,40 @@ volatile Uint16 Timer2_Int_CTR =0;
  extern void vTaskSwitchContext();
 
 extern void vTickISR();
+//**************************************************************************
+//        The IFR0 (Interrupt Flag Register 0)
+//**************************************************************************
+//15    14   13 12    11    10     9    8
+//RCV2 XMT2 SAR LCD PROG3 CoProc PROG2 DMA
+//7      6     5    4     3    2    1    0
+//PROG1 UART PROG0 TINT INT1 INT0 Reserved
+
+//**************************************************************************
+//        The IFR1 (Interrupt Flag Register 1)
+//**************************************************************************
+//15   11   10    9   8
+//Reserved RTOS DLOG BERR
+//7     6          5   4    3    2             1     0
+//I2C EMIF_Error GPIO USB  SPI Wakeup or RTC RCV3   XMT3
 
 void Timer0Init(void)
 {
-
 	/*  Timer0 Initialization */
 // timer interval 0.5sec (2Hz)
 // prescale = 1011 (devide by 4096)
 // 98.304M/4096 = 24K 
 // 24K/12K = 2Hz (12K = 0x2EE0)
+#if 0
+	if ( *CPU_TIMINT_AGGR | TIM0FLAG  )
+	{
+#endif
 
 	/* TIM0 EN | AutoReload disable | Prescale = 0(100/2 = 50MHz) ==> 20nsec */
 	*CPU_TIM0_CTRL = 0x8002; 	// autoReload
+
+
+//	*CPU_TIM01_CTRL = 0x0000;	// disabled
+	*CPU_TIM02_CTRL = 0x0000;	// disabled
 //	*CPU_TIM0_CTRL = 0x802E;
     //*CPU_TIM0_CTRL = 0x802C; 	// disable autoReload
 
@@ -68,10 +90,24 @@ void Timer0Init(void)
 	/*  Clearing timer Aggregation register*/
 	*CPU_TIMINT_AGGR = 0x0007;
 
+//	}
+
 	/*  enable timer0 int flag*/
 	*CPU_TIM0_IER = 0x0001;
-}
+//	*CPU_TIM01_IER = 0x0000;
+	*CPU_TIM02_IER = 0x0000;
+	/*  clear timer0 int flag*/
 
+//	*CPU_TIM0_IER = 0x0001;
+
+	/*	Clear Timer0 bit in Timer Aggregate register*/
+	*CPU_TIMINT_AGGR = *CPU_TIMINT_AGGR | TIM0FLAG ;
+	*CPU_TIMINT_AGGR = *CPU_TIMINT_AGGR | TIM1FLAG ;
+	*CPU_TIMINT_AGGR = *CPU_TIMINT_AGGR | TIM2FLAG ;
+
+
+}
+#if 0
 void Timer02Init(void)
 {
 
@@ -98,18 +134,20 @@ void Timer02Init(void)
 	/*  enable timer0 int flag*/
 	*CPU_TIM02_IER = 0x0001;
 }
+#endif
 
 void StartTimer0(void)
 {
 	/* Start the Timer 0*/
-	*CPU_TIM0_CTRL = *CPU_TIM0_CTRL | 0x0001; 
+	*CPU_TIM0_CTRL = *CPU_TIM0_CTRL | TIM0FLAG;
 }
-
+#if 0
 void StartTimer02(void)
 {
 	/* Start Timer 02*/
 	*CPU_TIM02_CTRL = *CPU_TIM02_CTRL | 0x0001; 
 }
+#endif
 #if 1
 interrupt void Timer_isr(void)
 {
@@ -167,18 +205,19 @@ Timer0_Int_CTR++;
 }
 
 #endif
-
+// this processor uses an aggregated timer ISR
+#if 0
 interrupt void Timer02_isr(void)
 {
 	Timer2_Int_CTR++;
     // clear timer02 int flag
-    IFR0 = IFR0&0x0010; 
-    
+    IFR0 = IFR0&0x0010;
+#if 0
     xTaskIncrementTick();
 
     if ( configUSE_PREEMPTION == 1 )
 	    vTaskSwitchContext();
-
+#endif
     /*  clear timer02 int flag*/
 	*CPU_TIM02_IER = 0x0001;
 	    
@@ -186,6 +225,6 @@ interrupt void Timer02_isr(void)
 	*CPU_TIMINT_AGGR = *CPU_TIMINT_AGGR | 0x0004 ;	
 
 	fTimer02=1;
-    //StartTimer0();
+    StartTimer02();
 }
-
+#endif

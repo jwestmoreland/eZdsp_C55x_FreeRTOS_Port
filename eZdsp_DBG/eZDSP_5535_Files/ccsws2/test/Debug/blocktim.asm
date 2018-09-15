@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Fri Sep 14 03:53:53 2018                                 *
+;* Date/Time created: Sat Sep 15 01:52:28 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -69,21 +69,21 @@ $C$DW$CU	.dwtag  DW_TAG_compile_unit
 
 $C$DW$1	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskCreate")
 	.dwattr $C$DW$1, DW_AT_TI_symbol_name("_xTaskCreate")
-	.dwattr $C$DW$1, DW_AT_type(*$C$DW$T$52)
+	.dwattr $C$DW$1, DW_AT_type(*$C$DW$T$57)
 	.dwattr $C$DW$1, DW_AT_declaration
 	.dwattr $C$DW$1, DW_AT_external
 $C$DW$2	.dwtag  DW_TAG_formal_parameter
 	.dwattr $C$DW$2, DW_AT_type(*$C$DW$T$32)
 $C$DW$3	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$3, DW_AT_type(*$C$DW$T$58)
+	.dwattr $C$DW$3, DW_AT_type(*$C$DW$T$60)
 $C$DW$4	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$4, DW_AT_type(*$C$DW$T$60)
+	.dwattr $C$DW$4, DW_AT_type(*$C$DW$T$62)
 $C$DW$5	.dwtag  DW_TAG_formal_parameter
 	.dwattr $C$DW$5, DW_AT_type(*$C$DW$T$29)
 $C$DW$6	.dwtag  DW_TAG_formal_parameter
 	.dwattr $C$DW$6, DW_AT_type(*$C$DW$T$23)
 $C$DW$7	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$7, DW_AT_type(*$C$DW$T$62)
+	.dwattr $C$DW$7, DW_AT_type(*$C$DW$T$64)
 	.dwendtag $C$DW$1
 
 
@@ -144,7 +144,7 @@ $C$DW$20	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskGetTickCount")
 
 $C$DW$21	.dwtag  DW_TAG_subprogram, DW_AT_name("xQueueGenericSend")
 	.dwattr $C$DW$21, DW_AT_TI_symbol_name("_xQueueGenericSend")
-	.dwattr $C$DW$21, DW_AT_type(*$C$DW$T$52)
+	.dwattr $C$DW$21, DW_AT_type(*$C$DW$T$57)
 	.dwattr $C$DW$21, DW_AT_declaration
 	.dwattr $C$DW$21, DW_AT_external
 $C$DW$22	.dwtag  DW_TAG_formal_parameter
@@ -154,13 +154,13 @@ $C$DW$23	.dwtag  DW_TAG_formal_parameter
 $C$DW$24	.dwtag  DW_TAG_formal_parameter
 	.dwattr $C$DW$24, DW_AT_type(*$C$DW$T$33)
 $C$DW$25	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$25, DW_AT_type(*$C$DW$T$53)
+	.dwattr $C$DW$25, DW_AT_type(*$C$DW$T$58)
 	.dwendtag $C$DW$21
 
 
 $C$DW$26	.dwtag  DW_TAG_subprogram, DW_AT_name("xQueueReceive")
 	.dwattr $C$DW$26, DW_AT_TI_symbol_name("_xQueueReceive")
-	.dwattr $C$DW$26, DW_AT_type(*$C$DW$T$52)
+	.dwattr $C$DW$26, DW_AT_type(*$C$DW$T$57)
 	.dwattr $C$DW$26, DW_AT_declaration
 	.dwattr $C$DW$26, DW_AT_external
 $C$DW$27	.dwtag  DW_TAG_formal_parameter
@@ -172,65 +172,76 @@ $C$DW$29	.dwtag  DW_TAG_formal_parameter
 	.dwendtag $C$DW$26
 
 
-$C$DW$30	.dwtag  DW_TAG_subprogram, DW_AT_name("xQueueGenericCreate")
-	.dwattr $C$DW$30, DW_AT_TI_symbol_name("_xQueueGenericCreate")
-	.dwattr $C$DW$30, DW_AT_type(*$C$DW$T$22)
+$C$DW$30	.dwtag  DW_TAG_subprogram, DW_AT_name("vQueueAddToRegistry")
+	.dwattr $C$DW$30, DW_AT_TI_symbol_name("_vQueueAddToRegistry")
 	.dwattr $C$DW$30, DW_AT_declaration
 	.dwattr $C$DW$30, DW_AT_external
 $C$DW$31	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$31, DW_AT_type(*$C$DW$T$24)
+	.dwattr $C$DW$31, DW_AT_type(*$C$DW$T$22)
 $C$DW$32	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$32, DW_AT_type(*$C$DW$T$24)
-$C$DW$33	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$33, DW_AT_type(*$C$DW$T$26)
+	.dwattr $C$DW$32, DW_AT_type(*$C$DW$T$52)
 	.dwendtag $C$DW$30
 
+
+$C$DW$33	.dwtag  DW_TAG_subprogram, DW_AT_name("xQueueGenericCreate")
+	.dwattr $C$DW$33, DW_AT_TI_symbol_name("_xQueueGenericCreate")
+	.dwattr $C$DW$33, DW_AT_type(*$C$DW$T$22)
+	.dwattr $C$DW$33, DW_AT_declaration
+	.dwattr $C$DW$33, DW_AT_external
+$C$DW$34	.dwtag  DW_TAG_formal_parameter
+	.dwattr $C$DW$34, DW_AT_type(*$C$DW$T$24)
+$C$DW$35	.dwtag  DW_TAG_formal_parameter
+	.dwattr $C$DW$35, DW_AT_type(*$C$DW$T$24)
+$C$DW$36	.dwtag  DW_TAG_formal_parameter
+	.dwattr $C$DW$36, DW_AT_type(*$C$DW$T$26)
+	.dwendtag $C$DW$33
+
 	.bss	_xTestQueue,2,0,2
-$C$DW$34	.dwtag  DW_TAG_variable, DW_AT_name("xTestQueue")
-	.dwattr $C$DW$34, DW_AT_TI_symbol_name("_xTestQueue")
-	.dwattr $C$DW$34, DW_AT_type(*$C$DW$T$22)
-	.dwattr $C$DW$34, DW_AT_location[DW_OP_addr _xTestQueue]
+$C$DW$37	.dwtag  DW_TAG_variable, DW_AT_name("xTestQueue")
+	.dwattr $C$DW$37, DW_AT_TI_symbol_name("_xTestQueue")
+	.dwattr $C$DW$37, DW_AT_type(*$C$DW$T$22)
+	.dwattr $C$DW$37, DW_AT_location[DW_OP_addr _xTestQueue]
 	.bss	_xSecondary,2,0,2
-$C$DW$35	.dwtag  DW_TAG_variable, DW_AT_name("xSecondary")
-	.dwattr $C$DW$35, DW_AT_TI_symbol_name("_xSecondary")
-	.dwattr $C$DW$35, DW_AT_type(*$C$DW$T$42)
-	.dwattr $C$DW$35, DW_AT_location[DW_OP_addr _xSecondary]
+$C$DW$38	.dwtag  DW_TAG_variable, DW_AT_name("xSecondary")
+	.dwattr $C$DW$38, DW_AT_TI_symbol_name("_xSecondary")
+	.dwattr $C$DW$38, DW_AT_type(*$C$DW$T$42)
+	.dwattr $C$DW$38, DW_AT_location[DW_OP_addr _xSecondary]
 	.bss	_xPrimaryCycles,1,0,0
-$C$DW$36	.dwtag  DW_TAG_variable, DW_AT_name("xPrimaryCycles")
-	.dwattr $C$DW$36, DW_AT_TI_symbol_name("_xPrimaryCycles")
-	.dwattr $C$DW$36, DW_AT_type(*$C$DW$T$54)
-	.dwattr $C$DW$36, DW_AT_location[DW_OP_addr _xPrimaryCycles]
+$C$DW$39	.dwtag  DW_TAG_variable, DW_AT_name("xPrimaryCycles")
+	.dwattr $C$DW$39, DW_AT_TI_symbol_name("_xPrimaryCycles")
+	.dwattr $C$DW$39, DW_AT_type(*$C$DW$T$59)
+	.dwattr $C$DW$39, DW_AT_location[DW_OP_addr _xPrimaryCycles]
 	.bss	_xSecondaryCycles,1,0,0
-$C$DW$37	.dwtag  DW_TAG_variable, DW_AT_name("xSecondaryCycles")
-	.dwattr $C$DW$37, DW_AT_TI_symbol_name("_xSecondaryCycles")
-	.dwattr $C$DW$37, DW_AT_type(*$C$DW$T$54)
-	.dwattr $C$DW$37, DW_AT_location[DW_OP_addr _xSecondaryCycles]
+$C$DW$40	.dwtag  DW_TAG_variable, DW_AT_name("xSecondaryCycles")
+	.dwattr $C$DW$40, DW_AT_TI_symbol_name("_xSecondaryCycles")
+	.dwattr $C$DW$40, DW_AT_type(*$C$DW$T$59)
+	.dwattr $C$DW$40, DW_AT_location[DW_OP_addr _xSecondaryCycles]
 	.bss	_xErrorOccurred,1,0,0
-$C$DW$38	.dwtag  DW_TAG_variable, DW_AT_name("xErrorOccurred")
-	.dwattr $C$DW$38, DW_AT_TI_symbol_name("_xErrorOccurred")
-	.dwattr $C$DW$38, DW_AT_type(*$C$DW$T$54)
-	.dwattr $C$DW$38, DW_AT_location[DW_OP_addr _xErrorOccurred]
+$C$DW$41	.dwtag  DW_TAG_variable, DW_AT_name("xErrorOccurred")
+	.dwattr $C$DW$41, DW_AT_TI_symbol_name("_xErrorOccurred")
+	.dwattr $C$DW$41, DW_AT_type(*$C$DW$T$59)
+	.dwattr $C$DW$41, DW_AT_location[DW_OP_addr _xErrorOccurred]
 	.bss	_xRunIndicator,1,0,0
-$C$DW$39	.dwtag  DW_TAG_variable, DW_AT_name("xRunIndicator")
-	.dwattr $C$DW$39, DW_AT_TI_symbol_name("_xRunIndicator")
-	.dwattr $C$DW$39, DW_AT_type(*$C$DW$T$71)
-	.dwattr $C$DW$39, DW_AT_location[DW_OP_addr _xRunIndicator]
+$C$DW$42	.dwtag  DW_TAG_variable, DW_AT_name("xRunIndicator")
+	.dwattr $C$DW$42, DW_AT_TI_symbol_name("_xRunIndicator")
+	.dwattr $C$DW$42, DW_AT_type(*$C$DW$T$73)
+	.dwattr $C$DW$42, DW_AT_location[DW_OP_addr _xRunIndicator]
 	.bss	_xLastPrimaryCycleCount$1,1,0,0
 	.bss	_xLastSecondaryCycleCount$2,1,0,0
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1734012 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\0114412 
 	.sect	".text"
 	.align 4
 	.global	_vCreateBlockTimeTasks
 
-$C$DW$40	.dwtag  DW_TAG_subprogram, DW_AT_name("vCreateBlockTimeTasks")
-	.dwattr $C$DW$40, DW_AT_low_pc(_vCreateBlockTimeTasks)
-	.dwattr $C$DW$40, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$40, DW_AT_TI_symbol_name("_vCreateBlockTimeTasks")
-	.dwattr $C$DW$40, DW_AT_external
-	.dwattr $C$DW$40, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$40, DW_AT_TI_begin_line(0x62)
-	.dwattr $C$DW$40, DW_AT_TI_begin_column(0x06)
-	.dwattr $C$DW$40, DW_AT_TI_max_frame_size(0x02)
+$C$DW$43	.dwtag  DW_TAG_subprogram, DW_AT_name("vCreateBlockTimeTasks")
+	.dwattr $C$DW$43, DW_AT_low_pc(_vCreateBlockTimeTasks)
+	.dwattr $C$DW$43, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$43, DW_AT_TI_symbol_name("_vCreateBlockTimeTasks")
+	.dwattr $C$DW$43, DW_AT_external
+	.dwattr $C$DW$43, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$43, DW_AT_TI_begin_line(0x62)
+	.dwattr $C$DW$43, DW_AT_TI_begin_column(0x06)
+	.dwattr $C$DW$43, DW_AT_TI_max_frame_size(0x02)
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 99,column 1,is_stmt,address _vCreateBlockTimeTasks
 
 	.dwfde $C$DW$CIE, _vCreateBlockTimeTasks
@@ -254,10 +265,10 @@ _vCreateBlockTimeTasks:
         MOV #5, T0
 ||      MOV #1, T1
 
-$C$DW$41	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$41, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$41, DW_AT_name("_xQueueGenericCreate")
-	.dwattr $C$DW$41, DW_AT_TI_call
+$C$DW$44	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$44, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$44, DW_AT_name("_xQueueGenericCreate")
+	.dwattr $C$DW$44, DW_AT_TI_call
 
         CALL #_xQueueGenericCreate ; |101| 
 ||      MOV #0, AR0
@@ -269,71 +280,79 @@ $C$DW$41	.dwtag  DW_TAG_TI_branch
         MOV XAR3, AC0
         BCC $C$L1,AC0 == #0 ; |103| 
                                         ; branchcc occurs ; |103| 
+	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 111,column 3,is_stmt
+        AMOV #$C$FSL1, XAR1 ; |111| 
+$C$DW$45	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$45, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$45, DW_AT_name("_vQueueAddToRegistry")
+	.dwattr $C$DW$45, DW_AT_TI_call
+        CALL #_vQueueAddToRegistry ; |111| 
+                                        ; call occurs [#_vQueueAddToRegistry] ; |111| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 114,column 3,is_stmt
         MOV #(_vPrimaryBlockTimeTestTask >> 16) << #16, AC0 ; |114| 
+        MOV #128, T0 ; |114| 
         AMOV #0, XAR2 ; |114| 
         AMOV #0, XAR1 ; |114| 
-        AMOV #$C$FSL1, XAR0 ; |114| 
-        MOV #128, T0 ; |114| 
+        AMOV #$C$FSL2, XAR0 ; |114| 
         OR #(_vPrimaryBlockTimeTestTask & 0xffff), AC0, AC0 ; |114| 
-$C$DW$42	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$42, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$42, DW_AT_name("_xTaskCreate")
-	.dwattr $C$DW$42, DW_AT_TI_call
+$C$DW$46	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$46, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$46, DW_AT_name("_xTaskCreate")
+	.dwattr $C$DW$46, DW_AT_TI_call
 
         CALL #_xTaskCreate ; |114| 
-||      MOV #1, T1
+||      MOV #2, T1
 
                                         ; call occurs [#_xTaskCreate] ; |114| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 115,column 3,is_stmt
         MOV #128, T0 ; |115| 
         AMOV #_xSecondary, XAR2 ; |115| 
         AMOV #0, XAR1 ; |115| 
-        AMOV #$C$FSL2, XAR0 ; |115| 
+        AMOV #$C$FSL3, XAR0 ; |115| 
         MOV #(_vSecondaryBlockTimeTestTask >> 16) << #16, AC0 ; |115| 
 
         OR #(_vSecondaryBlockTimeTestTask & 0xffff), AC0, AC0 ; |115| 
-||      MOV #0, T1
+||      MOV #1, T1
 
-$C$DW$43	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$43, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$43, DW_AT_name("_xTaskCreate")
-	.dwattr $C$DW$43, DW_AT_TI_call
+$C$DW$47	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$47, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$47, DW_AT_name("_xTaskCreate")
+	.dwattr $C$DW$47, DW_AT_TI_call
         CALL #_xTaskCreate ; |115| 
                                         ; call occurs [#_xTaskCreate] ; |115| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 117,column 1,is_stmt
 $C$L1:    
         AADD #1, SP
 	.dwcfi	cfa_offset, 1
-$C$DW$44	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$44, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$44, DW_AT_TI_return
+$C$DW$48	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$48, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$48, DW_AT_TI_return
         RET
                                         ; return occurs
-	.dwattr $C$DW$40, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$40, DW_AT_TI_end_line(0x75)
-	.dwattr $C$DW$40, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$43, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$43, DW_AT_TI_end_line(0x75)
+	.dwattr $C$DW$43, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$40
+	.dwendtag $C$DW$43
 
 	.sect	".text"
 	.align 4
 
-$C$DW$45	.dwtag  DW_TAG_subprogram, DW_AT_name("vPrimaryBlockTimeTestTask")
-	.dwattr $C$DW$45, DW_AT_low_pc(_vPrimaryBlockTimeTestTask)
-	.dwattr $C$DW$45, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$45, DW_AT_TI_symbol_name("_vPrimaryBlockTimeTestTask")
-	.dwattr $C$DW$45, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$45, DW_AT_TI_begin_line(0x78)
-	.dwattr $C$DW$45, DW_AT_TI_begin_column(0x0d)
-	.dwattr $C$DW$45, DW_AT_TI_max_frame_size(0x10)
+$C$DW$49	.dwtag  DW_TAG_subprogram, DW_AT_name("vPrimaryBlockTimeTestTask")
+	.dwattr $C$DW$49, DW_AT_low_pc(_vPrimaryBlockTimeTestTask)
+	.dwattr $C$DW$49, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$49, DW_AT_TI_symbol_name("_vPrimaryBlockTimeTestTask")
+	.dwattr $C$DW$49, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$49, DW_AT_TI_begin_line(0x78)
+	.dwattr $C$DW$49, DW_AT_TI_begin_column(0x0d)
+	.dwattr $C$DW$49, DW_AT_TI_max_frame_size(0x10)
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 121,column 1,is_stmt,address _vPrimaryBlockTimeTestTask
 
 	.dwfde $C$DW$CIE, _vPrimaryBlockTimeTestTask
-$C$DW$46	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
-	.dwattr $C$DW$46, DW_AT_TI_symbol_name("_pvParameters")
-	.dwattr $C$DW$46, DW_AT_type(*$C$DW$T$3)
-	.dwattr $C$DW$46, DW_AT_location[DW_OP_reg17]
+$C$DW$50	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
+	.dwattr $C$DW$50, DW_AT_TI_symbol_name("_pvParameters")
+	.dwattr $C$DW$50, DW_AT_type(*$C$DW$T$3)
+	.dwattr $C$DW$50, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: vPrimaryBlockTimeTestTask                                    *
 ;*                                                                             *
@@ -367,30 +386,30 @@ _vPrimaryBlockTimeTestTask:
 	.dwcfi	save_reg_to_mem, 30, -6
         AADD #-10, SP
 	.dwcfi	cfa_offset, 16
-$C$DW$47	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
-	.dwattr $C$DW$47, DW_AT_TI_symbol_name("_pvParameters")
-	.dwattr $C$DW$47, DW_AT_type(*$C$DW$T$3)
-	.dwattr $C$DW$47, DW_AT_location[DW_OP_bregx 0x24 0]
-$C$DW$48	.dwtag  DW_TAG_variable, DW_AT_name("xItem")
-	.dwattr $C$DW$48, DW_AT_TI_symbol_name("_xItem")
-	.dwattr $C$DW$48, DW_AT_type(*$C$DW$T$52)
-	.dwattr $C$DW$48, DW_AT_location[DW_OP_bregx 0x24 2]
-$C$DW$49	.dwtag  DW_TAG_variable, DW_AT_name("xData")
-	.dwattr $C$DW$49, DW_AT_TI_symbol_name("_xData")
-	.dwattr $C$DW$49, DW_AT_type(*$C$DW$T$52)
-	.dwattr $C$DW$49, DW_AT_location[DW_OP_bregx 0x24 3]
-$C$DW$50	.dwtag  DW_TAG_variable, DW_AT_name("xTimeWhenBlocking")
-	.dwattr $C$DW$50, DW_AT_TI_symbol_name("_xTimeWhenBlocking")
-	.dwattr $C$DW$50, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$50, DW_AT_location[DW_OP_bregx 0x24 4]
-$C$DW$51	.dwtag  DW_TAG_variable, DW_AT_name("xTimeToBlock")
-	.dwattr $C$DW$51, DW_AT_TI_symbol_name("_xTimeToBlock")
-	.dwattr $C$DW$51, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$51, DW_AT_location[DW_OP_bregx 0x24 6]
-$C$DW$52	.dwtag  DW_TAG_variable, DW_AT_name("xBlockedTime")
-	.dwattr $C$DW$52, DW_AT_TI_symbol_name("_xBlockedTime")
-	.dwattr $C$DW$52, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$52, DW_AT_location[DW_OP_bregx 0x24 8]
+$C$DW$51	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
+	.dwattr $C$DW$51, DW_AT_TI_symbol_name("_pvParameters")
+	.dwattr $C$DW$51, DW_AT_type(*$C$DW$T$3)
+	.dwattr $C$DW$51, DW_AT_location[DW_OP_bregx 0x24 0]
+$C$DW$52	.dwtag  DW_TAG_variable, DW_AT_name("xItem")
+	.dwattr $C$DW$52, DW_AT_TI_symbol_name("_xItem")
+	.dwattr $C$DW$52, DW_AT_type(*$C$DW$T$57)
+	.dwattr $C$DW$52, DW_AT_location[DW_OP_bregx 0x24 2]
+$C$DW$53	.dwtag  DW_TAG_variable, DW_AT_name("xData")
+	.dwattr $C$DW$53, DW_AT_TI_symbol_name("_xData")
+	.dwattr $C$DW$53, DW_AT_type(*$C$DW$T$57)
+	.dwattr $C$DW$53, DW_AT_location[DW_OP_bregx 0x24 3]
+$C$DW$54	.dwtag  DW_TAG_variable, DW_AT_name("xTimeWhenBlocking")
+	.dwattr $C$DW$54, DW_AT_TI_symbol_name("_xTimeWhenBlocking")
+	.dwattr $C$DW$54, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$54, DW_AT_location[DW_OP_bregx 0x24 4]
+$C$DW$55	.dwtag  DW_TAG_variable, DW_AT_name("xTimeToBlock")
+	.dwattr $C$DW$55, DW_AT_TI_symbol_name("_xTimeToBlock")
+	.dwattr $C$DW$55, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$55, DW_AT_location[DW_OP_bregx 0x24 6]
+$C$DW$56	.dwtag  DW_TAG_variable, DW_AT_name("xBlockedTime")
+	.dwattr $C$DW$56, DW_AT_TI_symbol_name("_xBlockedTime")
+	.dwattr $C$DW$56, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$56, DW_AT_location[DW_OP_bregx 0x24 8]
 
         MOV #5, AR6
 ||      MOV #5, AR5
@@ -405,10 +424,10 @@ $C$DW$52	.dwtag  DW_TAG_variable, DW_AT_name("xBlockedTime")
 $C$L2:    
 $C$DW$L$_vPrimaryBlockTimeTestTask$2$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 134,column 3,is_stmt
-$C$DW$53	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$53, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$53, DW_AT_name("_prvBasicDelayTests")
-	.dwattr $C$DW$53, DW_AT_TI_call
+$C$DW$57	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$57, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$57, DW_AT_name("_prvBasicDelayTests")
+	.dwattr $C$DW$57, DW_AT_TI_call
         CALL #_prvBasicDelayTests ; |134| 
                                         ; call occurs [#_prvBasicDelayTests] ; |134| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 141,column 8,is_stmt
@@ -433,10 +452,10 @@ $C$DW$L$_vPrimaryBlockTimeTestTask$3$B:
         MOV mmap(AC0L), AC0 ; |145| 
         MOV AC0, dbl(*SP(#6)) ; |145| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 147,column 4,is_stmt
-$C$DW$54	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$54, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$54, DW_AT_name("_xTaskGetTickCount")
-	.dwattr $C$DW$54, DW_AT_TI_call
+$C$DW$58	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$58, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$58, DW_AT_name("_xTaskGetTickCount")
+	.dwattr $C$DW$58, DW_AT_TI_call
         CALL #_xTaskGetTickCount ; |147| 
                                         ; call occurs [#_xTaskGetTickCount] ; |147| 
         MOV AC0, dbl(*SP(#4)) ; |147| 
@@ -444,10 +463,10 @@ $C$DW$54	.dwtag  DW_TAG_TI_branch
         MOV dbl(*(#_xTestQueue)), XAR0
         AMAR *SP(#3), XAR1
         MOV dbl(*SP(#6)), AC0 ; |151| 
-$C$DW$55	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$55, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$55, DW_AT_name("_xQueueReceive")
-	.dwattr $C$DW$55, DW_AT_TI_call
+$C$DW$59	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$59, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$59, DW_AT_name("_xQueueReceive")
+	.dwattr $C$DW$59, DW_AT_TI_call
         CALL #_xQueueReceive ; |151| 
                                         ; call occurs [#_xQueueReceive] ; |151| 
         BCC $C$L4,T0 == #0 ; |151| 
@@ -460,10 +479,10 @@ $C$DW$L$_vPrimaryBlockTimeTestTask$4$E:
 $C$L4:    
 $C$DW$L$_vPrimaryBlockTimeTestTask$5$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 157,column 4,is_stmt
-$C$DW$56	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$56, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$56, DW_AT_name("_xTaskGetTickCount")
-	.dwattr $C$DW$56, DW_AT_TI_call
+$C$DW$60	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$60, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$60, DW_AT_name("_xTaskGetTickCount")
+	.dwattr $C$DW$60, DW_AT_TI_call
         CALL #_xTaskGetTickCount ; |157| 
                                         ; call occurs [#_xTaskGetTickCount] ; |157| 
         SUB dbl(*SP(#4)), AC0, AC0 ; |157| 
@@ -526,10 +545,10 @@ $C$DW$L$_vPrimaryBlockTimeTestTask$11$B:
         MOV #0, AC0 ; |182| 
 ||      AMAR *SP(#2), XAR1
 
-$C$DW$57	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$57, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$57, DW_AT_name("_xQueueGenericSend")
-	.dwattr $C$DW$57, DW_AT_TI_call
+$C$DW$61	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$61, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$61, DW_AT_name("_xQueueGenericSend")
+	.dwattr $C$DW$61, DW_AT_TI_call
 
         CALL #_xQueueGenericSend ; |182| 
 ||      MOV #0, T0
@@ -576,10 +595,10 @@ $C$DW$L$_vPrimaryBlockTimeTestTask$15$B:
         MOV mmap(AC0L), AC0 ; |196| 
         MOV AC0, dbl(*SP(#6)) ; |196| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 198,column 4,is_stmt
-$C$DW$58	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$58, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$58, DW_AT_name("_xTaskGetTickCount")
-	.dwattr $C$DW$58, DW_AT_TI_call
+$C$DW$62	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$62, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$62, DW_AT_name("_xTaskGetTickCount")
+	.dwattr $C$DW$62, DW_AT_TI_call
         CALL #_xTaskGetTickCount ; |198| 
                                         ; call occurs [#_xTaskGetTickCount] ; |198| 
         MOV AC0, dbl(*SP(#4)) ; |198| 
@@ -587,10 +606,10 @@ $C$DW$58	.dwtag  DW_TAG_TI_branch
         MOV dbl(*(#_xTestQueue)), XAR0
         AMAR *SP(#2), XAR1
         MOV dbl(*SP(#6)), AC0 ; |202| 
-$C$DW$59	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$59, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$59, DW_AT_name("_xQueueGenericSend")
-	.dwattr $C$DW$59, DW_AT_TI_call
+$C$DW$63	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$63, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$63, DW_AT_name("_xQueueGenericSend")
+	.dwattr $C$DW$63, DW_AT_TI_call
 
         CALL #_xQueueGenericSend ; |202| 
 ||      MOV #0, T0
@@ -606,10 +625,10 @@ $C$DW$L$_vPrimaryBlockTimeTestTask$16$E:
 $C$L12:    
 $C$DW$L$_vPrimaryBlockTimeTestTask$17$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 208,column 4,is_stmt
-$C$DW$60	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$60, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$60, DW_AT_name("_xTaskGetTickCount")
-	.dwattr $C$DW$60, DW_AT_TI_call
+$C$DW$64	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$64, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$64, DW_AT_name("_xTaskGetTickCount")
+	.dwattr $C$DW$64, DW_AT_TI_call
         CALL #_xTaskGetTickCount ; |208| 
                                         ; call occurs [#_xTaskGetTickCount] ; |208| 
         SUB dbl(*SP(#4)), AC0, AC0 ; |208| 
@@ -660,10 +679,10 @@ $C$DW$L$_vPrimaryBlockTimeTestTask$22$B:
         MOV #0, *(#_xRunIndicator) ; |237| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 238,column 3,is_stmt
         MOV dbl(*(#_xSecondary)), XAR0
-$C$DW$61	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$61, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$61, DW_AT_name("_vTaskResume")
-	.dwattr $C$DW$61, DW_AT_TI_call
+$C$DW$65	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$65, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$65, DW_AT_name("_vTaskResume")
+	.dwattr $C$DW$65, DW_AT_TI_call
         CALL #_vTaskResume ; |238| 
                                         ; call occurs [#_vTaskResume] ; |238| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 241,column 10,is_stmt
@@ -675,10 +694,10 @@ $C$L16:
 $C$DW$L$_vPrimaryBlockTimeTestTask$23$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 244,column 4,is_stmt
         MOV #20, AC0 ; |244| 
-$C$DW$62	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$62, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$62, DW_AT_name("_vTaskDelay")
-	.dwattr $C$DW$62, DW_AT_TI_call
+$C$DW$66	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$66, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$66, DW_AT_name("_vTaskDelay")
+	.dwattr $C$DW$66, DW_AT_TI_call
         CALL #_vTaskDelay ; |244| 
                                         ; call occurs [#_vTaskDelay] ; |244| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 241,column 10,is_stmt
@@ -690,10 +709,10 @@ $C$L17:
 $C$DW$L$_vPrimaryBlockTimeTestTask$24$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 247,column 3,is_stmt
         MOV #20, AC0 ; |247| 
-$C$DW$63	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$63, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$63, DW_AT_name("_vTaskDelay")
-	.dwattr $C$DW$63, DW_AT_TI_call
+$C$DW$67	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$67, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$67, DW_AT_name("_vTaskDelay")
+	.dwattr $C$DW$67, DW_AT_TI_call
         CALL #_vTaskDelay ; |247| 
                                         ; call occurs [#_vTaskDelay] ; |247| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 248,column 3,is_stmt
@@ -711,10 +730,10 @@ $C$DW$L$_vPrimaryBlockTimeTestTask$25$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 254,column 4,is_stmt
         AMAR *SP(#3), XAR1
         MOV dbl(*(#_xTestQueue)), XAR0
-$C$DW$64	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$64, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$64, DW_AT_name("_xQueueReceive")
-	.dwattr $C$DW$64, DW_AT_TI_call
+$C$DW$68	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$68, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$68, DW_AT_name("_xQueueReceive")
+	.dwattr $C$DW$68, DW_AT_TI_call
 
         CALL #_xQueueReceive ; |254| 
 ||      MOV #0, AC0 ; |254| 
@@ -737,10 +756,10 @@ $C$DW$L$_vPrimaryBlockTimeTestTask$27$B:
         MOV #0, AC0 ; |262| 
 ||      AMAR *SP(#2), XAR1
 
-$C$DW$65	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$65, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$65, DW_AT_name("_xQueueGenericSend")
-	.dwattr $C$DW$65, DW_AT_TI_call
+$C$DW$69	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$69, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$69, DW_AT_name("_xQueueGenericSend")
+	.dwattr $C$DW$69, DW_AT_TI_call
 
         CALL #_xQueueGenericSend ; |262| 
 ||      MOV #0, T0
@@ -770,13 +789,13 @@ $C$L21:
 $C$DW$L$_vPrimaryBlockTimeTestTask$31$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 275,column 4,is_stmt
         MOV dbl(*(#_xSecondary)), XAR0
-$C$DW$66	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$66, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$66, DW_AT_name("_vTaskPrioritySet")
-	.dwattr $C$DW$66, DW_AT_TI_call
+$C$DW$70	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$70, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$70, DW_AT_name("_vTaskPrioritySet")
+	.dwattr $C$DW$70, DW_AT_TI_call
 
         CALL #_vTaskPrioritySet ; |275| 
-||      MOV #3, T0
+||      MOV #4, T0
 
                                         ; call occurs [#_vTaskPrioritySet] ; |275| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 279,column 4,is_stmt
@@ -792,13 +811,13 @@ $C$L22:
 $C$DW$L$_vPrimaryBlockTimeTestTask$33$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 287,column 4,is_stmt
         MOV dbl(*(#_xSecondary)), XAR0
-$C$DW$67	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$67, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$67, DW_AT_name("_vTaskPrioritySet")
-	.dwattr $C$DW$67, DW_AT_TI_call
+$C$DW$71	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$71, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$71, DW_AT_name("_vTaskPrioritySet")
+	.dwattr $C$DW$71, DW_AT_TI_call
 
         CALL #_vTaskPrioritySet ; |287| 
-||      MOV #0, T0
+||      MOV #1, T0
 
                                         ; call occurs [#_vTaskPrioritySet] ; |287| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 250,column 44,is_stmt
@@ -821,10 +840,10 @@ $C$L24:
 $C$DW$L$_vPrimaryBlockTimeTestTask$35$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 294,column 4,is_stmt
         MOV #20, AC0 ; |294| 
-$C$DW$68	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$68, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$68, DW_AT_name("_vTaskDelay")
-	.dwattr $C$DW$68, DW_AT_TI_call
+$C$DW$72	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$72, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$72, DW_AT_name("_vTaskDelay")
+	.dwattr $C$DW$72, DW_AT_TI_call
         CALL #_vTaskDelay ; |294| 
                                         ; call occurs [#_vTaskDelay] ; |294| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 292,column 10,is_stmt
@@ -836,10 +855,10 @@ $C$L25:
 $C$DW$L$_vPrimaryBlockTimeTestTask$36$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 296,column 3,is_stmt
         MOV #20, AC0 ; |296| 
-$C$DW$69	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$69, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$69, DW_AT_name("_vTaskDelay")
-	.dwattr $C$DW$69, DW_AT_TI_call
+$C$DW$73	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$73, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$73, DW_AT_name("_vTaskDelay")
+	.dwattr $C$DW$73, DW_AT_TI_call
         CALL #_vTaskDelay ; |296| 
                                         ; call occurs [#_vTaskDelay] ; |296| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 297,column 3,is_stmt
@@ -857,10 +876,10 @@ $C$DW$L$_vPrimaryBlockTimeTestTask$37$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 309,column 4,is_stmt
         AMAR *SP(#3), XAR1
         MOV dbl(*(#_xTestQueue)), XAR0
-$C$DW$70	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$70, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$70, DW_AT_name("_xQueueReceive")
-	.dwattr $C$DW$70, DW_AT_TI_call
+$C$DW$74	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$74, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$74, DW_AT_name("_xQueueReceive")
+	.dwattr $C$DW$74, DW_AT_TI_call
 
         CALL #_xQueueReceive ; |309| 
 ||      MOV #0, AC0 ; |309| 
@@ -890,10 +909,10 @@ $C$L28:
 $C$DW$L$_vPrimaryBlockTimeTestTask$40$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 317,column 3,is_stmt
         MOV dbl(*(#_xSecondary)), XAR0
-$C$DW$71	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$71, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$71, DW_AT_name("_vTaskResume")
-	.dwattr $C$DW$71, DW_AT_TI_call
+$C$DW$75	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$75, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$75, DW_AT_name("_vTaskResume")
+	.dwattr $C$DW$75, DW_AT_TI_call
         CALL #_vTaskResume ; |317| 
                                         ; call occurs [#_vTaskResume] ; |317| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 320,column 10,is_stmt
@@ -905,10 +924,10 @@ $C$L29:
 $C$DW$L$_vPrimaryBlockTimeTestTask$41$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 322,column 4,is_stmt
         MOV #20, AC0 ; |322| 
-$C$DW$72	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$72, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$72, DW_AT_name("_vTaskDelay")
-	.dwattr $C$DW$72, DW_AT_TI_call
+$C$DW$76	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$76, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$76, DW_AT_name("_vTaskDelay")
+	.dwattr $C$DW$76, DW_AT_TI_call
         CALL #_vTaskDelay ; |322| 
                                         ; call occurs [#_vTaskDelay] ; |322| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 320,column 10,is_stmt
@@ -920,10 +939,10 @@ $C$L30:
 $C$DW$L$_vPrimaryBlockTimeTestTask$42$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 324,column 3,is_stmt
         MOV #20, AC0 ; |324| 
-$C$DW$73	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$73, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$73, DW_AT_name("_vTaskDelay")
-	.dwattr $C$DW$73, DW_AT_TI_call
+$C$DW$77	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$77, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$77, DW_AT_name("_vTaskDelay")
+	.dwattr $C$DW$77, DW_AT_TI_call
         CALL #_vTaskDelay ; |324| 
                                         ; call occurs [#_vTaskDelay] ; |324| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 325,column 3,is_stmt
@@ -944,10 +963,10 @@ $C$DW$L$_vPrimaryBlockTimeTestTask$43$B:
         MOV #0, AC0 ; |331| 
 ||      AMAR *SP(#2), XAR1
 
-$C$DW$74	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$74, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$74, DW_AT_name("_xQueueGenericSend")
-	.dwattr $C$DW$74, DW_AT_TI_call
+$C$DW$78	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$78, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$78, DW_AT_name("_xQueueGenericSend")
+	.dwattr $C$DW$78, DW_AT_TI_call
 
         CALL #_xQueueGenericSend ; |331| 
 ||      MOV #0, T0
@@ -967,10 +986,10 @@ $C$DW$L$_vPrimaryBlockTimeTestTask$45$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 339,column 4,is_stmt
         AMAR *SP(#3), XAR1
         MOV dbl(*(#_xTestQueue)), XAR0
-$C$DW$75	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$75, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$75, DW_AT_name("_xQueueReceive")
-	.dwattr $C$DW$75, DW_AT_TI_call
+$C$DW$79	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$79, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$79, DW_AT_name("_xQueueReceive")
+	.dwattr $C$DW$79, DW_AT_TI_call
 
         CALL #_xQueueReceive ; |339| 
 ||      MOV #0, AC0 ; |339| 
@@ -1000,13 +1019,13 @@ $C$L34:
 $C$DW$L$_vPrimaryBlockTimeTestTask$49$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 352,column 4,is_stmt
         MOV dbl(*(#_xSecondary)), XAR0
-$C$DW$76	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$76, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$76, DW_AT_name("_vTaskPrioritySet")
-	.dwattr $C$DW$76, DW_AT_TI_call
+$C$DW$80	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$80, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$80, DW_AT_name("_vTaskPrioritySet")
+	.dwattr $C$DW$80, DW_AT_TI_call
 
         CALL #_vTaskPrioritySet ; |352| 
-||      MOV #3, T0
+||      MOV #4, T0
 
                                         ; call occurs [#_vTaskPrioritySet] ; |352| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 356,column 4,is_stmt
@@ -1022,13 +1041,13 @@ $C$L35:
 $C$DW$L$_vPrimaryBlockTimeTestTask$51$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 362,column 4,is_stmt
         MOV dbl(*(#_xSecondary)), XAR0
-$C$DW$77	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$77, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$77, DW_AT_name("_vTaskPrioritySet")
-	.dwattr $C$DW$77, DW_AT_TI_call
+$C$DW$81	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$81, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$81, DW_AT_name("_vTaskPrioritySet")
+	.dwattr $C$DW$81, DW_AT_TI_call
 
         CALL #_vTaskPrioritySet ; |362| 
-||      MOV #0, T0
+||      MOV #1, T0
 
                                         ; call occurs [#_vTaskPrioritySet] ; |362| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 327,column 44,is_stmt
@@ -1051,10 +1070,10 @@ $C$L37:
 $C$DW$L$_vPrimaryBlockTimeTestTask$53$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 369,column 4,is_stmt
         MOV #20, AC0 ; |369| 
-$C$DW$78	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$78, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$78, DW_AT_name("_vTaskDelay")
-	.dwattr $C$DW$78, DW_AT_TI_call
+$C$DW$82	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$82, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$82, DW_AT_name("_vTaskDelay")
+	.dwattr $C$DW$82, DW_AT_TI_call
         CALL #_vTaskDelay ; |369| 
                                         ; call occurs [#_vTaskDelay] ; |369| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 367,column 10,is_stmt
@@ -1066,10 +1085,10 @@ $C$L38:
 $C$DW$L$_vPrimaryBlockTimeTestTask$54$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 371,column 3,is_stmt
         MOV #20, AC0 ; |371| 
-$C$DW$79	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$79, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$79, DW_AT_name("_vTaskDelay")
-	.dwattr $C$DW$79, DW_AT_TI_call
+$C$DW$83	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$83, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$83, DW_AT_name("_vTaskDelay")
+	.dwattr $C$DW$83, DW_AT_TI_call
         CALL #_vTaskDelay ; |371| 
                                         ; call occurs [#_vTaskDelay] ; |371| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 373,column 3,is_stmt
@@ -1090,276 +1109,276 @@ $C$DW$L$_vPrimaryBlockTimeTestTask$54$E:
 	.dwcfi	restore_reg, 14
 	.dwcfi	cfa_offset, 1
 
-$C$DW$80	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$80, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L2:1:1536922433")
-	.dwattr $C$DW$80, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$80, DW_AT_TI_begin_line(0x80)
-	.dwattr $C$DW$80, DW_AT_TI_end_line(0x176)
-$C$DW$81	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$81, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$2$B)
-	.dwattr $C$DW$81, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$2$E)
-$C$DW$82	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$82, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$10$B)
-	.dwattr $C$DW$82, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$10$E)
-$C$DW$83	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$83, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$14$B)
-	.dwattr $C$DW$83, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$14$E)
-$C$DW$84	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$84, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$22$B)
-	.dwattr $C$DW$84, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$22$E)
+$C$DW$84	.dwtag  DW_TAG_TI_loop
+	.dwattr $C$DW$84, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L2:1:1537001548")
+	.dwattr $C$DW$84, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$84, DW_AT_TI_begin_line(0x80)
+	.dwattr $C$DW$84, DW_AT_TI_end_line(0x176)
 $C$DW$85	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$85, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$24$B)
-	.dwattr $C$DW$85, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$24$E)
+	.dwattr $C$DW$85, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$2$B)
+	.dwattr $C$DW$85, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$2$E)
 $C$DW$86	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$86, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$34$B)
-	.dwattr $C$DW$86, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$34$E)
+	.dwattr $C$DW$86, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$10$B)
+	.dwattr $C$DW$86, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$10$E)
 $C$DW$87	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$87, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$36$B)
-	.dwattr $C$DW$87, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$36$E)
+	.dwattr $C$DW$87, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$14$B)
+	.dwattr $C$DW$87, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$14$E)
 $C$DW$88	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$88, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$40$B)
-	.dwattr $C$DW$88, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$40$E)
+	.dwattr $C$DW$88, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$22$B)
+	.dwattr $C$DW$88, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$22$E)
 $C$DW$89	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$89, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$42$B)
-	.dwattr $C$DW$89, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$42$E)
+	.dwattr $C$DW$89, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$24$B)
+	.dwattr $C$DW$89, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$24$E)
 $C$DW$90	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$90, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$52$B)
-	.dwattr $C$DW$90, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$52$E)
+	.dwattr $C$DW$90, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$34$B)
+	.dwattr $C$DW$90, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$34$E)
 $C$DW$91	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$91, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$54$B)
-	.dwattr $C$DW$91, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$54$E)
-
-$C$DW$92	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$92, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L3:2:1536922433")
-	.dwattr $C$DW$92, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$92, DW_AT_TI_begin_line(0x8d)
-	.dwattr $C$DW$92, DW_AT_TI_end_line(0xac)
+	.dwattr $C$DW$91, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$36$B)
+	.dwattr $C$DW$91, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$36$E)
+$C$DW$92	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$92, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$40$B)
+	.dwattr $C$DW$92, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$40$E)
 $C$DW$93	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$93, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$3$B)
-	.dwattr $C$DW$93, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$3$E)
+	.dwattr $C$DW$93, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$42$B)
+	.dwattr $C$DW$93, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$42$E)
 $C$DW$94	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$94, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$4$B)
-	.dwattr $C$DW$94, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$4$E)
+	.dwattr $C$DW$94, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$52$B)
+	.dwattr $C$DW$94, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$52$E)
 $C$DW$95	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$95, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$5$B)
-	.dwattr $C$DW$95, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$5$E)
-$C$DW$96	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$96, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$6$B)
-	.dwattr $C$DW$96, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$6$E)
+	.dwattr $C$DW$95, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$54$B)
+	.dwattr $C$DW$95, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$54$E)
+
+$C$DW$96	.dwtag  DW_TAG_TI_loop
+	.dwattr $C$DW$96, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L3:2:1537001548")
+	.dwattr $C$DW$96, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$96, DW_AT_TI_begin_line(0x8d)
+	.dwattr $C$DW$96, DW_AT_TI_end_line(0xac)
 $C$DW$97	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$97, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$7$B)
-	.dwattr $C$DW$97, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$7$E)
+	.dwattr $C$DW$97, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$3$B)
+	.dwattr $C$DW$97, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$3$E)
 $C$DW$98	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$98, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$8$B)
-	.dwattr $C$DW$98, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$8$E)
+	.dwattr $C$DW$98, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$4$B)
+	.dwattr $C$DW$98, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$4$E)
 $C$DW$99	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$99, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$9$B)
-	.dwattr $C$DW$99, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$9$E)
-	.dwendtag $C$DW$92
-
-
-$C$DW$100	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$100, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L8:2:1536922433")
-	.dwattr $C$DW$100, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$100, DW_AT_TI_begin_line(0xb4)
-	.dwattr $C$DW$100, DW_AT_TI_end_line(0xbe)
+	.dwattr $C$DW$99, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$5$B)
+	.dwattr $C$DW$99, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$5$E)
+$C$DW$100	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$100, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$6$B)
+	.dwattr $C$DW$100, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$6$E)
 $C$DW$101	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$101, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$11$B)
-	.dwattr $C$DW$101, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$11$E)
+	.dwattr $C$DW$101, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$7$B)
+	.dwattr $C$DW$101, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$7$E)
 $C$DW$102	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$102, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$12$B)
-	.dwattr $C$DW$102, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$12$E)
+	.dwattr $C$DW$102, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$8$B)
+	.dwattr $C$DW$102, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$8$E)
 $C$DW$103	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$103, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$13$B)
-	.dwattr $C$DW$103, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$13$E)
-	.dwendtag $C$DW$100
+	.dwattr $C$DW$103, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$9$B)
+	.dwattr $C$DW$103, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$9$E)
+	.dwendtag $C$DW$96
 
 
 $C$DW$104	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$104, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L11:2:1536922433")
+	.dwattr $C$DW$104, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L8:2:1537001548")
 	.dwattr $C$DW$104, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$104, DW_AT_TI_begin_line(0xc0)
-	.dwattr $C$DW$104, DW_AT_TI_end_line(0xdf)
+	.dwattr $C$DW$104, DW_AT_TI_begin_line(0xb4)
+	.dwattr $C$DW$104, DW_AT_TI_end_line(0xbe)
 $C$DW$105	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$105, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$15$B)
-	.dwattr $C$DW$105, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$15$E)
+	.dwattr $C$DW$105, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$11$B)
+	.dwattr $C$DW$105, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$11$E)
 $C$DW$106	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$106, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$16$B)
-	.dwattr $C$DW$106, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$16$E)
+	.dwattr $C$DW$106, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$12$B)
+	.dwattr $C$DW$106, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$12$E)
 $C$DW$107	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$107, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$17$B)
-	.dwattr $C$DW$107, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$17$E)
-$C$DW$108	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$108, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$18$B)
-	.dwattr $C$DW$108, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$18$E)
-$C$DW$109	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$109, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$19$B)
-	.dwattr $C$DW$109, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$19$E)
-$C$DW$110	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$110, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$20$B)
-	.dwattr $C$DW$110, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$20$E)
-$C$DW$111	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$111, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$21$B)
-	.dwattr $C$DW$111, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$21$E)
+	.dwattr $C$DW$107, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$13$B)
+	.dwattr $C$DW$107, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$13$E)
 	.dwendtag $C$DW$104
 
 
-$C$DW$112	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$112, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L16:2:1536922433")
-	.dwattr $C$DW$112, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$112, DW_AT_TI_begin_line(0xf1)
-	.dwattr $C$DW$112, DW_AT_TI_end_line(0xf5)
+$C$DW$108	.dwtag  DW_TAG_TI_loop
+	.dwattr $C$DW$108, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L11:2:1537001548")
+	.dwattr $C$DW$108, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$108, DW_AT_TI_begin_line(0xc0)
+	.dwattr $C$DW$108, DW_AT_TI_end_line(0xdf)
+$C$DW$109	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$109, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$15$B)
+	.dwattr $C$DW$109, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$15$E)
+$C$DW$110	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$110, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$16$B)
+	.dwattr $C$DW$110, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$16$E)
+$C$DW$111	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$111, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$17$B)
+	.dwattr $C$DW$111, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$17$E)
+$C$DW$112	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$112, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$18$B)
+	.dwattr $C$DW$112, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$18$E)
 $C$DW$113	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$113, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$23$B)
-	.dwattr $C$DW$113, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$23$E)
-	.dwendtag $C$DW$112
-
-
-$C$DW$114	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$114, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L18:2:1536922433")
-	.dwattr $C$DW$114, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$114, DW_AT_TI_begin_line(0xfa)
-	.dwattr $C$DW$114, DW_AT_TI_end_line(0x120)
+	.dwattr $C$DW$113, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$19$B)
+	.dwattr $C$DW$113, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$19$E)
+$C$DW$114	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$114, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$20$B)
+	.dwattr $C$DW$114, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$20$E)
 $C$DW$115	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$115, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$25$B)
-	.dwattr $C$DW$115, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$25$E)
-$C$DW$116	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$116, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$26$B)
-	.dwattr $C$DW$116, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$26$E)
+	.dwattr $C$DW$115, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$21$B)
+	.dwattr $C$DW$115, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$21$E)
+	.dwendtag $C$DW$108
+
+
+$C$DW$116	.dwtag  DW_TAG_TI_loop
+	.dwattr $C$DW$116, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L16:2:1537001548")
+	.dwattr $C$DW$116, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$116, DW_AT_TI_begin_line(0xf1)
+	.dwattr $C$DW$116, DW_AT_TI_end_line(0xf5)
 $C$DW$117	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$117, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$27$B)
-	.dwattr $C$DW$117, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$27$E)
-$C$DW$118	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$118, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$28$B)
-	.dwattr $C$DW$118, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$28$E)
+	.dwattr $C$DW$117, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$23$B)
+	.dwattr $C$DW$117, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$23$E)
+	.dwendtag $C$DW$116
+
+
+$C$DW$118	.dwtag  DW_TAG_TI_loop
+	.dwattr $C$DW$118, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L18:2:1537001548")
+	.dwattr $C$DW$118, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$118, DW_AT_TI_begin_line(0xfa)
+	.dwattr $C$DW$118, DW_AT_TI_end_line(0x120)
 $C$DW$119	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$119, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$29$B)
-	.dwattr $C$DW$119, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$29$E)
+	.dwattr $C$DW$119, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$25$B)
+	.dwattr $C$DW$119, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$25$E)
 $C$DW$120	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$120, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$30$B)
-	.dwattr $C$DW$120, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$30$E)
+	.dwattr $C$DW$120, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$26$B)
+	.dwattr $C$DW$120, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$26$E)
 $C$DW$121	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$121, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$31$B)
-	.dwattr $C$DW$121, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$31$E)
+	.dwattr $C$DW$121, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$27$B)
+	.dwattr $C$DW$121, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$27$E)
 $C$DW$122	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$122, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$32$B)
-	.dwattr $C$DW$122, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$32$E)
+	.dwattr $C$DW$122, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$28$B)
+	.dwattr $C$DW$122, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$28$E)
 $C$DW$123	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$123, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$33$B)
-	.dwattr $C$DW$123, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$33$E)
-	.dwendtag $C$DW$114
-
-
-$C$DW$124	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$124, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L24:2:1536922433")
-	.dwattr $C$DW$124, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$124, DW_AT_TI_begin_line(0x124)
-	.dwattr $C$DW$124, DW_AT_TI_end_line(0x127)
+	.dwattr $C$DW$123, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$29$B)
+	.dwattr $C$DW$123, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$29$E)
+$C$DW$124	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$124, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$30$B)
+	.dwattr $C$DW$124, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$30$E)
 $C$DW$125	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$125, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$35$B)
-	.dwattr $C$DW$125, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$35$E)
-	.dwendtag $C$DW$124
-
-
-$C$DW$126	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$126, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L26:2:1536922433")
-	.dwattr $C$DW$126, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$126, DW_AT_TI_begin_line(0x133)
-	.dwattr $C$DW$126, DW_AT_TI_end_line(0x139)
+	.dwattr $C$DW$125, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$31$B)
+	.dwattr $C$DW$125, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$31$E)
+$C$DW$126	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$126, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$32$B)
+	.dwattr $C$DW$126, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$32$E)
 $C$DW$127	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$127, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$37$B)
-	.dwattr $C$DW$127, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$37$E)
-$C$DW$128	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$128, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$38$B)
-	.dwattr $C$DW$128, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$38$E)
+	.dwattr $C$DW$127, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$33$B)
+	.dwattr $C$DW$127, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$33$E)
+	.dwendtag $C$DW$118
+
+
+$C$DW$128	.dwtag  DW_TAG_TI_loop
+	.dwattr $C$DW$128, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L24:2:1537001548")
+	.dwattr $C$DW$128, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$128, DW_AT_TI_begin_line(0x124)
+	.dwattr $C$DW$128, DW_AT_TI_end_line(0x127)
 $C$DW$129	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$129, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$39$B)
-	.dwattr $C$DW$129, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$39$E)
-	.dwendtag $C$DW$126
+	.dwattr $C$DW$129, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$35$B)
+	.dwattr $C$DW$129, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$35$E)
+	.dwendtag $C$DW$128
 
 
 $C$DW$130	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$130, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L29:2:1536922433")
+	.dwattr $C$DW$130, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L26:2:1537001548")
 	.dwattr $C$DW$130, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$130, DW_AT_TI_begin_line(0x140)
-	.dwattr $C$DW$130, DW_AT_TI_end_line(0x143)
+	.dwattr $C$DW$130, DW_AT_TI_begin_line(0x133)
+	.dwattr $C$DW$130, DW_AT_TI_end_line(0x139)
 $C$DW$131	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$131, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$41$B)
-	.dwattr $C$DW$131, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$41$E)
+	.dwattr $C$DW$131, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$37$B)
+	.dwattr $C$DW$131, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$37$E)
+$C$DW$132	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$132, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$38$B)
+	.dwattr $C$DW$132, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$38$E)
+$C$DW$133	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$133, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$39$B)
+	.dwattr $C$DW$133, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$39$E)
 	.dwendtag $C$DW$130
 
 
-$C$DW$132	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$132, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L31:2:1536922433")
-	.dwattr $C$DW$132, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$132, DW_AT_TI_begin_line(0x147)
-	.dwattr $C$DW$132, DW_AT_TI_end_line(0x16b)
-$C$DW$133	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$133, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$43$B)
-	.dwattr $C$DW$133, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$43$E)
-$C$DW$134	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$134, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$44$B)
-	.dwattr $C$DW$134, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$44$E)
+$C$DW$134	.dwtag  DW_TAG_TI_loop
+	.dwattr $C$DW$134, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L29:2:1537001548")
+	.dwattr $C$DW$134, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$134, DW_AT_TI_begin_line(0x140)
+	.dwattr $C$DW$134, DW_AT_TI_end_line(0x143)
 $C$DW$135	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$135, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$45$B)
-	.dwattr $C$DW$135, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$45$E)
-$C$DW$136	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$136, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$46$B)
-	.dwattr $C$DW$136, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$46$E)
+	.dwattr $C$DW$135, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$41$B)
+	.dwattr $C$DW$135, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$41$E)
+	.dwendtag $C$DW$134
+
+
+$C$DW$136	.dwtag  DW_TAG_TI_loop
+	.dwattr $C$DW$136, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L31:2:1537001548")
+	.dwattr $C$DW$136, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$136, DW_AT_TI_begin_line(0x147)
+	.dwattr $C$DW$136, DW_AT_TI_end_line(0x16b)
 $C$DW$137	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$137, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$47$B)
-	.dwattr $C$DW$137, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$47$E)
+	.dwattr $C$DW$137, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$43$B)
+	.dwattr $C$DW$137, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$43$E)
 $C$DW$138	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$138, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$48$B)
-	.dwattr $C$DW$138, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$48$E)
+	.dwattr $C$DW$138, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$44$B)
+	.dwattr $C$DW$138, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$44$E)
 $C$DW$139	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$139, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$49$B)
-	.dwattr $C$DW$139, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$49$E)
+	.dwattr $C$DW$139, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$45$B)
+	.dwattr $C$DW$139, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$45$E)
 $C$DW$140	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$140, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$50$B)
-	.dwattr $C$DW$140, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$50$E)
+	.dwattr $C$DW$140, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$46$B)
+	.dwattr $C$DW$140, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$46$E)
 $C$DW$141	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$141, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$51$B)
-	.dwattr $C$DW$141, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$51$E)
-	.dwendtag $C$DW$132
-
-
-$C$DW$142	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$142, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L37:2:1536922433")
-	.dwattr $C$DW$142, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$142, DW_AT_TI_begin_line(0x16f)
-	.dwattr $C$DW$142, DW_AT_TI_end_line(0x172)
+	.dwattr $C$DW$141, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$47$B)
+	.dwattr $C$DW$141, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$47$E)
+$C$DW$142	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$142, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$48$B)
+	.dwattr $C$DW$142, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$48$E)
 $C$DW$143	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$143, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$53$B)
-	.dwattr $C$DW$143, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$53$E)
-	.dwendtag $C$DW$142
+	.dwattr $C$DW$143, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$49$B)
+	.dwattr $C$DW$143, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$49$E)
+$C$DW$144	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$144, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$50$B)
+	.dwattr $C$DW$144, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$50$E)
+$C$DW$145	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$145, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$51$B)
+	.dwattr $C$DW$145, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$51$E)
+	.dwendtag $C$DW$136
 
-	.dwendtag $C$DW$80
 
-	.dwattr $C$DW$45, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$45, DW_AT_TI_end_line(0x177)
-	.dwattr $C$DW$45, DW_AT_TI_end_column(0x01)
+$C$DW$146	.dwtag  DW_TAG_TI_loop
+	.dwattr $C$DW$146, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L37:2:1537001548")
+	.dwattr $C$DW$146, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$146, DW_AT_TI_begin_line(0x16f)
+	.dwattr $C$DW$146, DW_AT_TI_end_line(0x172)
+$C$DW$147	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$147, DW_AT_low_pc($C$DW$L$_vPrimaryBlockTimeTestTask$53$B)
+	.dwattr $C$DW$147, DW_AT_high_pc($C$DW$L$_vPrimaryBlockTimeTestTask$53$E)
+	.dwendtag $C$DW$146
+
+	.dwendtag $C$DW$84
+
+	.dwattr $C$DW$49, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$49, DW_AT_TI_end_line(0x177)
+	.dwattr $C$DW$49, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$45
+	.dwendtag $C$DW$49
 
 	.sect	".text"
 	.align 4
 
-$C$DW$144	.dwtag  DW_TAG_subprogram, DW_AT_name("vSecondaryBlockTimeTestTask")
-	.dwattr $C$DW$144, DW_AT_low_pc(_vSecondaryBlockTimeTestTask)
-	.dwattr $C$DW$144, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$144, DW_AT_TI_symbol_name("_vSecondaryBlockTimeTestTask")
-	.dwattr $C$DW$144, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$144, DW_AT_TI_begin_line(0x17a)
-	.dwattr $C$DW$144, DW_AT_TI_begin_column(0x0d)
-	.dwattr $C$DW$144, DW_AT_TI_max_frame_size(0x08)
+$C$DW$148	.dwtag  DW_TAG_subprogram, DW_AT_name("vSecondaryBlockTimeTestTask")
+	.dwattr $C$DW$148, DW_AT_low_pc(_vSecondaryBlockTimeTestTask)
+	.dwattr $C$DW$148, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$148, DW_AT_TI_symbol_name("_vSecondaryBlockTimeTestTask")
+	.dwattr $C$DW$148, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$148, DW_AT_TI_begin_line(0x17a)
+	.dwattr $C$DW$148, DW_AT_TI_begin_column(0x0d)
+	.dwattr $C$DW$148, DW_AT_TI_max_frame_size(0x08)
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 379,column 1,is_stmt,address _vSecondaryBlockTimeTestTask
 
 	.dwfde $C$DW$CIE, _vSecondaryBlockTimeTestTask
-$C$DW$145	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
-	.dwattr $C$DW$145, DW_AT_TI_symbol_name("_pvParameters")
-	.dwattr $C$DW$145, DW_AT_type(*$C$DW$T$3)
-	.dwattr $C$DW$145, DW_AT_location[DW_OP_reg17]
+$C$DW$149	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
+	.dwattr $C$DW$149, DW_AT_TI_symbol_name("_pvParameters")
+	.dwattr $C$DW$149, DW_AT_type(*$C$DW$T$3)
+	.dwattr $C$DW$149, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: vSecondaryBlockTimeTestTask                                  *
 ;*                                                                             *
@@ -1376,39 +1395,39 @@ _vSecondaryBlockTimeTestTask:
 	.dwcfi	save_reg_to_mem, 91, -1
         AADD #-7, SP
 	.dwcfi	cfa_offset, 8
-$C$DW$146	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
-	.dwattr $C$DW$146, DW_AT_TI_symbol_name("_pvParameters")
-	.dwattr $C$DW$146, DW_AT_type(*$C$DW$T$3)
-	.dwattr $C$DW$146, DW_AT_location[DW_OP_bregx 0x24 0]
-$C$DW$147	.dwtag  DW_TAG_variable, DW_AT_name("xTimeWhenBlocking")
-	.dwattr $C$DW$147, DW_AT_TI_symbol_name("_xTimeWhenBlocking")
-	.dwattr $C$DW$147, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$147, DW_AT_location[DW_OP_bregx 0x24 2]
-$C$DW$148	.dwtag  DW_TAG_variable, DW_AT_name("xBlockedTime")
-	.dwattr $C$DW$148, DW_AT_TI_symbol_name("_xBlockedTime")
-	.dwattr $C$DW$148, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$148, DW_AT_location[DW_OP_bregx 0x24 4]
-$C$DW$149	.dwtag  DW_TAG_variable, DW_AT_name("xData")
-	.dwattr $C$DW$149, DW_AT_TI_symbol_name("_xData")
-	.dwattr $C$DW$149, DW_AT_type(*$C$DW$T$52)
-	.dwattr $C$DW$149, DW_AT_location[DW_OP_bregx 0x24 6]
+$C$DW$150	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
+	.dwattr $C$DW$150, DW_AT_TI_symbol_name("_pvParameters")
+	.dwattr $C$DW$150, DW_AT_type(*$C$DW$T$3)
+	.dwattr $C$DW$150, DW_AT_location[DW_OP_bregx 0x24 0]
+$C$DW$151	.dwtag  DW_TAG_variable, DW_AT_name("xTimeWhenBlocking")
+	.dwattr $C$DW$151, DW_AT_TI_symbol_name("_xTimeWhenBlocking")
+	.dwattr $C$DW$151, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$151, DW_AT_location[DW_OP_bregx 0x24 2]
+$C$DW$152	.dwtag  DW_TAG_variable, DW_AT_name("xBlockedTime")
+	.dwattr $C$DW$152, DW_AT_TI_symbol_name("_xBlockedTime")
+	.dwattr $C$DW$152, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$152, DW_AT_location[DW_OP_bregx 0x24 4]
+$C$DW$153	.dwtag  DW_TAG_variable, DW_AT_name("xData")
+	.dwattr $C$DW$153, DW_AT_TI_symbol_name("_xData")
+	.dwattr $C$DW$153, DW_AT_type(*$C$DW$T$57)
+	.dwattr $C$DW$153, DW_AT_location[DW_OP_bregx 0x24 6]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 383,column 2,is_stmt
 $C$L39:    
 $C$DW$L$_vSecondaryBlockTimeTestTask$2$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 391,column 3,is_stmt
         AMOV #0, XAR0 ; |391| 
-$C$DW$150	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$150, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$150, DW_AT_name("_vTaskSuspend")
-	.dwattr $C$DW$150, DW_AT_TI_call
+$C$DW$154	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$154, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$154, DW_AT_name("_vTaskSuspend")
+	.dwattr $C$DW$154, DW_AT_TI_call
         CALL #_vTaskSuspend ; |391| 
                                         ; call occurs [#_vTaskSuspend] ; |391| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 399,column 3,is_stmt
-$C$DW$151	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$151, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$151, DW_AT_name("_xTaskGetTickCount")
-	.dwattr $C$DW$151, DW_AT_TI_call
+$C$DW$155	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$155, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$155, DW_AT_name("_xTaskGetTickCount")
+	.dwattr $C$DW$155, DW_AT_TI_call
         CALL #_xTaskGetTickCount ; |399| 
                                         ; call occurs [#_xTaskGetTickCount] ; |399| 
         MOV AC0, dbl(*SP(#2)) ; |399| 
@@ -1420,10 +1439,10 @@ $C$DW$151	.dwtag  DW_TAG_TI_branch
         MOV #175, AC0 ; |405| 
         AMAR *SP(#6), XAR1
         MOV dbl(*(#_xTestQueue)), XAR0
-$C$DW$152	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$152, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$152, DW_AT_name("_xQueueGenericSend")
-	.dwattr $C$DW$152, DW_AT_TI_call
+$C$DW$156	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$156, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$156, DW_AT_name("_xQueueGenericSend")
+	.dwattr $C$DW$156, DW_AT_TI_call
 
         CALL #_xQueueGenericSend ; |405| 
 ||      MOV #0, T0
@@ -1439,10 +1458,10 @@ $C$DW$L$_vSecondaryBlockTimeTestTask$3$E:
 $C$L40:    
 $C$DW$L$_vSecondaryBlockTimeTestTask$4$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 411,column 3,is_stmt
-$C$DW$153	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$153, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$153, DW_AT_name("_xTaskGetTickCount")
-	.dwattr $C$DW$153, DW_AT_TI_call
+$C$DW$157	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$157, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$157, DW_AT_name("_xTaskGetTickCount")
+	.dwattr $C$DW$157, DW_AT_TI_call
         CALL #_xTaskGetTickCount ; |411| 
                                         ; call occurs [#_xTaskGetTickCount] ; |411| 
         SUB dbl(*SP(#2)), AC0, AC0 ; |411| 
@@ -1477,17 +1496,17 @@ $C$DW$L$_vSecondaryBlockTimeTestTask$8$B:
         MOV #85, *(#_xRunIndicator) ; |428| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 429,column 3,is_stmt
         AMOV #0, XAR0 ; |429| 
-$C$DW$154	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$154, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$154, DW_AT_name("_vTaskSuspend")
-	.dwattr $C$DW$154, DW_AT_TI_call
+$C$DW$158	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$158, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$158, DW_AT_name("_vTaskSuspend")
+	.dwattr $C$DW$158, DW_AT_TI_call
         CALL #_vTaskSuspend ; |429| 
                                         ; call occurs [#_vTaskSuspend] ; |429| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 435,column 3,is_stmt
-$C$DW$155	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$155, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$155, DW_AT_name("_xTaskGetTickCount")
-	.dwattr $C$DW$155, DW_AT_TI_call
+$C$DW$159	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$159, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$159, DW_AT_name("_xTaskGetTickCount")
+	.dwattr $C$DW$159, DW_AT_TI_call
         CALL #_xTaskGetTickCount ; |435| 
                                         ; call occurs [#_xTaskGetTickCount] ; |435| 
         MOV AC0, dbl(*SP(#2)) ; |435| 
@@ -1497,10 +1516,10 @@ $C$DW$155	.dwtag  DW_TAG_TI_branch
         MOV #175, AC0 ; |440| 
         AMAR *SP(#6), XAR1
         MOV dbl(*(#_xTestQueue)), XAR0
-$C$DW$156	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$156, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$156, DW_AT_name("_xQueueReceive")
-	.dwattr $C$DW$156, DW_AT_TI_call
+$C$DW$160	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$160, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$160, DW_AT_name("_xQueueReceive")
+	.dwattr $C$DW$160, DW_AT_TI_call
         CALL #_xQueueReceive ; |440| 
                                         ; call occurs [#_xQueueReceive] ; |440| 
         BCC $C$L43,T0 == #0 ; |440| 
@@ -1513,10 +1532,10 @@ $C$DW$L$_vSecondaryBlockTimeTestTask$9$E:
 $C$L43:    
 $C$DW$L$_vSecondaryBlockTimeTestTask$10$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 445,column 3,is_stmt
-$C$DW$157	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$157, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$157, DW_AT_name("_xTaskGetTickCount")
-	.dwattr $C$DW$157, DW_AT_TI_call
+$C$DW$161	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$161, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$161, DW_AT_name("_xTaskGetTickCount")
+	.dwattr $C$DW$161, DW_AT_TI_call
         CALL #_xTaskGetTickCount ; |445| 
                                         ; call occurs [#_xTaskGetTickCount] ; |445| 
         SUB dbl(*SP(#2)), AC0, AC0 ; |445| 
@@ -1557,69 +1576,69 @@ $C$DW$L$_vSecondaryBlockTimeTestTask$14$B:
 $C$DW$L$_vSecondaryBlockTimeTestTask$14$E:
 	.dwcfi	cfa_offset, 1
 
-$C$DW$158	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$158, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L39:1:1536922433")
-	.dwattr $C$DW$158, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$158, DW_AT_TI_begin_line(0x181)
-	.dwattr $C$DW$158, DW_AT_TI_end_line(0x1d0)
-$C$DW$159	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$159, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$2$B)
-	.dwattr $C$DW$159, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$2$E)
-$C$DW$160	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$160, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$3$B)
-	.dwattr $C$DW$160, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$3$E)
-$C$DW$161	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$161, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$4$B)
-	.dwattr $C$DW$161, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$4$E)
-$C$DW$162	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$162, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$5$B)
-	.dwattr $C$DW$162, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$5$E)
+$C$DW$162	.dwtag  DW_TAG_TI_loop
+	.dwattr $C$DW$162, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L39:1:1537001548")
+	.dwattr $C$DW$162, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$162, DW_AT_TI_begin_line(0x181)
+	.dwattr $C$DW$162, DW_AT_TI_end_line(0x1d0)
 $C$DW$163	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$163, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$6$B)
-	.dwattr $C$DW$163, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$6$E)
+	.dwattr $C$DW$163, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$2$B)
+	.dwattr $C$DW$163, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$2$E)
 $C$DW$164	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$164, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$7$B)
-	.dwattr $C$DW$164, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$7$E)
+	.dwattr $C$DW$164, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$3$B)
+	.dwattr $C$DW$164, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$3$E)
 $C$DW$165	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$165, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$8$B)
-	.dwattr $C$DW$165, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$8$E)
+	.dwattr $C$DW$165, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$4$B)
+	.dwattr $C$DW$165, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$4$E)
 $C$DW$166	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$166, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$9$B)
-	.dwattr $C$DW$166, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$9$E)
+	.dwattr $C$DW$166, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$5$B)
+	.dwattr $C$DW$166, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$5$E)
 $C$DW$167	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$167, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$10$B)
-	.dwattr $C$DW$167, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$10$E)
+	.dwattr $C$DW$167, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$6$B)
+	.dwattr $C$DW$167, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$6$E)
 $C$DW$168	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$168, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$11$B)
-	.dwattr $C$DW$168, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$11$E)
+	.dwattr $C$DW$168, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$7$B)
+	.dwattr $C$DW$168, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$7$E)
 $C$DW$169	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$169, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$12$B)
-	.dwattr $C$DW$169, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$12$E)
+	.dwattr $C$DW$169, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$8$B)
+	.dwattr $C$DW$169, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$8$E)
 $C$DW$170	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$170, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$13$B)
-	.dwattr $C$DW$170, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$13$E)
+	.dwattr $C$DW$170, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$9$B)
+	.dwattr $C$DW$170, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$9$E)
 $C$DW$171	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$171, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$14$B)
-	.dwattr $C$DW$171, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$14$E)
-	.dwendtag $C$DW$158
+	.dwattr $C$DW$171, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$10$B)
+	.dwattr $C$DW$171, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$10$E)
+$C$DW$172	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$172, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$11$B)
+	.dwattr $C$DW$172, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$11$E)
+$C$DW$173	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$173, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$12$B)
+	.dwattr $C$DW$173, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$12$E)
+$C$DW$174	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$174, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$13$B)
+	.dwattr $C$DW$174, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$13$E)
+$C$DW$175	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$175, DW_AT_low_pc($C$DW$L$_vSecondaryBlockTimeTestTask$14$B)
+	.dwattr $C$DW$175, DW_AT_high_pc($C$DW$L$_vSecondaryBlockTimeTestTask$14$E)
+	.dwendtag $C$DW$162
 
-	.dwattr $C$DW$144, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$144, DW_AT_TI_end_line(0x1d1)
-	.dwattr $C$DW$144, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$148, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$148, DW_AT_TI_end_line(0x1d1)
+	.dwattr $C$DW$148, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$144
+	.dwendtag $C$DW$148
 
 	.sect	".text"
 	.align 4
 
-$C$DW$172	.dwtag  DW_TAG_subprogram, DW_AT_name("prvBasicDelayTests")
-	.dwattr $C$DW$172, DW_AT_low_pc(_prvBasicDelayTests)
-	.dwattr $C$DW$172, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$172, DW_AT_TI_symbol_name("_prvBasicDelayTests")
-	.dwattr $C$DW$172, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$172, DW_AT_TI_begin_line(0x1d4)
-	.dwattr $C$DW$172, DW_AT_TI_begin_column(0x0d)
-	.dwattr $C$DW$172, DW_AT_TI_max_frame_size(0x12)
+$C$DW$176	.dwtag  DW_TAG_subprogram, DW_AT_name("prvBasicDelayTests")
+	.dwattr $C$DW$176, DW_AT_low_pc(_prvBasicDelayTests)
+	.dwattr $C$DW$176, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$176, DW_AT_TI_symbol_name("_prvBasicDelayTests")
+	.dwattr $C$DW$176, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$176, DW_AT_TI_begin_line(0x1d4)
+	.dwattr $C$DW$176, DW_AT_TI_begin_column(0x0d)
+	.dwattr $C$DW$176, DW_AT_TI_max_frame_size(0x12)
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 469,column 1,is_stmt,address _prvBasicDelayTests
 
 	.dwfde $C$DW$CIE, _prvBasicDelayTests
@@ -1639,38 +1658,38 @@ _prvBasicDelayTests:
 	.dwcfi	save_reg_to_mem, 91, -1
         AADD #-17, SP
 	.dwcfi	cfa_offset, 18
-$C$DW$173	.dwtag  DW_TAG_variable, DW_AT_name("xPreTime")
-	.dwattr $C$DW$173, DW_AT_TI_symbol_name("_xPreTime")
-	.dwattr $C$DW$173, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$173, DW_AT_location[DW_OP_bregx 0x24 0]
-$C$DW$174	.dwtag  DW_TAG_variable, DW_AT_name("xPostTime")
-	.dwattr $C$DW$174, DW_AT_TI_symbol_name("_xPostTime")
-	.dwattr $C$DW$174, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$174, DW_AT_location[DW_OP_bregx 0x24 2]
-$C$DW$175	.dwtag  DW_TAG_variable, DW_AT_name("x")
-	.dwattr $C$DW$175, DW_AT_TI_symbol_name("_x")
-	.dwattr $C$DW$175, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$175, DW_AT_location[DW_OP_bregx 0x24 4]
-$C$DW$176	.dwtag  DW_TAG_variable, DW_AT_name("xLastUnblockTime")
-	.dwattr $C$DW$176, DW_AT_TI_symbol_name("_xLastUnblockTime")
-	.dwattr $C$DW$176, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$176, DW_AT_location[DW_OP_bregx 0x24 6]
-$C$DW$177	.dwtag  DW_TAG_variable, DW_AT_name("xExpectedUnblockTime")
-	.dwattr $C$DW$177, DW_AT_TI_symbol_name("_xExpectedUnblockTime")
+$C$DW$177	.dwtag  DW_TAG_variable, DW_AT_name("xPreTime")
+	.dwattr $C$DW$177, DW_AT_TI_symbol_name("_xPreTime")
 	.dwattr $C$DW$177, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$177, DW_AT_location[DW_OP_bregx 0x24 8]
-$C$DW$178	.dwtag  DW_TAG_variable, DW_AT_name("xPeriod")
-	.dwattr $C$DW$178, DW_AT_TI_symbol_name("_xPeriod")
-	.dwattr $C$DW$178, DW_AT_type(*$C$DW$T$34)
-	.dwattr $C$DW$178, DW_AT_location[DW_OP_bregx 0x24 10]
-$C$DW$179	.dwtag  DW_TAG_variable, DW_AT_name("xCycles")
-	.dwattr $C$DW$179, DW_AT_TI_symbol_name("_xCycles")
-	.dwattr $C$DW$179, DW_AT_type(*$C$DW$T$34)
-	.dwattr $C$DW$179, DW_AT_location[DW_OP_bregx 0x24 12]
-$C$DW$180	.dwtag  DW_TAG_variable, DW_AT_name("xAllowableMargin")
-	.dwattr $C$DW$180, DW_AT_TI_symbol_name("_xAllowableMargin")
-	.dwattr $C$DW$180, DW_AT_type(*$C$DW$T$34)
-	.dwattr $C$DW$180, DW_AT_location[DW_OP_bregx 0x24 14]
+	.dwattr $C$DW$177, DW_AT_location[DW_OP_bregx 0x24 0]
+$C$DW$178	.dwtag  DW_TAG_variable, DW_AT_name("xPostTime")
+	.dwattr $C$DW$178, DW_AT_TI_symbol_name("_xPostTime")
+	.dwattr $C$DW$178, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$178, DW_AT_location[DW_OP_bregx 0x24 2]
+$C$DW$179	.dwtag  DW_TAG_variable, DW_AT_name("x")
+	.dwattr $C$DW$179, DW_AT_TI_symbol_name("_x")
+	.dwattr $C$DW$179, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$179, DW_AT_location[DW_OP_bregx 0x24 4]
+$C$DW$180	.dwtag  DW_TAG_variable, DW_AT_name("xLastUnblockTime")
+	.dwattr $C$DW$180, DW_AT_TI_symbol_name("_xLastUnblockTime")
+	.dwattr $C$DW$180, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$180, DW_AT_location[DW_OP_bregx 0x24 6]
+$C$DW$181	.dwtag  DW_TAG_variable, DW_AT_name("xExpectedUnblockTime")
+	.dwattr $C$DW$181, DW_AT_TI_symbol_name("_xExpectedUnblockTime")
+	.dwattr $C$DW$181, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$181, DW_AT_location[DW_OP_bregx 0x24 8]
+$C$DW$182	.dwtag  DW_TAG_variable, DW_AT_name("xPeriod")
+	.dwattr $C$DW$182, DW_AT_TI_symbol_name("_xPeriod")
+	.dwattr $C$DW$182, DW_AT_type(*$C$DW$T$34)
+	.dwattr $C$DW$182, DW_AT_location[DW_OP_bregx 0x24 10]
+$C$DW$183	.dwtag  DW_TAG_variable, DW_AT_name("xCycles")
+	.dwattr $C$DW$183, DW_AT_TI_symbol_name("_xCycles")
+	.dwattr $C$DW$183, DW_AT_type(*$C$DW$T$34)
+	.dwattr $C$DW$183, DW_AT_location[DW_OP_bregx 0x24 12]
+$C$DW$184	.dwtag  DW_TAG_variable, DW_AT_name("xAllowableMargin")
+	.dwattr $C$DW$184, DW_AT_TI_symbol_name("_xAllowableMargin")
+	.dwattr $C$DW$184, DW_AT_type(*$C$DW$T$34)
+	.dwattr $C$DW$184, DW_AT_location[DW_OP_bregx 0x24 14]
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 471,column 18,is_stmt
         MOV #75, AC0 ; |471| 
         MOV AC0, dbl(*SP(#10)) ; |471| 
@@ -1682,36 +1701,36 @@ $C$DW$180	.dwtag  DW_TAG_variable, DW_AT_name("xAllowableMargin")
         MOV AC0, dbl(*SP(#14)) ; |471| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 475,column 2,is_stmt
         AMOV #0, XAR0 ; |475| 
-$C$DW$181	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$181, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$181, DW_AT_name("_vTaskPrioritySet")
-	.dwattr $C$DW$181, DW_AT_TI_call
+$C$DW$185	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$185, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$185, DW_AT_name("_vTaskPrioritySet")
+	.dwattr $C$DW$185, DW_AT_TI_call
 
         CALL #_vTaskPrioritySet ; |475| 
-||      MOV #2, T0
+||      MOV #3, T0
 
                                         ; call occurs [#_vTaskPrioritySet] ; |475| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 478,column 2,is_stmt
-$C$DW$182	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$182, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$182, DW_AT_name("_xTaskGetTickCount")
-	.dwattr $C$DW$182, DW_AT_TI_call
+$C$DW$186	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$186, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$186, DW_AT_name("_xTaskGetTickCount")
+	.dwattr $C$DW$186, DW_AT_TI_call
         CALL #_xTaskGetTickCount ; |478| 
                                         ; call occurs [#_xTaskGetTickCount] ; |478| 
         MOV AC0, dbl(*SP(#0)) ; |478| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 479,column 2,is_stmt
         MOV #175, AC0 ; |479| 
-$C$DW$183	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$183, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$183, DW_AT_name("_vTaskDelay")
-	.dwattr $C$DW$183, DW_AT_TI_call
+$C$DW$187	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$187, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$187, DW_AT_name("_vTaskDelay")
+	.dwattr $C$DW$187, DW_AT_TI_call
         CALL #_vTaskDelay ; |479| 
                                         ; call occurs [#_vTaskDelay] ; |479| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 480,column 2,is_stmt
-$C$DW$184	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$184, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$184, DW_AT_name("_xTaskGetTickCount")
-	.dwattr $C$DW$184, DW_AT_TI_call
+$C$DW$188	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$188, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$188, DW_AT_name("_xTaskGetTickCount")
+	.dwattr $C$DW$188, DW_AT_TI_call
         CALL #_xTaskGetTickCount ; |480| 
                                         ; call occurs [#_xTaskGetTickCount] ; |480| 
         MOV AC0, dbl(*SP(#2)) ; |480| 
@@ -1727,10 +1746,10 @@ $C$DW$184	.dwtag  DW_TAG_TI_branch
         MOV #1, *(#_xErrorOccurred) ; |486| 
 $C$L46:    
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 490,column 2,is_stmt
-$C$DW$185	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$185, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$185, DW_AT_name("_xTaskGetTickCount")
-	.dwattr $C$DW$185, DW_AT_TI_call
+$C$DW$189	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$189, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$189, DW_AT_name("_xTaskGetTickCount")
+	.dwattr $C$DW$189, DW_AT_TI_call
         CALL #_xTaskGetTickCount ; |490| 
                                         ; call occurs [#_xTaskGetTickCount] ; |490| 
         MOV AC0, dbl(*SP(#2)) ; |490| 
@@ -1751,10 +1770,10 @@ $C$DW$L$_prvBasicDelayTests$4$B:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 497,column 3,is_stmt
         MOV dbl(*SP(#4)), AC0 ; |497| 
         MOV dbl(*SP(#10)), AC1 ; |497| 
-$C$DW$186	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$186, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$186, DW_AT_name("__mpyli")
-	.dwattr $C$DW$186, DW_AT_TI_call
+$C$DW$190	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$190, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$190, DW_AT_name("__mpyli")
+	.dwattr $C$DW$190, DW_AT_TI_call
         CALL #__mpyli ; |497| 
                                         ; call occurs [#__mpyli] ; |497| 
         ADD dbl(*SP(#2)), AC0, AC0 ; |497| 
@@ -1762,17 +1781,17 @@ $C$DW$186	.dwtag  DW_TAG_TI_branch
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 499,column 3,is_stmt
         AMAR *SP(#6), XAR0
         MOV dbl(*SP(#10)), AC0 ; |499| 
-$C$DW$187	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$187, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$187, DW_AT_name("_vTaskDelayUntil")
-	.dwattr $C$DW$187, DW_AT_TI_call
+$C$DW$191	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$191, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$191, DW_AT_name("_vTaskDelayUntil")
+	.dwattr $C$DW$191, DW_AT_TI_call
         CALL #_vTaskDelayUntil ; |499| 
                                         ; call occurs [#_vTaskDelayUntil] ; |499| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 501,column 3,is_stmt
-$C$DW$188	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$188, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$188, DW_AT_name("_xTaskGetTickCount")
-	.dwattr $C$DW$188, DW_AT_TI_call
+$C$DW$192	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$192, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$192, DW_AT_name("_xTaskGetTickCount")
+	.dwattr $C$DW$192, DW_AT_TI_call
         CALL #_xTaskGetTickCount ; |501| 
                                         ; call occurs [#_xTaskGetTickCount] ; |501| 
         SUB dbl(*SP(#8)), AC0, AC1 ; |501| 
@@ -1804,69 +1823,69 @@ $C$DW$L$_prvBasicDelayTests$6$E:
 $C$L49:    
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 510,column 2,is_stmt
         AMOV #0, XAR0 ; |510| 
-        MOV #1, T0
-$C$DW$189	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$189, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$189, DW_AT_name("_vTaskPrioritySet")
-	.dwattr $C$DW$189, DW_AT_TI_call
+        MOV #2, T0
+$C$DW$193	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$193, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$193, DW_AT_name("_vTaskPrioritySet")
+	.dwattr $C$DW$193, DW_AT_TI_call
         CALL #_vTaskPrioritySet ; |510| 
                                         ; call occurs [#_vTaskPrioritySet] ; |510| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 511,column 1,is_stmt
         AADD #17, SP
 	.dwcfi	cfa_offset, 1
-$C$DW$190	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$190, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$190, DW_AT_TI_return
+$C$DW$194	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$194, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$194, DW_AT_TI_return
         RET
                                         ; return occurs
 
-$C$DW$191	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$191, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L47:1:1536922433")
-	.dwattr $C$DW$191, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$191, DW_AT_TI_begin_line(0x1ed)
-	.dwattr $C$DW$191, DW_AT_TI_end_line(0x1fb)
-$C$DW$192	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$192, DW_AT_low_pc($C$DW$L$_prvBasicDelayTests$4$B)
-	.dwattr $C$DW$192, DW_AT_high_pc($C$DW$L$_prvBasicDelayTests$4$E)
-$C$DW$193	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$193, DW_AT_low_pc($C$DW$L$_prvBasicDelayTests$5$B)
-	.dwattr $C$DW$193, DW_AT_high_pc($C$DW$L$_prvBasicDelayTests$5$E)
-$C$DW$194	.dwtag  DW_TAG_TI_loop_range
-	.dwattr $C$DW$194, DW_AT_low_pc($C$DW$L$_prvBasicDelayTests$6$B)
-	.dwattr $C$DW$194, DW_AT_high_pc($C$DW$L$_prvBasicDelayTests$6$E)
-	.dwendtag $C$DW$191
+$C$DW$195	.dwtag  DW_TAG_TI_loop
+	.dwattr $C$DW$195, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\blocktim.asm:$C$L47:1:1537001548")
+	.dwattr $C$DW$195, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$195, DW_AT_TI_begin_line(0x1ed)
+	.dwattr $C$DW$195, DW_AT_TI_end_line(0x1fb)
+$C$DW$196	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$196, DW_AT_low_pc($C$DW$L$_prvBasicDelayTests$4$B)
+	.dwattr $C$DW$196, DW_AT_high_pc($C$DW$L$_prvBasicDelayTests$4$E)
+$C$DW$197	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$197, DW_AT_low_pc($C$DW$L$_prvBasicDelayTests$5$B)
+	.dwattr $C$DW$197, DW_AT_high_pc($C$DW$L$_prvBasicDelayTests$5$E)
+$C$DW$198	.dwtag  DW_TAG_TI_loop_range
+	.dwattr $C$DW$198, DW_AT_low_pc($C$DW$L$_prvBasicDelayTests$6$B)
+	.dwattr $C$DW$198, DW_AT_high_pc($C$DW$L$_prvBasicDelayTests$6$E)
+	.dwendtag $C$DW$195
 
-	.dwattr $C$DW$172, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$172, DW_AT_TI_end_line(0x1ff)
-	.dwattr $C$DW$172, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$176, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$176, DW_AT_TI_end_line(0x1ff)
+	.dwattr $C$DW$176, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$172
+	.dwendtag $C$DW$176
 
 	.sect	".text"
 	.align 4
 	.global	_xAreBlockTimeTestTasksStillRunning
 
-$C$DW$195	.dwtag  DW_TAG_subprogram, DW_AT_name("xAreBlockTimeTestTasksStillRunning")
-	.dwattr $C$DW$195, DW_AT_low_pc(_xAreBlockTimeTestTasksStillRunning)
-	.dwattr $C$DW$195, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$195, DW_AT_TI_symbol_name("_xAreBlockTimeTestTasksStillRunning")
-	.dwattr $C$DW$195, DW_AT_external
-	.dwattr $C$DW$195, DW_AT_type(*$C$DW$T$52)
-	.dwattr $C$DW$195, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$195, DW_AT_TI_begin_line(0x202)
-	.dwattr $C$DW$195, DW_AT_TI_begin_column(0x0c)
-	.dwattr $C$DW$195, DW_AT_TI_max_frame_size(0x02)
+$C$DW$199	.dwtag  DW_TAG_subprogram, DW_AT_name("xAreBlockTimeTestTasksStillRunning")
+	.dwattr $C$DW$199, DW_AT_low_pc(_xAreBlockTimeTestTasksStillRunning)
+	.dwattr $C$DW$199, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$199, DW_AT_TI_symbol_name("_xAreBlockTimeTestTasksStillRunning")
+	.dwattr $C$DW$199, DW_AT_external
+	.dwattr $C$DW$199, DW_AT_type(*$C$DW$T$57)
+	.dwattr $C$DW$199, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$199, DW_AT_TI_begin_line(0x202)
+	.dwattr $C$DW$199, DW_AT_TI_begin_column(0x0c)
+	.dwattr $C$DW$199, DW_AT_TI_max_frame_size(0x02)
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 515,column 1,is_stmt,address _xAreBlockTimeTestTasksStillRunning
 
 	.dwfde $C$DW$CIE, _xAreBlockTimeTestTasksStillRunning
-$C$DW$196	.dwtag  DW_TAG_variable, DW_AT_name("xLastPrimaryCycleCount")
-	.dwattr $C$DW$196, DW_AT_TI_symbol_name("_xLastPrimaryCycleCount$1")
-	.dwattr $C$DW$196, DW_AT_type(*$C$DW$T$52)
-	.dwattr $C$DW$196, DW_AT_location[DW_OP_addr _xLastPrimaryCycleCount$1]
-$C$DW$197	.dwtag  DW_TAG_variable, DW_AT_name("xLastSecondaryCycleCount")
-	.dwattr $C$DW$197, DW_AT_TI_symbol_name("_xLastSecondaryCycleCount$2")
-	.dwattr $C$DW$197, DW_AT_type(*$C$DW$T$52)
-	.dwattr $C$DW$197, DW_AT_location[DW_OP_addr _xLastSecondaryCycleCount$2]
+$C$DW$200	.dwtag  DW_TAG_variable, DW_AT_name("xLastPrimaryCycleCount")
+	.dwattr $C$DW$200, DW_AT_TI_symbol_name("_xLastPrimaryCycleCount$1")
+	.dwattr $C$DW$200, DW_AT_type(*$C$DW$T$57)
+	.dwattr $C$DW$200, DW_AT_location[DW_OP_addr _xLastPrimaryCycleCount$1]
+$C$DW$201	.dwtag  DW_TAG_variable, DW_AT_name("xLastSecondaryCycleCount")
+	.dwattr $C$DW$201, DW_AT_TI_symbol_name("_xLastSecondaryCycleCount$2")
+	.dwattr $C$DW$201, DW_AT_type(*$C$DW$T$57)
+	.dwattr $C$DW$201, DW_AT_location[DW_OP_addr _xLastSecondaryCycleCount$2]
 ;*******************************************************************************
 ;* FUNCTION NAME: xAreBlockTimeTestTasksStillRunning                           *
 ;*                                                                             *
@@ -1882,10 +1901,10 @@ _xAreBlockTimeTestTasksStillRunning:
 	.dwcfi	save_reg_to_mem, 91, -1
         AADD #-1, SP
 	.dwcfi	cfa_offset, 2
-$C$DW$198	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
-	.dwattr $C$DW$198, DW_AT_TI_symbol_name("_xReturn")
-	.dwattr $C$DW$198, DW_AT_type(*$C$DW$T$52)
-	.dwattr $C$DW$198, DW_AT_location[DW_OP_bregx 0x24 0]
+$C$DW$202	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
+	.dwattr $C$DW$202, DW_AT_TI_symbol_name("_xReturn")
+	.dwattr $C$DW$202, DW_AT_type(*$C$DW$T$57)
+	.dwattr $C$DW$202, DW_AT_location[DW_OP_bregx 0x24 0]
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 517,column 12,is_stmt
         MOV #1, *SP(#0) ; |517| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 521,column 2,is_stmt
@@ -1924,25 +1943,27 @@ $C$L52:
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/blocktim.c",line 540,column 1,is_stmt
         AADD #1, SP
 	.dwcfi	cfa_offset, 1
-$C$DW$199	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$199, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$199, DW_AT_TI_return
+$C$DW$203	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$203, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$203, DW_AT_TI_return
         RET
                                         ; return occurs
-	.dwattr $C$DW$195, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
-	.dwattr $C$DW$195, DW_AT_TI_end_line(0x21c)
-	.dwattr $C$DW$195, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$199, DW_AT_TI_end_file("../FreeRTOS/Demo/Common/Minimal/blocktim.c")
+	.dwattr $C$DW$199, DW_AT_TI_end_line(0x21c)
+	.dwattr $C$DW$199, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$195
+	.dwendtag $C$DW$199
 
 ;*******************************************************************************
 ;* FAR STRINGS                                                                 *
 ;*******************************************************************************
 	.sect	".const:.string"
 	.align	2
-$C$FSL1:	.string	"BTest1",0
+$C$FSL1:	.string	"Block_Time_Queue",0
 	.align	2
-$C$FSL2:	.string	"BTest2",0
+$C$FSL2:	.string	"BTest1",0
+	.align	2
+$C$FSL3:	.string	"BTest2",0
 ;******************************************************************************
 ;* UNDEFINED EXTERNAL REFERENCES                                              *
 ;******************************************************************************
@@ -1955,6 +1976,7 @@ $C$FSL2:	.string	"BTest2",0
 	.global	_xTaskGetTickCount
 	.global	_xQueueGenericSend
 	.global	_xQueueReceive
+	.global	_vQueueAddToRegistry
 	.global	_xQueueGenericCreate
 	.global	__mpyli
 
@@ -1975,15 +1997,15 @@ $C$DW$T$22	.dwtag  DW_TAG_typedef, DW_AT_name("QueueHandle_t")
 	.dwattr $C$DW$T$22, DW_AT_language(DW_LANG_C)
 $C$DW$T$3	.dwtag  DW_TAG_pointer_type
 	.dwattr $C$DW$T$3, DW_AT_address_class(0x17)
-$C$DW$200	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$200, DW_AT_type(*$C$DW$T$3)
+$C$DW$204	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$204, DW_AT_type(*$C$DW$T$3)
 $C$DW$T$29	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$29, DW_AT_type(*$C$DW$200)
+	.dwattr $C$DW$T$29, DW_AT_type(*$C$DW$204)
 
 $C$DW$T$30	.dwtag  DW_TAG_subroutine_type
 	.dwattr $C$DW$T$30, DW_AT_language(DW_LANG_C)
-$C$DW$201	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$201, DW_AT_type(*$C$DW$T$3)
+$C$DW$205	.dwtag  DW_TAG_formal_parameter
+	.dwattr $C$DW$205, DW_AT_type(*$C$DW$T$3)
 	.dwendtag $C$DW$T$30
 
 $C$DW$T$31	.dwtag  DW_TAG_pointer_type
@@ -1992,16 +2014,16 @@ $C$DW$T$31	.dwtag  DW_TAG_pointer_type
 $C$DW$T$32	.dwtag  DW_TAG_typedef, DW_AT_name("TaskFunction_t")
 	.dwattr $C$DW$T$32, DW_AT_type(*$C$DW$T$31)
 	.dwattr $C$DW$T$32, DW_AT_language(DW_LANG_C)
-$C$DW$202	.dwtag  DW_TAG_TI_far_type
+$C$DW$206	.dwtag  DW_TAG_TI_far_type
 $C$DW$T$47	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$47, DW_AT_type(*$C$DW$202)
+	.dwattr $C$DW$T$47, DW_AT_type(*$C$DW$206)
 $C$DW$T$48	.dwtag  DW_TAG_pointer_type
 	.dwattr $C$DW$T$48, DW_AT_type(*$C$DW$T$47)
 	.dwattr $C$DW$T$48, DW_AT_address_class(0x17)
-$C$DW$203	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$203, DW_AT_type(*$C$DW$T$48)
+$C$DW$207	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$207, DW_AT_type(*$C$DW$T$48)
 $C$DW$T$49	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$49, DW_AT_type(*$C$DW$203)
+	.dwattr $C$DW$T$49, DW_AT_type(*$C$DW$207)
 $C$DW$T$4	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
 	.dwattr $C$DW$T$4, DW_AT_name("bool")
@@ -2017,10 +2039,10 @@ $C$DW$T$6	.dwtag  DW_TAG_base_type
 $C$DW$T$25	.dwtag  DW_TAG_typedef, DW_AT_name("uint8_t")
 	.dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$6)
 	.dwattr $C$DW$T$25, DW_AT_language(DW_LANG_C)
-$C$DW$204	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$204, DW_AT_type(*$C$DW$T$25)
+$C$DW$208	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$208, DW_AT_type(*$C$DW$T$25)
 $C$DW$T$26	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$26, DW_AT_type(*$C$DW$204)
+	.dwattr $C$DW$T$26, DW_AT_type(*$C$DW$208)
 $C$DW$T$7	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
 	.dwattr $C$DW$T$7, DW_AT_name("wchar_t")
@@ -2029,17 +2051,17 @@ $C$DW$T$8	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$8, DW_AT_name("short")
 	.dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
-$C$DW$T$52	.dwtag  DW_TAG_typedef, DW_AT_name("BaseType_t")
-	.dwattr $C$DW$T$52, DW_AT_type(*$C$DW$T$8)
-	.dwattr $C$DW$T$52, DW_AT_language(DW_LANG_C)
-$C$DW$205	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$205, DW_AT_type(*$C$DW$T$52)
-$C$DW$T$53	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$53, DW_AT_type(*$C$DW$205)
-$C$DW$206	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$206, DW_AT_type(*$C$DW$T$52)
-$C$DW$T$54	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$54, DW_AT_type(*$C$DW$206)
+$C$DW$T$57	.dwtag  DW_TAG_typedef, DW_AT_name("BaseType_t")
+	.dwattr $C$DW$T$57, DW_AT_type(*$C$DW$T$8)
+	.dwattr $C$DW$T$57, DW_AT_language(DW_LANG_C)
+$C$DW$209	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$209, DW_AT_type(*$C$DW$T$57)
+$C$DW$T$58	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$58, DW_AT_type(*$C$DW$209)
+$C$DW$210	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$210, DW_AT_type(*$C$DW$T$57)
+$C$DW$T$59	.dwtag  DW_TAG_volatile_type
+	.dwattr $C$DW$T$59, DW_AT_type(*$C$DW$210)
 $C$DW$T$9	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$9, DW_AT_name("unsigned short")
@@ -2047,14 +2069,14 @@ $C$DW$T$9	.dwtag  DW_TAG_base_type
 $C$DW$T$23	.dwtag  DW_TAG_typedef, DW_AT_name("UBaseType_t")
 	.dwattr $C$DW$T$23, DW_AT_type(*$C$DW$T$9)
 	.dwattr $C$DW$T$23, DW_AT_language(DW_LANG_C)
-$C$DW$207	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$207, DW_AT_type(*$C$DW$T$23)
+$C$DW$211	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$211, DW_AT_type(*$C$DW$T$23)
 $C$DW$T$24	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$24, DW_AT_type(*$C$DW$207)
-$C$DW$208	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$208, DW_AT_type(*$C$DW$T$23)
-$C$DW$T$71	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$71, DW_AT_type(*$C$DW$208)
+	.dwattr $C$DW$T$24, DW_AT_type(*$C$DW$211)
+$C$DW$212	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$212, DW_AT_type(*$C$DW$T$23)
+$C$DW$T$73	.dwtag  DW_TAG_volatile_type
+	.dwattr $C$DW$T$73, DW_AT_type(*$C$DW$212)
 $C$DW$T$10	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$10, DW_AT_name("int")
@@ -2063,13 +2085,13 @@ $C$DW$T$11	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$11, DW_AT_name("unsigned int")
 	.dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
-$C$DW$T$59	.dwtag  DW_TAG_typedef, DW_AT_name("uint16_t")
-	.dwattr $C$DW$T$59, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$59, DW_AT_language(DW_LANG_C)
-$C$DW$209	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$209, DW_AT_type(*$C$DW$T$59)
-$C$DW$T$60	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$60, DW_AT_type(*$C$DW$209)
+$C$DW$T$61	.dwtag  DW_TAG_typedef, DW_AT_name("uint16_t")
+	.dwattr $C$DW$T$61, DW_AT_type(*$C$DW$T$11)
+	.dwattr $C$DW$T$61, DW_AT_language(DW_LANG_C)
+$C$DW$213	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$213, DW_AT_type(*$C$DW$T$61)
+$C$DW$T$62	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$62, DW_AT_type(*$C$DW$213)
 $C$DW$T$12	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$12, DW_AT_name("long")
@@ -2081,17 +2103,17 @@ $C$DW$T$13	.dwtag  DW_TAG_base_type
 $C$DW$T$33	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
 	.dwattr $C$DW$T$33, DW_AT_type(*$C$DW$T$13)
 	.dwattr $C$DW$T$33, DW_AT_language(DW_LANG_C)
-$C$DW$210	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$210, DW_AT_type(*$C$DW$T$33)
+$C$DW$214	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$214, DW_AT_type(*$C$DW$T$33)
 $C$DW$T$34	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$34, DW_AT_type(*$C$DW$210)
+	.dwattr $C$DW$T$34, DW_AT_type(*$C$DW$214)
 $C$DW$T$37	.dwtag  DW_TAG_pointer_type
 	.dwattr $C$DW$T$37, DW_AT_type(*$C$DW$T$33)
 	.dwattr $C$DW$T$37, DW_AT_address_class(0x17)
-$C$DW$211	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$211, DW_AT_type(*$C$DW$T$37)
+$C$DW$215	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$215, DW_AT_type(*$C$DW$T$37)
 $C$DW$T$38	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$38, DW_AT_type(*$C$DW$211)
+	.dwattr $C$DW$T$38, DW_AT_type(*$C$DW$215)
 $C$DW$T$14	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$14, DW_AT_name("long long")
@@ -2116,21 +2138,21 @@ $C$DW$T$18	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
 	.dwattr $C$DW$T$18, DW_AT_name("long double")
 	.dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
-$C$DW$T$55	.dwtag  DW_TAG_base_type
-	.dwattr $C$DW$T$55, DW_AT_encoding(DW_ATE_signed_char)
-	.dwattr $C$DW$T$55, DW_AT_name("signed char")
-	.dwattr $C$DW$T$55, DW_AT_byte_size(0x01)
-$C$DW$212	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$212, DW_AT_type(*$C$DW$T$55)
-$C$DW$T$56	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$56, DW_AT_type(*$C$DW$212)
-$C$DW$T$57	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$57, DW_AT_type(*$C$DW$T$56)
-	.dwattr $C$DW$T$57, DW_AT_address_class(0x17)
-$C$DW$213	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$213, DW_AT_type(*$C$DW$T$57)
-$C$DW$T$58	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$58, DW_AT_type(*$C$DW$213)
+$C$DW$T$50	.dwtag  DW_TAG_base_type
+	.dwattr $C$DW$T$50, DW_AT_encoding(DW_ATE_signed_char)
+	.dwattr $C$DW$T$50, DW_AT_name("signed char")
+	.dwattr $C$DW$T$50, DW_AT_byte_size(0x01)
+$C$DW$216	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$216, DW_AT_type(*$C$DW$T$50)
+$C$DW$T$51	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$51, DW_AT_type(*$C$DW$216)
+$C$DW$T$52	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$52, DW_AT_type(*$C$DW$T$51)
+	.dwattr $C$DW$T$52, DW_AT_address_class(0x17)
+$C$DW$217	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$217, DW_AT_type(*$C$DW$T$52)
+$C$DW$T$60	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$60, DW_AT_type(*$C$DW$217)
 
 $C$DW$T$20	.dwtag  DW_TAG_structure_type
 	.dwattr $C$DW$T$20, DW_AT_name("tskTaskControlBlock")
@@ -2143,13 +2165,13 @@ $C$DW$T$41	.dwtag  DW_TAG_pointer_type
 $C$DW$T$42	.dwtag  DW_TAG_typedef, DW_AT_name("TaskHandle_t")
 	.dwattr $C$DW$T$42, DW_AT_type(*$C$DW$T$41)
 	.dwattr $C$DW$T$42, DW_AT_language(DW_LANG_C)
-$C$DW$T$61	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$61, DW_AT_type(*$C$DW$T$42)
-	.dwattr $C$DW$T$61, DW_AT_address_class(0x17)
-$C$DW$214	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$214, DW_AT_type(*$C$DW$T$61)
-$C$DW$T$62	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$62, DW_AT_type(*$C$DW$214)
+$C$DW$T$63	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$63, DW_AT_type(*$C$DW$T$42)
+	.dwattr $C$DW$T$63, DW_AT_address_class(0x17)
+$C$DW$218	.dwtag  DW_TAG_TI_far_type
+	.dwattr $C$DW$218, DW_AT_type(*$C$DW$T$63)
+$C$DW$T$64	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$64, DW_AT_type(*$C$DW$218)
 	.dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
 
 ;***************************************************************
@@ -2257,189 +2279,189 @@ $C$DW$CIE	.dwcie 91
 ;* DWARF REGISTER MAP                                          *
 ;***************************************************************
 
-$C$DW$215	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
-	.dwattr $C$DW$215, DW_AT_location[DW_OP_reg0]
-$C$DW$216	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
-	.dwattr $C$DW$216, DW_AT_location[DW_OP_reg1]
-$C$DW$217	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0_G")
-	.dwattr $C$DW$217, DW_AT_location[DW_OP_reg2]
-$C$DW$218	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
-	.dwattr $C$DW$218, DW_AT_location[DW_OP_reg3]
-$C$DW$219	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
-	.dwattr $C$DW$219, DW_AT_location[DW_OP_reg4]
-$C$DW$220	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1_G")
-	.dwattr $C$DW$220, DW_AT_location[DW_OP_reg5]
-$C$DW$221	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
-	.dwattr $C$DW$221, DW_AT_location[DW_OP_reg6]
-$C$DW$222	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
-	.dwattr $C$DW$222, DW_AT_location[DW_OP_reg7]
-$C$DW$223	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2_G")
-	.dwattr $C$DW$223, DW_AT_location[DW_OP_reg8]
-$C$DW$224	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
-	.dwattr $C$DW$224, DW_AT_location[DW_OP_reg9]
-$C$DW$225	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
-	.dwattr $C$DW$225, DW_AT_location[DW_OP_reg10]
-$C$DW$226	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3_G")
-	.dwattr $C$DW$226, DW_AT_location[DW_OP_reg11]
-$C$DW$227	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("T0")
-	.dwattr $C$DW$227, DW_AT_location[DW_OP_reg12]
-$C$DW$228	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("T1")
-	.dwattr $C$DW$228, DW_AT_location[DW_OP_reg13]
-$C$DW$229	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("T2")
-	.dwattr $C$DW$229, DW_AT_location[DW_OP_reg14]
-$C$DW$230	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("T3")
-	.dwattr $C$DW$230, DW_AT_location[DW_OP_reg15]
-$C$DW$231	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0")
-	.dwattr $C$DW$231, DW_AT_location[DW_OP_reg16]
-$C$DW$232	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR0")
-	.dwattr $C$DW$232, DW_AT_location[DW_OP_reg17]
-$C$DW$233	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1")
-	.dwattr $C$DW$233, DW_AT_location[DW_OP_reg18]
-$C$DW$234	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR1")
-	.dwattr $C$DW$234, DW_AT_location[DW_OP_reg19]
-$C$DW$235	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
-	.dwattr $C$DW$235, DW_AT_location[DW_OP_reg20]
-$C$DW$236	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR2")
-	.dwattr $C$DW$236, DW_AT_location[DW_OP_reg21]
-$C$DW$237	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3")
-	.dwattr $C$DW$237, DW_AT_location[DW_OP_reg22]
-$C$DW$238	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR3")
-	.dwattr $C$DW$238, DW_AT_location[DW_OP_reg23]
-$C$DW$239	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4")
-	.dwattr $C$DW$239, DW_AT_location[DW_OP_reg24]
-$C$DW$240	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR4")
-	.dwattr $C$DW$240, DW_AT_location[DW_OP_reg25]
-$C$DW$241	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5")
-	.dwattr $C$DW$241, DW_AT_location[DW_OP_reg26]
-$C$DW$242	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR5")
-	.dwattr $C$DW$242, DW_AT_location[DW_OP_reg27]
-$C$DW$243	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6")
-	.dwattr $C$DW$243, DW_AT_location[DW_OP_reg28]
-$C$DW$244	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR6")
-	.dwattr $C$DW$244, DW_AT_location[DW_OP_reg29]
-$C$DW$245	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7")
-	.dwattr $C$DW$245, DW_AT_location[DW_OP_reg30]
-$C$DW$246	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR7")
-	.dwattr $C$DW$246, DW_AT_location[DW_OP_reg31]
-$C$DW$247	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("FP")
-	.dwattr $C$DW$247, DW_AT_location[DW_OP_regx 0x20]
-$C$DW$248	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XFP")
-	.dwattr $C$DW$248, DW_AT_location[DW_OP_regx 0x21]
-$C$DW$249	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
-	.dwattr $C$DW$249, DW_AT_location[DW_OP_regx 0x22]
-$C$DW$250	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
-	.dwattr $C$DW$250, DW_AT_location[DW_OP_regx 0x23]
-$C$DW$251	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XSP")
-	.dwattr $C$DW$251, DW_AT_location[DW_OP_regx 0x24]
-$C$DW$252	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BKC")
-	.dwattr $C$DW$252, DW_AT_location[DW_OP_regx 0x25]
-$C$DW$253	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK03")
-	.dwattr $C$DW$253, DW_AT_location[DW_OP_regx 0x26]
-$C$DW$254	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK47")
-	.dwattr $C$DW$254, DW_AT_location[DW_OP_regx 0x27]
-$C$DW$255	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST0")
-	.dwattr $C$DW$255, DW_AT_location[DW_OP_regx 0x28]
-$C$DW$256	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST1")
-	.dwattr $C$DW$256, DW_AT_location[DW_OP_regx 0x29]
-$C$DW$257	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST2")
-	.dwattr $C$DW$257, DW_AT_location[DW_OP_regx 0x2a]
-$C$DW$258	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST3")
-	.dwattr $C$DW$258, DW_AT_location[DW_OP_regx 0x2b]
-$C$DW$259	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP")
-	.dwattr $C$DW$259, DW_AT_location[DW_OP_regx 0x2c]
-$C$DW$260	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP05")
-	.dwattr $C$DW$260, DW_AT_location[DW_OP_regx 0x2d]
-$C$DW$261	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP67")
-	.dwattr $C$DW$261, DW_AT_location[DW_OP_regx 0x2e]
-$C$DW$262	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
-	.dwattr $C$DW$262, DW_AT_location[DW_OP_regx 0x2f]
-$C$DW$263	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
-	.dwattr $C$DW$263, DW_AT_location[DW_OP_regx 0x30]
-$C$DW$264	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0_H")
-	.dwattr $C$DW$264, DW_AT_location[DW_OP_regx 0x31]
-$C$DW$265	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0")
-	.dwattr $C$DW$265, DW_AT_location[DW_OP_regx 0x32]
-$C$DW$266	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0_H")
-	.dwattr $C$DW$266, DW_AT_location[DW_OP_regx 0x33]
-$C$DW$267	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRS1")
-	.dwattr $C$DW$267, DW_AT_location[DW_OP_regx 0x34]
-$C$DW$268	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC1")
-	.dwattr $C$DW$268, DW_AT_location[DW_OP_regx 0x35]
-$C$DW$269	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1")
-	.dwattr $C$DW$269, DW_AT_location[DW_OP_regx 0x36]
-$C$DW$270	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1_H")
-	.dwattr $C$DW$270, DW_AT_location[DW_OP_regx 0x37]
-$C$DW$271	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1")
-	.dwattr $C$DW$271, DW_AT_location[DW_OP_regx 0x38]
-$C$DW$272	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1_H")
-	.dwattr $C$DW$272, DW_AT_location[DW_OP_regx 0x39]
-$C$DW$273	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("CSR")
-	.dwattr $C$DW$273, DW_AT_location[DW_OP_regx 0x3a]
-$C$DW$274	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("RPTC")
-	.dwattr $C$DW$274, DW_AT_location[DW_OP_regx 0x3b]
-$C$DW$275	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDP")
-	.dwattr $C$DW$275, DW_AT_location[DW_OP_regx 0x3c]
-$C$DW$276	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XCDP")
-	.dwattr $C$DW$276, DW_AT_location[DW_OP_regx 0x3d]
-$C$DW$277	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN0")
-	.dwattr $C$DW$277, DW_AT_location[DW_OP_regx 0x3e]
-$C$DW$278	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN1")
-	.dwattr $C$DW$278, DW_AT_location[DW_OP_regx 0x3f]
-$C$DW$279	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA01")
-	.dwattr $C$DW$279, DW_AT_location[DW_OP_regx 0x40]
-$C$DW$280	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA23")
-	.dwattr $C$DW$280, DW_AT_location[DW_OP_regx 0x41]
-$C$DW$281	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA45")
-	.dwattr $C$DW$281, DW_AT_location[DW_OP_regx 0x42]
-$C$DW$282	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA67")
-	.dwattr $C$DW$282, DW_AT_location[DW_OP_regx 0x43]
-$C$DW$283	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSAC")
-	.dwattr $C$DW$283, DW_AT_location[DW_OP_regx 0x44]
-$C$DW$284	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("CARRY")
-	.dwattr $C$DW$284, DW_AT_location[DW_OP_regx 0x45]
-$C$DW$285	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC1")
-	.dwattr $C$DW$285, DW_AT_location[DW_OP_regx 0x46]
-$C$DW$286	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC2")
-	.dwattr $C$DW$286, DW_AT_location[DW_OP_regx 0x47]
-$C$DW$287	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("M40")
-	.dwattr $C$DW$287, DW_AT_location[DW_OP_regx 0x48]
-$C$DW$288	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("SXMD")
-	.dwattr $C$DW$288, DW_AT_location[DW_OP_regx 0x49]
-$C$DW$289	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("ARMS")
-	.dwattr $C$DW$289, DW_AT_location[DW_OP_regx 0x4a]
-$C$DW$290	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
-	.dwattr $C$DW$290, DW_AT_location[DW_OP_regx 0x4b]
-$C$DW$291	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATA")
-	.dwattr $C$DW$291, DW_AT_location[DW_OP_regx 0x4c]
-$C$DW$292	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATD")
-	.dwattr $C$DW$292, DW_AT_location[DW_OP_regx 0x4d]
-$C$DW$293	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("RDM")
-	.dwattr $C$DW$293, DW_AT_location[DW_OP_regx 0x4e]
-$C$DW$294	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("FRCT")
-	.dwattr $C$DW$294, DW_AT_location[DW_OP_regx 0x4f]
-$C$DW$295	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("SMUL")
-	.dwattr $C$DW$295, DW_AT_location[DW_OP_regx 0x50]
-$C$DW$296	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("INTM")
-	.dwattr $C$DW$296, DW_AT_location[DW_OP_regx 0x51]
-$C$DW$297	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0LC")
-	.dwattr $C$DW$297, DW_AT_location[DW_OP_regx 0x52]
-$C$DW$298	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1LC")
-	.dwattr $C$DW$298, DW_AT_location[DW_OP_regx 0x53]
-$C$DW$299	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2LC")
-	.dwattr $C$DW$299, DW_AT_location[DW_OP_regx 0x54]
-$C$DW$300	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3LC")
-	.dwattr $C$DW$300, DW_AT_location[DW_OP_regx 0x55]
-$C$DW$301	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4LC")
-	.dwattr $C$DW$301, DW_AT_location[DW_OP_regx 0x56]
-$C$DW$302	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5LC")
-	.dwattr $C$DW$302, DW_AT_location[DW_OP_regx 0x57]
-$C$DW$303	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6LC")
-	.dwattr $C$DW$303, DW_AT_location[DW_OP_regx 0x58]
-$C$DW$304	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7LC")
-	.dwattr $C$DW$304, DW_AT_location[DW_OP_regx 0x59]
-$C$DW$305	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDPLC")
-	.dwattr $C$DW$305, DW_AT_location[DW_OP_regx 0x5a]
-$C$DW$306	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
-	.dwattr $C$DW$306, DW_AT_location[DW_OP_regx 0x5b]
+$C$DW$219	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+	.dwattr $C$DW$219, DW_AT_location[DW_OP_reg0]
+$C$DW$220	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+	.dwattr $C$DW$220, DW_AT_location[DW_OP_reg1]
+$C$DW$221	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0_G")
+	.dwattr $C$DW$221, DW_AT_location[DW_OP_reg2]
+$C$DW$222	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+	.dwattr $C$DW$222, DW_AT_location[DW_OP_reg3]
+$C$DW$223	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+	.dwattr $C$DW$223, DW_AT_location[DW_OP_reg4]
+$C$DW$224	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1_G")
+	.dwattr $C$DW$224, DW_AT_location[DW_OP_reg5]
+$C$DW$225	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+	.dwattr $C$DW$225, DW_AT_location[DW_OP_reg6]
+$C$DW$226	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+	.dwattr $C$DW$226, DW_AT_location[DW_OP_reg7]
+$C$DW$227	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2_G")
+	.dwattr $C$DW$227, DW_AT_location[DW_OP_reg8]
+$C$DW$228	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+	.dwattr $C$DW$228, DW_AT_location[DW_OP_reg9]
+$C$DW$229	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+	.dwattr $C$DW$229, DW_AT_location[DW_OP_reg10]
+$C$DW$230	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3_G")
+	.dwattr $C$DW$230, DW_AT_location[DW_OP_reg11]
+$C$DW$231	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("T0")
+	.dwattr $C$DW$231, DW_AT_location[DW_OP_reg12]
+$C$DW$232	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("T1")
+	.dwattr $C$DW$232, DW_AT_location[DW_OP_reg13]
+$C$DW$233	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("T2")
+	.dwattr $C$DW$233, DW_AT_location[DW_OP_reg14]
+$C$DW$234	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("T3")
+	.dwattr $C$DW$234, DW_AT_location[DW_OP_reg15]
+$C$DW$235	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0")
+	.dwattr $C$DW$235, DW_AT_location[DW_OP_reg16]
+$C$DW$236	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR0")
+	.dwattr $C$DW$236, DW_AT_location[DW_OP_reg17]
+$C$DW$237	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1")
+	.dwattr $C$DW$237, DW_AT_location[DW_OP_reg18]
+$C$DW$238	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR1")
+	.dwattr $C$DW$238, DW_AT_location[DW_OP_reg19]
+$C$DW$239	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
+	.dwattr $C$DW$239, DW_AT_location[DW_OP_reg20]
+$C$DW$240	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR2")
+	.dwattr $C$DW$240, DW_AT_location[DW_OP_reg21]
+$C$DW$241	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3")
+	.dwattr $C$DW$241, DW_AT_location[DW_OP_reg22]
+$C$DW$242	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR3")
+	.dwattr $C$DW$242, DW_AT_location[DW_OP_reg23]
+$C$DW$243	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4")
+	.dwattr $C$DW$243, DW_AT_location[DW_OP_reg24]
+$C$DW$244	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR4")
+	.dwattr $C$DW$244, DW_AT_location[DW_OP_reg25]
+$C$DW$245	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5")
+	.dwattr $C$DW$245, DW_AT_location[DW_OP_reg26]
+$C$DW$246	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR5")
+	.dwattr $C$DW$246, DW_AT_location[DW_OP_reg27]
+$C$DW$247	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6")
+	.dwattr $C$DW$247, DW_AT_location[DW_OP_reg28]
+$C$DW$248	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR6")
+	.dwattr $C$DW$248, DW_AT_location[DW_OP_reg29]
+$C$DW$249	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7")
+	.dwattr $C$DW$249, DW_AT_location[DW_OP_reg30]
+$C$DW$250	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR7")
+	.dwattr $C$DW$250, DW_AT_location[DW_OP_reg31]
+$C$DW$251	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("FP")
+	.dwattr $C$DW$251, DW_AT_location[DW_OP_regx 0x20]
+$C$DW$252	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XFP")
+	.dwattr $C$DW$252, DW_AT_location[DW_OP_regx 0x21]
+$C$DW$253	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
+	.dwattr $C$DW$253, DW_AT_location[DW_OP_regx 0x22]
+$C$DW$254	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
+	.dwattr $C$DW$254, DW_AT_location[DW_OP_regx 0x23]
+$C$DW$255	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XSP")
+	.dwattr $C$DW$255, DW_AT_location[DW_OP_regx 0x24]
+$C$DW$256	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BKC")
+	.dwattr $C$DW$256, DW_AT_location[DW_OP_regx 0x25]
+$C$DW$257	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK03")
+	.dwattr $C$DW$257, DW_AT_location[DW_OP_regx 0x26]
+$C$DW$258	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK47")
+	.dwattr $C$DW$258, DW_AT_location[DW_OP_regx 0x27]
+$C$DW$259	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST0")
+	.dwattr $C$DW$259, DW_AT_location[DW_OP_regx 0x28]
+$C$DW$260	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST1")
+	.dwattr $C$DW$260, DW_AT_location[DW_OP_regx 0x29]
+$C$DW$261	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST2")
+	.dwattr $C$DW$261, DW_AT_location[DW_OP_regx 0x2a]
+$C$DW$262	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST3")
+	.dwattr $C$DW$262, DW_AT_location[DW_OP_regx 0x2b]
+$C$DW$263	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP")
+	.dwattr $C$DW$263, DW_AT_location[DW_OP_regx 0x2c]
+$C$DW$264	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP05")
+	.dwattr $C$DW$264, DW_AT_location[DW_OP_regx 0x2d]
+$C$DW$265	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP67")
+	.dwattr $C$DW$265, DW_AT_location[DW_OP_regx 0x2e]
+$C$DW$266	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
+	.dwattr $C$DW$266, DW_AT_location[DW_OP_regx 0x2f]
+$C$DW$267	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
+	.dwattr $C$DW$267, DW_AT_location[DW_OP_regx 0x30]
+$C$DW$268	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0_H")
+	.dwattr $C$DW$268, DW_AT_location[DW_OP_regx 0x31]
+$C$DW$269	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0")
+	.dwattr $C$DW$269, DW_AT_location[DW_OP_regx 0x32]
+$C$DW$270	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0_H")
+	.dwattr $C$DW$270, DW_AT_location[DW_OP_regx 0x33]
+$C$DW$271	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRS1")
+	.dwattr $C$DW$271, DW_AT_location[DW_OP_regx 0x34]
+$C$DW$272	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC1")
+	.dwattr $C$DW$272, DW_AT_location[DW_OP_regx 0x35]
+$C$DW$273	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1")
+	.dwattr $C$DW$273, DW_AT_location[DW_OP_regx 0x36]
+$C$DW$274	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1_H")
+	.dwattr $C$DW$274, DW_AT_location[DW_OP_regx 0x37]
+$C$DW$275	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1")
+	.dwattr $C$DW$275, DW_AT_location[DW_OP_regx 0x38]
+$C$DW$276	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1_H")
+	.dwattr $C$DW$276, DW_AT_location[DW_OP_regx 0x39]
+$C$DW$277	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("CSR")
+	.dwattr $C$DW$277, DW_AT_location[DW_OP_regx 0x3a]
+$C$DW$278	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("RPTC")
+	.dwattr $C$DW$278, DW_AT_location[DW_OP_regx 0x3b]
+$C$DW$279	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDP")
+	.dwattr $C$DW$279, DW_AT_location[DW_OP_regx 0x3c]
+$C$DW$280	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("XCDP")
+	.dwattr $C$DW$280, DW_AT_location[DW_OP_regx 0x3d]
+$C$DW$281	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN0")
+	.dwattr $C$DW$281, DW_AT_location[DW_OP_regx 0x3e]
+$C$DW$282	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN1")
+	.dwattr $C$DW$282, DW_AT_location[DW_OP_regx 0x3f]
+$C$DW$283	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA01")
+	.dwattr $C$DW$283, DW_AT_location[DW_OP_regx 0x40]
+$C$DW$284	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA23")
+	.dwattr $C$DW$284, DW_AT_location[DW_OP_regx 0x41]
+$C$DW$285	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA45")
+	.dwattr $C$DW$285, DW_AT_location[DW_OP_regx 0x42]
+$C$DW$286	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA67")
+	.dwattr $C$DW$286, DW_AT_location[DW_OP_regx 0x43]
+$C$DW$287	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSAC")
+	.dwattr $C$DW$287, DW_AT_location[DW_OP_regx 0x44]
+$C$DW$288	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("CARRY")
+	.dwattr $C$DW$288, DW_AT_location[DW_OP_regx 0x45]
+$C$DW$289	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC1")
+	.dwattr $C$DW$289, DW_AT_location[DW_OP_regx 0x46]
+$C$DW$290	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC2")
+	.dwattr $C$DW$290, DW_AT_location[DW_OP_regx 0x47]
+$C$DW$291	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("M40")
+	.dwattr $C$DW$291, DW_AT_location[DW_OP_regx 0x48]
+$C$DW$292	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("SXMD")
+	.dwattr $C$DW$292, DW_AT_location[DW_OP_regx 0x49]
+$C$DW$293	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("ARMS")
+	.dwattr $C$DW$293, DW_AT_location[DW_OP_regx 0x4a]
+$C$DW$294	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
+	.dwattr $C$DW$294, DW_AT_location[DW_OP_regx 0x4b]
+$C$DW$295	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATA")
+	.dwattr $C$DW$295, DW_AT_location[DW_OP_regx 0x4c]
+$C$DW$296	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATD")
+	.dwattr $C$DW$296, DW_AT_location[DW_OP_regx 0x4d]
+$C$DW$297	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("RDM")
+	.dwattr $C$DW$297, DW_AT_location[DW_OP_regx 0x4e]
+$C$DW$298	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("FRCT")
+	.dwattr $C$DW$298, DW_AT_location[DW_OP_regx 0x4f]
+$C$DW$299	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("SMUL")
+	.dwattr $C$DW$299, DW_AT_location[DW_OP_regx 0x50]
+$C$DW$300	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("INTM")
+	.dwattr $C$DW$300, DW_AT_location[DW_OP_regx 0x51]
+$C$DW$301	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0LC")
+	.dwattr $C$DW$301, DW_AT_location[DW_OP_regx 0x52]
+$C$DW$302	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1LC")
+	.dwattr $C$DW$302, DW_AT_location[DW_OP_regx 0x53]
+$C$DW$303	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2LC")
+	.dwattr $C$DW$303, DW_AT_location[DW_OP_regx 0x54]
+$C$DW$304	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3LC")
+	.dwattr $C$DW$304, DW_AT_location[DW_OP_regx 0x55]
+$C$DW$305	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4LC")
+	.dwattr $C$DW$305, DW_AT_location[DW_OP_regx 0x56]
+$C$DW$306	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5LC")
+	.dwattr $C$DW$306, DW_AT_location[DW_OP_regx 0x57]
+$C$DW$307	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6LC")
+	.dwattr $C$DW$307, DW_AT_location[DW_OP_regx 0x58]
+$C$DW$308	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7LC")
+	.dwattr $C$DW$308, DW_AT_location[DW_OP_regx 0x59]
+$C$DW$309	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDPLC")
+	.dwattr $C$DW$309, DW_AT_location[DW_OP_regx 0x5a]
+$C$DW$310	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
+	.dwattr $C$DW$310, DW_AT_location[DW_OP_regx 0x5b]
 	.dwendtag $C$DW$CU
 
