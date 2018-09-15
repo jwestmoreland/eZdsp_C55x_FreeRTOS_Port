@@ -669,8 +669,8 @@ void vApplicationIdleHook( void )
 //	BlinkLED();
 //	toggleLED();
 //	EZDSP5535_LED_toggle(3);		// toggle 'BLUE' LED
-	
-	if ( ulIdleLoops > 500000 )
+//	if ( ulIdleLoops > 500000 )
+	if ( ulIdleLoops > 60000 )
 	{
 //		toggleLEDlocal();					// as a diagnostic; if timing is in the ballpark - the XF LED will blink at the rate ~1s (50% duty cycle)
 //		EZDSP5535_LED_toggle(0);
@@ -998,8 +998,10 @@ void systemInit(void)
     PLL_Obj pllObj;
     CSL_Status status;
     PLL_Handle hPll;
+#if 1
     PLL_Config *pConfigInfo;
     PLL_Config pllCfg_v2_100MHz    = {0x8BE8, 0x8000, 0x0806, 0x0000};
+#endif
 
     /* Config Idle control */
     SYS_ICR = 0xFF2E;
@@ -1011,7 +1013,7 @@ void systemInit(void)
 
     /* Delay for devices to reset */
     for (i=0; i< 200; i++);
-
+// #ifdef PORT_USING_PLL
     /* Setup PLL */
     status = PLL_init(&pllObj, CSL_PLL_INST_0);
     hPll = (PLL_Handle)(&pllObj);
@@ -1019,6 +1021,16 @@ void systemInit(void)
     pConfigInfo = &pllCfg_v2_100MHz;
 
     status = PLL_config (hPll, pConfigInfo);
+// #endif
+
+// Bypass mode - set 12MHz CLK_IN, use for TIMER0
+
+//    CSL_SYSCTRL_REGS->CCR2->SYSCLKSEL = 0;   // clk_sel is set to 1 via SW3:1 on eZdsp
+    CSL_SYSCTRL_REGS->CCR2 = CSL_SYS_CCR2_TIMER0CLKSEL_SYSCLK | CSL_SYS_CCR2_SYSCLKSRC_BYPCLKIN ;
+//    CSL_SYSCTRL_REGS->CCR2 = CSL_SYS_CCR2_TIMER0CLKSEL_SYSCLK | CSL_SYS_CCR2_SYSCLKSEL_LOCK;
+
+
+
 }
 
 void vApplicationMallocFailedHook( void )

@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sat Sep 15 01:52:25 2018                                 *
+;* Date/Time created: Sat Sep 15 04:08:08 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -92,7 +92,7 @@ $C$DW$5	.dwtag  DW_TAG_variable, DW_AT_name("Timer2_Int_CTR")
 	.dwattr $C$DW$5, DW_AT_location[DW_OP_addr _Timer2_Int_CTR]
 	.dwattr $C$DW$5, DW_AT_type(*$C$DW$T$23)
 	.dwattr $C$DW$5, DW_AT_external
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\0862812 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1204412 
 	.sect	".text"
 	.align 4
 	.global	_Timer0Init
@@ -125,34 +125,34 @@ _Timer0Init:
         MOV #32770, *port(#6160) ; |73| 
 	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 77,column 2,is_stmt
         MOV #0, *port(#6288) ; |77| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 82,column 2,is_stmt
-        MOV #50000, *port(#6162) ; |82| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 85,column 2,is_stmt
-        MOV #0, *port(#6163) ; |85| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 87,column 2,is_stmt
-        MOV #0, *port(#6164) ; |87| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 81,column 2,is_stmt
+        MOV #12000, *port(#6162) ; |81| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 86,column 2,is_stmt
+        MOV #0, *port(#6163) ; |86| 
 	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 88,column 2,is_stmt
-        MOV #0, *port(#6165) ; |88| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 91,column 2,is_stmt
-        MOV #7, *port(#7188) ; |91| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 96,column 2,is_stmt
-        MOV #1, *port(#6166) ; |96| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 98,column 2,is_stmt
-        MOV #0, *port(#6294) ; |98| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 104,column 2,is_stmt
-        OR #0x0001, *port(#7188) ; |104| 
+        MOV #0, *port(#6164) ; |88| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 89,column 2,is_stmt
+        MOV #0, *port(#6165) ; |89| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 92,column 2,is_stmt
+        MOV #7, *port(#7188) ; |92| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 97,column 2,is_stmt
+        MOV #1, *port(#6166) ; |97| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 99,column 2,is_stmt
+        MOV #0, *port(#6294) ; |99| 
 	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 105,column 2,is_stmt
-        OR #0x0002, *port(#7188) ; |105| 
+        OR #0x0001, *port(#7188) ; |105| 
 	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 106,column 2,is_stmt
-        OR #0x0004, *port(#7188) ; |106| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 109,column 1,is_stmt
+        OR #0x0002, *port(#7188) ; |106| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 107,column 2,is_stmt
+        OR #0x0004, *port(#7188) ; |107| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 110,column 1,is_stmt
 $C$DW$7	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$7, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$7, DW_AT_TI_return
         RET
                                         ; return occurs
 	.dwattr $C$DW$6, DW_AT_TI_end_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c")
-	.dwattr $C$DW$6, DW_AT_TI_end_line(0x6d)
+	.dwattr $C$DW$6, DW_AT_TI_end_line(0x6e)
 	.dwattr $C$DW$6, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$6
@@ -167,10 +167,10 @@ $C$DW$8	.dwtag  DW_TAG_subprogram, DW_AT_name("StartTimer0")
 	.dwattr $C$DW$8, DW_AT_TI_symbol_name("_StartTimer0")
 	.dwattr $C$DW$8, DW_AT_external
 	.dwattr $C$DW$8, DW_AT_TI_begin_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c")
-	.dwattr $C$DW$8, DW_AT_TI_begin_line(0x8b)
+	.dwattr $C$DW$8, DW_AT_TI_begin_line(0x8c)
 	.dwattr $C$DW$8, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$8, DW_AT_TI_max_frame_size(0x01)
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 140,column 1,is_stmt,address _StartTimer0
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 141,column 1,is_stmt,address _StartTimer0
 
 	.dwfde $C$DW$CIE, _StartTimer0
 ;*******************************************************************************
@@ -185,16 +185,16 @@ $C$DW$8	.dwtag  DW_TAG_subprogram, DW_AT_name("StartTimer0")
 _StartTimer0:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 142,column 2,is_stmt
-        OR #0x0001, *port(#6160) ; |142| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 143,column 1,is_stmt
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 143,column 2,is_stmt
+        OR #0x0001, *port(#6160) ; |143| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 144,column 1,is_stmt
 $C$DW$9	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$9, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$9, DW_AT_TI_return
         RET
                                         ; return occurs
 	.dwattr $C$DW$8, DW_AT_TI_end_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c")
-	.dwattr $C$DW$8, DW_AT_TI_end_line(0x8f)
+	.dwattr $C$DW$8, DW_AT_TI_end_line(0x90)
 	.dwattr $C$DW$8, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$8
@@ -209,11 +209,11 @@ $C$DW$10	.dwtag  DW_TAG_subprogram, DW_AT_name("Timer_isr")
 	.dwattr $C$DW$10, DW_AT_TI_symbol_name("_Timer_isr")
 	.dwattr $C$DW$10, DW_AT_external
 	.dwattr $C$DW$10, DW_AT_TI_begin_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c")
-	.dwattr $C$DW$10, DW_AT_TI_begin_line(0x98)
+	.dwattr $C$DW$10, DW_AT_TI_begin_line(0x99)
 	.dwattr $C$DW$10, DW_AT_TI_begin_column(0x10)
 	.dwattr $C$DW$10, DW_AT_TI_interrupt
 	.dwattr $C$DW$10, DW_AT_TI_max_frame_size(0x2f)
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 153,column 1,is_stmt,address _Timer_isr
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 154,column 1,is_stmt,address _Timer_isr
 
 	.dwfde $C$DW$CIE, _Timer_isr
 ;*******************************************************************************
@@ -369,28 +369,28 @@ _Timer_isr:
         PSH AR1
         AADD #-1, SP
 	.dwcfi	cfa_offset, 47
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 154,column 1,is_stmt
-        ADD #1, *(#_Timer0_Int_CTR) ; |154| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 156,column 5,is_stmt
-        AND #0x0010, *(#1) ; |156| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 158,column 5,is_stmt
-        MOV #0, *port(#6166) ; |158| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 165,column 5,is_stmt
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 155,column 1,is_stmt
+        ADD #1, *(#_Timer0_Int_CTR) ; |155| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 157,column 5,is_stmt
+        AND #0x0010, *(#1) ; |157| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 159,column 5,is_stmt
+        MOV #0, *port(#6166) ; |159| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 166,column 5,is_stmt
         BSET ST3_SMUL
         BCLR ST3_SATA
 $C$DW$11	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$11, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$11, DW_AT_name("_vTickISR")
 	.dwattr $C$DW$11, DW_AT_TI_call
-        CALL #_vTickISR ; |165| 
-                                        ; call occurs [#_vTickISR] ; |165| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 174,column 2,is_stmt
-        MOV #1, *port(#6166) ; |174| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 177,column 2,is_stmt
-        OR #0x0001, *port(#7188) ; |177| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 179,column 2,is_stmt
-        MOV #1, *(#_fTimer) ; |179| 
-	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 205,column 1,is_stmt
+        CALL #_vTickISR ; |166| 
+                                        ; call occurs [#_vTickISR] ; |166| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 175,column 2,is_stmt
+        MOV #1, *port(#6166) ; |175| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 178,column 2,is_stmt
+        OR #0x0001, *port(#7188) ; |178| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 180,column 2,is_stmt
+        MOV #1, *(#_fTimer) ; |180| 
+	.dwpsn	file "F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c",line 206,column 1,is_stmt
         AADD #1, SP
 	.dwcfi	cfa_offset, 47
         POP mmap(SP)
@@ -528,7 +528,7 @@ $C$DW$12	.dwtag  DW_TAG_TI_branch
         RETI
                                         ; return occurs
 	.dwattr $C$DW$10, DW_AT_TI_end_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/src/timer.c")
-	.dwattr $C$DW$10, DW_AT_TI_end_line(0xcd)
+	.dwattr $C$DW$10, DW_AT_TI_end_line(0xce)
 	.dwattr $C$DW$10, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$10
