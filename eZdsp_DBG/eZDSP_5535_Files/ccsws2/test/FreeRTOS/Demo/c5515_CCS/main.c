@@ -254,6 +254,7 @@ static toggleLEDlocal(void);
 int main( void )
 {
 	portSHORT temp, key, i;
+//	unsigned int * j;
 	unsigned long int temp1;
 	SYS_GlobalIntDisable();
 // setup IVPD/IVPH to point to vector table
@@ -276,6 +277,7 @@ int main( void )
 	}
 		asm ( " bclr C54CM" );    
 // #endif
+
 		prvSetupHardware();
 	   /* Initialize board */
 ///		InitSystem();

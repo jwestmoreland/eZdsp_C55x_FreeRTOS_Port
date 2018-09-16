@@ -74,7 +74,7 @@ ORDERED_OBJS += \
 "./c5535_bsl_revc/ezdsp5535_v1/lib/bsl/ezdsp5535_sdcard.obj" \
 "./c5535_bsl_revc/ezdsp5535_v1/lib/bsl/ezdsp5535_spiflash.obj" \
 "./c5535_bsl_revc/ezdsp5535_v1/lib/bsl/ezdsp5535_uart.obj" \
-"../lnkx.cmd" \
+"../lnkx-standalone.cmd" \
 "../c5535_bsl_revc/ezdsp5535_v1/lib/ezdsp5535bsl.lib" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \

@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sun Sep 16 01:53:41 2018                                 *
+;* Date/Time created: Sun Sep 16 03:53:20 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -552,7 +552,7 @@ $C$DW$84	.dwtag  DW_TAG_variable, DW_AT_name("$P$T0$2")
 	.bss	_counter$6,1,0,0
 	.bss	_ctr$7,1,0,0
 	.bss	_counter$8,1,0,0
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1814812 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1723612 
 	.sect	".text"
 	.align 4
 	.global	_main
@@ -594,384 +594,384 @@ $C$DW$87	.dwtag  DW_TAG_variable, DW_AT_name("temp1")
 	.dwattr $C$DW$87, DW_AT_TI_symbol_name("_temp1")
 	.dwattr $C$DW$87, DW_AT_type(*$C$DW$T$13)
 	.dwattr $C$DW$87, DW_AT_location[DW_OP_bregx 0x24 2]
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 258,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 259,column 2,is_stmt
 $C$DW$88	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$88, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$88, DW_AT_name("_SYS_GlobalIntDisable")
 	.dwattr $C$DW$88, DW_AT_TI_call
-        CALL #_SYS_GlobalIntDisable ; |258| 
-                                        ; call occurs [#_SYS_GlobalIntDisable] ; |258| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 260,column 2,is_stmt
-        MOV #(_VECSTART >> 16) << #16, AC0 ; |260| 
-        OR #(_VECSTART & 0xffff), AC0, AC0 ; |260| 
-        MOV AC0, dbl(*SP(#2)) ; |260| 
+        CALL #_SYS_GlobalIntDisable ; |259| 
+                                        ; call occurs [#_SYS_GlobalIntDisable] ; |259| 
 	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 261,column 2,is_stmt
-        MOV dbl(*SP(#2)), AC0 ; |261| 
-        SFTL AC0, #-8, AC0 ; |261| 
+        MOV #(_VECSTART >> 16) << #16, AC0 ; |261| 
+        OR #(_VECSTART & 0xffff), AC0, AC0 ; |261| 
         MOV AC0, dbl(*SP(#2)) ; |261| 
 	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 262,column 2,is_stmt
-        MOV *SP(#3), AR1 ; |262| 
-        MOV AR1, *(#73) ; |262| 
+        MOV dbl(*SP(#2)), AC0 ; |262| 
+        SFTL AC0, #-8, AC0 ; |262| 
+        MOV AC0, dbl(*SP(#2)) ; |262| 
 	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 263,column 2,is_stmt
-        MOV AR1, *(#74) ; |263| 
+        MOV *SP(#3), AR1 ; |263| 
+        MOV AR1, *(#73) ; |263| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 264,column 2,is_stmt
+        MOV AR1, *(#74) ; |264| 
         NOP
         NOP
         NOP
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 265,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 266,column 2,is_stmt
  bclr C54CM
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 268,column 2,is_stmt
-        BTST #2, *(#71), TC1 ; |268| 
-        BCC $C$L1,TC1 ; |268| 
-                                        ; branchcc occurs ; |268| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 270,column 3,is_stmt
-        OR #0x0004, *(#71) ; |270| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 269,column 2,is_stmt
+        BTST #2, *(#71), TC1 ; |269| 
+        BCC $C$L1,TC1 ; |269| 
+                                        ; branchcc occurs ; |269| 
 	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 271,column 3,is_stmt
+        OR #0x0004, *(#71) ; |271| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 272,column 3,is_stmt
  reset
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 272,column 2,is_stmt
-        B $C$L2   ; |272| 
-                                        ; branch occurs ; |272| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 273,column 2,is_stmt
+        B $C$L2   ; |273| 
+                                        ; branch occurs ; |273| 
 $C$L1:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 275,column 3,is_stmt
-        AND #0xfffb, *(#71) ; |275| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 276,column 3,is_stmt
+        AND #0xfffb, *(#71) ; |276| 
 $C$L2:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 277,column 3,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 278,column 3,is_stmt
  bclr C54CM
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 279,column 3,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 281,column 3,is_stmt
 $C$DW$89	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$89, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$89, DW_AT_name("_prvSetupHardware")
 	.dwattr $C$DW$89, DW_AT_TI_call
-        CALL #_prvSetupHardware ; |279| 
-                                        ; call occurs [#_prvSetupHardware] ; |279| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 282,column 6,is_stmt
+        CALL #_prvSetupHardware ; |281| 
+                                        ; call occurs [#_prvSetupHardware] ; |281| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 284,column 6,is_stmt
 $C$DW$90	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$90, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$90, DW_AT_name("_systemInit")
 	.dwattr $C$DW$90, DW_AT_TI_call
-        CALL #_systemInit ; |282| 
-                                        ; call occurs [#_systemInit] ; |282| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 283,column 6,is_stmt
+        CALL #_systemInit ; |284| 
+                                        ; call occurs [#_systemInit] ; |284| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 285,column 6,is_stmt
 $C$DW$91	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$91, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$91, DW_AT_name("_EZDSP5535_init")
 	.dwattr $C$DW$91, DW_AT_TI_call
-        CALL #_EZDSP5535_init ; |283| 
-                                        ; call occurs [#_EZDSP5535_init] ; |283| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 284,column 6,is_stmt
+        CALL #_EZDSP5535_init ; |285| 
+                                        ; call occurs [#_EZDSP5535_init] ; |285| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 286,column 6,is_stmt
 $C$DW$92	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$92, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$92, DW_AT_name("_EZDSP5535_GPIO_init")
 	.dwattr $C$DW$92, DW_AT_TI_call
-        CALL #_EZDSP5535_GPIO_init ; |284| 
-                                        ; call occurs [#_EZDSP5535_GPIO_init] ; |284| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 285,column 6,is_stmt
+        CALL #_EZDSP5535_GPIO_init ; |286| 
+                                        ; call occurs [#_EZDSP5535_GPIO_init] ; |286| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 287,column 6,is_stmt
 $C$DW$93	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$93, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$93, DW_AT_name("_EZDSP5535_LED_init")
 	.dwattr $C$DW$93, DW_AT_TI_call
-        CALL #_EZDSP5535_LED_init ; |285| 
-                                        ; call occurs [#_EZDSP5535_LED_init] ; |285| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 291,column 6,is_stmt
+        CALL #_EZDSP5535_LED_init ; |287| 
+                                        ; call occurs [#_EZDSP5535_LED_init] ; |287| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 293,column 6,is_stmt
 $C$DW$94	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$94, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$94, DW_AT_name("_EZDSP5535_SAR_init")
 	.dwattr $C$DW$94, DW_AT_TI_call
-        CALL #_EZDSP5535_SAR_init ; |291| 
-                                        ; call occurs [#_EZDSP5535_SAR_init] ; |291| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 294,column 6,is_stmt
+        CALL #_EZDSP5535_SAR_init ; |293| 
+                                        ; call occurs [#_EZDSP5535_SAR_init] ; |293| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 296,column 6,is_stmt
 $C$DW$95	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$95, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$95, DW_AT_name("_oled_test")
 	.dwattr $C$DW$95, DW_AT_TI_call
 
-        CALL #_oled_test ; |294| 
+        CALL #_oled_test ; |296| 
 ||      MOV #0, T0
 
-                                        ; call occurs [#_oled_test] ; |294| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 295,column 6,is_stmt
+                                        ; call occurs [#_oled_test] ; |296| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 297,column 6,is_stmt
 $C$DW$96	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$96, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$96, DW_AT_name("_mem_test")
 	.dwattr $C$DW$96, DW_AT_TI_call
-        CALL #_mem_test ; |295| 
-                                        ; call occurs [#_mem_test] ; |295| 
-        BCC $C$L3,T0 != #0 ; |295| 
-                                        ; branchcc occurs ; |295| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 296,column 10,is_stmt
+        CALL #_mem_test ; |297| 
+                                        ; call occurs [#_mem_test] ; |297| 
+        BCC $C$L3,T0 != #0 ; |297| 
+                                        ; branchcc occurs ; |297| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 298,column 10,is_stmt
 $C$DW$97	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$97, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$97, DW_AT_name("_EZDSP5535_LED_on")
 	.dwattr $C$DW$97, DW_AT_TI_call
 
-        CALL #_EZDSP5535_LED_on ; |296| 
+        CALL #_EZDSP5535_LED_on ; |298| 
 ||      MOV #0, T0
 
-                                        ; call occurs [#_EZDSP5535_LED_on] ; |296| 
+                                        ; call occurs [#_EZDSP5535_LED_on] ; |298| 
 $C$L3:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 297,column 6,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 299,column 6,is_stmt
 $C$DW$98	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$98, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$98, DW_AT_name("_oled_test")
 	.dwattr $C$DW$98, DW_AT_TI_call
 
-        CALL #_oled_test ; |297| 
+        CALL #_oled_test ; |299| 
 ||      MOV #4, T0
 
-                                        ; call occurs [#_oled_test] ; |297| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 299,column 12,is_stmt
+                                        ; call occurs [#_oled_test] ; |299| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 301,column 12,is_stmt
 $C$DW$99	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$99, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$99, DW_AT_name("_EZDSP5535_SAR_getKey")
 	.dwattr $C$DW$99, DW_AT_TI_call
-        CALL #_EZDSP5535_SAR_getKey ; |299| 
-                                        ; call occurs [#_EZDSP5535_SAR_getKey] ; |299| 
-        MOV #680, AR1 ; |299| 
-        CMPU T0 == AR1, TC1 ; |299| 
-        BCC $C$L5,TC1 ; |299| 
-                                        ; branchcc occurs ; |299| 
+        CALL #_EZDSP5535_SAR_getKey ; |301| 
+                                        ; call occurs [#_EZDSP5535_SAR_getKey] ; |301| 
+        MOV #680, AR1 ; |301| 
+        CMPU T0 == AR1, TC1 ; |301| 
+        BCC $C$L5,TC1 ; |301| 
+                                        ; branchcc occurs ; |301| 
 $C$L4:    
 $C$DW$L$_main$7$B:
 $C$DW$100	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$100, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$100, DW_AT_name("_EZDSP5535_SAR_getKey")
 	.dwattr $C$DW$100, DW_AT_TI_call
-        CALL #_EZDSP5535_SAR_getKey ; |299| 
-                                        ; call occurs [#_EZDSP5535_SAR_getKey] ; |299| 
-        MOV #680, AR1 ; |299| 
-        CMPU T0 != AR1, TC1 ; |299| 
-        BCC $C$L4,TC1 ; |299| 
-                                        ; branchcc occurs ; |299| 
+        CALL #_EZDSP5535_SAR_getKey ; |301| 
+                                        ; call occurs [#_EZDSP5535_SAR_getKey] ; |301| 
+        MOV #680, AR1 ; |301| 
+        CMPU T0 != AR1, TC1 ; |301| 
+        BCC $C$L4,TC1 ; |301| 
+                                        ; branchcc occurs ; |301| 
 $C$DW$L$_main$7$E:
 $C$L5:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 300,column 12,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 302,column 12,is_stmt
 $C$DW$101	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$101, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$101, DW_AT_name("_EZDSP5535_SAR_getKey")
 	.dwattr $C$DW$101, DW_AT_TI_call
-        CALL #_EZDSP5535_SAR_getKey ; |300| 
-                                        ; call occurs [#_EZDSP5535_SAR_getKey] ; |300| 
-        MOV #510, AR1 ; |300| 
-        CMPU T0 == AR1, TC1 ; |300| 
-        BCC $C$L7,TC1 ; |300| 
-                                        ; branchcc occurs ; |300| 
+        CALL #_EZDSP5535_SAR_getKey ; |302| 
+                                        ; call occurs [#_EZDSP5535_SAR_getKey] ; |302| 
+        MOV #510, AR1 ; |302| 
+        CMPU T0 == AR1, TC1 ; |302| 
+        BCC $C$L7,TC1 ; |302| 
+                                        ; branchcc occurs ; |302| 
 $C$L6:    
 $C$DW$L$_main$9$B:
 $C$DW$102	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$102, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$102, DW_AT_name("_EZDSP5535_SAR_getKey")
 	.dwattr $C$DW$102, DW_AT_TI_call
-        CALL #_EZDSP5535_SAR_getKey ; |300| 
-                                        ; call occurs [#_EZDSP5535_SAR_getKey] ; |300| 
-        MOV #510, AR1 ; |300| 
-        CMPU T0 != AR1, TC1 ; |300| 
-        BCC $C$L6,TC1 ; |300| 
-                                        ; branchcc occurs ; |300| 
+        CALL #_EZDSP5535_SAR_getKey ; |302| 
+                                        ; call occurs [#_EZDSP5535_SAR_getKey] ; |302| 
+        MOV #510, AR1 ; |302| 
+        CMPU T0 != AR1, TC1 ; |302| 
+        BCC $C$L6,TC1 ; |302| 
+                                        ; branchcc occurs ; |302| 
 $C$DW$L$_main$9$E:
 $C$L7:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 311,column 6,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 313,column 6,is_stmt
 $C$DW$103	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$103, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$103, DW_AT_name("_oled_test")
 	.dwattr $C$DW$103, DW_AT_TI_call
 
-        CALL #_oled_test ; |311| 
+        CALL #_oled_test ; |313| 
 ||      MOV #1, T0
 
-                                        ; call occurs [#_oled_test] ; |311| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 312,column 6,is_stmt
+                                        ; call occurs [#_oled_test] ; |313| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 314,column 6,is_stmt
 $C$DW$104	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$104, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$104, DW_AT_name("_spiflash_test")
 	.dwattr $C$DW$104, DW_AT_TI_call
-        CALL #_spiflash_test ; |312| 
-                                        ; call occurs [#_spiflash_test] ; |312| 
-        BCC $C$L8,T0 != #0 ; |312| 
-                                        ; branchcc occurs ; |312| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 313,column 10,is_stmt
+        CALL #_spiflash_test ; |314| 
+                                        ; call occurs [#_spiflash_test] ; |314| 
+        BCC $C$L8,T0 != #0 ; |314| 
+                                        ; branchcc occurs ; |314| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 315,column 10,is_stmt
 $C$DW$105	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$105, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$105, DW_AT_name("_EZDSP5535_LED_on")
 	.dwattr $C$DW$105, DW_AT_TI_call
 
-        CALL #_EZDSP5535_LED_on ; |313| 
+        CALL #_EZDSP5535_LED_on ; |315| 
 ||      MOV #1, T0
 
-                                        ; call occurs [#_EZDSP5535_LED_on] ; |313| 
+                                        ; call occurs [#_EZDSP5535_LED_on] ; |315| 
 $C$L8:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 314,column 6,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 316,column 6,is_stmt
 $C$DW$106	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$106, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$106, DW_AT_name("_oled_test")
 	.dwattr $C$DW$106, DW_AT_TI_call
 
-        CALL #_oled_test ; |314| 
+        CALL #_oled_test ; |316| 
 ||      MOV #4, T0
 
-                                        ; call occurs [#_oled_test] ; |314| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 316,column 12,is_stmt
+                                        ; call occurs [#_oled_test] ; |316| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 318,column 12,is_stmt
 $C$DW$107	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$107, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$107, DW_AT_name("_EZDSP5535_SAR_getKey")
 	.dwattr $C$DW$107, DW_AT_TI_call
-        CALL #_EZDSP5535_SAR_getKey ; |316| 
-                                        ; call occurs [#_EZDSP5535_SAR_getKey] ; |316| 
-        MOV #680, AR1 ; |316| 
-        CMPU T0 == AR1, TC1 ; |316| 
-        BCC $C$L10,TC1 ; |316| 
-                                        ; branchcc occurs ; |316| 
+        CALL #_EZDSP5535_SAR_getKey ; |318| 
+                                        ; call occurs [#_EZDSP5535_SAR_getKey] ; |318| 
+        MOV #680, AR1 ; |318| 
+        CMPU T0 == AR1, TC1 ; |318| 
+        BCC $C$L10,TC1 ; |318| 
+                                        ; branchcc occurs ; |318| 
 $C$L9:    
 $C$DW$L$_main$13$B:
 $C$DW$108	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$108, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$108, DW_AT_name("_EZDSP5535_SAR_getKey")
 	.dwattr $C$DW$108, DW_AT_TI_call
-        CALL #_EZDSP5535_SAR_getKey ; |316| 
-                                        ; call occurs [#_EZDSP5535_SAR_getKey] ; |316| 
-        MOV #680, AR1 ; |316| 
-        CMPU T0 != AR1, TC1 ; |316| 
-        BCC $C$L9,TC1 ; |316| 
-                                        ; branchcc occurs ; |316| 
+        CALL #_EZDSP5535_SAR_getKey ; |318| 
+                                        ; call occurs [#_EZDSP5535_SAR_getKey] ; |318| 
+        MOV #680, AR1 ; |318| 
+        CMPU T0 != AR1, TC1 ; |318| 
+        BCC $C$L9,TC1 ; |318| 
+                                        ; branchcc occurs ; |318| 
 $C$DW$L$_main$13$E:
 $C$L10:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 317,column 12,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 319,column 12,is_stmt
 $C$DW$109	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$109, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$109, DW_AT_name("_EZDSP5535_SAR_getKey")
 	.dwattr $C$DW$109, DW_AT_TI_call
-        CALL #_EZDSP5535_SAR_getKey ; |317| 
-                                        ; call occurs [#_EZDSP5535_SAR_getKey] ; |317| 
-        MOV #510, AR1 ; |317| 
-        CMPU T0 == AR1, TC1 ; |317| 
-        BCC $C$L12,TC1 ; |317| 
-                                        ; branchcc occurs ; |317| 
+        CALL #_EZDSP5535_SAR_getKey ; |319| 
+                                        ; call occurs [#_EZDSP5535_SAR_getKey] ; |319| 
+        MOV #510, AR1 ; |319| 
+        CMPU T0 == AR1, TC1 ; |319| 
+        BCC $C$L12,TC1 ; |319| 
+                                        ; branchcc occurs ; |319| 
 $C$L11:    
 $C$DW$L$_main$15$B:
 $C$DW$110	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$110, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$110, DW_AT_name("_EZDSP5535_SAR_getKey")
 	.dwattr $C$DW$110, DW_AT_TI_call
-        CALL #_EZDSP5535_SAR_getKey ; |317| 
-                                        ; call occurs [#_EZDSP5535_SAR_getKey] ; |317| 
-        MOV #510, AR1 ; |317| 
-        CMPU T0 != AR1, TC1 ; |317| 
-        BCC $C$L11,TC1 ; |317| 
-                                        ; branchcc occurs ; |317| 
+        CALL #_EZDSP5535_SAR_getKey ; |319| 
+                                        ; call occurs [#_EZDSP5535_SAR_getKey] ; |319| 
+        MOV #510, AR1 ; |319| 
+        CMPU T0 != AR1, TC1 ; |319| 
+        BCC $C$L11,TC1 ; |319| 
+                                        ; branchcc occurs ; |319| 
 $C$DW$L$_main$15$E:
 $C$L12:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 335,column 6,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 337,column 6,is_stmt
 $C$DW$111	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$111, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$111, DW_AT_name("_oled_test")
 	.dwattr $C$DW$111, DW_AT_TI_call
 
-        CALL #_oled_test ; |335| 
+        CALL #_oled_test ; |337| 
 ||      MOV #3, T0
 
-                                        ; call occurs [#_oled_test] ; |335| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 336,column 6,is_stmt
+                                        ; call occurs [#_oled_test] ; |337| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 338,column 6,is_stmt
 $C$DW$112	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$112, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$112, DW_AT_name("_EZDSP5535_LED_on")
 	.dwattr $C$DW$112, DW_AT_TI_call
 
-        CALL #_EZDSP5535_LED_on ; |336| 
+        CALL #_EZDSP5535_LED_on ; |338| 
 ||      MOV #3, T0
 
-                                        ; call occurs [#_EZDSP5535_LED_on] ; |336| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 374,column 9,is_stmt
+                                        ; call occurs [#_EZDSP5535_LED_on] ; |338| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 376,column 9,is_stmt
 $C$DW$113	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$113, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$113, DW_AT_name("_BlinkLED")
 	.dwattr $C$DW$113, DW_AT_TI_call
-        CALL #_BlinkLED ; |374| 
-                                        ; call occurs [#_BlinkLED] ; |374| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 378,column 11,is_stmt
-        MOV #0, *SP(#0) ; |378| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 378,column 19,is_stmt
+        CALL #_BlinkLED ; |376| 
+                                        ; call occurs [#_BlinkLED] ; |376| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 380,column 11,is_stmt
+        MOV #0, *SP(#0) ; |380| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 380,column 19,is_stmt
 
-        MOV *SP(#0), AR1 ; |378| 
+        MOV *SP(#0), AR1 ; |380| 
 ||      MOV #4, AR2
 
-        CMP AR1 >= AR2, TC1 ; |378| 
-        BCC $C$L14,TC1 ; |378| 
-                                        ; branchcc occurs ; |378| 
+        CMP AR1 >= AR2, TC1 ; |380| 
+        BCC $C$L14,TC1 ; |380| 
+                                        ; branchcc occurs ; |380| 
 $C$L13:    
 $C$DW$L$_main$17$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 380,column 9,is_stmt
-        MOV *SP(#0), T0 ; |380| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 382,column 9,is_stmt
+        MOV *SP(#0), T0 ; |382| 
 $C$DW$114	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$114, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$114, DW_AT_name("_EZDSP5535_LED_off")
 	.dwattr $C$DW$114, DW_AT_TI_call
-        CALL #_EZDSP5535_LED_off ; |380| 
-                                        ; call occurs [#_EZDSP5535_LED_off] ; |380| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 381,column 9,is_stmt
-        MOV #50000, AR1 ; |381| 
-        AND #0xffff, AR1, AC0 ; |381| 
+        CALL #_EZDSP5535_LED_off ; |382| 
+                                        ; call occurs [#_EZDSP5535_LED_off] ; |382| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 383,column 9,is_stmt
+        MOV #50000, AR1 ; |383| 
+        AND #0xffff, AR1, AC0 ; |383| 
 $C$DW$115	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$115, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$115, DW_AT_name("_EZDSP5535_waitusec")
 	.dwattr $C$DW$115, DW_AT_TI_call
-        CALL #_EZDSP5535_waitusec ; |381| 
-                                        ; call occurs [#_EZDSP5535_waitusec] ; |381| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 378,column 27,is_stmt
-        ADD #1, *SP(#0) ; |378| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 378,column 19,is_stmt
+        CALL #_EZDSP5535_waitusec ; |383| 
+                                        ; call occurs [#_EZDSP5535_waitusec] ; |383| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 380,column 27,is_stmt
+        ADD #1, *SP(#0) ; |380| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 380,column 19,is_stmt
 
-        MOV *SP(#0), AR1 ; |378| 
+        MOV *SP(#0), AR1 ; |380| 
 ||      MOV #4, AR2
 
-        CMP AR1 < AR2, TC1 ; |378| 
-        BCC $C$L13,TC1 ; |378| 
-                                        ; branchcc occurs ; |378| 
+        CMP AR1 < AR2, TC1 ; |380| 
+        BCC $C$L13,TC1 ; |380| 
+                                        ; branchcc occurs ; |380| 
 $C$DW$L$_main$17$E:
 $C$L14:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 383,column 11,is_stmt
-        MOV #0, *SP(#0) ; |383| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 383,column 19,is_stmt
-        MOV *SP(#0), AR1 ; |383| 
-        CMP AR1 >= AR2, TC1 ; |383| 
-        BCC $C$L16,TC1 ; |383| 
-                                        ; branchcc occurs ; |383| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 385,column 11,is_stmt
+        MOV #0, *SP(#0) ; |385| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 385,column 19,is_stmt
+        MOV *SP(#0), AR1 ; |385| 
+        CMP AR1 >= AR2, TC1 ; |385| 
+        BCC $C$L16,TC1 ; |385| 
+                                        ; branchcc occurs ; |385| 
 $C$L15:    
 $C$DW$L$_main$19$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 385,column 13,is_stmt
-        MOV *SP(#0), T0 ; |385| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 387,column 13,is_stmt
+        MOV *SP(#0), T0 ; |387| 
 $C$DW$116	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$116, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$116, DW_AT_name("_EZDSP5535_LED_on")
 	.dwattr $C$DW$116, DW_AT_TI_call
-        CALL #_EZDSP5535_LED_on ; |385| 
-                                        ; call occurs [#_EZDSP5535_LED_on] ; |385| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 386,column 13,is_stmt
-        MOV #50000, AR1 ; |386| 
-        AND #0xffff, AR1, AC0 ; |386| 
+        CALL #_EZDSP5535_LED_on ; |387| 
+                                        ; call occurs [#_EZDSP5535_LED_on] ; |387| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 388,column 13,is_stmt
+        MOV #50000, AR1 ; |388| 
+        AND #0xffff, AR1, AC0 ; |388| 
 $C$DW$117	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$117, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$117, DW_AT_name("_EZDSP5535_waitusec")
 	.dwattr $C$DW$117, DW_AT_TI_call
-        CALL #_EZDSP5535_waitusec ; |386| 
-                                        ; call occurs [#_EZDSP5535_waitusec] ; |386| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 383,column 27,is_stmt
-        ADD #1, *SP(#0) ; |383| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 383,column 19,is_stmt
+        CALL #_EZDSP5535_waitusec ; |388| 
+                                        ; call occurs [#_EZDSP5535_waitusec] ; |388| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 385,column 27,is_stmt
+        ADD #1, *SP(#0) ; |385| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 385,column 19,is_stmt
 
-        MOV *SP(#0), AR1 ; |383| 
+        MOV *SP(#0), AR1 ; |385| 
 ||      MOV #4, AR2
 
-        CMP AR1 < AR2, TC1 ; |383| 
-        BCC $C$L15,TC1 ; |383| 
-                                        ; branchcc occurs ; |383| 
+        CMP AR1 < AR2, TC1 ; |385| 
+        BCC $C$L15,TC1 ; |385| 
+                                        ; branchcc occurs ; |385| 
 $C$DW$L$_main$19$E:
 $C$L16:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 448,column 6,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 450,column 6,is_stmt
 $C$DW$118	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$118, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$118, DW_AT_name("_SYS_GlobalIntDisable")
 	.dwattr $C$DW$118, DW_AT_TI_call
-        CALL #_SYS_GlobalIntDisable ; |448| 
-                                        ; call occurs [#_SYS_GlobalIntDisable] ; |448| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 458,column 7,is_stmt
+        CALL #_SYS_GlobalIntDisable ; |450| 
+                                        ; call occurs [#_SYS_GlobalIntDisable] ; |450| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 460,column 7,is_stmt
 
         MOV #1, T0
 ||      MOV #0, T1
@@ -981,24 +981,24 @@ $C$DW$119	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$119, DW_AT_name("_xQueueGenericCreate")
 	.dwattr $C$DW$119, DW_AT_TI_call
 
-        CALL #_xQueueGenericCreate ; |458| 
+        CALL #_xQueueGenericCreate ; |460| 
 ||      MOV #3, AR0
 
-                                        ; call occurs [#_xQueueGenericCreate] ; |458| 
+                                        ; call occurs [#_xQueueGenericCreate] ; |460| 
         MOV XAR0, dbl(*(#_xSemaphoreB))
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 459,column 7,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 461,column 7,is_stmt
         MOV dbl(*(#_xSemaphoreB)), XAR3
         MOV XAR3, AC0
-        BCC $C$L18,AC0 != #0 ; |459| 
-                                        ; branchcc occurs ; |459| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 460,column 19,is_stmt
+        BCC $C$L18,AC0 != #0 ; |461| 
+                                        ; branchcc occurs ; |461| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 462,column 19,is_stmt
 $C$L17:    
 $C$DW$L$_main$22$B:
-        B $C$L17  ; |460| 
-                                        ; branch occurs ; |460| 
+        B $C$L17  ; |462| 
+                                        ; branch occurs ; |462| 
 $C$DW$L$_main$22$E:
 $C$L18:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 462,column 7,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 464,column 7,is_stmt
 
         MOV #1, T0
 ||      MOV #0, T1
@@ -1008,24 +1008,24 @@ $C$DW$120	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$120, DW_AT_name("_xQueueGenericCreate")
 	.dwattr $C$DW$120, DW_AT_TI_call
 
-        CALL #_xQueueGenericCreate ; |462| 
+        CALL #_xQueueGenericCreate ; |464| 
 ||      MOV #3, AR0
 
-                                        ; call occurs [#_xQueueGenericCreate] ; |462| 
+                                        ; call occurs [#_xQueueGenericCreate] ; |464| 
         MOV XAR0, dbl(*(#_xSemaphoreR))
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 463,column 12,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 465,column 12,is_stmt
         MOV dbl(*(#_xSemaphoreR)), XAR3
         MOV XAR3, AC0
-        BCC $C$L20,AC0 != #0 ; |463| 
-                                        ; branchcc occurs ; |463| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 464,column 24,is_stmt
+        BCC $C$L20,AC0 != #0 ; |465| 
+                                        ; branchcc occurs ; |465| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 466,column 24,is_stmt
 $C$L19:    
 $C$DW$L$_main$25$B:
-        B $C$L19  ; |464| 
-                                        ; branch occurs ; |464| 
+        B $C$L19  ; |466| 
+                                        ; branch occurs ; |466| 
 $C$DW$L$_main$25$E:
 $C$L20:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 466,column 7,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 468,column 7,is_stmt
 
         MOV #1, T0
 ||      MOV #0, T1
@@ -1035,24 +1035,24 @@ $C$DW$121	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$121, DW_AT_name("_xQueueGenericCreate")
 	.dwattr $C$DW$121, DW_AT_TI_call
 
-        CALL #_xQueueGenericCreate ; |466| 
+        CALL #_xQueueGenericCreate ; |468| 
 ||      MOV #3, AR0
 
-                                        ; call occurs [#_xQueueGenericCreate] ; |466| 
+                                        ; call occurs [#_xQueueGenericCreate] ; |468| 
         MOV XAR0, dbl(*(#_xSemaphoreO))
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 467,column 12,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 469,column 12,is_stmt
         MOV dbl(*(#_xSemaphoreO)), XAR3
         MOV XAR3, AC0
-        BCC $C$L22,AC0 != #0 ; |467| 
-                                        ; branchcc occurs ; |467| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 468,column 24,is_stmt
+        BCC $C$L22,AC0 != #0 ; |469| 
+                                        ; branchcc occurs ; |469| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 470,column 24,is_stmt
 $C$L21:    
 $C$DW$L$_main$28$B:
-        B $C$L21  ; |468| 
-                                        ; branch occurs ; |468| 
+        B $C$L21  ; |470| 
+                                        ; branch occurs ; |470| 
 $C$DW$L$_main$28$E:
 $C$L22:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 470,column 7,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 472,column 7,is_stmt
 
         MOV #1, T0
 ||      MOV #0, T1
@@ -1062,24 +1062,24 @@ $C$DW$122	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$122, DW_AT_name("_xQueueGenericCreate")
 	.dwattr $C$DW$122, DW_AT_TI_call
 
-        CALL #_xQueueGenericCreate ; |470| 
+        CALL #_xQueueGenericCreate ; |472| 
 ||      MOV #3, AR0
 
-                                        ; call occurs [#_xQueueGenericCreate] ; |470| 
+                                        ; call occurs [#_xQueueGenericCreate] ; |472| 
         MOV XAR0, dbl(*(#_xSemaphoreY))
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 471,column 17,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 473,column 17,is_stmt
         MOV dbl(*(#_xSemaphoreY)), XAR3
         MOV XAR3, AC0
-        BCC $C$L24,AC0 != #0 ; |471| 
-                                        ; branchcc occurs ; |471| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 472,column 29,is_stmt
+        BCC $C$L24,AC0 != #0 ; |473| 
+                                        ; branchcc occurs ; |473| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 474,column 29,is_stmt
 $C$L23:    
 $C$DW$L$_main$31$B:
-        B $C$L23  ; |472| 
-                                        ; branch occurs ; |472| 
+        B $C$L23  ; |474| 
+                                        ; branch occurs ; |474| 
 $C$DW$L$_main$31$E:
 $C$L24:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 474,column 7,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 476,column 7,is_stmt
 
         MOV #1, T0
 ||      MOV #0, T1
@@ -1089,24 +1089,24 @@ $C$DW$123	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$123, DW_AT_name("_xQueueGenericCreate")
 	.dwattr $C$DW$123, DW_AT_TI_call
 
-        CALL #_xQueueGenericCreate ; |474| 
+        CALL #_xQueueGenericCreate ; |476| 
 ||      MOV #3, AR0
 
-                                        ; call occurs [#_xQueueGenericCreate] ; |474| 
+                                        ; call occurs [#_xQueueGenericCreate] ; |476| 
         MOV XAR0, dbl(*(#_xSemaphoreBaton))
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 475,column 15,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 477,column 15,is_stmt
         MOV dbl(*(#_xSemaphoreBaton)), XAR3
         MOV XAR3, AC0
-        BCC $C$L26,AC0 != #0 ; |475| 
-                                        ; branchcc occurs ; |475| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 476,column 25,is_stmt
+        BCC $C$L26,AC0 != #0 ; |477| 
+                                        ; branchcc occurs ; |477| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 478,column 25,is_stmt
 $C$L25:    
 $C$DW$L$_main$34$B:
-        B $C$L25  ; |476| 
-                                        ; branch occurs ; |476| 
+        B $C$L25  ; |478| 
+                                        ; branch occurs ; |478| 
 $C$DW$L$_main$34$E:
 $C$L26:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 478,column 15,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 480,column 15,is_stmt
 
         MOV #1, T0
 ||      MOV #0, T1
@@ -1116,173 +1116,173 @@ $C$DW$124	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$124, DW_AT_name("_xQueueGenericCreate")
 	.dwattr $C$DW$124, DW_AT_TI_call
 
-        CALL #_xQueueGenericCreate ; |478| 
+        CALL #_xQueueGenericCreate ; |480| 
 ||      MOV #3, AR0
 
-                                        ; call occurs [#_xQueueGenericCreate] ; |478| 
+                                        ; call occurs [#_xQueueGenericCreate] ; |480| 
         MOV XAR0, dbl(*(#_xSemaphoreXF))
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 479,column 21,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 481,column 21,is_stmt
         MOV dbl(*(#_xSemaphoreXF)), XAR3
         MOV XAR3, AC0
-        BCC $C$L28,AC0 != #0 ; |479| 
-                                        ; branchcc occurs ; |479| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 480,column 31,is_stmt
+        BCC $C$L28,AC0 != #0 ; |481| 
+                                        ; branchcc occurs ; |481| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 482,column 31,is_stmt
 $C$L27:    
 $C$DW$L$_main$37$B:
-        B $C$L27  ; |480| 
-                                        ; branch occurs ; |480| 
+        B $C$L27  ; |482| 
+                                        ; branch occurs ; |482| 
 $C$DW$L$_main$37$E:
 $C$L28:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 482,column 21,is_stmt
-        MOV #(_StartUpTask >> 16) << #16, AC0 ; |482| 
-        AMOV #_startUpTaskHandle, XAR2 ; |482| 
-        AMOV #2, XAR1 ; |482| 
-        AMOV #$C$FSL1, XAR0 ; |482| 
-        MOV #128, T0 ; |482| 
-        OR #(_StartUpTask & 0xffff), AC0, AC0 ; |482| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 484,column 21,is_stmt
+        MOV #(_StartUpTask >> 16) << #16, AC0 ; |484| 
+        AMOV #_startUpTaskHandle, XAR2 ; |484| 
+        AMOV #2, XAR1 ; |484| 
+        AMOV #$C$FSL1, XAR0 ; |484| 
+        MOV #128, T0 ; |484| 
+        OR #(_StartUpTask & 0xffff), AC0, AC0 ; |484| 
 $C$DW$125	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$125, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$125, DW_AT_name("_xTaskCreate")
 	.dwattr $C$DW$125, DW_AT_TI_call
 
-        CALL #_xTaskCreate ; |482| 
+        CALL #_xTaskCreate ; |484| 
 ||      MOV #2, T1
 
-                                        ; call occurs [#_xTaskCreate] ; |482| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 492,column 9,is_stmt
-        MOV #128, T0 ; |492| 
-        AMOV #_blueTaskHandle, XAR2 ; |492| 
-        AMOV #2, XAR1 ; |492| 
-        AMOV #$C$FSL2, XAR0 ; |492| 
-        MOV #(_LED_TaskBlue >> 16) << #16, AC0 ; |492| 
-        OR #(_LED_TaskBlue & 0xffff), AC0, AC0 ; |492| 
+                                        ; call occurs [#_xTaskCreate] ; |484| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 494,column 9,is_stmt
+        MOV #128, T0 ; |494| 
+        AMOV #_blueTaskHandle, XAR2 ; |494| 
+        AMOV #2, XAR1 ; |494| 
+        AMOV #$C$FSL2, XAR0 ; |494| 
+        MOV #(_LED_TaskBlue >> 16) << #16, AC0 ; |494| 
+        OR #(_LED_TaskBlue & 0xffff), AC0, AC0 ; |494| 
 $C$DW$126	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$126, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$126, DW_AT_name("_xTaskCreate")
 	.dwattr $C$DW$126, DW_AT_TI_call
 
-        CALL #_xTaskCreate ; |492| 
+        CALL #_xTaskCreate ; |494| 
 ||      MOV #1, T1
 
-                                        ; call occurs [#_xTaskCreate] ; |492| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 503,column 9,is_stmt
-        MOV #128, T0 ; |503| 
-        AMOV #_xfTaskHandle, XAR2 ; |503| 
-        AMOV #2, XAR1 ; |503| 
-        AMOV #$C$FSL3, XAR0 ; |503| 
-        MOV #(_LED_TaskXF >> 16) << #16, AC0 ; |503| 
-        OR #(_LED_TaskXF & 0xffff), AC0, AC0 ; |503| 
+                                        ; call occurs [#_xTaskCreate] ; |494| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 505,column 9,is_stmt
+        MOV #128, T0 ; |505| 
+        AMOV #_xfTaskHandle, XAR2 ; |505| 
+        AMOV #2, XAR1 ; |505| 
+        AMOV #$C$FSL3, XAR0 ; |505| 
+        MOV #(_LED_TaskXF >> 16) << #16, AC0 ; |505| 
+        OR #(_LED_TaskXF & 0xffff), AC0, AC0 ; |505| 
 $C$DW$127	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$127, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$127, DW_AT_name("_xTaskCreate")
 	.dwattr $C$DW$127, DW_AT_TI_call
 
-        CALL #_xTaskCreate ; |503| 
+        CALL #_xTaskCreate ; |505| 
 ||      MOV #2, T1
 
-                                        ; call occurs [#_xTaskCreate] ; |503| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 511,column 9,is_stmt
-        MOV #128, T0 ; |511| 
-        AMOV #_greenTaskHandle, XAR2 ; |511| 
-        AMOV #2, XAR1 ; |511| 
-        AMOV #$C$FSL4, XAR0 ; |511| 
-        MOV #(_LED_TaskGreen >> 16) << #16, AC0 ; |511| 
-        OR #(_LED_TaskGreen & 0xffff), AC0, AC0 ; |511| 
+                                        ; call occurs [#_xTaskCreate] ; |505| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 513,column 9,is_stmt
+        MOV #128, T0 ; |513| 
+        AMOV #_greenTaskHandle, XAR2 ; |513| 
+        AMOV #2, XAR1 ; |513| 
+        AMOV #$C$FSL4, XAR0 ; |513| 
+        MOV #(_LED_TaskGreen >> 16) << #16, AC0 ; |513| 
+        OR #(_LED_TaskGreen & 0xffff), AC0, AC0 ; |513| 
 $C$DW$128	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$128, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$128, DW_AT_name("_xTaskCreate")
 	.dwattr $C$DW$128, DW_AT_TI_call
 
-        CALL #_xTaskCreate ; |511| 
+        CALL #_xTaskCreate ; |513| 
 ||      MOV #1, T1
 
-                                        ; call occurs [#_xTaskCreate] ; |511| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 520,column 9,is_stmt
-        MOV #128, T0 ; |520| 
-        AMOV #_xf2TaskHandle, XAR2 ; |520| 
-        AMOV #2, XAR1 ; |520| 
-        AMOV #$C$FSL5, XAR0 ; |520| 
-        MOV #(_LED_TaskXF2 >> 16) << #16, AC0 ; |520| 
-        OR #(_LED_TaskXF2 & 0xffff), AC0, AC0 ; |520| 
+                                        ; call occurs [#_xTaskCreate] ; |513| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 522,column 9,is_stmt
+        MOV #128, T0 ; |522| 
+        AMOV #_xf2TaskHandle, XAR2 ; |522| 
+        AMOV #2, XAR1 ; |522| 
+        AMOV #$C$FSL5, XAR0 ; |522| 
+        MOV #(_LED_TaskXF2 >> 16) << #16, AC0 ; |522| 
+        OR #(_LED_TaskXF2 & 0xffff), AC0, AC0 ; |522| 
 $C$DW$129	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$129, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$129, DW_AT_name("_xTaskCreate")
 	.dwattr $C$DW$129, DW_AT_TI_call
 
-        CALL #_xTaskCreate ; |520| 
+        CALL #_xTaskCreate ; |522| 
 ||      MOV #2, T1
 
-                                        ; call occurs [#_xTaskCreate] ; |520| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 529,column 9,is_stmt
-        MOV #128, T0 ; |529| 
-        AMOV #_controlTaskHandle, XAR2 ; |529| 
-        AMOV #2, XAR1 ; |529| 
-        AMOV #$C$FSL6, XAR0 ; |529| 
-        MOV #(_LED_Control >> 16) << #16, AC0 ; |529| 
-        OR #(_LED_Control & 0xffff), AC0, AC0 ; |529| 
+                                        ; call occurs [#_xTaskCreate] ; |522| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 531,column 9,is_stmt
+        MOV #128, T0 ; |531| 
+        AMOV #_controlTaskHandle, XAR2 ; |531| 
+        AMOV #2, XAR1 ; |531| 
+        AMOV #$C$FSL6, XAR0 ; |531| 
+        MOV #(_LED_Control >> 16) << #16, AC0 ; |531| 
+        OR #(_LED_Control & 0xffff), AC0, AC0 ; |531| 
 $C$DW$130	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$130, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$130, DW_AT_name("_xTaskCreate")
 	.dwattr $C$DW$130, DW_AT_TI_call
 
-        CALL #_xTaskCreate ; |529| 
+        CALL #_xTaskCreate ; |531| 
 ||      MOV #1, T1
 
-                                        ; call occurs [#_xTaskCreate] ; |529| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 539,column 9,is_stmt
-        MOV #128, T0 ; |539| 
-        AMOV #_redTaskHandle, XAR2 ; |539| 
-        AMOV #2, XAR1 ; |539| 
-        AMOV #$C$FSL7, XAR0 ; |539| 
-        MOV #(_LED_TaskRed >> 16) << #16, AC0 ; |539| 
-        OR #(_LED_TaskRed & 0xffff), AC0, AC0 ; |539| 
+                                        ; call occurs [#_xTaskCreate] ; |531| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 541,column 9,is_stmt
+        MOV #128, T0 ; |541| 
+        AMOV #_redTaskHandle, XAR2 ; |541| 
+        AMOV #2, XAR1 ; |541| 
+        AMOV #$C$FSL7, XAR0 ; |541| 
+        MOV #(_LED_TaskRed >> 16) << #16, AC0 ; |541| 
+        OR #(_LED_TaskRed & 0xffff), AC0, AC0 ; |541| 
 $C$DW$131	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$131, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$131, DW_AT_name("_xTaskCreate")
 	.dwattr $C$DW$131, DW_AT_TI_call
 
-        CALL #_xTaskCreate ; |539| 
+        CALL #_xTaskCreate ; |541| 
 ||      MOV #3, T1
 
-                                        ; call occurs [#_xTaskCreate] ; |539| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 559,column 2,is_stmt
+                                        ; call occurs [#_xTaskCreate] ; |541| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 561,column 2,is_stmt
 $C$DW$132	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$132, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$132, DW_AT_name("_SYS_GlobalIntDisable")
 	.dwattr $C$DW$132, DW_AT_TI_call
-        CALL #_SYS_GlobalIntDisable ; |559| 
-                                        ; call occurs [#_SYS_GlobalIntDisable] ; |559| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 561,column 2,is_stmt
-        AND #0xdfff, *(#0) ; |561| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 580,column 2,is_stmt
-        MOV #50000, AR1 ; |580| 
-        AND #0xffff, AR1, AC0 ; |580| 
+        CALL #_SYS_GlobalIntDisable ; |561| 
+                                        ; call occurs [#_SYS_GlobalIntDisable] ; |561| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 563,column 2,is_stmt
+        AND #0xdfff, *(#0) ; |563| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 582,column 2,is_stmt
+        MOV #50000, AR1 ; |582| 
+        AND #0xffff, AR1, AC0 ; |582| 
 $C$DW$133	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$133, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$133, DW_AT_name("_EZDSP5535_waitusec")
 	.dwattr $C$DW$133, DW_AT_TI_call
-        CALL #_EZDSP5535_waitusec ; |580| 
-                                        ; call occurs [#_EZDSP5535_waitusec] ; |580| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 581,column 2,is_stmt
+        CALL #_EZDSP5535_waitusec ; |582| 
+                                        ; call occurs [#_EZDSP5535_waitusec] ; |582| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 583,column 2,is_stmt
 $C$DW$134	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$134, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$134, DW_AT_name("_oled_test")
 	.dwattr $C$DW$134, DW_AT_TI_call
 
-        CALL #_oled_test ; |581| 
+        CALL #_oled_test ; |583| 
 ||      MOV #5, T0
 
-                                        ; call occurs [#_oled_test] ; |581| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 582,column 2,is_stmt
+                                        ; call occurs [#_oled_test] ; |583| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 584,column 2,is_stmt
 $C$DW$135	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$135, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$135, DW_AT_name("_vTaskStartScheduler")
 	.dwattr $C$DW$135, DW_AT_TI_call
-        CALL #_vTaskStartScheduler ; |582| 
-                                        ; call occurs [#_vTaskStartScheduler] ; |582| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 586,column 2,is_stmt
+        CALL #_vTaskStartScheduler ; |584| 
+                                        ; call occurs [#_vTaskStartScheduler] ; |584| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 588,column 2,is_stmt
         MOV #0, T0
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 587,column 1,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 589,column 1,is_stmt
         AADD #5, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$136	.dwtag  DW_TAG_TI_branch
@@ -1292,10 +1292,10 @@ $C$DW$136	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$137	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$137, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L27:1:1537088021")
+	.dwattr $C$DW$137, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L27:1:1537095200")
 	.dwattr $C$DW$137, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$137, DW_AT_TI_begin_line(0x1e0)
-	.dwattr $C$DW$137, DW_AT_TI_end_line(0x1e0)
+	.dwattr $C$DW$137, DW_AT_TI_begin_line(0x1e2)
+	.dwattr $C$DW$137, DW_AT_TI_end_line(0x1e2)
 $C$DW$138	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$138, DW_AT_low_pc($C$DW$L$_main$37$B)
 	.dwattr $C$DW$138, DW_AT_high_pc($C$DW$L$_main$37$E)
@@ -1303,10 +1303,10 @@ $C$DW$138	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$139	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$139, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L25:1:1537088021")
+	.dwattr $C$DW$139, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L25:1:1537095200")
 	.dwattr $C$DW$139, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$139, DW_AT_TI_begin_line(0x1dc)
-	.dwattr $C$DW$139, DW_AT_TI_end_line(0x1dc)
+	.dwattr $C$DW$139, DW_AT_TI_begin_line(0x1de)
+	.dwattr $C$DW$139, DW_AT_TI_end_line(0x1de)
 $C$DW$140	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$140, DW_AT_low_pc($C$DW$L$_main$34$B)
 	.dwattr $C$DW$140, DW_AT_high_pc($C$DW$L$_main$34$E)
@@ -1314,10 +1314,10 @@ $C$DW$140	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$141	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$141, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L23:1:1537088021")
+	.dwattr $C$DW$141, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L23:1:1537095200")
 	.dwattr $C$DW$141, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$141, DW_AT_TI_begin_line(0x1d8)
-	.dwattr $C$DW$141, DW_AT_TI_end_line(0x1d8)
+	.dwattr $C$DW$141, DW_AT_TI_begin_line(0x1da)
+	.dwattr $C$DW$141, DW_AT_TI_end_line(0x1da)
 $C$DW$142	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$142, DW_AT_low_pc($C$DW$L$_main$31$B)
 	.dwattr $C$DW$142, DW_AT_high_pc($C$DW$L$_main$31$E)
@@ -1325,10 +1325,10 @@ $C$DW$142	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$143	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$143, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L21:1:1537088021")
+	.dwattr $C$DW$143, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L21:1:1537095200")
 	.dwattr $C$DW$143, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$143, DW_AT_TI_begin_line(0x1d4)
-	.dwattr $C$DW$143, DW_AT_TI_end_line(0x1d4)
+	.dwattr $C$DW$143, DW_AT_TI_begin_line(0x1d6)
+	.dwattr $C$DW$143, DW_AT_TI_end_line(0x1d6)
 $C$DW$144	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$144, DW_AT_low_pc($C$DW$L$_main$28$B)
 	.dwattr $C$DW$144, DW_AT_high_pc($C$DW$L$_main$28$E)
@@ -1336,10 +1336,10 @@ $C$DW$144	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$145	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$145, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L19:1:1537088021")
+	.dwattr $C$DW$145, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L19:1:1537095200")
 	.dwattr $C$DW$145, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$145, DW_AT_TI_begin_line(0x1d0)
-	.dwattr $C$DW$145, DW_AT_TI_end_line(0x1d0)
+	.dwattr $C$DW$145, DW_AT_TI_begin_line(0x1d2)
+	.dwattr $C$DW$145, DW_AT_TI_end_line(0x1d2)
 $C$DW$146	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$146, DW_AT_low_pc($C$DW$L$_main$25$B)
 	.dwattr $C$DW$146, DW_AT_high_pc($C$DW$L$_main$25$E)
@@ -1347,10 +1347,10 @@ $C$DW$146	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$147	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$147, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L17:1:1537088021")
+	.dwattr $C$DW$147, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L17:1:1537095200")
 	.dwattr $C$DW$147, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$147, DW_AT_TI_begin_line(0x1cc)
-	.dwattr $C$DW$147, DW_AT_TI_end_line(0x1cc)
+	.dwattr $C$DW$147, DW_AT_TI_begin_line(0x1ce)
+	.dwattr $C$DW$147, DW_AT_TI_end_line(0x1ce)
 $C$DW$148	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$148, DW_AT_low_pc($C$DW$L$_main$22$B)
 	.dwattr $C$DW$148, DW_AT_high_pc($C$DW$L$_main$22$E)
@@ -1358,10 +1358,10 @@ $C$DW$148	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$149	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$149, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L15:1:1537088021")
+	.dwattr $C$DW$149, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L15:1:1537095200")
 	.dwattr $C$DW$149, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$149, DW_AT_TI_begin_line(0x17f)
-	.dwattr $C$DW$149, DW_AT_TI_end_line(0x183)
+	.dwattr $C$DW$149, DW_AT_TI_begin_line(0x181)
+	.dwattr $C$DW$149, DW_AT_TI_end_line(0x185)
 $C$DW$150	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$150, DW_AT_low_pc($C$DW$L$_main$19$B)
 	.dwattr $C$DW$150, DW_AT_high_pc($C$DW$L$_main$19$E)
@@ -1369,10 +1369,10 @@ $C$DW$150	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$151	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$151, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L13:1:1537088021")
+	.dwattr $C$DW$151, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L13:1:1537095200")
 	.dwattr $C$DW$151, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$151, DW_AT_TI_begin_line(0x17a)
-	.dwattr $C$DW$151, DW_AT_TI_end_line(0x17e)
+	.dwattr $C$DW$151, DW_AT_TI_begin_line(0x17c)
+	.dwattr $C$DW$151, DW_AT_TI_end_line(0x180)
 $C$DW$152	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$152, DW_AT_low_pc($C$DW$L$_main$17$B)
 	.dwattr $C$DW$152, DW_AT_high_pc($C$DW$L$_main$17$E)
@@ -1380,10 +1380,10 @@ $C$DW$152	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$153	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$153, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L11:1:1537088021")
+	.dwattr $C$DW$153, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L11:1:1537095200")
 	.dwattr $C$DW$153, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$153, DW_AT_TI_begin_line(0x13d)
-	.dwattr $C$DW$153, DW_AT_TI_end_line(0x13d)
+	.dwattr $C$DW$153, DW_AT_TI_begin_line(0x13f)
+	.dwattr $C$DW$153, DW_AT_TI_end_line(0x13f)
 $C$DW$154	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$154, DW_AT_low_pc($C$DW$L$_main$15$B)
 	.dwattr $C$DW$154, DW_AT_high_pc($C$DW$L$_main$15$E)
@@ -1391,10 +1391,10 @@ $C$DW$154	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$155	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$155, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L9:1:1537088021")
+	.dwattr $C$DW$155, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L9:1:1537095200")
 	.dwattr $C$DW$155, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$155, DW_AT_TI_begin_line(0x13c)
-	.dwattr $C$DW$155, DW_AT_TI_end_line(0x13c)
+	.dwattr $C$DW$155, DW_AT_TI_begin_line(0x13e)
+	.dwattr $C$DW$155, DW_AT_TI_end_line(0x13e)
 $C$DW$156	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$156, DW_AT_low_pc($C$DW$L$_main$13$B)
 	.dwattr $C$DW$156, DW_AT_high_pc($C$DW$L$_main$13$E)
@@ -1402,10 +1402,10 @@ $C$DW$156	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$157	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$157, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L6:1:1537088021")
+	.dwattr $C$DW$157, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L6:1:1537095200")
 	.dwattr $C$DW$157, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$157, DW_AT_TI_begin_line(0x12c)
-	.dwattr $C$DW$157, DW_AT_TI_end_line(0x12c)
+	.dwattr $C$DW$157, DW_AT_TI_begin_line(0x12e)
+	.dwattr $C$DW$157, DW_AT_TI_end_line(0x12e)
 $C$DW$158	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$158, DW_AT_low_pc($C$DW$L$_main$9$B)
 	.dwattr $C$DW$158, DW_AT_high_pc($C$DW$L$_main$9$E)
@@ -1413,17 +1413,17 @@ $C$DW$158	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$159	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$159, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L4:1:1537088021")
+	.dwattr $C$DW$159, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L4:1:1537095200")
 	.dwattr $C$DW$159, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$159, DW_AT_TI_begin_line(0x12b)
-	.dwattr $C$DW$159, DW_AT_TI_end_line(0x12b)
+	.dwattr $C$DW$159, DW_AT_TI_begin_line(0x12d)
+	.dwattr $C$DW$159, DW_AT_TI_end_line(0x12d)
 $C$DW$160	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$160, DW_AT_low_pc($C$DW$L$_main$7$B)
 	.dwattr $C$DW$160, DW_AT_high_pc($C$DW$L$_main$7$E)
 	.dwendtag $C$DW$159
 
 	.dwattr $C$DW$85, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$85, DW_AT_TI_end_line(0x24b)
+	.dwattr $C$DW$85, DW_AT_TI_end_line(0x24d)
 	.dwattr $C$DW$85, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$85
@@ -1436,10 +1436,10 @@ $C$DW$161	.dwtag  DW_TAG_subprogram, DW_AT_name("prvSetupHardware")
 	.dwattr $C$DW$161, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$161, DW_AT_TI_symbol_name("_prvSetupHardware")
 	.dwattr $C$DW$161, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$161, DW_AT_TI_begin_line(0x299)
+	.dwattr $C$DW$161, DW_AT_TI_begin_line(0x29b)
 	.dwattr $C$DW$161, DW_AT_TI_begin_column(0x0d)
 	.dwattr $C$DW$161, DW_AT_TI_max_frame_size(0x02)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 666,column 1,is_stmt,address _prvSetupHardware
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 668,column 1,is_stmt,address _prvSetupHardware
 
 	.dwfde $C$DW$CIE, _prvSetupHardware
 ;*******************************************************************************
@@ -1456,42 +1456,42 @@ _prvSetupHardware:
 	.dwcfi	save_reg_to_mem, 91, -1
         AADD #-1, SP
 	.dwcfi	cfa_offset, 2
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 670,column 7,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 672,column 7,is_stmt
 $C$DW$162	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$162, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$162, DW_AT_name("_systemInit")
 	.dwattr $C$DW$162, DW_AT_TI_call
-        CALL #_systemInit ; |670| 
-                                        ; call occurs [#_systemInit] ; |670| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 679,column 9,is_stmt
+        CALL #_systemInit ; |672| 
+                                        ; call occurs [#_systemInit] ; |672| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 681,column 9,is_stmt
 $C$DW$163	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$163, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$163, DW_AT_name("_RTC_reset")
 	.dwattr $C$DW$163, DW_AT_TI_call
-        CALL #_RTC_reset ; |679| 
-                                        ; call occurs [#_RTC_reset] ; |679| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 680,column 2,is_stmt
+        CALL #_RTC_reset ; |681| 
+                                        ; call occurs [#_RTC_reset] ; |681| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 682,column 2,is_stmt
 $C$DW$164	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$164, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$164, DW_AT_name("_reset_RTC")
 	.dwattr $C$DW$164, DW_AT_TI_call
-        CALL #_reset_RTC ; |680| 
-                                        ; call occurs [#_reset_RTC] ; |680| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 684,column 2,is_stmt
+        CALL #_reset_RTC ; |682| 
+                                        ; call occurs [#_reset_RTC] ; |682| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 686,column 2,is_stmt
 $C$DW$165	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$165, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$165, DW_AT_name("_set_i2s0_slave")
 	.dwattr $C$DW$165, DW_AT_TI_call
-        CALL #_set_i2s0_slave ; |684| 
-                                        ; call occurs [#_set_i2s0_slave] ; |684| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 685,column 2,is_stmt
+        CALL #_set_i2s0_slave ; |686| 
+                                        ; call occurs [#_set_i2s0_slave] ; |686| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 687,column 2,is_stmt
 $C$DW$166	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$166, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$166, DW_AT_name("_enable_i2s0")
 	.dwattr $C$DW$166, DW_AT_TI_call
-        CALL #_enable_i2s0 ; |685| 
-                                        ; call occurs [#_enable_i2s0] ; |685| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 717,column 1,is_stmt
+        CALL #_enable_i2s0 ; |687| 
+                                        ; call occurs [#_enable_i2s0] ; |687| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 719,column 1,is_stmt
         AADD #1, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$167	.dwtag  DW_TAG_TI_branch
@@ -1500,7 +1500,7 @@ $C$DW$167	.dwtag  DW_TAG_TI_branch
         RET
                                         ; return occurs
 	.dwattr $C$DW$161, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$161, DW_AT_TI_end_line(0x2cd)
+	.dwattr $C$DW$161, DW_AT_TI_end_line(0x2cf)
 	.dwattr $C$DW$161, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$161
@@ -1515,10 +1515,10 @@ $C$DW$168	.dwtag  DW_TAG_subprogram, DW_AT_name("vApplicationIdleHook")
 	.dwattr $C$DW$168, DW_AT_TI_symbol_name("_vApplicationIdleHook")
 	.dwattr $C$DW$168, DW_AT_external
 	.dwattr $C$DW$168, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$168, DW_AT_TI_begin_line(0x2d0)
+	.dwattr $C$DW$168, DW_AT_TI_begin_line(0x2d2)
 	.dwattr $C$DW$168, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$168, DW_AT_TI_max_frame_size(0x01)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 721,column 1,is_stmt,address _vApplicationIdleHook
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 723,column 1,is_stmt,address _vApplicationIdleHook
 
 	.dwfde $C$DW$CIE, _vApplicationIdleHook
 $C$DW$169	.dwtag  DW_TAG_variable, DW_AT_name("i")
@@ -1538,23 +1538,23 @@ $C$DW$169	.dwtag  DW_TAG_variable, DW_AT_name("i")
 _vApplicationIdleHook:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 726,column 2,is_stmt
-        MOV dbl(*(#_ulIdleLoops)), AC0 ; |726| 
-        ADD #1, AC0 ; |726| 
-        MOV AC0, dbl(*(#_ulIdleLoops)) ; |726| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 728,column 2,is_stmt
+        MOV dbl(*(#_ulIdleLoops)), AC0 ; |728| 
+        ADD #1, AC0 ; |728| 
+        MOV AC0, dbl(*(#_ulIdleLoops)) ; |728| 
         NOP
         NOP
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 730,column 2,is_stmt
-        AMOV #500000, XAR3 ; |730| 
-        MOV dbl(*(#_ulIdleLoops)), AC1 ; |730| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 732,column 2,is_stmt
+        AMOV #500000, XAR3 ; |732| 
+        MOV dbl(*(#_ulIdleLoops)), AC1 ; |732| 
         MOV XAR3, AC0
-        CMPU AC1 <= AC0, TC1 ; |730| 
-        BCC $C$L29,TC1 ; |730| 
-                                        ; branchcc occurs ; |730| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 811,column 9,is_stmt
-        MOV #0, AC0 ; |811| 
-        MOV AC0, dbl(*(#_ulIdleLoops)) ; |811| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 822,column 1,is_stmt
+        CMPU AC1 <= AC0, TC1 ; |732| 
+        BCC $C$L29,TC1 ; |732| 
+                                        ; branchcc occurs ; |732| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 813,column 9,is_stmt
+        MOV #0, AC0 ; |813| 
+        MOV AC0, dbl(*(#_ulIdleLoops)) ; |813| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 824,column 1,is_stmt
 $C$L29:    
 $C$DW$170	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$170, DW_AT_low_pc(0x00)
@@ -1562,7 +1562,7 @@ $C$DW$170	.dwtag  DW_TAG_TI_branch
         RET
                                         ; return occurs
 	.dwattr $C$DW$168, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$168, DW_AT_TI_end_line(0x336)
+	.dwattr $C$DW$168, DW_AT_TI_end_line(0x338)
 	.dwattr $C$DW$168, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$168
@@ -1577,10 +1577,10 @@ $C$DW$171	.dwtag  DW_TAG_subprogram, DW_AT_name("InitSystem")
 	.dwattr $C$DW$171, DW_AT_TI_symbol_name("_InitSystem")
 	.dwattr $C$DW$171, DW_AT_external
 	.dwattr $C$DW$171, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$171, DW_AT_TI_begin_line(0x33a)
+	.dwattr $C$DW$171, DW_AT_TI_begin_line(0x33c)
 	.dwattr $C$DW$171, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$171, DW_AT_TI_max_frame_size(0x02)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 827,column 1,is_stmt,address _InitSystem
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 829,column 1,is_stmt,address _InitSystem
 
 	.dwfde $C$DW$CIE, _InitSystem
 ;*******************************************************************************
@@ -1602,56 +1602,56 @@ $C$DW$172	.dwtag  DW_TAG_variable, DW_AT_name("i")
 	.dwattr $C$DW$172, DW_AT_TI_symbol_name("_i")
 	.dwattr $C$DW$172, DW_AT_type(*$C$DW$T$10)
 	.dwattr $C$DW$172, DW_AT_location[DW_OP_bregx 0x24 0]
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 831,column 5,is_stmt
-        MOV #0, *port(#7199) ; |831| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 834,column 5,is_stmt
-        MOV #32768, *port(#7201) ; |834| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 835,column 5,is_stmt
-        MOV #0, *port(#7203) ; |835| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 833,column 5,is_stmt
+        MOV #0, *port(#7199) ; |833| 
 	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 836,column 5,is_stmt
-        MOV #2054, *port(#7202) ; |836| 
+        MOV #32768, *port(#7201) ; |836| 
 	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 837,column 5,is_stmt
-        MOV #35816, *port(#7200) ; |837| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 852,column 13,is_stmt
-        BTST #3, *port(#7202), TC1 ; |852| 
-        BCC $C$L31,TC1 ; |852| 
-                                        ; branchcc occurs ; |852| 
+        MOV #0, *port(#7203) ; |837| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 838,column 5,is_stmt
+        MOV #2054, *port(#7202) ; |838| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 839,column 5,is_stmt
+        MOV #35816, *port(#7200) ; |839| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 854,column 13,is_stmt
+        BTST #3, *port(#7202), TC1 ; |854| 
+        BCC $C$L31,TC1 ; |854| 
+                                        ; branchcc occurs ; |854| 
 $C$L30:    
 $C$DW$L$_InitSystem$2$B:
-        BTST #3, *port(#7202), TC1 ; |852| 
-        BCC $C$L30,!TC1 ; |852| 
-                                        ; branchcc occurs ; |852| 
+        BTST #3, *port(#7202), TC1 ; |854| 
+        BCC $C$L30,!TC1 ; |854| 
+                                        ; branchcc occurs ; |854| 
 $C$DW$L$_InitSystem$2$E:
 $C$L31:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 854,column 5,is_stmt
-        MOV #1, *port(#7199) ; |854| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 858,column 5,is_stmt
-        MOV #0, *port(#7170) ; |858| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 859,column 5,is_stmt
-        MOV #65412, *port(#7171) ; |859| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 863,column 5,is_stmt
-        MOV #2, *port(#7172) ; |863| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 864,column 5,is_stmt
-        MOV #251, *port(#7173) ; |864| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 865,column 10,is_stmt
-        MOV #0, *SP(#0) ; |865| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 865,column 15,is_stmt
-        MOV #200, AR2 ; |865| 
-        MOV *SP(#0), AR1 ; |865| 
-        CMP AR1 >= AR2, TC1 ; |865| 
-        BCC $C$L33,TC1 ; |865| 
-                                        ; branchcc occurs ; |865| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 856,column 5,is_stmt
+        MOV #1, *port(#7199) ; |856| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 860,column 5,is_stmt
+        MOV #0, *port(#7170) ; |860| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 861,column 5,is_stmt
+        MOV #65412, *port(#7171) ; |861| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 865,column 5,is_stmt
+        MOV #2, *port(#7172) ; |865| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 866,column 5,is_stmt
+        MOV #251, *port(#7173) ; |866| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 867,column 10,is_stmt
+        MOV #0, *SP(#0) ; |867| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 867,column 15,is_stmt
+        MOV #200, AR2 ; |867| 
+        MOV *SP(#0), AR1 ; |867| 
+        CMP AR1 >= AR2, TC1 ; |867| 
+        BCC $C$L33,TC1 ; |867| 
+                                        ; branchcc occurs ; |867| 
 $C$L32:    
 $C$DW$L$_InitSystem$4$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 865,column 23,is_stmt
-        ADD #1, *SP(#0) ; |865| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 865,column 15,is_stmt
-        MOV *SP(#0), AR1 ; |865| 
-        CMP AR1 < AR2, TC1 ; |865| 
-        BCC $C$L32,TC1 ; |865| 
-                                        ; branchcc occurs ; |865| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 867,column 23,is_stmt
+        ADD #1, *SP(#0) ; |867| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 867,column 15,is_stmt
+        MOV *SP(#0), AR1 ; |867| 
+        CMP AR1 < AR2, TC1 ; |867| 
+        BCC $C$L32,TC1 ; |867| 
+                                        ; branchcc occurs ; |867| 
 $C$DW$L$_InitSystem$4$E:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 867,column 1,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 869,column 1,is_stmt
 $C$L33:    
         AADD #1, SP
 	.dwcfi	cfa_offset, 1
@@ -1662,10 +1662,10 @@ $C$DW$173	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$174	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$174, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L32:1:1537088021")
+	.dwattr $C$DW$174, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L32:1:1537095200")
 	.dwattr $C$DW$174, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$174, DW_AT_TI_begin_line(0x361)
-	.dwattr $C$DW$174, DW_AT_TI_end_line(0x361)
+	.dwattr $C$DW$174, DW_AT_TI_begin_line(0x363)
+	.dwattr $C$DW$174, DW_AT_TI_end_line(0x363)
 $C$DW$175	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$175, DW_AT_low_pc($C$DW$L$_InitSystem$4$B)
 	.dwattr $C$DW$175, DW_AT_high_pc($C$DW$L$_InitSystem$4$E)
@@ -1673,17 +1673,17 @@ $C$DW$175	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$176	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$176, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L30:1:1537088021")
+	.dwattr $C$DW$176, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L30:1:1537095200")
 	.dwattr $C$DW$176, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$176, DW_AT_TI_begin_line(0x354)
-	.dwattr $C$DW$176, DW_AT_TI_end_line(0x354)
+	.dwattr $C$DW$176, DW_AT_TI_begin_line(0x356)
+	.dwattr $C$DW$176, DW_AT_TI_end_line(0x356)
 $C$DW$177	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$177, DW_AT_low_pc($C$DW$L$_InitSystem$2$B)
 	.dwattr $C$DW$177, DW_AT_high_pc($C$DW$L$_InitSystem$2$E)
 	.dwendtag $C$DW$176
 
 	.dwattr $C$DW$171, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$171, DW_AT_TI_end_line(0x363)
+	.dwattr $C$DW$171, DW_AT_TI_end_line(0x365)
 	.dwattr $C$DW$171, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$171
@@ -1698,10 +1698,10 @@ $C$DW$178	.dwtag  DW_TAG_subprogram, DW_AT_name("ConfigPort")
 	.dwattr $C$DW$178, DW_AT_TI_symbol_name("_ConfigPort")
 	.dwattr $C$DW$178, DW_AT_external
 	.dwattr $C$DW$178, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$178, DW_AT_TI_begin_line(0x364)
+	.dwattr $C$DW$178, DW_AT_TI_begin_line(0x366)
 	.dwattr $C$DW$178, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$178, DW_AT_TI_max_frame_size(0x01)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 869,column 1,is_stmt,address _ConfigPort
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 871,column 1,is_stmt,address _ConfigPort
 
 	.dwfde $C$DW$CIE, _ConfigPort
 ;*******************************************************************************
@@ -1716,16 +1716,16 @@ $C$DW$178	.dwtag  DW_TAG_subprogram, DW_AT_name("ConfigPort")
 _ConfigPort:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 871,column 5,is_stmt
-        MOV #26880, *port(#7168) ; |871| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 873,column 1,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 873,column 5,is_stmt
+        MOV #26880, *port(#7168) ; |873| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 875,column 1,is_stmt
 $C$DW$179	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$179, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$179, DW_AT_TI_return
         RET
                                         ; return occurs
 	.dwattr $C$DW$178, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$178, DW_AT_TI_end_line(0x369)
+	.dwattr $C$DW$178, DW_AT_TI_end_line(0x36b)
 	.dwattr $C$DW$178, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$178
@@ -1740,10 +1740,10 @@ $C$DW$180	.dwtag  DW_TAG_subprogram, DW_AT_name("SYS_GlobalIntEnable")
 	.dwattr $C$DW$180, DW_AT_TI_symbol_name("_SYS_GlobalIntEnable")
 	.dwattr $C$DW$180, DW_AT_external
 	.dwattr $C$DW$180, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$180, DW_AT_TI_begin_line(0x36c)
+	.dwattr $C$DW$180, DW_AT_TI_begin_line(0x36e)
 	.dwattr $C$DW$180, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$180, DW_AT_TI_max_frame_size(0x01)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 878,column 1,is_stmt,address _SYS_GlobalIntEnable
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 880,column 1,is_stmt,address _SYS_GlobalIntEnable
 
 	.dwfde $C$DW$CIE, _SYS_GlobalIntEnable
 ;*******************************************************************************
@@ -1758,18 +1758,18 @@ $C$DW$180	.dwtag  DW_TAG_subprogram, DW_AT_name("SYS_GlobalIntEnable")
 _SYS_GlobalIntEnable:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 886,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 888,column 2,is_stmt
  nop
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 887,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 889,column 2,is_stmt
  bclr INTM
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 888,column 1,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 890,column 1,is_stmt
 $C$DW$181	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$181, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$181, DW_AT_TI_return
         RET
                                         ; return occurs
 	.dwattr $C$DW$180, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$180, DW_AT_TI_end_line(0x378)
+	.dwattr $C$DW$180, DW_AT_TI_end_line(0x37a)
 	.dwattr $C$DW$180, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$180
@@ -1784,10 +1784,10 @@ $C$DW$182	.dwtag  DW_TAG_subprogram, DW_AT_name("SYS_GlobalIntDisable")
 	.dwattr $C$DW$182, DW_AT_TI_symbol_name("_SYS_GlobalIntDisable")
 	.dwattr $C$DW$182, DW_AT_external
 	.dwattr $C$DW$182, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$182, DW_AT_TI_begin_line(0x37a)
+	.dwattr $C$DW$182, DW_AT_TI_begin_line(0x37c)
 	.dwattr $C$DW$182, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$182, DW_AT_TI_max_frame_size(0x01)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 892,column 1,is_stmt,address _SYS_GlobalIntDisable
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 894,column 1,is_stmt,address _SYS_GlobalIntDisable
 
 	.dwfde $C$DW$CIE, _SYS_GlobalIntDisable
 ;*******************************************************************************
@@ -1802,18 +1802,18 @@ $C$DW$182	.dwtag  DW_TAG_subprogram, DW_AT_name("SYS_GlobalIntDisable")
 _SYS_GlobalIntDisable:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 898,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 900,column 2,is_stmt
  nop
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 899,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 901,column 2,is_stmt
  bset INTM
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 901,column 1,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 903,column 1,is_stmt
 $C$DW$183	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$183, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$183, DW_AT_TI_return
         RET
                                         ; return occurs
 	.dwattr $C$DW$182, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$182, DW_AT_TI_end_line(0x385)
+	.dwattr $C$DW$182, DW_AT_TI_end_line(0x387)
 	.dwattr $C$DW$182, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$182
@@ -1827,10 +1827,10 @@ $C$DW$184	.dwtag  DW_TAG_subprogram, DW_AT_name("toggleLEDlocal")
 	.dwattr $C$DW$184, DW_AT_TI_symbol_name("_toggleLEDlocal")
 	.dwattr $C$DW$184, DW_AT_type(*$C$DW$T$10)
 	.dwattr $C$DW$184, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$184, DW_AT_TI_begin_line(0x388)
+	.dwattr $C$DW$184, DW_AT_TI_begin_line(0x38a)
 	.dwattr $C$DW$184, DW_AT_TI_begin_column(0x08)
 	.dwattr $C$DW$184, DW_AT_TI_max_frame_size(0x01)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 905,column 1,is_stmt,address _toggleLEDlocal
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 907,column 1,is_stmt,address _toggleLEDlocal
 
 	.dwfde $C$DW$CIE, _toggleLEDlocal
 ;*******************************************************************************
@@ -1845,14 +1845,14 @@ $C$DW$184	.dwtag  DW_TAG_subprogram, DW_AT_name("toggleLEDlocal")
 _toggleLEDlocal:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 994,column 1,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 996,column 1,is_stmt
 $C$DW$185	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$185, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$185, DW_AT_TI_return
         RET
                                         ; return occurs
 	.dwattr $C$DW$184, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$184, DW_AT_TI_end_line(0x3e2)
+	.dwattr $C$DW$184, DW_AT_TI_end_line(0x3e4)
 	.dwattr $C$DW$184, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$184
@@ -1867,10 +1867,10 @@ $C$DW$186	.dwtag  DW_TAG_subprogram, DW_AT_name("BlinkLED")
 	.dwattr $C$DW$186, DW_AT_TI_symbol_name("_BlinkLED")
 	.dwattr $C$DW$186, DW_AT_external
 	.dwattr $C$DW$186, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$186, DW_AT_TI_begin_line(0x3e5)
+	.dwattr $C$DW$186, DW_AT_TI_begin_line(0x3e7)
 	.dwattr $C$DW$186, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$186, DW_AT_TI_max_frame_size(0x02)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 998,column 1,is_stmt,address _BlinkLED
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1000,column 1,is_stmt,address _BlinkLED
 
 	.dwfde $C$DW$CIE, _BlinkLED
 ;*******************************************************************************
@@ -1887,41 +1887,41 @@ _BlinkLED:
 	.dwcfi	save_reg_to_mem, 91, -1
         AADD #-1, SP
 	.dwcfi	cfa_offset, 2
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1000,column 2,is_stmt
-        CMP *(#_fSineWave) == #1, TC1 ; |1000| 
-        BCC $C$L34,!TC1 ; |1000| 
-                                        ; branchcc occurs ; |1000| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1002,column 6,is_stmt
-        CMP *(#_Flag_RTC) == #1, TC1 ; |1002| 
-        BCC $C$L35,!TC1 ; |1002| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1002,column 2,is_stmt
+        CMP *(#_fSineWave) == #1, TC1 ; |1002| 
+        BCC $C$L34,!TC1 ; |1002| 
                                         ; branchcc occurs ; |1002| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1004,column 9,is_stmt
-        MOV #0, *(#_Flag_RTC) ; |1004| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1005,column 4,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1004,column 6,is_stmt
+        CMP *(#_Flag_RTC) == #1, TC1 ; |1004| 
+        BCC $C$L35,!TC1 ; |1004| 
+                                        ; branchcc occurs ; |1004| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1006,column 9,is_stmt
+        MOV #0, *(#_Flag_RTC) ; |1006| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1007,column 4,is_stmt
 $C$DW$187	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$187, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$187, DW_AT_name("_toggleLEDlocal")
 	.dwattr $C$DW$187, DW_AT_TI_call
-        CALL #_toggleLEDlocal ; |1005| 
-                                        ; call occurs [#_toggleLEDlocal] ; |1005| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1008,column 2,is_stmt
-        B $C$L35  ; |1008| 
-                                        ; branch occurs ; |1008| 
+        CALL #_toggleLEDlocal ; |1007| 
+                                        ; call occurs [#_toggleLEDlocal] ; |1007| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1010,column 2,is_stmt
+        B $C$L35  ; |1010| 
+                                        ; branch occurs ; |1010| 
 $C$L34:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1011,column 6,is_stmt
-        CMP *(#_fTimer) == #1, TC1 ; |1011| 
-        BCC $C$L35,!TC1 ; |1011| 
-                                        ; branchcc occurs ; |1011| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1013,column 9,is_stmt
-        MOV #0, *(#_fTimer) ; |1013| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1014,column 4,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1013,column 6,is_stmt
+        CMP *(#_fTimer) == #1, TC1 ; |1013| 
+        BCC $C$L35,!TC1 ; |1013| 
+                                        ; branchcc occurs ; |1013| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1015,column 9,is_stmt
+        MOV #0, *(#_fTimer) ; |1015| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1016,column 4,is_stmt
 $C$DW$188	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$188, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$188, DW_AT_name("_toggleLEDlocal")
 	.dwattr $C$DW$188, DW_AT_TI_call
-        CALL #_toggleLEDlocal ; |1014| 
-                                        ; call occurs [#_toggleLEDlocal] ; |1014| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1026,column 1,is_stmt
+        CALL #_toggleLEDlocal ; |1016| 
+                                        ; call occurs [#_toggleLEDlocal] ; |1016| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1028,column 1,is_stmt
 $C$L35:    
         AADD #1, SP
 	.dwcfi	cfa_offset, 1
@@ -1931,7 +1931,7 @@ $C$DW$189	.dwtag  DW_TAG_TI_branch
         RET
                                         ; return occurs
 	.dwattr $C$DW$186, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$186, DW_AT_TI_end_line(0x402)
+	.dwattr $C$DW$186, DW_AT_TI_end_line(0x404)
 	.dwattr $C$DW$186, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$186
@@ -1946,10 +1946,10 @@ $C$DW$190	.dwtag  DW_TAG_subprogram, DW_AT_name("GenerateAudioTone")
 	.dwattr $C$DW$190, DW_AT_TI_symbol_name("_GenerateAudioTone")
 	.dwattr $C$DW$190, DW_AT_external
 	.dwattr $C$DW$190, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$190, DW_AT_TI_begin_line(0x404)
+	.dwattr $C$DW$190, DW_AT_TI_begin_line(0x406)
 	.dwattr $C$DW$190, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$190, DW_AT_TI_max_frame_size(0x02)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1029,column 1,is_stmt,address _GenerateAudioTone
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1031,column 1,is_stmt,address _GenerateAudioTone
 
 	.dwfde $C$DW$CIE, _GenerateAudioTone
 ;*******************************************************************************
@@ -1966,110 +1966,110 @@ _GenerateAudioTone:
 	.dwcfi	save_reg_to_mem, 91, -1
         AADD #-1, SP
 	.dwcfi	cfa_offset, 2
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1030,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1032,column 2,is_stmt
         MOV #10, AR2
-        MOV *(#_Conunt_RTC), AR1 ; |1030| 
-        CMPU AR1 >= AR2, TC1 ; |1030| 
-        BCC $C$L36,TC1 ; |1030| 
-                                        ; branchcc occurs ; |1030| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1032,column 3,is_stmt
-        CMP *(#_f1KToneOn) == #1, TC1 ; |1032| 
-        BCC $C$L38,TC1 ; |1032| 
+        MOV *(#_Conunt_RTC), AR1 ; |1032| 
+        CMPU AR1 >= AR2, TC1 ; |1032| 
+        BCC $C$L36,TC1 ; |1032| 
                                         ; branchcc occurs ; |1032| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1033,column 4,is_stmt
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1035,column 3,is_stmt
-        MOV #1, *(#_fSineWave) ; |1035| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1036,column 3,is_stmt
-        MOV #1, *(#_f1KToneOn) ; |1036| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1034,column 3,is_stmt
+        CMP *(#_f1KToneOn) == #1, TC1 ; |1034| 
+        BCC $C$L38,TC1 ; |1034| 
+                                        ; branchcc occurs ; |1034| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1035,column 4,is_stmt
 	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1037,column 3,is_stmt
-        MOV #0, *(#_f2KToneOn) ; |1037| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1038,column 9,is_stmt
+        MOV #1, *(#_fSineWave) ; |1037| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1038,column 3,is_stmt
+        MOV #1, *(#_f1KToneOn) ; |1038| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1039,column 3,is_stmt
+        MOV #0, *(#_f2KToneOn) ; |1039| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1040,column 9,is_stmt
 $C$DW$191	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$191, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$191, DW_AT_name("_set_dma0_ch0_stop")
 	.dwattr $C$DW$191, DW_AT_TI_call
-        CALL #_set_dma0_ch0_stop ; |1038| 
-                                        ; call occurs [#_set_dma0_ch0_stop] ; |1038| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1039,column 6,is_stmt
+        CALL #_set_dma0_ch0_stop ; |1040| 
+                                        ; call occurs [#_set_dma0_ch0_stop] ; |1040| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1041,column 6,is_stmt
 $C$DW$192	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$192, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$192, DW_AT_name("_set_dma0_ch1_stop")
 	.dwattr $C$DW$192, DW_AT_TI_call
-        CALL #_set_dma0_ch1_stop ; |1039| 
-                                        ; call occurs [#_set_dma0_ch1_stop] ; |1039| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1040,column 9,is_stmt
+        CALL #_set_dma0_ch1_stop ; |1041| 
+                                        ; call occurs [#_set_dma0_ch1_stop] ; |1041| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1042,column 9,is_stmt
 $C$DW$193	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$193, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$193, DW_AT_name("_set_dma0_ch0_i2s0_Lout")
 	.dwattr $C$DW$193, DW_AT_TI_call
-        CALL #_set_dma0_ch0_i2s0_Lout ; |1040| 
-                                        ; call occurs [#_set_dma0_ch0_i2s0_Lout] ; |1040| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1041,column 6,is_stmt
+        CALL #_set_dma0_ch0_i2s0_Lout ; |1042| 
+                                        ; call occurs [#_set_dma0_ch0_i2s0_Lout] ; |1042| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1043,column 6,is_stmt
 $C$DW$194	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$194, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$194, DW_AT_name("_set_dma0_ch1_i2s0_Rout")
 	.dwattr $C$DW$194, DW_AT_TI_call
-        CALL #_set_dma0_ch1_i2s0_Rout ; |1041| 
-                                        ; call occurs [#_set_dma0_ch1_i2s0_Rout] ; |1041| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1042,column 2,is_stmt
-        B $C$L38  ; |1042| 
-                                        ; branch occurs ; |1042| 
+        CALL #_set_dma0_ch1_i2s0_Rout ; |1043| 
+                                        ; call occurs [#_set_dma0_ch1_i2s0_Rout] ; |1043| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1044,column 2,is_stmt
+        B $C$L38  ; |1044| 
+                                        ; branch occurs ; |1044| 
 $C$L36:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1043,column 7,is_stmt
-        MOV #20, AR2 ; |1043| 
-        CMPU AR1 >= AR2, TC1 ; |1043| 
-        BCC $C$L37,TC1 ; |1043| 
-                                        ; branchcc occurs ; |1043| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1045,column 3,is_stmt
-        CMP *(#_f2KToneOn) == #1, TC1 ; |1045| 
-        BCC $C$L38,TC1 ; |1045| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1045,column 7,is_stmt
+        MOV #20, AR2 ; |1045| 
+        CMPU AR1 >= AR2, TC1 ; |1045| 
+        BCC $C$L37,TC1 ; |1045| 
                                         ; branchcc occurs ; |1045| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1046,column 4,is_stmt
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1048,column 3,is_stmt
-        MOV #0, *(#_fSineWave) ; |1048| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1049,column 3,is_stmt
-        MOV #0, *(#_f1KToneOn) ; |1049| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1047,column 3,is_stmt
+        CMP *(#_f2KToneOn) == #1, TC1 ; |1047| 
+        BCC $C$L38,TC1 ; |1047| 
+                                        ; branchcc occurs ; |1047| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1048,column 4,is_stmt
 	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1050,column 3,is_stmt
-        MOV #1, *(#_f2KToneOn) ; |1050| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1051,column 9,is_stmt
+        MOV #0, *(#_fSineWave) ; |1050| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1051,column 3,is_stmt
+        MOV #0, *(#_f1KToneOn) ; |1051| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1052,column 3,is_stmt
+        MOV #1, *(#_f2KToneOn) ; |1052| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1053,column 9,is_stmt
 $C$DW$195	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$195, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$195, DW_AT_name("_set_dma0_ch0_stop")
 	.dwattr $C$DW$195, DW_AT_TI_call
-        CALL #_set_dma0_ch0_stop ; |1051| 
-                                        ; call occurs [#_set_dma0_ch0_stop] ; |1051| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1052,column 6,is_stmt
+        CALL #_set_dma0_ch0_stop ; |1053| 
+                                        ; call occurs [#_set_dma0_ch0_stop] ; |1053| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1054,column 6,is_stmt
 $C$DW$196	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$196, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$196, DW_AT_name("_set_dma0_ch1_stop")
 	.dwattr $C$DW$196, DW_AT_TI_call
-        CALL #_set_dma0_ch1_stop ; |1052| 
-                                        ; call occurs [#_set_dma0_ch1_stop] ; |1052| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1053,column 9,is_stmt
+        CALL #_set_dma0_ch1_stop ; |1054| 
+                                        ; call occurs [#_set_dma0_ch1_stop] ; |1054| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1055,column 9,is_stmt
 $C$DW$197	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$197, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$197, DW_AT_name("_set_dma0_ch0_i2s0_Lout")
 	.dwattr $C$DW$197, DW_AT_TI_call
-        CALL #_set_dma0_ch0_i2s0_Lout ; |1053| 
-                                        ; call occurs [#_set_dma0_ch0_i2s0_Lout] ; |1053| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1054,column 6,is_stmt
+        CALL #_set_dma0_ch0_i2s0_Lout ; |1055| 
+                                        ; call occurs [#_set_dma0_ch0_i2s0_Lout] ; |1055| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1056,column 6,is_stmt
 $C$DW$198	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$198, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$198, DW_AT_name("_set_dma0_ch1_i2s0_Rout")
 	.dwattr $C$DW$198, DW_AT_TI_call
-        CALL #_set_dma0_ch1_i2s0_Rout ; |1054| 
-                                        ; call occurs [#_set_dma0_ch1_i2s0_Rout] ; |1054| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1055,column 2,is_stmt
-        B $C$L38  ; |1055| 
-                                        ; branch occurs ; |1055| 
+        CALL #_set_dma0_ch1_i2s0_Rout ; |1056| 
+                                        ; call occurs [#_set_dma0_ch1_i2s0_Rout] ; |1056| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1057,column 2,is_stmt
+        B $C$L38  ; |1057| 
+                                        ; branch occurs ; |1057| 
 $C$L37:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1058,column 3,is_stmt
-        MOV #0, *(#_Conunt_RTC) ; |1058| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1059,column 3,is_stmt
-        MOV #0, *(#_f1KToneOn) ; |1059| 
 	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1060,column 3,is_stmt
-        MOV #1, *(#_f2KToneOn) ; |1060| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1063,column 1,is_stmt
+        MOV #0, *(#_Conunt_RTC) ; |1060| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1061,column 3,is_stmt
+        MOV #0, *(#_f1KToneOn) ; |1061| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1062,column 3,is_stmt
+        MOV #1, *(#_f2KToneOn) ; |1062| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1065,column 1,is_stmt
 $C$L38:    
         AADD #1, SP
 	.dwcfi	cfa_offset, 1
@@ -2079,7 +2079,7 @@ $C$DW$199	.dwtag  DW_TAG_TI_branch
         RET
                                         ; return occurs
 	.dwattr $C$DW$190, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$190, DW_AT_TI_end_line(0x427)
+	.dwattr $C$DW$190, DW_AT_TI_end_line(0x429)
 	.dwattr $C$DW$190, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$190
@@ -2094,10 +2094,10 @@ $C$DW$200	.dwtag  DW_TAG_subprogram, DW_AT_name("systemInit")
 	.dwattr $C$DW$200, DW_AT_TI_symbol_name("_systemInit")
 	.dwattr $C$DW$200, DW_AT_external
 	.dwattr $C$DW$200, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$200, DW_AT_TI_begin_line(0x428)
+	.dwattr $C$DW$200, DW_AT_TI_begin_line(0x42a)
 	.dwattr $C$DW$200, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$200, DW_AT_TI_max_frame_size(0x14)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1065,column 1,is_stmt,address _systemInit
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1067,column 1,is_stmt,address _systemInit
 
 	.dwfde $C$DW$CIE, _systemInit
 ;*******************************************************************************
@@ -2140,88 +2140,88 @@ $C$DW$206	.dwtag  DW_TAG_variable, DW_AT_name("pllCfg_v2_100MHz")
 	.dwattr $C$DW$206, DW_AT_TI_symbol_name("_pllCfg_v2_100MHz")
 	.dwattr $C$DW$206, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$206, DW_AT_location[DW_OP_bregx 0x24 14]
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1072,column 16,is_stmt
-        AMOV #_$P$T0$2, XAR3 ; |1072| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1074,column 16,is_stmt
+        AMOV #_$P$T0$2, XAR3 ; |1074| 
 
-        RPT #3    ; |1072| 
+        RPT #3    ; |1074| 
 ||      AMAR *SP(#14), XAR2
 
-                                            ; loop starts ; |1072| 
+                                            ; loop starts ; |1074| 
 $C$L39:    
 $C$DW$L$_systemInit$2$B:
-            MOV *AR3+, *AR2+ ; |1072| 
-                                        ; loop ends ; |1072| 
+            MOV *AR3+, *AR2+ ; |1074| 
+                                        ; loop ends ; |1074| 
 $C$DW$L$_systemInit$2$E:
 $C$L40:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1076,column 5,is_stmt
-        MOV #65326, *port(#1) ; |1076| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1077,column 5,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1078,column 5,is_stmt
+        MOV #65326, *port(#1) ; |1078| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1079,column 5,is_stmt
  IDLE
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1080,column 5,is_stmt
-        MOV #0, AC0 ; |1080| 
-        MOV *port(#7172), AR1 ; |1080| 
-        BSET @#1, AC0 ; |1080| 
-        MOV AC0, *port(#7172) ; |1080| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1081,column 5,is_stmt
-        MOV #251, *port(#7173) ; |1081| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1084,column 10,is_stmt
-        MOV #0, *SP(#0) ; |1084| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1084,column 15,is_stmt
-        MOV #200, AR2 ; |1084| 
-        MOV *SP(#0), AR1 ; |1084| 
-        CMPU AR1 >= AR2, TC1 ; |1084| 
-        BCC $C$L42,TC1 ; |1084| 
-                                        ; branchcc occurs ; |1084| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1082,column 5,is_stmt
+        MOV #0, AC0 ; |1082| 
+        MOV *port(#7172), AR1 ; |1082| 
+        BSET @#1, AC0 ; |1082| 
+        MOV AC0, *port(#7172) ; |1082| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1083,column 5,is_stmt
+        MOV #251, *port(#7173) ; |1083| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1086,column 10,is_stmt
+        MOV #0, *SP(#0) ; |1086| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1086,column 15,is_stmt
+        MOV #200, AR2 ; |1086| 
+        MOV *SP(#0), AR1 ; |1086| 
+        CMPU AR1 >= AR2, TC1 ; |1086| 
+        BCC $C$L42,TC1 ; |1086| 
+                                        ; branchcc occurs ; |1086| 
 $C$L41:    
 $C$DW$L$_systemInit$4$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1084,column 23,is_stmt
-        ADD #1, *SP(#0) ; |1084| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1084,column 15,is_stmt
-        MOV *SP(#0), AR1 ; |1084| 
-        CMPU AR1 < AR2, TC1 ; |1084| 
-        BCC $C$L41,TC1 ; |1084| 
-                                        ; branchcc occurs ; |1084| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1086,column 23,is_stmt
+        ADD #1, *SP(#0) ; |1086| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1086,column 15,is_stmt
+        MOV *SP(#0), AR1 ; |1086| 
+        CMPU AR1 < AR2, TC1 ; |1086| 
+        BCC $C$L41,TC1 ; |1086| 
+                                        ; branchcc occurs ; |1086| 
 $C$DW$L$_systemInit$4$E:
 $C$L42:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1087,column 5,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1089,column 5,is_stmt
         AMAR *SP(#2), XAR0
 $C$DW$207	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$207, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$207, DW_AT_name("_PLL_init")
 	.dwattr $C$DW$207, DW_AT_TI_call
 
-        CALL #_PLL_init ; |1087| 
-||      MOV #0, AC0 ; |1087| 
+        CALL #_PLL_init ; |1089| 
+||      MOV #0, AC0 ; |1089| 
 
-                                        ; call occurs [#_PLL_init] ; |1087| 
-        MOV T0, *SP(#8) ; |1087| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1088,column 5,is_stmt
+                                        ; call occurs [#_PLL_init] ; |1089| 
+        MOV T0, *SP(#8) ; |1089| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1090,column 5,is_stmt
         AMAR *SP(#2), XAR3
         MOV XAR3, dbl(*SP(#10))
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1089,column 5,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1091,column 5,is_stmt
         MOV dbl(*SP(#10)), XAR0
 $C$DW$208	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$208, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$208, DW_AT_name("_PLL_reset")
 	.dwattr $C$DW$208, DW_AT_TI_call
-        CALL #_PLL_reset ; |1089| 
-                                        ; call occurs [#_PLL_reset] ; |1089| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1090,column 5,is_stmt
+        CALL #_PLL_reset ; |1091| 
+                                        ; call occurs [#_PLL_reset] ; |1091| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1092,column 5,is_stmt
         AMAR *SP(#14), XAR3
         MOV XAR3, dbl(*SP(#12))
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1092,column 5,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1094,column 5,is_stmt
         MOV dbl(*SP(#10)), XAR0
         MOV dbl(*SP(#12)), XAR1
 $C$DW$209	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$209, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$209, DW_AT_name("_PLL_config")
 	.dwattr $C$DW$209, DW_AT_TI_call
-        CALL #_PLL_config ; |1092| 
-                                        ; call occurs [#_PLL_config] ; |1092| 
-        MOV T0, *SP(#8) ; |1092| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1099,column 5,is_stmt
-        MOV #1, *port(#7199) ; |1099| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1101,column 1,is_stmt
+        CALL #_PLL_config ; |1094| 
+                                        ; call occurs [#_PLL_config] ; |1094| 
+        MOV T0, *SP(#8) ; |1094| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1101,column 5,is_stmt
+        MOV #1, *port(#7199) ; |1101| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1103,column 1,is_stmt
         AADD #19, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$210	.dwtag  DW_TAG_TI_branch
@@ -2231,10 +2231,10 @@ $C$DW$210	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$211	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$211, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L41:1:1537088021")
+	.dwattr $C$DW$211, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L41:1:1537095200")
 	.dwattr $C$DW$211, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$211, DW_AT_TI_begin_line(0x43c)
-	.dwattr $C$DW$211, DW_AT_TI_end_line(0x43c)
+	.dwattr $C$DW$211, DW_AT_TI_begin_line(0x43e)
+	.dwattr $C$DW$211, DW_AT_TI_end_line(0x43e)
 $C$DW$212	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$212, DW_AT_low_pc($C$DW$L$_systemInit$4$B)
 	.dwattr $C$DW$212, DW_AT_high_pc($C$DW$L$_systemInit$4$E)
@@ -2242,17 +2242,17 @@ $C$DW$212	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$213	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$213, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L39:1:1537088021")
+	.dwattr $C$DW$213, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L39:1:1537095200")
 	.dwattr $C$DW$213, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$213, DW_AT_TI_begin_line(0x430)
-	.dwattr $C$DW$213, DW_AT_TI_end_line(0x430)
+	.dwattr $C$DW$213, DW_AT_TI_begin_line(0x432)
+	.dwattr $C$DW$213, DW_AT_TI_end_line(0x432)
 $C$DW$214	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$214, DW_AT_low_pc($C$DW$L$_systemInit$2$B)
 	.dwattr $C$DW$214, DW_AT_high_pc($C$DW$L$_systemInit$2$E)
 	.dwendtag $C$DW$213
 
 	.dwattr $C$DW$200, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$200, DW_AT_TI_end_line(0x44d)
+	.dwattr $C$DW$200, DW_AT_TI_end_line(0x44f)
 	.dwattr $C$DW$200, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$200
@@ -2267,10 +2267,10 @@ $C$DW$215	.dwtag  DW_TAG_subprogram, DW_AT_name("vApplicationMallocFailedHook")
 	.dwattr $C$DW$215, DW_AT_TI_symbol_name("_vApplicationMallocFailedHook")
 	.dwattr $C$DW$215, DW_AT_external
 	.dwattr $C$DW$215, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$215, DW_AT_TI_begin_line(0x44f)
+	.dwattr $C$DW$215, DW_AT_TI_begin_line(0x451)
 	.dwattr $C$DW$215, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$215, DW_AT_TI_max_frame_size(0x01)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1104,column 1,is_stmt,address _vApplicationMallocFailedHook
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1106,column 1,is_stmt,address _vApplicationMallocFailedHook
 
 	.dwfde $C$DW$CIE, _vApplicationMallocFailedHook
 ;*******************************************************************************
@@ -2285,28 +2285,28 @@ $C$DW$215	.dwtag  DW_TAG_subprogram, DW_AT_name("vApplicationMallocFailedHook")
 _vApplicationMallocFailedHook:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1109,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1111,column 2,is_stmt
  nop
  bset INTM
 $C$L43:    
 $C$DW$L$_vApplicationMallocFailedHook$2$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1110,column 2,is_stmt
-        B $C$L43  ; |1110| 
-                                        ; branch occurs ; |1110| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1112,column 2,is_stmt
+        B $C$L43  ; |1112| 
+                                        ; branch occurs ; |1112| 
 $C$DW$L$_vApplicationMallocFailedHook$2$E:
 
 $C$DW$216	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$216, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L43:1:1537088021")
+	.dwattr $C$DW$216, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L43:1:1537095200")
 	.dwattr $C$DW$216, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$216, DW_AT_TI_begin_line(0x456)
-	.dwattr $C$DW$216, DW_AT_TI_end_line(0x456)
+	.dwattr $C$DW$216, DW_AT_TI_begin_line(0x458)
+	.dwattr $C$DW$216, DW_AT_TI_end_line(0x458)
 $C$DW$217	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$217, DW_AT_low_pc($C$DW$L$_vApplicationMallocFailedHook$2$B)
 	.dwattr $C$DW$217, DW_AT_high_pc($C$DW$L$_vApplicationMallocFailedHook$2$E)
 	.dwendtag $C$DW$216
 
 	.dwattr $C$DW$215, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$215, DW_AT_TI_end_line(0x457)
+	.dwattr $C$DW$215, DW_AT_TI_end_line(0x459)
 	.dwattr $C$DW$215, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$215
@@ -2321,10 +2321,10 @@ $C$DW$218	.dwtag  DW_TAG_subprogram, DW_AT_name("vApplicationStackOverflowHook")
 	.dwattr $C$DW$218, DW_AT_TI_symbol_name("_vApplicationStackOverflowHook")
 	.dwattr $C$DW$218, DW_AT_external
 	.dwattr $C$DW$218, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$218, DW_AT_TI_begin_line(0x45a)
+	.dwattr $C$DW$218, DW_AT_TI_begin_line(0x45c)
 	.dwattr $C$DW$218, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$218, DW_AT_TI_max_frame_size(0x06)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1115,column 1,is_stmt,address _vApplicationStackOverflowHook
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1117,column 1,is_stmt,address _vApplicationStackOverflowHook
 
 	.dwfde $C$DW$CIE, _vApplicationStackOverflowHook
 $C$DW$219	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxTask")
@@ -2360,31 +2360,31 @@ $C$DW$222	.dwtag  DW_TAG_variable, DW_AT_name("pcTaskName")
 	.dwattr $C$DW$222, DW_AT_location[DW_OP_bregx 0x24 2]
         MOV XAR1, dbl(*SP(#2))
         MOV XAR0, dbl(*SP(#0))
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1116,column 2,is_stmt
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1117,column 2,is_stmt
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1122,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1118,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1119,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1124,column 2,is_stmt
  nop
  bset INTM
 $C$L44:    
 $C$DW$L$_vApplicationStackOverflowHook$2$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1123,column 2,is_stmt
-        B $C$L44  ; |1123| 
-                                        ; branch occurs ; |1123| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1125,column 2,is_stmt
+        B $C$L44  ; |1125| 
+                                        ; branch occurs ; |1125| 
 $C$DW$L$_vApplicationStackOverflowHook$2$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$223	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$223, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L44:1:1537088021")
+	.dwattr $C$DW$223, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L44:1:1537095200")
 	.dwattr $C$DW$223, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$223, DW_AT_TI_begin_line(0x463)
-	.dwattr $C$DW$223, DW_AT_TI_end_line(0x463)
+	.dwattr $C$DW$223, DW_AT_TI_begin_line(0x465)
+	.dwattr $C$DW$223, DW_AT_TI_end_line(0x465)
 $C$DW$224	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$224, DW_AT_low_pc($C$DW$L$_vApplicationStackOverflowHook$2$B)
 	.dwattr $C$DW$224, DW_AT_high_pc($C$DW$L$_vApplicationStackOverflowHook$2$E)
 	.dwendtag $C$DW$223
 
 	.dwattr $C$DW$218, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$218, DW_AT_TI_end_line(0x464)
+	.dwattr $C$DW$218, DW_AT_TI_end_line(0x466)
 	.dwattr $C$DW$218, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$218
@@ -2399,10 +2399,10 @@ $C$DW$225	.dwtag  DW_TAG_subprogram, DW_AT_name("LED_TaskBlue")
 	.dwattr $C$DW$225, DW_AT_TI_symbol_name("_LED_TaskBlue")
 	.dwattr $C$DW$225, DW_AT_external
 	.dwattr $C$DW$225, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$225, DW_AT_TI_begin_line(0x466)
+	.dwattr $C$DW$225, DW_AT_TI_begin_line(0x468)
 	.dwattr $C$DW$225, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$225, DW_AT_TI_max_frame_size(0x04)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1127,column 1,is_stmt,address _LED_TaskBlue
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1129,column 1,is_stmt,address _LED_TaskBlue
 
 	.dwfde $C$DW$CIE, _LED_TaskBlue
 $C$DW$226	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
@@ -2440,60 +2440,60 @@ $C$DW$227	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
 
 $C$L45:    
 $C$DW$L$_LED_TaskBlue$2$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1132,column 4,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1134,column 4,is_stmt
 $C$DW$228	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$228, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$228, DW_AT_name("_blueLedToggle")
 	.dwattr $C$DW$228, DW_AT_TI_call
-        CALL #_blueLedToggle ; |1132| 
-                                        ; call occurs [#_blueLedToggle] ; |1132| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1136,column 4,is_stmt
-        MOV dbl(*(#_led_tsks_running)), AC0 ; |1136| 
-        ADD #1, AC0 ; |1136| 
-        MOV AC0, dbl(*(#_led_tsks_running)) ; |1136| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1139,column 3,is_stmt
+        CALL #_blueLedToggle ; |1134| 
+                                        ; call occurs [#_blueLedToggle] ; |1134| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1138,column 4,is_stmt
+        MOV dbl(*(#_led_tsks_running)), AC0 ; |1138| 
+        ADD #1, AC0 ; |1138| 
+        MOV AC0, dbl(*(#_led_tsks_running)) ; |1138| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1141,column 3,is_stmt
         MOV #0, T0
-        AMOV #0, XAR1 ; |1139| 
+        AMOV #0, XAR1 ; |1141| 
         MOV dbl(*(#_xSemaphoreR)), XAR0
 $C$DW$229	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$229, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$229, DW_AT_name("_xQueueGenericSend")
 	.dwattr $C$DW$229, DW_AT_TI_call
 
-        CALL #_xQueueGenericSend ; |1139| 
-||      MOV #0, AC0 ; |1139| 
+        CALL #_xQueueGenericSend ; |1141| 
+||      MOV #0, AC0 ; |1141| 
 
-                                        ; call occurs [#_xQueueGenericSend] ; |1139| 
-        CMP T0 != T2, TC1 ; |1139| 
-        BCC $C$L46,!TC1 ; |1139| 
-                                        ; branchcc occurs ; |1139| 
+                                        ; call occurs [#_xQueueGenericSend] ; |1141| 
+        CMP T0 != T2, TC1 ; |1141| 
+        BCC $C$L46,!TC1 ; |1141| 
+                                        ; branchcc occurs ; |1141| 
 $C$DW$L$_LED_TaskBlue$2$E:
 $C$DW$L$_LED_TaskBlue$3$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1142,column 3,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1144,column 3,is_stmt
 $C$DW$L$_LED_TaskBlue$3$E:
 $C$L46:    
 $C$DW$L$_LED_TaskBlue$4$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1147,column 3,is_stmt
-        MOV #10000, AC0 ; |1147| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1149,column 3,is_stmt
+        MOV #10000, AC0 ; |1149| 
 $C$DW$230	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$230, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$230, DW_AT_name("_vTaskDelay")
 	.dwattr $C$DW$230, DW_AT_TI_call
-        CALL #_vTaskDelay ; |1147| 
-                                        ; call occurs [#_vTaskDelay] ; |1147| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1149,column 2,is_stmt
-        B $C$L45  ; |1149| 
-                                        ; branch occurs ; |1149| 
+        CALL #_vTaskDelay ; |1149| 
+                                        ; call occurs [#_vTaskDelay] ; |1149| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1151,column 2,is_stmt
+        B $C$L45  ; |1151| 
+                                        ; branch occurs ; |1151| 
 $C$DW$L$_LED_TaskBlue$4$E:
 	.dwcfi	cfa_offset, 2
 	.dwcfi	restore_reg, 14
 	.dwcfi	cfa_offset, 1
 
 $C$DW$231	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$231, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L45:1:1537088021")
+	.dwattr $C$DW$231, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L45:1:1537095200")
 	.dwattr $C$DW$231, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$231, DW_AT_TI_begin_line(0x468)
-	.dwattr $C$DW$231, DW_AT_TI_end_line(0x47d)
+	.dwattr $C$DW$231, DW_AT_TI_begin_line(0x46a)
+	.dwattr $C$DW$231, DW_AT_TI_end_line(0x47f)
 $C$DW$232	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$232, DW_AT_low_pc($C$DW$L$_LED_TaskBlue$2$B)
 	.dwattr $C$DW$232, DW_AT_high_pc($C$DW$L$_LED_TaskBlue$2$E)
@@ -2506,7 +2506,7 @@ $C$DW$234	.dwtag  DW_TAG_TI_loop_range
 	.dwendtag $C$DW$231
 
 	.dwattr $C$DW$225, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$225, DW_AT_TI_end_line(0x47f)
+	.dwattr $C$DW$225, DW_AT_TI_end_line(0x481)
 	.dwattr $C$DW$225, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$225
@@ -2521,10 +2521,10 @@ $C$DW$235	.dwtag  DW_TAG_subprogram, DW_AT_name("LED_TaskRed")
 	.dwattr $C$DW$235, DW_AT_TI_symbol_name("_LED_TaskRed")
 	.dwattr $C$DW$235, DW_AT_external
 	.dwattr $C$DW$235, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$235, DW_AT_TI_begin_line(0x482)
+	.dwattr $C$DW$235, DW_AT_TI_begin_line(0x484)
 	.dwattr $C$DW$235, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$235, DW_AT_TI_max_frame_size(0x04)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1155,column 1,is_stmt,address _LED_TaskRed
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1157,column 1,is_stmt,address _LED_TaskRed
 
 	.dwfde $C$DW$CIE, _LED_TaskRed
 $C$DW$236	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
@@ -2562,60 +2562,60 @@ $C$DW$237	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
 
 $C$L47:    
 $C$DW$L$_LED_TaskRed$2$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1160,column 4,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1162,column 4,is_stmt
 $C$DW$238	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$238, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$238, DW_AT_name("_redLedToggle")
 	.dwattr $C$DW$238, DW_AT_TI_call
-        CALL #_redLedToggle ; |1160| 
-                                        ; call occurs [#_redLedToggle] ; |1160| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1164,column 4,is_stmt
-        MOV dbl(*(#_led_tsks_running)), AC0 ; |1164| 
-        ADD #1, AC0 ; |1164| 
-        MOV AC0, dbl(*(#_led_tsks_running)) ; |1164| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1167,column 3,is_stmt
+        CALL #_redLedToggle ; |1162| 
+                                        ; call occurs [#_redLedToggle] ; |1162| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1166,column 4,is_stmt
+        MOV dbl(*(#_led_tsks_running)), AC0 ; |1166| 
+        ADD #1, AC0 ; |1166| 
+        MOV AC0, dbl(*(#_led_tsks_running)) ; |1166| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1169,column 3,is_stmt
         MOV #0, T0
-        AMOV #0, XAR1 ; |1167| 
+        AMOV #0, XAR1 ; |1169| 
         MOV dbl(*(#_xSemaphoreB)), XAR0
 $C$DW$239	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$239, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$239, DW_AT_name("_xQueueGenericSend")
 	.dwattr $C$DW$239, DW_AT_TI_call
 
-        CALL #_xQueueGenericSend ; |1167| 
-||      MOV #0, AC0 ; |1167| 
+        CALL #_xQueueGenericSend ; |1169| 
+||      MOV #0, AC0 ; |1169| 
 
-                                        ; call occurs [#_xQueueGenericSend] ; |1167| 
-        CMP T0 != T2, TC1 ; |1167| 
-        BCC $C$L48,!TC1 ; |1167| 
-                                        ; branchcc occurs ; |1167| 
+                                        ; call occurs [#_xQueueGenericSend] ; |1169| 
+        CMP T0 != T2, TC1 ; |1169| 
+        BCC $C$L48,!TC1 ; |1169| 
+                                        ; branchcc occurs ; |1169| 
 $C$DW$L$_LED_TaskRed$2$E:
 $C$DW$L$_LED_TaskRed$3$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1170,column 3,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1172,column 3,is_stmt
 $C$DW$L$_LED_TaskRed$3$E:
 $C$L48:    
 $C$DW$L$_LED_TaskRed$4$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1175,column 3,is_stmt
-        MOV #10000, AC0 ; |1175| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1177,column 3,is_stmt
+        MOV #10000, AC0 ; |1177| 
 $C$DW$240	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$240, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$240, DW_AT_name("_vTaskDelay")
 	.dwattr $C$DW$240, DW_AT_TI_call
-        CALL #_vTaskDelay ; |1175| 
-                                        ; call occurs [#_vTaskDelay] ; |1175| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1176,column 2,is_stmt
-        B $C$L47  ; |1176| 
-                                        ; branch occurs ; |1176| 
+        CALL #_vTaskDelay ; |1177| 
+                                        ; call occurs [#_vTaskDelay] ; |1177| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1178,column 2,is_stmt
+        B $C$L47  ; |1178| 
+                                        ; branch occurs ; |1178| 
 $C$DW$L$_LED_TaskRed$4$E:
 	.dwcfi	cfa_offset, 2
 	.dwcfi	restore_reg, 14
 	.dwcfi	cfa_offset, 1
 
 $C$DW$241	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$241, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L47:1:1537088021")
+	.dwattr $C$DW$241, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L47:1:1537095200")
 	.dwattr $C$DW$241, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$241, DW_AT_TI_begin_line(0x484)
-	.dwattr $C$DW$241, DW_AT_TI_end_line(0x498)
+	.dwattr $C$DW$241, DW_AT_TI_begin_line(0x486)
+	.dwattr $C$DW$241, DW_AT_TI_end_line(0x49a)
 $C$DW$242	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$242, DW_AT_low_pc($C$DW$L$_LED_TaskRed$2$B)
 	.dwattr $C$DW$242, DW_AT_high_pc($C$DW$L$_LED_TaskRed$2$E)
@@ -2628,7 +2628,7 @@ $C$DW$244	.dwtag  DW_TAG_TI_loop_range
 	.dwendtag $C$DW$241
 
 	.dwattr $C$DW$235, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$235, DW_AT_TI_end_line(0x499)
+	.dwattr $C$DW$235, DW_AT_TI_end_line(0x49b)
 	.dwattr $C$DW$235, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$235
@@ -2641,10 +2641,10 @@ $C$DW$245	.dwtag  DW_TAG_subprogram, DW_AT_name("blueLedToggle")
 	.dwattr $C$DW$245, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$245, DW_AT_TI_symbol_name("_blueLedToggle")
 	.dwattr $C$DW$245, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$245, DW_AT_TI_begin_line(0x49c)
+	.dwattr $C$DW$245, DW_AT_TI_begin_line(0x49e)
 	.dwattr $C$DW$245, DW_AT_TI_begin_column(0x0d)
 	.dwattr $C$DW$245, DW_AT_TI_max_frame_size(0x02)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1181,column 1,is_stmt,address _blueLedToggle
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1183,column 1,is_stmt,address _blueLedToggle
 
 	.dwfde $C$DW$CIE, _blueLedToggle
 $C$DW$246	.dwtag  DW_TAG_variable, DW_AT_name("counter")
@@ -2665,28 +2665,28 @@ _blueLedToggle:
 	.dwcfi	save_reg_to_mem, 91, -1
         AADD #-1, SP
 	.dwcfi	cfa_offset, 2
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1184,column 2,is_stmt
-        ADD #1, *(#_counter$3) ; |1184| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1185,column 2,is_stmt
-        BTST #0, *(#_counter$3), TC1 ; |1185| 
-        BCC $C$L49,!TC1 ; |1185| 
-                                        ; branchcc occurs ; |1185| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1187,column 3,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1186,column 2,is_stmt
+        ADD #1, *(#_counter$3) ; |1186| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1187,column 2,is_stmt
+        BTST #0, *(#_counter$3), TC1 ; |1187| 
+        BCC $C$L49,!TC1 ; |1187| 
+                                        ; branchcc occurs ; |1187| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1189,column 3,is_stmt
         MOV #14, T0
 $C$DW$247	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$247, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$247, DW_AT_name("_EZDSP5535_GPIO_setOutput")
 	.dwattr $C$DW$247, DW_AT_TI_call
 
-        CALL #_EZDSP5535_GPIO_setOutput ; |1187| 
+        CALL #_EZDSP5535_GPIO_setOutput ; |1189| 
 ||      MOV #1, T1
 
-                                        ; call occurs [#_EZDSP5535_GPIO_setOutput] ; |1187| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1188,column 2,is_stmt
-        B $C$L50  ; |1188| 
-                                        ; branch occurs ; |1188| 
+                                        ; call occurs [#_EZDSP5535_GPIO_setOutput] ; |1189| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1190,column 2,is_stmt
+        B $C$L50  ; |1190| 
+                                        ; branch occurs ; |1190| 
 $C$L49:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1191,column 3,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1193,column 3,is_stmt
 
         MOV #14, T0
 ||      MOV #0, T1
@@ -2695,9 +2695,9 @@ $C$DW$248	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$248, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$248, DW_AT_name("_EZDSP5535_GPIO_setOutput")
 	.dwattr $C$DW$248, DW_AT_TI_call
-        CALL #_EZDSP5535_GPIO_setOutput ; |1191| 
-                                        ; call occurs [#_EZDSP5535_GPIO_setOutput] ; |1191| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1193,column 1,is_stmt
+        CALL #_EZDSP5535_GPIO_setOutput ; |1193| 
+                                        ; call occurs [#_EZDSP5535_GPIO_setOutput] ; |1193| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1195,column 1,is_stmt
 $C$L50:    
         AADD #1, SP
 	.dwcfi	cfa_offset, 1
@@ -2707,7 +2707,7 @@ $C$DW$249	.dwtag  DW_TAG_TI_branch
         RET
                                         ; return occurs
 	.dwattr $C$DW$245, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$245, DW_AT_TI_end_line(0x4a9)
+	.dwattr $C$DW$245, DW_AT_TI_end_line(0x4ab)
 	.dwattr $C$DW$245, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$245
@@ -2720,10 +2720,10 @@ $C$DW$250	.dwtag  DW_TAG_subprogram, DW_AT_name("redLedToggle")
 	.dwattr $C$DW$250, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$250, DW_AT_TI_symbol_name("_redLedToggle")
 	.dwattr $C$DW$250, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$250, DW_AT_TI_begin_line(0x4ab)
+	.dwattr $C$DW$250, DW_AT_TI_begin_line(0x4ad)
 	.dwattr $C$DW$250, DW_AT_TI_begin_column(0x0d)
 	.dwattr $C$DW$250, DW_AT_TI_max_frame_size(0x02)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1196,column 1,is_stmt,address _redLedToggle
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1198,column 1,is_stmt,address _redLedToggle
 
 	.dwfde $C$DW$CIE, _redLedToggle
 $C$DW$251	.dwtag  DW_TAG_variable, DW_AT_name("counter")
@@ -2744,39 +2744,39 @@ _redLedToggle:
 	.dwcfi	save_reg_to_mem, 91, -1
         AADD #-1, SP
 	.dwcfi	cfa_offset, 2
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1199,column 2,is_stmt
-        ADD #1, *(#_counter$4) ; |1199| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1200,column 2,is_stmt
-        BTST #0, *(#_counter$4), TC1 ; |1200| 
-        BCC $C$L51,!TC1 ; |1200| 
-                                        ; branchcc occurs ; |1200| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1202,column 3,is_stmt
-        MOV #16, T0 ; |1202| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1201,column 2,is_stmt
+        ADD #1, *(#_counter$4) ; |1201| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1202,column 2,is_stmt
+        BTST #0, *(#_counter$4), TC1 ; |1202| 
+        BCC $C$L51,!TC1 ; |1202| 
+                                        ; branchcc occurs ; |1202| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1204,column 3,is_stmt
+        MOV #16, T0 ; |1204| 
 $C$DW$252	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$252, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$252, DW_AT_name("_EZDSP5535_GPIO_setOutput")
 	.dwattr $C$DW$252, DW_AT_TI_call
 
-        CALL #_EZDSP5535_GPIO_setOutput ; |1202| 
+        CALL #_EZDSP5535_GPIO_setOutput ; |1204| 
 ||      MOV #0, T1
 
-                                        ; call occurs [#_EZDSP5535_GPIO_setOutput] ; |1202| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1203,column 2,is_stmt
-        B $C$L52  ; |1203| 
-                                        ; branch occurs ; |1203| 
+                                        ; call occurs [#_EZDSP5535_GPIO_setOutput] ; |1204| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1205,column 2,is_stmt
+        B $C$L52  ; |1205| 
+                                        ; branch occurs ; |1205| 
 $C$L51:    
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1206,column 3,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1208,column 3,is_stmt
 
-        MOV #16, T0 ; |1206| 
+        MOV #16, T0 ; |1208| 
 ||      MOV #1, T1
 
 $C$DW$253	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$253, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$253, DW_AT_name("_EZDSP5535_GPIO_setOutput")
 	.dwattr $C$DW$253, DW_AT_TI_call
-        CALL #_EZDSP5535_GPIO_setOutput ; |1206| 
-                                        ; call occurs [#_EZDSP5535_GPIO_setOutput] ; |1206| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1208,column 1,is_stmt
+        CALL #_EZDSP5535_GPIO_setOutput ; |1208| 
+                                        ; call occurs [#_EZDSP5535_GPIO_setOutput] ; |1208| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1210,column 1,is_stmt
 $C$L52:    
         AADD #1, SP
 	.dwcfi	cfa_offset, 1
@@ -2786,7 +2786,7 @@ $C$DW$254	.dwtag  DW_TAG_TI_branch
         RET
                                         ; return occurs
 	.dwattr $C$DW$250, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$250, DW_AT_TI_end_line(0x4b8)
+	.dwattr $C$DW$250, DW_AT_TI_end_line(0x4ba)
 	.dwattr $C$DW$250, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$250
@@ -2799,10 +2799,10 @@ $C$DW$255	.dwtag  DW_TAG_subprogram, DW_AT_name("LED_TaskXF")
 	.dwattr $C$DW$255, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$255, DW_AT_TI_symbol_name("_LED_TaskXF")
 	.dwattr $C$DW$255, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$255, DW_AT_TI_begin_line(0x4b9)
+	.dwattr $C$DW$255, DW_AT_TI_begin_line(0x4bb)
 	.dwattr $C$DW$255, DW_AT_TI_begin_column(0x0d)
 	.dwattr $C$DW$255, DW_AT_TI_max_frame_size(0x04)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1210,column 1,is_stmt,address _LED_TaskXF
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1212,column 1,is_stmt,address _LED_TaskXF
 
 	.dwfde $C$DW$CIE, _LED_TaskXF
 $C$DW$256	.dwtag  DW_TAG_variable, DW_AT_name("counter")
@@ -2836,77 +2836,77 @@ $C$DW$258	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
         MOV XAR0, dbl(*SP(#0))
 $C$L53:    
 $C$DW$L$_LED_TaskXF$2$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1231,column 2,is_stmt
-        ADD #1, *(#_counter$5) ; |1231| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1232,column 2,is_stmt
-        BTST #0, *(#_counter$5), TC1 ; |1232| 
-        BCC $C$L54,!TC1 ; |1232| 
-                                        ; branchcc occurs ; |1232| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1233,column 2,is_stmt
+        ADD #1, *(#_counter$5) ; |1233| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1234,column 2,is_stmt
+        BTST #0, *(#_counter$5), TC1 ; |1234| 
+        BCC $C$L54,!TC1 ; |1234| 
+                                        ; branchcc occurs ; |1234| 
 $C$DW$L$_LED_TaskXF$2$E:
 $C$DW$L$_LED_TaskXF$3$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1234,column 3,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1236,column 3,is_stmt
         MOV #15, T0
 $C$DW$259	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$259, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$259, DW_AT_name("_EZDSP5535_GPIO_setOutput")
 	.dwattr $C$DW$259, DW_AT_TI_call
 
-        CALL #_EZDSP5535_GPIO_setOutput ; |1234| 
+        CALL #_EZDSP5535_GPIO_setOutput ; |1236| 
 ||      MOV #0, T1
 
-                                        ; call occurs [#_EZDSP5535_GPIO_setOutput] ; |1234| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1235,column 2,is_stmt
-        B $C$L55  ; |1235| 
-                                        ; branch occurs ; |1235| 
+                                        ; call occurs [#_EZDSP5535_GPIO_setOutput] ; |1236| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1237,column 2,is_stmt
+        B $C$L55  ; |1237| 
+                                        ; branch occurs ; |1237| 
 $C$DW$L$_LED_TaskXF$3$E:
 $C$L54:    
 $C$DW$L$_LED_TaskXF$4$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1238,column 3,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1240,column 3,is_stmt
         MOV #15, T0
 $C$DW$260	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$260, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$260, DW_AT_name("_EZDSP5535_GPIO_setOutput")
 	.dwattr $C$DW$260, DW_AT_TI_call
 
-        CALL #_EZDSP5535_GPIO_setOutput ; |1238| 
+        CALL #_EZDSP5535_GPIO_setOutput ; |1240| 
 ||      MOV #1, T1
 
-                                        ; call occurs [#_EZDSP5535_GPIO_setOutput] ; |1238| 
+                                        ; call occurs [#_EZDSP5535_GPIO_setOutput] ; |1240| 
 $C$DW$L$_LED_TaskXF$4$E:
 $C$L55:    
 $C$DW$L$_LED_TaskXF$5$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1248,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1250,column 2,is_stmt
         MOV dbl(*(#_xSemaphoreBaton)), XAR0
-        AMOV #0, XAR1 ; |1248| 
-        MOV #0, AC0 ; |1248| 
+        AMOV #0, XAR1 ; |1250| 
+        MOV #0, AC0 ; |1250| 
 $C$DW$261	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$261, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$261, DW_AT_name("_xQueueGenericSend")
 	.dwattr $C$DW$261, DW_AT_TI_call
 
-        CALL #_xQueueGenericSend ; |1248| 
+        CALL #_xQueueGenericSend ; |1250| 
 ||      MOV #0, T0
 
-                                        ; call occurs [#_xQueueGenericSend] ; |1248| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1253,column 2,is_stmt
-        MOV #2500, AC0 ; |1253| 
+                                        ; call occurs [#_xQueueGenericSend] ; |1250| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1255,column 2,is_stmt
+        MOV #2500, AC0 ; |1255| 
 $C$DW$262	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$262, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$262, DW_AT_name("_vTaskDelay")
 	.dwattr $C$DW$262, DW_AT_TI_call
-        CALL #_vTaskDelay ; |1253| 
-                                        ; call occurs [#_vTaskDelay] ; |1253| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1255,column 2,is_stmt
-        B $C$L53  ; |1255| 
-                                        ; branch occurs ; |1255| 
+        CALL #_vTaskDelay ; |1255| 
+                                        ; call occurs [#_vTaskDelay] ; |1255| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1257,column 2,is_stmt
+        B $C$L53  ; |1257| 
+                                        ; branch occurs ; |1257| 
 $C$DW$L$_LED_TaskXF$5$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$263	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$263, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L53:1:1537088021")
+	.dwattr $C$DW$263, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L53:1:1537095200")
 	.dwattr $C$DW$263, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$263, DW_AT_TI_begin_line(0x4c7)
-	.dwattr $C$DW$263, DW_AT_TI_end_line(0x4e7)
+	.dwattr $C$DW$263, DW_AT_TI_begin_line(0x4c9)
+	.dwattr $C$DW$263, DW_AT_TI_end_line(0x4e9)
 $C$DW$264	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$264, DW_AT_low_pc($C$DW$L$_LED_TaskXF$2$B)
 	.dwattr $C$DW$264, DW_AT_high_pc($C$DW$L$_LED_TaskXF$2$E)
@@ -2922,7 +2922,7 @@ $C$DW$267	.dwtag  DW_TAG_TI_loop_range
 	.dwendtag $C$DW$263
 
 	.dwattr $C$DW$255, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$255, DW_AT_TI_end_line(0x4e8)
+	.dwattr $C$DW$255, DW_AT_TI_end_line(0x4ea)
 	.dwattr $C$DW$255, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$255
@@ -2935,10 +2935,10 @@ $C$DW$268	.dwtag  DW_TAG_subprogram, DW_AT_name("LED_TaskGreen")
 	.dwattr $C$DW$268, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$268, DW_AT_TI_symbol_name("_LED_TaskGreen")
 	.dwattr $C$DW$268, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$268, DW_AT_TI_begin_line(0x4ea)
+	.dwattr $C$DW$268, DW_AT_TI_begin_line(0x4ec)
 	.dwattr $C$DW$268, DW_AT_TI_begin_column(0x0d)
 	.dwattr $C$DW$268, DW_AT_TI_max_frame_size(0x04)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1259,column 1,is_stmt,address _LED_TaskGreen
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1261,column 1,is_stmt,address _LED_TaskGreen
 
 	.dwfde $C$DW$CIE, _LED_TaskGreen
 $C$DW$269	.dwtag  DW_TAG_variable, DW_AT_name("counter")
@@ -2972,77 +2972,77 @@ $C$DW$271	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
         MOV XAR0, dbl(*SP(#0))
 $C$L56:    
 $C$DW$L$_LED_TaskGreen$2$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1269,column 2,is_stmt
-        ADD #1, *(#_counter$6) ; |1269| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1270,column 2,is_stmt
-        BTST #0, *(#_counter$6), TC1 ; |1270| 
-        BCC $C$L57,!TC1 ; |1270| 
-                                        ; branchcc occurs ; |1270| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1271,column 2,is_stmt
+        ADD #1, *(#_counter$6) ; |1271| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1272,column 2,is_stmt
+        BTST #0, *(#_counter$6), TC1 ; |1272| 
+        BCC $C$L57,!TC1 ; |1272| 
+                                        ; branchcc occurs ; |1272| 
 $C$DW$L$_LED_TaskGreen$2$E:
 $C$DW$L$_LED_TaskGreen$3$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1272,column 3,is_stmt
-        MOV #17, T0 ; |1272| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1274,column 3,is_stmt
+        MOV #17, T0 ; |1274| 
 $C$DW$272	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$272, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$272, DW_AT_name("_EZDSP5535_GPIO_setOutput")
 	.dwattr $C$DW$272, DW_AT_TI_call
 
-        CALL #_EZDSP5535_GPIO_setOutput ; |1272| 
+        CALL #_EZDSP5535_GPIO_setOutput ; |1274| 
 ||      MOV #1, T1
 
-                                        ; call occurs [#_EZDSP5535_GPIO_setOutput] ; |1272| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1273,column 2,is_stmt
-        B $C$L58  ; |1273| 
-                                        ; branch occurs ; |1273| 
+                                        ; call occurs [#_EZDSP5535_GPIO_setOutput] ; |1274| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1275,column 2,is_stmt
+        B $C$L58  ; |1275| 
+                                        ; branch occurs ; |1275| 
 $C$DW$L$_LED_TaskGreen$3$E:
 $C$L57:    
 $C$DW$L$_LED_TaskGreen$4$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1276,column 3,is_stmt
-        MOV #17, T0 ; |1276| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1278,column 3,is_stmt
+        MOV #17, T0 ; |1278| 
 $C$DW$273	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$273, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$273, DW_AT_name("_EZDSP5535_GPIO_setOutput")
 	.dwattr $C$DW$273, DW_AT_TI_call
 
-        CALL #_EZDSP5535_GPIO_setOutput ; |1276| 
+        CALL #_EZDSP5535_GPIO_setOutput ; |1278| 
 ||      MOV #0, T1
 
-                                        ; call occurs [#_EZDSP5535_GPIO_setOutput] ; |1276| 
+                                        ; call occurs [#_EZDSP5535_GPIO_setOutput] ; |1278| 
 $C$DW$L$_LED_TaskGreen$4$E:
 $C$L58:    
 $C$DW$L$_LED_TaskGreen$5$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1284,column 3,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1286,column 3,is_stmt
         MOV dbl(*(#_xSemaphoreBaton)), XAR0
-        AMOV #0, XAR1 ; |1284| 
-        MOV #0, AC0 ; |1284| 
+        AMOV #0, XAR1 ; |1286| 
+        MOV #0, AC0 ; |1286| 
 $C$DW$274	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$274, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$274, DW_AT_name("_xQueueGenericSend")
 	.dwattr $C$DW$274, DW_AT_TI_call
 
-        CALL #_xQueueGenericSend ; |1284| 
+        CALL #_xQueueGenericSend ; |1286| 
 ||      MOV #0, T0
 
-                                        ; call occurs [#_xQueueGenericSend] ; |1284| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1290,column 3,is_stmt
-        MOV #10000, AC0 ; |1290| 
+                                        ; call occurs [#_xQueueGenericSend] ; |1286| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1292,column 3,is_stmt
+        MOV #10000, AC0 ; |1292| 
 $C$DW$275	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$275, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$275, DW_AT_name("_vTaskDelay")
 	.dwattr $C$DW$275, DW_AT_TI_call
-        CALL #_vTaskDelay ; |1290| 
-                                        ; call occurs [#_vTaskDelay] ; |1290| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1291,column 2,is_stmt
-        B $C$L56  ; |1291| 
-                                        ; branch occurs ; |1291| 
+        CALL #_vTaskDelay ; |1292| 
+                                        ; call occurs [#_vTaskDelay] ; |1292| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1293,column 2,is_stmt
+        B $C$L56  ; |1293| 
+                                        ; branch occurs ; |1293| 
 $C$DW$L$_LED_TaskGreen$5$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$276	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$276, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L56:1:1537088021")
+	.dwattr $C$DW$276, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L56:1:1537095200")
 	.dwattr $C$DW$276, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$276, DW_AT_TI_begin_line(0x4ee)
-	.dwattr $C$DW$276, DW_AT_TI_end_line(0x50b)
+	.dwattr $C$DW$276, DW_AT_TI_begin_line(0x4f0)
+	.dwattr $C$DW$276, DW_AT_TI_end_line(0x50d)
 $C$DW$277	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$277, DW_AT_low_pc($C$DW$L$_LED_TaskGreen$2$B)
 	.dwattr $C$DW$277, DW_AT_high_pc($C$DW$L$_LED_TaskGreen$2$E)
@@ -3058,7 +3058,7 @@ $C$DW$280	.dwtag  DW_TAG_TI_loop_range
 	.dwendtag $C$DW$276
 
 	.dwattr $C$DW$268, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$268, DW_AT_TI_end_line(0x50c)
+	.dwattr $C$DW$268, DW_AT_TI_end_line(0x50e)
 	.dwattr $C$DW$268, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$268
@@ -3071,10 +3071,10 @@ $C$DW$281	.dwtag  DW_TAG_subprogram, DW_AT_name("LED_Control")
 	.dwattr $C$DW$281, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$281, DW_AT_TI_symbol_name("_LED_Control")
 	.dwattr $C$DW$281, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$281, DW_AT_TI_begin_line(0x50e)
+	.dwattr $C$DW$281, DW_AT_TI_begin_line(0x510)
 	.dwattr $C$DW$281, DW_AT_TI_begin_column(0x0d)
 	.dwattr $C$DW$281, DW_AT_TI_max_frame_size(0x04)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1295,column 1,is_stmt,address _LED_Control
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1297,column 1,is_stmt,address _LED_Control
 
 	.dwfde $C$DW$CIE, _LED_Control
 $C$DW$282	.dwtag  DW_TAG_variable, DW_AT_name("ctr")
@@ -3116,119 +3116,119 @@ $C$DW$284	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
 
 $C$L59:    
 $C$DW$L$_LED_Control$2$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1300,column 3,is_stmt
-        MOV #1000, AC0 ; |1300| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1302,column 3,is_stmt
+        MOV #1000, AC0 ; |1302| 
 $C$DW$285	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$285, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$285, DW_AT_name("_vTaskDelay")
 	.dwattr $C$DW$285, DW_AT_TI_call
-        CALL #_vTaskDelay ; |1300| 
-                                        ; call occurs [#_vTaskDelay] ; |1300| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1301,column 3,is_stmt
+        CALL #_vTaskDelay ; |1302| 
+                                        ; call occurs [#_vTaskDelay] ; |1302| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1303,column 3,is_stmt
         MOV #0, T0
-        AMOV #0, XAR1 ; |1301| 
+        AMOV #0, XAR1 ; |1303| 
         MOV dbl(*(#_xSemaphoreR)), XAR0
 $C$DW$286	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$286, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$286, DW_AT_name("_xQueueGenericSend")
 	.dwattr $C$DW$286, DW_AT_TI_call
 
-        CALL #_xQueueGenericSend ; |1301| 
-||      MOV #0, AC0 ; |1301| 
+        CALL #_xQueueGenericSend ; |1303| 
+||      MOV #0, AC0 ; |1303| 
 
-                                        ; call occurs [#_xQueueGenericSend] ; |1301| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1303,column 3,is_stmt
+                                        ; call occurs [#_xQueueGenericSend] ; |1303| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1305,column 3,is_stmt
         MOV #0, T0
-        AMOV #0, XAR1 ; |1303| 
+        AMOV #0, XAR1 ; |1305| 
         MOV dbl(*(#_xSemaphoreB)), XAR0
 $C$DW$287	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$287, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$287, DW_AT_name("_xQueueGenericSend")
 	.dwattr $C$DW$287, DW_AT_TI_call
 
-        CALL #_xQueueGenericSend ; |1303| 
-||      MOV #0, AC0 ; |1303| 
+        CALL #_xQueueGenericSend ; |1305| 
+||      MOV #0, AC0 ; |1305| 
 
-                                        ; call occurs [#_xQueueGenericSend] ; |1303| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1304,column 3,is_stmt
+                                        ; call occurs [#_xQueueGenericSend] ; |1305| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1306,column 3,is_stmt
         MOV #0, T0
-        AMOV #0, XAR1 ; |1304| 
+        AMOV #0, XAR1 ; |1306| 
         MOV dbl(*(#_xSemaphoreY)), XAR0
 $C$DW$288	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$288, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$288, DW_AT_name("_xQueueGenericSend")
 	.dwattr $C$DW$288, DW_AT_TI_call
 
-        CALL #_xQueueGenericSend ; |1304| 
-||      MOV #0, AC0 ; |1304| 
+        CALL #_xQueueGenericSend ; |1306| 
+||      MOV #0, AC0 ; |1306| 
 
-                                        ; call occurs [#_xQueueGenericSend] ; |1304| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1305,column 3,is_stmt
+                                        ; call occurs [#_xQueueGenericSend] ; |1306| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1307,column 3,is_stmt
         MOV #0, T0
-        AMOV #0, XAR1 ; |1305| 
+        AMOV #0, XAR1 ; |1307| 
         MOV dbl(*(#_xSemaphoreO)), XAR0
 $C$DW$289	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$289, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$289, DW_AT_name("_xQueueGenericSend")
 	.dwattr $C$DW$289, DW_AT_TI_call
 
-        CALL #_xQueueGenericSend ; |1305| 
-||      MOV #0, AC0 ; |1305| 
+        CALL #_xQueueGenericSend ; |1307| 
+||      MOV #0, AC0 ; |1307| 
 
-                                        ; call occurs [#_xQueueGenericSend] ; |1305| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1306,column 6,is_stmt
+                                        ; call occurs [#_xQueueGenericSend] ; |1307| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1308,column 6,is_stmt
         MOV #0, T0
-        AMOV #0, XAR1 ; |1306| 
+        AMOV #0, XAR1 ; |1308| 
         MOV dbl(*(#_xSemaphoreXF)), XAR0
 $C$DW$290	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$290, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$290, DW_AT_name("_xQueueGenericSend")
 	.dwattr $C$DW$290, DW_AT_TI_call
 
-        CALL #_xQueueGenericSend ; |1306| 
-||      MOV #0, AC0 ; |1306| 
+        CALL #_xQueueGenericSend ; |1308| 
+||      MOV #0, AC0 ; |1308| 
 
-                                        ; call occurs [#_xQueueGenericSend] ; |1306| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1361,column 4,is_stmt
+                                        ; call occurs [#_xQueueGenericSend] ; |1308| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1363,column 4,is_stmt
         MOV dbl(*(#_xSemaphoreBaton)), XAR0
-        MOV #10000, AC0 ; |1361| 
+        MOV #10000, AC0 ; |1363| 
 $C$DW$291	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$291, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$291, DW_AT_name("_xQueueSemaphoreTake")
 	.dwattr $C$DW$291, DW_AT_TI_call
-        CALL #_xQueueSemaphoreTake ; |1361| 
-                                        ; call occurs [#_xQueueSemaphoreTake] ; |1361| 
-        CMP T0 == T2, TC1 ; |1361| 
-        BCC $C$L60,TC1 ; |1361| 
-                                        ; branchcc occurs ; |1361| 
+        CALL #_xQueueSemaphoreTake ; |1363| 
+                                        ; call occurs [#_xQueueSemaphoreTake] ; |1363| 
+        CMP T0 == T2, TC1 ; |1363| 
+        BCC $C$L60,TC1 ; |1363| 
+                                        ; branchcc occurs ; |1363| 
 $C$DW$L$_LED_Control$2$E:
 $C$DW$L$_LED_Control$3$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1363,column 6,is_stmt
-        ADD #1, *(#_ctr$7) ; |1363| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1365,column 6,is_stmt
+        ADD #1, *(#_ctr$7) ; |1365| 
 $C$DW$L$_LED_Control$3$E:
 $C$L60:    
 $C$DW$L$_LED_Control$4$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1373,column 3,is_stmt
-        MOV #10000, AC0 ; |1373| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1375,column 3,is_stmt
+        MOV #10000, AC0 ; |1375| 
 $C$DW$292	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$292, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$292, DW_AT_name("_vTaskDelay")
 	.dwattr $C$DW$292, DW_AT_TI_call
-        CALL #_vTaskDelay ; |1373| 
-                                        ; call occurs [#_vTaskDelay] ; |1373| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1375,column 2,is_stmt
-        B $C$L59  ; |1375| 
-                                        ; branch occurs ; |1375| 
+        CALL #_vTaskDelay ; |1375| 
+                                        ; call occurs [#_vTaskDelay] ; |1375| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1377,column 2,is_stmt
+        B $C$L59  ; |1377| 
+                                        ; branch occurs ; |1377| 
 $C$DW$L$_LED_Control$4$E:
 	.dwcfi	cfa_offset, 2
 	.dwcfi	restore_reg, 14
 	.dwcfi	cfa_offset, 1
 
 $C$DW$293	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$293, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L59:1:1537088021")
+	.dwattr $C$DW$293, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L59:1:1537095200")
 	.dwattr $C$DW$293, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$293, DW_AT_TI_begin_line(0x512)
-	.dwattr $C$DW$293, DW_AT_TI_end_line(0x55f)
+	.dwattr $C$DW$293, DW_AT_TI_begin_line(0x514)
+	.dwattr $C$DW$293, DW_AT_TI_end_line(0x561)
 $C$DW$294	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$294, DW_AT_low_pc($C$DW$L$_LED_Control$2$B)
 	.dwattr $C$DW$294, DW_AT_high_pc($C$DW$L$_LED_Control$2$E)
@@ -3241,7 +3241,7 @@ $C$DW$296	.dwtag  DW_TAG_TI_loop_range
 	.dwendtag $C$DW$293
 
 	.dwattr $C$DW$281, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$281, DW_AT_TI_end_line(0x562)
+	.dwattr $C$DW$281, DW_AT_TI_end_line(0x564)
 	.dwattr $C$DW$281, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$281
@@ -3254,10 +3254,10 @@ $C$DW$297	.dwtag  DW_TAG_subprogram, DW_AT_name("LED_TaskXF2")
 	.dwattr $C$DW$297, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$297, DW_AT_TI_symbol_name("_LED_TaskXF2")
 	.dwattr $C$DW$297, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$297, DW_AT_TI_begin_line(0x564)
+	.dwattr $C$DW$297, DW_AT_TI_begin_line(0x566)
 	.dwattr $C$DW$297, DW_AT_TI_begin_column(0x0d)
 	.dwattr $C$DW$297, DW_AT_TI_max_frame_size(0x04)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1381,column 1,is_stmt,address _LED_TaskXF2
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1383,column 1,is_stmt,address _LED_TaskXF2
 
 	.dwfde $C$DW$CIE, _LED_TaskXF2
 $C$DW$298	.dwtag  DW_TAG_variable, DW_AT_name("counter")
@@ -3291,52 +3291,52 @@ $C$DW$300	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
         MOV XAR0, dbl(*SP(#0))
 $C$L61:    
 $C$DW$L$_LED_TaskXF2$2$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1413,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1415,column 2,is_stmt
 $C$DW$301	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$301, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$301, DW_AT_name("_EZDSP5535_XF_toggle")
 	.dwattr $C$DW$301, DW_AT_TI_call
-        CALL #_EZDSP5535_XF_toggle ; |1413| 
-                                        ; call occurs [#_EZDSP5535_XF_toggle] ; |1413| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1419,column 2,is_stmt
+        CALL #_EZDSP5535_XF_toggle ; |1415| 
+                                        ; call occurs [#_EZDSP5535_XF_toggle] ; |1415| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1421,column 2,is_stmt
         MOV #0, T0
-        AMOV #0, XAR1 ; |1419| 
+        AMOV #0, XAR1 ; |1421| 
         MOV dbl(*(#_xSemaphoreBaton)), XAR0
 $C$DW$302	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$302, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$302, DW_AT_name("_xQueueGenericSend")
 	.dwattr $C$DW$302, DW_AT_TI_call
 
-        CALL #_xQueueGenericSend ; |1419| 
-||      MOV #0, AC0 ; |1419| 
+        CALL #_xQueueGenericSend ; |1421| 
+||      MOV #0, AC0 ; |1421| 
 
-                                        ; call occurs [#_xQueueGenericSend] ; |1419| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1424,column 2,is_stmt
-        MOV #5000, AC0 ; |1424| 
+                                        ; call occurs [#_xQueueGenericSend] ; |1421| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1426,column 2,is_stmt
+        MOV #5000, AC0 ; |1426| 
 $C$DW$303	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$303, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$303, DW_AT_name("_vTaskDelay")
 	.dwattr $C$DW$303, DW_AT_TI_call
-        CALL #_vTaskDelay ; |1424| 
-                                        ; call occurs [#_vTaskDelay] ; |1424| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1426,column 2,is_stmt
-        B $C$L61  ; |1426| 
-                                        ; branch occurs ; |1426| 
+        CALL #_vTaskDelay ; |1426| 
+                                        ; call occurs [#_vTaskDelay] ; |1426| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1428,column 2,is_stmt
+        B $C$L61  ; |1428| 
+                                        ; branch occurs ; |1428| 
 $C$DW$L$_LED_TaskXF2$2$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$304	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$304, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L61:1:1537088021")
+	.dwattr $C$DW$304, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L61:1:1537095200")
 	.dwattr $C$DW$304, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$304, DW_AT_TI_begin_line(0x572)
-	.dwattr $C$DW$304, DW_AT_TI_end_line(0x592)
+	.dwattr $C$DW$304, DW_AT_TI_begin_line(0x574)
+	.dwattr $C$DW$304, DW_AT_TI_end_line(0x594)
 $C$DW$305	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$305, DW_AT_low_pc($C$DW$L$_LED_TaskXF2$2$B)
 	.dwattr $C$DW$305, DW_AT_high_pc($C$DW$L$_LED_TaskXF2$2$E)
 	.dwendtag $C$DW$304
 
 	.dwattr $C$DW$297, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$297, DW_AT_TI_end_line(0x593)
+	.dwattr $C$DW$297, DW_AT_TI_end_line(0x595)
 	.dwattr $C$DW$297, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$297
@@ -3349,10 +3349,10 @@ $C$DW$306	.dwtag  DW_TAG_subprogram, DW_AT_name("StartUpTask")
 	.dwattr $C$DW$306, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$306, DW_AT_TI_symbol_name("_StartUpTask")
 	.dwattr $C$DW$306, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$306, DW_AT_TI_begin_line(0x594)
+	.dwattr $C$DW$306, DW_AT_TI_begin_line(0x596)
 	.dwattr $C$DW$306, DW_AT_TI_begin_column(0x0d)
 	.dwattr $C$DW$306, DW_AT_TI_max_frame_size(0x04)
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1429,column 1,is_stmt,address _StartUpTask
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1431,column 1,is_stmt,address _StartUpTask
 
 	.dwfde $C$DW$CIE, _StartUpTask
 $C$DW$307	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
@@ -3381,157 +3381,157 @@ $C$DW$308	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
         MOV XAR0, dbl(*SP(#0))
 $C$L62:    
 $C$DW$L$_StartUpTask$2$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1449,column 3,is_stmt
-        MOV #2500, AC0 ; |1449| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1451,column 3,is_stmt
+        MOV #2500, AC0 ; |1451| 
 $C$DW$309	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$309, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$309, DW_AT_name("_vTaskDelay")
 	.dwattr $C$DW$309, DW_AT_TI_call
-        CALL #_vTaskDelay ; |1449| 
-                                        ; call occurs [#_vTaskDelay] ; |1449| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1453,column 3,is_stmt
+        CALL #_vTaskDelay ; |1451| 
+                                        ; call occurs [#_vTaskDelay] ; |1451| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1455,column 3,is_stmt
         MOV dbl(*(#_xSemaphoreR)), XAR0
 $C$DW$310	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$310, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$310, DW_AT_name("_xQueueSemaphoreTake")
 	.dwattr $C$DW$310, DW_AT_TI_call
 
-        CALL #_xQueueSemaphoreTake ; |1453| 
-||      MOV #0, AC0 ; |1453| 
+        CALL #_xQueueSemaphoreTake ; |1455| 
+||      MOV #0, AC0 ; |1455| 
 
-                                        ; call occurs [#_xQueueSemaphoreTake] ; |1453| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1454,column 5,is_stmt
+                                        ; call occurs [#_xQueueSemaphoreTake] ; |1455| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1456,column 5,is_stmt
         MOV dbl(*(#_xSemaphoreB)), XAR0
 $C$DW$311	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$311, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$311, DW_AT_name("_xQueueSemaphoreTake")
 	.dwattr $C$DW$311, DW_AT_TI_call
 
-        CALL #_xQueueSemaphoreTake ; |1454| 
-||      MOV #0, AC0 ; |1454| 
+        CALL #_xQueueSemaphoreTake ; |1456| 
+||      MOV #0, AC0 ; |1456| 
 
-                                        ; call occurs [#_xQueueSemaphoreTake] ; |1454| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1455,column 5,is_stmt
+                                        ; call occurs [#_xQueueSemaphoreTake] ; |1456| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1457,column 5,is_stmt
         MOV dbl(*(#_xSemaphoreY)), XAR0
 $C$DW$312	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$312, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$312, DW_AT_name("_xQueueSemaphoreTake")
 	.dwattr $C$DW$312, DW_AT_TI_call
 
-        CALL #_xQueueSemaphoreTake ; |1455| 
-||      MOV #0, AC0 ; |1455| 
+        CALL #_xQueueSemaphoreTake ; |1457| 
+||      MOV #0, AC0 ; |1457| 
 
-                                        ; call occurs [#_xQueueSemaphoreTake] ; |1455| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1456,column 5,is_stmt
+                                        ; call occurs [#_xQueueSemaphoreTake] ; |1457| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1458,column 5,is_stmt
         MOV dbl(*(#_xSemaphoreO)), XAR0
 $C$DW$313	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$313, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$313, DW_AT_name("_xQueueSemaphoreTake")
 	.dwattr $C$DW$313, DW_AT_TI_call
 
-        CALL #_xQueueSemaphoreTake ; |1456| 
-||      MOV #0, AC0 ; |1456| 
+        CALL #_xQueueSemaphoreTake ; |1458| 
+||      MOV #0, AC0 ; |1458| 
 
-                                        ; call occurs [#_xQueueSemaphoreTake] ; |1456| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1457,column 5,is_stmt
+                                        ; call occurs [#_xQueueSemaphoreTake] ; |1458| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1459,column 5,is_stmt
         MOV dbl(*(#_xSemaphoreXF)), XAR0
 $C$DW$314	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$314, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$314, DW_AT_name("_xQueueSemaphoreTake")
 	.dwattr $C$DW$314, DW_AT_TI_call
 
-        CALL #_xQueueSemaphoreTake ; |1457| 
-||      MOV #0, AC0 ; |1457| 
+        CALL #_xQueueSemaphoreTake ; |1459| 
+||      MOV #0, AC0 ; |1459| 
 
-                                        ; call occurs [#_xQueueSemaphoreTake] ; |1457| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1458,column 5,is_stmt
+                                        ; call occurs [#_xQueueSemaphoreTake] ; |1459| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1460,column 5,is_stmt
         MOV dbl(*(#_xSemaphoreBaton)), XAR0
 $C$DW$315	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$315, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$315, DW_AT_name("_xQueueSemaphoreTake")
 	.dwattr $C$DW$315, DW_AT_TI_call
 
-        CALL #_xQueueSemaphoreTake ; |1458| 
-||      MOV #0, AC0 ; |1458| 
+        CALL #_xQueueSemaphoreTake ; |1460| 
+||      MOV #0, AC0 ; |1460| 
 
-                                        ; call occurs [#_xQueueSemaphoreTake] ; |1458| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1466,column 3,is_stmt
+                                        ; call occurs [#_xQueueSemaphoreTake] ; |1460| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1468,column 3,is_stmt
         MOV dbl(*(#_controlTaskHandle)), XAR0
 $C$DW$316	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$316, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$316, DW_AT_name("_vTaskResume")
 	.dwattr $C$DW$316, DW_AT_TI_call
-        CALL #_vTaskResume ; |1466| 
-                                        ; call occurs [#_vTaskResume] ; |1466| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1468,column 3,is_stmt
+        CALL #_vTaskResume ; |1468| 
+                                        ; call occurs [#_vTaskResume] ; |1468| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1470,column 3,is_stmt
         MOV dbl(*(#_blueTaskHandle)), XAR0
 $C$DW$317	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$317, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$317, DW_AT_name("_vTaskResume")
 	.dwattr $C$DW$317, DW_AT_TI_call
-        CALL #_vTaskResume ; |1468| 
-                                        ; call occurs [#_vTaskResume] ; |1468| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1470,column 6,is_stmt
+        CALL #_vTaskResume ; |1470| 
+                                        ; call occurs [#_vTaskResume] ; |1470| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1472,column 6,is_stmt
         MOV dbl(*(#_redTaskHandle)), XAR0
 $C$DW$318	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$318, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$318, DW_AT_name("_vTaskResume")
 	.dwattr $C$DW$318, DW_AT_TI_call
-        CALL #_vTaskResume ; |1470| 
-                                        ; call occurs [#_vTaskResume] ; |1470| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1472,column 6,is_stmt
+        CALL #_vTaskResume ; |1472| 
+                                        ; call occurs [#_vTaskResume] ; |1472| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1474,column 6,is_stmt
         MOV dbl(*(#_greenTaskHandle)), XAR0
 $C$DW$319	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$319, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$319, DW_AT_name("_vTaskResume")
 	.dwattr $C$DW$319, DW_AT_TI_call
-        CALL #_vTaskResume ; |1472| 
-                                        ; call occurs [#_vTaskResume] ; |1472| 
+        CALL #_vTaskResume ; |1474| 
+                                        ; call occurs [#_vTaskResume] ; |1474| 
 $C$DW$L$_StartUpTask$2$E:
 $C$DW$L$_StartUpTask$3$B:
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1474,column 6,is_stmt
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1476,column 6,is_stmt
         MOV dbl(*(#_xfTaskHandle)), XAR0
 $C$DW$320	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$320, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$320, DW_AT_name("_vTaskResume")
 	.dwattr $C$DW$320, DW_AT_TI_call
-        CALL #_vTaskResume ; |1474| 
-                                        ; call occurs [#_vTaskResume] ; |1474| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1476,column 6,is_stmt
+        CALL #_vTaskResume ; |1476| 
+                                        ; call occurs [#_vTaskResume] ; |1476| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1478,column 6,is_stmt
         MOV dbl(*(#_xf2TaskHandle)), XAR0
 $C$DW$321	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$321, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$321, DW_AT_name("_vTaskResume")
 	.dwattr $C$DW$321, DW_AT_TI_call
-        CALL #_vTaskResume ; |1476| 
-                                        ; call occurs [#_vTaskResume] ; |1476| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1479,column 6,is_stmt
-        MOV #10000, AC0 ; |1479| 
+        CALL #_vTaskResume ; |1478| 
+                                        ; call occurs [#_vTaskResume] ; |1478| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1481,column 6,is_stmt
+        MOV #10000, AC0 ; |1481| 
 $C$DW$322	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$322, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$322, DW_AT_name("_vTaskDelay")
 	.dwattr $C$DW$322, DW_AT_TI_call
-        CALL #_vTaskDelay ; |1479| 
-                                        ; call occurs [#_vTaskDelay] ; |1479| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1480,column 6,is_stmt
-        AMOV #0, XAR0 ; |1480| 
+        CALL #_vTaskDelay ; |1481| 
+                                        ; call occurs [#_vTaskDelay] ; |1481| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1482,column 6,is_stmt
+        AMOV #0, XAR0 ; |1482| 
 $C$DW$323	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$323, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$323, DW_AT_name("_vTaskSuspend")
 	.dwattr $C$DW$323, DW_AT_TI_call
-        CALL #_vTaskSuspend ; |1480| 
-                                        ; call occurs [#_vTaskSuspend] ; |1480| 
-	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1482,column 2,is_stmt
-        B $C$L62  ; |1482| 
-                                        ; branch occurs ; |1482| 
+        CALL #_vTaskSuspend ; |1482| 
+                                        ; call occurs [#_vTaskSuspend] ; |1482| 
+	.dwpsn	file "../FreeRTOS/Demo/c5515_CCS/main.c",line 1484,column 2,is_stmt
+        B $C$L62  ; |1484| 
+                                        ; branch occurs ; |1484| 
 $C$DW$L$_StartUpTask$3$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$324	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$324, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L62:1:1537088021")
+	.dwattr $C$DW$324, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\main.asm:$C$L62:1:1537095200")
 	.dwattr $C$DW$324, DW_AT_TI_begin_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$324, DW_AT_TI_begin_line(0x5a6)
-	.dwattr $C$DW$324, DW_AT_TI_end_line(0x5ca)
+	.dwattr $C$DW$324, DW_AT_TI_begin_line(0x5a8)
+	.dwattr $C$DW$324, DW_AT_TI_end_line(0x5cc)
 $C$DW$325	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$325, DW_AT_low_pc($C$DW$L$_StartUpTask$2$B)
 	.dwattr $C$DW$325, DW_AT_high_pc($C$DW$L$_StartUpTask$2$E)
@@ -3541,7 +3541,7 @@ $C$DW$326	.dwtag  DW_TAG_TI_loop_range
 	.dwendtag $C$DW$324
 
 	.dwattr $C$DW$306, DW_AT_TI_end_file("../FreeRTOS/Demo/c5515_CCS/main.c")
-	.dwattr $C$DW$306, DW_AT_TI_end_line(0x5cc)
+	.dwattr $C$DW$306, DW_AT_TI_end_line(0x5ce)
 	.dwattr $C$DW$306, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$306
