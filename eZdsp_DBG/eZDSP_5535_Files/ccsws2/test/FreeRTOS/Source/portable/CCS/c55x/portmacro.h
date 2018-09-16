@@ -96,7 +96,7 @@ typedef portCHAR signed int8_t;
 
 /* Interrupt control macros. */
 #define portDISABLE_INTERRUPTS()	asm (" nop");  \
-					asm  (" bset INTM")
+			asm  (" bset INTM")
 // #define portDISABLE_INTERRUPTS()        _disable_interrupts()
 // asm(" BIT (ST1, #ST1_INTM) = #1")
 	// _enable_interrupts();
@@ -158,7 +158,8 @@ extern void vPortYield( void );
 #define portSTACK_GROWTH			( -1 )
 //#define portSTACK_GROWTH			( 1 )
 // #define portTICK_RATE_MS			( ( TickType_t  ) 1000 / configTICK_RATE_HZ )
-#define portTICK_PERIOD_MS			( ( TickType_t  ) 1000 / configTICK_RATE_HZ )			// oh.
+// #define portTICK_PERIOD_MS			( ( TickType_t  ) 1000 / configTICK_RATE_HZ )			// oh.
+#define portTICK_PERIOD_MS			( ( TickType_t  ) 10000 / configTICK_RATE_HZ )			// timer is programmed to give 1ms IRQ's
 /*-----------------------------------------------------------*/
 
 /* Task function macros as described on the FreeRTOS.org WEB site. */

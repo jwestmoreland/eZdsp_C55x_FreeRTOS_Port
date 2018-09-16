@@ -36,14 +36,18 @@
 	     .global _INT14_ISR
 	     .global _portFLAGS_INT_ENABLED
 	     .global _portFLAGS_INT_ENABLED_POPPED
-	     .global _DBSTAT_LOW
-	     .global _DBSTAT_HIGH
+	     .global _DBSTAT_SAVE
+	     .global _DBSTAT_RESTORE
 	     .global _STATUS0_LOW
 	     .global _STATUS0_HIGH
 	     .global _STATUS1_LOW
 	     .global _STATUS1_HIGH
 	     .global _STATUS2_LOW
 	     .global _STATUS2_HIGH
+	     .global _PC_REG_HIGH_SAVE
+	     .global _PC_REG_LOW_SAVE
+	     .global _PC_REG_HIGH_RESTORE
+	     .global _PC_REG_LOW_RESTORE
 ;	     .cdecls C,NOLIST,"portmacro.h"
 ;	     .cdecls C,LIST,"FreeRTOSConfig.h"
 ;			CLRC AMODE
@@ -56,7 +60,7 @@ portSAVE_CONTEXT .macro
 ;			CLRC       AMODE
 ;			EALLOW
 
-;	                bclr C54CM	; temp - until we figure out what is setting this
+	                bclr C54CM	; temp - until we figure out what is setting this
 
 	                bset INTM		; disable interrupts
 
@@ -541,10 +545,10 @@ _vTickISR:		; the timer ISR is aggregated for this processor architecture
 		aadd #-1, sp
 		MOV #0, *port(#6166) ; |119|
 		AND #0x0010, mmap(@IFR0)
-;		bset INTM
-	    MOV *port(#7188), AR1 ; |68|
-        BSET @#0, AR1 ; |68|
-        BCC $1,AR1 == #0 ; |68|
+		bset INTM
+;	    MOV *port(#7188), AR1 ; |68|		;; TIMER0 is only timer that is active
+;        BSET @#0, AR1 ; |68|
+;        BCC $1,AR1 == #0 ; |68|
 ;        AND #0x0010, *(#1)
 
 ;		bset INTM		; disable interrupts
@@ -561,12 +565,12 @@ _vTickISR:		; the timer ISR is aggregated for this processor architecture
 ;	    mov xssp, dbl (*(#_save_xssp))			; save xssp
         call    #_vTaskSwitchContext
         .endif
-$1:
+;$1:
 ;		bclr INTM
    		mov #1, *port(#6166) ; |127|
-   		MOV #0, *port(#6294) ; |92|
-;		or #0x0001, *port(#7188) ; |130|
-        OR #0x0007, *port(#7188) ; |100|
+;   		MOV #0, *port(#6294) ; |92|
+		or #0x0001, *port(#7188) ; |130|
+ ;       OR #0x0007, *port(#7188) ; |100|
 		aadd #1, sp
         portRESTORE_CONTEXT
                                 

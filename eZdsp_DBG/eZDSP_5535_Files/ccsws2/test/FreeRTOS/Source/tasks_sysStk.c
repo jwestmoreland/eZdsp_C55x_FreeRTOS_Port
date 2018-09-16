@@ -73,7 +73,7 @@ functions but without including stdio.h here. */
  * The value used to fill the stack of a task when the task is created.  This
  * is used purely for checking the high water mark for tasks.
  */
-#define tskSTACK_FILL_BYTE	( 0xa5U )
+#define tskSTACK_FILL_BYTE	( 0xa5a5U )
 
 /* Sometimes the FreeRTOSConfig.h settings only allow a task to be created using
 dynamically allocated RAM, in which case when any task is deleted it is known

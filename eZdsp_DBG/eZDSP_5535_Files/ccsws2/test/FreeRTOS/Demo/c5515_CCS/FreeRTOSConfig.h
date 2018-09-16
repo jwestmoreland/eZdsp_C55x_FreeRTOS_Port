@@ -70,6 +70,7 @@
  *
  * See http://www.freertos.org/a00110.html.
  *----------------------------------------------------------*/
+#define portCRITICAL_NESTING_IN_TCB  1
 
 #define configUSE_TIME_SLICING		0				// preemptive, cooperative scheduler?
 #define configUSE_MUTEXES			1
@@ -80,20 +81,21 @@
 /// #define configTICK_RATE_HZ						( ( TickType_t ) 1000 )
 #define configUSE_IDLE_HOOK			1
 #define configUSE_TICK_HOOK			0
-#define configCPU_CLOCK_HZ			( ( unsigned long ) 50000000 ) /* Clock setup from main.c in the demo application. */
-// #define configCPU_CLOCK_HZ			( ( unsigned long ) 6000000 )
+#define configCPU_CLOCK_HZ			( ( unsigned long ) 50000000 ) /* Clock setup from main.c in the demo application. Derived from 100MHz PLL setting */
+// #define configCPU_CLOCK_HZ			( ( unsigned long ) 6000000 ) // derived from on-board 12MHz oscillator - note Timer0 -> highest setting /2
 // #define configCPU_CLOCK_HZ			( ( unsigned long ) 0x1000 ) /
 // #define configCPU_CLOCK_HZ			( ( unsigned long ) 7995392 )
-#define configTICK_RATE_HZ			( ( TickType_t  ) 1000 )
+#define configTICK_RATE_HZ			( ( TickType_t  ) 10000 )
+// #define configTICK_RATE_HZ			( ( TickType_t  ) 1000 )
 // #define configMAX_PRIORITIES		( ( unsigned BaseType_t ) 4 )
 #define configMAX_PRIORITIES		( 5 )
 #define configMINIMAL_STACK_SIZE	( ( unsigned short ) 128 )				// 128
-#define configTOTAL_HEAP_SIZE		( ( size_t ) ( 5000 ) )
+#define configTOTAL_HEAP_SIZE		( ( size_t ) ( 12 * 1024 ) )
 #define configMAX_TASK_NAME_LEN		( 8 )
 #define configUSE_TRACE_FACILITY	0
 #define configUSE_16_BIT_TICKS		0
 #define configIDLE_SHOULD_YIELD		1
-// #define configCHECK_FOR_STACK_OVERFLOW	2
+#define configCHECK_FOR_STACK_OVERFLOW	2
 #define configUSE_MALLOC_FAILED_HOOK	1
 #define configSUPPORT_STATIC_ALLOCATION     0
 
@@ -116,7 +118,8 @@ to exclude the API function. */
 #define INCLUDE_vTaskDelayUntil			1
 #define INCLUDE_vTaskDelay				1
 #define INCLUDE_uxTaskGetStackHighWaterMark 1
-
+#define INCLUDE_vTaskResume             1
+#define INCLUDE_vTaskResumeFromISR              1
 #define INCLUDE_xTaskResumeFromISR              1
 
 #define INCLUDE_xTaskGetSchedulerState          0

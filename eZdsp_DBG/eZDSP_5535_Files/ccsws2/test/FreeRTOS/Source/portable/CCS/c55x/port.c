@@ -100,14 +100,18 @@ extern void StartTimer0(void);
 
 extern void vTickISR(void);
 
-	unsigned int DBSTAT_LOW = 0xdbdb;
-	unsigned int DBSTAT_HIGH = 0xdbdb;
+volatile	unsigned int DBSTAT_SAVE = 0xdbdb;
+volatile	unsigned int DBSTAT_RESTORE = 0xdbdb;
 	unsigned int STATUS0_LOW = 0x0aa0;
 	unsigned int STATUS0_HIGH = 0x0bb0;
 	unsigned int STATUS1_LOW = 0x1cc1;
 	unsigned int STATUS1_HIGH = 0x1dd1;
 	unsigned int STATUS2_LOW = 0x2ee2;
 	unsigned int STATUS2_HIGH = 0x2ff2;
+volatile	unsigned int PC_REG_HIGH_RESTORE = 0x1234;
+volatile	unsigned int PC_REG_LOW_RESTORE  = 0x1234;
+volatile	unsigned int PC_REG_HIGH_SAVE = 0x1234;
+volatile	unsigned int PC_REG_LOW_SAVE  = 0x1234;
 	unsigned int tZero	  = 0x1234;
 	unsigned int tOne	  = 0x5678;
 	unsigned int tTwo	  = 0x9abc;
