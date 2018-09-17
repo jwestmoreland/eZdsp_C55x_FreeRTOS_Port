@@ -63,8 +63,8 @@ typedef struct tskTaskControlBlock* TaskHandle_t;
 
 typedef struct tagSTACKSTRUCT
 {
-portSTACK_TYPE *pxTopOfStack;
-portSTACK_TYPE *pxTopOfSysStack;
+	StackType_t *pxTopOfStack;
+	StackType_t *pxTopOfSysStack;
 } STACKSTRUCT;
 
 

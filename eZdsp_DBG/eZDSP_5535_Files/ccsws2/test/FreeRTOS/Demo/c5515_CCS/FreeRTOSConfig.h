@@ -82,10 +82,11 @@
 #define configUSE_IDLE_HOOK			1
 #define configUSE_TICK_HOOK			0
 #define configCPU_CLOCK_HZ			( ( unsigned long ) 50000000 ) /* Clock setup from main.c in the demo application. Derived from 100MHz PLL setting */
+// #define configCPU_CLOCK_HZ			( ( unsigned long ) 1000000 )
 // #define configCPU_CLOCK_HZ			( ( unsigned long ) 6000000 ) // derived from on-board 12MHz oscillator - note Timer0 -> highest setting /2
 // #define configCPU_CLOCK_HZ			( ( unsigned long ) 0x1000 ) /
 // #define configCPU_CLOCK_HZ			( ( unsigned long ) 7995392 )
-#define configTICK_RATE_HZ			( ( TickType_t  ) 10000 )
+#define configTICK_RATE_HZ			( ( TickType_t  ) 1000 )
 // #define configTICK_RATE_HZ			( ( TickType_t  ) 1000 )
 // #define configMAX_PRIORITIES		( ( unsigned BaseType_t ) 4 )
 #define configMAX_PRIORITIES		( 5 )
@@ -95,13 +96,13 @@
 #define configUSE_TRACE_FACILITY	0
 #define configUSE_16_BIT_TICKS		0
 #define configIDLE_SHOULD_YIELD		1
-#define configCHECK_FOR_STACK_OVERFLOW	2
+#define configCHECK_FOR_STACK_OVERFLOW	2			// was 2
 #define configUSE_MALLOC_FAILED_HOOK	1
 #define configSUPPORT_STATIC_ALLOCATION     0
 
 #define configSUPPORT_DYNAMIC_ALLOCATION   1
 /* Co-routine definitions. */
-#define configUSE_CO_ROUTINES 		1
+#define configUSE_CO_ROUTINES 		0
 #define configMAX_CO_ROUTINE_PRIORITIES 2
 #define configUSE_RECURSIVE_MUTEXES             1
 
@@ -127,5 +128,6 @@ to exclude the API function. */
 #if 1
 #define configASSERT( x ) if( ( x ) == pdFALSE ) { taskDISABLE_INTERRUPTS(); for( ;; ); }
 #endif
-
+// double-check this with scope:
+#define pdMS_TO_TICKS( xTimeInMs ) ( ( TickType_t ) ( ( ( TickType_t ) ( xTimeInMs ) * ( TickType_t ) configTICK_RATE_HZ ) / ( TickType_t ) 1000 ) )
 #endif /* FREERTOS_CONFIG_H */

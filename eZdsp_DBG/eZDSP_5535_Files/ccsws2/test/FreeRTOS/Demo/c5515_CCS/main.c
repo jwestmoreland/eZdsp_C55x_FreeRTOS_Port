@@ -124,6 +124,7 @@
 
 #define EVER ;;
 
+#define BLINK_XF_IN_IDLE (0)		// set to 1 to see XF blink in the IDLE task - can be used as ballpark timing diagnostic
 void InitSystem(void);
 void ConfigPort(void);
 void SYS_GlobalIntEnable(void);
@@ -206,7 +207,7 @@ static void blueLedToggle(void);
 static void redLedToggle(void);
 void LED_TaskRed(void * pvParameters);
 void LED_TaskBlue(void * pvParameters);
-void LED_TaskXF(void * pvParameters);
+static void LED_TaskXF(void * pvParameters);
 static void LED_TaskXF2(void * pvParameters);
 static void LED_TaskGreen(void * pvParameters);
 static void LED_Control(void * pvParameters);
@@ -425,9 +426,7 @@ int main( void )
 //			GpioDataRegs.GPBTOGGLE.bit.GPIO34 = 1;	//Toggle GPIO34 (LD2)
 			//-----------------------------------------------------------
 //		}
-
 //	}
-	
 	
 // GpioDataRegs.GPBTOGGLE.bit.GPIO34 = 1;
 // GpioDataRegs.GPBTOGGLE.bit.GPIO14 = 1;
@@ -489,16 +488,16 @@ int main( void )
     	    	                       //                       blueTaskStack,        // Array to use as the task's stack.
     	    	                       		 &startUpTaskHandle );
 
- //   	    	          vTaskSuspend(startUpTaskHandle);
+    	    	          vTaskSuspend(startUpTaskHandle);
 #endif
         xTaskCreate(LED_TaskBlue,         // Function that implements the task.
                           "BlueLED",      // Text name for the task.
 						  configMINIMAL_STACK_SIZE,           // Number of indexes in the xStack array.
                           ( void * ) 2,         // Parameter passed into the task.
-                          tskIDLE_PRIORITY + 1, // Priority at which the task is created.
+                          tskIDLE_PRIORITY + 2, // Priority at which the task is created.
    //                       blueTaskStack,        // Array to use as the task's stack.
    		 &blueTaskHandle );    // Variable to hold the task's data structure.
-//        vTaskSuspend(blueTaskHandle);
+       vTaskSuspend(blueTaskHandle);
 
 #if 1
 
@@ -509,12 +508,12 @@ int main( void )
                                          tskIDLE_PRIORITY + 2, // Priority at which the task is created.
                   //                       blueTaskStack,        // Array to use as the task's stack.
                   		 &xfTaskHandle );
-//        vTaskSuspend(xfTaskHandle);
+        vTaskSuspend(xfTaskHandle);
         xTaskCreate(LED_TaskGreen,         // Function that implements the task.
                                          "GRNLED",      // Text name for the task.
                						  configMINIMAL_STACK_SIZE,           // Number of indexes in the xStack array.
                                          ( void * ) 2,         // Parameter passed into the task.
-                                         tskIDLE_PRIORITY + 1, // Priority at which the task is created.
+                                         tskIDLE_PRIORITY + 2, // Priority at which the task is created.
                   //                       blueTaskStack,        // Array to use as the task's stack.
                   		 &greenTaskHandle );
 //        vTaskSuspend(greenTaskHandle);
@@ -526,27 +525,27 @@ int main( void )
                                          tskIDLE_PRIORITY + 2, // Priority at which the task is created.
                   //                       blueTaskStack,        // Array to use as the task's stack.
                   		 &xf2TaskHandle );
- //       vTaskSuspend(xf2TaskHandle);
+        vTaskSuspend(xf2TaskHandle);
 #if 1
         xTaskCreate(LED_Control,  // Function that implements the task.
                                   "LEDCTRL",      // Text name for the task.
                				      configMINIMAL_STACK_SIZE,           // Number of indexes in the xStack array.
                                   ( void * ) 2,         // Parameter passed into the task.
-                                  tskIDLE_PRIORITY + 1, // Priority at which the task is created.
+                                  tskIDLE_PRIORITY + 2, // Priority at which the task is created.
                   //                       blueTaskStack,        // Array to use as the task's stack.
                   		 &controlTaskHandle );
- //       vTaskSuspend(controlTaskHandle);
+//       vTaskSuspend(controlTaskHandle);
 #endif
 #endif
         xTaskCreate(LED_TaskRed,         // Function that implements the task.
                                   "RedLED",      // Text name for the task.
         						  configMINIMAL_STACK_SIZE,           // Number of indexes in the xStack array.
                                   ( void * ) 2,         // Parameter passed into the task.
-                                  tskIDLE_PRIORITY + 3, // Priority at which the task is created.
+                                  tskIDLE_PRIORITY + 2, // Priority at which the task is created.
            //                       blueTaskStack,        // Array to use as the task's stack.
            		 &redTaskHandle );
-//         vTaskSuspend(redTaskHandle);
- //          vTaskSuspend(controlTaskHandle);
+         vTaskSuspend(redTaskHandle);
+//         vTaskSuspend(controlTaskHandle);
 #if 0
 		xSemaphoreTake(xSemaphoreR,1);
 		xSemaphoreTake(xSemaphoreB,1);
@@ -729,13 +728,15 @@ void vApplicationIdleHook( void )
 //	BlinkLED();
 //	toggleLED();
 //	EZDSP5535_LED_toggle(3);		// toggle 'BLUE' LED
-	if ( ulIdleLoops > 500000 )
+	if ( ulIdleLoops > 500000 )		// set this to what you think the CPU is clocked at / 100 - 50MHz/100 = 500K
 //	if ( ulIdleLoops > 60000 )
 	{
 //		toggleLEDlocal();					// as a diagnostic; if timing is in the ballpark - the XF LED will blink at the rate ~1s (50% duty cycle)
 //		EZDSP5535_LED_toggle(0);
-//		EZDSP5535_XF_toggle();
 
+#if BLINK_XF_IN_IDLE
+		EZDSP5535_XF_toggle();
+#endif
 
 #if 0
 		i++;
@@ -1100,6 +1101,8 @@ void systemInit(void)
 //    CSL_SYSCTRL_REGS->CCR2 = CSL_SYS_CCR2_TIMER0CLKSEL_SYSCLK | CSL_SYS_CCR2_SYSCLKSRC_BYPCLKIN ;
     CSL_SYSCTRL_REGS->CCR2 = CSL_SYS_CCR2_TIMER0CLKSEL_SYSCLK | CSL_SYS_CCR2_SYSCLKSEL_LOCK;
 
+    /* Configuring CLOCKOUT pin */
+     CSL_FINST (CSL_SYSCTRL_REGS->CCSSR, SYS_CCSSR_SRC, MODE11);		// SYSCLK will be on TP4 of eZdsp 'c5535 - sar is enabled for this demo
 }
 
 void vApplicationMallocFailedHook( void )
@@ -1129,14 +1132,14 @@ void LED_TaskBlue(void * pvParameters)
 {
 	for(;;)
 	{
-//		if(xSemaphoreTake( xSemaphoreB, portMAX_DELAY ) == pdTRUE)
+//		if(xSemaphoreTake( xSemaphoreBaton, pdMS_TO_TICKS(100UL) ) == pdTRUE)
 		{
 			blueLedToggle();
 //			vTaskDelay(500 / portTICK_PERIOD_MS);
 //			vTaskDelay(1);
 
 			led_tsks_running++;
-#if 1
+#if 0
 //		if (xSemaphoreGive ( xSemaphoreBaton) != pdTRUE )
 		if (xSemaphoreGive ( xSemaphoreR) == pdTRUE )
 		{
@@ -1149,7 +1152,8 @@ void LED_TaskBlue(void * pvParameters)
 		vTaskDelay(pdMS_TO_TICKS(1000));
 #endif
 	}
-//		vTaskDelay(100/portTICK_PERIOD_MS);
+}
+		vTaskDelay(pdMS_TO_TICKS(100UL));
 }
 
 
@@ -1157,14 +1161,14 @@ void LED_TaskRed(void * pvParameters)
 {
 	for(;;)
 	{
-//		if(xSemaphoreTake( xSemaphoreR, portMAX_DELAY ) == pdTRUE)
+//		if(xSemaphoreTake( xSemaphoreBaton, pdMS_TO_TICKS(500UL) ) == pdTRUE)
 		{
 			redLedToggle();
 //			vTaskDelay(500 / portTICK_PERIOD_MS);
 //			vTaskDelay(1);
 
 			led_tsks_running++;
-#if 1
+#if 0
 //		if (xSemaphoreGive ( xSemaphoreBaton ) != pdTRUE )
 		if (xSemaphoreGive ( xSemaphoreB ) == pdTRUE )
 		{
@@ -1174,7 +1178,8 @@ void LED_TaskRed(void * pvParameters)
 		}
 		}
 #endif
-		vTaskDelay(pdMS_TO_TICKS(1000));
+	}
+	vTaskDelay(pdMS_TO_TICKS(100UL));
 	}
 }
 
@@ -1226,7 +1231,7 @@ static void LED_TaskXF(void * pvParameters)
 	{
 //	EZDSP5535_XF_toggle();
 
-//	if(xSemaphoreTake( xSemaphoreY, portMAX_DELAY ) == pdTRUE)
+//		if(xSemaphoreTake( xSemaphoreBaton, pdMS_TO_TICKS(250UL) ) == pdTRUE)
 	{
 
 #if 1
@@ -1246,7 +1251,7 @@ static void LED_TaskXF(void * pvParameters)
 //	vTaskDelay(500 / portTICK_PERIOD_MS);
 //	vTaskDelay(1);
 
-#if 1
+#if 0
 	if (xSemaphoreGive ( xSemaphoreBaton) != pdTRUE )
 	{
 
@@ -1255,41 +1260,51 @@ static void LED_TaskXF(void * pvParameters)
 	vTaskDelay(pdMS_TO_TICKS(250));
 #endif
 	}
+		vTaskDelay(pdMS_TO_TICKS(250UL));
+	}
 }
 
 static void LED_TaskGreen(void * pvParameters)
 {
-	static unsigned short counter = 0;
+	static unsigned short counter, ctr = 0;
 
-	for (;;)
+	for (EVER)
 	{
-
-//		if(xSemaphoreTake( xSemaphoreO, portMAX_DELAY ) == pdTRUE)
+		if(xSemaphoreTake( xSemaphoreBaton, pdMS_TO_TICKS(500UL) ) == pdTRUE)
 		{
-
 #if 1
 	counter++;
 	if(counter & 1)
 	{
 		EZDSP5535_GPIO_setOutput(17, 1);
+		EZDSP5535_GPIO_setOutput(15, 0);
+		EZDSP5535_GPIO_setOutput(16, 0);
+		EZDSP5535_GPIO_setOutput(14,1);
+
 	}
 	else
 	{
 		EZDSP5535_GPIO_setOutput(17, 0);
+		EZDSP5535_GPIO_setOutput(15, 1);
+		EZDSP5535_GPIO_setOutput(16, 1);
+		EZDSP5535_GPIO_setOutput(14,0);
+	}
 	}
 #endif
 //	vTaskDelay(500 / portTICK_PERIOD_MS);
 //	vTaskDelay(1);
 
-
-#if 1
-		if (xSemaphoreGive( xSemaphoreBaton) != pdTRUE )
+	EZDSP5535_XF_toggle();
+#if 0
+		if (xSemaphoreGive( xSemaphoreBaton ) != pdTRUE )
 			{
-
+				ctr++;
 			}
-		}
+
 #endif
-		vTaskDelay(pdMS_TO_TICKS(1000));
+//		}
+		vTaskDelay(pdMS_TO_TICKS(100UL));
+//		vTaskDelay((10));
 	}
 }
 #if 1
@@ -1299,23 +1314,33 @@ static short ctr = 0;
 
 	for(EVER)
 	{
-		vTaskDelay(pdMS_TO_TICKS(100));
+//		vTaskDelay(pdMS_TO_TICKS(100));
+#if 0
 		xSemaphoreGive(xSemaphoreR);
 //		vTaskResume(redTaskHandle);
 		xSemaphoreGive(xSemaphoreB);
 		xSemaphoreGive(xSemaphoreY);
 		xSemaphoreGive(xSemaphoreO);
 	    xSemaphoreGive (xSemaphoreXF);
+#endif
+
 #if 0
-		if (xSemaphoreGive ( xSemaphoreY) == pdTRUE )
+		if (xSemaphoreTake( xSemaphoreBaton, pdMS_TO_TICKS(100UL) ) == pdTRUE )
 		{
 //			vTaskResume(greenTaskHandle);
 			ctr++;
-			if(xSemaphoreTake( xSemaphoreBaton, portMAX_DELAY) == pdTRUE)
+			if(xSemaphoreGive( xSemaphoreBaton ) == pdTRUE)
 			{
+#if 0
+				if ( xSemaphoreGive ( xSemaphoreY) == pdTRUE )
+				{
 
-			}
+				}
+#endif
+				}
+
 		}
+
 #endif
 //		vTaskResume(blueTaskHandle);
 //		xSemaphoreGive(xSemaphoreB);
@@ -1355,7 +1380,7 @@ static short ctr = 0;
 #endif
 
 
-
+#if 0
 //		if (xSemaphoreGive ( xSemaphoreXF) == pdTRUE )
 //		{
 //			vTaskResume(xfTaskHandle);
@@ -1365,14 +1390,17 @@ static short ctr = 0;
 					ctr++;
 				}
 //		}
+#endif
 
 
-
-
+	    if ( xSemaphoreGive ( xSemaphoreBaton ) != pdTRUE )
+	    {
+	    	ctr++;
+	    }
 //		vTaskDelay(1);
 
 //		vTaskDelay(75 / portTICK_PERIOD_MS);
-		vTaskDelay(pdMS_TO_TICKS(1000));
+		vTaskDelay(pdMS_TO_TICKS(250UL));
 
 	}
 
@@ -1397,7 +1425,7 @@ static void LED_TaskXF2(void * pvParameters)
 	{
 //	EZDSP5535_XF_toggle();
 
-//	if(xSemaphoreTake( xSemaphoreXF, portMAX_DELAY ) == pdTRUE)
+//	if(xSemaphoreTake( xSemaphoreBaton, pdMS_TO_TICKS(500UL) ) == pdTRUE)
 	{
 
 #if 0
@@ -1417,16 +1445,19 @@ static void LED_TaskXF2(void * pvParameters)
 //	vTaskDelay(500 / portTICK_PERIOD_MS);
 //	vTaskDelay(1);
 //	}
-#if 1
+#if 0
 	if (xSemaphoreGive ( xSemaphoreBaton ) != pdTRUE )
 	{
-
+		counter++;
 	}
 	}
-	vTaskDelay(pdMS_TO_TICKS(500));
+	vTaskDelay(pdMS_TO_TICKS(500UL));
 #endif
 	}
+		vTaskDelay(pdMS_TO_TICKS(500UL));
+	}
 }
+
 static void StartUpTask(void * pvParameters)
 {
 //	static TaskHandle_t blueTaskHandle;
@@ -1448,8 +1479,8 @@ static void StartUpTask(void * pvParameters)
 	for(EVER)
 	{
 
-		vTaskDelay(pdMS_TO_TICKS(250));
-#if 1
+//		vTaskDelay(pdMS_TO_TICKS(25));
+#if 0
 //		vTaskResume(redTaskHandle);
 //		xSemaphoreGive(xSemaphoreR);
 		xSemaphoreTake(xSemaphoreR,0);
@@ -1461,24 +1492,23 @@ static void StartUpTask(void * pvParameters)
 #endif
 //		vTaskDelay(1);
 
-
-
+//		vTaskDelay(pdMS_TO_TICKS(250));
 //		vTaskDelay(1);
 //	    vTaskDelay ( 500 / portTICK_PERIOD_MS);
 		vTaskResume(controlTaskHandle);
-//		vTaskDelay ( 500 / portTICK_PERIOD_MS);
+//		vTaskDelay(pdMS_TO_TICKS(100UL));
 		vTaskResume(blueTaskHandle);
-//		vTaskDelay ( 500 / portTICK_PERIOD_MS);
+//		vTaskDelay ( pdMS_TO_TICKS( 100UL ));
 	    vTaskResume(redTaskHandle);
-//	    vTaskDelay ( 500 / portTICK_PERIOD_MS);
+//	    vTaskDelay ( pdMS_TO_TICKS( 100UL ));
 	    vTaskResume(greenTaskHandle);
-//	    vTaskDelay ( 500 / portTICK_PERIOD_MS);
+//	    vTaskDelay ( pdMS_TO_TICKS( 100UL ));
 	    vTaskResume(xfTaskHandle);
-//	    vTaskDelay ( 500 / portTICK_PERIOD_MS);
+//	    vTaskDelay ( pdMS_TO_TICKS( 100UL ));
 	    vTaskResume(xf2TaskHandle);
 //	    vTaskDelay ( 500 / portTICK_PERIOD_MS);
 
-	    vTaskDelay (pdMS_TO_TICKS( 1000 ));
+//	    vTaskDelay (pdMS_TO_TICKS( 100UL ));
 	    vTaskSuspend(NULL);
 
 	}

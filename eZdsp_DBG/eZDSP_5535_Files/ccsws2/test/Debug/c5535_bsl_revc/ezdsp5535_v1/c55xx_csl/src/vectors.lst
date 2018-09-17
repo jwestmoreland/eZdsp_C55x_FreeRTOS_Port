@@ -1,4 +1,4 @@
-TMS320C55x Assembler PC v4.4.1 Sun Sep 16 02:57:23 2018
+TMS320C55x Assembler PC v4.4.1 Mon Sep 17 01:32:40 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 ../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/vectors.asm             PAGE    1
@@ -17,9 +17,9 @@ Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
       12                       .mmregs
       13                       .include "lpva200.inc"
       14                       
-      15              ;         .C54CM_on
-      16              ;         .CPL_off
-      17              ;         .ARMS_off
+      15                       .C54CM_off
+      16                       .CPL_off
+      17                       .ARMS_off
       18                 
       19              ;**********************************************************************************
       20              ;        predefined stack operation modes  
@@ -35,30 +35,30 @@ Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
       30                               .global _VECSTART  
       31                               .global _vTickISR
       32              
-      33                      
+      33                      .ref _c_int00
       34                              ;.ref _sarISR
-      35              ;        .def RST    
+      35                      .def _RST
       36              
       37              ;**********************************************************************************
       38 000000               .sect "vectors"
       39                      .align  256 
-      40                              .global _VECSTART        
+      40                      .global _VECSTART
       41              ;**********************************************************************************
-      42                      .def    _RST
+      42              ;       .def    _RST
       43 000000       _VECSTART:
       44 000000 EA    _RST:           .ivec    reset_isr, C54X_STK ; Reset / Software Interrupt #0 ->slow-32 bit return
          000001 0000 
          000003 00%  
       45              ; _RST:         .ivec    reset_isr, USE_RETA; Reset / Software Interrupt #0 ->fast return
       46              
-      47 000008 EA    NMI:            .ivec    reset_isr             ; Nonmaskable Interrupt
+      47 000008 EA    NMI:            .ivec    nmi_isr                       ; Nonmaskable Interrupt
          000009 0000 
-         00000b 00%  
+         00000b 3B%  
       48              
       49 000010 EA    INT0:           .ivec    dummy_isr          ; External User Interrupt #0 
          000011 0000 
          000013 7D%  
-TMS320C55x Assembler PC v4.4.1 Sun Sep 16 02:57:23 2018
+TMS320C55x Assembler PC v4.4.1 Mon Sep 17 01:32:40 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 ../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/vectors.asm             PAGE    2
@@ -118,7 +118,7 @@ Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
          00007b 57%  
       77              
       78 000080 EA    XMT3:           .ivec    i2s3_tx_isr       ; I2S3 Tx Interrupt
-TMS320C55x Assembler PC v4.4.1 Sun Sep 16 02:57:23 2018
+TMS320C55x Assembler PC v4.4.1 Mon Sep 17 01:32:40 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 ../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/vectors.asm             PAGE    3
@@ -178,7 +178,7 @@ Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
          0000e9 0000 
          0000eb 75%  
      105              
-TMS320C55x Assembler PC v4.4.1 Sun Sep 16 02:57:23 2018
+TMS320C55x Assembler PC v4.4.1 Mon Sep 17 01:32:40 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 ../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/vectors.asm             PAGE    4
@@ -238,7 +238,7 @@ Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
      141 00002d 5E80                  nop_16
      142 00002f FB51                  *port(#0x1C05) = 0x00FF ; Reset all peripherals
          000031 00FF 
-TMS320C55x Assembler PC v4.4.1 Sun Sep 16 02:57:23 2018
+TMS320C55x Assembler PC v4.4.1 Mon Sep 17 01:32:40 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 ../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/vectors.asm             PAGE    5
@@ -247,7 +247,7 @@ Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
      143 000035 5E80                  nop_16
      144              
      145              ;**********************************************************************************
-     146              ;     Enalbe EMIF
+     146              ;     Enable EMIF
      147              ;**********************************************************************************
      148              
      149              ;   *port(IDLE_PCGCR) = #0x0
@@ -298,7 +298,7 @@ Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
      193 000049 4A7E  dma_isr:                        goto    dma_isr
      194              
      195 00004b 4A7E  i2s1_mmc1_tx_isr:       goto    i2s1_mmc1_tx_isr
-TMS320C55x Assembler PC v4.4.1 Sun Sep 16 02:57:23 2018
+TMS320C55x Assembler PC v4.4.1 Mon Sep 17 01:32:40 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 ../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/vectors.asm             PAGE    6
@@ -358,7 +358,7 @@ Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
      248 000079 4A7E  sint31_isr:                     goto    sint31_isr 
      249              
      250 00007b                    .text             
-TMS320C55x Assembler PC v4.4.1 Sun Sep 16 02:57:23 2018
+TMS320C55x Assembler PC v4.4.1 Mon Sep 17 01:32:40 2018
 
 Tools Copyright (c) 1996-2012 Texas Instruments Incorporated
 ../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/vectors.asm             PAGE    7

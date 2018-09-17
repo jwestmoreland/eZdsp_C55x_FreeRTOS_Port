@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sun Sep 16 02:56:17 2018                                 *
+;* Date/Time created: Mon Sep 17 05:14:59 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -236,14 +236,14 @@ $C$DW$2	.dwtag  DW_TAG_subprogram, DW_AT_name("Timer0Init")
 $C$DW$3	.dwtag  DW_TAG_variable, DW_AT_name("portFLAGS_INT_ENABLED")
 	.dwattr $C$DW$3, DW_AT_TI_symbol_name("_portFLAGS_INT_ENABLED")
 	.dwattr $C$DW$3, DW_AT_location[DW_OP_addr _portFLAGS_INT_ENABLED]
-	.dwattr $C$DW$3, DW_AT_type(*$C$DW$T$26)
+	.dwattr $C$DW$3, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$3, DW_AT_external
 	.global	_portFLAGS_INT_ENABLED_POPPED
 	.bss	_portFLAGS_INT_ENABLED_POPPED,1,0,0
 $C$DW$4	.dwtag  DW_TAG_variable, DW_AT_name("portFLAGS_INT_ENABLED_POPPED")
 	.dwattr $C$DW$4, DW_AT_TI_symbol_name("_portFLAGS_INT_ENABLED_POPPED")
 	.dwattr $C$DW$4, DW_AT_location[DW_OP_addr _portFLAGS_INT_ENABLED_POPPED]
-	.dwattr $C$DW$4, DW_AT_type(*$C$DW$T$26)
+	.dwattr $C$DW$4, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$4, DW_AT_external
 	.global	_save_xsp
 	.bss	_save_xsp,2,0,2
@@ -299,11 +299,11 @@ $C$DW$11	.dwtag  DW_TAG_variable, DW_AT_name("save_xar6")
 $C$DW$12	.dwtag  DW_TAG_variable, DW_AT_name("tickIRQctr")
 	.dwattr $C$DW$12, DW_AT_TI_symbol_name("_tickIRQctr")
 	.dwattr $C$DW$12, DW_AT_location[DW_OP_addr _tickIRQctr]
-	.dwattr $C$DW$12, DW_AT_type(*$C$DW$T$29)
+	.dwattr $C$DW$12, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$12, DW_AT_external
 $C$DW$13	.dwtag  DW_TAG_variable, DW_AT_name("stackStruct")
 	.dwattr $C$DW$13, DW_AT_TI_symbol_name("_stackStruct")
-	.dwattr $C$DW$13, DW_AT_type(*$C$DW$T$34)
+	.dwattr $C$DW$13, DW_AT_type(*$C$DW$T$33)
 	.dwattr $C$DW$13, DW_AT_declaration
 	.dwattr $C$DW$13, DW_AT_external
 	.global	_DBSTAT_SAVE
@@ -311,14 +311,14 @@ $C$DW$13	.dwtag  DW_TAG_variable, DW_AT_name("stackStruct")
 $C$DW$14	.dwtag  DW_TAG_variable, DW_AT_name("DBSTAT_SAVE")
 	.dwattr $C$DW$14, DW_AT_TI_symbol_name("_DBSTAT_SAVE")
 	.dwattr $C$DW$14, DW_AT_location[DW_OP_addr _DBSTAT_SAVE]
-	.dwattr $C$DW$14, DW_AT_type(*$C$DW$T$32)
+	.dwattr $C$DW$14, DW_AT_type(*$C$DW$T$31)
 	.dwattr $C$DW$14, DW_AT_external
 	.global	_DBSTAT_RESTORE
 	.bss	_DBSTAT_RESTORE,1,0,0
 $C$DW$15	.dwtag  DW_TAG_variable, DW_AT_name("DBSTAT_RESTORE")
 	.dwattr $C$DW$15, DW_AT_TI_symbol_name("_DBSTAT_RESTORE")
 	.dwattr $C$DW$15, DW_AT_location[DW_OP_addr _DBSTAT_RESTORE]
-	.dwattr $C$DW$15, DW_AT_type(*$C$DW$T$32)
+	.dwattr $C$DW$15, DW_AT_type(*$C$DW$T$31)
 	.dwattr $C$DW$15, DW_AT_external
 	.global	_STATUS0_LOW
 	.bss	_STATUS0_LOW,1,0,0
@@ -367,28 +367,28 @@ $C$DW$21	.dwtag  DW_TAG_variable, DW_AT_name("STATUS2_HIGH")
 $C$DW$22	.dwtag  DW_TAG_variable, DW_AT_name("PC_REG_HIGH_RESTORE")
 	.dwattr $C$DW$22, DW_AT_TI_symbol_name("_PC_REG_HIGH_RESTORE")
 	.dwattr $C$DW$22, DW_AT_location[DW_OP_addr _PC_REG_HIGH_RESTORE]
-	.dwattr $C$DW$22, DW_AT_type(*$C$DW$T$32)
+	.dwattr $C$DW$22, DW_AT_type(*$C$DW$T$31)
 	.dwattr $C$DW$22, DW_AT_external
 	.global	_PC_REG_LOW_RESTORE
 	.bss	_PC_REG_LOW_RESTORE,1,0,0
 $C$DW$23	.dwtag  DW_TAG_variable, DW_AT_name("PC_REG_LOW_RESTORE")
 	.dwattr $C$DW$23, DW_AT_TI_symbol_name("_PC_REG_LOW_RESTORE")
 	.dwattr $C$DW$23, DW_AT_location[DW_OP_addr _PC_REG_LOW_RESTORE]
-	.dwattr $C$DW$23, DW_AT_type(*$C$DW$T$32)
+	.dwattr $C$DW$23, DW_AT_type(*$C$DW$T$31)
 	.dwattr $C$DW$23, DW_AT_external
 	.global	_PC_REG_HIGH_SAVE
 	.bss	_PC_REG_HIGH_SAVE,1,0,0
 $C$DW$24	.dwtag  DW_TAG_variable, DW_AT_name("PC_REG_HIGH_SAVE")
 	.dwattr $C$DW$24, DW_AT_TI_symbol_name("_PC_REG_HIGH_SAVE")
 	.dwattr $C$DW$24, DW_AT_location[DW_OP_addr _PC_REG_HIGH_SAVE]
-	.dwattr $C$DW$24, DW_AT_type(*$C$DW$T$32)
+	.dwattr $C$DW$24, DW_AT_type(*$C$DW$T$31)
 	.dwattr $C$DW$24, DW_AT_external
 	.global	_PC_REG_LOW_SAVE
 	.bss	_PC_REG_LOW_SAVE,1,0,0
 $C$DW$25	.dwtag  DW_TAG_variable, DW_AT_name("PC_REG_LOW_SAVE")
 	.dwattr $C$DW$25, DW_AT_TI_symbol_name("_PC_REG_LOW_SAVE")
 	.dwattr $C$DW$25, DW_AT_location[DW_OP_addr _PC_REG_LOW_SAVE]
-	.dwattr $C$DW$25, DW_AT_type(*$C$DW$T$32)
+	.dwattr $C$DW$25, DW_AT_type(*$C$DW$T$31)
 	.dwattr $C$DW$25, DW_AT_external
 	.global	_tZero
 	.bss	_tZero,1,0,0
@@ -423,9 +423,9 @@ $C$DW$29	.dwtag  DW_TAG_variable, DW_AT_name("tThree")
 $C$DW$30	.dwtag  DW_TAG_variable, DW_AT_name("usCriticalNesting")
 	.dwattr $C$DW$30, DW_AT_TI_symbol_name("_usCriticalNesting")
 	.dwattr $C$DW$30, DW_AT_location[DW_OP_addr _usCriticalNesting]
-	.dwattr $C$DW$30, DW_AT_type(*$C$DW$T$29)
+	.dwattr $C$DW$30, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$30, DW_AT_external
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1230012 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1458413 
 	.sect	".text"
  .align 4
 	.sect	".text"
@@ -446,15 +446,15 @@ $C$DW$31	.dwtag  DW_TAG_subprogram, DW_AT_name("pxPortInitialiseStack")
 	.dwfde $C$DW$CIE, _pxPortInitialiseStack
 $C$DW$32	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxTopOfStack")
 	.dwattr $C$DW$32, DW_AT_TI_symbol_name("_pxTopOfStack")
-	.dwattr $C$DW$32, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$32, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$32, DW_AT_location[DW_OP_reg17]
 $C$DW$33	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxTopOfSysStack")
 	.dwattr $C$DW$33, DW_AT_TI_symbol_name("_pxTopOfSysStack")
-	.dwattr $C$DW$33, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$33, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$33, DW_AT_location[DW_OP_reg19]
 $C$DW$34	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxCode")
 	.dwattr $C$DW$34, DW_AT_TI_symbol_name("_pxCode")
-	.dwattr $C$DW$34, DW_AT_type(*$C$DW$T$25)
+	.dwattr $C$DW$34, DW_AT_type(*$C$DW$T$26)
 	.dwattr $C$DW$34, DW_AT_location[DW_OP_reg1]
 $C$DW$35	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
 	.dwattr $C$DW$35, DW_AT_TI_symbol_name("_pvParameters")
@@ -478,15 +478,15 @@ _pxPortInitialiseStack:
 	.dwcfi	cfa_offset, 10
 $C$DW$36	.dwtag  DW_TAG_variable, DW_AT_name("pxTopOfStack")
 	.dwattr $C$DW$36, DW_AT_TI_symbol_name("_pxTopOfStack")
-	.dwattr $C$DW$36, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$36, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$36, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$37	.dwtag  DW_TAG_variable, DW_AT_name("pxTopOfSysStack")
 	.dwattr $C$DW$37, DW_AT_TI_symbol_name("_pxTopOfSysStack")
-	.dwattr $C$DW$37, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$37, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$37, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$38	.dwtag  DW_TAG_variable, DW_AT_name("pxCode")
 	.dwattr $C$DW$38, DW_AT_TI_symbol_name("_pxCode")
-	.dwattr $C$DW$38, DW_AT_type(*$C$DW$T$25)
+	.dwattr $C$DW$38, DW_AT_type(*$C$DW$T$26)
 	.dwattr $C$DW$38, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$39	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
 	.dwattr $C$DW$39, DW_AT_TI_symbol_name("_pvParameters")
@@ -655,45 +655,44 @@ $C$DW$39	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
         MOV dbl(*SP(#2)), XAR3
         AMAR *AR3-
         MOV XAR3, dbl(*SP(#2))
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 394,column 2,is_stmt
-        MOV *(#2), AR1 ; |394| 
-        MOV AR1, *AR3 ; |394| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 395,column 2,is_stmt
+        MOV #0, *AR3 ; |395| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 396,column 2,is_stmt
         MOV dbl(*SP(#2)), XAR3
         AMAR *AR3-
         MOV XAR3, dbl(*SP(#2))
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 400,column 2,is_stmt
-        MOV dbl(*SP(#0)), XAR3
-        MOV *(#75), AR1 ; |400| 
-        MOV AR1, *AR3 ; |400| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 401,column 2,is_stmt
         MOV dbl(*SP(#0)), XAR3
+        MOV *(#75), AR1 ; |401| 
+        MOV AR1, *AR3 ; |401| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 402,column 2,is_stmt
+        MOV dbl(*SP(#0)), XAR3
         AMAR *AR3-
         MOV XAR3, dbl(*SP(#0))
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 406,column 2,is_stmt
-        MOV *(#3), AR1 ; |406| 
-        MOV AR1, *AR3 ; |406| 
 	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 407,column 2,is_stmt
+        MOV *(#3), AR1 ; |407| 
+        MOV AR1, *AR3 ; |407| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 408,column 2,is_stmt
         MOV dbl(*SP(#0)), XAR3
         AMAR *AR3-
         MOV XAR3, dbl(*SP(#0))
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 413,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 414,column 2,is_stmt
         MOV dbl(*SP(#2)), XAR3
-        MOV dbl(*SP(#4)), AC0 ; |413| 
-        MOV HI(AC0), *AR3 ; |413| 
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 417,column 2,is_stmt
+        MOV dbl(*SP(#4)), AC0 ; |414| 
+        MOV HI(AC0), *AR3 ; |414| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 418,column 2,is_stmt
         MOV dbl(*SP(#0)), XAR3
-        MOV *SP(#5), AR1 ; |417| 
-        MOV AR1, *AR3 ; |417| 
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 420,column 2,is_stmt
+        MOV *SP(#5), AR1 ; |418| 
+        MOV AR1, *AR3 ; |418| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 421,column 2,is_stmt
         MOV dbl(*(#_stackStruct)), XAR2
         MOV dbl(*SP(#0)), XAR3
         MOV XAR3, dbl(*AR2)
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 421,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 422,column 2,is_stmt
         MOV dbl(*(#_stackStruct)), XAR3
         MOV dbl(*SP(#2)), XAR2
         MOV XAR2, dbl(*AR3(short(#2)))
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 425,column 1,is_stmt
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 426,column 1,is_stmt
         AADD #9, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$40	.dwtag  DW_TAG_TI_branch
@@ -702,7 +701,7 @@ $C$DW$40	.dwtag  DW_TAG_TI_branch
         RET
                                         ; return occurs
 	.dwattr $C$DW$31, DW_AT_TI_end_file("../FreeRTOS/Source/portable/CCS/c55x/port.c")
-	.dwattr $C$DW$31, DW_AT_TI_end_line(0x1a9)
+	.dwattr $C$DW$31, DW_AT_TI_end_line(0x1aa)
 	.dwattr $C$DW$31, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$31
@@ -717,10 +716,10 @@ $C$DW$41	.dwtag  DW_TAG_subprogram, DW_AT_name("vPortEndScheduler")
 	.dwattr $C$DW$41, DW_AT_TI_symbol_name("_vPortEndScheduler")
 	.dwattr $C$DW$41, DW_AT_external
 	.dwattr $C$DW$41, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/CCS/c55x/port.c")
-	.dwattr $C$DW$41, DW_AT_TI_begin_line(0x1ba)
+	.dwattr $C$DW$41, DW_AT_TI_begin_line(0x1bb)
 	.dwattr $C$DW$41, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$41, DW_AT_TI_max_frame_size(0x01)
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 443,column 1,is_stmt,address _vPortEndScheduler
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 444,column 1,is_stmt,address _vPortEndScheduler
 
 	.dwfde $C$DW$CIE, _vPortEndScheduler
 ;*******************************************************************************
@@ -735,25 +734,25 @@ $C$DW$41	.dwtag  DW_TAG_subprogram, DW_AT_name("vPortEndScheduler")
 _vPortEndScheduler:
 	.dwcfi	cfa_offset, 1
 	.dwcfi	save_reg_to_mem, 91, -1
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 446,column 9,is_stmt
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 447,column 9,is_stmt
 $C$L1:    
 $C$DW$L$_vPortEndScheduler$2$B:
-        B $C$L1   ; |446| 
-                                        ; branch occurs ; |446| 
+        B $C$L1   ; |447| 
+                                        ; branch occurs ; |447| 
 $C$DW$L$_vPortEndScheduler$2$E:
 
 $C$DW$42	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$42, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\port.asm:$C$L1:1:1537091777")
+	.dwattr $C$DW$42, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\port.asm:$C$L1:1:1537186499")
 	.dwattr $C$DW$42, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/CCS/c55x/port.c")
-	.dwattr $C$DW$42, DW_AT_TI_begin_line(0x1be)
-	.dwattr $C$DW$42, DW_AT_TI_end_line(0x1be)
+	.dwattr $C$DW$42, DW_AT_TI_begin_line(0x1bf)
+	.dwattr $C$DW$42, DW_AT_TI_end_line(0x1bf)
 $C$DW$43	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$43, DW_AT_low_pc($C$DW$L$_vPortEndScheduler$2$B)
 	.dwattr $C$DW$43, DW_AT_high_pc($C$DW$L$_vPortEndScheduler$2$E)
 	.dwendtag $C$DW$42
 
 	.dwattr $C$DW$41, DW_AT_TI_end_file("../FreeRTOS/Source/portable/CCS/c55x/port.c")
-	.dwattr $C$DW$41, DW_AT_TI_end_line(0x1bf)
+	.dwattr $C$DW$41, DW_AT_TI_end_line(0x1c0)
 	.dwattr $C$DW$41, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$41
@@ -768,10 +767,10 @@ $C$DW$44	.dwtag  DW_TAG_subprogram, DW_AT_name("prvSetupTimerInterrupt")
 	.dwattr $C$DW$44, DW_AT_TI_symbol_name("_prvSetupTimerInterrupt")
 	.dwattr $C$DW$44, DW_AT_external
 	.dwattr $C$DW$44, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/CCS/c55x/port.c")
-	.dwattr $C$DW$44, DW_AT_TI_begin_line(0x1e7)
+	.dwattr $C$DW$44, DW_AT_TI_begin_line(0x1e8)
 	.dwattr $C$DW$44, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$44, DW_AT_TI_max_frame_size(0x02)
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 488,column 1,is_stmt,address _prvSetupTimerInterrupt
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 489,column 1,is_stmt,address _prvSetupTimerInterrupt
 
 	.dwfde $C$DW$CIE, _prvSetupTimerInterrupt
 ;*******************************************************************************
@@ -788,23 +787,23 @@ _prvSetupTimerInterrupt:
 	.dwcfi	save_reg_to_mem, 91, -1
         AADD #-1, SP
 	.dwcfi	cfa_offset, 2
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 510,column 3,is_stmt
-        MOV #16, *(#0) ; |510| 
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 513,column 2,is_stmt
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 514,column 2,is_stmt
 $C$DW$45	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$45, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$45, DW_AT_name("_Timer0Init")
 	.dwattr $C$DW$45, DW_AT_TI_call
-        CALL #_Timer0Init ; |513| 
-                                        ; call occurs [#_Timer0Init] ; |513| 
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 514,column 2,is_stmt
+        CALL #_Timer0Init ; |514| 
+                                        ; call occurs [#_Timer0Init] ; |514| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 515,column 2,is_stmt
 $C$DW$46	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$46, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$46, DW_AT_name("_StartTimer0")
 	.dwattr $C$DW$46, DW_AT_TI_call
-        CALL #_StartTimer0 ; |514| 
-                                        ; call occurs [#_StartTimer0] ; |514| 
-	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 521,column 1,is_stmt
+        CALL #_StartTimer0 ; |515| 
+                                        ; call occurs [#_StartTimer0] ; |515| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 516,column 3,is_stmt
+        MOV #16, *(#0) ; |516| 
+	.dwpsn	file "../FreeRTOS/Source/portable/CCS/c55x/port.c",line 523,column 1,is_stmt
         AADD #1, SP
 	.dwcfi	cfa_offset, 1
 $C$DW$47	.dwtag  DW_TAG_TI_branch
@@ -813,7 +812,7 @@ $C$DW$47	.dwtag  DW_TAG_TI_branch
         RET
                                         ; return occurs
 	.dwattr $C$DW$44, DW_AT_TI_end_file("../FreeRTOS/Source/portable/CCS/c55x/port.c")
-	.dwattr $C$DW$44, DW_AT_TI_end_line(0x209)
+	.dwattr $C$DW$44, DW_AT_TI_end_line(0x20b)
 	.dwattr $C$DW$44, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$44
@@ -831,18 +830,18 @@ $C$DW$47	.dwtag  DW_TAG_TI_branch
 $C$DW$T$3	.dwtag  DW_TAG_pointer_type
 	.dwattr $C$DW$T$3, DW_AT_address_class(0x17)
 
-$C$DW$T$23	.dwtag  DW_TAG_subroutine_type
-	.dwattr $C$DW$T$23, DW_AT_language(DW_LANG_C)
+$C$DW$T$24	.dwtag  DW_TAG_subroutine_type
+	.dwattr $C$DW$T$24, DW_AT_language(DW_LANG_C)
 $C$DW$48	.dwtag  DW_TAG_formal_parameter
 	.dwattr $C$DW$48, DW_AT_type(*$C$DW$T$3)
-	.dwendtag $C$DW$T$23
+	.dwendtag $C$DW$T$24
 
-$C$DW$T$24	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$24, DW_AT_type(*$C$DW$T$23)
-	.dwattr $C$DW$T$24, DW_AT_address_class(0x20)
-$C$DW$T$25	.dwtag  DW_TAG_typedef, DW_AT_name("TaskFunction_t")
+$C$DW$T$25	.dwtag  DW_TAG_pointer_type
 	.dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$24)
-	.dwattr $C$DW$T$25, DW_AT_language(DW_LANG_C)
+	.dwattr $C$DW$T$25, DW_AT_address_class(0x20)
+$C$DW$T$26	.dwtag  DW_TAG_typedef, DW_AT_name("TaskFunction_t")
+	.dwattr $C$DW$T$26, DW_AT_type(*$C$DW$T$25)
+	.dwattr $C$DW$T$26, DW_AT_language(DW_LANG_C)
 $C$DW$T$4	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
 	.dwattr $C$DW$T$4, DW_AT_name("bool")
@@ -869,8 +868,8 @@ $C$DW$T$9	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
 $C$DW$49	.dwtag  DW_TAG_TI_far_type
 	.dwattr $C$DW$49, DW_AT_type(*$C$DW$T$9)
-$C$DW$T$29	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$29, DW_AT_type(*$C$DW$49)
+$C$DW$T$28	.dwtag  DW_TAG_volatile_type
+	.dwattr $C$DW$T$28, DW_AT_type(*$C$DW$49)
 $C$DW$T$10	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$10, DW_AT_name("int")
@@ -879,19 +878,16 @@ $C$DW$T$11	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$11, DW_AT_name("unsigned int")
 	.dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
-$C$DW$T$26	.dwtag  DW_TAG_typedef, DW_AT_name("StackType_t")
-	.dwattr $C$DW$T$26, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$26, DW_AT_language(DW_LANG_C)
-$C$DW$T$27	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$27, DW_AT_type(*$C$DW$T$26)
-	.dwattr $C$DW$T$27, DW_AT_address_class(0x17)
-$C$DW$T$19	.dwtag  DW_TAG_pointer_type
+$C$DW$T$19	.dwtag  DW_TAG_typedef, DW_AT_name("StackType_t")
 	.dwattr $C$DW$T$19, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$19, DW_AT_address_class(0x17)
+	.dwattr $C$DW$T$19, DW_AT_language(DW_LANG_C)
+$C$DW$T$20	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$20, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$T$20, DW_AT_address_class(0x17)
 $C$DW$50	.dwtag  DW_TAG_TI_far_type
 	.dwattr $C$DW$50, DW_AT_type(*$C$DW$T$11)
-$C$DW$T$32	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$32, DW_AT_type(*$C$DW$50)
+$C$DW$T$31	.dwtag  DW_TAG_volatile_type
+	.dwattr $C$DW$T$31, DW_AT_type(*$C$DW$50)
 $C$DW$T$12	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$12, DW_AT_name("long")
@@ -925,26 +921,26 @@ $C$DW$T$18	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$18, DW_AT_name("long double")
 	.dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
 
-$C$DW$T$20	.dwtag  DW_TAG_structure_type
-	.dwattr $C$DW$T$20, DW_AT_name("tagSTACKSTRUCT")
-	.dwattr $C$DW$T$20, DW_AT_byte_size(0x04)
+$C$DW$T$21	.dwtag  DW_TAG_structure_type
+	.dwattr $C$DW$T$21, DW_AT_name("tagSTACKSTRUCT")
+	.dwattr $C$DW$T$21, DW_AT_byte_size(0x04)
 $C$DW$51	.dwtag  DW_TAG_member
-	.dwattr $C$DW$51, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$51, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$51, DW_AT_name("pxTopOfStack")
 	.dwattr $C$DW$51, DW_AT_TI_symbol_name("_pxTopOfStack")
 	.dwattr $C$DW$51, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
 	.dwattr $C$DW$51, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$52	.dwtag  DW_TAG_member
-	.dwattr $C$DW$52, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$52, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$52, DW_AT_name("pxTopOfSysStack")
 	.dwattr $C$DW$52, DW_AT_TI_symbol_name("_pxTopOfSysStack")
 	.dwattr $C$DW$52, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
 	.dwattr $C$DW$52, DW_AT_accessibility(DW_ACCESS_public)
-	.dwendtag $C$DW$T$20
+	.dwendtag $C$DW$T$21
 
-$C$DW$T$34	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$34, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$T$34, DW_AT_address_class(0x17)
+$C$DW$T$33	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$33, DW_AT_type(*$C$DW$T$21)
+	.dwattr $C$DW$T$33, DW_AT_address_class(0x17)
 	.dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
 
 ;***************************************************************

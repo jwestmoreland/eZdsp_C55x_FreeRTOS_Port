@@ -70,7 +70,7 @@ void Timer0Init(void)
 #endif
 
 	/* TIM0 EN | AutoReload disable | Prescale = 0(100/2 = 50MHz) ==> 20nsec */
-//	*CPU_TIM0_CTRL = 0x8032; 	// ~ 12.2 MHz
+//	*CPU_TIM0_CTRL = 0x803E; 	// ~ 12.2 MHz
 	*CPU_TIM0_CTRL = 0x8002; 	// autoReload
 
 
@@ -87,7 +87,9 @@ void Timer0Init(void)
 //	*CPU_TIM0_PLWR = 0x1000;
 //	*CPU_TIM0_PLWR = 0x0020;
 //	*CPU_TIM0_PLWR = 0xA120;   // 100uS
-	*CPU_TIM0_PLWR = 0x1388;
+//	*CPU_TIM0_PLWR = 0x1388;
+//	*CPU_TIM0_PLWR = 0x01F4;
+	*CPU_TIM0_PLWR = 0x09C4;
 	*CPU_TIM0_PHWR = 0x0000; 
 
 	*CPU_TIM0_CLWR = 0x0000;

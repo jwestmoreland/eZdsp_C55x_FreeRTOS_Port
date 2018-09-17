@@ -384,14 +384,15 @@ void pxPortInitialiseStack( StackType_t *pxTopOfStack, StackType_t *pxTopOfSysSt
 //	asm ( " pop t0" );
 //	asm ( " mov mmap(ST0_55), t0" );
 //	asm ( " mov t0, *(#_DBSTAT_LOW)" );
-	*pxTopOfSysStack = ( portSTACK_TYPE ) ST0_55;
+	*pxTopOfSysStack = ( StackType_t ) ST0_55;
 	pxTopOfSysStack--;						// 1
 //	*pxTopOfStack = ( portSTACK_TYPE ) DBSTAT_HIGH;
 //	pxTopOfStack--;
 //	asm ( " mov mmap(ST0_55), t0" );
 //	asm ( " mov t0, *(#_STATUS0_LOW)" );
 //	This needs to be DBSTAT
-	*pxTopOfSysStack = ( StackType_t ) ST0_55;
+//	*pxTopOfSysStack = ( StackType_t ) ST0_55;			// DBSTAT - but we do not restore
+	*pxTopOfSysStack = ( StackType_t ) 0x0000;
 	pxTopOfSysStack--;						// 2
 //	*pxTopOfStack = ( portSTACK_TYPE ) STATUS0_HIGH;
 //	pxTopOfStack--;
@@ -507,11 +508,12 @@ void prvSetupTimerInterrupt( void )
 
 	/* Start up clean. */
 //	TACTL |= TACLR;
-	 IER0 = 0x0010;      // enable timer int  
+
 	/* Up mode. */
 //	TACTL |= MC_1;
 	Timer0Init();
 	StartTimer0();
+	 IER0 = 0x0010;      // enable timer int
 //	StartTimer02();
 //	 IER0 = 0x0010;      // enable timer int      
 //	 IER1 = 0x0004;      // enable RTC int

@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Sun Sep 16 02:56:13 2018                                 *
+;* Date/Time created: Mon Sep 17 05:14:54 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -140,7 +140,7 @@ $C$DW$2	.dwtag  DW_TAG_formal_parameter
 $C$DW$3	.dwtag  DW_TAG_formal_parameter
 	.dwattr $C$DW$3, DW_AT_type(*$C$DW$T$10)
 $C$DW$4	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$4, DW_AT_type(*$C$DW$T$50)
+	.dwattr $C$DW$4, DW_AT_type(*$C$DW$T$47)
 	.dwendtag $C$DW$1
 
 
@@ -154,11 +154,11 @@ $C$DW$6	.dwtag  DW_TAG_subprogram, DW_AT_name("pxPortInitialiseStack")
 	.dwattr $C$DW$6, DW_AT_declaration
 	.dwattr $C$DW$6, DW_AT_external
 $C$DW$7	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$7, DW_AT_type(*$C$DW$T$28)
+	.dwattr $C$DW$7, DW_AT_type(*$C$DW$T$20)
 $C$DW$8	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$8, DW_AT_type(*$C$DW$T$28)
+	.dwattr $C$DW$8, DW_AT_type(*$C$DW$T$20)
 $C$DW$9	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$9, DW_AT_type(*$C$DW$T$60)
+	.dwattr $C$DW$9, DW_AT_type(*$C$DW$T$57)
 $C$DW$10	.dwtag  DW_TAG_formal_parameter
 	.dwattr $C$DW$10, DW_AT_type(*$C$DW$T$3)
 	.dwendtag $C$DW$6
@@ -170,7 +170,7 @@ $C$DW$11	.dwtag  DW_TAG_subprogram, DW_AT_name("pvPortMalloc")
 	.dwattr $C$DW$11, DW_AT_declaration
 	.dwattr $C$DW$11, DW_AT_external
 $C$DW$12	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$12, DW_AT_type(*$C$DW$T$50)
+	.dwattr $C$DW$12, DW_AT_type(*$C$DW$T$47)
 	.dwendtag $C$DW$11
 
 
@@ -185,7 +185,7 @@ $C$DW$14	.dwtag  DW_TAG_formal_parameter
 
 $C$DW$15	.dwtag  DW_TAG_subprogram, DW_AT_name("xPortStartScheduler")
 	.dwattr $C$DW$15, DW_AT_TI_symbol_name("_xPortStartScheduler")
-	.dwattr $C$DW$15, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$15, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$15, DW_AT_declaration
 	.dwattr $C$DW$15, DW_AT_external
 
@@ -199,7 +199,7 @@ $C$DW$17	.dwtag  DW_TAG_subprogram, DW_AT_name("vListInitialise")
 	.dwattr $C$DW$17, DW_AT_declaration
 	.dwattr $C$DW$17, DW_AT_external
 $C$DW$18	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$18, DW_AT_type(*$C$DW$T$65)
+	.dwattr $C$DW$18, DW_AT_type(*$C$DW$T$62)
 	.dwendtag $C$DW$17
 
 
@@ -208,7 +208,7 @@ $C$DW$19	.dwtag  DW_TAG_subprogram, DW_AT_name("vListInitialiseItem")
 	.dwattr $C$DW$19, DW_AT_declaration
 	.dwattr $C$DW$19, DW_AT_external
 $C$DW$20	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$20, DW_AT_type(*$C$DW$T$68)
+	.dwattr $C$DW$20, DW_AT_type(*$C$DW$T$65)
 	.dwendtag $C$DW$19
 
 
@@ -217,9 +217,9 @@ $C$DW$21	.dwtag  DW_TAG_subprogram, DW_AT_name("vListInsert")
 	.dwattr $C$DW$21, DW_AT_declaration
 	.dwattr $C$DW$21, DW_AT_external
 $C$DW$22	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$22, DW_AT_type(*$C$DW$T$65)
+	.dwattr $C$DW$22, DW_AT_type(*$C$DW$T$62)
 $C$DW$23	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$23, DW_AT_type(*$C$DW$T$68)
+	.dwattr $C$DW$23, DW_AT_type(*$C$DW$T$65)
 	.dwendtag $C$DW$21
 
 
@@ -228,19 +228,19 @@ $C$DW$24	.dwtag  DW_TAG_subprogram, DW_AT_name("vListInsertEnd")
 	.dwattr $C$DW$24, DW_AT_declaration
 	.dwattr $C$DW$24, DW_AT_external
 $C$DW$25	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$25, DW_AT_type(*$C$DW$T$65)
+	.dwattr $C$DW$25, DW_AT_type(*$C$DW$T$62)
 $C$DW$26	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$26, DW_AT_type(*$C$DW$T$68)
+	.dwattr $C$DW$26, DW_AT_type(*$C$DW$T$65)
 	.dwendtag $C$DW$24
 
 
 $C$DW$27	.dwtag  DW_TAG_subprogram, DW_AT_name("uxListRemove")
 	.dwattr $C$DW$27, DW_AT_TI_symbol_name("_uxListRemove")
-	.dwattr $C$DW$27, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$27, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$27, DW_AT_declaration
 	.dwattr $C$DW$27, DW_AT_external
 $C$DW$28	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$28, DW_AT_type(*$C$DW$T$68)
+	.dwattr $C$DW$28, DW_AT_type(*$C$DW$T$65)
 	.dwendtag $C$DW$27
 
 
@@ -254,9 +254,9 @@ $C$DW$30	.dwtag  DW_TAG_subprogram, DW_AT_name("vApplicationStackOverflowHook")
 	.dwattr $C$DW$30, DW_AT_declaration
 	.dwattr $C$DW$30, DW_AT_external
 $C$DW$31	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$31, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$31, DW_AT_type(*$C$DW$T$71)
 $C$DW$32	.dwtag  DW_TAG_formal_parameter
-	.dwattr $C$DW$32, DW_AT_type(*$C$DW$T$75)
+	.dwattr $C$DW$32, DW_AT_type(*$C$DW$T$72)
 	.dwendtag $C$DW$30
 
 
@@ -276,121 +276,121 @@ $C$DW$34	.dwtag  DW_TAG_variable, DW_AT_name("wall_clk_ctr")
 $C$DW$35	.dwtag  DW_TAG_variable, DW_AT_name("stackStruct")
 	.dwattr $C$DW$35, DW_AT_TI_symbol_name("_stackStruct")
 	.dwattr $C$DW$35, DW_AT_location[DW_OP_addr _stackStruct]
-	.dwattr $C$DW$35, DW_AT_type(*$C$DW$T$156)
+	.dwattr $C$DW$35, DW_AT_type(*$C$DW$T$154)
 	.dwattr $C$DW$35, DW_AT_external
 	.global	_pxCurrentTCB
 	.bss	_pxCurrentTCB,2,0,2
 $C$DW$36	.dwtag  DW_TAG_variable, DW_AT_name("pxCurrentTCB")
 	.dwattr $C$DW$36, DW_AT_TI_symbol_name("_pxCurrentTCB")
 	.dwattr $C$DW$36, DW_AT_location[DW_OP_addr _pxCurrentTCB]
-	.dwattr $C$DW$36, DW_AT_type(*$C$DW$T$161)
+	.dwattr $C$DW$36, DW_AT_type(*$C$DW$T$159)
 	.dwattr $C$DW$36, DW_AT_external
 	.bss	_pxReadyTasksLists,50,0,2
 $C$DW$37	.dwtag  DW_TAG_variable, DW_AT_name("pxReadyTasksLists")
 	.dwattr $C$DW$37, DW_AT_TI_symbol_name("_pxReadyTasksLists")
-	.dwattr $C$DW$37, DW_AT_type(*$C$DW$T$164)
+	.dwattr $C$DW$37, DW_AT_type(*$C$DW$T$162)
 	.dwattr $C$DW$37, DW_AT_location[DW_OP_addr _pxReadyTasksLists]
 	.bss	_xDelayedTaskList1,10,0,2
 $C$DW$38	.dwtag  DW_TAG_variable, DW_AT_name("xDelayedTaskList1")
 	.dwattr $C$DW$38, DW_AT_TI_symbol_name("_xDelayedTaskList1")
-	.dwattr $C$DW$38, DW_AT_type(*$C$DW$T$63)
+	.dwattr $C$DW$38, DW_AT_type(*$C$DW$T$60)
 	.dwattr $C$DW$38, DW_AT_location[DW_OP_addr _xDelayedTaskList1]
 	.bss	_xDelayedTaskList2,10,0,2
 $C$DW$39	.dwtag  DW_TAG_variable, DW_AT_name("xDelayedTaskList2")
 	.dwattr $C$DW$39, DW_AT_TI_symbol_name("_xDelayedTaskList2")
-	.dwattr $C$DW$39, DW_AT_type(*$C$DW$T$63)
+	.dwattr $C$DW$39, DW_AT_type(*$C$DW$T$60)
 	.dwattr $C$DW$39, DW_AT_location[DW_OP_addr _xDelayedTaskList2]
 	.bss	_pxDelayedTaskList,2,0,2
 $C$DW$40	.dwtag  DW_TAG_variable, DW_AT_name("pxDelayedTaskList")
 	.dwattr $C$DW$40, DW_AT_TI_symbol_name("_pxDelayedTaskList")
-	.dwattr $C$DW$40, DW_AT_type(*$C$DW$T$163)
+	.dwattr $C$DW$40, DW_AT_type(*$C$DW$T$161)
 	.dwattr $C$DW$40, DW_AT_location[DW_OP_addr _pxDelayedTaskList]
 	.bss	_pxOverflowDelayedTaskList,2,0,2
 $C$DW$41	.dwtag  DW_TAG_variable, DW_AT_name("pxOverflowDelayedTaskList")
 	.dwattr $C$DW$41, DW_AT_TI_symbol_name("_pxOverflowDelayedTaskList")
-	.dwattr $C$DW$41, DW_AT_type(*$C$DW$T$163)
+	.dwattr $C$DW$41, DW_AT_type(*$C$DW$T$161)
 	.dwattr $C$DW$41, DW_AT_location[DW_OP_addr _pxOverflowDelayedTaskList]
 	.bss	_xPendingReadyList,10,0,2
 $C$DW$42	.dwtag  DW_TAG_variable, DW_AT_name("xPendingReadyList")
 	.dwattr $C$DW$42, DW_AT_TI_symbol_name("_xPendingReadyList")
-	.dwattr $C$DW$42, DW_AT_type(*$C$DW$T$63)
+	.dwattr $C$DW$42, DW_AT_type(*$C$DW$T$60)
 	.dwattr $C$DW$42, DW_AT_location[DW_OP_addr _xPendingReadyList]
 	.bss	_xTasksWaitingTermination,10,0,2
 $C$DW$43	.dwtag  DW_TAG_variable, DW_AT_name("xTasksWaitingTermination")
 	.dwattr $C$DW$43, DW_AT_TI_symbol_name("_xTasksWaitingTermination")
-	.dwattr $C$DW$43, DW_AT_type(*$C$DW$T$63)
+	.dwattr $C$DW$43, DW_AT_type(*$C$DW$T$60)
 	.dwattr $C$DW$43, DW_AT_location[DW_OP_addr _xTasksWaitingTermination]
 	.bss	_uxDeletedTasksWaitingCleanUp,1,0,0
 $C$DW$44	.dwtag  DW_TAG_variable, DW_AT_name("uxDeletedTasksWaitingCleanUp")
 	.dwattr $C$DW$44, DW_AT_TI_symbol_name("_uxDeletedTasksWaitingCleanUp")
-	.dwattr $C$DW$44, DW_AT_type(*$C$DW$T$36)
+	.dwattr $C$DW$44, DW_AT_type(*$C$DW$T$33)
 	.dwattr $C$DW$44, DW_AT_location[DW_OP_addr _uxDeletedTasksWaitingCleanUp]
 	.bss	_xSuspendedTaskList,10,0,2
 $C$DW$45	.dwtag  DW_TAG_variable, DW_AT_name("xSuspendedTaskList")
 	.dwattr $C$DW$45, DW_AT_TI_symbol_name("_xSuspendedTaskList")
-	.dwattr $C$DW$45, DW_AT_type(*$C$DW$T$63)
+	.dwattr $C$DW$45, DW_AT_type(*$C$DW$T$60)
 	.dwattr $C$DW$45, DW_AT_location[DW_OP_addr _xSuspendedTaskList]
 	.bss	_uxCurrentNumberOfTasks,1,0,0
 $C$DW$46	.dwtag  DW_TAG_variable, DW_AT_name("uxCurrentNumberOfTasks")
 	.dwattr $C$DW$46, DW_AT_TI_symbol_name("_uxCurrentNumberOfTasks")
-	.dwattr $C$DW$46, DW_AT_type(*$C$DW$T$36)
+	.dwattr $C$DW$46, DW_AT_type(*$C$DW$T$33)
 	.dwattr $C$DW$46, DW_AT_location[DW_OP_addr _uxCurrentNumberOfTasks]
 	.bss	_xTickCount,2,0,2
 $C$DW$47	.dwtag  DW_TAG_variable, DW_AT_name("xTickCount")
 	.dwattr $C$DW$47, DW_AT_TI_symbol_name("_xTickCount")
-	.dwattr $C$DW$47, DW_AT_type(*$C$DW$T$147)
+	.dwattr $C$DW$47, DW_AT_type(*$C$DW$T$145)
 	.dwattr $C$DW$47, DW_AT_location[DW_OP_addr _xTickCount]
 	.bss	_uxTopReadyPriority,1,0,0
 $C$DW$48	.dwtag  DW_TAG_variable, DW_AT_name("uxTopReadyPriority")
 	.dwattr $C$DW$48, DW_AT_TI_symbol_name("_uxTopReadyPriority")
-	.dwattr $C$DW$48, DW_AT_type(*$C$DW$T$36)
+	.dwattr $C$DW$48, DW_AT_type(*$C$DW$T$33)
 	.dwattr $C$DW$48, DW_AT_location[DW_OP_addr _uxTopReadyPriority]
 	.bss	_xSchedulerRunning,1,0,0
 $C$DW$49	.dwtag  DW_TAG_variable, DW_AT_name("xSchedulerRunning")
 	.dwattr $C$DW$49, DW_AT_TI_symbol_name("_xSchedulerRunning")
-	.dwattr $C$DW$49, DW_AT_type(*$C$DW$T$120)
+	.dwattr $C$DW$49, DW_AT_type(*$C$DW$T$117)
 	.dwattr $C$DW$49, DW_AT_location[DW_OP_addr _xSchedulerRunning]
 	.bss	_uxPendedTicks,1,0,0
 $C$DW$50	.dwtag  DW_TAG_variable, DW_AT_name("uxPendedTicks")
 	.dwattr $C$DW$50, DW_AT_TI_symbol_name("_uxPendedTicks")
-	.dwattr $C$DW$50, DW_AT_type(*$C$DW$T$36)
+	.dwattr $C$DW$50, DW_AT_type(*$C$DW$T$33)
 	.dwattr $C$DW$50, DW_AT_location[DW_OP_addr _uxPendedTicks]
 	.bss	_xYieldPending,1,0,0
 $C$DW$51	.dwtag  DW_TAG_variable, DW_AT_name("xYieldPending")
 	.dwattr $C$DW$51, DW_AT_TI_symbol_name("_xYieldPending")
-	.dwattr $C$DW$51, DW_AT_type(*$C$DW$T$120)
+	.dwattr $C$DW$51, DW_AT_type(*$C$DW$T$117)
 	.dwattr $C$DW$51, DW_AT_location[DW_OP_addr _xYieldPending]
 	.bss	_xNumOfOverflows,1,0,0
 $C$DW$52	.dwtag  DW_TAG_variable, DW_AT_name("xNumOfOverflows")
 	.dwattr $C$DW$52, DW_AT_TI_symbol_name("_xNumOfOverflows")
-	.dwattr $C$DW$52, DW_AT_type(*$C$DW$T$120)
+	.dwattr $C$DW$52, DW_AT_type(*$C$DW$T$117)
 	.dwattr $C$DW$52, DW_AT_location[DW_OP_addr _xNumOfOverflows]
 	.bss	_uxTaskNumber,1,0,0
 $C$DW$53	.dwtag  DW_TAG_variable, DW_AT_name("uxTaskNumber")
 	.dwattr $C$DW$53, DW_AT_TI_symbol_name("_uxTaskNumber")
-	.dwattr $C$DW$53, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$53, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$53, DW_AT_location[DW_OP_addr _uxTaskNumber]
 	.bss	_xNextTaskUnblockTime,2,0,2
 $C$DW$54	.dwtag  DW_TAG_variable, DW_AT_name("xNextTaskUnblockTime")
 	.dwattr $C$DW$54, DW_AT_TI_symbol_name("_xNextTaskUnblockTime")
-	.dwattr $C$DW$54, DW_AT_type(*$C$DW$T$147)
+	.dwattr $C$DW$54, DW_AT_type(*$C$DW$T$145)
 	.dwattr $C$DW$54, DW_AT_location[DW_OP_addr _xNextTaskUnblockTime]
 	.bss	_xIdleTaskHandle,2,0,2
 $C$DW$55	.dwtag  DW_TAG_variable, DW_AT_name("xIdleTaskHandle")
 	.dwattr $C$DW$55, DW_AT_TI_symbol_name("_xIdleTaskHandle")
-	.dwattr $C$DW$55, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$55, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$55, DW_AT_location[DW_OP_addr _xIdleTaskHandle]
 	.bss	_uxSchedulerSuspended,1,0,0
 $C$DW$56	.dwtag  DW_TAG_variable, DW_AT_name("uxSchedulerSuspended")
 	.dwattr $C$DW$56, DW_AT_TI_symbol_name("_uxSchedulerSuspended")
-	.dwattr $C$DW$56, DW_AT_type(*$C$DW$T$36)
+	.dwattr $C$DW$56, DW_AT_type(*$C$DW$T$33)
 	.dwattr $C$DW$56, DW_AT_location[DW_OP_addr _uxSchedulerSuspended]
 $C$DW$57	.dwtag  DW_TAG_variable, DW_AT_name("usCriticalNesting")
 	.dwattr $C$DW$57, DW_AT_TI_symbol_name("_usCriticalNesting")
-	.dwattr $C$DW$57, DW_AT_type(*$C$DW$T$24)
+	.dwattr $C$DW$57, DW_AT_type(*$C$DW$T$142)
 	.dwattr $C$DW$57, DW_AT_declaration
 	.dwattr $C$DW$57, DW_AT_external
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1830412 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1670412 
 	.sect	".text"
 	.align 4
 	.global	_xTaskCreate
@@ -400,7 +400,7 @@ $C$DW$58	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskCreate")
 	.dwattr $C$DW$58, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$58, DW_AT_TI_symbol_name("_xTaskCreate")
 	.dwattr $C$DW$58, DW_AT_external
-	.dwattr $C$DW$58, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$58, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$58, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$58, DW_AT_TI_begin_line(0x2f4)
 	.dwattr $C$DW$58, DW_AT_TI_begin_column(0x0d)
@@ -410,27 +410,27 @@ $C$DW$58	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskCreate")
 	.dwfde $C$DW$CIE, _xTaskCreate
 $C$DW$59	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxTaskCode")
 	.dwattr $C$DW$59, DW_AT_TI_symbol_name("_pxTaskCode")
-	.dwattr $C$DW$59, DW_AT_type(*$C$DW$T$60)
+	.dwattr $C$DW$59, DW_AT_type(*$C$DW$T$57)
 	.dwattr $C$DW$59, DW_AT_location[DW_OP_reg1]
 $C$DW$60	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pcName")
 	.dwattr $C$DW$60, DW_AT_TI_symbol_name("_pcName")
-	.dwattr $C$DW$60, DW_AT_type(*$C$DW$T$80)
+	.dwattr $C$DW$60, DW_AT_type(*$C$DW$T$77)
 	.dwattr $C$DW$60, DW_AT_location[DW_OP_reg17]
 $C$DW$61	.dwtag  DW_TAG_formal_parameter, DW_AT_name("usStackDepth")
 	.dwattr $C$DW$61, DW_AT_TI_symbol_name("_usStackDepth")
-	.dwattr $C$DW$61, DW_AT_type(*$C$DW$T$124)
+	.dwattr $C$DW$61, DW_AT_type(*$C$DW$T$121)
 	.dwattr $C$DW$61, DW_AT_location[DW_OP_reg12]
 $C$DW$62	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
 	.dwattr $C$DW$62, DW_AT_TI_symbol_name("_pvParameters")
-	.dwattr $C$DW$62, DW_AT_type(*$C$DW$T$55)
+	.dwattr $C$DW$62, DW_AT_type(*$C$DW$T$52)
 	.dwattr $C$DW$62, DW_AT_location[DW_OP_reg19]
 $C$DW$63	.dwtag  DW_TAG_formal_parameter, DW_AT_name("uxPriority")
 	.dwattr $C$DW$63, DW_AT_TI_symbol_name("_uxPriority")
-	.dwattr $C$DW$63, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$63, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$63, DW_AT_location[DW_OP_reg13]
 $C$DW$64	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxCreatedTask")
 	.dwattr $C$DW$64, DW_AT_TI_symbol_name("_pxCreatedTask")
-	.dwattr $C$DW$64, DW_AT_type(*$C$DW$T$83)
+	.dwattr $C$DW$64, DW_AT_type(*$C$DW$T$80)
 	.dwattr $C$DW$64, DW_AT_location[DW_OP_reg21]
 ;*******************************************************************************
 ;* FUNCTION NAME: xTaskCreate                                                  *
@@ -450,43 +450,43 @@ _xTaskCreate:
 	.dwcfi	cfa_offset, 22
 $C$DW$65	.dwtag  DW_TAG_variable, DW_AT_name("pxTaskCode")
 	.dwattr $C$DW$65, DW_AT_TI_symbol_name("_pxTaskCode")
-	.dwattr $C$DW$65, DW_AT_type(*$C$DW$T$60)
+	.dwattr $C$DW$65, DW_AT_type(*$C$DW$T$57)
 	.dwattr $C$DW$65, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$66	.dwtag  DW_TAG_variable, DW_AT_name("pcName")
 	.dwattr $C$DW$66, DW_AT_TI_symbol_name("_pcName")
-	.dwattr $C$DW$66, DW_AT_type(*$C$DW$T$80)
+	.dwattr $C$DW$66, DW_AT_type(*$C$DW$T$77)
 	.dwattr $C$DW$66, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$67	.dwtag  DW_TAG_variable, DW_AT_name("usStackDepth")
 	.dwattr $C$DW$67, DW_AT_TI_symbol_name("_usStackDepth")
-	.dwattr $C$DW$67, DW_AT_type(*$C$DW$T$124)
+	.dwattr $C$DW$67, DW_AT_type(*$C$DW$T$121)
 	.dwattr $C$DW$67, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$68	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
 	.dwattr $C$DW$68, DW_AT_TI_symbol_name("_pvParameters")
-	.dwattr $C$DW$68, DW_AT_type(*$C$DW$T$55)
+	.dwattr $C$DW$68, DW_AT_type(*$C$DW$T$52)
 	.dwattr $C$DW$68, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$69	.dwtag  DW_TAG_variable, DW_AT_name("uxPriority")
 	.dwattr $C$DW$69, DW_AT_TI_symbol_name("_uxPriority")
-	.dwattr $C$DW$69, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$69, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$69, DW_AT_location[DW_OP_bregx 0x24 8]
 $C$DW$70	.dwtag  DW_TAG_variable, DW_AT_name("pxCreatedTask")
 	.dwattr $C$DW$70, DW_AT_TI_symbol_name("_pxCreatedTask")
-	.dwattr $C$DW$70, DW_AT_type(*$C$DW$T$83)
+	.dwattr $C$DW$70, DW_AT_type(*$C$DW$T$80)
 	.dwattr $C$DW$70, DW_AT_location[DW_OP_bregx 0x24 10]
 $C$DW$71	.dwtag  DW_TAG_variable, DW_AT_name("pxNewTCB")
 	.dwattr $C$DW$71, DW_AT_TI_symbol_name("_pxNewTCB")
-	.dwattr $C$DW$71, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$71, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$71, DW_AT_location[DW_OP_bregx 0x24 12]
 $C$DW$72	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
 	.dwattr $C$DW$72, DW_AT_TI_symbol_name("_xReturn")
-	.dwattr $C$DW$72, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$72, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$72, DW_AT_location[DW_OP_bregx 0x24 14]
 $C$DW$73	.dwtag  DW_TAG_variable, DW_AT_name("pxStack")
 	.dwattr $C$DW$73, DW_AT_TI_symbol_name("_pxStack")
-	.dwattr $C$DW$73, DW_AT_type(*$C$DW$T$28)
+	.dwattr $C$DW$73, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$73, DW_AT_location[DW_OP_bregx 0x24 16]
 $C$DW$74	.dwtag  DW_TAG_variable, DW_AT_name("pxSysStack")
 	.dwattr $C$DW$74, DW_AT_TI_symbol_name("_pxSysStack")
-	.dwattr $C$DW$74, DW_AT_type(*$C$DW$T$28)
+	.dwattr $C$DW$74, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$74, DW_AT_location[DW_OP_bregx 0x24 18]
         MOV XAR2, dbl(*SP(#10))
         MOV T1, *SP(#8) ; |762| 
@@ -639,35 +639,35 @@ $C$DW$83	.dwtag  DW_TAG_subprogram, DW_AT_name("prvInitialiseNewTask")
 	.dwfde $C$DW$CIE, _prvInitialiseNewTask
 $C$DW$84	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxTaskCode")
 	.dwattr $C$DW$84, DW_AT_TI_symbol_name("_pxTaskCode")
-	.dwattr $C$DW$84, DW_AT_type(*$C$DW$T$60)
+	.dwattr $C$DW$84, DW_AT_type(*$C$DW$T$57)
 	.dwattr $C$DW$84, DW_AT_location[DW_OP_reg1]
 $C$DW$85	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pcName")
 	.dwattr $C$DW$85, DW_AT_TI_symbol_name("_pcName")
-	.dwattr $C$DW$85, DW_AT_type(*$C$DW$T$80)
+	.dwattr $C$DW$85, DW_AT_type(*$C$DW$T$77)
 	.dwattr $C$DW$85, DW_AT_location[DW_OP_reg17]
 $C$DW$86	.dwtag  DW_TAG_formal_parameter, DW_AT_name("ulStackDepth")
 	.dwattr $C$DW$86, DW_AT_TI_symbol_name("_ulStackDepth")
-	.dwattr $C$DW$86, DW_AT_type(*$C$DW$T$81)
+	.dwattr $C$DW$86, DW_AT_type(*$C$DW$T$78)
 	.dwattr $C$DW$86, DW_AT_location[DW_OP_reg3]
 $C$DW$87	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pvParameters")
 	.dwattr $C$DW$87, DW_AT_TI_symbol_name("_pvParameters")
-	.dwattr $C$DW$87, DW_AT_type(*$C$DW$T$55)
+	.dwattr $C$DW$87, DW_AT_type(*$C$DW$T$52)
 	.dwattr $C$DW$87, DW_AT_location[DW_OP_reg19]
 $C$DW$88	.dwtag  DW_TAG_formal_parameter, DW_AT_name("uxPriority")
 	.dwattr $C$DW$88, DW_AT_TI_symbol_name("_uxPriority")
-	.dwattr $C$DW$88, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$88, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$88, DW_AT_location[DW_OP_reg12]
 $C$DW$89	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxCreatedTask")
 	.dwattr $C$DW$89, DW_AT_TI_symbol_name("_pxCreatedTask")
-	.dwattr $C$DW$89, DW_AT_type(*$C$DW$T$83)
+	.dwattr $C$DW$89, DW_AT_type(*$C$DW$T$80)
 	.dwattr $C$DW$89, DW_AT_location[DW_OP_reg21]
 $C$DW$90	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxNewTCB")
 	.dwattr $C$DW$90, DW_AT_TI_symbol_name("_pxNewTCB")
-	.dwattr $C$DW$90, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$90, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$90, DW_AT_location[DW_OP_reg23]
 $C$DW$91	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xRegions")
 	.dwattr $C$DW$91, DW_AT_TI_symbol_name("_xRegions")
-	.dwattr $C$DW$91, DW_AT_type(*$C$DW$T$90)
+	.dwattr $C$DW$91, DW_AT_type(*$C$DW$T$87)
 	.dwattr $C$DW$91, DW_AT_location[DW_OP_reg25]
 ;*******************************************************************************
 ;* FUNCTION NAME: prvInitialiseNewTask                                         *
@@ -688,47 +688,47 @@ _prvInitialiseNewTask:
 	.dwcfi	cfa_offset, 22
 $C$DW$92	.dwtag  DW_TAG_variable, DW_AT_name("pxTaskCode")
 	.dwattr $C$DW$92, DW_AT_TI_symbol_name("_pxTaskCode")
-	.dwattr $C$DW$92, DW_AT_type(*$C$DW$T$60)
+	.dwattr $C$DW$92, DW_AT_type(*$C$DW$T$57)
 	.dwattr $C$DW$92, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$93	.dwtag  DW_TAG_variable, DW_AT_name("pcName")
 	.dwattr $C$DW$93, DW_AT_TI_symbol_name("_pcName")
-	.dwattr $C$DW$93, DW_AT_type(*$C$DW$T$80)
+	.dwattr $C$DW$93, DW_AT_type(*$C$DW$T$77)
 	.dwattr $C$DW$93, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$94	.dwtag  DW_TAG_variable, DW_AT_name("ulStackDepth")
 	.dwattr $C$DW$94, DW_AT_TI_symbol_name("_ulStackDepth")
-	.dwattr $C$DW$94, DW_AT_type(*$C$DW$T$81)
+	.dwattr $C$DW$94, DW_AT_type(*$C$DW$T$78)
 	.dwattr $C$DW$94, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$95	.dwtag  DW_TAG_variable, DW_AT_name("pvParameters")
 	.dwattr $C$DW$95, DW_AT_TI_symbol_name("_pvParameters")
-	.dwattr $C$DW$95, DW_AT_type(*$C$DW$T$55)
+	.dwattr $C$DW$95, DW_AT_type(*$C$DW$T$52)
 	.dwattr $C$DW$95, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$96	.dwtag  DW_TAG_variable, DW_AT_name("uxPriority")
 	.dwattr $C$DW$96, DW_AT_TI_symbol_name("_uxPriority")
-	.dwattr $C$DW$96, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$96, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$96, DW_AT_location[DW_OP_bregx 0x24 8]
 $C$DW$97	.dwtag  DW_TAG_variable, DW_AT_name("pxCreatedTask")
 	.dwattr $C$DW$97, DW_AT_TI_symbol_name("_pxCreatedTask")
-	.dwattr $C$DW$97, DW_AT_type(*$C$DW$T$83)
+	.dwattr $C$DW$97, DW_AT_type(*$C$DW$T$80)
 	.dwattr $C$DW$97, DW_AT_location[DW_OP_bregx 0x24 10]
 $C$DW$98	.dwtag  DW_TAG_variable, DW_AT_name("pxNewTCB")
 	.dwattr $C$DW$98, DW_AT_TI_symbol_name("_pxNewTCB")
-	.dwattr $C$DW$98, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$98, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$98, DW_AT_location[DW_OP_bregx 0x24 12]
 $C$DW$99	.dwtag  DW_TAG_variable, DW_AT_name("xRegions")
 	.dwattr $C$DW$99, DW_AT_TI_symbol_name("_xRegions")
-	.dwattr $C$DW$99, DW_AT_type(*$C$DW$T$90)
+	.dwattr $C$DW$99, DW_AT_type(*$C$DW$T$87)
 	.dwattr $C$DW$99, DW_AT_location[DW_OP_bregx 0x24 14]
 $C$DW$100	.dwtag  DW_TAG_variable, DW_AT_name("pxTopOfStack")
 	.dwattr $C$DW$100, DW_AT_TI_symbol_name("_pxTopOfStack")
-	.dwattr $C$DW$100, DW_AT_type(*$C$DW$T$28)
+	.dwattr $C$DW$100, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$100, DW_AT_location[DW_OP_bregx 0x24 16]
 $C$DW$101	.dwtag  DW_TAG_variable, DW_AT_name("pxTopOfSysStack")
 	.dwattr $C$DW$101, DW_AT_TI_symbol_name("_pxTopOfSysStack")
-	.dwattr $C$DW$101, DW_AT_type(*$C$DW$T$28)
+	.dwattr $C$DW$101, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$101, DW_AT_location[DW_OP_bregx 0x24 18]
 $C$DW$102	.dwtag  DW_TAG_variable, DW_AT_name("x")
 	.dwattr $C$DW$102, DW_AT_TI_symbol_name("_x")
-	.dwattr $C$DW$102, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$102, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$102, DW_AT_location[DW_OP_bregx 0x24 20]
         MOV XAR4, dbl(*SP(#14))
         MOV XAR3, dbl(*SP(#12))
@@ -1028,7 +1028,7 @@ $C$DW$110	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$111	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$111, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L16:1:1537091773")
+	.dwattr $C$DW$111, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L16:1:1537186495")
 	.dwattr $C$DW$111, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$111, DW_AT_TI_begin_line(0x3ae)
 	.dwattr $C$DW$111, DW_AT_TI_end_line(0x3bd)
@@ -1042,7 +1042,7 @@ $C$DW$113	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$114	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$114, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L14:1:1537091773")
+	.dwattr $C$DW$114, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L14:1:1537186495")
 	.dwattr $C$DW$114, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$114, DW_AT_TI_begin_line(0x392)
 	.dwattr $C$DW$114, DW_AT_TI_end_line(0x392)
@@ -1053,7 +1053,7 @@ $C$DW$115	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$116	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$116, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L11:1:1537091773")
+	.dwattr $C$DW$116, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L11:1:1537186495")
 	.dwattr $C$DW$116, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$116, DW_AT_TI_begin_line(0x391)
 	.dwattr $C$DW$116, DW_AT_TI_end_line(0x391)
@@ -1064,7 +1064,7 @@ $C$DW$117	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$118	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$118, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L8:1:1537091773")
+	.dwattr $C$DW$118, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L8:1:1537186495")
 	.dwattr $C$DW$118, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$118, DW_AT_TI_begin_line(0x37b)
 	.dwattr $C$DW$118, DW_AT_TI_end_line(0x37b)
@@ -1075,7 +1075,7 @@ $C$DW$119	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$120	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$120, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L6:1:1537091773")
+	.dwattr $C$DW$120, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L6:1:1537186495")
 	.dwattr $C$DW$120, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$120, DW_AT_TI_begin_line(0x369)
 	.dwattr $C$DW$120, DW_AT_TI_end_line(0x369)
@@ -1106,7 +1106,7 @@ $C$DW$122	.dwtag  DW_TAG_subprogram, DW_AT_name("prvAddNewTaskToReadyList")
 	.dwfde $C$DW$CIE, _prvAddNewTaskToReadyList
 $C$DW$123	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxNewTCB")
 	.dwattr $C$DW$123, DW_AT_TI_symbol_name("_pxNewTCB")
-	.dwattr $C$DW$123, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$123, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$123, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: prvAddNewTaskToReadyList                                     *
@@ -1126,7 +1126,7 @@ _prvAddNewTaskToReadyList:
 	.dwcfi	cfa_offset, 4
 $C$DW$124	.dwtag  DW_TAG_variable, DW_AT_name("pxNewTCB")
 	.dwattr $C$DW$124, DW_AT_TI_symbol_name("_pxNewTCB")
-	.dwattr $C$DW$124, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$124, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$124, DW_AT_location[DW_OP_bregx 0x24 0]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 1084,column 2,is_stmt
@@ -1276,7 +1276,7 @@ $C$DW$129	.dwtag  DW_TAG_subprogram, DW_AT_name("vTaskDelete")
 	.dwfde $C$DW$CIE, _vTaskDelete
 $C$DW$130	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTaskToDelete")
 	.dwattr $C$DW$130, DW_AT_TI_symbol_name("_xTaskToDelete")
-	.dwattr $C$DW$130, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$130, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$130, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: vTaskDelete                                                  *
@@ -1296,11 +1296,11 @@ _vTaskDelete:
 	.dwcfi	cfa_offset, 6
 $C$DW$131	.dwtag  DW_TAG_variable, DW_AT_name("xTaskToDelete")
 	.dwattr $C$DW$131, DW_AT_TI_symbol_name("_xTaskToDelete")
-	.dwattr $C$DW$131, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$131, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$131, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$132	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$132, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$132, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$132, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$132, DW_AT_location[DW_OP_bregx 0x24 2]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 1169,column 3,is_stmt
@@ -1452,7 +1452,7 @@ $C$DW$139	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$140	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$140, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L33:1:1537091773")
+	.dwattr $C$DW$140, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L33:1:1537186495")
 	.dwattr $C$DW$140, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$140, DW_AT_TI_begin_line(0x4da)
 	.dwattr $C$DW$140, DW_AT_TI_end_line(0x4da)
@@ -1485,11 +1485,11 @@ $C$DW$142	.dwtag  DW_TAG_subprogram, DW_AT_name("vTaskDelayUntil")
 	.dwfde $C$DW$CIE, _vTaskDelayUntil
 $C$DW$143	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxPreviousWakeTime")
 	.dwattr $C$DW$143, DW_AT_TI_symbol_name("_pxPreviousWakeTime")
-	.dwattr $C$DW$143, DW_AT_type(*$C$DW$T$97)
+	.dwattr $C$DW$143, DW_AT_type(*$C$DW$T$94)
 	.dwattr $C$DW$143, DW_AT_location[DW_OP_reg17]
 $C$DW$144	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTimeIncrement")
 	.dwattr $C$DW$144, DW_AT_TI_symbol_name("_xTimeIncrement")
-	.dwattr $C$DW$144, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$144, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$144, DW_AT_location[DW_OP_reg0]
 ;*******************************************************************************
 ;* FUNCTION NAME: vTaskDelayUntil                                              *
@@ -1509,23 +1509,23 @@ _vTaskDelayUntil:
 	.dwcfi	cfa_offset, 12
 $C$DW$145	.dwtag  DW_TAG_variable, DW_AT_name("pxPreviousWakeTime")
 	.dwattr $C$DW$145, DW_AT_TI_symbol_name("_pxPreviousWakeTime")
-	.dwattr $C$DW$145, DW_AT_type(*$C$DW$T$97)
+	.dwattr $C$DW$145, DW_AT_type(*$C$DW$T$94)
 	.dwattr $C$DW$145, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$146	.dwtag  DW_TAG_variable, DW_AT_name("xTimeIncrement")
 	.dwattr $C$DW$146, DW_AT_TI_symbol_name("_xTimeIncrement")
-	.dwattr $C$DW$146, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$146, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$146, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$147	.dwtag  DW_TAG_variable, DW_AT_name("xTimeToWake")
 	.dwattr $C$DW$147, DW_AT_TI_symbol_name("_xTimeToWake")
-	.dwattr $C$DW$147, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$147, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$147, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$148	.dwtag  DW_TAG_variable, DW_AT_name("xAlreadyYielded")
 	.dwattr $C$DW$148, DW_AT_TI_symbol_name("_xAlreadyYielded")
-	.dwattr $C$DW$148, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$148, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$148, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$149	.dwtag  DW_TAG_variable, DW_AT_name("xShouldDelay")
 	.dwattr $C$DW$149, DW_AT_TI_symbol_name("_xShouldDelay")
-	.dwattr $C$DW$149, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$149, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$149, DW_AT_location[DW_OP_bregx 0x24 7]
         MOV AC0, dbl(*SP(#2)) ; |1258| 
         MOV XAR0, dbl(*SP(#0))
@@ -1589,7 +1589,7 @@ $C$DW$150	.dwtag  DW_TAG_TI_branch
 $C$DW$151	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
 $C$DW$152	.dwtag  DW_TAG_variable, DW_AT_name("xConstTickCount")
 	.dwattr $C$DW$152, DW_AT_TI_symbol_name("_xConstTickCount")
-	.dwattr $C$DW$152, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$152, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$152, DW_AT_location[DW_OP_bregx 0x24 8]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 1270,column 21,is_stmt
         MOV dbl(*(#_xTickCount)), AC0 ; |1270| 
@@ -1695,7 +1695,7 @@ $C$DW$156	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$157	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$157, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L42:1:1537091773")
+	.dwattr $C$DW$157, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L42:1:1537186495")
 	.dwattr $C$DW$157, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$157, DW_AT_TI_begin_line(0x4f0)
 	.dwattr $C$DW$157, DW_AT_TI_end_line(0x4f0)
@@ -1706,7 +1706,7 @@ $C$DW$158	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$159	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$159, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L39:1:1537091773")
+	.dwattr $C$DW$159, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L39:1:1537186495")
 	.dwattr $C$DW$159, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$159, DW_AT_TI_begin_line(0x4ef)
 	.dwattr $C$DW$159, DW_AT_TI_end_line(0x4ef)
@@ -1717,7 +1717,7 @@ $C$DW$160	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$161	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$161, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L36:1:1537091773")
+	.dwattr $C$DW$161, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L36:1:1537186495")
 	.dwattr $C$DW$161, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$161, DW_AT_TI_begin_line(0x4ee)
 	.dwattr $C$DW$161, DW_AT_TI_end_line(0x4ee)
@@ -1750,7 +1750,7 @@ $C$DW$163	.dwtag  DW_TAG_subprogram, DW_AT_name("vTaskDelay")
 	.dwfde $C$DW$CIE, _vTaskDelay
 $C$DW$164	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTicksToDelay")
 	.dwattr $C$DW$164, DW_AT_TI_symbol_name("_xTicksToDelay")
-	.dwattr $C$DW$164, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$164, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$164, DW_AT_location[DW_OP_reg0]
 ;*******************************************************************************
 ;* FUNCTION NAME: vTaskDelay                                                   *
@@ -1769,11 +1769,11 @@ _vTaskDelay:
 	.dwcfi	cfa_offset, 4
 $C$DW$165	.dwtag  DW_TAG_variable, DW_AT_name("xTicksToDelay")
 	.dwattr $C$DW$165, DW_AT_TI_symbol_name("_xTicksToDelay")
-	.dwattr $C$DW$165, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$165, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$165, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$166	.dwtag  DW_TAG_variable, DW_AT_name("xAlreadyYielded")
 	.dwattr $C$DW$166, DW_AT_TI_symbol_name("_xAlreadyYielded")
-	.dwattr $C$DW$166, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$166, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$166, DW_AT_location[DW_OP_bregx 0x24 2]
         MOV AC0, dbl(*SP(#0)) ; |1342| 
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 1343,column 13,is_stmt
@@ -1851,7 +1851,7 @@ $C$DW$171	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$172	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$172, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L50:1:1537091773")
+	.dwattr $C$DW$172, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L50:1:1537186495")
 	.dwattr $C$DW$172, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$172, DW_AT_TI_begin_line(0x544)
 	.dwattr $C$DW$172, DW_AT_TI_end_line(0x544)
@@ -1875,7 +1875,7 @@ $C$DW$174	.dwtag  DW_TAG_subprogram, DW_AT_name("uxTaskPriorityGet")
 	.dwattr $C$DW$174, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$174, DW_AT_TI_symbol_name("_uxTaskPriorityGet")
 	.dwattr $C$DW$174, DW_AT_external
-	.dwattr $C$DW$174, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$174, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$174, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$174, DW_AT_TI_begin_line(0x5c6)
 	.dwattr $C$DW$174, DW_AT_TI_begin_column(0x0e)
@@ -1885,7 +1885,7 @@ $C$DW$174	.dwtag  DW_TAG_subprogram, DW_AT_name("uxTaskPriorityGet")
 	.dwfde $C$DW$CIE, _uxTaskPriorityGet
 $C$DW$175	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTask")
 	.dwattr $C$DW$175, DW_AT_TI_symbol_name("_xTask")
-	.dwattr $C$DW$175, DW_AT_type(*$C$DW$T$110)
+	.dwattr $C$DW$175, DW_AT_type(*$C$DW$T$107)
 	.dwattr $C$DW$175, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: uxTaskPriorityGet                                            *
@@ -1905,15 +1905,15 @@ _uxTaskPriorityGet:
 	.dwcfi	cfa_offset, 6
 $C$DW$176	.dwtag  DW_TAG_variable, DW_AT_name("xTask")
 	.dwattr $C$DW$176, DW_AT_TI_symbol_name("_xTask")
-	.dwattr $C$DW$176, DW_AT_type(*$C$DW$T$110)
+	.dwattr $C$DW$176, DW_AT_type(*$C$DW$T$107)
 	.dwattr $C$DW$176, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$177	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$177, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$177, DW_AT_type(*$C$DW$T$159)
+	.dwattr $C$DW$177, DW_AT_type(*$C$DW$T$157)
 	.dwattr $C$DW$177, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$178	.dwtag  DW_TAG_variable, DW_AT_name("uxReturn")
 	.dwattr $C$DW$178, DW_AT_TI_symbol_name("_uxReturn")
-	.dwattr $C$DW$178, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$178, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$178, DW_AT_location[DW_OP_bregx 0x24 4]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 1483,column 3,is_stmt
@@ -1970,7 +1970,7 @@ $C$DW$180	.dwtag  DW_TAG_subprogram, DW_AT_name("uxTaskPriorityGetFromISR")
 	.dwattr $C$DW$180, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$180, DW_AT_TI_symbol_name("_uxTaskPriorityGetFromISR")
 	.dwattr $C$DW$180, DW_AT_external
-	.dwattr $C$DW$180, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$180, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$180, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$180, DW_AT_TI_begin_line(0x5dc)
 	.dwattr $C$DW$180, DW_AT_TI_begin_column(0x0e)
@@ -1980,7 +1980,7 @@ $C$DW$180	.dwtag  DW_TAG_subprogram, DW_AT_name("uxTaskPriorityGetFromISR")
 	.dwfde $C$DW$CIE, _uxTaskPriorityGetFromISR
 $C$DW$181	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTask")
 	.dwattr $C$DW$181, DW_AT_TI_symbol_name("_xTask")
-	.dwattr $C$DW$181, DW_AT_type(*$C$DW$T$110)
+	.dwattr $C$DW$181, DW_AT_type(*$C$DW$T$107)
 	.dwattr $C$DW$181, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: uxTaskPriorityGetFromISR                                     *
@@ -2000,19 +2000,19 @@ _uxTaskPriorityGetFromISR:
 	.dwcfi	cfa_offset, 8
 $C$DW$182	.dwtag  DW_TAG_variable, DW_AT_name("xTask")
 	.dwattr $C$DW$182, DW_AT_TI_symbol_name("_xTask")
-	.dwattr $C$DW$182, DW_AT_type(*$C$DW$T$110)
+	.dwattr $C$DW$182, DW_AT_type(*$C$DW$T$107)
 	.dwattr $C$DW$182, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$183	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$183, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$183, DW_AT_type(*$C$DW$T$159)
+	.dwattr $C$DW$183, DW_AT_type(*$C$DW$T$157)
 	.dwattr $C$DW$183, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$184	.dwtag  DW_TAG_variable, DW_AT_name("uxReturn")
 	.dwattr $C$DW$184, DW_AT_TI_symbol_name("_uxReturn")
-	.dwattr $C$DW$184, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$184, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$184, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$185	.dwtag  DW_TAG_variable, DW_AT_name("uxSavedInterruptState")
 	.dwattr $C$DW$185, DW_AT_TI_symbol_name("_uxSavedInterruptState")
-	.dwattr $C$DW$185, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$185, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$185, DW_AT_location[DW_OP_bregx 0x24 5]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 1523,column 3,is_stmt
@@ -2063,11 +2063,11 @@ $C$DW$187	.dwtag  DW_TAG_subprogram, DW_AT_name("vTaskPrioritySet")
 	.dwfde $C$DW$CIE, _vTaskPrioritySet
 $C$DW$188	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTask")
 	.dwattr $C$DW$188, DW_AT_TI_symbol_name("_xTask")
-	.dwattr $C$DW$188, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$188, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$188, DW_AT_location[DW_OP_reg17]
 $C$DW$189	.dwtag  DW_TAG_formal_parameter, DW_AT_name("uxNewPriority")
 	.dwattr $C$DW$189, DW_AT_TI_symbol_name("_uxNewPriority")
-	.dwattr $C$DW$189, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$189, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$189, DW_AT_location[DW_OP_reg12]
 ;*******************************************************************************
 ;* FUNCTION NAME: vTaskPrioritySet                                             *
@@ -2087,27 +2087,27 @@ _vTaskPrioritySet:
 	.dwcfi	cfa_offset, 10
 $C$DW$190	.dwtag  DW_TAG_variable, DW_AT_name("xTask")
 	.dwattr $C$DW$190, DW_AT_TI_symbol_name("_xTask")
-	.dwattr $C$DW$190, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$190, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$190, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$191	.dwtag  DW_TAG_variable, DW_AT_name("uxNewPriority")
 	.dwattr $C$DW$191, DW_AT_TI_symbol_name("_uxNewPriority")
-	.dwattr $C$DW$191, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$191, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$191, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$192	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$192, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$192, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$192, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$192, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$193	.dwtag  DW_TAG_variable, DW_AT_name("uxCurrentBasePriority")
 	.dwattr $C$DW$193, DW_AT_TI_symbol_name("_uxCurrentBasePriority")
-	.dwattr $C$DW$193, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$193, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$193, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$194	.dwtag  DW_TAG_variable, DW_AT_name("uxPriorityUsedOnEntry")
 	.dwattr $C$DW$194, DW_AT_TI_symbol_name("_uxPriorityUsedOnEntry")
-	.dwattr $C$DW$194, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$194, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$194, DW_AT_location[DW_OP_bregx 0x24 7]
 $C$DW$195	.dwtag  DW_TAG_variable, DW_AT_name("xYieldRequired")
 	.dwattr $C$DW$195, DW_AT_TI_symbol_name("_xYieldRequired")
-	.dwattr $C$DW$195, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$195, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$195, DW_AT_location[DW_OP_bregx 0x24 8]
         MOV T0, *SP(#2) ; |1541| 
         MOV XAR0, dbl(*SP(#0))
@@ -2338,7 +2338,7 @@ $C$DW$199	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$200	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$200, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L58:1:1537091773")
+	.dwattr $C$DW$200, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L58:1:1537186495")
 	.dwattr $C$DW$200, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$200, DW_AT_TI_begin_line(0x60a)
 	.dwattr $C$DW$200, DW_AT_TI_end_line(0x60a)
@@ -2371,7 +2371,7 @@ $C$DW$202	.dwtag  DW_TAG_subprogram, DW_AT_name("vTaskSuspend")
 	.dwfde $C$DW$CIE, _vTaskSuspend
 $C$DW$203	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTaskToSuspend")
 	.dwattr $C$DW$203, DW_AT_TI_symbol_name("_xTaskToSuspend")
-	.dwattr $C$DW$203, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$203, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$203, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: vTaskSuspend                                                 *
@@ -2391,11 +2391,11 @@ _vTaskSuspend:
 	.dwcfi	cfa_offset, 6
 $C$DW$204	.dwtag  DW_TAG_variable, DW_AT_name("xTaskToSuspend")
 	.dwattr $C$DW$204, DW_AT_TI_symbol_name("_xTaskToSuspend")
-	.dwattr $C$DW$204, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$204, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$204, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$205	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$205, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$205, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$205, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$205, DW_AT_location[DW_OP_bregx 0x24 2]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 1708,column 3,is_stmt
@@ -2575,7 +2575,7 @@ $C$DW$212	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$213	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$213, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L81:1:1537091773")
+	.dwattr $C$DW$213, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L81:1:1537186495")
 	.dwattr $C$DW$213, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$213, DW_AT_TI_begin_line(0x6ec)
 	.dwattr $C$DW$213, DW_AT_TI_end_line(0x6ec)
@@ -2597,7 +2597,7 @@ $C$DW$215	.dwtag  DW_TAG_subprogram, DW_AT_name("prvTaskIsTaskSuspended")
 	.dwattr $C$DW$215, DW_AT_low_pc(_prvTaskIsTaskSuspended)
 	.dwattr $C$DW$215, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$215, DW_AT_TI_symbol_name("_prvTaskIsTaskSuspended")
-	.dwattr $C$DW$215, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$215, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$215, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$215, DW_AT_TI_begin_line(0x70d)
 	.dwattr $C$DW$215, DW_AT_TI_begin_column(0x14)
@@ -2607,7 +2607,7 @@ $C$DW$215	.dwtag  DW_TAG_subprogram, DW_AT_name("prvTaskIsTaskSuspended")
 	.dwfde $C$DW$CIE, _prvTaskIsTaskSuspended
 $C$DW$216	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTask")
 	.dwattr $C$DW$216, DW_AT_TI_symbol_name("_xTask")
-	.dwattr $C$DW$216, DW_AT_type(*$C$DW$T$110)
+	.dwattr $C$DW$216, DW_AT_type(*$C$DW$T$107)
 	.dwattr $C$DW$216, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: prvTaskIsTaskSuspended                                       *
@@ -2627,15 +2627,15 @@ _prvTaskIsTaskSuspended:
 	.dwcfi	cfa_offset, 8
 $C$DW$217	.dwtag  DW_TAG_variable, DW_AT_name("xTask")
 	.dwattr $C$DW$217, DW_AT_TI_symbol_name("_xTask")
-	.dwattr $C$DW$217, DW_AT_type(*$C$DW$T$110)
+	.dwattr $C$DW$217, DW_AT_type(*$C$DW$T$107)
 	.dwattr $C$DW$217, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$218	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
 	.dwattr $C$DW$218, DW_AT_TI_symbol_name("_xReturn")
-	.dwattr $C$DW$218, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$218, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$218, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$219	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$219, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$219, DW_AT_type(*$C$DW$T$160)
+	.dwattr $C$DW$219, DW_AT_type(*$C$DW$T$158)
 	.dwattr $C$DW$219, DW_AT_location[DW_OP_bregx 0x24 4]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 1807,column 13,is_stmt
@@ -2722,7 +2722,7 @@ $C$DW$220	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$221	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$221, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L86:1:1537091773")
+	.dwattr $C$DW$221, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L86:1:1537186495")
 	.dwattr $C$DW$221, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$221, DW_AT_TI_begin_line(0x716)
 	.dwattr $C$DW$221, DW_AT_TI_end_line(0x716)
@@ -2755,7 +2755,7 @@ $C$DW$223	.dwtag  DW_TAG_subprogram, DW_AT_name("vTaskResume")
 	.dwfde $C$DW$CIE, _vTaskResume
 $C$DW$224	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTaskToResume")
 	.dwattr $C$DW$224, DW_AT_TI_symbol_name("_xTaskToResume")
-	.dwattr $C$DW$224, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$224, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$224, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: vTaskResume                                                  *
@@ -2775,11 +2775,11 @@ _vTaskResume:
 	.dwcfi	cfa_offset, 6
 $C$DW$225	.dwtag  DW_TAG_variable, DW_AT_name("xTaskToResume")
 	.dwattr $C$DW$225, DW_AT_TI_symbol_name("_xTaskToResume")
-	.dwattr $C$DW$225, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$225, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$225, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$226	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$226, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$226, DW_AT_type(*$C$DW$T$162)
+	.dwattr $C$DW$226, DW_AT_type(*$C$DW$T$160)
 	.dwattr $C$DW$226, DW_AT_location[DW_OP_bregx 0x24 2]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 1853,column 16,is_stmt
@@ -2898,7 +2898,7 @@ $C$DW$231	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$232	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$232, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L95:1:1537091773")
+	.dwattr $C$DW$232, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L95:1:1537186495")
 	.dwattr $C$DW$232, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$232, DW_AT_TI_begin_line(0x740)
 	.dwattr $C$DW$232, DW_AT_TI_end_line(0x740)
@@ -2922,7 +2922,7 @@ $C$DW$234	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskResumeFromISR")
 	.dwattr $C$DW$234, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$234, DW_AT_TI_symbol_name("_xTaskResumeFromISR")
 	.dwattr $C$DW$234, DW_AT_external
-	.dwattr $C$DW$234, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$234, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$234, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$234, DW_AT_TI_begin_line(0x771)
 	.dwattr $C$DW$234, DW_AT_TI_begin_column(0x0d)
@@ -2932,7 +2932,7 @@ $C$DW$234	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskResumeFromISR")
 	.dwfde $C$DW$CIE, _xTaskResumeFromISR
 $C$DW$235	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTaskToResume")
 	.dwattr $C$DW$235, DW_AT_TI_symbol_name("_xTaskToResume")
-	.dwattr $C$DW$235, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$235, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$235, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: xTaskResumeFromISR                                           *
@@ -2952,19 +2952,19 @@ _xTaskResumeFromISR:
 	.dwcfi	cfa_offset, 8
 $C$DW$236	.dwtag  DW_TAG_variable, DW_AT_name("xTaskToResume")
 	.dwattr $C$DW$236, DW_AT_TI_symbol_name("_xTaskToResume")
-	.dwattr $C$DW$236, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$236, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$236, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$237	.dwtag  DW_TAG_variable, DW_AT_name("xYieldRequired")
 	.dwattr $C$DW$237, DW_AT_TI_symbol_name("_xYieldRequired")
-	.dwattr $C$DW$237, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$237, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$237, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$238	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$238, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$238, DW_AT_type(*$C$DW$T$162)
+	.dwattr $C$DW$238, DW_AT_type(*$C$DW$T$160)
 	.dwattr $C$DW$238, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$239	.dwtag  DW_TAG_variable, DW_AT_name("uxSavedInterruptStatus")
 	.dwattr $C$DW$239, DW_AT_TI_symbol_name("_uxSavedInterruptStatus")
-	.dwattr $C$DW$239, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$239, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$239, DW_AT_location[DW_OP_bregx 0x24 6]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 1907,column 13,is_stmt
@@ -3073,7 +3073,7 @@ $C$DW$244	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$245	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$245, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L100:1:1537091773")
+	.dwattr $C$DW$245, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L100:1:1537186495")
 	.dwattr $C$DW$245, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$245, DW_AT_TI_begin_line(0x777)
 	.dwattr $C$DW$245, DW_AT_TI_end_line(0x777)
@@ -3122,7 +3122,7 @@ _vTaskStartScheduler:
 	.dwcfi	cfa_offset, 2
 $C$DW$248	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
 	.dwattr $C$DW$248, DW_AT_TI_symbol_name("_xReturn")
-	.dwattr $C$DW$248, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$248, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$248, DW_AT_location[DW_OP_bregx 0x24 0]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 2009,column 3,is_stmt
         MOV #(_prvIdleTask >> 16) << #16, AC0 ; |2009| 
@@ -3197,7 +3197,7 @@ $C$DW$251	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$252	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$252, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L108:1:1537091773")
+	.dwattr $C$DW$252, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L108:1:1537186495")
 	.dwattr $C$DW$252, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$252, DW_AT_TI_begin_line(0x828)
 	.dwattr $C$DW$252, DW_AT_TI_end_line(0x828)
@@ -3319,7 +3319,7 @@ $C$DW$259	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskResumeAll")
 	.dwattr $C$DW$259, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$259, DW_AT_TI_symbol_name("_xTaskResumeAll")
 	.dwattr $C$DW$259, DW_AT_external
-	.dwattr $C$DW$259, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$259, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$259, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$259, DW_AT_TI_begin_line(0x885)
 	.dwattr $C$DW$259, DW_AT_TI_begin_column(0x0c)
@@ -3345,11 +3345,11 @@ _xTaskResumeAll:
 	.dwcfi	cfa_offset, 6
 $C$DW$260	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$260, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$260, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$260, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$260, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$261	.dwtag  DW_TAG_variable, DW_AT_name("xAlreadyYielded")
 	.dwattr $C$DW$261, DW_AT_TI_symbol_name("_xAlreadyYielded")
-	.dwattr $C$DW$261, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$261, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$261, DW_AT_location[DW_OP_bregx 0x24 2]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 2183,column 8,is_stmt
         MOV #0, AC0 ; |2183| 
@@ -3490,7 +3490,7 @@ $C$L117:
 $C$DW$266	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
 $C$DW$267	.dwtag  DW_TAG_variable, DW_AT_name("uxPendedCounts")
 	.dwattr $C$DW$267, DW_AT_TI_symbol_name("_uxPendedCounts")
-	.dwattr $C$DW$267, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$267, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$267, DW_AT_location[DW_OP_bregx 0x24 3]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 2240,column 18,is_stmt
         MOV *(#_uxPendedTicks), AR1 ; |2240| 
@@ -3573,7 +3573,7 @@ $C$DW$270	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$271	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$271, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L118:1:1537091773")
+	.dwattr $C$DW$271, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L118:1:1537186495")
 	.dwattr $C$DW$271, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$271, DW_AT_TI_begin_line(0x8c4)
 	.dwattr $C$DW$271, DW_AT_TI_end_line(0x8cf)
@@ -3590,7 +3590,7 @@ $C$DW$274	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$275	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$275, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L114:1:1537091773")
+	.dwattr $C$DW$275, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L114:1:1537186495")
 	.dwattr $C$DW$275, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$275, DW_AT_TI_begin_line(0x89d)
 	.dwattr $C$DW$275, DW_AT_TI_end_line(0x8a9)
@@ -3622,7 +3622,7 @@ $C$DW$283	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$284	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$284, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L110:1:1537091773")
+	.dwattr $C$DW$284, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L110:1:1537186495")
 	.dwattr $C$DW$284, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$284, DW_AT_TI_begin_line(0x88c)
 	.dwattr $C$DW$284, DW_AT_TI_end_line(0x88c)
@@ -3646,7 +3646,7 @@ $C$DW$286	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskGetTickCount")
 	.dwattr $C$DW$286, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$286, DW_AT_TI_symbol_name("_xTaskGetTickCount")
 	.dwattr $C$DW$286, DW_AT_external
-	.dwattr $C$DW$286, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$286, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$286, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$286, DW_AT_TI_begin_line(0x8f3)
 	.dwattr $C$DW$286, DW_AT_TI_begin_column(0x0c)
@@ -3671,7 +3671,7 @@ _xTaskGetTickCount:
 	.dwcfi	cfa_offset, 4
 $C$DW$287	.dwtag  DW_TAG_variable, DW_AT_name("xTicks")
 	.dwattr $C$DW$287, DW_AT_TI_symbol_name("_xTicks")
-	.dwattr $C$DW$287, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$287, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$287, DW_AT_location[DW_OP_bregx 0x24 0]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 2296,column 2,is_stmt
  nop
@@ -3722,7 +3722,7 @@ $C$DW$289	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskGetTickCountFromISR")
 	.dwattr $C$DW$289, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$289, DW_AT_TI_symbol_name("_xTaskGetTickCountFromISR")
 	.dwattr $C$DW$289, DW_AT_external
-	.dwattr $C$DW$289, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$289, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$289, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$289, DW_AT_TI_begin_line(0x902)
 	.dwattr $C$DW$289, DW_AT_TI_begin_column(0x0c)
@@ -3747,11 +3747,11 @@ _xTaskGetTickCountFromISR:
 	.dwcfi	cfa_offset, 4
 $C$DW$290	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
 	.dwattr $C$DW$290, DW_AT_TI_symbol_name("_xReturn")
-	.dwattr $C$DW$290, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$290, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$290, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$291	.dwtag  DW_TAG_variable, DW_AT_name("uxSavedInterruptStatus")
 	.dwattr $C$DW$291, DW_AT_TI_symbol_name("_uxSavedInterruptStatus")
-	.dwattr $C$DW$291, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$291, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$291, DW_AT_location[DW_OP_bregx 0x24 2]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 2327,column 2,is_stmt
         MOV #0, *SP(#2) ; |2327| 
@@ -3784,7 +3784,7 @@ $C$DW$293	.dwtag  DW_TAG_subprogram, DW_AT_name("uxTaskGetNumberOfTasks")
 	.dwattr $C$DW$293, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$293, DW_AT_TI_symbol_name("_uxTaskGetNumberOfTasks")
 	.dwattr $C$DW$293, DW_AT_external
-	.dwattr $C$DW$293, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$293, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$293, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$293, DW_AT_TI_begin_line(0x921)
 	.dwattr $C$DW$293, DW_AT_TI_begin_column(0x0d)
@@ -3827,7 +3827,7 @@ $C$DW$295	.dwtag  DW_TAG_subprogram, DW_AT_name("pcTaskGetName")
 	.dwattr $C$DW$295, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$295, DW_AT_TI_symbol_name("_pcTaskGetName")
 	.dwattr $C$DW$295, DW_AT_external
-	.dwattr $C$DW$295, DW_AT_type(*$C$DW$T$75)
+	.dwattr $C$DW$295, DW_AT_type(*$C$DW$T$72)
 	.dwattr $C$DW$295, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$295, DW_AT_TI_begin_line(0x929)
 	.dwattr $C$DW$295, DW_AT_TI_begin_column(0x07)
@@ -3837,7 +3837,7 @@ $C$DW$295	.dwtag  DW_TAG_subprogram, DW_AT_name("pcTaskGetName")
 	.dwfde $C$DW$CIE, _pcTaskGetName
 $C$DW$296	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTaskToQuery")
 	.dwattr $C$DW$296, DW_AT_TI_symbol_name("_xTaskToQuery")
-	.dwattr $C$DW$296, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$296, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$296, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: pcTaskGetName                                                *
@@ -3857,11 +3857,11 @@ _pcTaskGetName:
 	.dwcfi	cfa_offset, 6
 $C$DW$297	.dwtag  DW_TAG_variable, DW_AT_name("xTaskToQuery")
 	.dwattr $C$DW$297, DW_AT_TI_symbol_name("_xTaskToQuery")
-	.dwattr $C$DW$297, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$297, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$297, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$298	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$298, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$298, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$298, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$298, DW_AT_location[DW_OP_bregx 0x24 2]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 2351,column 2,is_stmt
@@ -3897,7 +3897,7 @@ $C$DW$299	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$300	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$300, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L125:1:1537091773")
+	.dwattr $C$DW$300, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L125:1:1537186495")
 	.dwattr $C$DW$300, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$300, DW_AT_TI_begin_line(0x930)
 	.dwattr $C$DW$300, DW_AT_TI_end_line(0x930)
@@ -3921,7 +3921,7 @@ $C$DW$302	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskIncrementTick")
 	.dwattr $C$DW$302, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$302, DW_AT_TI_symbol_name("_xTaskIncrementTick")
 	.dwattr $C$DW$302, DW_AT_external
-	.dwattr $C$DW$302, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$302, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$302, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$302, DW_AT_TI_begin_line(0xa70)
 	.dwattr $C$DW$302, DW_AT_TI_begin_column(0x0c)
@@ -3947,15 +3947,15 @@ _xTaskIncrementTick:
 	.dwcfi	cfa_offset, 12
 $C$DW$303	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$303, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$303, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$303, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$303, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$304	.dwtag  DW_TAG_variable, DW_AT_name("xItemValue")
 	.dwattr $C$DW$304, DW_AT_TI_symbol_name("_xItemValue")
-	.dwattr $C$DW$304, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$304, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$304, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$305	.dwtag  DW_TAG_variable, DW_AT_name("xSwitchRequired")
 	.dwattr $C$DW$305, DW_AT_TI_symbol_name("_xSwitchRequired")
-	.dwattr $C$DW$305, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$305, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$305, DW_AT_location[DW_OP_bregx 0x24 4]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 2676,column 12,is_stmt
         MOV #0, *SP(#4) ; |2676| 
@@ -3971,7 +3971,7 @@ $C$DW$305	.dwtag  DW_TAG_variable, DW_AT_name("xSwitchRequired")
 $C$DW$306	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
 $C$DW$307	.dwtag  DW_TAG_variable, DW_AT_name("xConstTickCount")
 	.dwattr $C$DW$307, DW_AT_TI_symbol_name("_xConstTickCount")
-	.dwattr $C$DW$307, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$307, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$307, DW_AT_location[DW_OP_bregx 0x24 6]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 2688,column 20,is_stmt
         MOV dbl(*(#_xTickCount)), AC0 ; |2688| 
@@ -3988,7 +3988,7 @@ $C$DW$307	.dwtag  DW_TAG_variable, DW_AT_name("xConstTickCount")
 $C$DW$308	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
 $C$DW$309	.dwtag  DW_TAG_variable, DW_AT_name("pxTemp")
 	.dwattr $C$DW$309, DW_AT_TI_symbol_name("_pxTemp")
-	.dwattr $C$DW$309, DW_AT_type(*$C$DW$T$64)
+	.dwattr $C$DW$309, DW_AT_type(*$C$DW$T$61)
 	.dwattr $C$DW$309, DW_AT_location[DW_OP_bregx 0x24 8]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 2696,column 4,is_stmt
         MOV dbl(*(#_pxDelayedTaskList)), XAR3
@@ -4186,7 +4186,7 @@ $C$DW$314	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$315	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$315, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L132:1:1537091773")
+	.dwattr $C$DW$315, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L132:1:1537186495")
 	.dwattr $C$DW$315, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$315, DW_AT_TI_begin_line(0xa95)
 	.dwattr $C$DW$315, DW_AT_TI_end_line(0xade)
@@ -4227,7 +4227,7 @@ $C$DW$326	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$327	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$327, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L129:1:1537091773")
+	.dwattr $C$DW$327, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L129:1:1537186495")
 	.dwattr $C$DW$327, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$327, DW_AT_TI_begin_line(0xa88)
 	.dwattr $C$DW$327, DW_AT_TI_end_line(0xa88)
@@ -4293,11 +4293,11 @@ $C$L142:
 $C$DW$330	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
 $C$DW$331	.dwtag  DW_TAG_variable, DW_AT_name("pulStack")
 	.dwattr $C$DW$331, DW_AT_TI_symbol_name("_pulStack")
-	.dwattr $C$DW$331, DW_AT_type(*$C$DW$T$151)
+	.dwattr $C$DW$331, DW_AT_type(*$C$DW$T$149)
 	.dwattr $C$DW$331, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$332	.dwtag  DW_TAG_variable, DW_AT_name("ulCheckValue")
 	.dwattr $C$DW$332, DW_AT_TI_symbol_name("_ulCheckValue")
-	.dwattr $C$DW$332, DW_AT_type(*$C$DW$T$81)
+	.dwattr $C$DW$332, DW_AT_type(*$C$DW$T$78)
 	.dwattr $C$DW$332, DW_AT_location[DW_OP_bregx 0x24 2]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 2979,column 3,is_stmt
         MOV dbl(*(#_pxCurrentTCB)), XAR3
@@ -4344,7 +4344,7 @@ $C$L144:
 $C$DW$334	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
 $C$DW$335	.dwtag  DW_TAG_variable, DW_AT_name("uxTopPriority")
 	.dwattr $C$DW$335, DW_AT_TI_symbol_name("_uxTopPriority")
-	.dwattr $C$DW$335, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$335, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$335, DW_AT_location[DW_OP_bregx 0x24 0]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 2990,column 3,is_stmt
         MOV *(#_uxTopReadyPriority), AR1 ; |2990| 
@@ -4395,7 +4395,7 @@ $C$DW$L$_vTaskSwitchContext$16$E:
 $C$DW$336	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
 $C$DW$337	.dwtag  DW_TAG_variable, DW_AT_name("pxConstList")
 	.dwattr $C$DW$337, DW_AT_TI_symbol_name("_pxConstList")
-	.dwattr $C$DW$337, DW_AT_type(*$C$DW$T$65)
+	.dwattr $C$DW$337, DW_AT_type(*$C$DW$T$62)
 	.dwattr $C$DW$337, DW_AT_location[DW_OP_bregx 0x24 2]
         MPYMK *SP(#0), #10, AC0 ; |2990| 
         MOV AC0, AR1 ; |2990| 
@@ -4443,7 +4443,7 @@ $C$DW$338	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$339	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$339, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L146:1:1537091773")
+	.dwattr $C$DW$339, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L146:1:1537186495")
 	.dwattr $C$DW$339, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$339, DW_AT_TI_begin_line(0xbae)
 	.dwattr $C$DW$339, DW_AT_TI_end_line(0xbae)
@@ -4454,7 +4454,7 @@ $C$DW$340	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$341	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$341, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L148:1:1537091773")
+	.dwattr $C$DW$341, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L148:1:1537186495")
 	.dwattr $C$DW$341, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$341, DW_AT_TI_begin_line(0xbae)
 	.dwattr $C$DW$341, DW_AT_TI_end_line(0xbae)
@@ -4502,11 +4502,11 @@ $C$DW$348	.dwtag  DW_TAG_subprogram, DW_AT_name("vTaskPlaceOnEventList")
 	.dwfde $C$DW$CIE, _vTaskPlaceOnEventList
 $C$DW$349	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxEventList")
 	.dwattr $C$DW$349, DW_AT_TI_symbol_name("_pxEventList")
-	.dwattr $C$DW$349, DW_AT_type(*$C$DW$T$65)
+	.dwattr $C$DW$349, DW_AT_type(*$C$DW$T$62)
 	.dwattr $C$DW$349, DW_AT_location[DW_OP_reg17]
 $C$DW$350	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$350, DW_AT_TI_symbol_name("_xTicksToWait")
-	.dwattr $C$DW$350, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$350, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$350, DW_AT_location[DW_OP_reg0]
 ;*******************************************************************************
 ;* FUNCTION NAME: vTaskPlaceOnEventList                                        *
@@ -4526,11 +4526,11 @@ _vTaskPlaceOnEventList:
 	.dwcfi	cfa_offset, 6
 $C$DW$351	.dwtag  DW_TAG_variable, DW_AT_name("pxEventList")
 	.dwattr $C$DW$351, DW_AT_TI_symbol_name("_pxEventList")
-	.dwattr $C$DW$351, DW_AT_type(*$C$DW$T$65)
+	.dwattr $C$DW$351, DW_AT_type(*$C$DW$T$62)
 	.dwattr $C$DW$351, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$352	.dwtag  DW_TAG_variable, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$352, DW_AT_TI_symbol_name("_xTicksToWait")
-	.dwattr $C$DW$352, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$352, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$352, DW_AT_location[DW_OP_bregx 0x24 2]
         MOV AC0, dbl(*SP(#2)) ; |3012| 
         MOV XAR0, dbl(*SP(#0))
@@ -4577,7 +4577,7 @@ $C$DW$355	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$356	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$356, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L153:1:1537091773")
+	.dwattr $C$DW$356, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L153:1:1537186495")
 	.dwattr $C$DW$356, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$356, DW_AT_TI_begin_line(0xbc5)
 	.dwattr $C$DW$356, DW_AT_TI_end_line(0xbc5)
@@ -4610,15 +4610,15 @@ $C$DW$358	.dwtag  DW_TAG_subprogram, DW_AT_name("vTaskPlaceOnUnorderedEventList"
 	.dwfde $C$DW$CIE, _vTaskPlaceOnUnorderedEventList
 $C$DW$359	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxEventList")
 	.dwattr $C$DW$359, DW_AT_TI_symbol_name("_pxEventList")
-	.dwattr $C$DW$359, DW_AT_type(*$C$DW$T$64)
+	.dwattr $C$DW$359, DW_AT_type(*$C$DW$T$61)
 	.dwattr $C$DW$359, DW_AT_location[DW_OP_reg17]
 $C$DW$360	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xItemValue")
 	.dwattr $C$DW$360, DW_AT_TI_symbol_name("_xItemValue")
-	.dwattr $C$DW$360, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$360, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$360, DW_AT_location[DW_OP_reg0]
 $C$DW$361	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$361, DW_AT_TI_symbol_name("_xTicksToWait")
-	.dwattr $C$DW$361, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$361, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$361, DW_AT_location[DW_OP_reg3]
 ;*******************************************************************************
 ;* FUNCTION NAME: vTaskPlaceOnUnorderedEventList                               *
@@ -4638,15 +4638,15 @@ _vTaskPlaceOnUnorderedEventList:
 	.dwcfi	cfa_offset, 8
 $C$DW$362	.dwtag  DW_TAG_variable, DW_AT_name("pxEventList")
 	.dwattr $C$DW$362, DW_AT_TI_symbol_name("_pxEventList")
-	.dwattr $C$DW$362, DW_AT_type(*$C$DW$T$64)
+	.dwattr $C$DW$362, DW_AT_type(*$C$DW$T$61)
 	.dwattr $C$DW$362, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$363	.dwtag  DW_TAG_variable, DW_AT_name("xItemValue")
 	.dwattr $C$DW$363, DW_AT_TI_symbol_name("_xItemValue")
-	.dwattr $C$DW$363, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$363, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$363, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$364	.dwtag  DW_TAG_variable, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$364, DW_AT_TI_symbol_name("_xTicksToWait")
-	.dwattr $C$DW$364, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$364, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$364, DW_AT_location[DW_OP_bregx 0x24 4]
         MOV AC1, dbl(*SP(#4)) ; |3029| 
         MOV AC0, dbl(*SP(#2)) ; |3029| 
@@ -4717,7 +4717,7 @@ $C$DW$367	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$368	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$368, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L158:1:1537091773")
+	.dwattr $C$DW$368, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L158:1:1537186495")
 	.dwattr $C$DW$368, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$368, DW_AT_TI_begin_line(0xbda)
 	.dwattr $C$DW$368, DW_AT_TI_end_line(0xbda)
@@ -4728,7 +4728,7 @@ $C$DW$369	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$370	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$370, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L155:1:1537091773")
+	.dwattr $C$DW$370, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L155:1:1537186495")
 	.dwattr $C$DW$370, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$370, DW_AT_TI_begin_line(0xbd6)
 	.dwattr $C$DW$370, DW_AT_TI_end_line(0xbd6)
@@ -4752,7 +4752,7 @@ $C$DW$372	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskRemoveFromEventList")
 	.dwattr $C$DW$372, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$372, DW_AT_TI_symbol_name("_xTaskRemoveFromEventList")
 	.dwattr $C$DW$372, DW_AT_external
-	.dwattr $C$DW$372, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$372, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$372, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$372, DW_AT_TI_begin_line(0xc0d)
 	.dwattr $C$DW$372, DW_AT_TI_begin_column(0x0c)
@@ -4762,7 +4762,7 @@ $C$DW$372	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskRemoveFromEventList")
 	.dwfde $C$DW$CIE, _xTaskRemoveFromEventList
 $C$DW$373	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxEventList")
 	.dwattr $C$DW$373, DW_AT_TI_symbol_name("_pxEventList")
-	.dwattr $C$DW$373, DW_AT_type(*$C$DW$T$132)
+	.dwattr $C$DW$373, DW_AT_type(*$C$DW$T$129)
 	.dwattr $C$DW$373, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: xTaskRemoveFromEventList                                     *
@@ -4782,15 +4782,15 @@ _xTaskRemoveFromEventList:
 	.dwcfi	cfa_offset, 6
 $C$DW$374	.dwtag  DW_TAG_variable, DW_AT_name("pxEventList")
 	.dwattr $C$DW$374, DW_AT_TI_symbol_name("_pxEventList")
-	.dwattr $C$DW$374, DW_AT_type(*$C$DW$T$132)
+	.dwattr $C$DW$374, DW_AT_type(*$C$DW$T$129)
 	.dwattr $C$DW$374, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$375	.dwtag  DW_TAG_variable, DW_AT_name("pxUnblockedTCB")
 	.dwattr $C$DW$375, DW_AT_TI_symbol_name("_pxUnblockedTCB")
-	.dwattr $C$DW$375, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$375, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$375, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$376	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
 	.dwattr $C$DW$376, DW_AT_TI_symbol_name("_xReturn")
-	.dwattr $C$DW$376, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$376, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$376, DW_AT_location[DW_OP_bregx 0x24 4]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 3103,column 2,is_stmt
@@ -4900,7 +4900,7 @@ $C$DW$381	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$382	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$382, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L160:1:1537091773")
+	.dwattr $C$DW$382, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L160:1:1537186495")
 	.dwattr $C$DW$382, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$382, DW_AT_TI_begin_line(0xc20)
 	.dwattr $C$DW$382, DW_AT_TI_end_line(0xc20)
@@ -4933,11 +4933,11 @@ $C$DW$384	.dwtag  DW_TAG_subprogram, DW_AT_name("vTaskRemoveFromUnorderedEventLi
 	.dwfde $C$DW$CIE, _vTaskRemoveFromUnorderedEventList
 $C$DW$385	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxEventListItem")
 	.dwattr $C$DW$385, DW_AT_TI_symbol_name("_pxEventListItem")
-	.dwattr $C$DW$385, DW_AT_type(*$C$DW$T$37)
+	.dwattr $C$DW$385, DW_AT_type(*$C$DW$T$34)
 	.dwattr $C$DW$385, DW_AT_location[DW_OP_reg17]
 $C$DW$386	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xItemValue")
 	.dwattr $C$DW$386, DW_AT_TI_symbol_name("_xItemValue")
-	.dwattr $C$DW$386, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$386, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$386, DW_AT_location[DW_OP_reg0]
 ;*******************************************************************************
 ;* FUNCTION NAME: vTaskRemoveFromUnorderedEventList                            *
@@ -4957,15 +4957,15 @@ _vTaskRemoveFromUnorderedEventList:
 	.dwcfi	cfa_offset, 8
 $C$DW$387	.dwtag  DW_TAG_variable, DW_AT_name("pxEventListItem")
 	.dwattr $C$DW$387, DW_AT_TI_symbol_name("_pxEventListItem")
-	.dwattr $C$DW$387, DW_AT_type(*$C$DW$T$37)
+	.dwattr $C$DW$387, DW_AT_type(*$C$DW$T$34)
 	.dwattr $C$DW$387, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$388	.dwtag  DW_TAG_variable, DW_AT_name("xItemValue")
 	.dwattr $C$DW$388, DW_AT_TI_symbol_name("_xItemValue")
-	.dwattr $C$DW$388, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$388, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$388, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$389	.dwtag  DW_TAG_variable, DW_AT_name("pxUnblockedTCB")
 	.dwattr $C$DW$389, DW_AT_TI_symbol_name("_pxUnblockedTCB")
-	.dwattr $C$DW$389, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$389, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$389, DW_AT_location[DW_OP_bregx 0x24 4]
         MOV AC0, dbl(*SP(#2)) ; |3154| 
         MOV XAR0, dbl(*SP(#0))
@@ -5069,7 +5069,7 @@ $C$DW$393	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$394	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$394, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L170:1:1537091773")
+	.dwattr $C$DW$394, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L170:1:1537186495")
 	.dwattr $C$DW$394, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$394, DW_AT_TI_begin_line(0xc5f)
 	.dwattr $C$DW$394, DW_AT_TI_end_line(0xc5f)
@@ -5080,7 +5080,7 @@ $C$DW$395	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$396	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$396, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L168:1:1537091773")
+	.dwattr $C$DW$396, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L168:1:1537186495")
 	.dwattr $C$DW$396, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$396, DW_AT_TI_begin_line(0xc57)
 	.dwattr $C$DW$396, DW_AT_TI_end_line(0xc57)
@@ -5113,7 +5113,7 @@ $C$DW$398	.dwtag  DW_TAG_subprogram, DW_AT_name("vTaskSetTimeOutState")
 	.dwfde $C$DW$CIE, _vTaskSetTimeOutState
 $C$DW$399	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxTimeOut")
 	.dwattr $C$DW$399, DW_AT_TI_symbol_name("_pxTimeOut")
-	.dwattr $C$DW$399, DW_AT_type(*$C$DW$T$107)
+	.dwattr $C$DW$399, DW_AT_type(*$C$DW$T$104)
 	.dwattr $C$DW$399, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: vTaskSetTimeOutState                                         *
@@ -5133,7 +5133,7 @@ _vTaskSetTimeOutState:
 	.dwcfi	cfa_offset, 4
 $C$DW$400	.dwtag  DW_TAG_variable, DW_AT_name("pxTimeOut")
 	.dwattr $C$DW$400, DW_AT_TI_symbol_name("_pxTimeOut")
-	.dwattr $C$DW$400, DW_AT_type(*$C$DW$T$107)
+	.dwattr $C$DW$400, DW_AT_type(*$C$DW$T$104)
 	.dwattr $C$DW$400, DW_AT_location[DW_OP_bregx 0x24 0]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 3189,column 2,is_stmt
@@ -5187,7 +5187,7 @@ $C$DW$401	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$402	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$402, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L174:1:1537091773")
+	.dwattr $C$DW$402, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L174:1:1537186495")
 	.dwattr $C$DW$402, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$402, DW_AT_TI_begin_line(0xc75)
 	.dwattr $C$DW$402, DW_AT_TI_end_line(0xc75)
@@ -5220,7 +5220,7 @@ $C$DW$404	.dwtag  DW_TAG_subprogram, DW_AT_name("vTaskInternalSetTimeOutState")
 	.dwfde $C$DW$CIE, _vTaskInternalSetTimeOutState
 $C$DW$405	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxTimeOut")
 	.dwattr $C$DW$405, DW_AT_TI_symbol_name("_pxTimeOut")
-	.dwattr $C$DW$405, DW_AT_type(*$C$DW$T$107)
+	.dwattr $C$DW$405, DW_AT_type(*$C$DW$T$104)
 	.dwattr $C$DW$405, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: vTaskInternalSetTimeOutState                                 *
@@ -5240,7 +5240,7 @@ _vTaskInternalSetTimeOutState:
 	.dwcfi	cfa_offset, 4
 $C$DW$406	.dwtag  DW_TAG_variable, DW_AT_name("pxTimeOut")
 	.dwattr $C$DW$406, DW_AT_TI_symbol_name("_pxTimeOut")
-	.dwattr $C$DW$406, DW_AT_type(*$C$DW$T$107)
+	.dwattr $C$DW$406, DW_AT_type(*$C$DW$T$104)
 	.dwattr $C$DW$406, DW_AT_location[DW_OP_bregx 0x24 0]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 3202,column 2,is_stmt
@@ -5274,7 +5274,7 @@ $C$DW$408	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskCheckForTimeOut")
 	.dwattr $C$DW$408, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$408, DW_AT_TI_symbol_name("_xTaskCheckForTimeOut")
 	.dwattr $C$DW$408, DW_AT_external
-	.dwattr $C$DW$408, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$408, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$408, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$408, DW_AT_TI_begin_line(0xc87)
 	.dwattr $C$DW$408, DW_AT_TI_begin_column(0x0c)
@@ -5284,11 +5284,11 @@ $C$DW$408	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskCheckForTimeOut")
 	.dwfde $C$DW$CIE, _xTaskCheckForTimeOut
 $C$DW$409	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxTimeOut")
 	.dwattr $C$DW$409, DW_AT_TI_symbol_name("_pxTimeOut")
-	.dwattr $C$DW$409, DW_AT_type(*$C$DW$T$107)
+	.dwattr $C$DW$409, DW_AT_type(*$C$DW$T$104)
 	.dwattr $C$DW$409, DW_AT_location[DW_OP_reg17]
 $C$DW$410	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxTicksToWait")
 	.dwattr $C$DW$410, DW_AT_TI_symbol_name("_pxTicksToWait")
-	.dwattr $C$DW$410, DW_AT_type(*$C$DW$T$97)
+	.dwattr $C$DW$410, DW_AT_type(*$C$DW$T$94)
 	.dwattr $C$DW$410, DW_AT_location[DW_OP_reg19]
 ;*******************************************************************************
 ;* FUNCTION NAME: xTaskCheckForTimeOut                                         *
@@ -5308,15 +5308,15 @@ _xTaskCheckForTimeOut:
 	.dwcfi	cfa_offset, 12
 $C$DW$411	.dwtag  DW_TAG_variable, DW_AT_name("pxTimeOut")
 	.dwattr $C$DW$411, DW_AT_TI_symbol_name("_pxTimeOut")
-	.dwattr $C$DW$411, DW_AT_type(*$C$DW$T$107)
+	.dwattr $C$DW$411, DW_AT_type(*$C$DW$T$104)
 	.dwattr $C$DW$411, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$412	.dwtag  DW_TAG_variable, DW_AT_name("pxTicksToWait")
 	.dwattr $C$DW$412, DW_AT_TI_symbol_name("_pxTicksToWait")
-	.dwattr $C$DW$412, DW_AT_type(*$C$DW$T$97)
+	.dwattr $C$DW$412, DW_AT_type(*$C$DW$T$94)
 	.dwattr $C$DW$412, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$413	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
 	.dwattr $C$DW$413, DW_AT_TI_symbol_name("_xReturn")
-	.dwattr $C$DW$413, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$413, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$413, DW_AT_location[DW_OP_bregx 0x24 4]
         MOV XAR1, dbl(*SP(#2))
         MOV XAR0, dbl(*SP(#0))
@@ -5357,11 +5357,11 @@ $C$L180:
 $C$DW$414	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
 $C$DW$415	.dwtag  DW_TAG_variable, DW_AT_name("xConstTickCount")
 	.dwattr $C$DW$415, DW_AT_TI_symbol_name("_xConstTickCount")
-	.dwattr $C$DW$415, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$415, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$415, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$416	.dwtag  DW_TAG_variable, DW_AT_name("xElapsedTime")
 	.dwattr $C$DW$416, DW_AT_TI_symbol_name("_xElapsedTime")
-	.dwattr $C$DW$416, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$416, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$416, DW_AT_location[DW_OP_bregx 0x24 8]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 3217,column 20,is_stmt
         MOV dbl(*(#_xTickCount)), AC0 ; |3217| 
@@ -5462,7 +5462,7 @@ $C$DW$418	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$419	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$419, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L179:1:1537091773")
+	.dwattr $C$DW$419, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L179:1:1537186495")
 	.dwattr $C$DW$419, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$419, DW_AT_TI_begin_line(0xc8c)
 	.dwattr $C$DW$419, DW_AT_TI_end_line(0xc8c)
@@ -5473,7 +5473,7 @@ $C$DW$420	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$421	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$421, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L177:1:1537091773")
+	.dwattr $C$DW$421, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L177:1:1537186495")
 	.dwattr $C$DW$421, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$421, DW_AT_TI_begin_line(0xc8b)
 	.dwattr $C$DW$421, DW_AT_TI_end_line(0xc8b)
@@ -5620,7 +5620,7 @@ $C$DW$L$_prvIdleTask$4$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$431	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$431, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L186:1:1537091773")
+	.dwattr $C$DW$431, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L186:1:1537186495")
 	.dwattr $C$DW$431, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$431, DW_AT_TI_begin_line(0xd0a)
 	.dwattr $C$DW$431, DW_AT_TI_end_line(0xd71)
@@ -5673,7 +5673,7 @@ _prvInitialiseTaskLists:
 	.dwcfi	cfa_offset, 2
 $C$DW$436	.dwtag  DW_TAG_variable, DW_AT_name("uxPriority")
 	.dwattr $C$DW$436, DW_AT_TI_symbol_name("_uxPriority")
-	.dwattr $C$DW$436, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$436, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$436, DW_AT_location[DW_OP_bregx 0x24 0]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 3544,column 7,is_stmt
         MOV #0, *SP(#0) ; |3544| 
@@ -5766,7 +5766,7 @@ $C$DW$443	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$444	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$444, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L188:1:1537091773")
+	.dwattr $C$DW$444, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L188:1:1537186495")
 	.dwattr $C$DW$444, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$444, DW_AT_TI_begin_line(0xdd8)
 	.dwattr $C$DW$444, DW_AT_TI_end_line(0xddb)
@@ -5815,7 +5815,7 @@ _prvCheckTasksWaitingTermination:
 $C$DW$447	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
 $C$DW$448	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$448, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$448, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$448, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$448, DW_AT_location[DW_OP_bregx 0x24 0]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 3583,column 10,is_stmt
         MOV *(#_uxDeletedTasksWaitingCleanUp), AR1 ; |3583| 
@@ -5893,7 +5893,7 @@ $C$DW$451	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$452	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$452, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L190:1:1537091773")
+	.dwattr $C$DW$452, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L190:1:1537186495")
 	.dwattr $C$DW$452, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$452, DW_AT_TI_begin_line(0xdff)
 	.dwattr $C$DW$452, DW_AT_TI_end_line(0xe0b)
@@ -5924,7 +5924,7 @@ $C$DW$457	.dwtag  DW_TAG_subprogram, DW_AT_name("prvTaskCheckFreeStackSpace")
 	.dwattr $C$DW$457, DW_AT_low_pc(_prvTaskCheckFreeStackSpace)
 	.dwattr $C$DW$457, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$457, DW_AT_TI_symbol_name("_prvTaskCheckFreeStackSpace")
-	.dwattr $C$DW$457, DW_AT_type(*$C$DW$T$123)
+	.dwattr $C$DW$457, DW_AT_type(*$C$DW$T$120)
 	.dwattr $C$DW$457, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$457, DW_AT_TI_begin_line(0xe96)
 	.dwattr $C$DW$457, DW_AT_TI_begin_column(0x20)
@@ -5934,7 +5934,7 @@ $C$DW$457	.dwtag  DW_TAG_subprogram, DW_AT_name("prvTaskCheckFreeStackSpace")
 	.dwfde $C$DW$CIE, _prvTaskCheckFreeStackSpace
 $C$DW$458	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pucStackByte")
 	.dwattr $C$DW$458, DW_AT_TI_symbol_name("_pucStackByte")
-	.dwattr $C$DW$458, DW_AT_type(*$C$DW$T$119)
+	.dwattr $C$DW$458, DW_AT_type(*$C$DW$T$116)
 	.dwattr $C$DW$458, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: prvTaskCheckFreeStackSpace                                   *
@@ -5954,11 +5954,11 @@ _prvTaskCheckFreeStackSpace:
 	.dwcfi	cfa_offset, 6
 $C$DW$459	.dwtag  DW_TAG_variable, DW_AT_name("pucStackByte")
 	.dwattr $C$DW$459, DW_AT_TI_symbol_name("_pucStackByte")
-	.dwattr $C$DW$459, DW_AT_type(*$C$DW$T$119)
+	.dwattr $C$DW$459, DW_AT_type(*$C$DW$T$116)
 	.dwattr $C$DW$459, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$460	.dwtag  DW_TAG_variable, DW_AT_name("ulCount")
 	.dwattr $C$DW$460, DW_AT_TI_symbol_name("_ulCount")
-	.dwattr $C$DW$460, DW_AT_type(*$C$DW$T$31)
+	.dwattr $C$DW$460, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$460, DW_AT_location[DW_OP_bregx 0x24 2]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 3736,column 11,is_stmt
@@ -6003,7 +6003,7 @@ $C$DW$461	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$462	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$462, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L193:1:1537091773")
+	.dwattr $C$DW$462, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L193:1:1537186495")
 	.dwattr $C$DW$462, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$462, DW_AT_TI_begin_line(0xe9a)
 	.dwattr $C$DW$462, DW_AT_TI_end_line(0xe9e)
@@ -6027,7 +6027,7 @@ $C$DW$464	.dwtag  DW_TAG_subprogram, DW_AT_name("uxTaskGetStackHighWaterMark")
 	.dwattr $C$DW$464, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$464, DW_AT_TI_symbol_name("_uxTaskGetStackHighWaterMark")
 	.dwattr $C$DW$464, DW_AT_external
-	.dwattr $C$DW$464, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$464, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$464, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$464, DW_AT_TI_begin_line(0xeaa)
 	.dwattr $C$DW$464, DW_AT_TI_begin_column(0x0e)
@@ -6037,7 +6037,7 @@ $C$DW$464	.dwtag  DW_TAG_subprogram, DW_AT_name("uxTaskGetStackHighWaterMark")
 	.dwfde $C$DW$CIE, _uxTaskGetStackHighWaterMark
 $C$DW$465	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTask")
 	.dwattr $C$DW$465, DW_AT_TI_symbol_name("_xTask")
-	.dwattr $C$DW$465, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$465, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$465, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: uxTaskGetStackHighWaterMark                                  *
@@ -6057,19 +6057,19 @@ _uxTaskGetStackHighWaterMark:
 	.dwcfi	cfa_offset, 8
 $C$DW$466	.dwtag  DW_TAG_variable, DW_AT_name("xTask")
 	.dwattr $C$DW$466, DW_AT_TI_symbol_name("_xTask")
-	.dwattr $C$DW$466, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$466, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$466, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$467	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$467, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$467, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$467, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$467, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$468	.dwtag  DW_TAG_variable, DW_AT_name("pucEndOfStack")
 	.dwattr $C$DW$468, DW_AT_TI_symbol_name("_pucEndOfStack")
-	.dwattr $C$DW$468, DW_AT_type(*$C$DW$T$117)
+	.dwattr $C$DW$468, DW_AT_type(*$C$DW$T$114)
 	.dwattr $C$DW$468, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$469	.dwtag  DW_TAG_variable, DW_AT_name("uxReturn")
 	.dwattr $C$DW$469, DW_AT_TI_symbol_name("_uxReturn")
-	.dwattr $C$DW$469, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$469, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$469, DW_AT_location[DW_OP_bregx 0x24 6]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 3760,column 3,is_stmt
@@ -6123,7 +6123,7 @@ $C$DW$472	.dwtag  DW_TAG_subprogram, DW_AT_name("prvDeleteTCB")
 	.dwfde $C$DW$CIE, _prvDeleteTCB
 $C$DW$473	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxTCB")
 	.dwattr $C$DW$473, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$473, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$473, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$473, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: prvDeleteTCB                                                 *
@@ -6142,7 +6142,7 @@ _prvDeleteTCB:
 	.dwcfi	cfa_offset, 4
 $C$DW$474	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$474, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$474, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$474, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$474, DW_AT_location[DW_OP_bregx 0x24 0]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 3788,column 3,is_stmt
@@ -6217,7 +6217,7 @@ _prvResetNextTaskUnblockTime:
 	.dwcfi	cfa_offset, 4
 $C$DW$480	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$480, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$480, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$480, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$480, DW_AT_location[DW_OP_bregx 0x24 0]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 3843,column 2,is_stmt
         MOV dbl(*(#_pxDelayedTaskList)), XAR3
@@ -6272,7 +6272,7 @@ $C$DW$482	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskGetCurrentTaskHandle")
 	.dwattr $C$DW$482, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$482, DW_AT_TI_symbol_name("_xTaskGetCurrentTaskHandle")
 	.dwattr $C$DW$482, DW_AT_external
-	.dwattr $C$DW$482, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$482, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$482, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$482, DW_AT_TI_begin_line(0xf19)
 	.dwattr $C$DW$482, DW_AT_TI_begin_column(0x0f)
@@ -6297,7 +6297,7 @@ _xTaskGetCurrentTaskHandle:
 	.dwcfi	cfa_offset, 4
 $C$DW$483	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
 	.dwattr $C$DW$483, DW_AT_TI_symbol_name("_xReturn")
-	.dwattr $C$DW$483, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$483, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$483, DW_AT_location[DW_OP_bregx 0x24 0]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 3872,column 3,is_stmt
         MOV dbl(*(#_pxCurrentTCB)), XAR3
@@ -6327,7 +6327,7 @@ $C$DW$485	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskPriorityInherit")
 	.dwattr $C$DW$485, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$485, DW_AT_TI_symbol_name("_xTaskPriorityInherit")
 	.dwattr $C$DW$485, DW_AT_external
-	.dwattr $C$DW$485, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$485, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$485, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$485, DW_AT_TI_begin_line(0xf46)
 	.dwattr $C$DW$485, DW_AT_TI_begin_column(0x0d)
@@ -6337,7 +6337,7 @@ $C$DW$485	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskPriorityInherit")
 	.dwfde $C$DW$CIE, _xTaskPriorityInherit
 $C$DW$486	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxMutexHolder")
 	.dwattr $C$DW$486, DW_AT_TI_symbol_name("_pxMutexHolder")
-	.dwattr $C$DW$486, DW_AT_type(*$C$DW$T$110)
+	.dwattr $C$DW$486, DW_AT_type(*$C$DW$T$107)
 	.dwattr $C$DW$486, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: xTaskPriorityInherit                                         *
@@ -6357,15 +6357,15 @@ _xTaskPriorityInherit:
 	.dwcfi	cfa_offset, 6
 $C$DW$487	.dwtag  DW_TAG_variable, DW_AT_name("pxMutexHolder")
 	.dwattr $C$DW$487, DW_AT_TI_symbol_name("_pxMutexHolder")
-	.dwattr $C$DW$487, DW_AT_type(*$C$DW$T$110)
+	.dwattr $C$DW$487, DW_AT_type(*$C$DW$T$107)
 	.dwattr $C$DW$487, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$488	.dwtag  DW_TAG_variable, DW_AT_name("pxMutexHolderTCB")
 	.dwattr $C$DW$488, DW_AT_TI_symbol_name("_pxMutexHolderTCB")
-	.dwattr $C$DW$488, DW_AT_type(*$C$DW$T$162)
+	.dwattr $C$DW$488, DW_AT_type(*$C$DW$T$160)
 	.dwattr $C$DW$488, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$489	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
 	.dwattr $C$DW$489, DW_AT_TI_symbol_name("_xReturn")
-	.dwattr $C$DW$489, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$489, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$489, DW_AT_location[DW_OP_bregx 0x24 4]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 3912,column 16,is_stmt
@@ -6516,7 +6516,7 @@ $C$DW$493	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskPriorityDisinherit")
 	.dwattr $C$DW$493, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$493, DW_AT_TI_symbol_name("_xTaskPriorityDisinherit")
 	.dwattr $C$DW$493, DW_AT_external
-	.dwattr $C$DW$493, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$493, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$493, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$493, DW_AT_TI_begin_line(0xf9d)
 	.dwattr $C$DW$493, DW_AT_TI_begin_column(0x0d)
@@ -6526,7 +6526,7 @@ $C$DW$493	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskPriorityDisinherit")
 	.dwfde $C$DW$CIE, _xTaskPriorityDisinherit
 $C$DW$494	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxMutexHolder")
 	.dwattr $C$DW$494, DW_AT_TI_symbol_name("_pxMutexHolder")
-	.dwattr $C$DW$494, DW_AT_type(*$C$DW$T$110)
+	.dwattr $C$DW$494, DW_AT_type(*$C$DW$T$107)
 	.dwattr $C$DW$494, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: xTaskPriorityDisinherit                                      *
@@ -6546,15 +6546,15 @@ _xTaskPriorityDisinherit:
 	.dwcfi	cfa_offset, 6
 $C$DW$495	.dwtag  DW_TAG_variable, DW_AT_name("pxMutexHolder")
 	.dwattr $C$DW$495, DW_AT_TI_symbol_name("_pxMutexHolder")
-	.dwattr $C$DW$495, DW_AT_type(*$C$DW$T$110)
+	.dwattr $C$DW$495, DW_AT_type(*$C$DW$T$107)
 	.dwattr $C$DW$495, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$496	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$496, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$496, DW_AT_type(*$C$DW$T$162)
+	.dwattr $C$DW$496, DW_AT_type(*$C$DW$T$160)
 	.dwattr $C$DW$496, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$497	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
 	.dwattr $C$DW$497, DW_AT_TI_symbol_name("_xReturn")
-	.dwattr $C$DW$497, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$497, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$497, DW_AT_location[DW_OP_bregx 0x24 4]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 3999,column 16,is_stmt
@@ -6675,7 +6675,7 @@ $C$DW$500	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$501	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$501, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L212:1:1537091773")
+	.dwattr $C$DW$501, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L212:1:1537186495")
 	.dwattr $C$DW$501, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$501, DW_AT_TI_begin_line(0xfa9)
 	.dwattr $C$DW$501, DW_AT_TI_end_line(0xfa9)
@@ -6686,7 +6686,7 @@ $C$DW$502	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$503	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$503, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L210:1:1537091773")
+	.dwattr $C$DW$503, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L210:1:1537186495")
 	.dwattr $C$DW$503, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$503, DW_AT_TI_begin_line(0xfa8)
 	.dwattr $C$DW$503, DW_AT_TI_end_line(0xfa8)
@@ -6719,11 +6719,11 @@ $C$DW$505	.dwtag  DW_TAG_subprogram, DW_AT_name("vTaskPriorityDisinheritAfterTim
 	.dwfde $C$DW$CIE, _vTaskPriorityDisinheritAfterTimeout
 $C$DW$506	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxMutexHolder")
 	.dwattr $C$DW$506, DW_AT_TI_symbol_name("_pxMutexHolder")
-	.dwattr $C$DW$506, DW_AT_type(*$C$DW$T$110)
+	.dwattr $C$DW$506, DW_AT_type(*$C$DW$T$107)
 	.dwattr $C$DW$506, DW_AT_location[DW_OP_reg17]
 $C$DW$507	.dwtag  DW_TAG_formal_parameter, DW_AT_name("uxHighestPriorityWaitingTask")
 	.dwattr $C$DW$507, DW_AT_TI_symbol_name("_uxHighestPriorityWaitingTask")
-	.dwattr $C$DW$507, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$507, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$507, DW_AT_location[DW_OP_reg12]
 ;*******************************************************************************
 ;* FUNCTION NAME: vTaskPriorityDisinheritAfterTimeout                          *
@@ -6743,27 +6743,27 @@ _vTaskPriorityDisinheritAfterTimeout:
 	.dwcfi	cfa_offset, 10
 $C$DW$508	.dwtag  DW_TAG_variable, DW_AT_name("pxMutexHolder")
 	.dwattr $C$DW$508, DW_AT_TI_symbol_name("_pxMutexHolder")
-	.dwattr $C$DW$508, DW_AT_type(*$C$DW$T$110)
+	.dwattr $C$DW$508, DW_AT_type(*$C$DW$T$107)
 	.dwattr $C$DW$508, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$509	.dwtag  DW_TAG_variable, DW_AT_name("uxHighestPriorityWaitingTask")
 	.dwattr $C$DW$509, DW_AT_TI_symbol_name("_uxHighestPriorityWaitingTask")
-	.dwattr $C$DW$509, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$509, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$509, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$510	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$510, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$510, DW_AT_type(*$C$DW$T$162)
+	.dwattr $C$DW$510, DW_AT_type(*$C$DW$T$160)
 	.dwattr $C$DW$510, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$511	.dwtag  DW_TAG_variable, DW_AT_name("uxPriorityUsedOnEntry")
 	.dwattr $C$DW$511, DW_AT_TI_symbol_name("_uxPriorityUsedOnEntry")
-	.dwattr $C$DW$511, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$511, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$511, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$512	.dwtag  DW_TAG_variable, DW_AT_name("uxPriorityToUse")
 	.dwattr $C$DW$512, DW_AT_TI_symbol_name("_uxPriorityToUse")
-	.dwattr $C$DW$512, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$512, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$512, DW_AT_location[DW_OP_bregx 0x24 7]
 $C$DW$513	.dwtag  DW_TAG_variable, DW_AT_name("uxOnlyOneMutexHeld")
 	.dwattr $C$DW$513, DW_AT_TI_symbol_name("_uxOnlyOneMutexHeld")
-	.dwattr $C$DW$513, DW_AT_type(*$C$DW$T$139)
+	.dwattr $C$DW$513, DW_AT_type(*$C$DW$T$136)
 	.dwattr $C$DW$513, DW_AT_location[DW_OP_bregx 0x24 8]
         MOV T0, *SP(#2) ; |4078| 
         MOV XAR0, dbl(*SP(#0))
@@ -6927,7 +6927,7 @@ $C$DW$516	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$517	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$517, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L222:1:1537091773")
+	.dwattr $C$DW$517, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L222:1:1537186495")
 	.dwattr $C$DW$517, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$517, DW_AT_TI_begin_line(0x1012)
 	.dwattr $C$DW$517, DW_AT_TI_end_line(0x1012)
@@ -6938,7 +6938,7 @@ $C$DW$518	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$519	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$519, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L217:1:1537091773")
+	.dwattr $C$DW$519, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L217:1:1537186495")
 	.dwattr $C$DW$519, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$519, DW_AT_TI_begin_line(0xff7)
 	.dwattr $C$DW$519, DW_AT_TI_end_line(0xff7)
@@ -7085,7 +7085,7 @@ $C$DW$525	.dwtag  DW_TAG_subprogram, DW_AT_name("uxTaskResetEventItemValue")
 	.dwattr $C$DW$525, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$525, DW_AT_TI_symbol_name("_uxTaskResetEventItemValue")
 	.dwattr $C$DW$525, DW_AT_external
-	.dwattr $C$DW$525, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$525, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$525, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$525, DW_AT_TI_begin_line(0x118c)
 	.dwattr $C$DW$525, DW_AT_TI_begin_column(0x0c)
@@ -7111,7 +7111,7 @@ _uxTaskResetEventItemValue:
 	.dwcfi	cfa_offset, 4
 $C$DW$526	.dwtag  DW_TAG_variable, DW_AT_name("uxReturn")
 	.dwattr $C$DW$526, DW_AT_TI_symbol_name("_uxReturn")
-	.dwattr $C$DW$526, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$526, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$526, DW_AT_location[DW_OP_bregx 0x24 0]
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 4496,column 2,is_stmt
         MOV dbl(*(#_pxCurrentTCB)), XAR3
@@ -7148,7 +7148,7 @@ $C$DW$528	.dwtag  DW_TAG_subprogram, DW_AT_name("pvTaskIncrementMutexHeldCount")
 	.dwattr $C$DW$528, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$528, DW_AT_TI_symbol_name("_pvTaskIncrementMutexHeldCount")
 	.dwattr $C$DW$528, DW_AT_external
-	.dwattr $C$DW$528, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$528, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$528, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$528, DW_AT_TI_begin_line(0x119c)
 	.dwattr $C$DW$528, DW_AT_TI_begin_column(0x0f)
@@ -7202,7 +7202,7 @@ $C$DW$530	.dwtag  DW_TAG_subprogram, DW_AT_name("ulTaskNotifyTake")
 	.dwattr $C$DW$530, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$530, DW_AT_TI_symbol_name("_ulTaskNotifyTake")
 	.dwattr $C$DW$530, DW_AT_external
-	.dwattr $C$DW$530, DW_AT_type(*$C$DW$T$31)
+	.dwattr $C$DW$530, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$530, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$530, DW_AT_TI_begin_line(0x11ad)
 	.dwattr $C$DW$530, DW_AT_TI_begin_column(0x0b)
@@ -7212,11 +7212,11 @@ $C$DW$530	.dwtag  DW_TAG_subprogram, DW_AT_name("ulTaskNotifyTake")
 	.dwfde $C$DW$CIE, _ulTaskNotifyTake
 $C$DW$531	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xClearCountOnExit")
 	.dwattr $C$DW$531, DW_AT_TI_symbol_name("_xClearCountOnExit")
-	.dwattr $C$DW$531, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$531, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$531, DW_AT_location[DW_OP_reg12]
 $C$DW$532	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$532, DW_AT_TI_symbol_name("_xTicksToWait")
-	.dwattr $C$DW$532, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$532, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$532, DW_AT_location[DW_OP_reg0]
 ;*******************************************************************************
 ;* FUNCTION NAME: ulTaskNotifyTake                                             *
@@ -7236,15 +7236,15 @@ _ulTaskNotifyTake:
 	.dwcfi	cfa_offset, 8
 $C$DW$533	.dwtag  DW_TAG_variable, DW_AT_name("xClearCountOnExit")
 	.dwattr $C$DW$533, DW_AT_TI_symbol_name("_xClearCountOnExit")
-	.dwattr $C$DW$533, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$533, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$533, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$534	.dwtag  DW_TAG_variable, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$534, DW_AT_TI_symbol_name("_xTicksToWait")
-	.dwattr $C$DW$534, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$534, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$534, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$535	.dwtag  DW_TAG_variable, DW_AT_name("ulReturn")
 	.dwattr $C$DW$535, DW_AT_TI_symbol_name("_ulReturn")
-	.dwattr $C$DW$535, DW_AT_type(*$C$DW$T$31)
+	.dwattr $C$DW$535, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$535, DW_AT_location[DW_OP_bregx 0x24 4]
         MOV AC0, dbl(*SP(#2)) ; |4526| 
         MOV T0, *SP(#0) ; |4526| 
@@ -7382,7 +7382,7 @@ $C$DW$539	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskNotifyWait")
 	.dwattr $C$DW$539, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$539, DW_AT_TI_symbol_name("_xTaskNotifyWait")
 	.dwattr $C$DW$539, DW_AT_external
-	.dwattr $C$DW$539, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$539, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$539, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$539, DW_AT_TI_begin_line(0x11f1)
 	.dwattr $C$DW$539, DW_AT_TI_begin_column(0x0d)
@@ -7392,19 +7392,19 @@ $C$DW$539	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskNotifyWait")
 	.dwfde $C$DW$CIE, _xTaskNotifyWait
 $C$DW$540	.dwtag  DW_TAG_formal_parameter, DW_AT_name("ulBitsToClearOnEntry")
 	.dwattr $C$DW$540, DW_AT_TI_symbol_name("_ulBitsToClearOnEntry")
-	.dwattr $C$DW$540, DW_AT_type(*$C$DW$T$31)
+	.dwattr $C$DW$540, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$540, DW_AT_location[DW_OP_reg0]
 $C$DW$541	.dwtag  DW_TAG_formal_parameter, DW_AT_name("ulBitsToClearOnExit")
 	.dwattr $C$DW$541, DW_AT_TI_symbol_name("_ulBitsToClearOnExit")
-	.dwattr $C$DW$541, DW_AT_type(*$C$DW$T$31)
+	.dwattr $C$DW$541, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$541, DW_AT_location[DW_OP_reg3]
 $C$DW$542	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pulNotificationValue")
 	.dwattr $C$DW$542, DW_AT_TI_symbol_name("_pulNotificationValue")
-	.dwattr $C$DW$542, DW_AT_type(*$C$DW$T$135)
+	.dwattr $C$DW$542, DW_AT_type(*$C$DW$T$132)
 	.dwattr $C$DW$542, DW_AT_location[DW_OP_reg17]
 $C$DW$543	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$543, DW_AT_TI_symbol_name("_xTicksToWait")
-	.dwattr $C$DW$543, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$543, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$543, DW_AT_location[DW_OP_reg6]
 ;*******************************************************************************
 ;* FUNCTION NAME: xTaskNotifyWait                                              *
@@ -7424,23 +7424,23 @@ _xTaskNotifyWait:
 	.dwcfi	cfa_offset, 10
 $C$DW$544	.dwtag  DW_TAG_variable, DW_AT_name("ulBitsToClearOnEntry")
 	.dwattr $C$DW$544, DW_AT_TI_symbol_name("_ulBitsToClearOnEntry")
-	.dwattr $C$DW$544, DW_AT_type(*$C$DW$T$31)
+	.dwattr $C$DW$544, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$544, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$545	.dwtag  DW_TAG_variable, DW_AT_name("ulBitsToClearOnExit")
 	.dwattr $C$DW$545, DW_AT_TI_symbol_name("_ulBitsToClearOnExit")
-	.dwattr $C$DW$545, DW_AT_type(*$C$DW$T$31)
+	.dwattr $C$DW$545, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$545, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$546	.dwtag  DW_TAG_variable, DW_AT_name("pulNotificationValue")
 	.dwattr $C$DW$546, DW_AT_TI_symbol_name("_pulNotificationValue")
-	.dwattr $C$DW$546, DW_AT_type(*$C$DW$T$135)
+	.dwattr $C$DW$546, DW_AT_type(*$C$DW$T$132)
 	.dwattr $C$DW$546, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$547	.dwtag  DW_TAG_variable, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$547, DW_AT_TI_symbol_name("_xTicksToWait")
-	.dwattr $C$DW$547, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$547, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$547, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$548	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
 	.dwattr $C$DW$548, DW_AT_TI_symbol_name("_xReturn")
-	.dwattr $C$DW$548, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$548, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$548, DW_AT_location[DW_OP_bregx 0x24 8]
         MOV AC2, dbl(*SP(#6)) ; |4594| 
         MOV XAR0, dbl(*SP(#4))
@@ -7600,7 +7600,7 @@ $C$DW$552	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskGenericNotify")
 	.dwattr $C$DW$552, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$552, DW_AT_TI_symbol_name("_xTaskGenericNotify")
 	.dwattr $C$DW$552, DW_AT_external
-	.dwattr $C$DW$552, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$552, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$552, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$552, DW_AT_TI_begin_line(0x1241)
 	.dwattr $C$DW$552, DW_AT_TI_begin_column(0x0d)
@@ -7610,19 +7610,19 @@ $C$DW$552	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskGenericNotify")
 	.dwfde $C$DW$CIE, _xTaskGenericNotify
 $C$DW$553	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTaskToNotify")
 	.dwattr $C$DW$553, DW_AT_TI_symbol_name("_xTaskToNotify")
-	.dwattr $C$DW$553, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$553, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$553, DW_AT_location[DW_OP_reg17]
 $C$DW$554	.dwtag  DW_TAG_formal_parameter, DW_AT_name("ulValue")
 	.dwattr $C$DW$554, DW_AT_TI_symbol_name("_ulValue")
-	.dwattr $C$DW$554, DW_AT_type(*$C$DW$T$31)
+	.dwattr $C$DW$554, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$554, DW_AT_location[DW_OP_reg0]
 $C$DW$555	.dwtag  DW_TAG_formal_parameter, DW_AT_name("eAction")
 	.dwattr $C$DW$555, DW_AT_TI_symbol_name("_eAction")
-	.dwattr $C$DW$555, DW_AT_type(*$C$DW$T$49)
+	.dwattr $C$DW$555, DW_AT_type(*$C$DW$T$46)
 	.dwattr $C$DW$555, DW_AT_location[DW_OP_reg12]
 $C$DW$556	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pulPreviousNotificationValue")
 	.dwattr $C$DW$556, DW_AT_TI_symbol_name("_pulPreviousNotificationValue")
-	.dwattr $C$DW$556, DW_AT_type(*$C$DW$T$135)
+	.dwattr $C$DW$556, DW_AT_type(*$C$DW$T$132)
 	.dwattr $C$DW$556, DW_AT_location[DW_OP_reg19]
 ;*******************************************************************************
 ;* FUNCTION NAME: xTaskGenericNotify                                           *
@@ -7642,31 +7642,31 @@ _xTaskGenericNotify:
 	.dwcfi	cfa_offset, 14
 $C$DW$557	.dwtag  DW_TAG_variable, DW_AT_name("xTaskToNotify")
 	.dwattr $C$DW$557, DW_AT_TI_symbol_name("_xTaskToNotify")
-	.dwattr $C$DW$557, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$557, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$557, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$558	.dwtag  DW_TAG_variable, DW_AT_name("ulValue")
 	.dwattr $C$DW$558, DW_AT_TI_symbol_name("_ulValue")
-	.dwattr $C$DW$558, DW_AT_type(*$C$DW$T$31)
+	.dwattr $C$DW$558, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$558, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$559	.dwtag  DW_TAG_variable, DW_AT_name("eAction")
 	.dwattr $C$DW$559, DW_AT_TI_symbol_name("_eAction")
-	.dwattr $C$DW$559, DW_AT_type(*$C$DW$T$49)
+	.dwattr $C$DW$559, DW_AT_type(*$C$DW$T$46)
 	.dwattr $C$DW$559, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$560	.dwtag  DW_TAG_variable, DW_AT_name("pulPreviousNotificationValue")
 	.dwattr $C$DW$560, DW_AT_TI_symbol_name("_pulPreviousNotificationValue")
-	.dwattr $C$DW$560, DW_AT_type(*$C$DW$T$135)
+	.dwattr $C$DW$560, DW_AT_type(*$C$DW$T$132)
 	.dwattr $C$DW$560, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$561	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$561, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$561, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$561, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$561, DW_AT_location[DW_OP_bregx 0x24 8]
 $C$DW$562	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
 	.dwattr $C$DW$562, DW_AT_TI_symbol_name("_xReturn")
-	.dwattr $C$DW$562, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$562, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$562, DW_AT_location[DW_OP_bregx 0x24 10]
 $C$DW$563	.dwtag  DW_TAG_variable, DW_AT_name("ucOriginalNotifyState")
 	.dwattr $C$DW$563, DW_AT_TI_symbol_name("_ucOriginalNotifyState")
-	.dwattr $C$DW$563, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$563, DW_AT_type(*$C$DW$T$30)
 	.dwattr $C$DW$563, DW_AT_location[DW_OP_bregx 0x24 11]
         MOV XAR1, dbl(*SP(#6))
         MOV T0, *SP(#4) ; |4674| 
@@ -7911,7 +7911,7 @@ $C$DW$567	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$568	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$568, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L260:1:1537091773")
+	.dwattr $C$DW$568, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L260:1:1537186495")
 	.dwattr $C$DW$568, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$568, DW_AT_TI_begin_line(0x1287)
 	.dwattr $C$DW$568, DW_AT_TI_end_line(0x1287)
@@ -7922,7 +7922,7 @@ $C$DW$569	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$570	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$570, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L254:1:1537091773")
+	.dwattr $C$DW$570, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L254:1:1537186495")
 	.dwattr $C$DW$570, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$570, DW_AT_TI_begin_line(0x1278)
 	.dwattr $C$DW$570, DW_AT_TI_end_line(0x1278)
@@ -7933,7 +7933,7 @@ $C$DW$571	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$572	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$572, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L244:1:1537091773")
+	.dwattr $C$DW$572, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L244:1:1537186495")
 	.dwattr $C$DW$572, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$572, DW_AT_TI_begin_line(0x1247)
 	.dwattr $C$DW$572, DW_AT_TI_end_line(0x1247)
@@ -7957,7 +7957,7 @@ $C$DW$574	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskGenericNotifyFromISR")
 	.dwattr $C$DW$574, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$574, DW_AT_TI_symbol_name("_xTaskGenericNotifyFromISR")
 	.dwattr $C$DW$574, DW_AT_external
-	.dwattr $C$DW$574, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$574, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$574, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$574, DW_AT_TI_begin_line(0x12b3)
 	.dwattr $C$DW$574, DW_AT_TI_begin_column(0x0d)
@@ -7967,23 +7967,23 @@ $C$DW$574	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskGenericNotifyFromISR")
 	.dwfde $C$DW$CIE, _xTaskGenericNotifyFromISR
 $C$DW$575	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTaskToNotify")
 	.dwattr $C$DW$575, DW_AT_TI_symbol_name("_xTaskToNotify")
-	.dwattr $C$DW$575, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$575, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$575, DW_AT_location[DW_OP_reg17]
 $C$DW$576	.dwtag  DW_TAG_formal_parameter, DW_AT_name("ulValue")
 	.dwattr $C$DW$576, DW_AT_TI_symbol_name("_ulValue")
-	.dwattr $C$DW$576, DW_AT_type(*$C$DW$T$31)
+	.dwattr $C$DW$576, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$576, DW_AT_location[DW_OP_reg0]
 $C$DW$577	.dwtag  DW_TAG_formal_parameter, DW_AT_name("eAction")
 	.dwattr $C$DW$577, DW_AT_TI_symbol_name("_eAction")
-	.dwattr $C$DW$577, DW_AT_type(*$C$DW$T$49)
+	.dwattr $C$DW$577, DW_AT_type(*$C$DW$T$46)
 	.dwattr $C$DW$577, DW_AT_location[DW_OP_reg12]
 $C$DW$578	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pulPreviousNotificationValue")
 	.dwattr $C$DW$578, DW_AT_TI_symbol_name("_pulPreviousNotificationValue")
-	.dwattr $C$DW$578, DW_AT_type(*$C$DW$T$135)
+	.dwattr $C$DW$578, DW_AT_type(*$C$DW$T$132)
 	.dwattr $C$DW$578, DW_AT_location[DW_OP_reg19]
 $C$DW$579	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxHigherPriorityTaskWoken")
 	.dwattr $C$DW$579, DW_AT_TI_symbol_name("_pxHigherPriorityTaskWoken")
-	.dwattr $C$DW$579, DW_AT_type(*$C$DW$T$112)
+	.dwattr $C$DW$579, DW_AT_type(*$C$DW$T$109)
 	.dwattr $C$DW$579, DW_AT_location[DW_OP_reg21]
 ;*******************************************************************************
 ;* FUNCTION NAME: xTaskGenericNotifyFromISR                                    *
@@ -8003,39 +8003,39 @@ _xTaskGenericNotifyFromISR:
 	.dwcfi	cfa_offset, 16
 $C$DW$580	.dwtag  DW_TAG_variable, DW_AT_name("xTaskToNotify")
 	.dwattr $C$DW$580, DW_AT_TI_symbol_name("_xTaskToNotify")
-	.dwattr $C$DW$580, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$580, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$580, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$581	.dwtag  DW_TAG_variable, DW_AT_name("ulValue")
 	.dwattr $C$DW$581, DW_AT_TI_symbol_name("_ulValue")
-	.dwattr $C$DW$581, DW_AT_type(*$C$DW$T$31)
+	.dwattr $C$DW$581, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$581, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$582	.dwtag  DW_TAG_variable, DW_AT_name("eAction")
 	.dwattr $C$DW$582, DW_AT_TI_symbol_name("_eAction")
-	.dwattr $C$DW$582, DW_AT_type(*$C$DW$T$49)
+	.dwattr $C$DW$582, DW_AT_type(*$C$DW$T$46)
 	.dwattr $C$DW$582, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$583	.dwtag  DW_TAG_variable, DW_AT_name("pulPreviousNotificationValue")
 	.dwattr $C$DW$583, DW_AT_TI_symbol_name("_pulPreviousNotificationValue")
-	.dwattr $C$DW$583, DW_AT_type(*$C$DW$T$135)
+	.dwattr $C$DW$583, DW_AT_type(*$C$DW$T$132)
 	.dwattr $C$DW$583, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$584	.dwtag  DW_TAG_variable, DW_AT_name("pxHigherPriorityTaskWoken")
 	.dwattr $C$DW$584, DW_AT_TI_symbol_name("_pxHigherPriorityTaskWoken")
-	.dwattr $C$DW$584, DW_AT_type(*$C$DW$T$112)
+	.dwattr $C$DW$584, DW_AT_type(*$C$DW$T$109)
 	.dwattr $C$DW$584, DW_AT_location[DW_OP_bregx 0x24 8]
 $C$DW$585	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$585, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$585, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$585, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$585, DW_AT_location[DW_OP_bregx 0x24 10]
 $C$DW$586	.dwtag  DW_TAG_variable, DW_AT_name("ucOriginalNotifyState")
 	.dwattr $C$DW$586, DW_AT_TI_symbol_name("_ucOriginalNotifyState")
-	.dwattr $C$DW$586, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$586, DW_AT_type(*$C$DW$T$30)
 	.dwattr $C$DW$586, DW_AT_location[DW_OP_bregx 0x24 12]
 $C$DW$587	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
 	.dwattr $C$DW$587, DW_AT_TI_symbol_name("_xReturn")
-	.dwattr $C$DW$587, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$587, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$587, DW_AT_location[DW_OP_bregx 0x24 13]
 $C$DW$588	.dwtag  DW_TAG_variable, DW_AT_name("uxSavedInterruptStatus")
 	.dwattr $C$DW$588, DW_AT_TI_symbol_name("_uxSavedInterruptStatus")
-	.dwattr $C$DW$588, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$588, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$588, DW_AT_location[DW_OP_bregx 0x24 14]
         MOV XAR2, dbl(*SP(#8))
         MOV XAR1, dbl(*SP(#6))
@@ -8286,7 +8286,7 @@ $C$DW$592	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$593	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$593, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L279:1:1537091773")
+	.dwattr $C$DW$593, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L279:1:1537186495")
 	.dwattr $C$DW$593, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$593, DW_AT_TI_begin_line(0x1308)
 	.dwattr $C$DW$593, DW_AT_TI_end_line(0x1308)
@@ -8297,7 +8297,7 @@ $C$DW$594	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$595	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$595, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L274:1:1537091773")
+	.dwattr $C$DW$595, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L274:1:1537186495")
 	.dwattr $C$DW$595, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$595, DW_AT_TI_begin_line(0x12fd)
 	.dwattr $C$DW$595, DW_AT_TI_end_line(0x12fd)
@@ -8308,7 +8308,7 @@ $C$DW$596	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$597	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$597, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L264:1:1537091773")
+	.dwattr $C$DW$597, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L264:1:1537186495")
 	.dwattr $C$DW$597, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$597, DW_AT_TI_begin_line(0x12ba)
 	.dwattr $C$DW$597, DW_AT_TI_end_line(0x12ba)
@@ -8341,11 +8341,11 @@ $C$DW$599	.dwtag  DW_TAG_subprogram, DW_AT_name("vTaskNotifyGiveFromISR")
 	.dwfde $C$DW$CIE, _vTaskNotifyGiveFromISR
 $C$DW$600	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTaskToNotify")
 	.dwattr $C$DW$600, DW_AT_TI_symbol_name("_xTaskToNotify")
-	.dwattr $C$DW$600, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$600, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$600, DW_AT_location[DW_OP_reg17]
 $C$DW$601	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pxHigherPriorityTaskWoken")
 	.dwattr $C$DW$601, DW_AT_TI_symbol_name("_pxHigherPriorityTaskWoken")
-	.dwattr $C$DW$601, DW_AT_type(*$C$DW$T$112)
+	.dwattr $C$DW$601, DW_AT_type(*$C$DW$T$109)
 	.dwattr $C$DW$601, DW_AT_location[DW_OP_reg19]
 ;*******************************************************************************
 ;* FUNCTION NAME: vTaskNotifyGiveFromISR                                       *
@@ -8365,23 +8365,23 @@ _vTaskNotifyGiveFromISR:
 	.dwcfi	cfa_offset, 10
 $C$DW$602	.dwtag  DW_TAG_variable, DW_AT_name("xTaskToNotify")
 	.dwattr $C$DW$602, DW_AT_TI_symbol_name("_xTaskToNotify")
-	.dwattr $C$DW$602, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$602, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$602, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$603	.dwtag  DW_TAG_variable, DW_AT_name("pxHigherPriorityTaskWoken")
 	.dwattr $C$DW$603, DW_AT_TI_symbol_name("_pxHigherPriorityTaskWoken")
-	.dwattr $C$DW$603, DW_AT_type(*$C$DW$T$112)
+	.dwattr $C$DW$603, DW_AT_type(*$C$DW$T$109)
 	.dwattr $C$DW$603, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$604	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$604, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$604, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$604, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$604, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$605	.dwtag  DW_TAG_variable, DW_AT_name("ucOriginalNotifyState")
 	.dwattr $C$DW$605, DW_AT_TI_symbol_name("_ucOriginalNotifyState")
-	.dwattr $C$DW$605, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$605, DW_AT_type(*$C$DW$T$30)
 	.dwattr $C$DW$605, DW_AT_location[DW_OP_bregx 0x24 6]
 $C$DW$606	.dwtag  DW_TAG_variable, DW_AT_name("uxSavedInterruptStatus")
 	.dwattr $C$DW$606, DW_AT_TI_symbol_name("_uxSavedInterruptStatus")
-	.dwattr $C$DW$606, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$606, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$606, DW_AT_location[DW_OP_bregx 0x24 7]
         MOV XAR1, dbl(*SP(#2))
         MOV XAR0, dbl(*SP(#0))
@@ -8520,7 +8520,7 @@ $C$DW$610	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$611	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$611, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L289:1:1537091773")
+	.dwattr $C$DW$611, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L289:1:1537186495")
 	.dwattr $C$DW$611, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$611, DW_AT_TI_begin_line(0x1360)
 	.dwattr $C$DW$611, DW_AT_TI_end_line(0x1360)
@@ -8531,7 +8531,7 @@ $C$DW$612	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$613	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$613, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L286:1:1537091773")
+	.dwattr $C$DW$613, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\tasks_sysStk.asm:$C$L286:1:1537186495")
 	.dwattr $C$DW$613, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$613, DW_AT_TI_begin_line(0x133a)
 	.dwattr $C$DW$613, DW_AT_TI_end_line(0x133a)
@@ -8555,7 +8555,7 @@ $C$DW$615	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskNotifyStateClear")
 	.dwattr $C$DW$615, DW_AT_high_pc(0x00)
 	.dwattr $C$DW$615, DW_AT_TI_symbol_name("_xTaskNotifyStateClear")
 	.dwattr $C$DW$615, DW_AT_external
-	.dwattr $C$DW$615, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$615, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$615, DW_AT_TI_begin_file("../FreeRTOS/Source/tasks_sysStk.c")
 	.dwattr $C$DW$615, DW_AT_TI_begin_line(0x138b)
 	.dwattr $C$DW$615, DW_AT_TI_begin_column(0x0d)
@@ -8565,7 +8565,7 @@ $C$DW$615	.dwtag  DW_TAG_subprogram, DW_AT_name("xTaskNotifyStateClear")
 	.dwfde $C$DW$CIE, _xTaskNotifyStateClear
 $C$DW$616	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTask")
 	.dwattr $C$DW$616, DW_AT_TI_symbol_name("_xTask")
-	.dwattr $C$DW$616, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$616, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$616, DW_AT_location[DW_OP_reg17]
 ;*******************************************************************************
 ;* FUNCTION NAME: xTaskNotifyStateClear                                        *
@@ -8585,15 +8585,15 @@ _xTaskNotifyStateClear:
 	.dwcfi	cfa_offset, 6
 $C$DW$617	.dwtag  DW_TAG_variable, DW_AT_name("xTask")
 	.dwattr $C$DW$617, DW_AT_TI_symbol_name("_xTask")
-	.dwattr $C$DW$617, DW_AT_type(*$C$DW$T$74)
+	.dwattr $C$DW$617, DW_AT_type(*$C$DW$T$71)
 	.dwattr $C$DW$617, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$618	.dwtag  DW_TAG_variable, DW_AT_name("pxTCB")
 	.dwattr $C$DW$618, DW_AT_TI_symbol_name("_pxTCB")
-	.dwattr $C$DW$618, DW_AT_type(*$C$DW$T$86)
+	.dwattr $C$DW$618, DW_AT_type(*$C$DW$T$83)
 	.dwattr $C$DW$618, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$619	.dwtag  DW_TAG_variable, DW_AT_name("xReturn")
 	.dwattr $C$DW$619, DW_AT_TI_symbol_name("_xReturn")
-	.dwattr $C$DW$619, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$619, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$619, DW_AT_location[DW_OP_bregx 0x24 4]
         MOV XAR0, dbl(*SP(#0))
 	.dwpsn	file "../FreeRTOS/Source/tasks_sysStk.c",line 5010,column 3,is_stmt
@@ -8672,11 +8672,11 @@ $C$DW$621	.dwtag  DW_TAG_subprogram, DW_AT_name("prvAddCurrentTaskToDelayedList"
 	.dwfde $C$DW$CIE, _prvAddCurrentTaskToDelayedList
 $C$DW$622	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$622, DW_AT_TI_symbol_name("_xTicksToWait")
-	.dwattr $C$DW$622, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$622, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$622, DW_AT_location[DW_OP_reg0]
 $C$DW$623	.dwtag  DW_TAG_formal_parameter, DW_AT_name("xCanBlockIndefinitely")
 	.dwattr $C$DW$623, DW_AT_TI_symbol_name("_xCanBlockIndefinitely")
-	.dwattr $C$DW$623, DW_AT_type(*$C$DW$T$114)
+	.dwattr $C$DW$623, DW_AT_type(*$C$DW$T$111)
 	.dwattr $C$DW$623, DW_AT_location[DW_OP_reg12]
 ;*******************************************************************************
 ;* FUNCTION NAME: prvAddCurrentTaskToDelayedList                               *
@@ -8696,19 +8696,19 @@ _prvAddCurrentTaskToDelayedList:
 	.dwcfi	cfa_offset, 10
 $C$DW$624	.dwtag  DW_TAG_variable, DW_AT_name("xTicksToWait")
 	.dwattr $C$DW$624, DW_AT_TI_symbol_name("_xTicksToWait")
-	.dwattr $C$DW$624, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$624, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$624, DW_AT_location[DW_OP_bregx 0x24 0]
 $C$DW$625	.dwtag  DW_TAG_variable, DW_AT_name("xCanBlockIndefinitely")
 	.dwattr $C$DW$625, DW_AT_TI_symbol_name("_xCanBlockIndefinitely")
-	.dwattr $C$DW$625, DW_AT_type(*$C$DW$T$114)
+	.dwattr $C$DW$625, DW_AT_type(*$C$DW$T$111)
 	.dwattr $C$DW$625, DW_AT_location[DW_OP_bregx 0x24 2]
 $C$DW$626	.dwtag  DW_TAG_variable, DW_AT_name("xTimeToWake")
 	.dwattr $C$DW$626, DW_AT_TI_symbol_name("_xTimeToWake")
-	.dwattr $C$DW$626, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$626, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$626, DW_AT_location[DW_OP_bregx 0x24 4]
 $C$DW$627	.dwtag  DW_TAG_variable, DW_AT_name("xConstTickCount")
 	.dwattr $C$DW$627, DW_AT_TI_symbol_name("_xConstTickCount")
-	.dwattr $C$DW$627, DW_AT_type(*$C$DW$T$98)
+	.dwattr $C$DW$627, DW_AT_type(*$C$DW$T$95)
 	.dwattr $C$DW$627, DW_AT_location[DW_OP_bregx 0x24 6]
         MOV T0, *SP(#2) ; |5034| 
         MOV AC0, dbl(*SP(#0)) ; |5034| 
@@ -8846,37 +8846,37 @@ $C$FSL1:	.string	"IDLE",0
 ;* TYPE INFORMATION                                                            *
 ;*******************************************************************************
 
-$C$DW$T$48	.dwtag  DW_TAG_enumeration_type
-	.dwattr $C$DW$T$48, DW_AT_byte_size(0x01)
+$C$DW$T$45	.dwtag  DW_TAG_enumeration_type
+	.dwattr $C$DW$T$45, DW_AT_byte_size(0x01)
 $C$DW$633	.dwtag  DW_TAG_enumerator, DW_AT_name("eNoAction"), DW_AT_const_value(0x00)
 $C$DW$634	.dwtag  DW_TAG_enumerator, DW_AT_name("eSetBits"), DW_AT_const_value(0x01)
 $C$DW$635	.dwtag  DW_TAG_enumerator, DW_AT_name("eIncrement"), DW_AT_const_value(0x02)
 $C$DW$636	.dwtag  DW_TAG_enumerator, DW_AT_name("eSetValueWithOverwrite"), DW_AT_const_value(0x03)
 $C$DW$637	.dwtag  DW_TAG_enumerator, DW_AT_name("eSetValueWithoutOverwrite"), DW_AT_const_value(0x04)
-	.dwendtag $C$DW$T$48
+	.dwendtag $C$DW$T$45
 
-$C$DW$T$49	.dwtag  DW_TAG_typedef, DW_AT_name("eNotifyAction")
-	.dwattr $C$DW$T$49, DW_AT_type(*$C$DW$T$48)
-	.dwattr $C$DW$T$49, DW_AT_language(DW_LANG_C)
+$C$DW$T$46	.dwtag  DW_TAG_typedef, DW_AT_name("eNotifyAction")
+	.dwattr $C$DW$T$46, DW_AT_type(*$C$DW$T$45)
+	.dwattr $C$DW$T$46, DW_AT_language(DW_LANG_C)
 $C$DW$T$3	.dwtag  DW_TAG_pointer_type
 	.dwattr $C$DW$T$3, DW_AT_address_class(0x17)
 $C$DW$638	.dwtag  DW_TAG_TI_far_type
 	.dwattr $C$DW$638, DW_AT_type(*$C$DW$T$3)
-$C$DW$T$55	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$55, DW_AT_type(*$C$DW$638)
+$C$DW$T$52	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$52, DW_AT_type(*$C$DW$638)
 
-$C$DW$T$58	.dwtag  DW_TAG_subroutine_type
-	.dwattr $C$DW$T$58, DW_AT_language(DW_LANG_C)
+$C$DW$T$55	.dwtag  DW_TAG_subroutine_type
+	.dwattr $C$DW$T$55, DW_AT_language(DW_LANG_C)
 $C$DW$639	.dwtag  DW_TAG_formal_parameter
 	.dwattr $C$DW$639, DW_AT_type(*$C$DW$T$3)
-	.dwendtag $C$DW$T$58
+	.dwendtag $C$DW$T$55
 
-$C$DW$T$59	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$59, DW_AT_type(*$C$DW$T$58)
-	.dwattr $C$DW$T$59, DW_AT_address_class(0x20)
-$C$DW$T$60	.dwtag  DW_TAG_typedef, DW_AT_name("TaskFunction_t")
-	.dwattr $C$DW$T$60, DW_AT_type(*$C$DW$T$59)
-	.dwattr $C$DW$T$60, DW_AT_language(DW_LANG_C)
+$C$DW$T$56	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$56, DW_AT_type(*$C$DW$T$55)
+	.dwattr $C$DW$T$56, DW_AT_address_class(0x20)
+$C$DW$T$57	.dwtag  DW_TAG_typedef, DW_AT_name("TaskFunction_t")
+	.dwattr $C$DW$T$57, DW_AT_type(*$C$DW$T$56)
+	.dwattr $C$DW$T$57, DW_AT_language(DW_LANG_C)
 $C$DW$T$4	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
 	.dwattr $C$DW$T$4, DW_AT_name("bool")
@@ -8889,23 +8889,23 @@ $C$DW$T$6	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
 	.dwattr $C$DW$T$6, DW_AT_name("unsigned char")
 	.dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
-$C$DW$T$33	.dwtag  DW_TAG_typedef, DW_AT_name("uint8_t")
-	.dwattr $C$DW$T$33, DW_AT_type(*$C$DW$T$6)
-	.dwattr $C$DW$T$33, DW_AT_language(DW_LANG_C)
-$C$DW$T$117	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$117, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$T$117, DW_AT_address_class(0x17)
+$C$DW$T$30	.dwtag  DW_TAG_typedef, DW_AT_name("uint8_t")
+	.dwattr $C$DW$T$30, DW_AT_type(*$C$DW$T$6)
+	.dwattr $C$DW$T$30, DW_AT_language(DW_LANG_C)
+$C$DW$T$114	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$114, DW_AT_type(*$C$DW$T$30)
+	.dwattr $C$DW$T$114, DW_AT_address_class(0x17)
 $C$DW$640	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$640, DW_AT_type(*$C$DW$T$33)
-$C$DW$T$34	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$34, DW_AT_type(*$C$DW$640)
+	.dwattr $C$DW$640, DW_AT_type(*$C$DW$T$30)
+$C$DW$T$31	.dwtag  DW_TAG_volatile_type
+	.dwattr $C$DW$T$31, DW_AT_type(*$C$DW$640)
 $C$DW$641	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$641, DW_AT_type(*$C$DW$T$33)
-$C$DW$T$118	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$118, DW_AT_type(*$C$DW$641)
-$C$DW$T$119	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$119, DW_AT_type(*$C$DW$T$118)
-	.dwattr $C$DW$T$119, DW_AT_address_class(0x17)
+	.dwattr $C$DW$641, DW_AT_type(*$C$DW$T$30)
+$C$DW$T$115	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$115, DW_AT_type(*$C$DW$641)
+$C$DW$T$116	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$116, DW_AT_type(*$C$DW$T$115)
+	.dwattr $C$DW$T$116, DW_AT_address_class(0x17)
 $C$DW$T$7	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
 	.dwattr $C$DW$T$7, DW_AT_name("wchar_t")
@@ -8914,35 +8914,35 @@ $C$DW$T$8	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$8, DW_AT_name("short")
 	.dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
-$C$DW$T$46	.dwtag  DW_TAG_typedef, DW_AT_name("BaseType_t")
-	.dwattr $C$DW$T$46, DW_AT_type(*$C$DW$T$8)
-	.dwattr $C$DW$T$46, DW_AT_language(DW_LANG_C)
+$C$DW$T$43	.dwtag  DW_TAG_typedef, DW_AT_name("BaseType_t")
+	.dwattr $C$DW$T$43, DW_AT_type(*$C$DW$T$8)
+	.dwattr $C$DW$T$43, DW_AT_language(DW_LANG_C)
 $C$DW$642	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$642, DW_AT_type(*$C$DW$T$46)
-$C$DW$T$114	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$114, DW_AT_type(*$C$DW$642)
+	.dwattr $C$DW$642, DW_AT_type(*$C$DW$T$43)
+$C$DW$T$111	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$111, DW_AT_type(*$C$DW$642)
 $C$DW$643	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$643, DW_AT_type(*$C$DW$T$46)
-$C$DW$T$120	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$120, DW_AT_type(*$C$DW$643)
-$C$DW$T$112	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$112, DW_AT_type(*$C$DW$T$46)
-	.dwattr $C$DW$T$112, DW_AT_address_class(0x17)
+	.dwattr $C$DW$643, DW_AT_type(*$C$DW$T$43)
+$C$DW$T$117	.dwtag  DW_TAG_volatile_type
+	.dwattr $C$DW$T$117, DW_AT_type(*$C$DW$643)
+$C$DW$T$109	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$109, DW_AT_type(*$C$DW$T$43)
+	.dwattr $C$DW$T$109, DW_AT_address_class(0x17)
 $C$DW$T$9	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$9, DW_AT_name("unsigned short")
 	.dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
-$C$DW$T$27	.dwtag  DW_TAG_typedef, DW_AT_name("UBaseType_t")
-	.dwattr $C$DW$T$27, DW_AT_type(*$C$DW$T$9)
-	.dwattr $C$DW$T$27, DW_AT_language(DW_LANG_C)
+$C$DW$T$25	.dwtag  DW_TAG_typedef, DW_AT_name("UBaseType_t")
+	.dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$9)
+	.dwattr $C$DW$T$25, DW_AT_language(DW_LANG_C)
 $C$DW$644	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$644, DW_AT_type(*$C$DW$T$27)
-$C$DW$T$36	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$36, DW_AT_type(*$C$DW$644)
+	.dwattr $C$DW$644, DW_AT_type(*$C$DW$T$25)
+$C$DW$T$33	.dwtag  DW_TAG_volatile_type
+	.dwattr $C$DW$T$33, DW_AT_type(*$C$DW$644)
 $C$DW$645	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$645, DW_AT_type(*$C$DW$T$27)
-$C$DW$T$139	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$139, DW_AT_type(*$C$DW$645)
+	.dwattr $C$DW$645, DW_AT_type(*$C$DW$T$25)
+$C$DW$T$136	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$136, DW_AT_type(*$C$DW$645)
 $C$DW$T$10	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$10, DW_AT_name("int")
@@ -8951,39 +8951,33 @@ $C$DW$T$11	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$11, DW_AT_name("unsigned int")
 	.dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
-$C$DW$T$21	.dwtag  DW_TAG_typedef, DW_AT_name("StackType_t")
-	.dwattr $C$DW$T$21, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$21, DW_AT_language(DW_LANG_C)
+$C$DW$T$19	.dwtag  DW_TAG_typedef, DW_AT_name("StackType_t")
+	.dwattr $C$DW$T$19, DW_AT_type(*$C$DW$T$11)
+	.dwattr $C$DW$T$19, DW_AT_language(DW_LANG_C)
 $C$DW$646	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$646, DW_AT_type(*$C$DW$T$21)
+	.dwattr $C$DW$646, DW_AT_type(*$C$DW$T$19)
 $C$DW$T$22	.dwtag  DW_TAG_volatile_type
 	.dwattr $C$DW$T$22, DW_AT_type(*$C$DW$646)
 $C$DW$T$23	.dwtag  DW_TAG_pointer_type
 	.dwattr $C$DW$T$23, DW_AT_type(*$C$DW$T$22)
 	.dwattr $C$DW$T$23, DW_AT_address_class(0x17)
-$C$DW$T$28	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$28, DW_AT_type(*$C$DW$T$21)
-	.dwattr $C$DW$T$28, DW_AT_address_class(0x17)
-$C$DW$T$19	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$19, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$19, DW_AT_address_class(0x17)
+$C$DW$T$20	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$20, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$T$20, DW_AT_address_class(0x17)
 $C$DW$647	.dwtag  DW_TAG_TI_far_type
 	.dwattr $C$DW$647, DW_AT_type(*$C$DW$T$11)
-$C$DW$T$24	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$24, DW_AT_type(*$C$DW$647)
-$C$DW$T$25	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$24)
-	.dwattr $C$DW$T$25, DW_AT_address_class(0x17)
-$C$DW$T$50	.dwtag  DW_TAG_typedef, DW_AT_name("size_t")
-	.dwattr $C$DW$T$50, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$50, DW_AT_language(DW_LANG_C)
-$C$DW$T$123	.dwtag  DW_TAG_typedef, DW_AT_name("uint16_t")
-	.dwattr $C$DW$T$123, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$T$123, DW_AT_language(DW_LANG_C)
+$C$DW$T$142	.dwtag  DW_TAG_volatile_type
+	.dwattr $C$DW$T$142, DW_AT_type(*$C$DW$647)
+$C$DW$T$47	.dwtag  DW_TAG_typedef, DW_AT_name("size_t")
+	.dwattr $C$DW$T$47, DW_AT_type(*$C$DW$T$11)
+	.dwattr $C$DW$T$47, DW_AT_language(DW_LANG_C)
+$C$DW$T$120	.dwtag  DW_TAG_typedef, DW_AT_name("uint16_t")
+	.dwattr $C$DW$T$120, DW_AT_type(*$C$DW$T$11)
+	.dwattr $C$DW$T$120, DW_AT_language(DW_LANG_C)
 $C$DW$648	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$648, DW_AT_type(*$C$DW$T$123)
-$C$DW$T$124	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$124, DW_AT_type(*$C$DW$648)
+	.dwattr $C$DW$648, DW_AT_type(*$C$DW$T$120)
+$C$DW$T$121	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$121, DW_AT_type(*$C$DW$648)
 $C$DW$T$12	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$12, DW_AT_name("long")
@@ -8992,45 +8986,45 @@ $C$DW$T$13	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr $C$DW$T$13, DW_AT_name("unsigned long")
 	.dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
-$C$DW$T$40	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
-	.dwattr $C$DW$T$40, DW_AT_type(*$C$DW$T$13)
-	.dwattr $C$DW$T$40, DW_AT_language(DW_LANG_C)
+$C$DW$T$37	.dwtag  DW_TAG_typedef, DW_AT_name("TickType_t")
+	.dwattr $C$DW$T$37, DW_AT_type(*$C$DW$T$13)
+	.dwattr $C$DW$T$37, DW_AT_language(DW_LANG_C)
 $C$DW$649	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$649, DW_AT_type(*$C$DW$T$40)
-$C$DW$T$98	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$98, DW_AT_type(*$C$DW$649)
+	.dwattr $C$DW$649, DW_AT_type(*$C$DW$T$37)
+$C$DW$T$95	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$95, DW_AT_type(*$C$DW$649)
 $C$DW$650	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$650, DW_AT_type(*$C$DW$T$40)
-$C$DW$T$147	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$147, DW_AT_type(*$C$DW$650)
-$C$DW$T$96	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$96, DW_AT_type(*$C$DW$T$40)
-	.dwattr $C$DW$T$96, DW_AT_address_class(0x17)
+	.dwattr $C$DW$650, DW_AT_type(*$C$DW$T$37)
+$C$DW$T$145	.dwtag  DW_TAG_volatile_type
+	.dwattr $C$DW$T$145, DW_AT_type(*$C$DW$650)
+$C$DW$T$93	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$93, DW_AT_type(*$C$DW$T$37)
+	.dwattr $C$DW$T$93, DW_AT_address_class(0x17)
 $C$DW$651	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$651, DW_AT_type(*$C$DW$T$96)
-$C$DW$T$97	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$97, DW_AT_type(*$C$DW$651)
-$C$DW$T$31	.dwtag  DW_TAG_typedef, DW_AT_name("uint32_t")
-	.dwattr $C$DW$T$31, DW_AT_type(*$C$DW$T$13)
-	.dwattr $C$DW$T$31, DW_AT_language(DW_LANG_C)
-$C$DW$T$135	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$135, DW_AT_type(*$C$DW$T$31)
-	.dwattr $C$DW$T$135, DW_AT_address_class(0x17)
+	.dwattr $C$DW$651, DW_AT_type(*$C$DW$T$93)
+$C$DW$T$94	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$94, DW_AT_type(*$C$DW$651)
+$C$DW$T$28	.dwtag  DW_TAG_typedef, DW_AT_name("uint32_t")
+	.dwattr $C$DW$T$28, DW_AT_type(*$C$DW$T$13)
+	.dwattr $C$DW$T$28, DW_AT_language(DW_LANG_C)
+$C$DW$T$132	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$132, DW_AT_type(*$C$DW$T$28)
+	.dwattr $C$DW$T$132, DW_AT_address_class(0x17)
 $C$DW$652	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$652, DW_AT_type(*$C$DW$T$31)
-$C$DW$T$32	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$32, DW_AT_type(*$C$DW$652)
+	.dwattr $C$DW$652, DW_AT_type(*$C$DW$T$28)
+$C$DW$T$29	.dwtag  DW_TAG_volatile_type
+	.dwattr $C$DW$T$29, DW_AT_type(*$C$DW$652)
 $C$DW$653	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$653, DW_AT_type(*$C$DW$T$31)
-$C$DW$T$81	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$81, DW_AT_type(*$C$DW$653)
-$C$DW$T$150	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$150, DW_AT_type(*$C$DW$T$81)
-	.dwattr $C$DW$T$150, DW_AT_address_class(0x17)
+	.dwattr $C$DW$653, DW_AT_type(*$C$DW$T$28)
+$C$DW$T$78	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$78, DW_AT_type(*$C$DW$653)
+$C$DW$T$148	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$148, DW_AT_type(*$C$DW$T$78)
+	.dwattr $C$DW$T$148, DW_AT_address_class(0x17)
 $C$DW$654	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$654, DW_AT_type(*$C$DW$T$150)
-$C$DW$T$151	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$151, DW_AT_type(*$C$DW$654)
+	.dwattr $C$DW$654, DW_AT_type(*$C$DW$T$148)
+$C$DW$T$149	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$149, DW_AT_type(*$C$DW$654)
 $C$DW$T$14	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
 	.dwattr $C$DW$T$14, DW_AT_name("long long")
@@ -9055,58 +9049,58 @@ $C$DW$T$18	.dwtag  DW_TAG_base_type
 	.dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
 	.dwattr $C$DW$T$18, DW_AT_name("long double")
 	.dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
-$C$DW$T$29	.dwtag  DW_TAG_base_type
-	.dwattr $C$DW$T$29, DW_AT_encoding(DW_ATE_signed_char)
-	.dwattr $C$DW$T$29, DW_AT_name("signed char")
-	.dwattr $C$DW$T$29, DW_AT_byte_size(0x01)
+$C$DW$T$26	.dwtag  DW_TAG_base_type
+	.dwattr $C$DW$T$26, DW_AT_encoding(DW_ATE_signed_char)
+	.dwattr $C$DW$T$26, DW_AT_name("signed char")
+	.dwattr $C$DW$T$26, DW_AT_byte_size(0x01)
 
-$C$DW$T$30	.dwtag  DW_TAG_array_type
-	.dwattr $C$DW$T$30, DW_AT_type(*$C$DW$T$29)
-	.dwattr $C$DW$T$30, DW_AT_language(DW_LANG_C)
-	.dwattr $C$DW$T$30, DW_AT_byte_size(0x08)
+$C$DW$T$27	.dwtag  DW_TAG_array_type
+	.dwattr $C$DW$T$27, DW_AT_type(*$C$DW$T$26)
+	.dwattr $C$DW$T$27, DW_AT_language(DW_LANG_C)
+	.dwattr $C$DW$T$27, DW_AT_byte_size(0x08)
 $C$DW$655	.dwtag  DW_TAG_subrange_type
 	.dwattr $C$DW$655, DW_AT_upper_bound(0x07)
-	.dwendtag $C$DW$T$30
+	.dwendtag $C$DW$T$27
 
-$C$DW$T$75	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$75, DW_AT_type(*$C$DW$T$29)
-	.dwattr $C$DW$T$75, DW_AT_address_class(0x17)
+$C$DW$T$72	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$72, DW_AT_type(*$C$DW$T$26)
+	.dwattr $C$DW$T$72, DW_AT_address_class(0x17)
 $C$DW$656	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$656, DW_AT_type(*$C$DW$T$29)
-$C$DW$T$78	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$78, DW_AT_type(*$C$DW$656)
-$C$DW$T$79	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$79, DW_AT_type(*$C$DW$T$78)
-	.dwattr $C$DW$T$79, DW_AT_address_class(0x17)
+	.dwattr $C$DW$656, DW_AT_type(*$C$DW$T$26)
+$C$DW$T$75	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$75, DW_AT_type(*$C$DW$656)
+$C$DW$T$76	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$76, DW_AT_type(*$C$DW$T$75)
+	.dwattr $C$DW$T$76, DW_AT_address_class(0x17)
 $C$DW$657	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$657, DW_AT_type(*$C$DW$T$79)
-$C$DW$T$80	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$80, DW_AT_type(*$C$DW$657)
+	.dwattr $C$DW$657, DW_AT_type(*$C$DW$T$76)
+$C$DW$T$77	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$77, DW_AT_type(*$C$DW$657)
 
-$C$DW$T$20	.dwtag  DW_TAG_structure_type
-	.dwattr $C$DW$T$20, DW_AT_name("tagSTACKSTRUCT")
-	.dwattr $C$DW$T$20, DW_AT_byte_size(0x04)
+$C$DW$T$21	.dwtag  DW_TAG_structure_type
+	.dwattr $C$DW$T$21, DW_AT_name("tagSTACKSTRUCT")
+	.dwattr $C$DW$T$21, DW_AT_byte_size(0x04)
 $C$DW$658	.dwtag  DW_TAG_member
-	.dwattr $C$DW$658, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$658, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$658, DW_AT_name("pxTopOfStack")
 	.dwattr $C$DW$658, DW_AT_TI_symbol_name("_pxTopOfStack")
 	.dwattr $C$DW$658, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
 	.dwattr $C$DW$658, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$659	.dwtag  DW_TAG_member
-	.dwattr $C$DW$659, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$659, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$659, DW_AT_name("pxTopOfSysStack")
 	.dwattr $C$DW$659, DW_AT_TI_symbol_name("_pxTopOfSysStack")
 	.dwattr $C$DW$659, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
 	.dwattr $C$DW$659, DW_AT_accessibility(DW_ACCESS_public)
-	.dwendtag $C$DW$T$20
+	.dwendtag $C$DW$T$21
 
-$C$DW$T$156	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$156, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$T$156, DW_AT_address_class(0x17)
+$C$DW$T$154	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$154, DW_AT_type(*$C$DW$T$21)
+	.dwattr $C$DW$T$154, DW_AT_address_class(0x17)
 
-$C$DW$T$35	.dwtag  DW_TAG_structure_type
-	.dwattr $C$DW$T$35, DW_AT_name("tskTaskControlBlock")
-	.dwattr $C$DW$T$35, DW_AT_byte_size(0x2e)
+$C$DW$T$32	.dwtag  DW_TAG_structure_type
+	.dwattr $C$DW$T$32, DW_AT_name("tskTaskControlBlock")
+	.dwattr $C$DW$T$32, DW_AT_byte_size(0x2e)
 $C$DW$660	.dwtag  DW_TAG_member
 	.dwattr $C$DW$660, DW_AT_type(*$C$DW$T$23)
 	.dwattr $C$DW$660, DW_AT_name("pxTopOfStack")
@@ -9114,203 +9108,203 @@ $C$DW$660	.dwtag  DW_TAG_member
 	.dwattr $C$DW$660, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
 	.dwattr $C$DW$660, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$661	.dwtag  DW_TAG_member
-	.dwattr $C$DW$661, DW_AT_type(*$C$DW$T$25)
+	.dwattr $C$DW$661, DW_AT_type(*$C$DW$T$23)
 	.dwattr $C$DW$661, DW_AT_name("pxTopOfSysStack")
 	.dwattr $C$DW$661, DW_AT_TI_symbol_name("_pxTopOfSysStack")
 	.dwattr $C$DW$661, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
 	.dwattr $C$DW$661, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$662	.dwtag  DW_TAG_member
-	.dwattr $C$DW$662, DW_AT_type(*$C$DW$T$26)
+	.dwattr $C$DW$662, DW_AT_type(*$C$DW$T$24)
 	.dwattr $C$DW$662, DW_AT_name("xStateListItem")
 	.dwattr $C$DW$662, DW_AT_TI_symbol_name("_xStateListItem")
 	.dwattr $C$DW$662, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
 	.dwattr $C$DW$662, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$663	.dwtag  DW_TAG_member
-	.dwattr $C$DW$663, DW_AT_type(*$C$DW$T$26)
+	.dwattr $C$DW$663, DW_AT_type(*$C$DW$T$24)
 	.dwattr $C$DW$663, DW_AT_name("xEventListItem")
 	.dwattr $C$DW$663, DW_AT_TI_symbol_name("_xEventListItem")
 	.dwattr $C$DW$663, DW_AT_data_member_location[DW_OP_plus_uconst 0xe]
 	.dwattr $C$DW$663, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$664	.dwtag  DW_TAG_member
-	.dwattr $C$DW$664, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$664, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$664, DW_AT_name("uxPriority")
 	.dwattr $C$DW$664, DW_AT_TI_symbol_name("_uxPriority")
 	.dwattr $C$DW$664, DW_AT_data_member_location[DW_OP_plus_uconst 0x18]
 	.dwattr $C$DW$664, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$665	.dwtag  DW_TAG_member
-	.dwattr $C$DW$665, DW_AT_type(*$C$DW$T$28)
+	.dwattr $C$DW$665, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$665, DW_AT_name("pxStack")
 	.dwattr $C$DW$665, DW_AT_TI_symbol_name("_pxStack")
 	.dwattr $C$DW$665, DW_AT_data_member_location[DW_OP_plus_uconst 0x1a]
 	.dwattr $C$DW$665, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$666	.dwtag  DW_TAG_member
-	.dwattr $C$DW$666, DW_AT_type(*$C$DW$T$28)
+	.dwattr $C$DW$666, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$666, DW_AT_name("pxSysStack")
 	.dwattr $C$DW$666, DW_AT_TI_symbol_name("_pxSysStack")
 	.dwattr $C$DW$666, DW_AT_data_member_location[DW_OP_plus_uconst 0x1c]
 	.dwattr $C$DW$666, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$667	.dwtag  DW_TAG_member
-	.dwattr $C$DW$667, DW_AT_type(*$C$DW$T$30)
+	.dwattr $C$DW$667, DW_AT_type(*$C$DW$T$27)
 	.dwattr $C$DW$667, DW_AT_name("pcTaskName")
 	.dwattr $C$DW$667, DW_AT_TI_symbol_name("_pcTaskName")
 	.dwattr $C$DW$667, DW_AT_data_member_location[DW_OP_plus_uconst 0x1e]
 	.dwattr $C$DW$667, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$668	.dwtag  DW_TAG_member
-	.dwattr $C$DW$668, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$668, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$668, DW_AT_name("uxCriticalNesting")
 	.dwattr $C$DW$668, DW_AT_TI_symbol_name("_uxCriticalNesting")
 	.dwattr $C$DW$668, DW_AT_data_member_location[DW_OP_plus_uconst 0x26]
 	.dwattr $C$DW$668, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$669	.dwtag  DW_TAG_member
-	.dwattr $C$DW$669, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$669, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$669, DW_AT_name("uxBasePriority")
 	.dwattr $C$DW$669, DW_AT_TI_symbol_name("_uxBasePriority")
 	.dwattr $C$DW$669, DW_AT_data_member_location[DW_OP_plus_uconst 0x27]
 	.dwattr $C$DW$669, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$670	.dwtag  DW_TAG_member
-	.dwattr $C$DW$670, DW_AT_type(*$C$DW$T$27)
+	.dwattr $C$DW$670, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$670, DW_AT_name("uxMutexesHeld")
 	.dwattr $C$DW$670, DW_AT_TI_symbol_name("_uxMutexesHeld")
 	.dwattr $C$DW$670, DW_AT_data_member_location[DW_OP_plus_uconst 0x28]
 	.dwattr $C$DW$670, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$671	.dwtag  DW_TAG_member
-	.dwattr $C$DW$671, DW_AT_type(*$C$DW$T$32)
+	.dwattr $C$DW$671, DW_AT_type(*$C$DW$T$29)
 	.dwattr $C$DW$671, DW_AT_name("ulNotifiedValue")
 	.dwattr $C$DW$671, DW_AT_TI_symbol_name("_ulNotifiedValue")
 	.dwattr $C$DW$671, DW_AT_data_member_location[DW_OP_plus_uconst 0x2a]
 	.dwattr $C$DW$671, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$672	.dwtag  DW_TAG_member
-	.dwattr $C$DW$672, DW_AT_type(*$C$DW$T$34)
+	.dwattr $C$DW$672, DW_AT_type(*$C$DW$T$31)
 	.dwattr $C$DW$672, DW_AT_name("ucNotifyState")
 	.dwattr $C$DW$672, DW_AT_TI_symbol_name("_ucNotifyState")
 	.dwattr $C$DW$672, DW_AT_data_member_location[DW_OP_plus_uconst 0x2c]
 	.dwattr $C$DW$672, DW_AT_accessibility(DW_ACCESS_public)
-	.dwendtag $C$DW$T$35
+	.dwendtag $C$DW$T$32
 
-$C$DW$T$73	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$73, DW_AT_type(*$C$DW$T$35)
-	.dwattr $C$DW$T$73, DW_AT_address_class(0x17)
-$C$DW$T$74	.dwtag  DW_TAG_typedef, DW_AT_name("TaskHandle_t")
-	.dwattr $C$DW$T$74, DW_AT_type(*$C$DW$T$73)
-	.dwattr $C$DW$T$74, DW_AT_language(DW_LANG_C)
+$C$DW$T$70	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$70, DW_AT_type(*$C$DW$T$32)
+	.dwattr $C$DW$T$70, DW_AT_address_class(0x17)
+$C$DW$T$71	.dwtag  DW_TAG_typedef, DW_AT_name("TaskHandle_t")
+	.dwattr $C$DW$T$71, DW_AT_type(*$C$DW$T$70)
+	.dwattr $C$DW$T$71, DW_AT_language(DW_LANG_C)
 $C$DW$673	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$673, DW_AT_type(*$C$DW$T$74)
-$C$DW$T$110	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$110, DW_AT_type(*$C$DW$673)
-$C$DW$T$82	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$82, DW_AT_type(*$C$DW$T$74)
-	.dwattr $C$DW$T$82, DW_AT_address_class(0x17)
+	.dwattr $C$DW$673, DW_AT_type(*$C$DW$T$71)
+$C$DW$T$107	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$107, DW_AT_type(*$C$DW$673)
+$C$DW$T$79	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$79, DW_AT_type(*$C$DW$T$71)
+	.dwattr $C$DW$T$79, DW_AT_address_class(0x17)
 $C$DW$674	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$674, DW_AT_type(*$C$DW$T$82)
-$C$DW$T$83	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$83, DW_AT_type(*$C$DW$674)
-$C$DW$T$84	.dwtag  DW_TAG_typedef, DW_AT_name("tskTCB")
-	.dwattr $C$DW$T$84, DW_AT_type(*$C$DW$T$35)
-	.dwattr $C$DW$T$84, DW_AT_language(DW_LANG_C)
-$C$DW$T$85	.dwtag  DW_TAG_typedef, DW_AT_name("TCB_t")
-	.dwattr $C$DW$T$85, DW_AT_type(*$C$DW$T$84)
-	.dwattr $C$DW$T$85, DW_AT_language(DW_LANG_C)
+	.dwattr $C$DW$674, DW_AT_type(*$C$DW$T$79)
+$C$DW$T$80	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$80, DW_AT_type(*$C$DW$674)
+$C$DW$T$81	.dwtag  DW_TAG_typedef, DW_AT_name("tskTCB")
+	.dwattr $C$DW$T$81, DW_AT_type(*$C$DW$T$32)
+	.dwattr $C$DW$T$81, DW_AT_language(DW_LANG_C)
+$C$DW$T$82	.dwtag  DW_TAG_typedef, DW_AT_name("TCB_t")
+	.dwattr $C$DW$T$82, DW_AT_type(*$C$DW$T$81)
+	.dwattr $C$DW$T$82, DW_AT_language(DW_LANG_C)
 $C$DW$675	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$675, DW_AT_type(*$C$DW$T$85)
-$C$DW$T$158	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$158, DW_AT_type(*$C$DW$675)
-$C$DW$T$159	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$159, DW_AT_type(*$C$DW$T$158)
-	.dwattr $C$DW$T$159, DW_AT_address_class(0x17)
+	.dwattr $C$DW$675, DW_AT_type(*$C$DW$T$82)
+$C$DW$T$156	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$156, DW_AT_type(*$C$DW$675)
+$C$DW$T$157	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$157, DW_AT_type(*$C$DW$T$156)
+	.dwattr $C$DW$T$157, DW_AT_address_class(0x17)
 $C$DW$676	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$676, DW_AT_type(*$C$DW$T$159)
-$C$DW$T$160	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$160, DW_AT_type(*$C$DW$676)
-$C$DW$T$86	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$86, DW_AT_type(*$C$DW$T$85)
-	.dwattr $C$DW$T$86, DW_AT_address_class(0x17)
+	.dwattr $C$DW$676, DW_AT_type(*$C$DW$T$157)
+$C$DW$T$158	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$158, DW_AT_type(*$C$DW$676)
+$C$DW$T$83	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$83, DW_AT_type(*$C$DW$T$82)
+	.dwattr $C$DW$T$83, DW_AT_address_class(0x17)
 $C$DW$677	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$677, DW_AT_type(*$C$DW$T$86)
-$C$DW$T$161	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$161, DW_AT_type(*$C$DW$677)
+	.dwattr $C$DW$677, DW_AT_type(*$C$DW$T$83)
+$C$DW$T$159	.dwtag  DW_TAG_volatile_type
+	.dwattr $C$DW$T$159, DW_AT_type(*$C$DW$677)
 $C$DW$678	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$678, DW_AT_type(*$C$DW$T$86)
-$C$DW$T$162	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$162, DW_AT_type(*$C$DW$678)
+	.dwattr $C$DW$678, DW_AT_type(*$C$DW$T$83)
+$C$DW$T$160	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$160, DW_AT_type(*$C$DW$678)
 
-$C$DW$T$39	.dwtag  DW_TAG_structure_type
-	.dwattr $C$DW$T$39, DW_AT_name("xLIST")
-	.dwattr $C$DW$T$39, DW_AT_byte_size(0x0a)
+$C$DW$T$36	.dwtag  DW_TAG_structure_type
+	.dwattr $C$DW$T$36, DW_AT_name("xLIST")
+	.dwattr $C$DW$T$36, DW_AT_byte_size(0x0a)
 $C$DW$679	.dwtag  DW_TAG_member
-	.dwattr $C$DW$679, DW_AT_type(*$C$DW$T$36)
+	.dwattr $C$DW$679, DW_AT_type(*$C$DW$T$33)
 	.dwattr $C$DW$679, DW_AT_name("uxNumberOfItems")
 	.dwattr $C$DW$679, DW_AT_TI_symbol_name("_uxNumberOfItems")
 	.dwattr $C$DW$679, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
 	.dwattr $C$DW$679, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$680	.dwtag  DW_TAG_member
-	.dwattr $C$DW$680, DW_AT_type(*$C$DW$T$37)
+	.dwattr $C$DW$680, DW_AT_type(*$C$DW$T$34)
 	.dwattr $C$DW$680, DW_AT_name("pxIndex")
 	.dwattr $C$DW$680, DW_AT_TI_symbol_name("_pxIndex")
 	.dwattr $C$DW$680, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
 	.dwattr $C$DW$680, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$681	.dwtag  DW_TAG_member
-	.dwattr $C$DW$681, DW_AT_type(*$C$DW$T$38)
+	.dwattr $C$DW$681, DW_AT_type(*$C$DW$T$35)
 	.dwattr $C$DW$681, DW_AT_name("xListEnd")
 	.dwattr $C$DW$681, DW_AT_TI_symbol_name("_xListEnd")
 	.dwattr $C$DW$681, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
 	.dwattr $C$DW$681, DW_AT_accessibility(DW_ACCESS_public)
-	.dwendtag $C$DW$T$39
+	.dwendtag $C$DW$T$36
 
-$C$DW$T$63	.dwtag  DW_TAG_typedef, DW_AT_name("List_t")
-	.dwattr $C$DW$T$63, DW_AT_type(*$C$DW$T$39)
-	.dwattr $C$DW$T$63, DW_AT_language(DW_LANG_C)
+$C$DW$T$60	.dwtag  DW_TAG_typedef, DW_AT_name("List_t")
+	.dwattr $C$DW$T$60, DW_AT_type(*$C$DW$T$36)
+	.dwattr $C$DW$T$60, DW_AT_language(DW_LANG_C)
 $C$DW$682	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$682, DW_AT_type(*$C$DW$T$63)
-$C$DW$T$130	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$130, DW_AT_type(*$C$DW$682)
-$C$DW$T$131	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$131, DW_AT_type(*$C$DW$T$130)
-	.dwattr $C$DW$T$131, DW_AT_address_class(0x17)
+	.dwattr $C$DW$682, DW_AT_type(*$C$DW$T$60)
+$C$DW$T$127	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$127, DW_AT_type(*$C$DW$682)
+$C$DW$T$128	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$128, DW_AT_type(*$C$DW$T$127)
+	.dwattr $C$DW$T$128, DW_AT_address_class(0x17)
 $C$DW$683	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$683, DW_AT_type(*$C$DW$T$131)
-$C$DW$T$132	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$132, DW_AT_type(*$C$DW$683)
-$C$DW$T$64	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$64, DW_AT_type(*$C$DW$T$63)
-	.dwattr $C$DW$T$64, DW_AT_address_class(0x17)
+	.dwattr $C$DW$683, DW_AT_type(*$C$DW$T$128)
+$C$DW$T$129	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$129, DW_AT_type(*$C$DW$683)
+$C$DW$T$61	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$61, DW_AT_type(*$C$DW$T$60)
+	.dwattr $C$DW$T$61, DW_AT_address_class(0x17)
 $C$DW$684	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$684, DW_AT_type(*$C$DW$T$64)
-$C$DW$T$65	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$65, DW_AT_type(*$C$DW$684)
+	.dwattr $C$DW$684, DW_AT_type(*$C$DW$T$61)
+$C$DW$T$62	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$62, DW_AT_type(*$C$DW$684)
 $C$DW$685	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$685, DW_AT_type(*$C$DW$T$64)
-$C$DW$T$163	.dwtag  DW_TAG_volatile_type
-	.dwattr $C$DW$T$163, DW_AT_type(*$C$DW$685)
+	.dwattr $C$DW$685, DW_AT_type(*$C$DW$T$61)
+$C$DW$T$161	.dwtag  DW_TAG_volatile_type
+	.dwattr $C$DW$T$161, DW_AT_type(*$C$DW$685)
 
-$C$DW$T$164	.dwtag  DW_TAG_array_type
-	.dwattr $C$DW$T$164, DW_AT_type(*$C$DW$T$63)
-	.dwattr $C$DW$T$164, DW_AT_language(DW_LANG_C)
-	.dwattr $C$DW$T$164, DW_AT_byte_size(0x32)
+$C$DW$T$162	.dwtag  DW_TAG_array_type
+	.dwattr $C$DW$T$162, DW_AT_type(*$C$DW$T$60)
+	.dwattr $C$DW$T$162, DW_AT_language(DW_LANG_C)
+	.dwattr $C$DW$T$162, DW_AT_byte_size(0x32)
 $C$DW$686	.dwtag  DW_TAG_subrange_type
 	.dwattr $C$DW$686, DW_AT_upper_bound(0x04)
-	.dwendtag $C$DW$T$164
+	.dwendtag $C$DW$T$162
 
-$C$DW$T$42	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$42, DW_AT_type(*$C$DW$T$39)
-	.dwattr $C$DW$T$42, DW_AT_address_class(0x17)
+$C$DW$T$39	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$39, DW_AT_type(*$C$DW$T$36)
+	.dwattr $C$DW$T$39, DW_AT_address_class(0x17)
 
-$C$DW$T$43	.dwtag  DW_TAG_structure_type
-	.dwattr $C$DW$T$43, DW_AT_name("xLIST_ITEM")
-	.dwattr $C$DW$T$43, DW_AT_byte_size(0x0a)
+$C$DW$T$40	.dwtag  DW_TAG_structure_type
+	.dwattr $C$DW$T$40, DW_AT_name("xLIST_ITEM")
+	.dwattr $C$DW$T$40, DW_AT_byte_size(0x0a)
 $C$DW$687	.dwtag  DW_TAG_member
-	.dwattr $C$DW$687, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$687, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$687, DW_AT_name("xItemValue")
 	.dwattr $C$DW$687, DW_AT_TI_symbol_name("_xItemValue")
 	.dwattr $C$DW$687, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
 	.dwattr $C$DW$687, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$688	.dwtag  DW_TAG_member
-	.dwattr $C$DW$688, DW_AT_type(*$C$DW$T$41)
+	.dwattr $C$DW$688, DW_AT_type(*$C$DW$T$38)
 	.dwattr $C$DW$688, DW_AT_name("pxNext")
 	.dwattr $C$DW$688, DW_AT_TI_symbol_name("_pxNext")
 	.dwattr $C$DW$688, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
 	.dwattr $C$DW$688, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$689	.dwtag  DW_TAG_member
-	.dwattr $C$DW$689, DW_AT_type(*$C$DW$T$41)
+	.dwattr $C$DW$689, DW_AT_type(*$C$DW$T$38)
 	.dwattr $C$DW$689, DW_AT_name("pxPrevious")
 	.dwattr $C$DW$689, DW_AT_TI_symbol_name("_pxPrevious")
 	.dwattr $C$DW$689, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
@@ -9322,30 +9316,30 @@ $C$DW$690	.dwtag  DW_TAG_member
 	.dwattr $C$DW$690, DW_AT_data_member_location[DW_OP_plus_uconst 0x6]
 	.dwattr $C$DW$690, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$691	.dwtag  DW_TAG_member
-	.dwattr $C$DW$691, DW_AT_type(*$C$DW$T$42)
+	.dwattr $C$DW$691, DW_AT_type(*$C$DW$T$39)
 	.dwattr $C$DW$691, DW_AT_name("pvContainer")
 	.dwattr $C$DW$691, DW_AT_TI_symbol_name("_pvContainer")
 	.dwattr $C$DW$691, DW_AT_data_member_location[DW_OP_plus_uconst 0x8]
 	.dwattr $C$DW$691, DW_AT_accessibility(DW_ACCESS_public)
-	.dwendtag $C$DW$T$43
+	.dwendtag $C$DW$T$40
 
-$C$DW$T$26	.dwtag  DW_TAG_typedef, DW_AT_name("ListItem_t")
-	.dwattr $C$DW$T$26, DW_AT_type(*$C$DW$T$43)
-	.dwattr $C$DW$T$26, DW_AT_language(DW_LANG_C)
-$C$DW$T$37	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$37, DW_AT_type(*$C$DW$T$26)
-	.dwattr $C$DW$T$37, DW_AT_address_class(0x17)
+$C$DW$T$24	.dwtag  DW_TAG_typedef, DW_AT_name("ListItem_t")
+	.dwattr $C$DW$T$24, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$T$24, DW_AT_language(DW_LANG_C)
+$C$DW$T$34	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$34, DW_AT_type(*$C$DW$T$24)
+	.dwattr $C$DW$T$34, DW_AT_address_class(0x17)
 $C$DW$692	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$692, DW_AT_type(*$C$DW$T$37)
-$C$DW$T$68	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$68, DW_AT_type(*$C$DW$692)
-$C$DW$T$41	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$41, DW_AT_type(*$C$DW$T$43)
-	.dwattr $C$DW$T$41, DW_AT_address_class(0x17)
+	.dwattr $C$DW$692, DW_AT_type(*$C$DW$T$34)
+$C$DW$T$65	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$65, DW_AT_type(*$C$DW$692)
+$C$DW$T$38	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$38, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$T$38, DW_AT_address_class(0x17)
 
-$C$DW$T$44	.dwtag  DW_TAG_structure_type
-	.dwattr $C$DW$T$44, DW_AT_name("xMEMORY_REGION")
-	.dwattr $C$DW$T$44, DW_AT_byte_size(0x06)
+$C$DW$T$41	.dwtag  DW_TAG_structure_type
+	.dwattr $C$DW$T$41, DW_AT_name("xMEMORY_REGION")
+	.dwattr $C$DW$T$41, DW_AT_byte_size(0x06)
 $C$DW$693	.dwtag  DW_TAG_member
 	.dwattr $C$DW$693, DW_AT_type(*$C$DW$T$3)
 	.dwattr $C$DW$693, DW_AT_name("pvBaseAddress")
@@ -9353,88 +9347,88 @@ $C$DW$693	.dwtag  DW_TAG_member
 	.dwattr $C$DW$693, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
 	.dwattr $C$DW$693, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$694	.dwtag  DW_TAG_member
-	.dwattr $C$DW$694, DW_AT_type(*$C$DW$T$31)
+	.dwattr $C$DW$694, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$694, DW_AT_name("ulLengthInBytes")
 	.dwattr $C$DW$694, DW_AT_TI_symbol_name("_ulLengthInBytes")
 	.dwattr $C$DW$694, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
 	.dwattr $C$DW$694, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$695	.dwtag  DW_TAG_member
-	.dwattr $C$DW$695, DW_AT_type(*$C$DW$T$31)
+	.dwattr $C$DW$695, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$695, DW_AT_name("ulParameters")
 	.dwattr $C$DW$695, DW_AT_TI_symbol_name("_ulParameters")
 	.dwattr $C$DW$695, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
 	.dwattr $C$DW$695, DW_AT_accessibility(DW_ACCESS_public)
-	.dwendtag $C$DW$T$44
+	.dwendtag $C$DW$T$41
 
-$C$DW$T$87	.dwtag  DW_TAG_typedef, DW_AT_name("MemoryRegion_t")
-	.dwattr $C$DW$T$87, DW_AT_type(*$C$DW$T$44)
-	.dwattr $C$DW$T$87, DW_AT_language(DW_LANG_C)
+$C$DW$T$84	.dwtag  DW_TAG_typedef, DW_AT_name("MemoryRegion_t")
+	.dwattr $C$DW$T$84, DW_AT_type(*$C$DW$T$41)
+	.dwattr $C$DW$T$84, DW_AT_language(DW_LANG_C)
 $C$DW$696	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$696, DW_AT_type(*$C$DW$T$87)
-$C$DW$T$88	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$88, DW_AT_type(*$C$DW$696)
-$C$DW$T$89	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$89, DW_AT_type(*$C$DW$T$88)
-	.dwattr $C$DW$T$89, DW_AT_address_class(0x17)
+	.dwattr $C$DW$696, DW_AT_type(*$C$DW$T$84)
+$C$DW$T$85	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$85, DW_AT_type(*$C$DW$696)
+$C$DW$T$86	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$86, DW_AT_type(*$C$DW$T$85)
+	.dwattr $C$DW$T$86, DW_AT_address_class(0x17)
 $C$DW$697	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$697, DW_AT_type(*$C$DW$T$89)
-$C$DW$T$90	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$90, DW_AT_type(*$C$DW$697)
+	.dwattr $C$DW$697, DW_AT_type(*$C$DW$T$86)
+$C$DW$T$87	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$87, DW_AT_type(*$C$DW$697)
 
-$C$DW$T$45	.dwtag  DW_TAG_structure_type
-	.dwattr $C$DW$T$45, DW_AT_name("xMINI_LIST_ITEM")
-	.dwattr $C$DW$T$45, DW_AT_byte_size(0x06)
+$C$DW$T$42	.dwtag  DW_TAG_structure_type
+	.dwattr $C$DW$T$42, DW_AT_name("xMINI_LIST_ITEM")
+	.dwattr $C$DW$T$42, DW_AT_byte_size(0x06)
 $C$DW$698	.dwtag  DW_TAG_member
-	.dwattr $C$DW$698, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$698, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$698, DW_AT_name("xItemValue")
 	.dwattr $C$DW$698, DW_AT_TI_symbol_name("_xItemValue")
 	.dwattr $C$DW$698, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
 	.dwattr $C$DW$698, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$699	.dwtag  DW_TAG_member
-	.dwattr $C$DW$699, DW_AT_type(*$C$DW$T$41)
+	.dwattr $C$DW$699, DW_AT_type(*$C$DW$T$38)
 	.dwattr $C$DW$699, DW_AT_name("pxNext")
 	.dwattr $C$DW$699, DW_AT_TI_symbol_name("_pxNext")
 	.dwattr $C$DW$699, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
 	.dwattr $C$DW$699, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$700	.dwtag  DW_TAG_member
-	.dwattr $C$DW$700, DW_AT_type(*$C$DW$T$41)
+	.dwattr $C$DW$700, DW_AT_type(*$C$DW$T$38)
 	.dwattr $C$DW$700, DW_AT_name("pxPrevious")
 	.dwattr $C$DW$700, DW_AT_TI_symbol_name("_pxPrevious")
 	.dwattr $C$DW$700, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
 	.dwattr $C$DW$700, DW_AT_accessibility(DW_ACCESS_public)
-	.dwendtag $C$DW$T$45
+	.dwendtag $C$DW$T$42
 
-$C$DW$T$38	.dwtag  DW_TAG_typedef, DW_AT_name("MiniListItem_t")
-	.dwattr $C$DW$T$38, DW_AT_type(*$C$DW$T$45)
-	.dwattr $C$DW$T$38, DW_AT_language(DW_LANG_C)
+$C$DW$T$35	.dwtag  DW_TAG_typedef, DW_AT_name("MiniListItem_t")
+	.dwattr $C$DW$T$35, DW_AT_type(*$C$DW$T$42)
+	.dwattr $C$DW$T$35, DW_AT_language(DW_LANG_C)
 
-$C$DW$T$47	.dwtag  DW_TAG_structure_type
-	.dwattr $C$DW$T$47, DW_AT_name("xTIME_OUT")
-	.dwattr $C$DW$T$47, DW_AT_byte_size(0x04)
+$C$DW$T$44	.dwtag  DW_TAG_structure_type
+	.dwattr $C$DW$T$44, DW_AT_name("xTIME_OUT")
+	.dwattr $C$DW$T$44, DW_AT_byte_size(0x04)
 $C$DW$701	.dwtag  DW_TAG_member
-	.dwattr $C$DW$701, DW_AT_type(*$C$DW$T$46)
+	.dwattr $C$DW$701, DW_AT_type(*$C$DW$T$43)
 	.dwattr $C$DW$701, DW_AT_name("xOverflowCount")
 	.dwattr $C$DW$701, DW_AT_TI_symbol_name("_xOverflowCount")
 	.dwattr $C$DW$701, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
 	.dwattr $C$DW$701, DW_AT_accessibility(DW_ACCESS_public)
 $C$DW$702	.dwtag  DW_TAG_member
-	.dwattr $C$DW$702, DW_AT_type(*$C$DW$T$40)
+	.dwattr $C$DW$702, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$702, DW_AT_name("xTimeOnEntering")
 	.dwattr $C$DW$702, DW_AT_TI_symbol_name("_xTimeOnEntering")
 	.dwattr $C$DW$702, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
 	.dwattr $C$DW$702, DW_AT_accessibility(DW_ACCESS_public)
-	.dwendtag $C$DW$T$47
+	.dwendtag $C$DW$T$44
 
-$C$DW$T$105	.dwtag  DW_TAG_typedef, DW_AT_name("TimeOut_t")
-	.dwattr $C$DW$T$105, DW_AT_type(*$C$DW$T$47)
-	.dwattr $C$DW$T$105, DW_AT_language(DW_LANG_C)
-$C$DW$T$106	.dwtag  DW_TAG_pointer_type
-	.dwattr $C$DW$T$106, DW_AT_type(*$C$DW$T$105)
-	.dwattr $C$DW$T$106, DW_AT_address_class(0x17)
+$C$DW$T$102	.dwtag  DW_TAG_typedef, DW_AT_name("TimeOut_t")
+	.dwattr $C$DW$T$102, DW_AT_type(*$C$DW$T$44)
+	.dwattr $C$DW$T$102, DW_AT_language(DW_LANG_C)
+$C$DW$T$103	.dwtag  DW_TAG_pointer_type
+	.dwattr $C$DW$T$103, DW_AT_type(*$C$DW$T$102)
+	.dwattr $C$DW$T$103, DW_AT_address_class(0x17)
 $C$DW$703	.dwtag  DW_TAG_TI_far_type
-	.dwattr $C$DW$703, DW_AT_type(*$C$DW$T$106)
-$C$DW$T$107	.dwtag  DW_TAG_const_type
-	.dwattr $C$DW$T$107, DW_AT_type(*$C$DW$703)
+	.dwattr $C$DW$703, DW_AT_type(*$C$DW$T$103)
+$C$DW$T$104	.dwtag  DW_TAG_const_type
+	.dwattr $C$DW$T$104, DW_AT_type(*$C$DW$703)
 	.dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
 
 ;***************************************************************

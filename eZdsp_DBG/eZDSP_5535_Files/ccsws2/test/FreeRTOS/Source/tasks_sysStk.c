@@ -278,7 +278,7 @@ typedef struct tskTaskControlBlock 			/* The old naming convention is used to pr
 #endif
 		
 #if ( portUSING_SYSSTACK == 1 )
-		volatile portSTACK_TYPE	*pxTopOfSysStack;
+		volatile StackType_t	*pxTopOfSysStack;
 #endif
 		
 	ListItem_t			xStateListItem;	/*< The list that the state list item of a task is reference from denotes the state of that task (Ready, Blocked, Suspended ). */

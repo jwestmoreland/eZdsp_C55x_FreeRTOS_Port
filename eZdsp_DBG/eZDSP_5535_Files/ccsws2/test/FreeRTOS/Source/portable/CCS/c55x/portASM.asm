@@ -2,9 +2,9 @@
 ;  .include "FreeRTOSConfig.h"
 ; 32-bit stack slow mode
 	.mmregs
-;	 .C54CM_on
-;     .CPL_on
-;      .ARMS_off
+	 .C54CM_off
+;     .CPL_off
+      .ARMS_off
 	 .align 4
 ;	.c28_amode
 
@@ -72,7 +72,9 @@ portSAVE_CONTEXT .macro
 ;			pshboth xar5
 
 			mov xar7, dbl (*(#_save_xar7))			; save xar7 
+			.if configUSE_CONTEXT_DEBUG == 1
 			mov xar6, dbl (*(#_save_xar6))
+			.endif
 
 			mov dbl (*(#_pxCurrentTCB)), xar7
 ; does this *always* work?
@@ -81,7 +83,7 @@ portSAVE_CONTEXT .macro
 ;; what about xssp here?
 ;;				mov xsp, dbl (*(#_save_xsp))			; save xsp
 ;;			    mov xssp, dbl (*(#_save_xssp))			; save xssp
-
+		   .if configUSE_CONTEXT_DEBUG == 1
 ;; save current PC (and possible loop bits values)
 ;; for debug - to see if this is being corrupted
 			mov dbl(*ar7), xar6
@@ -95,13 +97,14 @@ portSAVE_CONTEXT .macro
 			add #-2, ar7
 			mov dbl(*ar7), xar6
 			mov xar6,  dbl (*(_DBSTAT_SAVE))
+            mov dbl (*(#_save_xar6)), xar6
 
 ;            mov (*ar7), (*(#_PC_REG_LOW_SAVE))
 ;            mov dbl(*xssp),(*(#_PC_REG_HIGH_SAVE))
 ;			mov (*ssp(#-2)), (*(#_DBSTAT_SAVE))
+			.endif
 
 			mov dbl (*(#_save_xar7)), xar7			; restore xar7
-			mov dbl (*(#_save_xar6)), xar6
 
 			mov xar7, dbl(*sp(#8))				; save xar7
 			mov ar7, *sp(#7)
@@ -178,7 +181,7 @@ portSAVE_CONTEXT .macro
 
 			mov ssp, ar7
 			mov mmap(ST0_55), ar6
-			mov ar6, *ar7(#1)
+			mov ar6, *ar7(#2)
 ;;;			mov  dbl (*(_DBSTAT_SAVE)), *xar7(#2)	; needs to be DBSTAT - don't overwrite DBSTAT
 ;;;			mov ar6, *ar7(#2)
 ;			mov ar7, mmap(ST0_55)
@@ -224,9 +227,9 @@ portSAVE_CONTEXT .macro
 			.endm
 
 portRESTORE_CONTEXT .macro
-;			.C54CM_on
-;			.CPL_on
-;			.ARMS_off
+			.C54CM_off
+;			.CPL_off
+			.ARMS_off
 			.align 4
 
 ; Restore context & return
@@ -292,9 +295,9 @@ portRESTORE_CONTEXT .macro
 
 			mov ssp, ar7
 			mov mmap(ST0_55), ar6
-			mov ar6, *ar7(#1)
+			mov ar6, *ar7(#2)
 ;;			mov mmap(ST0_55), ar6	; needs to be DBSTAT
-;;			mov ar6, *ar7(#2)
+;;			mov ar6, *ar7(#1)
 
 			mov dbl (*(#_pxCurrentTCB)), xar7
 
@@ -302,6 +305,7 @@ portRESTORE_CONTEXT .macro
 			mov dbl (*ar7(#2)), xssp			
 ;;                mov xsp, dbl (*(#_save_xsp))			; save xsp
 ;;			    mov xssp, dbl (*(#_save_xssp))			; save xssp
+			.if configUSE_CONTEXT_RESTORE_DEBUG == 1
 			mov xar7, dbl (*(#_save_xar7))			; save xar7
 			mov xar6, dbl (*(#_save_xar6))
 
@@ -317,9 +321,10 @@ portRESTORE_CONTEXT .macro
 			add #-2, ar7
 			mov dbl(*ar7), xar6
 			mov xar6,  dbl (*(_DBSTAT_RESTORE))
-
-			mov dbl (*(#_save_xar7)), xar7			; restore xar7
 			mov dbl (*(#_save_xar6)), xar6
+			
+			mov dbl (*(#_save_xar7)), xar7			; restore xar7
+			.endif
 
 ;			mov mmap(ST0_55), *ssp(#1)
 ;			mov mmap(STO_55), *ssp(#2)
@@ -365,9 +370,9 @@ portRESTORE_CONTEXT .macro
 			mov *sp(#2), ar7
 			mov ar7, mmap(ST2_55)
 			mov ssp, ar7
-			mov *ar7(#1), ar6
-			mov ar6, mmap(ST0_55)
 			mov *ar7(#2), ar6
+			mov ar6, mmap(ST0_55)
+;			mov *ar7(#2), ar6
 ;			mov ar6, *ssp(#2)
 ;			mov *ssp(#2), ar7
 ;			mov ar6, mmap(ST0_55)	; needs to be DBSTAT

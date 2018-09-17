@@ -81,7 +81,7 @@ void
     for(i=0;i<100;i++);
 
     /* Configuring CLOCKOUT pin */
-    CSL_FINST (CSL_SYSCTRL_REGS->CCSSR, SYS_CCSSR_SRC, MODE9);
+    CSL_FINST (CSL_SYSCTRL_REGS->CCSSR, SYS_CCSSR_SRC, MODE11);				// this will display SYSCLK vs. SAR CLK
     
     return CSL_SOK;
 }

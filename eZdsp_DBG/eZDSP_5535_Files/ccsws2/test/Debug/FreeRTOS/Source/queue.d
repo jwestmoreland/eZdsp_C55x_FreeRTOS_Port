@@ -38,8 +38,6 @@ FreeRTOS/Source/queue.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/So
 FreeRTOS/Source/queue.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/task.h
 FreeRTOS/Source/queue.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/list.h
 FreeRTOS/Source/queue.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/queue.h
-FreeRTOS/Source/queue.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/croutine.h
-FreeRTOS/Source/queue.obj: F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/list.h
 
 ../FreeRTOS/Source/queue.c: 
 F:/ti/ccs8p1/ccsv8/tools/compiler/c5500_4.4.1/include/stdlib.h: 
@@ -79,5 +77,3 @@ F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/mpu_wrappers.h
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/task.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/list.h: 
 F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/queue.h: 
-F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/croutine.h: 
-F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/FreeRTOS/Source/include/list.h: 

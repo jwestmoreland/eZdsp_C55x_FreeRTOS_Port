@@ -12,9 +12,9 @@
          .mmregs
          .include "lpva200.inc"
          
-;         .C54CM_on
-;         .CPL_off
-;         .ARMS_off
+         .C54CM_off
+         .CPL_off
+         .ARMS_off
    
 ;**********************************************************************************
 ;        predefined stack operation modes  
@@ -30,21 +30,21 @@
  		 .global _VECSTART  
  		 .global _vTickISR
 
-        
+        .ref _c_int00
 		;.ref _sarISR
-;        .def RST    
+        .def _RST
 
 ;**********************************************************************************
         .sect "vectors"
         .align  256 
-                .global _VECSTART        
+        .global _VECSTART
 ;**********************************************************************************
-	.def	_RST
+;	.def	_RST
 _VECSTART:
 _RST:		.ivec    reset_isr, C54X_STK ; Reset / Software Interrupt #0 ->slow-32 bit return
 ; _RST:		.ivec    reset_isr, USE_RETA; Reset / Software Interrupt #0 ->fast return
 
-NMI:		.ivec    reset_isr	       ; Nonmaskable Interrupt
+NMI:		.ivec    nmi_isr		       ; Nonmaskable Interrupt
 
 INT0:		.ivec    dummy_isr          ; External User Interrupt #0 
 
@@ -143,7 +143,7 @@ reset_isr:
 		nop_16
 
 ;**********************************************************************************
-;     Enalbe EMIF
+;     Enable EMIF
 ;**********************************************************************************
 
 ;   *port(IDLE_PCGCR) = #0x0
