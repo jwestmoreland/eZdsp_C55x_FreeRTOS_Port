@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Mon Sep 17 05:14:46 2018                                 *
+;* Date/Time created: Tue Sep 18 04:49:41 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -264,7 +264,7 @@ $C$DW$45	.dwtag  DW_TAG_variable, DW_AT_name("usCriticalNesting")
 	.bss	_ulValueToSend$1,2,0,2
 	.bss	_usLastTaskCheck$2,1,0,0
 	.bss	_ulLastExpectedValue$3,2,0,2
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1412812 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1027612 
 	.sect	".text"
 	.align 4
 	.global	_vStartDynamicPriorityTasks
@@ -505,7 +505,7 @@ $C$DW$L$_vLimitedIncrementTask$3$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$61	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$61, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L2:1:1537186486")
+	.dwattr $C$DW$61, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L2:1:1537271381")
 	.dwattr $C$DW$61, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/dynamic.c")
 	.dwattr $C$DW$61, DW_AT_TI_begin_line(0xb9)
 	.dwattr $C$DW$61, DW_AT_TI_end_line(0xc2)
@@ -683,7 +683,7 @@ $C$DW$L$_vContinuousIncrementTask$11$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$74	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$74, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L8:1:1537186486")
+	.dwattr $C$DW$74, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L8:1:1537271381")
 	.dwattr $C$DW$74, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/dynamic.c")
 	.dwattr $C$DW$74, DW_AT_TI_begin_line(0xe6)
 	.dwattr $C$DW$74, DW_AT_TI_end_line(0xe6)
@@ -694,7 +694,7 @@ $C$DW$75	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$76	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$76, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L5:1:1537186486")
+	.dwattr $C$DW$76, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L5:1:1537271381")
 	.dwattr $C$DW$76, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/dynamic.c")
 	.dwattr $C$DW$76, DW_AT_TI_begin_line(0xdd)
 	.dwattr $C$DW$76, DW_AT_TI_end_line(0xdd)
@@ -705,7 +705,7 @@ $C$DW$77	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$78	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$78, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L3:1:1537186486")
+	.dwattr $C$DW$78, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L3:1:1537271381")
 	.dwattr $C$DW$78, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/dynamic.c")
 	.dwattr $C$DW$78, DW_AT_TI_begin_line(0xd7)
 	.dwattr $C$DW$78, DW_AT_TI_end_line(0xe7)
@@ -832,7 +832,7 @@ $C$DW$92	.dwtag  DW_TAG_TI_branch
         CALL #_vTaskResume ; |271| 
                                         ; call occurs [#_vTaskResume] ; |271| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/dynamic.c",line 284,column 4,is_stmt
-        MOV #128, AC0 ; |284| 
+        MOV #1280, AC0 ; |284| 
 $C$DW$93	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$93, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$93, DW_AT_name("_vTaskDelay")
@@ -963,7 +963,7 @@ $C$DW$L$_vCounterControlTask$12$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$99	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$99, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L9:1:1537186486")
+	.dwattr $C$DW$99, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L9:1:1537271381")
 	.dwattr $C$DW$99, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/dynamic.c")
 	.dwattr $C$DW$99, DW_AT_TI_begin_line(0xf7)
 	.dwattr $C$DW$99, DW_AT_TI_end_line(0x161)
@@ -993,7 +993,7 @@ $C$DW$107	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$107, DW_AT_high_pc($C$DW$L$_vCounterControlTask$12$E)
 
 $C$DW$108	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$108, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L10:2:1537186486")
+	.dwattr $C$DW$108, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L10:2:1537271381")
 	.dwattr $C$DW$108, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/dynamic.c")
 	.dwattr $C$DW$108, DW_AT_TI_begin_line(0xff)
 	.dwattr $C$DW$108, DW_AT_TI_end_line(0x12b)
@@ -1108,7 +1108,7 @@ $C$DW$118	.dwtag  DW_TAG_TI_branch
         CALL #_xTaskResumeAll ; |374| 
                                         ; call occurs [#_xTaskResumeAll] ; |374| 
 	.dwpsn	file "../FreeRTOS/Demo/Common/Minimal/dynamic.c",line 376,column 3,is_stmt
-        MOV #128, AC0 ; |376| 
+        MOV #1280, AC0 ; |376| 
 $C$DW$119	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$119, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$119, DW_AT_name("_vTaskDelay")
@@ -1128,7 +1128,7 @@ $C$DW$L$_vQueueSendWhenSuspendedTask$4$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$120	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$120, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L15:1:1537186486")
+	.dwattr $C$DW$120, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L15:1:1537271381")
 	.dwattr $C$DW$120, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/dynamic.c")
 	.dwattr $C$DW$120, DW_AT_TI_begin_line(0x16c)
 	.dwattr $C$DW$120, DW_AT_TI_end_line(0x17b)
@@ -1285,7 +1285,7 @@ $C$DW$L$_vQueueReceiveWhenSuspendedTask$8$E:
 	.dwcfi	cfa_offset, 1
 
 $C$DW$134	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$134, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L17:1:1537186486")
+	.dwattr $C$DW$134, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\dynamic.asm:$C$L17:1:1537271381")
 	.dwattr $C$DW$134, DW_AT_TI_begin_file("../FreeRTOS/Demo/Common/Minimal/dynamic.c")
 	.dwattr $C$DW$134, DW_AT_TI_begin_line(0x189)
 	.dwattr $C$DW$134, DW_AT_TI_end_line(0x1b1)

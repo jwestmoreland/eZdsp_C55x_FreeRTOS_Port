@@ -159,7 +159,7 @@ extern void vPortYield( void );
 #define portSTACK_GROWTH			( -1 )
 //#define portSTACK_GROWTH			( 1 )
 // #define portTICK_RATE_MS			( ( TickType_t  ) 1000 / configTICK_RATE_HZ )
-#define portTICK_PERIOD_MS			( ( TickType_t  ) 1000 / configTICK_RATE_HZ )			// oh.
+#define portTICK_PERIOD_MS			( ( TickType_t  ) 100000 / configTICK_RATE_HZ )			// oh.
 // #define portTICK_PERIOD_MS			( ( TickType_t  ) 10000 / configTICK_RATE_HZ )			// timer is programmed to give 1ms IRQ's
 // #define portTICK_PERIOD_MS			( ( TickType_t  ) 1 )		                                // timer is programmed to give 1ms IRQ's
 /*-----------------------------------------------------------*/

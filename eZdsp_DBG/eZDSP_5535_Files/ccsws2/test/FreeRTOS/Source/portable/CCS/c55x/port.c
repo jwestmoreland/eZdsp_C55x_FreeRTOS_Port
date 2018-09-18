@@ -86,7 +86,9 @@ unsigned long first_save_xssp = 0x00000000;
 unsigned char first_flag = 0x00000000;
 unsigned long save_xar7 = 0x00000000;
 unsigned int  save_xar6 = 0x00000000;
-volatile unsigned short tickIRQctr = 0x0;
+unsigned int save_new_pxcode = 0x0000;
+unsigned int save_new_pxlcode = 0x0000;
+volatile unsigned int tickIRQctr = 0x0;
 
 /* We require the address of the pxCurrentTCB variable, but don't want to know
 any details of its type. */

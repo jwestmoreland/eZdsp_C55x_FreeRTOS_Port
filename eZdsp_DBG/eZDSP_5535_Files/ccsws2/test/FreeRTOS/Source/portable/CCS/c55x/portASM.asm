@@ -23,6 +23,8 @@
              .global _vTaskSwitchContext
              .global _prvSetupTimerInterrupt
 			 .global _tickIRQctr
+			 .global _save_new_pxcode
+			 .global _save_new_pxlcode
 
 ;			  .ref configUSE_TICK_CTR
 ;			  .ref configUSE_PREEMPTION
@@ -70,6 +72,21 @@ portSAVE_CONTEXT .macro
 ;			pshboth xar7
 ;			pshboth xar6
 ;			pshboth xar5
+            .if configDEBUG_NEW_PX_S == 1
+			mov xar7, dbl (*(#_save_xar7))			; save xar7
+			mov xar6, dbl (*(#_save_xar6))			; save x
+			.endif
+
+			.if configDEBUG_NEW_PX_S == 1
+		    mov dbl(*sp(#0)), xar7
+		    mov xar7, dbl(*(#_save_new_pxcode))
+			mov ssp, ar6
+			mov *(ar6), ar7
+			mov xar7, dbl(*(#_save_new_pxlcode))
+
+			mov dbl (*(#_save_xar7)), xar7			; restore xar7
+			mov dbl (*(#_save_xar6)), xar6			; restore xar6
+		    .endif
 
 			mov xar7, dbl (*(#_save_xar7))			; save xar7 
 			.if configUSE_CONTEXT_DEBUG == 1
@@ -219,8 +236,8 @@ portSAVE_CONTEXT .macro
 ;			NASP
 ;; ;;			mov dbl (*(#_save_xsp)), xsp	; restore xsp		
 ;			NOP
-			mov dbl (*(#_save_xsp)), xsp			; restore xsp
-			mov dbl (*(#_save_xssp)), xssp			; restore xssp
+			mov dbl (*(#_save_xsp)), xsp			; restore xsp*
+		mov dbl (*(#_save_xssp)), xssp			; restore xssp
 			nop
 			nop
 			nop
@@ -249,8 +266,8 @@ portRESTORE_CONTEXT .macro
 ;            aadd #-3, xsp
 ;            CMP *(#_first_flag) == #1, TC1 ; |216|
 ;            BCC $1,TC1 ; |216|
-			mov dbl (*(#_save_xsp)), xsp			; restore xsp
-			mov dbl (*(#_save_xssp)), xssp			; restore xssp
+			mov dbl (*(#_save_xsp)), xsp			; restore xsp***
+			mov dbl (*(#_save_xssp)), xssp			; restore xssp***
 ;            B $4
 ;;;;;;			mov xsp, dbl (*(#_save_xsp))			; save xsp
 ;;;;;;			mov xssp, dbl (*(#_save_xssp))			; save xssp
@@ -519,8 +536,8 @@ portRESTORE_CONTEXT .macro
 ;;			pop mmap(ST3_55)
 ;            CMP *(#_first_flag) == #1, TC1 ; |216|
 ;            BCC $2,TC1 ; |216|
-			mov dbl (*(#_save_xsp)), xsp			; restore xsp
-			mov dbl (*(#_save_xssp)), xssp			; restore xssp
+			mov dbl (*(#_save_xsp)), xsp			; restore xsp***
+			mov dbl (*(#_save_xssp)), xssp			; restore xssp***
 ;			B $3
 ;$2
 ;            MOV #0, *(#_first_flag) ; |217|
@@ -591,11 +608,24 @@ _vTickISR:		; the timer ISR is aggregated for this processor architecture
 ;        BSET @#0, AR1 ; |68|
 ;        BCC $1,AR1 == #0 ; |68|
 ;        AND #0x0010, *(#1)
-
+            .if configDEBUG_NEW_PX == 1
+			mov xar7, dbl (*(#_save_xar7))			; save xar7
+			mov xar6, dbl (*(#_save_xar6))			; save x
+			.endif
 ;		bset INTM		; disable interrupts
 		.if configUSE_TICK_CTR == 1
 		add #1, *(#_tickIRQctr)
 		.endif
+			.if configDEBUG_NEW_PX == 1
+		    mov dbl(*sp(#0)), xar7
+		    mov xar7, dbl(*(#_save_new_pxcode))
+			mov ssp, ar6
+			mov *(ar6), ar7
+			mov xar7, dbl(*(#_save_new_pxlcode))
+
+			mov dbl (*(#_save_xar7)), xar7			; restore xar7
+			mov dbl (*(#_save_xar6)), xar6			; restore xar6
+		    .endif
 ;;		psh mmap(ST3_55)
         portSAVE_CONTEXT
 

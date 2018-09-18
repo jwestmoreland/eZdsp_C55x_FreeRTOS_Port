@@ -86,7 +86,7 @@
 // #define configCPU_CLOCK_HZ			( ( unsigned long ) 6000000 ) // derived from on-board 12MHz oscillator - note Timer0 -> highest setting /2
 // #define configCPU_CLOCK_HZ			( ( unsigned long ) 0x1000 ) /
 // #define configCPU_CLOCK_HZ			( ( unsigned long ) 7995392 )
-#define configTICK_RATE_HZ			( ( TickType_t  ) 1000 )
+#define configTICK_RATE_HZ			( ( TickType_t  ) 10000 )
 // #define configTICK_RATE_HZ			( ( TickType_t  ) 1000 )
 // #define configMAX_PRIORITIES		( ( unsigned BaseType_t ) 4 )
 #define configMAX_PRIORITIES		( 5 )
