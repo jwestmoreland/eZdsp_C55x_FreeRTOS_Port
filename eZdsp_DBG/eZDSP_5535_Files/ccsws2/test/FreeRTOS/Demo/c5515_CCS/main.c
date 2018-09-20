@@ -197,6 +197,7 @@ static TaskHandle_t startUpTaskHandle;
 static TaskHandle_t TestTask1Handle;
 static TaskHandle_t TestTask2Handle;
 static TaskHandle_t TestTask3Handle;
+static TaskHandle_t TestTask4Handle;
 
 static SemaphoreHandle_t xSemaphoreR = NULL;
 static SemaphoreHandle_t xSemaphoreB = NULL;
@@ -218,6 +219,7 @@ static void StartUpTask(void * pvParameters);
 static void TestTask1(void * pvParameters);
 static void TestTask2(void * pvParameters);
 static void TestTask3(void * pvParameters);
+static void TestTask4(void * pvParameters);
 // void DeviceInit(void);
 // void InitFlash();
 // void PieCntlInit(void);
@@ -493,7 +495,7 @@ int main( void )
     	    	                                       tskIDLE_PRIORITY + 3, // Priority at which the task is created.
     	    	                       //                       blueTaskStack,        // Array to use as the task's stack.
     	    	                       		 &startUpTaskHandle );
-
+//    	    	          vTaskSuspend(startUpTaskHandle);
                           xTaskCreate(TestTask1,  // Function that implements the task.
                                                        "TestTsk1",      // Text name for the task.
                                                           configMINIMAL_STACK_SIZE,           // Number of indexes in the xStack array.
@@ -523,6 +525,15 @@ int main( void )
                                                &TestTask3Handle );
                           vTaskSuspend(TestTask3Handle);
 #endif
+                          xTaskCreate(TestTask4,  // Function that implements the task.
+                                                                       "TestTsk4",      // Text name for the task.
+                                                                          configMINIMAL_STACK_SIZE,           // Number of indexes in the xStack array.
+                                                                       ( void * ) 2,         // Parameter passed into the task.
+                                                                       tskIDLE_PRIORITY + 2, // Priority at which the task is created.
+                                                       //                       blueTaskStack,        // Array to use as the task's stack.
+                                                             &TestTask4Handle );
+                                        vTaskSuspend(TestTask4Handle);
+
         xTaskCreate(LED_TaskBlue,         // Function that implements the task.
                           "BlueLED",      // Text name for the task.
 						  configMINIMAL_STACK_SIZE,           // Number of indexes in the xStack array.
@@ -858,7 +869,6 @@ void vApplicationIdleHook( void )
 }
 /*-----------------------------------------------------------*/
 
-
 void InitSystem(void)
 {
 	portSHORT i;
@@ -908,9 +918,7 @@ void ConfigPort(void)
     
 }
 
-
 void SYS_GlobalIntEnable(void)
-
 {
 // we do not want to run in C54CM mode at this time - so we will run in 'enhanced' mode only
 
@@ -933,9 +941,7 @@ void SYS_GlobalIntDisable(void)
 //	ST1_55 = temp;
 	asm ( " nop");
 	asm ( " bset INTM" );
-
 }
-
 
 static toggleLEDlocal(void)
 {
@@ -1527,30 +1533,43 @@ static void StartUpTask(void * pvParameters)
 
 //		vTaskDelay(pdMS_TO_TICKS(100UL));
 		vTaskResume(blueTaskHandle);
+		vTaskResume(TestTask1Handle);
+
 //		vTaskDelay ( pdMS_TO_TICKS( 100UL ));
 	    vTaskResume(redTaskHandle);
-//	    vTaskDelay ( pdMS_TO_TICKS( 100UL ));
+	    vTaskResume(TestTask4Handle);
+	    vTaskDelay ( pdMS_TO_TICKS( 100UL ));
 	    vTaskResume(greenTaskHandle);
 //	    vTaskDelay ( pdMS_TO_TICKS( 100UL ));
-	    vTaskResume(xfTaskHandle);
+//	    vTaskResume(xfTaskHandle);
 //	    vTaskDelay ( pdMS_TO_TICKS( 100UL ));
-	    vTaskResume(xf2TaskHandle);
-
+//	    vTaskResume(xf2TaskHandle);
+//	    vTaskDelay ( pdMS_TO_TICKS( 100UL ));
+//	    vTaskResume(xfTaskHandle);
+//	    vTaskDelay ( pdMS_TO_TICKS( 100UL ));
         vTaskResume(controlTaskHandle);
-        vTaskResume(TestTask1Handle);
+        vTaskDelay ( pdMS_TO_TICKS( 100UL ));
+
+//        vTaskDelay ( pdMS_TO_TICKS( 100UL ));
         vTaskResume(TestTask2Handle);
+        vTaskDelay ( pdMS_TO_TICKS( 100UL ));
         vTaskResume(TestTask3Handle);
+//        vTaskDelay ( pdMS_TO_TICKS( 100UL ));
+ //       vTaskResume(TestTask4Handle);
+//        vTaskDelay ( pdMS_TO_TICKS( 100UL ));
 
 //	    vTaskDelay ( 500 / portTICK_PERIOD_MS);
 
-//	    vTaskDelay (pdMS_TO_TICKS( 100UL ));
-//	    vTaskSuspend(NULL);
+//	    vTaskDelay (pdMS_TO_TICKS( 200UL ));
+	    vTaskSuspend(NULL);
 #endif
+#if 0
         if ( xSemaphoreGive ( xSemaphoreR ) != pdTRUE )
              {
                         ctr++;
              }
         vTaskDelay(pdMS_TO_TICKS(200UL));
+#endif
 	}
 
 }
@@ -1562,11 +1581,13 @@ static void TestTask1(void * pvParameters)
 
     for(EVER)
     {
+ //       oled_test(5);
                 if ( xSemaphoreGive ( xSemaphoreB ) != pdTRUE )
         {
                         ctr++;
          }
-        vTaskDelay(pdMS_TO_TICKS(200UL));
+
+        vTaskDelay(pdMS_TO_TICKS(500UL));
     }
 
 }
@@ -1599,8 +1620,6 @@ static void TestTask3(void * pvParameters)
     for(EVER)
     {
 
-
-
 if ( xSemaphoreGive ( xSemaphoreO ) != pdTRUE )
   {
            ctr++;
@@ -1612,6 +1631,23 @@ vTaskDelay(pdMS_TO_TICKS(200UL));
 
     }
 }
+
+static void TestTask4(void * pvParameters)
+{
+
+    static unsigned short ctr = 0;
+
+    for(EVER)
+    {
+//    oled_test(6);
+if ( xSemaphoreGive ( xSemaphoreR ) != pdTRUE )
+      {
+                 ctr++;
+      }
+ vTaskDelay(pdMS_TO_TICKS(200UL));
+}
+}
+
 
 
 

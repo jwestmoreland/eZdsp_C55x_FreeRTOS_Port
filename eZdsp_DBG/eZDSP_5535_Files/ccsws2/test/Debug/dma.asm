@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Tue Sep 18 04:49:36 2018                                 *
+;* Date/Time created: Thu Sep 20 01:42:58 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -354,7 +354,7 @@ $C$DW$11	.dwtag  DW_TAG_variable, DW_AT_name("fSineWave")
 	.dwattr $C$DW$11, DW_AT_type(*$C$DW$T$23)
 	.dwattr $C$DW$11, DW_AT_declaration
 	.dwattr $C$DW$11, DW_AT_external
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1721212 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\0798412 
 	.sect	".text"
 	.align 4
 	.global	_set_dma1_ch0_stop

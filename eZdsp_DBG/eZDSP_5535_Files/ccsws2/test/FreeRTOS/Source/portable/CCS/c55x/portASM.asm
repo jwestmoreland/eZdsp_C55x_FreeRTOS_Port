@@ -8,7 +8,7 @@
 	 .align 4
 ;	.c28_amode
 
-          .global _usCriticalNesting
+             .global _usCriticalNesting
 	     .global _save_xsp
 	     .global _save_xssp
 	     .global _first_save_xsp
@@ -17,14 +17,15 @@
 	     .global _save_xar7
 	     .global _tZero
 	     .global _save_xar6
-          .global _pxCurrentTCB
+             .global _pxCurrentTCB				;; our currently exectuting TCB
              .global _xTaskIncrementTick
              .ref    _xTaskIncrementTick
              .global _vTaskSwitchContext
              .global _prvSetupTimerInterrupt
-			 .global _tickIRQctr
-			 .global _save_new_pxcode
-			 .global _save_new_pxlcode
+	     .global _tickIRQctr				;; debug - to be disabled during normal run/release
+	     .global _save_new_pxcode				;; updated program counter that task suspended on
+             .global _save_new_pxlcode				;; sysstack contents plus loop counter contents
+             .global _xCompareTCB				;; task Control Block for comparison
 
 ;			  .ref configUSE_TICK_CTR
 ;			  .ref configUSE_PREEMPTION
@@ -66,37 +67,41 @@ portSAVE_CONTEXT .macro
 
 	                bset INTM		; disable interrupts
 
-;;;;;			mov xsp,  dbl (*(#_save_xsp))			; save xsp
-;;;;;			mov xssp, dbl (*(#_save_xssp))			; save xssp
-			
+;;			mov xsp,  dbl (*(#_save_xsp))			; save xsp
+;;			mov xssp, dbl (*(#_save_xssp))			; save xssp
+
+;;			mov dbl (*(#_save_xsp)), xsp			; restore xsp***
+;;			mov dbl (*(#_save_xssp)), xssp			; restore xssp***	
+		
 ;			pshboth xar7
 ;			pshboth xar6
 ;			pshboth xar5
-            .if configDEBUG_NEW_PX_S == 1
-			mov xar7, dbl (*(#_save_xar7))			; save xar7
-			mov xar6, dbl (*(#_save_xar6))			; save x
-			.endif
-
-			.if configDEBUG_NEW_PX_S == 1
-		    mov dbl(*sp(#0)), xar7
-		    mov xar7, dbl(*(#_save_new_pxcode))
-			mov ssp, ar6
-			mov *(ar6), ar7
-			mov xar7, dbl(*(#_save_new_pxlcode))
-
-			mov dbl (*(#_save_xar7)), xar7			; restore xar7
-			mov dbl (*(#_save_xar6)), xar6			; restore xar6
-		    .endif
 
 			mov xar7, dbl (*(#_save_xar7))			; save xar7 
-			.if configUSE_CONTEXT_DEBUG == 1
+;			.if configUSE_CONTEXT_DEBUG == 1
 			mov xar6, dbl (*(#_save_xar6))
-			.endif
+;			.endif
 
 			mov dbl (*(#_pxCurrentTCB)), xar7
 ; does this *always* work?
 			mov dbl (*ar7), xsp				; xsp contains our TCB now
-			mov dbl (*ar7(#2)), xssp			
+			mov dbl (*ar7(#2)), xssp
+			.if 0
+			mov dbl (*(_xCompareTCB)), xar6			; need to restore our return address
+			mov xar7, ac0
+        		mov xar6, ac1
+        		CMPU AC1 != AC0, TC1 
+       			BCC $5,TC1 
+       			amov #0x000000, xar7
+			amov #0x000000, xar6
+			    mov  *(#_save_new_pxcode), ar7
+			    mov ar7, *sp(#0)
+                            mov *(#_save_new_pxlcode) , ar7
+                            mov ssp, ar6
+                            mov ar7, *ar6(#0)
+                            mov dbl (*(#_save_xar6)), xar6
+			.endif
+$5:
 ;; what about xssp here?
 ;;				mov xsp, dbl (*(#_save_xsp))			; save xsp
 ;;			    mov xssp, dbl (*(#_save_xssp))			; save xssp
@@ -120,6 +125,10 @@ portSAVE_CONTEXT .macro
 ;            mov dbl(*xssp),(*(#_PC_REG_HIGH_SAVE))
 ;			mov (*ssp(#-2)), (*(#_DBSTAT_SAVE))
 			.endif
+			; save context in our stack(s) frame
+			mov dbl (*(#_pxCurrentTCB)), xar7
+			mov dbl (*ar7), xsp				; xsp contains our TCB now
+			mov dbl (*ar7(#2)), xssp
 
 			mov dbl (*(#_save_xar7)), xar7			; restore xar7
 
@@ -199,6 +208,13 @@ portSAVE_CONTEXT .macro
 			mov ssp, ar7
 			mov mmap(ST0_55), ar6
 			mov ar6, *ar7(#2)
+
+;			mov dbl (*(#_save_xsp)), xsp			; restore xsp*
+;			mov dbl (*(#_save_xssp)), xssp		
+
+
+
+
 ;;;			mov  dbl (*(_DBSTAT_SAVE)), *xar7(#2)	; needs to be DBSTAT - don't overwrite DBSTAT
 ;;;			mov ar6, *ar7(#2)
 ;			mov ar7, mmap(ST0_55)
@@ -237,7 +253,7 @@ portSAVE_CONTEXT .macro
 ;; ;;			mov dbl (*(#_save_xsp)), xsp	; restore xsp		
 ;			NOP
 			mov dbl (*(#_save_xsp)), xsp			; restore xsp*
-		mov dbl (*(#_save_xssp)), xssp			; restore xssp
+			mov dbl (*(#_save_xssp)), xssp			; restore xssp
 			nop
 			nop
 			nop
@@ -277,9 +293,11 @@ portRESTORE_CONTEXT .macro
 ;			mov dbl (*(#_first_save_xsp)), xsp			; restore xsp
 ;			mov dbl (*(#_first_save_xssp)), xssp			; restore xssp
 ;$4
+			.if 1
 			mov xsp, xar7
 			mov xssp, xar6
-
+			amov #0x000000, xar2
+			amov #0x000000, xar1
 			mov dbl (*(#_pxCurrentTCB)), xar5			
 
 			mov dbl (*ar5), xar4				; xsp contains our TCB now
@@ -291,6 +309,20 @@ portRESTORE_CONTEXT .macro
 			mov ar2, *ar7
 			mov ar1, *ar6
 
+			mov mmap(ST1_55), ar7
+			and #0xf7ff, ar7			; <here>#0800h
+			mov ar7, *sp(#1)			; need to make sure IRQ bit is enabled here
+			mov ar7, *ar4(#1)			; save in TCB
+			mov mmap(ST2_55), ar7
+			mov ar7, *sp(#2)
+			mov ar7, *ar4(#2)
+
+			mov ssp, ar7
+			mov mmap(ST0_55), ar6
+			mov ar6, *ar7(#2)
+			mov ar6, *ar3(#2)
+
+			.endif
 
 ;			mov #0, ssp	
 ;			mov xar7, dbl (*(#_save_xar7))			; save xar7 
@@ -304,6 +336,7 @@ portRESTORE_CONTEXT .macro
 ;			mov *ar7(#2), *ssp			
 ;			POP mmap(ST3_55)
 ;			pshboth xar7				; should increment both
+			.if 0
 			mov mmap(ST1_55), ar7
 			and #0xf7ff, ar7			; <here>#0800h
 			mov ar7, *sp(#1)			; need to make sure IRQ bit is enabled here
@@ -315,11 +348,31 @@ portRESTORE_CONTEXT .macro
 			mov ar6, *ar7(#2)
 ;;			mov mmap(ST0_55), ar6	; needs to be DBSTAT
 ;;			mov ar6, *ar7(#1)
-
+			.endif
+			.if 0
 			mov dbl (*(#_pxCurrentTCB)), xar7
 
 			mov dbl (*ar7), xsp				; xsp contains our TCB now
-			mov dbl (*ar7(#2)), xssp			
+			mov dbl (*ar7(#2)), xssp	
+			.endif
+			.if 0
+			mov dbl (*(_xCompareTCB)), xar6
+; need to restore our return address
+			mov xar7, ac0
+              		    mov xar6, ac1
+     		            CMPU AC1 != AC0, TC1 ; |1393|
+       			    BCC $6,TC1 ; |1393|
+       			    amov #0x000000, xar7
+			    amov #0x000000, xar6
+                            mov  *(#_save_new_pxcode), ar7
+			    mov ar7, *sp(#0)
+                            mov *(#_save_new_pxlcode) , ar7
+                            mov ssp, ar6
+                            mov ar7, *ar6(#0)
+
+                            mov dbl (*(#_save_xar6)), xar6
+						.endif
+$6:
 ;;                mov xsp, dbl (*(#_save_xsp))			; save xsp
 ;;			    mov xssp, dbl (*(#_save_xssp))			; save xssp
 			.if configUSE_CONTEXT_RESTORE_DEBUG == 1
@@ -384,11 +437,16 @@ portRESTORE_CONTEXT .macro
 ;;;			mov *sp(#1), ar7 
 ;			mov dbl(*sp(#1)), ar7
 ;;;			mov  ar7, mmap(ST1_55)
+			mov dbl (*(#_pxCurrentTCB)), xar7
+			mov dbl (*ar7), xsp				; xsp contains our TCB now
+			mov dbl (*ar7(#2)), xssp	
+			.if 0
 			mov *sp(#2), ar7
 			mov ar7, mmap(ST2_55)
 			mov ssp, ar7
 			mov *ar7(#2), ar6
 			mov ar6, mmap(ST0_55)
+			.endif
 ;			mov *ar7(#2), ar6
 ;			mov ar6, *ssp(#2)
 ;			mov *ssp(#2), ar7
@@ -463,7 +521,387 @@ portRESTORE_CONTEXT .macro
 ;;			mov *sp(#7), t2
 	;;		mov *sp(#8), t3
 
+; restore ar0
+;			mov dbl(*sp(#-2)), xar0
+;			mov #-1, ar0
+;;			mov dbl (*(#_save_xar7)), xar0
+;;
+;;			mov sp, t0
+;;			add #1, t0
+;;			mov t0, ssp
 
+;			mov *sp(#3), *(#00004ch+#1)
+
+;			mov t3, *ssp(#1) 
+;			mov t2, *ssp(#2)
+
+;;			mov *sp(#1), dbl(*(#_save_xsp)) 
+;;			mov t3, *(ssp(#0))
+;			mov t3, *ssp
+;			mov *sp(#3), t3	; 
+;			mov t3, *ssp(#1)
+;;			mov *sp(#21), PC	
+
+;; ;;			mov dbl (*(#_save_xsp)), xsp	; restore xsp		
+;			mov dbl(xsp), dbl(lcrpc)
+;			popboth XAR7
+;			add #1, sp
+;			add #1, ssp
+;			add #2, t0
+;			add #2, t1
+;			mov t0, sp
+;			mov t1, ssp
+;			popboth XAR6
+;			add #2, t0
+;			add #2, t1
+;			mov t0, sp
+;			mov t1, ssp
+;			popboth XAR5
+;			add #2, t0
+;			add #2, t1
+;			mov t0, sp
+;			mov t1, ssp
+		;-----------------------------------
+;			popboth XAR4
+;			add #2, t0
+;			add #2, t1
+;			mov t0, sp
+;			mov t1, ssp
+;			popboth XAR3
+;			add #2, t0
+;			add #2, t1
+;			mov t0, sp
+;			mov t1, ssp
+;			popboth XAR2
+;			add #2, t0
+;			add #2, t1
+;			mov t0, sp
+;			mov t1, ssp
+;			popboth XAR1
+;			add #2, t0
+;			add #2, t1
+;			mov t0, sp
+;			mov t1, ssp
+;			popboth XAR0
+;			add #2, t0
+;			add #2, t1
+;			mov t0, sp
+;			mov t1, ssp
+;			EDIS
+;			NASP	; Un-align stack pointer
+;;			pop mmap(ST3_55)
+;            CMP *(#_first_flag) == #1, TC1 ; |216|
+;            BCC $2,TC1 ; |216|
+			.if 0
+			mov dbl (*(#_pxCurrentTCB)), xar7
+
+			mov dbl (*ar7), xsp				; xsp contains our TCB now
+			mov dbl (*ar7(#2)), xssp		
+			.endif
+
+			mov dbl (*(#_save_xsp)), xsp			; restore xsp***
+			mov dbl (*(#_save_xssp)), xssp			; restore xssp***
+
+			.if 0
+			mov dbl (*(_xCompareTCB)), xar6
+; need to restore our return address
+			mov xar7, ac0
+            mov xar6, ac1
+     		CMPU AC1 != AC0, TC1 ; |1393|
+       	    BCC $6,TC1 ; |1393|
+       	    amov #0x000000, xar7
+			amov #0x000000, xar6
+            mov  *(#_save_new_pxcode), ar7
+			mov ar7, *sp(#0)
+            mov *(#_save_new_pxlcode) , ar7
+            mov ssp, ar6
+            mov ar7, *ar6(#0)
+
+            mov dbl (*(#_save_xar6)), xar6
+			.endif
+
+			mov dbl (*(#_save_xar7)), xar7
+
+;			B $3
+;$2
+;            MOV #0, *(#_first_flag) ; |217|
+;			mov dbl (*(#_first_save_xsp)), xsp			; restore xsp
+;			mov dbl (*(#_first_save_xssp)), xssp
+;$3
+;			aadd #-3, sp
+			bclr INTM		; enable interrupts
+;			aadd #1, sp
+			RETI
+;			mov #1860h, ssp
+			nop
+			nop
+;			nop
+			.endm
+portRESTORE_FIRST_CONTEXT .macro
+			.C54CM_off
+;			.CPL_off
+			.ARMS_off
+			.align 4
+
+; Restore context & return
+			;CONTEXT_RESTORE
+;			ASP
+;			EALLOW
+;			nop
+;			nop
+;			nop
+;			nop
+	                bclr C54CM    
+;	        xssp = dbl(*(#_pxCurrentTCB))
+;	        xsp  = dbl(*(#_pxCurrentTCB))
+			mov xar7, dbl (*(#_save_xar7))	
+
+			aadd #-3, sp
+;            aadd #-3, xsp
+;            CMP *(#_first_flag) == #1, TC1 ; |216|
+;            BCC $1,TC1 ; |216|
+			mov dbl (*(#_save_xsp)), xsp			; restore xsp***
+			mov dbl (*(#_save_xssp)), xssp			; restore xssp***
+;            B $4
+;;;;;			mov xsp, dbl (*(#_save_xsp))			; save xsp
+;;;;;			mov xssp, dbl (*(#_save_xssp))			; save xssp
+
+;			aadd #-3, sp
+;$1
+;			mov dbl (*(#_first_save_xsp)), xsp			; restore xsp
+;			mov dbl (*(#_first_save_xssp)), xssp			; restore xssp
+;$4
+			.if 1
+			mov xsp, xar7
+			mov xssp, xar6
+			amov #0x000000, xar2
+			amov #0x000000, xar1
+			mov dbl (*(#_pxCurrentTCB)), xar5				
+
+			mov dbl (*ar5), xar4				; xsp contains our TCB now
+			mov dbl (*ar5(#2)), xar3			; xssp		
+			
+			mov *ar4, ar2
+			mov *ar3, ar1
+;			mov ar4, *ar6				; stack pointers fixed up
+			mov ar2, *ar7
+			mov ar1, *ar6	
+
+		        mov mmap(ST1_55), ar7
+			and #0xf7ff, ar7			; <here>#0800h
+			mov ar7, *sp(#1)			; need to make sure IRQ bit is enabled here
+			mov ar7, *ar4(#1)			; save in TCB
+			mov mmap(ST2_55), ar7
+			mov ar7, *sp(#2)
+			mov ar7, *ar4(#2)
+
+			mov ssp, ar7
+			mov mmap(ST0_55), ar6
+			mov ar6, *ar7(#2)
+			mov ar6, *ar3(#2)
+			
+			.endif
+
+;			mov #0, ssp	
+;			mov xar7, dbl (*(#_save_xar7))			; save xar7 
+;			mov dbl (*(#_pxCurrentTCB)), xar7
+			; 32-bit mode - will act on SP and SSP:
+;			'fix-up' current SP and SSP - is this dangerous????
+;			aadd #-3, sp
+;;			mov *ar7, *sp
+;			mov dbl (*ar7), ar6
+;			mov ar6, *sp				; xsp contains our TCB now
+;			mov *ar7(#2), *ssp			
+;			POP mmap(ST3_55)
+;			pshboth xar7				; should increment both
+			.if 0
+			mov mmap(ST1_55), ar7
+			and #0xf7ff, ar7			; <here>#0800h
+			mov ar7, *sp(#1)			; need to make sure IRQ bit is enabled here
+			mov mmap(ST2_55), ar7
+			mov ar7, *sp(#2)
+
+			mov ssp, ar7
+			mov mmap(ST0_55), ar6
+			mov ar6, *ar7(#2)
+			.endif
+;;			mov mmap(ST0_55), ar6	; needs to be DBSTAT
+;;			mov ar6, *ar7(#1)
+
+			.if 0
+			mov dbl (*(#_pxCurrentTCB)), xar7
+
+			mov dbl (*ar7), xsp				; xsp contains our TCB now
+			mov dbl (*ar7(#2)), xssp	
+			.endif
+
+			.if 0						; first task - no pxcode update
+			    mov dbl (*(_xCompareTCB)), xar6
+; need to restore our return address
+			    mov xar7, ac0
+              		    mov xar6, ac1
+     		            CMPU AC1 != AC0, TC1 ; |1393|
+       			    BCC $7,TC1 ; |1393|
+       			    amov #0x000000, xar7
+			    amov #0x000000, xar6
+                            mov  *(#_save_new_pxcode), ar7
+			    mov ar7, *sp(#0)
+                            mov *(#_save_new_pxlcode) , ar7
+                            mov ssp, ar6
+                            mov ar7, *ar6(#0)
+
+                            mov dbl (*(#_save_xar6)), xar6
+			    .endif
+$7:
+
+;;                mov xsp, dbl (*(#_save_xsp))			; save xsp
+;;			    mov xssp, dbl (*(#_save_xssp))			; save xssp
+			.if configUSE_CONTEXT_RESTORE_DEBUG == 1
+			mov xar7, dbl (*(#_save_xar7))			; save xar7
+			mov xar6, dbl (*(#_save_xar6))
+
+;; this is for debug
+			mov dbl(*ar7), xar6
+			mov dbl(*ar6), xar7
+			mov xar7, dbl (*(#_PC_REG_LOW_RESTORE))		; save off the PC
+			mov xssp, xar7
+			mov dbl(*ar7), xar6
+			mov dbl(*ar6), xar7
+			mov xar7, dbl (*(#_PC_REG_HIGH_RESTORE))		; save off the PC
+			mov xssp, xar7
+			add #-2, ar7
+			mov dbl(*ar7), xar6
+			mov xar6,  dbl (*(_DBSTAT_RESTORE))
+			mov dbl (*(#_save_xar6)), xar6
+			
+			mov dbl (*(#_save_xar7)), xar7			; restore xar7
+			.endif
+
+;			mov mmap(ST0_55), *ssp(#1)
+;			mov mmap(STO_55), *ssp(#2)
+;			mov mmap(ST1_55), *sp(#1)
+;			mov mmap(ST2_55), *sp(#2)	        ; needs to be DBSTAT			
+;			mov *ar7, t0
+;			mov t0, *sp(#0)				; xsp contains our TCB now
+;			mov *ar7(#2), t0
+;			mov t0, *ssp(#0)			
+
+;			mov  (*ar7), sp				        ; xsp contains our TCB now
+; what about xssp?
+;			mov xar6, xsp
+;			mov xssp, xar7
+;			add #1, ar7
+;			mov xar7, xsp
+;			mov sp, t0
+;			mov ssp, t1
+;			mov dbl(*(#_pxCurrentTCB)), xsp
+;			ar0 = *ar6
+;			xssp = xar0
+;			mov *xar6, xar0
+;			mov xar0, xssp	; stack now points to our TCB
+;;			mov sp, *ar6
+;;			mov sp, ar0
+;;			mov sp, *_pxCurrentTCB
+;;			clr ar0
+;;			mov ar0, @xar6
+;;			mov sp, AR0
+;;			add sp, xar6
+
+;;			pshboth xar7
+;;			pshboth xar6
+;;			pshboth xar5
+
+;;			popboth xar5
+;;			popboth xar6
+;;			popboth xar7
+
+;;;			mov *sp(#1), ar7 
+;			mov dbl(*sp(#1)), ar7
+;;;			mov  ar7, mmap(ST1_55)
+
+		        mov dbl (*(#_pxCurrentTCB)), xar7
+			mov dbl (*ar7), xsp				; xsp contains our TCB now
+			mov dbl (*ar7(#2)), xssp	
+			.if 0
+			mov *sp(#2), ar7
+			mov ar7, mmap(ST2_55)
+			mov ssp, ar7
+			mov *ar7(#2), ar6
+			mov ar6, mmap(ST0_55)
+			.endif
+;			mov *ar7(#2), ar6
+;			mov ar6, *ssp(#2)
+;			mov *ssp(#2), ar7
+;			mov ar6, mmap(ST0_55)	; needs to be DBSTAT
+
+			mov dbl(*sp(#4)), xar7
+;			mov *sp(#1), ar7
+			mov xar7, dbl(*(#_usCriticalNesting))   
+
+			mov dbl(*sp(#6)), xar6
+;			mov *sp(#3), ar6
+;			popboth xar6 ; portFLAGS_INT_ENABLED
+			mov xar6, dbl(*(#_portFLAGS_INT_ENABLED))	
+
+;			POP XT
+		;-- Comment these to save cycles ---
+			mov dbl(*sp(#8)), xar7
+			mov *sp(#7), ar7
+;			mov *sp(#5), ar7
+;			mov dbl(*sp(#0)), hi(ar7)
+;			mov (*sp(#0)), lo(ar7)
+			mov dbl(*sp(#10)), xar6
+			mov *sp(#9), ar6
+			mov dbl(*sp(#12)), xar5
+			mov *sp(#11), ar5
+;; pvPararmeters currently here - needs to be verified --- jcw
+			mov dbl(*sp(#14)), xar4
+			mov *sp(#13), ar4
+			mov dbl(*sp(#16)), xar3
+			mov *sp(#15), ar3
+			mov dbl(*sp(#18)), xar2
+			mov *sp(#17), ar2
+			mov dbl(*sp(#20)), xar1
+			mov *sp(#19), ar1
+			mov dbl(*sp(#22)), xar0
+			mov *sp(#21), ar0
+
+			mov *sp(#23), t3
+			mov *sp(#24), t2
+			mov *sp(#25), t1
+			mov *sp(#26), t0
+
+;			mov dbl(*sp(#21)), *xssp(#0)
+;			mov *sp(#21), *ssp
+;			mov *sp(#21), RETA
+; need to move 23-16 to XSSP contents
+;			mov xar0, dbl (*(#_save_xar7))
+;			mov ssp, ar0
+;			mov #0, ssp 
+;			mov xssp, xar0
+;			mov dbl (*(#_save_xsp)), xar0			; save xsp
+;			aadd #20, sp		; this is ok - ssp also incremented
+	;		add #1, xssp		; 32-bit return address pointer
+	;		amar *xssp+
+;			mov sp, t0
+;			add #1, t0
+;			mov t0, ssp
+;			incr ssp
+;			asub #20, ar0
+;			mov xar0, xssp
+;			mov ar0, ssp
+;			mov ar0, 
+;;			mov *sp(#1), t0
+;;			mov *sp(#3), t3		; ST0
+;;			mov *sp(#4), t2		; DBSTAT
+;;			mov t3, *ar0(#2)
+	;;		mov t2, *ar0(#1)
+;;			mov t0, *ar0(#0)
+
+;;			mov *sp(#5), t0
+;;			mov *sp(#6), t1
+;;			mov *sp(#7), t2
+	;;		mov *sp(#8), t3
 
 ; restore ar0
 ;			mov dbl(*sp(#-2)), xar0
@@ -536,8 +974,36 @@ portRESTORE_CONTEXT .macro
 ;;			pop mmap(ST3_55)
 ;            CMP *(#_first_flag) == #1, TC1 ; |216|
 ;            BCC $2,TC1 ; |216|
+			.if 0
+			mov dbl (*(#_pxCurrentTCB)), xar7
+
+			mov dbl (*ar7), xsp				; xsp contains our TCB now
+			mov dbl (*ar7(#2)), xssp		
+			.endif
+
 			mov dbl (*(#_save_xsp)), xsp			; restore xsp***
 			mov dbl (*(#_save_xssp)), xssp			; restore xssp***
+
+			.if 0
+			mov dbl (*(_xCompareTCB)), xar6
+; need to restore our return address
+			mov xar7, ac0
+            mov xar6, ac1
+     		CMPU AC1 != AC0, TC1 ; |1393|
+       	    BCC $6,TC1 ; |1393|
+       	    amov #0x000000, xar7
+			amov #0x000000, xar6
+            mov  *(#_save_new_pxcode), ar7
+			mov ar7, *sp(#0)
+            mov *(#_save_new_pxlcode) , ar7
+            mov ssp, ar6
+            mov ar7, *ar6(#0)
+
+            mov dbl (*(#_save_xar6)), xar6
+			.endif
+
+			mov dbl (*(#_save_xar7)), xar7
+
 ;			B $3
 ;$2
 ;            MOV #0, *(#_first_flag) ; |217|
@@ -553,6 +1019,10 @@ portRESTORE_CONTEXT .macro
 			nop
 ;			nop
 			.endm
+; /*-----------------------------------------------------------*/
+
+
+
 ; /*-----------------------------------------------------------*/
 
 ; /*
@@ -577,14 +1047,15 @@ _xPortStartScheduler:
 ;;		INTR INT14	; force interrupt - just for debug purposes.
 
 ;;            psh mmap(ST3_55)
-			mov xar7, dbl (*(#_save_xar7))			; save xar7 
-			mov xar6, dbl (*(#_save_xar6))			; save xar6 
+			mov xar7, dbl (*(#_save_xar7))			; save xar7
+			mov xar6, dbl (*(#_save_xar6))			; save xar6
 
 			mov dbl (*(#_pxCurrentTCB)), xar7
 ; does this *always* work?
 			mov dbl (*ar7), xar6
-;			mov xsp, dbl (*(#_first_save_xsp))	        ; (init) xsp contains our TCB now
+;			mov xsp, dbl (*(#_first_save_xsp))	; (init) xsp contains our TCB now
 			mov xsp, dbl (*(#_save_xsp))	        ; (init) xsp contains our TCB now
+;			mov xar6, dbl (*(#_save_xsp))	
 			mov dbl (*ar7+), xar6
 ;			mov xssp, dbl (*(#_first_save_xssp))
 			mov xssp, dbl (*(#_save_xssp))
@@ -594,13 +1065,14 @@ _xPortStartScheduler:
 			mov dbl (*(#_save_xar7)), xar7			; restore xar7
 			mov dbl (*(#_save_xar6)), xar6			; restore xar6
 			aadd #1, sp
-            portRESTORE_CONTEXT
+
+		portRESTORE_FIRST_CONTEXT
 
 
 _vTickISR:		; the timer ISR is aggregated for this processor architecture
  ;               bclr IFR0.IF4		; enable interrupts
-		
-		aadd #-1, sp
+
+		aadd #-1, sp						;; in our current stack mode - this decrements both stack pointers - xsp and xssp
 		MOV #0, *port(#6166) ; |119|
 		AND #0x0010, mmap(@IFR0)
 		bset INTM
@@ -608,25 +1080,27 @@ _vTickISR:		; the timer ISR is aggregated for this processor architecture
 ;        BSET @#0, AR1 ; |68|
 ;        BCC $1,AR1 == #0 ; |68|
 ;        AND #0x0010, *(#1)
-            .if configDEBUG_NEW_PX == 1
-			mov xar7, dbl (*(#_save_xar7))			; save xar7
-			mov xar6, dbl (*(#_save_xar6))			; save x
-			.endif
+
 ;		bset INTM		; disable interrupts
 		.if configUSE_TICK_CTR == 1
 		add #1, *(#_tickIRQctr)
 		.endif
-			.if configDEBUG_NEW_PX == 1
-		    mov dbl(*sp(#0)), xar7
-		    mov xar7, dbl(*(#_save_new_pxcode))
-			mov ssp, ar6
-			mov *(ar6), ar7
-			mov xar7, dbl(*(#_save_new_pxlcode))
-
-			mov dbl (*(#_save_xar7)), xar7			; restore xar7
-			mov dbl (*(#_save_xar6)), xar6			; restore xar6
-		    .endif
 ;;		psh mmap(ST3_55)
+			            mov xar7, dbl (*(#_save_xar7))                  ; save xar7
+                        mov xar6, dbl (*(#_save_xar6))                  ; save x
+						amov #0x000000, xar7
+						amov #0x000000, xar6
+                        mov *sp(#1), ar7                                            ;; sp+3
+                        mov ar7, *(#_save_new_pxcode)
+                        mov ssp, ar6
+                        mov *ar6(#1), ar7                                                       ;; ssp+3
+                        mov ar7, *(#_save_new_pxlcode)       ;  ==> now we have our new return address, and if a task, it's where we are
+                     ;   nop
+                        mov dbl (*(#_pxCurrentTCB)), xar7
+                        mov xar7, dbl(*(#_xCompareTCB))
+                        mov dbl (*(#_save_xar7)), xar7                  ; restore xar7
+                        mov dbl (*(#_save_xar6)), xar6                  ; restore xar6
+
         portSAVE_CONTEXT
 
         call     #_xTaskIncrementTick
@@ -642,9 +1116,9 @@ _vTickISR:		; the timer ISR is aggregated for this processor architecture
 ;   		MOV #0, *port(#6294) ; |92|
 		or #0x0001, *port(#7188) ; |130|
  ;       OR #0x0007, *port(#7188) ; |100|
-		aadd #1, sp
+	    aadd #1, sp
         portRESTORE_CONTEXT
-                                
+
 ; /*-----------------------------------------------------------*/
 
 
@@ -661,7 +1135,7 @@ _vTickISR:		; the timer ISR is aggregated for this processor architecture
 ; SSP = x:	Previously saved data	SP = y:	    Previously saved data
 
 
-_vPortYield:
+_vPortYield:					;; note - most testing done with preemptive kernel - so this could use review/work
 
 		aadd #-1, sp
 		AND #0x0010, mmap(@IFR0)
@@ -703,7 +1177,7 @@ _vPortYield:
 
 ;                /* Place the tick ISR in the correct vector. */
 
-;;;                .sect ".int49"			; TIMER1_A0_VECTOR			
+;;;                .sect ".int49"			; TIMER1_A0_VECTOR
 ;;                .sect ".int14"			; CPUTIMER2
 ;                 .sect ".text"			; CPUTIMER2
 ;;;;		 .sect ".INT14_ISR"
@@ -711,8 +1185,8 @@ _vPortYield:
 ;;;; _INT14_ISR:
 ;;;;                .short   _vTickISR
 ;;;;		LCR #_vTickISR
-                .end
-
+			.end
+			; eof
 
 
 
