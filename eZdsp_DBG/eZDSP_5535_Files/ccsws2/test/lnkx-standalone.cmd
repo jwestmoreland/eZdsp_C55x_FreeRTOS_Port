@@ -16,6 +16,9 @@
 /*              specify a search path for the libraries.                      */
 /*                                                                            */
 /******************************************************************************/
+//-stack    0x500      /* Primary stack size   */
+//-sysstack 0x500      /* Secondary stack size */
+//-heap     0x500      /* */
 
 -stack    0x2000      /* Primary stack size   */
 -sysstack 0x1000      /* Secondary stack size */
@@ -50,15 +53,15 @@ MEMORY
 SECTIONS
 {
 /*   .text     >> SARAM1|SARAM2|SARAM0  */ /* Code                        */
-   .text     >> SARAM1|SARAM2|SARAM0   /* Code                        */
+   .text     >> SARAM0|SARAM1|SARAM2   /* Code                        */
    /* Both stacks must be on same physical memory page               */
-   .stack    >  DARAM0                /* Primary system stack        */
-   .sysstack >  DARAM0                /* Secondary system stack      */
+   .stack    >  DARAM0|SARAM0, fill = 0xa5a5a5a5                /* Primary system stack        */
+   .sysstack >  DARAM0|SARAM0, fill = 0xa5a5a5a5              /* Secondary system stack      */
 
-   .data     >> DARAM0|SARAM1|SARAM0   /* Initialized vars            */
-   .bss      >> DARAM0|SARAM1|SARAM0   /* Global & static vars        */
-   .const    >> DARAM0|SARAM1|SARAM0   /* Constant data               */
-   .sysmem   >  DARAM0|SARAM1|SARAM0   /* Dynamic memory (malloc)     */
+   .data     >> DARAM0|SARAM1   /* Initialized vars            */
+   .bss      >> DARAM0|SARAM1   /* Global & static vars        */
+   .const    >> DARAM0|SARAM1   /* Constant data               */
+   .sysmem   >  DARAM0|SARAM1   /* Dynamic memory (malloc)     */
    .switch   >  SARAM2                /* Switch statement tables     */
    .cinit    >  SARAM2                /* Auto-initialization tables  */
    .pinit    >  SARAM2                /* Initialization fn tables    */

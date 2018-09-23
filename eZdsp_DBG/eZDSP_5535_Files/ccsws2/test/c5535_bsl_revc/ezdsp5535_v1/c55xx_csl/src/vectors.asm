@@ -51,7 +51,7 @@ INT0:		.ivec    dummy_isr          ; External User Interrupt #0
 INT1:		.ivec    dummy_isr	       ; External User Interrupt #1
 
 TINT:		.ivec    _vTickISR	       ; Timer #0 / Software Interrupt #4
-; TINT:		.ivec    _Timer_isr	       ; Timer #0 / Software Interrupt #4
+;TINT:		.ivec    _Timer_isr	       ; Timer #0 / Software Interrupt #4
 
 PROG0:		.ivec    i2s0_mmc0_tx_isr  ; Programmable 0 Interrupt
 

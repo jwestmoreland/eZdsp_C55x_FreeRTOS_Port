@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Thu Sep 20 01:43:16 2018                                 *
+;* Date/Time created: Fri Sep 21 23:25:22 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -72,7 +72,7 @@ $C$DW$5	.dwtag  DW_TAG_variable, DW_AT_name("xNextFreeByte")
 	.dwattr $C$DW$5, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$5, DW_AT_location[DW_OP_addr _xNextFreeByte]
 	.bss	_pucAlignedHeap$1,2,0,2
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1323212 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\2284012 
 	.sect	".text"
 	.align 4
 	.global	_pvPortMalloc
@@ -289,7 +289,7 @@ $C$DW$18	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$19	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$19, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_1.asm:$C$L6:1:1537432996")
+	.dwattr $C$DW$19, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_1.asm:$C$L6:1:1537597522")
 	.dwattr $C$DW$19, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_1.c")
 	.dwattr $C$DW$19, DW_AT_TI_begin_line(0x81)
 	.dwattr $C$DW$19, DW_AT_TI_end_line(0x81)

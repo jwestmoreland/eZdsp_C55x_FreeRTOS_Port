@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Mon Sep 17 00:32:47 2018                                 *
+;* Date/Time created: Thu Sep 20 23:05:18 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -109,7 +109,7 @@ $C$DW$9	.dwtag  DW_TAG_variable, DW_AT_name("xBlockAllocatedBit")
 	.dwattr $C$DW$9, DW_AT_TI_symbol_name("_xBlockAllocatedBit")
 	.dwattr $C$DW$9, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$9, DW_AT_location[DW_OP_addr _xBlockAllocatedBit]
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1195212 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1238412 
 	.sect	".text"
 	.align 4
 	.global	_pvPortMalloc
@@ -377,7 +377,7 @@ $C$DW$21	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$22	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$22, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L5:1:1537169567")
+	.dwattr $C$DW$22, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L5:1:1537509918")
 	.dwattr $C$DW$22, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_5.c")
 	.dwattr $C$DW$22, DW_AT_TI_begin_line(0xb2)
 	.dwattr $C$DW$22, DW_AT_TI_end_line(0xb5)
@@ -394,7 +394,7 @@ $C$DW$25	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$26	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$26, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L1:1:1537169567")
+	.dwattr $C$DW$26, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L1:1:1537509918")
 	.dwattr $C$DW$26, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_5.c")
 	.dwattr $C$DW$26, DW_AT_TI_begin_line(0x8b)
 	.dwattr $C$DW$26, DW_AT_TI_end_line(0x8b)
@@ -570,7 +570,7 @@ $C$DW$36	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$37	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$37, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L15:1:1537169567")
+	.dwattr $C$DW$37, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L15:1:1537509918")
 	.dwattr $C$DW$37, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_5.c")
 	.dwattr $C$DW$37, DW_AT_TI_begin_line(0x120)
 	.dwattr $C$DW$37, DW_AT_TI_end_line(0x120)
@@ -581,7 +581,7 @@ $C$DW$38	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$39	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$39, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L12:1:1537169567")
+	.dwattr $C$DW$39, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L12:1:1537509918")
 	.dwattr $C$DW$39, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_5.c")
 	.dwattr $C$DW$39, DW_AT_TI_begin_line(0x11f)
 	.dwattr $C$DW$39, DW_AT_TI_end_line(0x11f)
@@ -860,7 +860,7 @@ $C$DW$50	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$51	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$51, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L18:1:1537169567")
+	.dwattr $C$DW$51, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L18:1:1537509918")
 	.dwattr $C$DW$51, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_5.c")
 	.dwattr $C$DW$51, DW_AT_TI_begin_line(0x153)
 	.dwattr $C$DW$51, DW_AT_TI_end_line(0x156)
@@ -1182,7 +1182,7 @@ $C$DW$64	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$65	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$65, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L39:1:1537169567")
+	.dwattr $C$DW$65, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L39:1:1537509918")
 	.dwattr $C$DW$65, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_5.c")
 	.dwattr $C$DW$65, DW_AT_TI_begin_line(0x1e0)
 	.dwattr $C$DW$65, DW_AT_TI_end_line(0x1e0)
@@ -1193,7 +1193,7 @@ $C$DW$66	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$67	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$67, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L35:1:1537169567")
+	.dwattr $C$DW$67, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L35:1:1537509918")
 	.dwattr $C$DW$67, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_5.c")
 	.dwattr $C$DW$67, DW_AT_TI_begin_line(0x1b7)
 	.dwattr $C$DW$67, DW_AT_TI_end_line(0x1b7)
@@ -1204,7 +1204,7 @@ $C$DW$68	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$69	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$69, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L32:1:1537169567")
+	.dwattr $C$DW$69, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L32:1:1537509918")
 	.dwattr $C$DW$69, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_5.c")
 	.dwattr $C$DW$69, DW_AT_TI_begin_line(0x1b4)
 	.dwattr $C$DW$69, DW_AT_TI_end_line(0x1b4)
@@ -1215,7 +1215,7 @@ $C$DW$70	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$71	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$71, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L28:1:1537169567")
+	.dwattr $C$DW$71, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L28:1:1537509918")
 	.dwattr $C$DW$71, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_5.c")
 	.dwattr $C$DW$71, DW_AT_TI_begin_line(0x197)
 	.dwattr $C$DW$71, DW_AT_TI_end_line(0x1da)
@@ -1262,7 +1262,7 @@ $C$DW$84	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$85	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$85, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L26:1:1537169567")
+	.dwattr $C$DW$85, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\heap_5.asm:$C$L26:1:1537509918")
 	.dwattr $C$DW$85, DW_AT_TI_begin_file("../FreeRTOS/Source/portable/MemMang/heap_5.c")
 	.dwattr $C$DW$85, DW_AT_TI_begin_line(0x193)
 	.dwattr $C$DW$85, DW_AT_TI_end_line(0x193)

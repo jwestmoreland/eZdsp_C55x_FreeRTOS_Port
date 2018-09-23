@@ -81,6 +81,11 @@ StackType_t portFLAGS_INT_ENABLED_POPPED = ( ( StackType_t ) 0xcd ) ;
 
 unsigned long save_xsp = 0x00000000;
 unsigned long save_xssp = 0x00000000;
+volatile unsigned long save_ac0 = 0x00000000;
+volatile unsigned long save_ac1 = 0x00000000;
+volatile unsigned int context_switch_counter = 0x0;
+unsigned long Ssave_xsp = 0x00000000;
+unsigned long Ssave_xssp = 0x00000000;
 unsigned long first_save_xsp = 0x00000000;
 unsigned long first_save_xssp = 0x00000000;
 unsigned char first_flag = 0x00000000;
@@ -102,8 +107,9 @@ extern void StartTimer0(void);
 
 extern void vTickISR(void);
 
-volatile	unsigned int DBSTAT_SAVE = 0xdbdb;
+volatile	unsigned int DBSTAT_SAVE = 0x0000; // 0x001F;
 volatile	unsigned int DBSTAT_RESTORE = 0xdbdb;
+volatile    unsigned int LOOP_BITS = 0xabcd;
 	unsigned int STATUS0_LOW = 0x0aa0;
 	unsigned int STATUS0_HIGH = 0x0bb0;
 	unsigned int STATUS1_LOW = 0x1cc1;
@@ -295,6 +301,7 @@ void pxPortInitialiseStack( StackType_t *pxTopOfStack, StackType_t *pxTopOfSysSt
 //	need to save off temp (T0-T3) registers
 
 // #if 0
+
 	*pxTopOfStack = ( StackType_t ) 0x0000;
 	pxTopOfStack--;						// T0
 	*pxTopOfStack = ( StackType_t ) 0x1111;
@@ -304,7 +311,10 @@ void pxPortInitialiseStack( StackType_t *pxTopOfStack, StackType_t *pxTopOfSysSt
 	*pxTopOfStack = ( StackType_t ) 0x3333;
 	pxTopOfStack--;						// T3
 // #endif
-	
+	*pxTopOfStack = ( StackType_t ) 0x0000;  // AC0_HL
+	 pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) 0x0000;
+	 pxTopOfStack--;
 	*pxTopOfStack = ( StackType_t ) 0x0000;
 	pxTopOfStack--;						// 7
 	*pxTopOfStack = ( StackType_t ) 0x0000;
@@ -413,6 +423,8 @@ void pxPortInitialiseStack( StackType_t *pxTopOfStack, StackType_t *pxTopOfSysSt
 //	*pxTopOfStack = ( StackType_t ) ST3_55;
 //	pxTopOfStack--;
 	// 4
+//	*pxTopOfSysStack = ( StackType_t ) LOOP_BITS;
+//	 pxTopOfSysStack--;
 	*pxTopOfSysStack = ( StackType_t ) (((unsigned long)(pxCode))>>16);
 //	pxTopOfSysStack--;			// 5
 

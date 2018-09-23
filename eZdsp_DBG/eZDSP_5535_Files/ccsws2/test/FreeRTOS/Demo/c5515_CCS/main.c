@@ -124,7 +124,7 @@
 
 #define EVER ;;
 
-#define BLINK_XF_IN_IDLE (0)		// set to 1 to see XF blink in the IDLE task - can be used as ballpark timing diagnostic
+#define BLINK_XF_IN_IDLE (1)		// set to 1 to see XF blink in the IDLE task - can be used as ballpark timing diagnostic
 void InitSystem(void);
 void ConfigPort(void);
 void SYS_GlobalIntEnable(void);
@@ -187,39 +187,39 @@ LCD represent LED's]*/
 #define mainERROR_CHECK_DELAY			( ( portTickType ) 500 / portTICK_RATE_MS  )
 void vApplicationIdleHook( void );
 
-static TaskHandle_t blueTaskHandle;
-static TaskHandle_t redTaskHandle;
-static TaskHandle_t greenTaskHandle;
-static TaskHandle_t xfTaskHandle;
-static TaskHandle_t xf2TaskHandle;
-static TaskHandle_t controlTaskHandle;
-static TaskHandle_t startUpTaskHandle;
-static TaskHandle_t TestTask1Handle;
-static TaskHandle_t TestTask2Handle;
-static TaskHandle_t TestTask3Handle;
-static TaskHandle_t TestTask4Handle;
+TaskHandle_t blueTaskHandle;
+TaskHandle_t redTaskHandle;
+TaskHandle_t greenTaskHandle;
+TaskHandle_t xfTaskHandle;
+TaskHandle_t xf2TaskHandle;
+TaskHandle_t controlTaskHandle;
+TaskHandle_t startUpTaskHandle;
+TaskHandle_t TestTask1Handle;
+TaskHandle_t TestTask2Handle;
+TaskHandle_t TestTask3Handle;
+TaskHandle_t TestTask4Handle;
 
-static SemaphoreHandle_t xSemaphoreR = NULL;
-static SemaphoreHandle_t xSemaphoreB = NULL;
-static SemaphoreHandle_t xSemaphoreY = NULL;
-static SemaphoreHandle_t xSemaphoreO = NULL;
-static SemaphoreHandle_t xSemaphoreXF = NULL;
-static SemaphoreHandle_t xSemaphoreBaton = NULL;
+SemaphoreHandle_t xSemaphoreR = NULL;
+SemaphoreHandle_t xSemaphoreB = NULL;
+SemaphoreHandle_t xSemaphoreY = NULL;
+SemaphoreHandle_t xSemaphoreO = NULL;
+SemaphoreHandle_t xSemaphoreXF = NULL;
+SemaphoreHandle_t xSemaphoreBaton = NULL;
 
 
-static void blueLedToggle(void);
-static void redLedToggle(void);
+void blueLedToggle(void);
+void redLedToggle(void);
 void LED_TaskRed(void * pvParameters);
 void LED_TaskBlue(void * pvParameters);
-static void LED_TaskXF(void * pvParameters);
-static void LED_TaskXF2(void * pvParameters);
-static void LED_TaskGreen(void * pvParameters);
-static void LED_Control(void * pvParameters);
-static void StartUpTask(void * pvParameters);
-static void TestTask1(void * pvParameters);
-static void TestTask2(void * pvParameters);
-static void TestTask3(void * pvParameters);
-static void TestTask4(void * pvParameters);
+void LED_TaskXF(void * pvParameters);
+void LED_TaskXF2(void * pvParameters);
+void LED_TaskGreen(void * pvParameters);
+void LED_Control(void * pvParameters);
+void StartUpTask(void * pvParameters);
+void TestTask1(void * pvParameters);
+void TestTask2(void * pvParameters);
+void TestTask3(void * pvParameters);
+void TestTask4(void * pvParameters);
 // void DeviceInit(void);
 // void InitFlash();
 // void PieCntlInit(void);
@@ -250,7 +250,7 @@ static short prvCheckOtherTasksAreStillRunning( void );
 static void prvSetupHardware( void );
 
 /* Used to detect the idle hook function stalling. */
-static volatile unsigned long ulIdleLoops = 0UL;
+volatile unsigned long ulIdleLoops = 0UL;
 
 /*-----------------------------------------------------------*/
 
@@ -259,7 +259,7 @@ static volatile unsigned long ulIdleLoops = 0UL;
  */
  
 extern unsigned short int VECSTART;		// defined in vector.asm
-static toggleLEDlocal(void);
+static void toggleLEDlocal(void);
 int main( void )
 {
 	portSHORT temp, key, i;
@@ -272,7 +272,7 @@ int main( void )
 	IVPD = (unsigned short)temp1;
 	IVPH = (unsigned short)temp1;
 	
-	asm ( " bclr C54CM" );    
+	asm ( " bclr C54CM" );
 // #if 1
 	// Change stack mode - we're using 'slow' stack mode
 	if ( (DBIER0 & BIT2) == 0 )
@@ -284,9 +284,19 @@ int main( void )
 	{	// soft-reset case
 		DBIER0 &= ~BIT2;	// put back to its reset state
 	}
-		asm ( " bclr C54CM" );    
+		asm ( " bclr C54CM" );
 // #endif
+#if 0
+        HeapRegion_t xHeapRegions[] =
+         {
+         { ( uint8_t * ) 0x010000UL, 0x08000 },
+         { ( uint8_t * ) 0x018000UL, 0x08000 },// << Defines a block of 0x10000 bytes starting at address 0x80000000
+         // { ( uint8_t * ) 0x90000000UL, 0xa0000 }, // << Defines a block of 0xa0000 bytes starting at address of 0x90000000
+         { NULL, 0 }              //   << Terminates the array.
+         };
 
+         vPortDefineHeapRegions( xHeapRegions );
+#endif
 		prvSetupHardware();
 	   /* Initialize board */
 ///		InitSystem();
@@ -345,16 +355,7 @@ int main( void )
 	    /* USB test */
 	    oled_test(3);
 	    EZDSP5535_LED_on(3);
-#if 0
-	    HeapRegion_t xHeapRegions[] =
-	     {
-	     { ( uint8_t * ) 0x010000UL, 0x010000 }, // << Defines a block of 0x10000 bytes starting at address 0x80000000
-	     // { ( uint8_t * ) 0x90000000UL, 0xa0000 }, // << Defines a block of 0xa0000 bytes starting at address of 0x90000000
-	     { NULL, 0 }              //   << Terminates the array.
-	     };
 
-	     vPortDefineHeapRegions( xHeapRegions );
-#endif
 	/* Setup the hardware ready for the demo. */
 	
 //	EZDSP5535_init( );
@@ -495,7 +496,7 @@ int main( void )
     	    	                                       tskIDLE_PRIORITY + 3, // Priority at which the task is created.
     	    	                       //                       blueTaskStack,        // Array to use as the task's stack.
     	    	                       		 &startUpTaskHandle );
-//    	    	          vTaskSuspend(startUpTaskHandle);
+  //  	    	          vTaskSuspend(startUpTaskHandle);
                           xTaskCreate(TestTask1,  // Function that implements the task.
                                                        "TestTsk1",      // Text name for the task.
                                                           configMINIMAL_STACK_SIZE,           // Number of indexes in the xStack array.
@@ -524,7 +525,7 @@ int main( void )
                                          //                       blueTaskStack,        // Array to use as the task's stack.
                                                &TestTask3Handle );
                           vTaskSuspend(TestTask3Handle);
-#endif
+// #endif
                           xTaskCreate(TestTask4,  // Function that implements the task.
                                                                        "TestTsk4",      // Text name for the task.
                                                                           configMINIMAL_STACK_SIZE,           // Number of indexes in the xStack array.
@@ -543,7 +544,7 @@ int main( void )
    		 &blueTaskHandle );    // Variable to hold the task's data structure.
        vTaskSuspend(blueTaskHandle);
 
-#if 1
+// #if 1
 
         xTaskCreate(LED_TaskXF,         // Function that implements the task.
                                          "XFLEDtsk",      // Text name for the task.
@@ -570,7 +571,7 @@ int main( void )
                   //                       blueTaskStack,        // Array to use as the task's stack.
                   		 &xf2TaskHandle );
         vTaskSuspend(xf2TaskHandle);
-#if 1
+// #if 1
         xTaskCreate(LED_Control,  // Function that implements the task.
                                   "LEDCTRL",      // Text name for the task.
                				      configMINIMAL_STACK_SIZE,           // Number of indexes in the xStack array.
@@ -579,8 +580,8 @@ int main( void )
                   //                       blueTaskStack,        // Array to use as the task's stack.
                   		 &controlTaskHandle );
        vTaskSuspend(controlTaskHandle);
-#endif
-#endif
+// #endif
+// #endif
         xTaskCreate(LED_TaskRed,         // Function that implements the task.
                                   "RedLED",      // Text name for the task.
         						  configMINIMAL_STACK_SIZE,           // Number of indexes in the xStack array.
@@ -589,7 +590,9 @@ int main( void )
            //                       blueTaskStack,        // Array to use as the task's stack.
            		 &redTaskHandle );
          vTaskSuspend(redTaskHandle);
-//         vTaskSuspend(controlTaskHandle);
+//
+         vTaskSuspend(controlTaskHandle);
+#endif
 #if 0
 		xSemaphoreTake(xSemaphoreR,1);
 		xSemaphoreTake(xSemaphoreB,1);
@@ -768,6 +771,10 @@ void vApplicationIdleHook( void )
 	
 	/* Simple put the CPU into lowpower mode. */
 //	_BIS_SR( LPM3_bits );
+
+	for (EVER)
+	{
+
 	ulIdleLoops++;
 //	BlinkLED();
 //	toggleLED();
@@ -777,7 +784,7 @@ void vApplicationIdleHook( void )
 	{
 //		toggleLEDlocal();					// as a diagnostic; if timing is in the ballpark - the XF LED will blink at the rate ~1s (50% duty cycle)
 //		EZDSP5535_LED_toggle(0);
-
+//	    blueLedToggle();
 #if BLINK_XF_IN_IDLE
 		EZDSP5535_XF_toggle();
 #endif
@@ -865,6 +872,7 @@ void vApplicationIdleHook( void )
       #endif
 
 //	vTaskDelay ( 5000 );
+	}
 	
 }
 /*-----------------------------------------------------------*/
@@ -943,7 +951,7 @@ void SYS_GlobalIntDisable(void)
 	asm ( " bset INTM" );
 }
 
-static toggleLEDlocal(void)
+static void toggleLEDlocal(void)
 {
 	portSHORT temp, i;
 // #if eZdsp_c5535
@@ -1191,8 +1199,9 @@ void LED_TaskBlue(void * pvParameters)
 		vTaskDelay(pdMS_TO_TICKS(1000));
 #endif
 	}
-}
+
 		vTaskDelay(pdMS_TO_TICKS(100UL));
+}
 }
 
 
@@ -1223,7 +1232,7 @@ void LED_TaskRed(void * pvParameters)
 }
 
 
-static void blueLedToggle(void)
+ void blueLedToggle(void)
 {
 	static unsigned short counter = 0;
 
@@ -1238,7 +1247,7 @@ static void blueLedToggle(void)
 	}
 }
 
-static void redLedToggle(void)
+ void redLedToggle(void)
 {
 	static unsigned short counter = 0;
 
@@ -1252,7 +1261,7 @@ static void redLedToggle(void)
 		EZDSP5535_GPIO_setOutput(16, 0);
 	}
 }
-static void LED_TaskXF(void * pvParameters)
+void LED_TaskXF(void * pvParameters)
 {
 	static unsigned short counter = 0;
 
@@ -1303,7 +1312,7 @@ static void LED_TaskXF(void * pvParameters)
 	}
 }
 
-static void LED_TaskGreen(void * pvParameters)
+void LED_TaskGreen(void * pvParameters)
 {
 	static unsigned short counter, ctr = 0;
 
@@ -1347,7 +1356,7 @@ static void LED_TaskGreen(void * pvParameters)
 	}
 }
 #if 1
-static void LED_Control(void * pvParameters)
+void LED_Control(void * pvParameters)
 {
 static short ctr = 0;
 
@@ -1440,7 +1449,7 @@ static short ctr = 0;
 	}
 }
 #endif
-static void LED_TaskXF2(void * pvParameters)
+void LED_TaskXF2(void * pvParameters)
 {
 	static unsigned short counter = 0;
 
@@ -1491,7 +1500,7 @@ static void LED_TaskXF2(void * pvParameters)
 	}
 }
 
-static void StartUpTask(void * pvParameters)
+void StartUpTask(void * pvParameters)
 {
 
     static unsigned short ctr = 0;
@@ -1535,25 +1544,25 @@ static void StartUpTask(void * pvParameters)
 		vTaskResume(blueTaskHandle);
 		vTaskResume(TestTask1Handle);
 
-//		vTaskDelay ( pdMS_TO_TICKS( 100UL ));
+//		vTaskDelay ( pdMS_TO_TICKS( 7UL ));
 	    vTaskResume(redTaskHandle);
 	    vTaskResume(TestTask4Handle);
 	    vTaskDelay ( pdMS_TO_TICKS( 100UL ));
 	    vTaskResume(greenTaskHandle);
 //	    vTaskDelay ( pdMS_TO_TICKS( 100UL ));
+	    vTaskResume(xfTaskHandle);
+//	    vTaskDelay ( pdMS_TO_TICKS( 100UL ));
+	    vTaskResume(xf2TaskHandle);
+//	    vTaskDelay ( pdMS_TO_TICKS( 100UL ));
 //	    vTaskResume(xfTaskHandle);
 //	    vTaskDelay ( pdMS_TO_TICKS( 100UL ));
-//	    vTaskResume(xf2TaskHandle);
-//	    vTaskDelay ( pdMS_TO_TICKS( 100UL ));
-//	    vTaskResume(xfTaskHandle);
-//	    vTaskDelay ( pdMS_TO_TICKS( 100UL ));
-        vTaskResume(controlTaskHandle);
-        vTaskDelay ( pdMS_TO_TICKS( 100UL ));
+//        vTaskResume(controlTaskHandle);
+//        vTaskDelay ( pdMS_TO_TICKS( 100UL ));
 
 //        vTaskDelay ( pdMS_TO_TICKS( 100UL ));
-        vTaskResume(TestTask2Handle);
-        vTaskDelay ( pdMS_TO_TICKS( 100UL ));
-        vTaskResume(TestTask3Handle);
+//        vTaskResume(TestTask2Handle);
+//        vTaskDelay ( pdMS_TO_TICKS( 100UL ));
+//        vTaskResume(TestTask3Handle);
 //        vTaskDelay ( pdMS_TO_TICKS( 100UL ));
  //       vTaskResume(TestTask4Handle);
 //        vTaskDelay ( pdMS_TO_TICKS( 100UL ));
@@ -1561,9 +1570,9 @@ static void StartUpTask(void * pvParameters)
 //	    vTaskDelay ( 500 / portTICK_PERIOD_MS);
 
 //	    vTaskDelay (pdMS_TO_TICKS( 200UL ));
-	    vTaskSuspend(NULL);
+//	    vTaskSuspend(NULL);
 #endif
-#if 0
+#if 1
         if ( xSemaphoreGive ( xSemaphoreR ) != pdTRUE )
              {
                         ctr++;
@@ -1574,7 +1583,7 @@ static void StartUpTask(void * pvParameters)
 
 }
 
-static void TestTask1(void * pvParameters)
+void TestTask1(void * pvParameters)
 {
 
     static unsigned short ctr = 0;
@@ -1587,11 +1596,11 @@ static void TestTask1(void * pvParameters)
                         ctr++;
          }
 
-        vTaskDelay(pdMS_TO_TICKS(500UL));
+        vTaskDelay(pdMS_TO_TICKS(5000UL));
     }
 
 }
-static void TestTask2(void * pvParameters)
+void TestTask2(void * pvParameters)
 {
 
     static unsigned short ctr = 0;
@@ -1612,7 +1621,7 @@ vTaskDelay(pdMS_TO_TICKS(20UL));
 
     }
 }
-static void TestTask3(void * pvParameters)
+void TestTask3(void * pvParameters)
 {
 
     static unsigned short ctr = 0;
@@ -1632,7 +1641,7 @@ vTaskDelay(pdMS_TO_TICKS(200UL));
     }
 }
 
-static void TestTask4(void * pvParameters)
+ void TestTask4(void * pvParameters)
 {
 
     static unsigned short ctr = 0;

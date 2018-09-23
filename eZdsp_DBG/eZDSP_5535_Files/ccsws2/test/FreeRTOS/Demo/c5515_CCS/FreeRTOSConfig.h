@@ -86,7 +86,7 @@
 // #define configCPU_CLOCK_HZ			( ( unsigned long ) 6000000 ) // derived from on-board 12MHz oscillator - note Timer0 -> highest setting /2
 // #define configCPU_CLOCK_HZ			( ( unsigned long ) 0x1000 ) /
 // #define configCPU_CLOCK_HZ			( ( unsigned long ) 7995392 )
-#define configTICK_RATE_HZ			( ( TickType_t  ) 10000 )
+#define configTICK_RATE_HZ			( ( TickType_t  ) 1000 )
 // #define configTICK_RATE_HZ			( ( TickType_t  ) 1000 )
 // #define configMAX_PRIORITIES		( ( unsigned BaseType_t ) 4 )
 #define configMAX_PRIORITIES		( 5 )
@@ -96,7 +96,7 @@
 #define configUSE_TRACE_FACILITY	0
 #define configUSE_16_BIT_TICKS		0
 #define configIDLE_SHOULD_YIELD		1
-#define configCHECK_FOR_STACK_OVERFLOW	2			// was 2
+#define configCHECK_FOR_STACK_OVERFLOW	0			// was 2
 #define configUSE_MALLOC_FAILED_HOOK	1
 #define configSUPPORT_STATIC_ALLOCATION     0
 

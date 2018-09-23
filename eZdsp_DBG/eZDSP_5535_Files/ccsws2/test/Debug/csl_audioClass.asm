@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Thu Sep 20 01:43:18 2018                                 *
+;* Date/Time created: Sat Sep 22 03:35:59 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -170,7 +170,7 @@ $C$DW$38	.dwtag  DW_TAG_formal_parameter
 	.dwattr $C$DW$38, DW_AT_type(*$C$DW$T$25)
 	.dwendtag $C$DW$35
 
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\2138012 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1461212 
 	.sect	".text"
 	.align 4
 
@@ -379,7 +379,7 @@ $C$DW$58	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$59	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$59, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L1:1:1537432998")
+	.dwattr $C$DW$59, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L1:1:1537612559")
 	.dwattr $C$DW$59, DW_AT_TI_begin_file("F:/eZdsp_DBG/eZDSP_5535_Files/ccsws2/test/c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/inc/csl_audioClassAux.h")
 	.dwattr $C$DW$59, DW_AT_TI_begin_line(0xa3)
 	.dwattr $C$DW$59, DW_AT_TI_end_line(0xaa)
@@ -1954,7 +1954,7 @@ $C$DW$143	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$144	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$144, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L40:1:1537432998")
+	.dwattr $C$DW$144, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L40:1:1537612559")
 	.dwattr $C$DW$144, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_audioClass.c")
 	.dwattr $C$DW$144, DW_AT_TI_begin_line(0x2e5)
 	.dwattr $C$DW$144, DW_AT_TI_end_line(0x2e8)
@@ -1965,7 +1965,7 @@ $C$DW$145	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$146	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$146, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L37:1:1537432998")
+	.dwattr $C$DW$146, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L37:1:1537612559")
 	.dwattr $C$DW$146, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_audioClass.c")
 	.dwattr $C$DW$146, DW_AT_TI_begin_line(0x2d9)
 	.dwattr $C$DW$146, DW_AT_TI_end_line(0x2dc)
@@ -1976,7 +1976,7 @@ $C$DW$147	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$148	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$148, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L34:1:1537432998")
+	.dwattr $C$DW$148, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L34:1:1537612559")
 	.dwattr $C$DW$148, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_audioClass.c")
 	.dwattr $C$DW$148, DW_AT_TI_begin_line(0x2cd)
 	.dwattr $C$DW$148, DW_AT_TI_end_line(0x2d0)
@@ -1987,7 +1987,7 @@ $C$DW$149	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$150	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$150, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L31:1:1537432998")
+	.dwattr $C$DW$150, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L31:1:1537612559")
 	.dwattr $C$DW$150, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_audioClass.c")
 	.dwattr $C$DW$150, DW_AT_TI_begin_line(0x2c0)
 	.dwattr $C$DW$150, DW_AT_TI_end_line(0x2c3)
@@ -1998,7 +1998,7 @@ $C$DW$151	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$152	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$152, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L28:1:1537432998")
+	.dwattr $C$DW$152, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L28:1:1537612559")
 	.dwattr $C$DW$152, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_audioClass.c")
 	.dwattr $C$DW$152, DW_AT_TI_begin_line(0x2b3)
 	.dwattr $C$DW$152, DW_AT_TI_end_line(0x2b6)
@@ -2173,7 +2173,7 @@ $C$DW$159	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$160	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$160, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L49:1:1537432998")
+	.dwattr $C$DW$160, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L49:1:1537612559")
 	.dwattr $C$DW$160, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_audioClass.c")
 	.dwattr $C$DW$160, DW_AT_TI_begin_line(0x342)
 	.dwattr $C$DW$160, DW_AT_TI_end_line(0x345)
@@ -2184,7 +2184,7 @@ $C$DW$161	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$162	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$162, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L47:1:1537432998")
+	.dwattr $C$DW$162, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L47:1:1537612559")
 	.dwattr $C$DW$162, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_audioClass.c")
 	.dwattr $C$DW$162, DW_AT_TI_begin_line(0x338)
 	.dwattr $C$DW$162, DW_AT_TI_end_line(0x33b)
@@ -2649,7 +2649,7 @@ $C$DW$191	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$192	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$192, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L67:1:1537432998")
+	.dwattr $C$DW$192, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L67:1:1537612559")
 	.dwattr $C$DW$192, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_audioClass.c")
 	.dwattr $C$DW$192, DW_AT_TI_begin_line(0x3d0)
 	.dwattr $C$DW$192, DW_AT_TI_end_line(0x3d6)
@@ -2660,7 +2660,7 @@ $C$DW$193	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$194	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$194, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L60:1:1537432998")
+	.dwattr $C$DW$194, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\csl_audioClass.asm:$C$L60:1:1537612559")
 	.dwattr $C$DW$194, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/c55xx_csl/src/csl_audioClass.c")
 	.dwattr $C$DW$194, DW_AT_TI_begin_line(0x3b4)
 	.dwattr $C$DW$194, DW_AT_TI_end_line(0x3b4)

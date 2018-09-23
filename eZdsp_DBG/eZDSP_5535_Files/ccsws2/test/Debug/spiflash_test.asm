@@ -1,6 +1,6 @@
 ;*******************************************************************************
 ;* TMS320C55x C/C++ Codegen                                          PC v4.4.1 *
-;* Date/Time created: Thu Sep 20 01:43:18 2018                                 *
+;* Date/Time created: Sat Sep 22 03:35:59 2018                                 *
 ;*******************************************************************************
 	.compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --silicon_core_3_3 --symdebug:dwarf 
 	.mmregs
@@ -94,7 +94,7 @@ $C$DW$17	.dwtag  DW_TAG_variable, DW_AT_name("rx")
 	.dwattr $C$DW$17, DW_AT_TI_symbol_name("_rx")
 	.dwattr $C$DW$17, DW_AT_type(*$C$DW$T$23)
 	.dwattr $C$DW$17, DW_AT_location[DW_OP_addr _rx]
-;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\0878812 
+;	F:\ti\ccs8p1\ccsv8\tools\compiler\alt-install-ti-cgt-c55x_4.4.1\bin\acp55.exe -@f:\\AppData\\Local\\Temp\\1714012 
 	.sect	".text"
 	.align 4
 	.global	_spiflash_test
@@ -417,7 +417,7 @@ $C$DW$31	.dwtag  DW_TAG_TI_branch
                                         ; return occurs
 
 $C$DW$32	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$32, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\spiflash_test.asm:$C$L7:1:1537432998")
+	.dwattr $C$DW$32, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\spiflash_test.asm:$C$L7:1:1537612559")
 	.dwattr $C$DW$32, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c")
 	.dwattr $C$DW$32, DW_AT_TI_begin_line(0x57)
 	.dwattr $C$DW$32, DW_AT_TI_end_line(0x6f)
@@ -441,7 +441,7 @@ $C$DW$38	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$38, DW_AT_high_pc($C$DW$L$_spiflash_test$20$E)
 
 $C$DW$39	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$39, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\spiflash_test.asm:$C$L8:2:1537432998")
+	.dwattr $C$DW$39, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\spiflash_test.asm:$C$L8:2:1537612559")
 	.dwattr $C$DW$39, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c")
 	.dwattr $C$DW$39, DW_AT_TI_begin_line(0x5a)
 	.dwattr $C$DW$39, DW_AT_TI_end_line(0x5b)
@@ -452,7 +452,7 @@ $C$DW$40	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$41	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$41, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\spiflash_test.asm:$C$L11:2:1537432998")
+	.dwattr $C$DW$41, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\spiflash_test.asm:$C$L11:2:1537612559")
 	.dwattr $C$DW$41, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c")
 	.dwattr $C$DW$41, DW_AT_TI_begin_line(0x67)
 	.dwattr $C$DW$41, DW_AT_TI_end_line(0x69)
@@ -471,7 +471,7 @@ $C$DW$44	.dwtag  DW_TAG_TI_loop_range
 
 
 $C$DW$45	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$45, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\spiflash_test.asm:$C$L2:1:1537432998")
+	.dwattr $C$DW$45, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\spiflash_test.asm:$C$L2:1:1537612559")
 	.dwattr $C$DW$45, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c")
 	.dwattr $C$DW$45, DW_AT_TI_begin_line(0x47)
 	.dwattr $C$DW$45, DW_AT_TI_end_line(0x54)
@@ -486,7 +486,7 @@ $C$DW$48	.dwtag  DW_TAG_TI_loop_range
 	.dwattr $C$DW$48, DW_AT_high_pc($C$DW$L$_spiflash_test$8$E)
 
 $C$DW$49	.dwtag  DW_TAG_TI_loop
-	.dwattr $C$DW$49, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\spiflash_test.asm:$C$L3:2:1537432998")
+	.dwattr $C$DW$49, DW_AT_name("F:\eZdsp_DBG\eZDSP_5535_Files\ccsws2\test\Debug\spiflash_test.asm:$C$L3:2:1537612559")
 	.dwattr $C$DW$49, DW_AT_TI_begin_file("../c5535_bsl_revc/ezdsp5535_v1/boot_post_SDcard/boot_post/spiflash_test.c")
 	.dwattr $C$DW$49, DW_AT_TI_begin_line(0x4b)
 	.dwattr $C$DW$49, DW_AT_TI_end_line(0x4c)
