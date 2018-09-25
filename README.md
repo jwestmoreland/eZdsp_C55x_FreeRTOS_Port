@@ -45,4 +45,12 @@ OK, good luck and have fun!
 John Westmoreland
 (9/7/2018)
 
+Addendum: (9/25/18 - jcw)
+Before you go embarking on debugging this build (these builds now) - please be aware of the following document:
+http://www.ti.com/lit/ug/spru652g/spru652g.pdf
+Apparently CPU_119 hasn't been fixed.  It's virtually impossible to tell if you have a stack issue and/or a DBSTAT issue right now.
+I've asked TI for the definition of DBSTAT more than once; just so I can check to see if valid values are on the stack.  DBSTAT is
+basically in the 'middle' of sysstack; so there's really no good way to deal with it.  Wanted to mention this since I imagine some
+will wonder why I've taken the approach I have taken.  Note CPU_119 isn't the only item that's a possible issue still in the SPRU652
+document.
 
